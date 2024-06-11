@@ -12,11 +12,14 @@ public class Plugin extends JavaPlugin
 
   public void onEnable()
   {
+    getServer().getPluginManager().registerEvents(new EntityListener(), this);
+
+
     LOGGER.info("szoplugin enabled");
   }
 
   public void onDisable()
   {
-    LOGGER.info("szoplugin disabled");
+
   }
 }
