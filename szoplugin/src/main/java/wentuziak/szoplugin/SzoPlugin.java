@@ -24,6 +24,6 @@ public class SzoPlugin extends JavaPlugin
   }
 
   public static SzoPlugin getInstance() {
-    return getPlugin(SzoPlugin.class);
+    return SzoPlugin.getPlugin(SzoPlugin.class);
   }
 }

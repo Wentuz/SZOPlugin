@@ -1,16 +1,17 @@
 package wentuziak.szoplugin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 
-public class CowCommand implements CommandExecutor, TabExecutor{
+public class CowCommand implements TabExecutor{
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -33,18 +34,27 @@ public class CowCommand implements CommandExecutor, TabExecutor{
             cow.setBaby();
         }
         
-        
-        
+        cow.setMetadata("SzoPlugin", new FixedMetadataValue(SzoPlugin.getInstance(), true));
+
+        // if(cow.hasMetadata("SzoPlugin")){
+        //     System.out.println("HasMetaData" + cow.hasMetadata("SzoPlugin"));
+        // }
+
         cow.setCustomName(ChatColor.RED + "MOMMY MILKERS");
         cow.setCustomNameVisible(true);
 
 
 
-        return false;
+        return true;
     }
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        return null;
+        
+        if(args.length == 1){
+            return java.util.Arrays.asList("baby");
+        }
+
+        return new ArrayList<>();
     }
 }
