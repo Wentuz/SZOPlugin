@@ -19,8 +19,8 @@ public class EntityListener implements Listener {
     public void onEntityRightClick(PlayerInteractEntityEvent event)
     {
 
-        if (event.getHand() == EquipmentSlot.HAND) {
-            return;
+        if (event.getHand() == EquipmentSlot.OFF_HAND) {
+             return;
         }
         
         //System.out.println("Right clicked: " + event.getRightClicked().getClass());
@@ -33,9 +33,14 @@ public class EntityListener implements Listener {
 
 
         if (entity instanceof Cow && entity.hasMetadata("SzoPlugin") == true && itemInHand.getType() == Material.BUCKET) {
-            Cow cow = (Cow) event.getRightClicked();
+            Cow cowClicked = (Cow) event.getRightClicked();
+            ItemStack itemToDrop = new ItemStack(Material.GUNPOWDER);
+            int amountToDrop = (int)(Math.random() * 10 + 1);
+            itemToDrop.setAmount(amountToDrop);
 
-            cow.getWorld().createExplosion(cow.getLocation(), 2.5F);
+            cowClicked.getWorld().createExplosion(cowClicked.getLocation(), 2.5F);
+            cowClicked.getWorld().dropItem(cowClicked.getLocation(), itemToDrop);
+
         }
 
         if (event.getRightClicked().getType() == EntityType.CHICKEN) {
