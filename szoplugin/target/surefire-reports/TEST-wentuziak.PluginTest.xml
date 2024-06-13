@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="wentuziak.PluginTest" time="0.042" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="wentuziak.PluginTest" time="0.048" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PL"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
-    <property name="sun.java.command" value="C:\Users\gabri\AppData\Local\Temp\surefire18278697964298624378\surefirebooter11323603889179846790.jar C:\Users\gabri\AppData\Local\Temp\surefire18278697964298624378 2024-06-11T20-16-32_232-jvmRun1 surefire5586549841496995513tmp surefire_06758058506325849613tmp"/>
+    <property name="sun.java.command" value="C:\Users\gabri\AppData\Local\Temp\surefire3360306087749364967\surefirebooter10384148793479681464.jar C:\Users\gabri\AppData\Local\Temp\surefire3360306087749364967 2024-06-13T18-21-17_480-jvmRun1 surefire8086961702349888534tmp surefire_07591615173039344188tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="d:\RandomProjects\GIT\SZOPlugin\szoplugin\target\test-classes;d:\RandomProjects\GIT\SZOPlugin\szoplugin\target\classes;C:\Users\gabri\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\gabri\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\gabri\.m2\repository\org\spigotmc\spigot-api\1.15.1-R0.1-SNAPSHOT\spigot-api-1.15.1-R0.1-SNAPSHOT.jar;C:\Users\gabri\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;C:\Users\gabri\.m2\repository\com\google\guava\guava\21.0\guava-21.0.jar;C:\Users\gabri\.m2\repository\com\google\code\gson\gson\2.8.0\gson-2.8.0.jar;C:\Users\gabri\.m2\repository\net\md-5\bungeecord-chat\1.13-SNAPSHOT\bungeecord-chat-1.13-SNAPSHOT.jar;C:\Users\gabri\.m2\repository\org\yaml\snakeyaml\1.25\snakeyaml-1.25.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\gabri\AppData\Local\Temp\surefire18278697964298624378\surefirebooter11323603889179846790.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\gabri\AppData\Local\Temp\surefire3360306087749364967\surefirebooter10384148793479681464.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.11+7-LTS-207"/>
@@ -56,5 +56,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="wentuziak.PluginTest" time="0.001"/>
+  <testcase name="shouldAnswerWithTrue" classname="wentuziak.PluginTest" time="0.002"/>
 </testsuite>
