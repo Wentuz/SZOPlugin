@@ -37,6 +37,17 @@ public class InteractionListener implements Listener{
                 player.getInventory().removeItem(itemInHand);
             }
         }
+
+        if (itemInHand.getType() == Material.MAGMA_CREAM) {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 400, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 200, 1));
+
+            if (itemInHand.getAmount() > 1) {
+                itemInHand.setAmount(itemInHand.getAmount() - 1);
+            } else {
+                player.getInventory().removeItem(itemInHand);
+            }
+        }
     }
 
 
@@ -49,9 +60,10 @@ public class InteractionListener implements Listener{
         //System.out.println("Consumed item: " + consumedItem);
 
         if (consumedItem.getType() == Material.GLOW_BERRIES) {
-            System.out.println("Etid a berrieee");
-
+            player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 400, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 0));
         }
+
     }
 
 }
