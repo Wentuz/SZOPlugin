@@ -32,10 +32,10 @@
 		</dependency>
 		<!--This adds the Spigot API artifact to the build -->
 		<dependency>
-			<groupId>org.spigotmc</groupId>
-			<artifactId>spigot-api</artifactId>
-			<version>1.15.1-R0.1-SNAPSHOT</version>
-			<scope>provided</scope>
+    		<groupId>org.spigotmc</groupId>
+    		<artifactId>spigot-api</artifactId>
+    		<version>1.20.1-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
+    		<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

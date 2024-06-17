@@ -1,6 +1,9 @@
 package wentuziak.szoplugin;
 
 import java.util.logging.Logger;
+
+import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /*
@@ -14,7 +17,6 @@ public class SzoPlugin extends JavaPlugin
   {
     getServer().getPluginManager().registerEvents(new EntityListener(), this);
     getServer().getPluginManager().registerEvents(new InteractionListener(), this);
-    getServer().getPluginManager().registerEvents(new FoodConsumptionListener(), this);
     getCommand("szopCow").setExecutor(new CowCommand());
 
     LOGGER.info("szoplugin enabled");

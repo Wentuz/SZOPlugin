@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -22,7 +23,7 @@ public class InteractionListener implements Listener{
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         //Vector lookDirection = player.getLocation().getDirection();
   
-        System.out.println("RIGHT CLICKED: " + itemInHand);
+        //System.out.println("RIGHT CLICKED: " + itemInHand);
         //System.out.println("LOOK DIRECTION: " + lookDirection);
 
 
@@ -35,6 +36,21 @@ public class InteractionListener implements Listener{
             } else {
                 player.getInventory().removeItem(itemInHand);
             }
+        }
+    }
+
+
+    @EventHandler
+    public void onPlayerItemConsume(PlayerItemConsumeEvent event)
+    {
+        Player player = event.getPlayer();
+        ItemStack consumedItem = event.getItem();
+
+        //System.out.println("Consumed item: " + consumedItem);
+
+        if (consumedItem.getType() == Material.GLOW_BERRIES) {
+            System.out.println("Etid a berrieee");
+
         }
     }
 

@@ -29,7 +29,7 @@ public class EntityListener implements Listener {
         Entity entity = event.getRightClicked();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
 
-        System.out.println("Item in hand: " + itemInHand.getType());
+        //System.out.println("Item in hand: " + itemInHand.getType());
 
 
         if (entity instanceof Cow && entity.hasMetadata("SzoPlugin") == true && itemInHand.getType() == Material.BUCKET) {
