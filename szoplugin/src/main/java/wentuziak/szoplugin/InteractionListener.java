@@ -21,32 +21,38 @@ public class InteractionListener implements Listener{
     {
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
-        //Vector lookDirection = player.getLocation().getDirection();
+        boolean isPerishable = false;
   
         //System.out.println("RIGHT CLICKED: " + itemInHand);
         //System.out.println("LOOK DIRECTION: " + lookDirection);
 
+        //
+        //      Usable items
+        //
 
         if (itemInHand.getType() == Material.FIRE_CHARGE) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20, 2));
+            givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
             player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
 
-            if (itemInHand.getAmount() > 1) {
-                itemInHand.setAmount(itemInHand.getAmount() - 1);
-            } else {
-                player.getInventory().removeItem(itemInHand);
-            }
+            isPerishable = true;
         }
 
         if (itemInHand.getType() == Material.MAGMA_CREAM) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 400, 0));
-            player.addPotionEffect(new PotionEffect(PotionEffectType.POISON, 200, 1));
+            givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
+            givePotionEffect(player, "POISON", 200, 1);
 
-            if (itemInHand.getAmount() > 1) {
-                itemInHand.setAmount(itemInHand.getAmount() - 1);
-            } else {
-                player.getInventory().removeItem(itemInHand);
-            }
+            isPerishable = true;
+        }
+
+
+        //
+        //      Remove one time use item form player
+        //
+
+        if (itemInHand.getAmount() > 1 && isPerishable == true) {
+            itemInHand.setAmount(itemInHand.getAmount() - 1);
+        } else if (isPerishable == true) {
+            player.getInventory().removeItem(itemInHand);
         }
     }
 
@@ -60,10 +66,18 @@ public class InteractionListener implements Listener{
         //System.out.println("Consumed item: " + consumedItem);
 
         if (consumedItem.getType() == Material.GLOW_BERRIES) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 400, 0));
-            player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 400, 0));
+            givePotionEffect(player, "GLOWING", 400, 0);
+            givePotionEffect(player, "NIGHT_VISION", 400, 0);
         }
 
+    }
+
+
+
+    public void givePotionEffect(Player player,String effect,int duration,int amplifier)
+    {
+        PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
+        player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
     }
 
 }

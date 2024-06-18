@@ -11,15 +11,24 @@ TODO:
 9. Player name tags !
 10. Custom mobs ?
 
+IDEAS :
+-   Custom craftables for certain 'races' : effect food for witch, Better equipment for dwarfen,
+-   phantom membrane usability : feather fall for all, levitation for specials,
+-   raw foor for Miskaru : Str, Saturation, Resistance, Water breathing,
+-   some phantoms may spawn with skeleton jokeys,
+-   spell tomes : thunderstrike, teleport, tnt throw, waterborn (dolphins grace, waterbreathing, conduit power),
+-   Golden sword of pyromaniac : 1 in 10 -  explodes entity on hit
+-   Fish stick : Knockback, heavy slowness, weakness + summons fish
+
 /----------------------------------------------------------------/
 STUFF IN HERE:
 
 > Food category:
     1. Glowberries make you shine and see in darkness,
-    2. Magma Cream gives you temporarily fire resistance but hurts you a bit,
 
 > Added usability to items:
     1. Fire Charges while used explode beneath your feet,
+    2. Magma Cream gives you temporarily fire resistance but hurts you a bit,
 
 > Mobs:
     A. Friendly:
