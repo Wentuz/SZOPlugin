@@ -17,6 +17,8 @@ public class SzoPlugin extends JavaPlugin
     getServer().getPluginManager().registerEvents(new InteractionListener(), this);
     getCommand("szopCow").setExecutor(new CowCommand());
 
+    CustomRecipes.register();
+
     LOGGER.info("szoplugin enabled");
   }
 

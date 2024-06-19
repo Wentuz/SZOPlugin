@@ -1,7 +1,5 @@
 package wentuziak.szoplugin;
 
-import javax.swing.Action;
-import javax.swing.text.html.parser.Entity;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -32,9 +30,11 @@ public class InteractionListener implements Listener{
         //System.out.println("RIGHT CLICKED: " + itemInHand);
         //System.out.println("LOOK DIRECTION: " + lookDirection);
 
+        
         //
         //      Usable items
         //
+
 
         if (itemInHand.getType() == Material.FIRE_CHARGE) {
             givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
@@ -63,6 +63,7 @@ public class InteractionListener implements Listener{
         //      Remove one time use item form player
         //
 
+
         if (itemInHand.getAmount() > 1 && isPerishable == true) {
             itemInHand.setAmount(itemInHand.getAmount() - 1);
         } else if (isPerishable == true) {
@@ -71,6 +72,9 @@ public class InteractionListener implements Listener{
     }
 
     
+        //
+        //      Food effects
+        //
  
 
     @EventHandler
@@ -87,6 +91,11 @@ public class InteractionListener implements Listener{
         }
 
     }
+
+
+        //
+        //      On hit effects
+        //
 
 
     @EventHandler
