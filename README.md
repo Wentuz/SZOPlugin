@@ -29,6 +29,7 @@ STUFF IN HERE:
 > Added usability to items:
     1. Fire Charges while used explode beneath your feet,
     2. Magma Cream gives you temporarily fire resistance but hurts you a bit,
+    3. Phantom Membranes give you slow falling
 
 > Mobs:
     A. Friendly:
@@ -38,3 +39,10 @@ STUFF IN HERE:
 
 > Races :
     ...
+
+> Custom items :
+    A. Weapons :
+        1.  Pyromancer Sword - 3 in 10 chance to explode on hit. Crafted using 2 tnt, 1 soul fragment, 2 diamonds. Can be upgraded to netherite
+    B. Ingerients :
+        1.  Soul Fragment - used for magical purposes
+        2.  Mechanical Parts - used for more advanced constructs

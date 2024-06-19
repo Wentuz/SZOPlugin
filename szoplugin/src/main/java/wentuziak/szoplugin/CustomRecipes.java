@@ -1,5 +1,7 @@
 package wentuziak.szoplugin;
 
+import java.util.Arrays;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -34,15 +36,42 @@ public final class CustomRecipes {
         soulFragmentRecipe.addIngredient(3, Material.DRAGON_BREATH);
         Bukkit.addRecipe(soulFragmentRecipe);
 
+        //
+        //      Mechanical Parts Recipe
+        //
+
+
+        ItemStack mechanicalParts = new ItemStack(Material.NETHERITE_SCRAP);
+        ItemMeta mechanicalPartsMeta = mechanicalParts.getItemMeta();
+        mechanicalPartsMeta.setDisplayName(ChatColor.GOLD + "Mechanical Parts");
+        mechanicalPartsMeta.setLore(Arrays.asList(
+            "Science is just engineering that does not work"));
+        mechanicalPartsMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        mechanicalPartsMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        mechanicalPartsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+        mechanicalParts.setItemMeta(mechanicalPartsMeta);
+
+        ShapedRecipe mechanicalPartsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "MechanicalPartsRecipe"), mechanicalParts);
+        mechanicalPartsRecipe.shape(
+            " R ",
+            "CNC",
+            "   ");
+            mechanicalPartsRecipe.setIngredient('N', Material.NETHERITE_SCRAP);
+            mechanicalPartsRecipe.setIngredient('R', Material.REPEATER);
+            mechanicalPartsRecipe.setIngredient('C', Material.COPPER_INGOT);
+        Bukkit.addRecipe(mechanicalPartsRecipe);
+
 
         //
-        //      Soul Fragment Recipe
+        //      Pyromancer's Sword Recipe
         //
 
 
         ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
         pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
+        pyromancerSwordMeta.setLore(Arrays.asList(
+            "Wonder what could go wrong"));
         pyromancerSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         pyromancerSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         pyromancerSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BOOLEAN, true);
@@ -53,9 +82,9 @@ public final class CustomRecipes {
             " D ",
             " D ",
             "TST");
-        pyromancerSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment)); // Placeholder untill souls fragment works
-        pyromancerSwordRecipe.setIngredient('T', Material.TNT);
-        pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
+            pyromancerSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            pyromancerSwordRecipe.setIngredient('T', Material.TNT);
+            pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
     }
 

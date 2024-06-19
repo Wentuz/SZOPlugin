@@ -118,9 +118,8 @@ public class InteractionListener implements Listener{
 
 
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                critChance = (int)(Math.random() * 10 + 1);
-                System.out.println(critChance);
-                if (critChance > 7) {
+                int chanceForCrit = 33;
+                if (critRoll(chanceForCrit)) {
                     hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
                 }
             }
@@ -134,6 +133,18 @@ public class InteractionListener implements Listener{
     {
         PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
         player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
+    }
+
+    public boolean critRoll(int critChance)
+    {   
+        int isCrit = (int)(Math.random() * 100 + 1);
+        System.out.println(isCrit);
+        if (critChance <= isCrit) {
+            return false;
+        }   else{
+            return true;
+        }
+        
     }
 
     
