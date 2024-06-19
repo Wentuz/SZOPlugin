@@ -10,6 +10,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -25,6 +27,9 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         boolean isPerishable = false;
+
+        //PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
+        //PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
 
   
         //System.out.println("RIGHT CLICKED: " + itemInHand);
@@ -98,6 +103,7 @@ public class InteractionListener implements Listener{
         //
 
 
+    @SuppressWarnings("deprecation")
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event)
     {   
@@ -107,17 +113,20 @@ public class InteractionListener implements Listener{
             Player player = (Player) event.getDamager();
             ItemStack itemInHand = player.getInventory().getItemInMainHand();
             org.bukkit.entity.Entity hitEntity = event.getEntity();
+            PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
+            
 
-            //player.sendMessage("You hit an entity: " + hitEntity + itemInHand);
 
-            if (itemInHand.getType() == Material.GOLDEN_SWORD) {
+            if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
                 critChance = (int)(Math.random() * 10 + 1);
                 System.out.println(critChance);
                 if (critChance > 7) {
                     hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
                 }
             }
+            
 
+            //player.sendMessage("You hit an entity: " + hitEntity + itemInHand);
         }
     }
 

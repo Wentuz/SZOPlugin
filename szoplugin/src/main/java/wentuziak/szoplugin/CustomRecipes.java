@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
+import org.bukkit.persistence.PersistentDataType;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -22,7 +22,7 @@ public final class CustomRecipes {
         //
 
 
-        MaterialData soulFragment = new ItemStack(Material.AMETHYST_SHARD);
+        ItemStack soulFragment = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta soulFragmentMeta = soulFragment.getItemMeta();
         soulFragmentMeta.setDisplayName(ChatColor.DARK_PURPLE + "Soul Fragment");
         soulFragmentMeta.addEnchant(Enchantment.CHANNELING, 1, true);
@@ -44,6 +44,7 @@ public final class CustomRecipes {
         pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
         pyromancerSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         pyromancerSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        pyromancerSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BOOLEAN, true);
         pyromancerSword.setItemMeta(pyromancerSwordMeta);
 
         ShapedRecipe pyromancerSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "PyromancerSwordRecipe"), pyromancerSword);
@@ -51,7 +52,7 @@ public final class CustomRecipes {
             " D ",
             " D ",
             "TST");
-        pyromancerSwordRecipe.setIngredient('S', soulFragment);
+        pyromancerSwordRecipe.setIngredient('S', Material.DIRT); // Placeholder untill souls fragment works
         pyromancerSwordRecipe.setIngredient('T', Material.TNT);
         pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
