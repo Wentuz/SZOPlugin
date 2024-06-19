@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -52,7 +53,7 @@ public final class CustomRecipes {
             " D ",
             " D ",
             "TST");
-        pyromancerSwordRecipe.setIngredient('S', Material.DIRT); // Placeholder untill souls fragment works
+        pyromancerSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment)); // Placeholder untill souls fragment works
         pyromancerSwordRecipe.setIngredient('T', Material.TNT);
         pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
