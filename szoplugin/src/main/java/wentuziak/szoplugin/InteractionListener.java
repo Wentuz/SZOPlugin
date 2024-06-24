@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,6 +16,9 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+
 
 
 
@@ -32,11 +36,11 @@ public class InteractionListener implements Listener{
         Material getMainHandMaterial = itemInMainHand.getType();
         Material getOffHandMaterial = itemInOffHand.getType();
 
-        boolean isPerishable = false;
-
         if ((itemInMainHand == itemInOffHand) && itemInMainHand == null) {
             return;
         }
+        
+        Block targetBlock = player.getTargetBlock(null, 50);
 
         //PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
         //PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
@@ -95,6 +99,33 @@ public class InteractionListener implements Listener{
                 removeItem(player, itemInMainHand);
             }
         }
+
+        //
+        //      META ITEMS
+        //
+
+        if (itemInMainHand != null && itemInMainHand.hasItemMeta()) {
+            PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+
+            Location blockLocation = targetBlock.getLocation();
+
+            int blockX = blockLocation.getBlockX();
+            int blockY = blockLocation.getBlockY();
+            int blockZ = blockLocation.getBlockZ();
+
+            if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
+                //player.sendMessage("U are lookin : " + targetBlock.getLocation().toString());
+
+                givePotionEffect(player, "HUNGER", 200, 9);
+                Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ);
+                player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
+                player.teleport(targetLocation);
+                player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
+
+            }
+        }
+
+
     }
 
     

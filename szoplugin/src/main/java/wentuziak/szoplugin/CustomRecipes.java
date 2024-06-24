@@ -23,8 +23,6 @@ public final class CustomRecipes {
         //
         //      Soul Fragment Recipe
         //
-
-
         ItemStack soulFragment = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta soulFragmentMeta = soulFragment.getItemMeta();
         soulFragmentMeta.setDisplayName(ChatColor.DARK_PURPLE + "Soul Fragment");
@@ -36,11 +34,10 @@ public final class CustomRecipes {
         soulFragmentRecipe.addIngredient(3, Material.DRAGON_BREATH);
         Bukkit.addRecipe(soulFragmentRecipe);
 
+
         //
         //      Mechanical Parts Recipe
         //
-
-
         ItemStack mechanicalParts = new ItemStack(Material.NETHERITE_SCRAP);
         ItemMeta mechanicalPartsMeta = mechanicalParts.getItemMeta();
         mechanicalPartsMeta.setDisplayName(ChatColor.GOLD + "Mechanical Parts");
@@ -65,8 +62,6 @@ public final class CustomRecipes {
         //
         //      Pyromancer's Sword Recipe
         //
-
-
         ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
         pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
@@ -86,6 +81,29 @@ public final class CustomRecipes {
             pyromancerSwordRecipe.setIngredient('T', Material.TNT);
             pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
-    }
 
+
+        //
+        //      Teleport Spell recipe
+        //
+        ItemStack teleportSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta teleportSpellMeta = teleportSpell.getItemMeta();
+        teleportSpellMeta.setDisplayName(ChatColor.DARK_PURPLE + "Bound Teleport");
+        teleportSpellMeta.setLore(Arrays.asList(
+            "Might make you sick...",
+                "Or get other half of you somewhere else"));
+        teleportSpellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        teleportSpellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        teleportSpellMeta.getPersistentDataContainer().set(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BOOLEAN, true);
+        teleportSpell.setItemMeta(teleportSpellMeta);
+
+        ShapedRecipe teleportSpellRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "teleportSpellRecipe"), teleportSpell);
+        teleportSpellRecipe.shape(
+            " P ",
+            "PSP",
+            " P ");
+            teleportSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            teleportSpellRecipe.setIngredient('P', Material.ENDER_PEARL);
+        Bukkit.addRecipe(teleportSpellRecipe);
+    }
 }
