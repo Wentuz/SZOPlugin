@@ -29,10 +29,14 @@ public class InteractionListener implements Listener{
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
 
-
+        Material getMainHandMaterial = itemInMainHand.getType();
+        Material getOffHandMaterial = itemInOffHand.getType();
 
         boolean isPerishable = false;
 
+        if ((itemInMainHand == itemInOffHand) && itemInMainHand == null) {
+            return;
+        }
 
         //PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
         //PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
@@ -46,6 +50,8 @@ public class InteractionListener implements Listener{
         }   else{
             clickedRightButton = true;
         }
+
+
         //System.out.println("CLICKED BUTTON RIGHT: " + clickedRightButton);
         //System.out.println("CLICKED: " + usedItem);
         //System.out.println("LOOK DIRECTION: " + lookDirection);
@@ -56,38 +62,38 @@ public class InteractionListener implements Listener{
         //
 
 
-        if (itemInMainHand.getType() == Material.FIRE_CHARGE && clickedRightButton) {
+        if ((getMainHandMaterial == Material.FIRE_CHARGE || getOffHandMaterial == Material.FIRE_CHARGE) && clickedRightButton) {
             givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
             player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
 
-            isPerishable = true;
+            if (getMainHandMaterial != Material.FIRE_CHARGE) {
+                removeItem(player, itemInOffHand);
+            }else{
+                removeItem(player, itemInMainHand);
+            }
         }
 
-        if (itemInMainHand.getType() == Material.MAGMA_CREAM && clickedRightButton) {
+        if ((getMainHandMaterial == Material.MAGMA_CREAM || getOffHandMaterial == Material.MAGMA_CREAM) && clickedRightButton) {
             givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
             givePotionEffect(player, "POISON", 200, 1);
 
             player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
-            isPerishable = true;
+            if (getMainHandMaterial != Material.MAGMA_CREAM) {
+                removeItem(player, itemInOffHand);
+            }else{
+                removeItem(player, itemInMainHand);
+            }
         }
 
-        if (itemInMainHand.getType() == Material.PHANTOM_MEMBRANE && clickedRightButton) {
+        if ((getMainHandMaterial == Material.PHANTOM_MEMBRANE || getOffHandMaterial == Material.PHANTOM_MEMBRANE) && clickedRightButton) {
             givePotionEffect(player, "SLOW_FALLING", 200, 0);
            
             player.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_HURT, 10, 10);
-            isPerishable = true;
-        }
-        
-
-        //
-        //      Remove one time use item form player
-        //
-
-
-        if (itemInMainHand.getAmount() > 1 && isPerishable == true && clickedRightButton) {
-            itemInMainHand.setAmount(itemInMainHand.getAmount() - 1);
-        } else if (isPerishable == true) {
-            player.getInventory().removeItem(itemInMainHand);
+            if (getMainHandMaterial != Material.PHANTOM_MEMBRANE) {
+                removeItem(player, itemInOffHand);
+            }else{
+                removeItem(player, itemInMainHand);
+            }
         }
     }
 
@@ -147,10 +153,14 @@ public class InteractionListener implements Listener{
         }
     }
 
-    public void removeItem(ItemStack itemInHand, boolean whatHand){
 
+    public void removeItem(Player player, ItemStack itemUsed){
+        if (itemUsed.getAmount() > 1) {
+            itemUsed.setAmount(itemUsed.getAmount() - 1);
+        } else{
+            player.getInventory().removeItem(itemUsed);
+        }
     }
-
 
     public void givePotionEffect(Player player,String effect,int duration,int amplifier)
     {
@@ -167,7 +177,6 @@ public class InteractionListener implements Listener{
         }   else{
             return true;
         }
-        
     }
 
     
