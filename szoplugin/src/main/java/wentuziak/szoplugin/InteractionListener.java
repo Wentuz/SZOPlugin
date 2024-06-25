@@ -15,9 +15,6 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
 
@@ -37,9 +34,9 @@ public class InteractionListener implements Listener{
         Material getMainHandMaterial = itemInMainHand.getType();
         Material getOffHandMaterial = itemInOffHand.getType();
 
-        if ((itemInMainHand == itemInOffHand) && itemInMainHand == null) {
-            return;
-        }
+        // if (itemInMainHand == itemInOffHand && itemInMainHand == null) {
+        //     return;
+        // }
         
         Block targetBlock = player.getTargetBlock(null, 50);
 
@@ -68,36 +65,36 @@ public class InteractionListener implements Listener{
 
 
         if ((getMainHandMaterial == Material.FIRE_CHARGE || getOffHandMaterial == Material.FIRE_CHARGE) && clickedRightButton) {
-            givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
             player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
 
             if (getMainHandMaterial != Material.FIRE_CHARGE) {
-                removeItem(player, itemInOffHand);
+                LogicHolder.removeItem(player, itemInOffHand);
             }else{
-                removeItem(player, itemInMainHand);
+                LogicHolder.removeItem(player, itemInMainHand);
             }
         }
 
         if ((getMainHandMaterial == Material.MAGMA_CREAM || getOffHandMaterial == Material.MAGMA_CREAM) && clickedRightButton) {
-            givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
-            givePotionEffect(player, "POISON", 200, 1);
+            LogicHolder.givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
+            LogicHolder.givePotionEffect(player, "POISON", 200, 1);
 
             player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
             if (getMainHandMaterial != Material.MAGMA_CREAM) {
-                removeItem(player, itemInOffHand);
+                LogicHolder.removeItem(player, itemInOffHand);
             }else{
-                removeItem(player, itemInMainHand);
+                LogicHolder.removeItem(player, itemInMainHand);
             }
         }
 
         if ((getMainHandMaterial == Material.PHANTOM_MEMBRANE || getOffHandMaterial == Material.PHANTOM_MEMBRANE) && clickedRightButton) {
-            givePotionEffect(player, "SLOW_FALLING", 200, 0);
+            LogicHolder.givePotionEffect(player, "SLOW_FALLING", 200, 0);
            
             player.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_HURT, 10, 10);
             if (getMainHandMaterial != Material.PHANTOM_MEMBRANE) {
-                removeItem(player, itemInOffHand);
+                LogicHolder.removeItem(player, itemInOffHand);
             }else{
-                removeItem(player, itemInMainHand);
+                LogicHolder.removeItem(player, itemInMainHand);
             }
         }
 
@@ -117,7 +114,7 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 //player.sendMessage("U are lookin : " + targetBlock.getLocation().toString());
 
-                givePotionEffect(player, "HUNGER", 200, 9);
+                LogicHolder.givePotionEffect(player, "HUNGER", 200, 9);
                 Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ);
                 player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
                 player.teleport(targetLocation);
@@ -144,8 +141,8 @@ public class InteractionListener implements Listener{
         //System.out.println("Consumed item: " + consumedItem);
 
         if (consumedItem.getType() == Material.GLOW_BERRIES) {
-            givePotionEffect(player, "GLOWING", 400, 0);
-            givePotionEffect(player, "NIGHT_VISION", 400, 0);
+            LogicHolder.givePotionEffect(player, "GLOWING", 400, 0);
+            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
         }
 
     }
@@ -160,7 +157,7 @@ public class InteractionListener implements Listener{
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event)
     {   
-        int critChance = 0;
+        int chanceForCrit = 0;
 
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
@@ -174,53 +171,26 @@ public class InteractionListener implements Listener{
             
 
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                int chanceForCrit = 33;
-                if (critRoll(chanceForCrit)) {
+                chanceForCrit = 33;
+                if (LogicHolder.critRoll(chanceForCrit)) {
                     hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
                 }
             }
 
             if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-                int chanceForCrit = 40;
-                if (critRoll(chanceForCrit)) {
-                    givePotionEffect(hitEntity, "WEAKNESS", 200, 1);
-                    givePotionEffect(hitEntity, "SLOW", 200, 1);
-                    givePotionEffect(hitEntity, "BLINDNESS", 200, 1);
-                    givePotionEffect(hitEntity, "CONFUSION", 200, 1);
+                chanceForCrit = 40;
+                if (LogicHolder.critRoll(chanceForCrit)) {
+                    LogicHolder.givePotionEffect(hitEntity, "WEAKNESS", 200, 1);
+                    LogicHolder.givePotionEffect(hitEntity, "SLOW", 200, 1);
+                    LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 200, 1);
+                    LogicHolder.givePotionEffect(hitEntity, "CONFUSION", 200, 1);
                     hitEntity.getWorld().strikeLightning(hitEntity.getLocation());
                 }
             }
-            
+
 
             //player.sendMessage("You hit an entity: " + hitEntity + itemInHand);
         }
     }
 
-
-    public void removeItem(Player player, ItemStack itemUsed){
-        if (itemUsed.getAmount() > 1) {
-            itemUsed.setAmount(itemUsed.getAmount() - 1);
-        } else{
-            player.getInventory().removeItem(itemUsed);
-        }
-    }
-
-    public void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier)
-    {
-        PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
-        player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
-    }
-
-    public boolean critRoll(int critChance)
-    {   
-        int isCrit = (int)(Math.random() * 100 + 1);
-        System.out.println(isCrit);
-        if (critChance <= isCrit) {
-            return false;
-        }   else{
-            return true;
-        }
-    }
-
-    
 }
