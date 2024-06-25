@@ -81,6 +81,31 @@ public final class CustomRecipes {
             pyromancerSwordRecipe.setIngredient('T', Material.TNT);
             pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
+        
+        
+        //
+        //      Þrumuhamar Recipe
+        //
+        ItemStack thunderHammer = new ItemStack(Material.DIAMOND_AXE);
+        ItemMeta thunderHammerMeta = thunderHammer.getItemMeta();
+        thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "Þrumuhamar");
+        thunderHammerMeta.setLore(Arrays.asList(
+            "Thunder warriors rise your arms !"));
+        thunderHammerMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        thunderHammerMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        thunderHammerMeta.getPersistentDataContainer().set(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BOOLEAN, true);
+        thunderHammer.setItemMeta(thunderHammerMeta);
+
+        ShapedRecipe thunderHammerRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammerRecipe"), thunderHammer);
+        thunderHammerRecipe.shape(
+            "DS ",
+            "DC ",
+            " B ");
+            thunderHammerRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            thunderHammerRecipe.setIngredient('B', Material.BONE);
+            thunderHammerRecipe.setIngredient('C', Material.COPPER_INGOT);
+            thunderHammerRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(thunderHammerRecipe);
 
 
         //

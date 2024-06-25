@@ -46,3 +46,5 @@ STUFF IN HERE:
     B. Ingerients :
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
+    C. Spells :
+        1. Bound Teleport - 

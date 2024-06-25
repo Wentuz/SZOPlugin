@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -168,7 +169,7 @@ public class InteractionListener implements Listener{
             if (itemInMainHand == null || itemInMainHand.getType() == Material.AIR) {
                 return;
             }
-            org.bukkit.entity.Entity hitEntity = event.getEntity();
+            LivingEntity hitEntity = (LivingEntity) event.getEntity();
             PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
             
 
@@ -176,6 +177,17 @@ public class InteractionListener implements Listener{
                 int chanceForCrit = 33;
                 if (critRoll(chanceForCrit)) {
                     hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
+                }
+            }
+
+            if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
+                int chanceForCrit = 40;
+                if (critRoll(chanceForCrit)) {
+                    givePotionEffect(hitEntity, "WEAKNESS", 200, 1);
+                    givePotionEffect(hitEntity, "SLOW", 200, 1);
+                    givePotionEffect(hitEntity, "BLINDNESS", 200, 1);
+                    givePotionEffect(hitEntity, "CONFUSION", 200, 1);
+                    hitEntity.getWorld().strikeLightning(hitEntity.getLocation());
                 }
             }
             
@@ -193,7 +205,7 @@ public class InteractionListener implements Listener{
         }
     }
 
-    public void givePotionEffect(Player player,String effect,int duration,int amplifier)
+    public void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier)
     {
         PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
         player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
