@@ -137,13 +137,15 @@ public class InteractionListener implements Listener{
     {
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
-
+        Material consumedItemType = consumedItem.getType();
         //System.out.println("Consumed item: " + consumedItem);
 
-        if (consumedItem.getType() == Material.GLOW_BERRIES) {
-            LogicHolder.givePotionEffect(player, "GLOWING", 400, 0);
-            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
-        }
+        SpecialFood.effectFoodFunc(player, consumedItemType);
+
+        // if (consumedItemType == Material.GLOW_BERRIES) {
+        //     LogicHolder.givePotionEffect(player, "GLOWING", 400, 0);
+        //     LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
+        // }
 
     }
 
@@ -157,9 +159,9 @@ public class InteractionListener implements Listener{
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event)
     {   
-        int chanceForCrit = 0;
 
         if (event.getDamager() instanceof Player) {
+
             Player player = (Player) event.getDamager();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             
@@ -171,21 +173,11 @@ public class InteractionListener implements Listener{
             
 
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                chanceForCrit = 33;
-                if (LogicHolder.critRoll(chanceForCrit)) {
-                    hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
-                }
+                Weapons.explosiveSwordFunc(33, hitEntity);
             }
 
             if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-                chanceForCrit = 40;
-                if (LogicHolder.critRoll(chanceForCrit)) {
-                    LogicHolder.givePotionEffect(hitEntity, "WEAKNESS", 200, 1);
-                    LogicHolder.givePotionEffect(hitEntity, "SLOW", 200, 1);
-                    LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 200, 1);
-                    LogicHolder.givePotionEffect(hitEntity, "CONFUSION", 200, 1);
-                    hitEntity.getWorld().strikeLightning(hitEntity.getLocation());
-                }
+                Weapons.thunderHammerFunc(40, hitEntity);
             }
 
 
