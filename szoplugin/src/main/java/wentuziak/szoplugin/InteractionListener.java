@@ -50,48 +50,8 @@ public class InteractionListener implements Listener{
             clickedRightButton = true;
         }
 
-        
-        //
-        //      Usable items
-        //
         if (clickedRightButton) {
-            SpecialItems.simpleItemFunc(player, getMainHandMaterial, getOffHandMaterial);
-        }
-
-
-        if ((getMainHandMaterial == Material.FIRE_CHARGE || getOffHandMaterial == Material.FIRE_CHARGE) && clickedRightButton) {
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
-            player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
-
-            if (getMainHandMaterial != Material.FIRE_CHARGE) {
-                LogicHolder.removeItem(player, itemInOffHand);
-            }else{
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
-        }
-
-        if ((getMainHandMaterial == Material.MAGMA_CREAM || getOffHandMaterial == Material.MAGMA_CREAM) && clickedRightButton) {
-            LogicHolder.givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
-            LogicHolder.givePotionEffect(player, "POISON", 200, 1);
-
-            player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
-            if (getMainHandMaterial != Material.MAGMA_CREAM) {
-                LogicHolder.removeItem(player, itemInOffHand);
-            }else{
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
-            SpecialItems.simpleItemFunc(player, getMainHandMaterial, getOffHandMaterial);
-        }
-
-        if ((getMainHandMaterial == Material.PHANTOM_MEMBRANE || getOffHandMaterial == Material.PHANTOM_MEMBRANE) && clickedRightButton) {
-            LogicHolder.givePotionEffect(player, "SLOW_FALLING", 200, 0);
-           
-            player.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_HURT, 10, 10);
-            if (getMainHandMaterial != Material.PHANTOM_MEMBRANE) {
-                LogicHolder.removeItem(player, itemInOffHand);
-            }else{
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
+            SpecialItems.simpleItemFunc(player, itemInMainHand, itemInOffHand);
         }
 
         //
