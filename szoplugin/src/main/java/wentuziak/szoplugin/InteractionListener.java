@@ -34,9 +34,6 @@ public class InteractionListener implements Listener{
         Material getMainHandMaterial = itemInMainHand.getType();
         Material getOffHandMaterial = itemInOffHand.getType();
 
-        // if (itemInMainHand == itemInOffHand && itemInMainHand == null) {
-        //     return;
-        // }
         
         Block targetBlock = player.getTargetBlock(null, 50);
 
@@ -53,15 +50,13 @@ public class InteractionListener implements Listener{
             clickedRightButton = true;
         }
 
-
-        //System.out.println("CLICKED BUTTON RIGHT: " + clickedRightButton);
-        //System.out.println("CLICKED: " + usedItem);
-        //System.out.println("LOOK DIRECTION: " + lookDirection);
-
         
         //
         //      Usable items
         //
+        if (clickedRightButton) {
+            SpecialItems.simpleItemFunc(player, getMainHandMaterial, getOffHandMaterial);
+        }
 
 
         if ((getMainHandMaterial == Material.FIRE_CHARGE || getOffHandMaterial == Material.FIRE_CHARGE) && clickedRightButton) {
@@ -112,7 +107,6 @@ public class InteractionListener implements Listener{
             int blockZ = blockLocation.getBlockZ();
 
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
-                //player.sendMessage("U are lookin : " + targetBlock.getLocation().toString());
 
                 LogicHolder.givePotionEffect(player, "HUNGER", 200, 9);
                 Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ);
@@ -137,16 +131,8 @@ public class InteractionListener implements Listener{
     {
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
-        Material consumedItemType = consumedItem.getType();
-        //System.out.println("Consumed item: " + consumedItem);
 
-        SpecialFood.effectFoodFunc(player, consumedItemType);
-
-        // if (consumedItemType == Material.GLOW_BERRIES) {
-        //     LogicHolder.givePotionEffect(player, "GLOWING", 400, 0);
-        //     LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
-        // }
-
+        SpecialFood.effectFoodFunc(player, consumedItem.getType());
     }
 
 
@@ -159,7 +145,6 @@ public class InteractionListener implements Listener{
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event)
     {   
-
         if (event.getDamager() instanceof Player) {
 
             Player player = (Player) event.getDamager();
@@ -179,10 +164,6 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
                 Weapons.thunderHammerFunc(40, hitEntity);
             }
-
-
-            //player.sendMessage("You hit an entity: " + hitEntity + itemInHand);
         }
     }
-
 }

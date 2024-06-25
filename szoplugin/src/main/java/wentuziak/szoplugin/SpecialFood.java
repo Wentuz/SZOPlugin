@@ -13,11 +13,10 @@ public class SpecialFood {
     public static void effectFoodFunc(Player player, Material consumedMaterial)
     {
         String consumedItem = consumedMaterial.toString();
+        @SuppressWarnings("rawtypes")
         List implementedFood = new ArrayList<>();
         implementedFood.add("GLOW_BERRIES");
         boolean isImplementedFood = implementedFood.contains(consumedItem);
-
-        System.out.println(consumedItem);
 
         if (!(isImplementedFood)) {
             return;

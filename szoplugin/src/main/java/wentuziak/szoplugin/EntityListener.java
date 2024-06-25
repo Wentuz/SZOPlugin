@@ -23,13 +23,9 @@ public class EntityListener implements Listener {
              return;
         }
         
-        //System.out.println("Right clicked: " + event.getRightClicked().getClass());
-
         Player player = event.getPlayer();
         Entity entity = event.getRightClicked();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
-
-        //System.out.println("Item in hand: " + itemInHand.getType());
 
 
         if (entity instanceof Cow && entity.hasMetadata("SzoPlugin") == true && itemInHand.getType() == Material.BUCKET) {
