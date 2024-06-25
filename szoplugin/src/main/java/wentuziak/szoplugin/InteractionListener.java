@@ -80,6 +80,7 @@ public class InteractionListener implements Listener{
             }else{
                 LogicHolder.removeItem(player, itemInMainHand);
             }
+            SpecialItems.simpleItemFunc(player, getMainHandMaterial, getOffHandMaterial);
         }
 
         if ((getMainHandMaterial == Material.PHANTOM_MEMBRANE || getOffHandMaterial == Material.PHANTOM_MEMBRANE) && clickedRightButton) {

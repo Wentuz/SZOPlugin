@@ -21,17 +21,41 @@ public class SpecialItems {
             "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
         };
 
+        String itemUsed;
+        boolean mainHandUsed;
+
         Collections.addAll(implementedItemList, itemsToAdd);
 
 
         if (implementedItemList.contains(usedMainItem)) {
-            System.out.println("Main hand" + usedMainItem);
+            itemUsed = usedMainItem.toString();
+            mainHandUsed = true;
         }else if (implementedItemList.contains(usedOffItem)) {
-            System.out.println("Off hand" + usedOffItem);
+            itemUsed = usedOffItem.toString();
+            mainHandUsed = false;
         }else{
             return;
         }
+        switch (itemUsed) {
+            case "PHANTOM_MEMBRANE":
+                
+                break;
+            case "FIRE_CHARGE":
+                LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
+                player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
 
+                if (getMainHandMaterial != Material.FIRE_CHARGE) {
+                    LogicHolder.removeItem(player, itemInOffHand);
+                }else{
+                    LogicHolder.removeItem(player, itemInMainHand);
+                }
+
+
+                break;
+            case "MAGMA_CREAM":
+            default:
+                break;
+        }
     }
 
 }
