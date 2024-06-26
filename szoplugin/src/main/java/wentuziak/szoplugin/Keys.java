@@ -7,6 +7,8 @@ public class Keys {
     //      Weapons
     //
     public static final NamespacedKey CUSTOM_EXPLOSIVE_SWORD = new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveSword");
+    public static final NamespacedKey CUSTOM_ANGEL_SWORD = new NamespacedKey(SzoPlugin.getInstance(), "AngelSword");
+    public static final NamespacedKey CUSTOM_DAEMON_SWORD = new NamespacedKey(SzoPlugin.getInstance(), "DaemonSword");
     public static final NamespacedKey CUSTOM_THUNDER_HAMMER = new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammer");
     
     //

@@ -49,3 +49,4 @@ STUFF IN HERE:
         2.  Mechanical Parts - used for more advanced constructs
     C. Spells :
         1. Bound Teleport - 1 soul fragment, 4 ender pearls
+        2. Spirit Leech - 1 soul fragment, notch apple, 3 lapis

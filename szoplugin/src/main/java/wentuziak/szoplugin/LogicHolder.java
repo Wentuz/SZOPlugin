@@ -47,6 +47,8 @@ public class LogicHolder {
         snowball.setShooter(player);
     }
 
+    
+
     // public static void knockbackEntity(Entity entity, int x, int y, int z) {
     //     Vector upwardVelocity = new Vector(0, 1, 0);
 

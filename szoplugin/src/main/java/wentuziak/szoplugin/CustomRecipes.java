@@ -1,11 +1,15 @@
 package wentuziak.szoplugin;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
@@ -57,6 +61,60 @@ public final class CustomRecipes {
             mechanicalPartsRecipe.setIngredient('R', Material.REPEATER);
             mechanicalPartsRecipe.setIngredient('C', Material.COPPER_INGOT);
         Bukkit.addRecipe(mechanicalPartsRecipe);
+
+
+        //
+        //      Angel Sword Recipe
+        //
+        ItemStack angelSword = new ItemStack(Material.GOLDEN_SWORD);
+        ItemMeta angelSwordMeta = angelSword.getItemMeta();
+        angelSwordMeta.setDisplayName(ChatColor.YELLOW + "Angel Sword");
+        angelSwordMeta.setLore(Arrays.asList(
+            ChatColor.YELLOW + "Nine tailed protects !"));
+        angelSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        angelSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
+        AttributeModifier attackArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, attackArmorModifierAngelSword);
+        AttributeModifier attackDamageModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 8.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierAngelSword);
+        angelSword.setItemMeta(angelSwordMeta);
+
+        ShapedRecipe angelSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "AngelSwordRecipe"), angelSword);
+        angelSwordRecipe.shape(
+            " D ",
+            " D ",
+            "GSG");
+            angelSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            angelSwordRecipe.setIngredient('G', Material.GOLDEN_APPLE);
+            angelSwordRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(angelSwordRecipe);
+
+
+        //
+        //      Daemon Sword Recipe
+        //
+        ItemStack daemonSword = new ItemStack(Material.STONE_SWORD);
+        ItemMeta daemonSwordMeta = daemonSword.getItemMeta();
+        daemonSwordMeta.setDisplayName(ChatColor.RED + "Daemon Sword");
+        daemonSwordMeta.setLore(Arrays.asList(
+            ChatColor.RED + "Blood for Hound !"));
+        daemonSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
+        daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
+        AttributeModifier attackDamageModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierDaemonSword);
+        daemonSword.setItemMeta(daemonSwordMeta);
+
+        ShapedRecipe daemonSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "DaemonSwordRecipe"), daemonSword);
+        daemonSwordRecipe.shape(
+            " D ",
+            " D ",
+            "BSB");
+            daemonSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            daemonSwordRecipe.setIngredient('B', Material.BLAZE_POWDER);
+            daemonSwordRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(daemonSwordRecipe);
 
 
         //
