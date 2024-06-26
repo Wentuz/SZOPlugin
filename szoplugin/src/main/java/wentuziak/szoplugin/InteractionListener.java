@@ -114,10 +114,19 @@ public class InteractionListener implements Listener{
 
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
                 Weapons.explosiveSwordFunc(33, hitEntity);
+                return;
             }
-
             if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
                 Weapons.thunderHammerFunc(40, hitEntity);
+                return;
+            }
+            if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
+                Weapons.daemonSwordFunc(22, hitEntity);
+                return;
+            }
+            if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
+                Weapons.angelSwordFunc(22, player);
+                return;
             }
         }
     }

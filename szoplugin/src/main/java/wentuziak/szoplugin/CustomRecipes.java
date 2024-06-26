@@ -74,8 +74,10 @@ public final class CustomRecipes {
         angelSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         angelSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
-        AttributeModifier attackArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, attackArmorModifierAngelSword);
+        AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ArmorModifierAngelSword);
+        AttributeModifier attackSpeedModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierAngelSword);
         AttributeModifier attackDamageModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 8.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierAngelSword);
         angelSword.setItemMeta(angelSwordMeta);
@@ -102,6 +104,8 @@ public final class CustomRecipes {
         daemonSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
         daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
+        AttributeModifier attackSpeedModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierDaemonSword);
         AttributeModifier attackDamageModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierDaemonSword);
         daemonSword.setItemMeta(daemonSwordMeta);
