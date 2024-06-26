@@ -21,7 +21,8 @@ public class SpecialItems {
         @SuppressWarnings("rawtypes")
         List implementedItemList = new ArrayList<>();
         String[] itemsToAdd = {
-            "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
+            "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM",
+            "SLIME_BALL"
         };
 
         String itemUsed;
@@ -58,15 +59,22 @@ public class SpecialItems {
                 player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
                 break;
 
+            case "SLIME_BALL":
+                player.getEyeLocation();
+                player.setRotation(0, 0);
+                break;
+
             default:
                 break;
         }
         if (mainHandUsed != true) {
             System.out.println(mainHandUsed);
             LogicHolder.removeItem(player, itemInOffHand);
+            return;
         }else{
             System.out.println(mainHandUsed);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
     }
 

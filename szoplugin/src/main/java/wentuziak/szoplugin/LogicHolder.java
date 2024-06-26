@@ -1,10 +1,15 @@
 package wentuziak.szoplugin;
 
+import java.util.Vector;
+
+import javax.swing.text.html.parser.Entity;
+
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
 
 public class LogicHolder {
     
@@ -33,4 +38,10 @@ public class LogicHolder {
             return true;
         }
     }
+
+    // public static void knockbackEntity(Entity entity, int x, int y, int z) {
+    //     Vector upwardVelocity = new Vector(0, 1, 0);
+
+    //     entity.setVelocity(upwardVelocity);
+    // }
 }

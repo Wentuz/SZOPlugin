@@ -67,10 +67,13 @@ public class InteractionListener implements Listener{
             int blockY = blockLocation.getBlockY();
             int blockZ = blockLocation.getBlockZ();
 
+            float yaw = player.getLocation().getYaw();
+            float pitch = player.getLocation().getPitch();
+
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
 
                 LogicHolder.givePotionEffect(player, "HUNGER", 200, 9);
-                Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ);
+                Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ, yaw, pitch);
                 player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
                 player.teleport(targetLocation);
                 player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);

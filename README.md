@@ -43,8 +43,9 @@ STUFF IN HERE:
 > Custom items :
     A. Weapons :
         1.  Pyromancer Sword - 3 in 10 chance to explode on hit. Crafted using 2 tnt, 1 soul fragment, 2 diamonds. Can be upgraded to netherite
+        2.  Thunder Hammer - 40% chance to debuff enemy and lightning strike him. 
     B. Ingerients :
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
     C. Spells :
-        1. Bound Teleport - 
+        1. Bound Teleport - 1 soul fragment, 4 ender pearls
