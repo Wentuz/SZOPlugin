@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Vector;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -21,8 +22,7 @@ public class SpecialItems {
         @SuppressWarnings("rawtypes")
         List implementedItemList = new ArrayList<>();
         String[] itemsToAdd = {
-            "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM",
-            "SLIME_BALL"
+            "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
         };
 
         String itemUsed;
@@ -57,11 +57,6 @@ public class SpecialItems {
                 LogicHolder.givePotionEffect(player, "POISON", 200, 1);
 
                 player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
-                break;
-
-            case "SLIME_BALL":
-                player.getEyeLocation();
-                player.setRotation(0, 0);
                 break;
 
             default:

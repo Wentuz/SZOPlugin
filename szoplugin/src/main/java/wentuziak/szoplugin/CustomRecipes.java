@@ -130,5 +130,30 @@ public final class CustomRecipes {
             teleportSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
             teleportSpellRecipe.setIngredient('P', Material.ENDER_PEARL);
         Bukkit.addRecipe(teleportSpellRecipe);
+
+
+        //
+        //      Spirit Leech recipe
+        //
+        ItemStack spiritLeech = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta spiritLeechMeta = spiritLeech.getItemMeta();
+        spiritLeechMeta.setDisplayName(ChatColor.DARK_PURPLE + "Spirit Leech");
+        spiritLeechMeta.setLore(Arrays.asList(
+            "Siphons your foes soul...",
+                "Grants you their living essence"));
+        spiritLeechMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        spiritLeechMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        spiritLeechMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BOOLEAN, true);
+        spiritLeech.setItemMeta(spiritLeechMeta);
+
+        ShapedRecipe spiritLeechRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "spiritLeechRecipe"), spiritLeech);
+        spiritLeechRecipe.shape(
+            " E ",
+            "LSL",
+            " L ");
+            spiritLeechRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            spiritLeechRecipe.setIngredient('E', Material.ENCHANTED_GOLDEN_APPLE);
+            spiritLeechRecipe.setIngredient('L', Material.LAPIS_LAZULI);
+        Bukkit.addRecipe(spiritLeechRecipe);
     }
 }

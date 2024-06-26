@@ -13,6 +13,7 @@ public class Keys {
     //      Spells
     //
     public static final NamespacedKey CUSTOM_TELEPORT_SPELL = new NamespacedKey(SzoPlugin.getInstance(), "TeleportSpell");
+    public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");
     
 
     //

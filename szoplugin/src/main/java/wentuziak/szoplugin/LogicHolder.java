@@ -6,6 +6,7 @@ import javax.swing.text.html.parser.Entity;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -37,6 +38,13 @@ public class LogicHolder {
         }   else{
             return true;
         }
+    }
+
+    public static void throwSnowball(Player player)
+    {
+        Snowball snowball = player.launchProjectile(Snowball.class);
+        snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
+        snowball.setShooter(player);
     }
 
     // public static void knockbackEntity(Entity entity, int x, int y, int z) {

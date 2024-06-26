@@ -7,6 +7,7 @@ import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -61,23 +62,13 @@ public class InteractionListener implements Listener{
         if (itemInMainHand != null && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
 
-            Location blockLocation = targetBlock.getLocation();
-
-            int blockX = blockLocation.getBlockX();
-            int blockY = blockLocation.getBlockY();
-            int blockZ = blockLocation.getBlockZ();
-
-            float yaw = player.getLocation().getYaw();
-            float pitch = player.getLocation().getPitch();
-
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
-
-                LogicHolder.givePotionEffect(player, "HUNGER", 200, 9);
-                Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ, yaw, pitch);
-                player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
-                player.teleport(targetLocation);
-                player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
-
+                MagicItems.teleportSpell(player);
+                return;
+            }
+            if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.spiritLeech(player);
+                return;
             }
         }
 
