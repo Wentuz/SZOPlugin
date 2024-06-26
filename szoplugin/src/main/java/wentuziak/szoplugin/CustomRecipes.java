@@ -76,7 +76,7 @@ public final class CustomRecipes {
         angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
         AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ArmorModifierAngelSword);
-        AttributeModifier attackSpeedModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier attackSpeedModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierAngelSword);
         AttributeModifier attackDamageModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 8.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierAngelSword);
@@ -84,7 +84,7 @@ public final class CustomRecipes {
 
         ShapedRecipe angelSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "AngelSwordRecipe"), angelSword);
         angelSwordRecipe.shape(
-            " D ",
+        " D ",
             " D ",
             "GSG");
             angelSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));

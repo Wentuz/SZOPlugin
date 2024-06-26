@@ -2,12 +2,9 @@ package wentuziak.szoplugin;
 
 
 import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.block.Block;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -16,7 +13,6 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.Location;
 
 
 
@@ -31,12 +27,6 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
-
-        Material getMainHandMaterial = itemInMainHand.getType();
-        Material getOffHandMaterial = itemInOffHand.getType();
-
-        
-        Block targetBlock = player.getTargetBlock(null, 50);
 
         //PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
         //PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();

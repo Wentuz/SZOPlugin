@@ -44,7 +44,6 @@ public class EntityListener implements Listener {
             ItemStack itemToDrop = new ItemStack(Material.FEATHER);
             double damageAmount = 2.0;
 
-
             chickenClicked.damage(damageAmount);
             if (!chickenClicked.isDead()) {
                 chickenClicked.getWorld().dropItem(chickenClicked.getLocation(), itemToDrop);

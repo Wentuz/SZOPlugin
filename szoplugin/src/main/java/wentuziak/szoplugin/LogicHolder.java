@@ -1,9 +1,5 @@
 package wentuziak.szoplugin;
 
-import java.util.Vector;
-
-import javax.swing.text.html.parser.Entity;
-
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -47,11 +43,4 @@ public class LogicHolder {
         snowball.setShooter(player);
     }
 
-    
-
-    // public static void knockbackEntity(Entity entity, int x, int y, int z) {
-    //     Vector upwardVelocity = new Vector(0, 1, 0);
-
-    //     entity.setVelocity(upwardVelocity);
-    // }
 }

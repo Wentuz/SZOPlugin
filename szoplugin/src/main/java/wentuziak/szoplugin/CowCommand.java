@@ -18,10 +18,8 @@ public class CowCommand implements TabExecutor{
         
         if (!(sender instanceof Player)) {
             sender.sendMessage("Only players can use this command");
-
             return true;
         }
-
         if (args.length > 1) {
             return false;
         }
@@ -35,15 +33,8 @@ public class CowCommand implements TabExecutor{
         }
         
         cow.setMetadata("SzoPlugin", new FixedMetadataValue(SzoPlugin.getInstance(), true));
-
-        // if(cow.hasMetadata("SzoPlugin")){
-        //     System.out.println("HasMetaData" + cow.hasMetadata("SzoPlugin"));
-        // }
-
         cow.setCustomName(ChatColor.RED + "MOMMY MILKERS");
         cow.setCustomNameVisible(true);
-
-
 
         return true;
     }

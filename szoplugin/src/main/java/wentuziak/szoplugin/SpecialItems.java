@@ -3,7 +3,6 @@ package wentuziak.szoplugin;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -50,6 +49,7 @@ public class SpecialItems {
             case "FIRE_CHARGE":
                 LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
                 player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
+
                 break;
 
             case "MAGMA_CREAM":
@@ -57,6 +57,7 @@ public class SpecialItems {
                 LogicHolder.givePotionEffect(player, "POISON", 200, 1);
 
                 player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
+                
                 break;
 
             default:
