@@ -27,30 +27,19 @@ public final class CustomRecipes {
         //
         //      Soul Fragment Recipe
         //
-        ItemStack soulFragment = new ItemStack(Material.AMETHYST_SHARD);
-        ItemMeta soulFragmentMeta = soulFragment.getItemMeta();
-        soulFragmentMeta.setDisplayName(ChatColor.DARK_PURPLE + "Soul Fragment");
-        soulFragmentMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        soulFragmentMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        soulFragment.setItemMeta(soulFragmentMeta);
-
+        
+        ItemStack soulFragment = CreateCustomItem.createSoulFragment();
+        
         ShapelessRecipe soulFragmentRecipe = new ShapelessRecipe(new NamespacedKey(SzoPlugin.getInstance(), "SoulFragmentRecipe"), soulFragment);
-        soulFragmentRecipe.addIngredient(3, Material.DRAGON_BREATH);
+        soulFragmentRecipe.addIngredient(2, Material.DRAGON_BREATH);
+        soulFragmentRecipe.addIngredient(1, Material.NETHER_STAR);
         Bukkit.addRecipe(soulFragmentRecipe);
 
-
+        
         //
         //      Mechanical Parts Recipe
         //
-        ItemStack mechanicalParts = new ItemStack(Material.NETHERITE_SCRAP);
-        ItemMeta mechanicalPartsMeta = mechanicalParts.getItemMeta();
-        mechanicalPartsMeta.setDisplayName(ChatColor.GOLD + "Mechanical Parts");
-        mechanicalPartsMeta.setLore(Arrays.asList(
-            "Science is just engineering that does not work"));
-        mechanicalPartsMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        mechanicalPartsMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        mechanicalPartsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
-        mechanicalParts.setItemMeta(mechanicalPartsMeta);
+        ItemStack mechanicalParts = CreateCustomItem.createMechanicalParts();
 
         ShapedRecipe mechanicalPartsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "MechanicalPartsRecipe"), mechanicalParts);
         mechanicalPartsRecipe.shape(
@@ -62,25 +51,11 @@ public final class CustomRecipes {
             mechanicalPartsRecipe.setIngredient('C', Material.COPPER_INGOT);
         Bukkit.addRecipe(mechanicalPartsRecipe);
 
-
+        
         //
         //      Angel Sword Recipe
         //
-        ItemStack angelSword = new ItemStack(Material.GOLDEN_SWORD);
-        ItemMeta angelSwordMeta = angelSword.getItemMeta();
-        angelSwordMeta.setDisplayName(ChatColor.YELLOW + "Angel Sword");
-        angelSwordMeta.setLore(Arrays.asList(
-            ChatColor.YELLOW + "Nine tailed protects !"));
-        angelSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        angelSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
-        AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ArmorModifierAngelSword);
-        AttributeModifier attackSpeedModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierAngelSword);
-        AttributeModifier attackDamageModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 8.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierAngelSword);
-        angelSword.setItemMeta(angelSwordMeta);
+        ItemStack angelSword = CreateCustomItem.createAngelSword();
 
         ShapedRecipe angelSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "AngelSwordRecipe"), angelSword);
         angelSwordRecipe.shape(
@@ -92,23 +67,11 @@ public final class CustomRecipes {
             angelSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(angelSwordRecipe);
 
-
+        
         //
         //      Daemon Sword Recipe
         //
-        ItemStack daemonSword = new ItemStack(Material.STONE_SWORD);
-        ItemMeta daemonSwordMeta = daemonSword.getItemMeta();
-        daemonSwordMeta.setDisplayName(ChatColor.RED + "Daemon Sword");
-        daemonSwordMeta.setLore(Arrays.asList(
-            ChatColor.RED + "Blood for Hound !"));
-        daemonSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
-        daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
-        AttributeModifier attackSpeedModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierDaemonSword);
-        AttributeModifier attackDamageModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierDaemonSword);
-        daemonSword.setItemMeta(daemonSwordMeta);
+        ItemStack daemonSword = CreateCustomItem.createDaemonSword();
 
         ShapedRecipe daemonSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "DaemonSwordRecipe"), daemonSword);
         daemonSwordRecipe.shape(
@@ -124,15 +87,7 @@ public final class CustomRecipes {
         //
         //      Pyromancer's Sword Recipe
         //
-        ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
-        ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
-        pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
-        pyromancerSwordMeta.setLore(Arrays.asList(
-            "Wonder what could go wrong"));
-        pyromancerSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        pyromancerSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        pyromancerSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BOOLEAN, true);
-        pyromancerSword.setItemMeta(pyromancerSwordMeta);
+        ItemStack pyromancerSword = CreateCustomItem.createPyromancerSword();
 
         ShapedRecipe pyromancerSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "PyromancerSwordRecipe"), pyromancerSword);
         pyromancerSwordRecipe.shape(
@@ -148,15 +103,7 @@ public final class CustomRecipes {
         //
         //      Þrumuhamar Recipe
         //
-        ItemStack thunderHammer = new ItemStack(Material.DIAMOND_AXE);
-        ItemMeta thunderHammerMeta = thunderHammer.getItemMeta();
-        thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "Þrumuhamar");
-        thunderHammerMeta.setLore(Arrays.asList(
-            "Thunder warriors rise your arms !"));
-        thunderHammerMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        thunderHammerMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        thunderHammerMeta.getPersistentDataContainer().set(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BOOLEAN, true);
-        thunderHammer.setItemMeta(thunderHammerMeta);
+        ItemStack thunderHammer = CreateCustomItem.createThunderHammer();
 
         ShapedRecipe thunderHammerRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammerRecipe"), thunderHammer);
         thunderHammerRecipe.shape(
@@ -173,16 +120,7 @@ public final class CustomRecipes {
         //
         //      Teleport Spell recipe
         //
-        ItemStack teleportSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
-        ItemMeta teleportSpellMeta = teleportSpell.getItemMeta();
-        teleportSpellMeta.setDisplayName(ChatColor.DARK_PURPLE + "Bound Teleport");
-        teleportSpellMeta.setLore(Arrays.asList(
-            "Might make you sick...",
-                "Or get other half of you somewhere else"));
-        teleportSpellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        teleportSpellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        teleportSpellMeta.getPersistentDataContainer().set(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BOOLEAN, true);
-        teleportSpell.setItemMeta(teleportSpellMeta);
+        ItemStack teleportSpell = CreateCustomItem.createTeleportSpell();
 
         ShapedRecipe teleportSpellRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "teleportSpellRecipe"), teleportSpell);
         teleportSpellRecipe.shape(
@@ -197,17 +135,7 @@ public final class CustomRecipes {
         //
         //      Spirit Leech recipe
         //
-        ItemStack spiritLeech = new ItemStack(Material.GLOBE_BANNER_PATTERN);
-        ItemMeta spiritLeechMeta = spiritLeech.getItemMeta();
-        spiritLeechMeta.setDisplayName(ChatColor.DARK_PURPLE + "Spirit Leech");
-        spiritLeechMeta.setLore(Arrays.asList(
-            "Siphons your foes soul...",
-                "Grants you their living essence"));
-        spiritLeechMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        spiritLeechMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        spiritLeechMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BOOLEAN, true);
-        spiritLeech.setItemMeta(spiritLeechMeta);
-
+        ItemStack spiritLeech = CreateCustomItem.createSpiritLeech();
         ShapedRecipe spiritLeechRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "spiritLeechRecipe"), spiritLeech);
         spiritLeechRecipe.shape(
             " E ",
