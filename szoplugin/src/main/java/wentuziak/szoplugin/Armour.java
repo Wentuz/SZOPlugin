@@ -26,5 +26,15 @@ public class Armour {
         player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
     }
 
+    public static void explosiveChestFunc(int chanceForCrit, LivingEntity damager, LivingEntity player)
+    {
+        if (LogicHolder.critRoll(chanceForCrit))
+        {
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 5, 4);
+            damager.getWorld().createExplosion(damager.getLocation(), 2, false, false);
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20, 4);
+        }
+    }
+
 
 }

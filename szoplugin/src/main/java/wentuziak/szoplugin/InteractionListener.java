@@ -121,6 +121,7 @@ public class InteractionListener implements Listener{
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event)
     {   
+
         if (event.getDamager() instanceof Player) {
 
             Player player = (Player) event.getDamager();
@@ -149,6 +150,27 @@ public class InteractionListener implements Listener{
                 Weapons.angelSwordFunc(22, player);
                 return;
             }
+        }
+
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
+
+            LivingEntity damager = (LivingEntity) event.getDamager();
+
+            if (!(itemOnChest.hasItemMeta())) {
+                return;
+            }
+
+            PersistentDataContainer playerContainer;
+            if (itemOnChest.hasItemMeta()) {
+                playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
+                    Armour.explosiveChestFunc(20 ,damager, player);
+                    return;
+                }
+            }
+
         }
     }
 }
