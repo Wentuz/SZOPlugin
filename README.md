@@ -6,10 +6,9 @@ TODO:
 4. Custom weapons
 5. 'Origins' with our twist
 6. Crawling
-7. Graves
-8. Death timer // Pickup players
-9. Player name tags !
-10. Custom mobs ?
+7. Death timer // Pickup players
+8. Player name tags !
+9. Custom mobs ?
 
 IDEAS :
 -   Custom craftables for certain 'races' : effect food for witch, Better equipment for dwarfen,
@@ -44,6 +43,8 @@ STUFF IN HERE:
     A. Weapons :
         1.  Pyromancer Sword - 3 in 10 chance to explode on hit. Crafted using 2 tnt, 1 soul fragment, 2 diamonds. Can be upgraded to netherite
         2.  Thunder Hammer - 40% chance to debuff enemy and lightning strike him. 
+        3.  Daemon Sword - Huge dmg
+        4.  Angel Sword - Defensive capabilities
     B. Ingerients :
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs

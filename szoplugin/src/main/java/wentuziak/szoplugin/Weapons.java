@@ -1,5 +1,6 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 
 
@@ -31,6 +32,8 @@ public class Weapons {
             LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
             LogicHolder.givePotionEffect(hitEntity, "POISON", 100, 3);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 80, 1);
+            hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
+
         }
     }
     public static void angelSwordFunc(int chanceForCrit, LivingEntity player)
@@ -39,6 +42,8 @@ public class Weapons {
             {
                 LogicHolder.givePotionEffect(player, "HEAL", 1, 0);
                 LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 200, 1);
+                player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
+
             }
     }
 

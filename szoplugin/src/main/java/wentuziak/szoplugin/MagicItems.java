@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -22,9 +23,12 @@ public class MagicItems {
 
         Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ, yaw, pitch);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
+        player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
         player.teleport(targetLocation);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
         LogicHolder.givePotionEffect(player, "BLINDNESS", 80, 0);
+        player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
+
     }
 
     public static void spiritLeech(Player player)

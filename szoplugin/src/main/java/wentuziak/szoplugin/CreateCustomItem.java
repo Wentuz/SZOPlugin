@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 import java.util.Arrays;
 import java.util.UUID;
 
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -12,6 +13,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
+
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -119,6 +122,44 @@ public class CreateCustomItem {
         return thunderHammer;
     }
 
+
+    //
+    //      ARMOR
+    //
+    static ItemStack createHermesBoots()
+    {
+        ItemStack hermesBoots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta hermesBootsMeta = hermesBoots.getItemMeta();
+
+        hermesBootsMeta.setDisplayName(ChatColor.DARK_GREEN + "Hermes Boots");
+        AttributeModifier movementSpeedModifierHermes = new AttributeModifier(UUID.randomUUID(), "Speed", 0.15, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        hermesBootsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, movementSpeedModifierHermes);
+        ((LeatherArmorMeta) hermesBootsMeta).setColor(Color.GREEN);
+        hermesBoots.setItemMeta(hermesBootsMeta);
+
+        return hermesBoots;
+    }
+
+    static ItemStack createJetBoots()
+    {
+        ItemStack jetBoots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta jetBootsMeta = jetBoots.getItemMeta();
+
+        jetBootsMeta.setDisplayName(ChatColor.GRAY + "Jet Boots");
+        jetBootsMeta.setLore(Arrays.asList(
+            "A cheap way to levitate"));
+        ((LeatherArmorMeta) jetBootsMeta).setColor(Color.SILVER);
+        jetBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BOOLEAN, true);
+
+        jetBoots.setItemMeta(jetBootsMeta);
+
+        return jetBoots;
+    }
+
+
+    //
+    //      MAGIC
+    //
     static ItemStack createTeleportSpell()
     {
         ItemStack teleportSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);

@@ -1,5 +1,6 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -41,6 +42,11 @@ public class LogicHolder {
         Snowball snowball = player.launchProjectile(Snowball.class);
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
+    }
+
+    public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {
+        Block blockBelow = player.getLocation().subtract(0, minDistance, 0).getBlock();
+        return !blockBelow.getType().isSolid();
     }
 
 }

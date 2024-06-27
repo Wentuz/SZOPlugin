@@ -1,24 +1,12 @@
 package wentuziak.szoplugin;
 
-import java.util.Arrays;
-import java.util.UUID;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.attribute.Attribute;
-import org.bukkit.attribute.AttributeModifier;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataType;
-
-import net.md_5.bungee.api.ChatColor;
 
 public final class CustomRecipes {
 
@@ -115,6 +103,34 @@ public final class CustomRecipes {
             thunderHammerRecipe.setIngredient('C', Material.COPPER_INGOT);
             thunderHammerRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(thunderHammerRecipe);
+        
+        
+        //
+        //      Hermes's boots Recipe
+        //
+        ItemStack hermesBoots = CreateCustomItem.createHermesBoots();
+
+        ShapedRecipe hermesBootsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "HermesBootsRecipe"), hermesBoots);
+        hermesBootsRecipe.shape(
+            "   ",
+            "FMF",
+            "D D");
+            hermesBootsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            hermesBootsRecipe.setIngredient('F', Material.FEATHER);
+            hermesBootsRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(hermesBootsRecipe);
+
+        ItemStack jetBoots = CreateCustomItem.createJetBoots();
+
+        ShapedRecipe jetBootsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "JetBootsRecipe"), jetBoots);
+        jetBootsRecipe.shape(
+            "   ",
+            "DMD",
+            "P P");
+            jetBootsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            jetBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
+            jetBootsRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(jetBootsRecipe);
 
 
         //

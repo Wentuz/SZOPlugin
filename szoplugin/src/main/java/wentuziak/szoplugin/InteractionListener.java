@@ -2,6 +2,7 @@ package wentuziak.szoplugin;
 
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -10,7 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -65,6 +69,20 @@ public class InteractionListener implements Listener{
 
     }
 
+
+    @EventHandler
+    public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
+        Player player = event.getPlayer();
+        ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
+
+        if (itemOnFeet.hasItemMeta()) {
+            PersistentDataContainer playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
+                Armour.jetBootsFunc(player);
+                return;
+            }
+        }
+    }
     
         //
         //      Food effects
