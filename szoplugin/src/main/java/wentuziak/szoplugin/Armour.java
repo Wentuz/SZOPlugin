@@ -17,5 +17,14 @@ public class Armour {
         }    
     }
 
+    public static void golemChestFunc(LivingEntity player)
+    {
+        LogicHolder.givePotionEffect(player, "SLOW", 40, 4);
+        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 200, 0);
+        LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);
+        player.getWorld().playSound(player.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
+        player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
+    }
+
 
 }

@@ -119,7 +119,11 @@ public final class CustomRecipes {
             hermesBootsRecipe.setIngredient('F', Material.FEATHER);
             hermesBootsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(hermesBootsRecipe);
-
+        
+        
+        //
+        //      Jet boots Recipe
+        //
         ItemStack jetBoots = CreateCustomItem.createJetBoots();
 
         ShapedRecipe jetBootsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "JetBootsRecipe"), jetBoots);
@@ -131,6 +135,38 @@ public final class CustomRecipes {
             jetBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
             jetBootsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(jetBootsRecipe);
+        
+        
+        //
+        //      Golem Chest Recipe
+        //
+        ItemStack golemChest = CreateCustomItem.createGolemChest();
+
+        ShapedRecipe golemChestRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GolemChestRecipe"), golemChest);
+        golemChestRecipe.shape(
+            "I I",
+            "IMI",
+            "IDI");
+            golemChestRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            golemChestRecipe.setIngredient('I', Material.IRON_INGOT);
+            golemChestRecipe.setIngredient('D', Material.DIAMOND_BLOCK);
+        Bukkit.addRecipe(golemChestRecipe);
+        
+        
+        //
+        //      Explosive Chest Recipe
+        //
+        ItemStack explosiveChest = CreateCustomItem.createExplosiveChest();
+
+        ShapedRecipe explosiveChestRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveChestRecipe"), explosiveChest);
+        explosiveChestRecipe.shape(
+            "D D",
+            "TST",
+            "DDD");
+            explosiveChestRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            explosiveChestRecipe.setIngredient('T', Material.TNT);
+            explosiveChestRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(explosiveChestRecipe);
 
 
         //

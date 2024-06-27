@@ -74,14 +74,27 @@ public class InteractionListener implements Listener{
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
+        ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
+        if (!(itemOnChest.hasItemMeta()) && !(itemOnFeet.hasItemMeta())) {
+            return;
+        }
+        PersistentDataContainer playerContainer;
+        if (itemOnChest.hasItemMeta()) {
+            playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BYTE)) {
+                Armour.golemChestFunc(player);
+                return;
+            }
+        }
         if (itemOnFeet.hasItemMeta()) {
-            PersistentDataContainer playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+            playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
                 Armour.jetBootsFunc(player);
                 return;
             }
         }
+        
     }
     
         //

@@ -156,6 +156,42 @@ public class CreateCustomItem {
         return jetBoots;
     }
 
+    static ItemStack createExplosiveChest()
+    {
+        ItemStack explosiveChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemMeta explosiveChestMeta = explosiveChest.getItemMeta();
+
+        explosiveChestMeta.setDisplayName(ChatColor.DARK_RED + "Bombardiers Vest");
+        explosiveChestMeta.setLore(Arrays.asList(
+            "Hey you dropped something !"));
+        explosiveChestMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BOOLEAN, true);
+
+        explosiveChest.setItemMeta(explosiveChestMeta);
+
+        return explosiveChest;
+    }
+
+    static ItemStack createGolemChest()
+    {
+        ItemStack golemChest = new ItemStack(Material.IRON_CHESTPLATE);
+        ItemMeta golemChestMeta = golemChest.getItemMeta();
+
+        golemChestMeta.setDisplayName(ChatColor.DARK_BLUE + "Sentinels Chestplate");
+        golemChestMeta.setLore(Arrays.asList(
+            "Incredible resilience while crouching"));
+        AttributeModifier armorModifierGolem = new AttributeModifier(UUID.randomUUID(), "Armor", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        golemChestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierGolem);
+        AttributeModifier healthModifierGolem = new AttributeModifier(UUID.randomUUID(), "Health", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        golemChestMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifierGolem);
+        AttributeModifier speedModifierGolem = new AttributeModifier(UUID.randomUUID(), "Speed", -0.1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
+        golemChestMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierGolem);
+        golemChestMeta.getPersistentDataContainer().set(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BOOLEAN, true);
+
+        golemChest.setItemMeta(golemChestMeta);
+
+        return golemChest;
+    }
+
 
     //
     //      MAGIC
