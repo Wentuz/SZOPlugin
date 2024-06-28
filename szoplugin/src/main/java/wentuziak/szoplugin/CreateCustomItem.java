@@ -272,4 +272,18 @@ public class CreateCustomItem {
 
         return hastyAxe;
     }
+    static ItemStack createTreasureFishingRod()
+    {
+        ItemStack treasureFishingRod = new ItemStack(Material.FISHING_ROD);
+        ItemMeta treasureFishingRodMeta = treasureFishingRod.getItemMeta();
+
+        treasureFishingRodMeta.setDisplayName(ChatColor.DARK_PURPLE + "Suspicious Fishing Rod");
+        treasureFishingRodMeta.addEnchant(Enchantment.LURE, 5, true);
+        treasureFishingRodMeta.setLore(Arrays.asList(
+            "Are you sure about that ?"));
+        treasureFishingRodMeta.getPersistentDataContainer().set(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BOOLEAN, true);
+        treasureFishingRod.setItemMeta(treasureFishingRodMeta);
+
+        return treasureFishingRod;
+    }
 }

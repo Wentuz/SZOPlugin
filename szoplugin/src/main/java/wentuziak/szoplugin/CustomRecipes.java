@@ -227,5 +227,20 @@ public final class CustomRecipes {
             hastyPickaxeRecipe.setIngredient('D', Material.DIAMOND);
             hastyPickaxeRecipe.setIngredient('S', Material.STICK);
         Bukkit.addRecipe(hastyPickaxeRecipe);
+
+
+        //
+        //      treasureFishingRod recipe
+        //
+        ItemStack treasureFishingRod = CreateCustomItem.createTreasureFishingRod();
+        ShapedRecipe treasureFishingRodRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "treasureFishingRodRecipe"), treasureFishingRod);
+        treasureFishingRodRecipe.shape(
+            "F  ",
+            "TS ",
+            "T S");
+            treasureFishingRodRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
+            treasureFishingRodRecipe.setIngredient('T', Material.STRING);
+            treasureFishingRodRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(treasureFishingRodRecipe);
     }
 }

@@ -6,9 +6,12 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
@@ -200,6 +203,28 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BYTE)) {
                 CustomTools.hastyToolFunc(player);
                 return;
+            }
+        }
+    }
+
+    //
+    //      Fishing Events
+    //
+    @EventHandler
+    public void onPlayerFish(PlayerFishEvent event) {
+        Player player = event.getPlayer();
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        PersistentDataContainer playerContainer;
+        Projectile projectile = event.getHook();
+
+        if (event.getState() == State.CAUGHT_FISH) {
+            if (!(itemInMainHand.hasItemMeta())) {
+                return;
+            }
+            playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+
+            if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
+                CustomTools.treasureFishingRodFunc(33 ,player, projectile);
             }
         }
     }

@@ -1,5 +1,7 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -47,6 +49,48 @@ public class LogicHolder {
     public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {
         Block blockBelow = player.getLocation().subtract(0, minDistance, 0).getBlock();
         return !blockBelow.getType().isSolid();
+    }
+
+    public static void rollTreasure(int playerLuck, Location location)
+    {   
+        int whatLoot = 0;
+        while (playerLuck > 0) {
+            whatLoot = whatLoot + (int)(Math.random() * 100 + 1);
+            playerLuck--;
+        }
+        System.out.println(whatLoot);
+        if (whatLoot >= 99) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.NETHERITE_SCRAP));
+            return;
+        }
+        if (whatLoot >= 90) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.DIAMOND));
+            return;
+        }
+        else if (whatLoot >= 80) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.GOLDEN_APPLE));
+            return;
+        }
+        else if (whatLoot >= 35) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.GOLD_BLOCK));
+            return;
+        }
+        else if (whatLoot >= 20) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.TNT));
+            return;
+        }
+        else if (whatLoot >= 15) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.DRAGON_BREATH));
+            return;
+        }
+        else if (whatLoot >= 10) {
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.CHORUS_FRUIT));
+            return;
+        }
+        else{
+            location.getWorld().dropItemNaturally(location, new ItemStack(Material.RABBIT_FOOT));
+            return;
+        }
     }
 
 }

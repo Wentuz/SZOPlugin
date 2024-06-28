@@ -34,4 +34,5 @@ public class Keys {
     //      Tools
     //
     public static final NamespacedKey CUSTOM_HASTY_TOOL = new NamespacedKey(SzoPlugin.getInstance(), "HastyTool");
+    public static final NamespacedKey CUSTOM_TREASURE_FISHING = new NamespacedKey(SzoPlugin.getInstance(), "TreasureFishing");
 } 
