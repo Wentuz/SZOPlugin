@@ -185,17 +185,47 @@ public final class CustomRecipes {
 
 
         //
-        //      Spirit Leech recipe
+        //      Hasty Shovel recipe
         //
-        ItemStack spiritLeech = CreateCustomItem.createSpiritLeech();
-        ShapedRecipe spiritLeechRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "spiritLeechRecipe"), spiritLeech);
-        spiritLeechRecipe.shape(
-            " E ",
-            "LSL",
-            " L ");
-            spiritLeechRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
-            spiritLeechRecipe.setIngredient('E', Material.ENCHANTED_GOLDEN_APPLE);
-            spiritLeechRecipe.setIngredient('L', Material.LAPIS_LAZULI);
-        Bukkit.addRecipe(spiritLeechRecipe);
+        ItemStack hastyShovel = CreateCustomItem.createHastyShovel();
+        ShapedRecipe hastyShovelRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyShovelRecipe"), hastyShovel);
+        hastyShovelRecipe.shape(
+            " D ",
+            " M ",
+            " S ");
+            hastyShovelRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            hastyShovelRecipe.setIngredient('D', Material.DIAMOND);
+            hastyShovelRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(hastyShovelRecipe);
+
+
+        //
+        //      Hasty Axe recipe
+        //
+        ItemStack hastyAxe = CreateCustomItem.createHastyAxe();
+        ShapedRecipe hastyAxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyAxeRecipe"), hastyAxe);
+        hastyAxeRecipe.shape(
+            "DM ",
+            "DS ",
+            " S ");
+            hastyAxeRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            hastyAxeRecipe.setIngredient('D', Material.DIAMOND);
+            hastyAxeRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(hastyAxeRecipe);
+
+
+        //
+        //      Hasty Pickaxe recipe
+        //
+        ItemStack hastyPickaxe = CreateCustomItem.createHastyPickaxe();
+        ShapedRecipe hastyPickaxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyPickRecipe"), hastyPickaxe);
+        hastyPickaxeRecipe.shape(
+            "DMD",
+            " S ",
+            " S ");
+            hastyPickaxeRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            hastyPickaxeRecipe.setIngredient('D', Material.DIAMOND);
+            hastyPickaxeRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(hastyPickaxeRecipe);
     }
 }

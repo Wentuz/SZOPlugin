@@ -229,4 +229,47 @@ public class CreateCustomItem {
 
         return spiritLeech;
     }
+
+    //
+    //      TOOLS
+    //
+    static ItemStack createHastyPickaxe()
+    {
+        ItemStack hastyPickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
+        ItemMeta hastyPickaxeMeta = hastyPickaxe.getItemMeta();
+
+        hastyPickaxeMeta.setDisplayName(ChatColor.YELLOW + "Hasty Pick");
+        hastyPickaxeMeta.setLore(Arrays.asList(
+            "Higher quality mining"));
+        hastyPickaxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BOOLEAN, true);
+        hastyPickaxe.setItemMeta(hastyPickaxeMeta);
+
+        return hastyPickaxe;
+    }
+    static ItemStack createHastyShovel()
+    {
+        ItemStack hastyShovel = new ItemStack(Material.DIAMOND_SHOVEL);
+        ItemMeta hastyShovelMeta = hastyShovel.getItemMeta();
+
+        hastyShovelMeta.setDisplayName(ChatColor.YELLOW + "Hasty Shovel");
+        hastyShovelMeta.setLore(Arrays.asList(
+            "Higher quality digging"));
+        hastyShovelMeta.getPersistentDataContainer().set(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BOOLEAN, true);
+        hastyShovel.setItemMeta(hastyShovelMeta);
+
+        return hastyShovel;
+    }
+    static ItemStack createHastyAxe()
+    {
+        ItemStack hastyAxe = new ItemStack(Material.DIAMOND_AXE);
+        ItemMeta hastyAxeMeta = hastyAxe.getItemMeta();
+
+        hastyAxeMeta.setDisplayName(ChatColor.YELLOW + "Hasty Axe");
+        hastyAxeMeta.setLore(Arrays.asList(
+            "Higher quality chopping"));
+        hastyAxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BOOLEAN, true);
+        hastyAxe.setItemMeta(hastyAxeMeta);
+
+        return hastyAxe;
+    }
 }

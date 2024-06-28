@@ -22,12 +22,16 @@ public class Keys {
     //      Spells
     //
     public static final NamespacedKey CUSTOM_TELEPORT_SPELL = new NamespacedKey(SzoPlugin.getInstance(), "TeleportSpell");
-    public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");
-    
+    public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");    
 
     //
     //      Craftables
     //
     public static final NamespacedKey CUSTOM_SOUL_FRAGMENT = new NamespacedKey(SzoPlugin.getInstance(), "SoulFragment");
     public static final NamespacedKey CUSTOM_MECHANICAL_PARTS = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalParts");
+
+    //
+    //      Tools
+    //
+    public static final NamespacedKey CUSTOM_HASTY_TOOL = new NamespacedKey(SzoPlugin.getInstance(), "HastyTool");
 } 

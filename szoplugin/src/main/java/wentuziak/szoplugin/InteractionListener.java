@@ -11,12 +11,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 
 
@@ -171,6 +175,32 @@ public class InteractionListener implements Listener{
                 }
             }
 
+        }
+    }
+
+        //
+        //      On item held
+        //
+    @EventHandler
+    public void onPlayerItemHeld(PlayerItemHeldEvent event)
+    {
+        Player player = event.getPlayer();
+
+        ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
+
+        if (itemInMainHand == null) {
+
+            CustomTools.stopHastyToolTask();
+            return;
+        }
+
+        PersistentDataContainer playerContainer;
+        if (itemInMainHand.hasItemMeta()) {
+            playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BYTE)) {
+                CustomTools.hastyToolFunc(player);
+                return;
+            }
         }
     }
 }
