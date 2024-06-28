@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -216,6 +217,7 @@ public class InteractionListener implements Listener{
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         PersistentDataContainer playerContainer;
         Projectile projectile = event.getHook();
+        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LUCK);
 
         if (event.getState() == State.CAUGHT_FISH) {
             if (!(itemInMainHand.hasItemMeta())) {
@@ -224,7 +226,8 @@ public class InteractionListener implements Listener{
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodFunc(33 ,player, projectile);
+                CustomTools.treasureFishingRodFunc(66 ,player, projectile, luckLvl);
+                System.out.println(luckLvl);
             }
         }
     }

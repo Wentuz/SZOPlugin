@@ -28,13 +28,13 @@ public class CustomTools {
         }
     }
 
-    public static void treasureFishingRodFunc(int chanceForCrit, Player player, Projectile projectile)
+    public static void treasureFishingRodFunc(int chanceForCrit, Player player, Projectile projectile, int playerLuck)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             if (projectile instanceof org.bukkit.entity.FishHook) {
                 org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
                 Location bobberLocation = fishHook.getLocation();
-                LogicHolder.rollTreasure(1, bobberLocation);
+                LogicHolder.rollTreasure(playerLuck, bobberLocation);
             }
         }
     }
