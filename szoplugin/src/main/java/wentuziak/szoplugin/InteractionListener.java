@@ -3,8 +3,10 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -228,6 +230,27 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
                 CustomTools.treasureFishingRodFunc(66 ,player, projectile, luckLvl);
                 System.out.println(luckLvl);
+            }
+        }
+    }
+    
+    //
+    //      Mining Events
+    //
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        PersistentDataContainer playerContainer;
+        Block brokenBlock = event.getBlock();
+        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+
+
+        if (itemInMainHand.hasItemMeta()) {
+            playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_DWARF_PICK, PersistentDataType.BYTE)) {
+                CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
+                return;
             }
         }
     }

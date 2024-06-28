@@ -230,17 +230,18 @@ public final class CustomRecipes {
 
 
         //
-        //      treasureFishingRod recipe
+        //      Dwarf Pickaxe recipe
         //
-        ItemStack treasureFishingRod = CreateCustomItem.createTreasureFishingRod();
-        ShapedRecipe treasureFishingRodRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "treasureFishingRodRecipe"), treasureFishingRod);
-        treasureFishingRodRecipe.shape(
-            "F  ",
-            "TS ",
-            "T S");
-            treasureFishingRodRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
-            treasureFishingRodRecipe.setIngredient('T', Material.STRING);
-            treasureFishingRodRecipe.setIngredient('S', Material.STICK);
-        Bukkit.addRecipe(treasureFishingRodRecipe);
+        ItemStack dwarfPickaxe = CreateCustomItem.createDwarfPickaxe();
+        ShapedRecipe dwarfPickaxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "dwarfPickaxeRecipe"), dwarfPickaxe);
+        dwarfPickaxeRecipe.shape(
+            "DFD",
+            " M ",
+            " S ");
+            dwarfPickaxeRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
+            dwarfPickaxeRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            dwarfPickaxeRecipe.setIngredient('D', Material.DIAMOND);
+            dwarfPickaxeRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(dwarfPickaxeRecipe);
     }
 }

@@ -286,4 +286,17 @@ public class CreateCustomItem {
 
         return treasureFishingRod;
     }
+    static ItemStack createDwarfPickaxe()
+    {
+        ItemStack dwarfPickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
+        ItemMeta dwarfPickaxeMeta = dwarfPickaxe.getItemMeta();
+
+        dwarfPickaxeMeta.setDisplayName(ChatColor.DARK_PURPLE + "Dawi Gem Finder");
+        dwarfPickaxeMeta.setLore(Arrays.asList(
+            "Do not make a mistake by giving it silk..."));
+        dwarfPickaxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_DWARF_PICK, PersistentDataType.BOOLEAN, true);
+        dwarfPickaxe.setItemMeta(dwarfPickaxeMeta);
+
+        return dwarfPickaxe;
+    }
 }

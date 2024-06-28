@@ -58,7 +58,6 @@ public class LogicHolder {
             whatLoot = whatLoot + (int)(Math.random() * 35 + 1);
             playerLuck--;
         }
-        System.out.println(whatLoot);
         if (whatLoot >= 99) {
             location.getWorld().dropItemNaturally(location, new ItemStack(Material.NETHERITE_SCRAP));
             return;
