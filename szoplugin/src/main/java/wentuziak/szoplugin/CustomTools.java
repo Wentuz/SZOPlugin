@@ -55,7 +55,6 @@ public class CustomTools {
             if (LogicHolder.critRoll(chanceForCrit)) {
                 Location blockLocation = brokenBlock.getLocation();
                 LogicHolder.rollTreasure(playerLuck, blockLocation);
-                System.out.println("YES");
             }
         }
     }
@@ -68,7 +67,7 @@ public class CustomTools {
             @Override
             public void run(){
                 if (!(finalPlayer.isHandRaised())) {
-                    effectRaisedShieldTask();
+                    stopeffectRaisedShieldTask();
                     return;
                 }
                 if (finalShield == 3) {
@@ -84,7 +83,7 @@ public class CustomTools {
 
     }
 
-    public static void effectRaisedShieldTask() {
+    public static void stopeffectRaisedShieldTask() {
         if (effectRaisedShieldTask != null && !effectRaisedShieldTask.isCancelled()) {
             effectRaisedShieldTask.cancel();
             effectRaisedShieldTask = null;

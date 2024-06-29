@@ -2,6 +2,7 @@ package wentuziak.szoplugin;
 
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
@@ -259,6 +260,12 @@ public class InteractionListener implements Listener{
         if (itemInMainHand.hasItemMeta()) {
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_DWARF_PICK, PersistentDataType.BYTE)) {
+                int isDumb = itemInMainHand.getEnchantmentLevel(Enchantment.SILK_TOUCH);
+                if (isDumb == 1) {
+                    System.out.println(isDumb);
+                    player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
+                    return;
+                }
                 CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
                 return;
             }
