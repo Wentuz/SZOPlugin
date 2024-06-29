@@ -75,7 +75,13 @@ public class InteractionListener implements Listener{
             PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
                 if (!(player.isHandRaised())) {
-                    CustomTools.ironBreakerShieldFunc(player);
+                    CustomTools.effectRaisedShieldFunc(player, 3);
+                    return;
+                }
+            }
+            if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
+                if (!(player.isHandRaised())) {
+                    CustomTools.effectRaisedShieldFunc(player, 2);
                     return;
                 }
             }
@@ -100,14 +106,12 @@ public class InteractionListener implements Listener{
             playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BYTE)) {
                 Armour.golemChestFunc(player);
-                return;
             }
         }
         if (itemOnFeet.hasItemMeta()) {
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
                 Armour.jetBootsFunc(player);
-                return;
             }
         }
         

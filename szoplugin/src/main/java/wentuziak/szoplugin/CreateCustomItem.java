@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.PluginAwareness.Flags;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 
@@ -310,7 +309,7 @@ public class CreateCustomItem {
             "Might make a difference between life and death..."));
         AttributeModifier armorModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Armor", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierIronBreaker);
-        AttributeModifier dmgModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        AttributeModifier dmgModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Dmg", -0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierIronBreaker);
         AttributeModifier hpModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Hp", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
         ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, hpModifierIronBreaker);
@@ -318,5 +317,22 @@ public class CreateCustomItem {
         ironBreakerShield.setItemMeta(ironBreakerShieldMeta);
 
         return ironBreakerShield;
+    }
+    static ItemStack createBerserkerShield()
+    {
+        ItemStack berserkerShield = new ItemStack(Material.SHIELD);
+        ItemMeta berserkerShieldMeta = berserkerShield.getItemMeta();
+
+        berserkerShieldMeta.setDisplayName(ChatColor.RED + "Berserker Shield");
+        berserkerShieldMeta.setLore(Arrays.asList(
+            "Bathe in their blood !"));
+        AttributeModifier armorModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Armor", -0.75, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierberserkerShield);
+        AttributeModifier dmgModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierberserkerShield);
+        berserkerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BOOLEAN, true);
+        berserkerShield.setItemMeta(berserkerShieldMeta);
+
+        return berserkerShield;
     }
 }

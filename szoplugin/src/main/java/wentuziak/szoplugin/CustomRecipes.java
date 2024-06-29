@@ -121,6 +121,22 @@ public final class CustomRecipes {
         
         
         //
+        //      BerserkerShield Recipe
+        //
+        ItemStack berserkerShield = CreateCustomItem.createBerserkerShield();
+
+        ShapedRecipe berserkerShieldRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "BerserkerShieldRecipe"), berserkerShield);
+        berserkerShieldRecipe.shape(
+            "E E",
+            "WSW",
+            " W ");
+            berserkerShieldRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            berserkerShieldRecipe.setIngredient('W', Material.OAK_PLANKS);
+            berserkerShieldRecipe.setIngredient('E', Material.SPIDER_EYE);
+        Bukkit.addRecipe(berserkerShieldRecipe);
+        
+        
+        //
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();

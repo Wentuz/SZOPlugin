@@ -11,7 +11,7 @@ import org.bukkit.scheduler.BukkitTask;
 public class CustomTools {
 
     private static BukkitTask hastyToolTask;
-    private static BukkitTask ironBreakerShieldTask;
+    private static BukkitTask effectRaisedShieldTask;
     
     public static void hastyToolFunc(Player player) 
     {
@@ -60,28 +60,34 @@ public class CustomTools {
         }
     }
 
-    public static void ironBreakerShieldFunc(Player player)
+    public static void effectRaisedShieldFunc(Player player, int whatShield)
     {   
         final Player finalPlayer = player;
-        ironBreakerShieldTask = new BukkitRunnable() {
+        final int finalShield = whatShield;
+        effectRaisedShieldTask = new BukkitRunnable() {
             @Override
             public void run(){
                 if (!(finalPlayer.isHandRaised())) {
-                    stopIronBreakerShieldTask();
+                    effectRaisedShieldTask();
                     return;
                 }
-                LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
-                LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 1);
+                if (finalShield == 3) {
+                    LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
+                    LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 1);
+                } else if (finalShield == 2) {
+                    LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
+                    LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);
+                }
                 //System.out.println(finalPlayer.isHandRaised());
                 }
         }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
 
     }
 
-    public static void stopIronBreakerShieldTask() {
-        if (ironBreakerShieldTask != null && !ironBreakerShieldTask.isCancelled()) {
-            ironBreakerShieldTask.cancel();
-            ironBreakerShieldTask = null;
+    public static void effectRaisedShieldTask() {
+        if (effectRaisedShieldTask != null && !effectRaisedShieldTask.isCancelled()) {
+            effectRaisedShieldTask.cancel();
+            effectRaisedShieldTask = null;
         }
     }
 
