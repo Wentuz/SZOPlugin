@@ -11,7 +11,8 @@ import org.bukkit.scheduler.BukkitTask;
 public class CustomTools {
 
     private static BukkitTask hastyToolTask;
-
+    private static BukkitTask ironBreakerShieldTask;
+    
     public static void hastyToolFunc(Player player) 
     {
         final Player finalPlayer = player;
@@ -56,6 +57,31 @@ public class CustomTools {
                 LogicHolder.rollTreasure(playerLuck, blockLocation);
                 System.out.println("YES");
             }
+        }
+    }
+
+    public static void ironBreakerShieldFunc(Player player)
+    {   
+        final Player finalPlayer = player;
+        ironBreakerShieldTask = new BukkitRunnable() {
+            @Override
+            public void run(){
+                if (!(finalPlayer.isHandRaised())) {
+                    stopIronBreakerShieldTask();
+                    return;
+                }
+                LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
+                LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 1);
+                //System.out.println(finalPlayer.isHandRaised());
+                }
+        }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
+
+    }
+
+    public static void stopIronBreakerShieldTask() {
+        if (ironBreakerShieldTask != null && !ironBreakerShieldTask.isCancelled()) {
+            ironBreakerShieldTask.cancel();
+            ironBreakerShieldTask = null;
         }
     }
 

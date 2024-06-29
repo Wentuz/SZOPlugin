@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.PluginAwareness.Flags;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 
@@ -298,5 +299,24 @@ public class CreateCustomItem {
         dwarfPickaxe.setItemMeta(dwarfPickaxeMeta);
 
         return dwarfPickaxe;
+    }
+    static ItemStack createIronBreakerShield()
+    {
+        ItemStack ironBreakerShield = new ItemStack(Material.SHIELD);
+        ItemMeta ironBreakerShieldMeta = ironBreakerShield.getItemMeta();
+
+        ironBreakerShieldMeta.setDisplayName(ChatColor.GRAY + "Iron Breaker Shield");
+        ironBreakerShieldMeta.setLore(Arrays.asList(
+            "Might make a difference between life and death..."));
+        AttributeModifier armorModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Armor", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierIronBreaker);
+        AttributeModifier dmgModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierIronBreaker);
+        AttributeModifier hpModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Hp", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, hpModifierIronBreaker);
+        ironBreakerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BOOLEAN, true);
+        ironBreakerShield.setItemMeta(ironBreakerShieldMeta);
+
+        return ironBreakerShield;
     }
 }

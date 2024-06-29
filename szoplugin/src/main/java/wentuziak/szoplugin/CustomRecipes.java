@@ -106,6 +106,21 @@ public final class CustomRecipes {
         
         
         //
+        //      IronBreakerShield Recipe
+        //
+        ItemStack ironBreakerShield = CreateCustomItem.createIronBreakerShield();
+
+        ShapedRecipe ironBreakerShieldRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "IronBreakerShieldRecipe"), ironBreakerShield);
+        ironBreakerShieldRecipe.shape(
+            "I I",
+            "IMI",
+            " I ");
+            ironBreakerShieldRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            ironBreakerShieldRecipe.setIngredient('I', Material.IRON_INGOT);
+        Bukkit.addRecipe(ironBreakerShieldRecipe);
+        
+        
+        //
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();

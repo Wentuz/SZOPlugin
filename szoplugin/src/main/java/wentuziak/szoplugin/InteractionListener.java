@@ -2,7 +2,6 @@ package wentuziak.szoplugin;
 
 
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
@@ -21,12 +20,9 @@ import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
+
 
 
 
@@ -63,9 +59,9 @@ public class InteractionListener implements Listener{
         //      META ITEMS
         //
 
+        // Magic for main hand only
         if (itemInMainHand != null && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
                 return;
@@ -74,6 +70,16 @@ public class InteractionListener implements Listener{
                 MagicItems.spiritLeech(player);
                 return;
             }
+        }
+        if (itemInOffHand != null && itemInOffHand.hasItemMeta()) {
+            PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
+                if (!(player.isHandRaised())) {
+                    CustomTools.ironBreakerShieldFunc(player);
+                    return;
+                }
+            }
+
         }
 
 
