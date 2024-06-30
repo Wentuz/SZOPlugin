@@ -66,6 +66,8 @@ public class CustomTools {
         effectRaisedShieldTask = new BukkitRunnable() {
             @Override
             public void run(){
+                System.out.println("RAISED SHIELD  ????");
+
                 if (!(finalPlayer.isHandRaised())) {
                     stopeffectRaisedShieldTask();
                     return;

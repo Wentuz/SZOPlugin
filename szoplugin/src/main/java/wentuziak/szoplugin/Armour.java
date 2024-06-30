@@ -4,12 +4,13 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 public class Armour {
     
-    private static BukkitTask mermaidTailTask;
+    static BukkitTask mermaidTailTask;
     
     public static void jetBootsFunc(LivingEntity player)
     {
@@ -47,16 +48,14 @@ public class Armour {
         mermaidTailTask = new BukkitRunnable() {
             @Override
             public void run(){
-                System.out.println("MERMAID TAIL");
                 if (!LogicHolder.isPlayerInWater(finalPlayer)) {
-                    System.out.println("MERMAID TAIL STOP ????");
                     stopMermaidTailTask();
                     return;
                 }
-                LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 200, 1);
-                LogicHolder.givePotionEffect(finalPlayer, "SPEED", 200, 0);
-                }
-        }.runTaskTimer(SzoPlugin.getInstance(), 5, 20*1);
+                LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 200, 2);
+                LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 200, 1);
+            }
+        }.runTaskTimer(SzoPlugin.getInstance(), 20, 20*1);
 
     }
 
