@@ -192,6 +192,21 @@ public class CreateCustomItem {
         return golemChest;
     }
 
+    static ItemStack createMermaidTail()
+    {
+        ItemStack mermaidTail = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemMeta mermaidTailMeta = mermaidTail.getItemMeta();
+
+        mermaidTailMeta.setDisplayName(ChatColor.DARK_BLUE + "Mermaid's Tail");
+        mermaidTailMeta.setLore(Arrays.asList(
+            "Don't wet your pants !"));
+        mermaidTailMeta.getPersistentDataContainer().set(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BOOLEAN, true);
+
+        mermaidTail.setItemMeta(mermaidTailMeta);
+
+        return mermaidTail;
+    }
+
 
     //
     //      MAGIC
@@ -326,7 +341,7 @@ public class CreateCustomItem {
         berserkerShieldMeta.setDisplayName(ChatColor.RED + "Berserker Shield");
         berserkerShieldMeta.setLore(Arrays.asList(
             "Bathe in their blood !"));
-        AttributeModifier armorModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Armor", -0.75, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        AttributeModifier armorModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Armor", -0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierberserkerShield);
         AttributeModifier dmgModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierberserkerShield);

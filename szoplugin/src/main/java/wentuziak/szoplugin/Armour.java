@@ -3,9 +3,13 @@ package wentuziak.szoplugin;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 public class Armour {
     
+    private static BukkitTask mermaidTailTask;
     
     public static void jetBootsFunc(LivingEntity player)
     {
@@ -36,5 +40,32 @@ public class Armour {
         }
     }
 
+
+    public static void mermaidTailFunc(Player player)
+    {   
+        final Player finalPlayer = player;
+        mermaidTailTask = new BukkitRunnable() {
+            @Override
+            public void run(){
+                System.out.println("MERMAID TAIL");
+                if (!LogicHolder.isPlayerInWater(finalPlayer)) {
+                    System.out.println("MERMAID TAIL STOP ????");
+                    stopMermaidTailTask();
+                    return;
+                }
+                LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 200, 1);
+                LogicHolder.givePotionEffect(finalPlayer, "SPEED", 200, 0);
+                }
+        }.runTaskTimer(SzoPlugin.getInstance(), 5, 20*1);
+
+    }
+
+
+    public static void stopMermaidTailTask() {
+        if (mermaidTailTask != null && !mermaidTailTask.isCancelled()) {
+            mermaidTailTask.cancel();
+            mermaidTailTask = null;
+        }
+    }
 
 }

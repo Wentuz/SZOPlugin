@@ -72,7 +72,7 @@ public class CustomTools {
                 }
                 if (finalShield == 3) {
                     LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
-                    LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 1);
+                    LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 0);
                 } else if (finalShield == 2) {
                     LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
                     LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);

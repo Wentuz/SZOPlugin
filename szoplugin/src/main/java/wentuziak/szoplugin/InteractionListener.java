@@ -18,6 +18,7 @@ import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -88,8 +89,6 @@ public class InteractionListener implements Listener{
             }
 
         }
-
-
     }
 
 
@@ -206,7 +205,6 @@ public class InteractionListener implements Listener{
         ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
 
         if (itemInMainHand == null) {
-
             CustomTools.stopHastyToolTask();
             return;
         }
@@ -269,6 +267,31 @@ public class InteractionListener implements Listener{
                 CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
                 return;
             }
+        }
+    }
+
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event)
+    {
+        Player player = event.getPlayer();
+        ItemStack itemLeggings = player.getInventory().getLeggings();
+        PersistentDataContainer playerContainer;
+
+        if (itemLeggings == null) {
+            return;
+        }
+
+        boolean isInWater = LogicHolder.isPlayerInWater(player);
+
+        if (itemLeggings.hasItemMeta()) {
+            playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE)) {
+                if (isInWater) {
+                    Armour.mermaidTailFunc(player);
+                }
+            }
+                //CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
         }
     }
 }

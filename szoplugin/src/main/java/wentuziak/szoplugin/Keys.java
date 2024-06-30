@@ -17,6 +17,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_JET_BOOTS = new NamespacedKey(SzoPlugin.getInstance(), "JetBoots");
     public static final NamespacedKey CUSTOM_GOLEM_CHEST = new NamespacedKey(SzoPlugin.getInstance(), "GolemChest");
     public static final NamespacedKey CUSTOM_EXPLOSIVE_CHEST = new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveChest");
+    public static final NamespacedKey CUSTOM_MERMAID_TAIL = new NamespacedKey(SzoPlugin.getInstance(), "MermaidTail");
     
     //
     //      Spells

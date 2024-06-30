@@ -198,6 +198,22 @@ public final class CustomRecipes {
             explosiveChestRecipe.setIngredient('T', Material.TNT);
             explosiveChestRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(explosiveChestRecipe);
+        
+        
+        //
+        //      MermaidTail Recipe
+        //
+        ItemStack mermaidTail = CreateCustomItem.createMermaidTail();
+
+        ShapedRecipe mermaidTailRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "MermaidTailRecipe"), mermaidTail);
+        mermaidTailRecipe.shape(
+            "PSP",
+            "D D",
+            "D D");
+            mermaidTailRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            mermaidTailRecipe.setIngredient('P', Material.PRISMARINE_CRYSTALS);
+            mermaidTailRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(mermaidTailRecipe);
 
 
         //

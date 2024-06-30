@@ -39,6 +39,17 @@ public class LogicHolder {
         }
     }
 
+    public static boolean isPlayerInWater(Player player)
+        {
+            Block block = player.getLocation().getBlock();
+            Block blockAbove = player.getLocation().add(0, 1, 0).getBlock();
+
+            if (block.getType() == Material.WATER || block.getType() == Material.KELP || 
+            block.getType() == Material.WATER_CAULDRON || blockAbove.getType() == Material.WATER) {
+                return true;
+            }
+            return false;
+        }
     public static void throwSnowball(Player player)
     {
         Snowball snowball = player.launchProjectile(Snowball.class);
