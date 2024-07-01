@@ -4,7 +4,6 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -18,7 +17,7 @@ public class Armour {
         {
             LogicHolder.givePotionEffect(player, "LEVITATION", 5, 9);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-            player.getWorld().spawnParticle(Particle.EXPLOSION, player.getLocation(), 20, 0, -1, 0, 0);
+            player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 10, 0, -1, 0, 0);
         }    
     }
 
@@ -65,6 +64,12 @@ public class Armour {
             mermaidTailTask.cancel();
             mermaidTailTask = null;
         }
+    }
+
+    public static void gluttonyPantsFunc(Player player)
+    {
+        LogicHolder.givePotionEffect(player, "SPEED", 200, 1);    
+        LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);    
     }
 
 }

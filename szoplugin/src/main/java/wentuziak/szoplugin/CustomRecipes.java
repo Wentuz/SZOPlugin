@@ -214,6 +214,22 @@ public final class CustomRecipes {
             mermaidTailRecipe.setIngredient('P', Material.PRISMARINE_CRYSTALS);
             mermaidTailRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(mermaidTailRecipe);
+        
+        
+        //
+        //      GluttonyPants Recipe
+        //
+        ItemStack gluttonyPants = CreateCustomItem.createGluttonyPants();
+
+        ShapedRecipe gluttonyPantsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GluttonyPantsRecipe"), gluttonyPants);
+        gluttonyPantsRecipe.shape(
+            "GSG",
+            "D D",
+            "D D");
+            gluttonyPantsRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            gluttonyPantsRecipe.setIngredient('G', Material.GOLDEN_APPLE);
+            gluttonyPantsRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(gluttonyPantsRecipe);
 
 
         //

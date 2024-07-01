@@ -98,18 +98,17 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
-        
-        if (!(itemOnChest.hasItemMeta()) && !(itemOnFeet.hasItemMeta())) {
-            return;
-        }
+        System.out.println("SNEAK");
+
         PersistentDataContainer playerContainer;
-        if (itemOnChest.hasItemMeta()) {
+        if (itemOnChest != null && itemOnChest.hasItemMeta()) {
             playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BYTE)) {
                 Armour.golemChestFunc(player);
             }
         }
-        if (itemOnFeet.hasItemMeta()) {
+    
+        if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
                 Armour.jetBootsFunc(player);
@@ -128,6 +127,16 @@ public class InteractionListener implements Listener{
     {
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
+        ItemStack itemOnLeg = player.getInventory().getItem(EquipmentSlot.LEGS);
+
+        if (itemOnLeg.hasItemMeta()) {
+            PersistentDataContainer playerContainer = itemOnLeg.getItemMeta().getPersistentDataContainer();
+
+            if (playerContainer.has(Keys.CUSTOM_GLUTTONY_PANTS, PersistentDataType.BYTE)) {
+                Armour.gluttonyPantsFunc(player);
+            }
+        }
+
 
         SpecialFood.effectFoodFunc(player, consumedItem.getType());
     }

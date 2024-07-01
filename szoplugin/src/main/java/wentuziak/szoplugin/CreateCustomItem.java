@@ -207,6 +207,21 @@ public class CreateCustomItem {
         return mermaidTail;
     }
 
+    static ItemStack createGluttonyPants()
+    {
+        ItemStack gluttonyPants = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemMeta gluttonyPantsMeta = gluttonyPants.getItemMeta();
+
+        gluttonyPantsMeta.setDisplayName(ChatColor.DARK_GREEN + "The Gluttonous Leggings");
+        gluttonyPantsMeta.setLore(Arrays.asList(
+            "Devour !"));
+        gluttonyPantsMeta.getPersistentDataContainer().set(Keys.CUSTOM_GLUTTONY_PANTS, PersistentDataType.BOOLEAN, true);
+
+        gluttonyPants.setItemMeta(gluttonyPantsMeta);
+
+        return gluttonyPants;
+    }
+
 
     //
     //      MAGIC
