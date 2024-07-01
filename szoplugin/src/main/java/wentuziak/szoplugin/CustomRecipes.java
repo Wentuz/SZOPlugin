@@ -137,6 +137,22 @@ public final class CustomRecipes {
         
         
         //
+        //      gravityBow Recipe
+        //
+        ItemStack gravityBow = CreateCustomItem.createGravityBow();
+
+        ShapedRecipe gravityBowRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GravityBowRecipe"), gravityBow);
+        gravityBowRecipe.shape(
+            "SW ",
+            "S M",
+            "SW ");
+            gravityBowRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            gravityBowRecipe.setIngredient('S', Material.STRING);
+            gravityBowRecipe.setIngredient('W', Material.STICK);
+        Bukkit.addRecipe(gravityBowRecipe);
+        
+        
+        //
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();

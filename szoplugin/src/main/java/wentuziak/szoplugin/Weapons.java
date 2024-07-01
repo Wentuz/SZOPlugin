@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 
 
@@ -45,6 +46,14 @@ public class Weapons {
                 player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
 
             }
+    }
+    public static void gravityBowFunc(LivingEntity target)
+    {
+        LogicHolder.givePotionEffect(target, "LEVITATION", 100, 1);
+        LogicHolder.givePotionEffect(target, "GLOWING", 100, 0);
+        target.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, target.getLocation(), 1);
+        target.getWorld().playSound(target.getLocation(), Sound.ENTITY_PHANTOM_HURT, 1, 1);
+
     }
 
 

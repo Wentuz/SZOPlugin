@@ -122,6 +122,21 @@ public class CreateCustomItem {
         return thunderHammer;
     }
 
+    static ItemStack createGravityBow()
+    {
+        ItemStack gravityBow = new ItemStack(Material.BOW);
+        ItemMeta gravityBowMeta = gravityBow.getItemMeta();
+
+        gravityBowMeta.setDisplayName(ChatColor.DARK_BLUE + "Anti Grav Bow");
+        gravityBowMeta.setLore(Arrays.asList(
+            "test",
+            "haha"));
+        gravityBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BOOLEAN, true);
+        gravityBow.setItemMeta(gravityBowMeta);
+
+        return gravityBow;
+    }
+
 
     //
     //      ARMOR

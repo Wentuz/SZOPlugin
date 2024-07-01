@@ -1,18 +1,22 @@
 package wentuziak.szoplugin;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -98,7 +102,7 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
-        System.out.println("SNEAK");
+        //System.out.println("SNEAK");
 
         PersistentDataContainer playerContainer;
         if (itemOnChest != null && itemOnChest.hasItemMeta()) {
@@ -308,6 +312,38 @@ public class InteractionListener implements Listener{
                 }
             }
                 //CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerShootArrow(EntityShootBowEvent event) {
+        if (event.getEntity() instanceof Player && event.getProjectile() instanceof Arrow) {
+            Player player = (Player) event.getEntity();
+            ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+
+            if (itemInMainHand.hasItemMeta()) {
+                PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                Arrow arrow = (Arrow) event.getProjectile();
+                if (playerContainer.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
+                    arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onArrowLand(ProjectileHitEvent event) {
+        if (event.getEntity() instanceof Arrow) {
+            Arrow arrow = (Arrow) event.getEntity();
+
+            String value = arrow.getPersistentDataContainer().get(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING);
+            
+            if (event.getHitEntity() != null) {
+                LivingEntity target = (LivingEntity) event.getHitEntity();
+                if (value == "antiGravArrow") {
+                    Weapons.gravityBowFunc(target);
+                }
+            }
         }
     }
 }
