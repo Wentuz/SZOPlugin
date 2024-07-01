@@ -18,7 +18,7 @@ public class Armour {
         {
             LogicHolder.givePotionEffect(player, "LEVITATION", 5, 9);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-            player.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, player.getLocation(), 20, 0, -1, 0, 0);
+            player.getWorld().spawnParticle(Particle.EXPLOSION, player.getLocation(), 20, 0, -1, 0, 0);
         }    
     }
 

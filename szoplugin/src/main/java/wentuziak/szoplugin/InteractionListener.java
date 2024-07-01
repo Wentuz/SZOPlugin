@@ -98,6 +98,7 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
+        
         if (!(itemOnChest.hasItemMeta()) && !(itemOnFeet.hasItemMeta())) {
             return;
         }
@@ -228,7 +229,7 @@ public class InteractionListener implements Listener{
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         PersistentDataContainer playerContainer;
         Projectile projectile = event.getHook();
-        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LUCK);
+        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.FORTUNE);
 
         if (event.getState() == State.CAUGHT_FISH) {
             if (!(itemInMainHand.hasItemMeta())) {
@@ -252,7 +253,7 @@ public class InteractionListener implements Listener{
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         PersistentDataContainer playerContainer;
         Block brokenBlock = event.getBlock();
-        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS);
+        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.FORTUNE);
 
 
         if (itemInMainHand.hasItemMeta()) {
