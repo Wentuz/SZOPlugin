@@ -153,6 +153,22 @@ public final class CustomRecipes {
         
         
         //
+        //      gravityBow Recipe
+        //
+        ItemStack ratBow = CreateCustomItem.createRatBow();
+
+        ShapedRecipe ratBowRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "RatBowRecipe"), ratBow);
+        ratBowRecipe.shape(
+            "SW ",
+            "S F",
+            "SW ");
+            ratBowRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
+            ratBowRecipe.setIngredient('S', Material.STRING);
+            ratBowRecipe.setIngredient('W', Material.STICK);
+        Bukkit.addRecipe(ratBowRecipe);
+        
+        
+        //
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();

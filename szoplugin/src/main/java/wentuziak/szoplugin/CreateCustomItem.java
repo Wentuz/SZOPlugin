@@ -129,12 +129,26 @@ public class CreateCustomItem {
 
         gravityBowMeta.setDisplayName(ChatColor.DARK_BLUE + "Anti Grav Bow");
         gravityBowMeta.setLore(Arrays.asList(
-            "test",
-            "haha"));
+            ChatColor.GREEN + "pew pew pew",
+            ChatColor.GREEN + "haha :)"));
         gravityBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BOOLEAN, true);
         gravityBow.setItemMeta(gravityBowMeta);
 
         return gravityBow;
+    }
+
+    static ItemStack createRatBow()
+    {
+        ItemStack ratBow = new ItemStack(Material.BOW);
+        ItemMeta ratBowMeta = ratBow.getItemMeta();
+
+        ratBowMeta.setDisplayName(ChatColor.YELLOW + "ULTIMATE RAT LAUNCHER");
+        ratBowMeta.setLore(Arrays.asList(
+            ChatColor.YELLOW + "SHRIEK SHRIEK"));
+        ratBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.BOOLEAN, true);
+        ratBow.setItemMeta(ratBowMeta);
+
+        return ratBow;
     }
 
 

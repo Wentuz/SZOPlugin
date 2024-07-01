@@ -1,8 +1,12 @@
 package wentuziak.szoplugin;
 
 
+import java.security.Key;
+
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
@@ -327,6 +331,10 @@ public class InteractionListener implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
                     arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
                 }
+                if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
+                    System.out.println("CUSTOM RAT BOW WOWOW");
+                    arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                }
             }
         }
     }
@@ -336,12 +344,32 @@ public class InteractionListener implements Listener{
         if (event.getEntity() instanceof Arrow) {
             Arrow arrow = (Arrow) event.getEntity();
 
-            String value = arrow.getPersistentDataContainer().get(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING);
+            PersistentDataContainer container = arrow.getPersistentDataContainer();
+            String value = null;
+
+            for (NamespacedKey key : container.getKeys()) {
+                if (container.has(key, PersistentDataType.STRING)) {
+                    value = container.get(key, PersistentDataType.STRING);
+
+                }
+            }
             
             if (event.getHitEntity() != null) {
                 LivingEntity target = (LivingEntity) event.getHitEntity();
                 if (value == "antiGravArrow") {
                     Weapons.gravityBowFunc(target);
+                }
+                System.out.println(value);
+                if (value == "ratArrow") {
+                    Weapons.ratBowFunc(target.getLocation());
+                }
+            }else{
+
+                Location hitLocation = event.getHitBlock().getLocation();
+                System.out.println(value);
+
+                if (value == "ratArrow") {
+                    Weapons.ratBowFunc(hitLocation);
                 }
             }
         }

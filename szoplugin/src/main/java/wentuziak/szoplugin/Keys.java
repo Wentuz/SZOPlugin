@@ -11,6 +11,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_DAEMON_SWORD = new NamespacedKey(SzoPlugin.getInstance(), "DaemonSword");
     public static final NamespacedKey CUSTOM_THUNDER_HAMMER = new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammer");
     public static final NamespacedKey CUSTOM_GRAVITY_BOW = new NamespacedKey(SzoPlugin.getInstance(), "GravityBow");
+    public static final NamespacedKey CUSTOM_RAT_BOW = new NamespacedKey(SzoPlugin.getInstance(), "RatBow");
     
     //
     //      Armor
