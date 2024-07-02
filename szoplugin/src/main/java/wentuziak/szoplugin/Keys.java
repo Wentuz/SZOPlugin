@@ -46,6 +46,6 @@ public class Keys {
     //
     //      Races
     //
-    public static final NamespacedKey RACE_DWARF = new NamespacedKey(SzoPlugin.getInstance(), "DwarfRace");
+    public static final NamespacedKey DWARF = new NamespacedKey(SzoPlugin.getInstance(), "DwarfRace");
 
 } 

@@ -11,7 +11,7 @@ commands:
     permission-message: "You do not have the permissions to summon an exploding cow"
   swapRace:
     description: "Change players race"
-    usage: "/race [race] [player]"
+    usage: "/swaprace [race] [player]"
     aliases: [ szoplugin ]
     permissions: szoplugin.command.swapRace
     permission-message: "You do not have the permissions to swap races"
