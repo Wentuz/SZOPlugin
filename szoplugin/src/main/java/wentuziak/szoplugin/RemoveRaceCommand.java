@@ -10,14 +10,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.persistence.PersistentDataType;
 
-
-public class SwapRaceCommand implements TabExecutor{
+public class RemoveRaceCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage("Usage: /swaprace [race] [player]");
+            sender.sendMessage("Usage: /rmvrace [race] [player]");
             return false;
         }
 
@@ -45,10 +43,10 @@ public class SwapRaceCommand implements TabExecutor{
         }else{
             String getKey = "RACE_" + args[0].toUpperCase();
             NamespacedKey setKey = Keys.getKeyByName(getKey);
-            targetPlayer.getPersistentDataContainer().set(setKey, PersistentDataType.BOOLEAN, true);
+            targetPlayer.getPersistentDataContainer().remove(setKey);
 
             if (targetPlayer.getPersistentDataContainer().has(setKey)) {
-                sender.sendMessage("Key '" + inputKey + "' has been set for the player." + setKey);
+                sender.sendMessage("Key '" + inputKey + "' has been removed for the player." + setKey);
                 return true;
             }else{
                 return false;

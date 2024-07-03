@@ -294,20 +294,12 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemLeggings = player.getInventory().getLeggings();
         PersistentDataContainer playerContainer;
-
+        
+        boolean isInWater = LogicHolder.isPlayerInWater(player);
+        
         if (itemLeggings == null) {
             Armour.stopMermaidTailTask();
-
-            return;
-        }
-
-        boolean isInWater = LogicHolder.isPlayerInWater(player);
-
-        if (!isInWater) {
-            Armour.stopMermaidTailTask();
-        }
-
-        if (itemLeggings.hasItemMeta()) {
+        }else if (itemLeggings.hasItemMeta()) {
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE)) {
                 if (isInWater && Armour.mermaidTailTask == null) {
@@ -316,9 +308,14 @@ public class InteractionListener implements Listener{
             }
         }
 
-        if (player.getPersistentDataContainer() != null) {
+        if (!isInWater) {
+            Armour.stopMermaidTailTask();
+        }
+
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             PersistentDataContainer container = player.getPersistentDataContainer();
-            player.sendMessage("WABABA " + container);
+            player.sendMessage("WABABA DWARF !!" + container);
             // if (container.has((Keys.RACE_DWARF, PersistentDataType.BYTE))) {
                 
             // }
