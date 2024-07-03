@@ -145,7 +145,6 @@ public class InteractionListener implements Listener{
             }
         }
 
-
         SpecialFood.effectFoodFunc(player, consumedItem.getType());
     }
 
@@ -315,8 +314,16 @@ public class InteractionListener implements Listener{
                     Armour.mermaidTailFunc(player);
                 }
             }
-                //CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
         }
+
+        if (player.getPersistentDataContainer() != null) {
+            PersistentDataContainer container = player.getPersistentDataContainer();
+            player.sendMessage("WABABA " + container);
+            // if (container.has((Keys.RACE_DWARF, PersistentDataType.BYTE))) {
+                
+            // }
+        }
+
     }
 
     @EventHandler
