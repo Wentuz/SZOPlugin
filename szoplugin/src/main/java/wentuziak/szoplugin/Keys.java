@@ -1,6 +1,8 @@
 package wentuziak.szoplugin;
 
 import org.bukkit.NamespacedKey;
+import java.lang.reflect.Field;
+
 
 public class Keys {
     //
@@ -46,6 +48,24 @@ public class Keys {
     //
     //      Races
     //
-    public static final NamespacedKey DWARF = new NamespacedKey(SzoPlugin.getInstance(), "DwarfRace");
+    public static final NamespacedKey RACE_DWARF = new NamespacedKey(SzoPlugin.getInstance(), "Dwarf");
+    public static final NamespacedKey RACE_CELESTIAL = new NamespacedKey(SzoPlugin.getInstance(), "Celestial");
+
+
+    public static NamespacedKey[] getRaceKeys(){
+        return new NamespacedKey[] {
+            RACE_DWARF,
+            RACE_CELESTIAL
+        };
+    }
+    public static NamespacedKey getKeyByName(String keyName) {
+        try {
+            Field field = Keys.class.getField(keyName);
+            return (NamespacedKey) field.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 } 
