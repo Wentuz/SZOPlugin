@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -22,7 +23,6 @@ public class SwapRaceCommand implements TabExecutor{
         }
 
         Player targetPlayer = Bukkit.getPlayer(args[1]);
-
         if (targetPlayer == null) {
             sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);
             return false;
@@ -30,35 +30,29 @@ public class SwapRaceCommand implements TabExecutor{
 
         String inputKey = args[0];
         NamespacedKey[] allKeys = Keys.getRaceKeys();
-        boolean keyExists = false;
+        boolean keyExists = Arrays.stream(allKeys).anyMatch(key -> key.getKey().equals(inputKey));
 
-        for (NamespacedKey key : allKeys) {
-            if (key.getKey().equals(inputKey)) {
-                sender.sendMessage("The race '" + inputKey + "' exists.");
-                keyExists = true;
-            }
-        }
 
         if (!keyExists) {
             sender.sendMessage(ChatColor.RED + "The race '" + inputKey + "' does not exist.");
             return false;
-        }else{
-            String getKey = "RACE_" + args[0].toUpperCase();
-            NamespacedKey setKey = Keys.getKeyByName(getKey);
-            targetPlayer.getPersistentDataContainer().set(setKey, PersistentDataType.BOOLEAN, true);
-
-            if (targetPlayer.getPersistentDataContainer().has(setKey)) {
-                sender.sendMessage("Key '" + inputKey + "' has been set for the player." + setKey);
-                return true;
-            }else{
-                return false;
-            }
-
         }
+        String getKey = "RACE_" + args[0].toUpperCase();
+        NamespacedKey setKey = Keys.getKeyByName(getKey);
+        targetPlayer.getPersistentDataContainer().set(setKey, PersistentDataType.BOOLEAN, true);
+
+        if (targetPlayer.getPersistentDataContainer().has(setKey, PersistentDataType.BOOLEAN)) {
+            sender.sendMessage(ChatColor.GREEN + "The race '" + inputKey + "' has been set for the player.");
+            return true;
+        }else{
+            sender.sendMessage(ChatColor.RED + "Failed to set the race '" + inputKey + "' for the player.");
+            return false;
+        }
+    }
 
         // sender.sendMessage("Player argument: " + targetPlayer.getName());
         // return true;
-    }
+    
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {

@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -27,34 +28,25 @@ public class RemoveRaceCommand implements TabExecutor {
 
         String inputKey = args[0];
         NamespacedKey[] allKeys = Keys.getRaceKeys();
-        boolean keyExists = false;
-
-        for (NamespacedKey key : allKeys) {
-            if (key.getKey().equals(inputKey)) {
-                sender.sendMessage("The race '" + inputKey + "' exists.");
-                keyExists = true;
-            }
-        }
+        boolean keyExists = Arrays.stream(allKeys).anyMatch(key -> key.getKey().equals(inputKey));
 
         if (!keyExists) {
             sender.sendMessage(ChatColor.RED + "The race '" + inputKey + "' does not exist.");
             return false;
-        }else{
+        }
+
+
             String getKey = "RACE_" + args[0].toUpperCase();
             NamespacedKey setKey = Keys.getKeyByName(getKey);
             targetPlayer.getPersistentDataContainer().remove(setKey);
 
             if (targetPlayer.getPersistentDataContainer().has(setKey)) {
-                sender.sendMessage("Key '" + inputKey + "' has been removed for the player." + setKey);
-                return true;
-            }else{
+                sender.sendMessage(ChatColor.RED + "Failed to remove the race '" + inputKey + "' for the player.");
                 return false;
             }
-
-        }
-
-        // sender.sendMessage("Player argument: " + targetPlayer.getName());
-        // return true;
+    
+            sender.sendMessage("The race '" + inputKey + "' has been removed for the player.");
+            return true;
     }
 
     @Override
