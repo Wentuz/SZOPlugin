@@ -1,17 +1,23 @@
 package wentuziak.szoplugin;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class SpecialFood {
 
 
-    public static void effectFoodFunc(Player player, Material consumedMaterial){
+    public static void effectFoodFunc(Player player, ItemStack consumedStack){
+        Material consumedMaterial = consumedStack.getType();
         String consumedItem = consumedMaterial.toString();
-        List<String> implementedFood = Collections.singletonList("GLOW_BERRIES");
+
+        Set<String> implementedFood = new HashSet<>(Arrays.asList(
+            "GLOW_BERRIES"
+        ));
 
 
         if (!implementedFood.contains(consumedItem)) {
@@ -23,5 +29,4 @@ public class SpecialFood {
             LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
         }
     }
-
 }

@@ -125,8 +125,11 @@ public class InteractionListener implements Listener{
                 Armour.gluttonyPantsEffect(player);
             }
         }
-
-        SpecialFood.effectFoodFunc(player, consumedItem.getType());
+        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
+            RaceEffects.dwarfConsumptionEffect(player, consumedItem);
+        }
+        SpecialFood.effectFoodFunc(player, consumedItem);
+        
     }
 
 
@@ -259,6 +262,10 @@ public class InteractionListener implements Listener{
                 CustomTools.dwarfPickaxeEffect(11, player, luckLvl, brokenBlock, "Ore");
             }
         }
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
+            CustomTools.dwarfPickaxeEffect(5, player, 1, brokenBlock, "Ore");
+        }
     }
 
 
@@ -284,16 +291,6 @@ public class InteractionListener implements Listener{
         if (!isInWater) {
             Armour.stopMermaidTailTask();
         }
-
-
-        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            PersistentDataContainer container = player.getPersistentDataContainer();
-            player.sendMessage("WABABA DWARF !!" + container);
-            // if (container.has((Keys.RACE_DWARF, PersistentDataType.BYTE))) {
-                
-            // }
-        }
-
     }
 
     @EventHandler
@@ -329,7 +326,6 @@ public class InteractionListener implements Listener{
             for (NamespacedKey key : container.getKeys()) {
                 if (container.has(key, PersistentDataType.STRING)) {
                     value = container.get(key, PersistentDataType.STRING);
-
                 }
             }
             
@@ -338,15 +334,11 @@ public class InteractionListener implements Listener{
                 if (value == "antiGravArrow") {
                     Weapons.gravityBowEffect(target);
                 }
-                System.out.println(value);
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(target.getLocation());
                 }
             }else{
-
                 Location hitLocation = event.getHitBlock().getLocation();
-                System.out.println(value);
-
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(hitLocation);
                 }
