@@ -15,7 +15,6 @@ public class CowCommand implements TabExecutor{
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        
         if (!(sender instanceof Player)) {
             sender.sendMessage("Only players can use this command");
             return true;
@@ -41,7 +40,6 @@ public class CowCommand implements TabExecutor{
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-        
         if(args.length == 1){
             return java.util.Arrays.asList("baby");
         }

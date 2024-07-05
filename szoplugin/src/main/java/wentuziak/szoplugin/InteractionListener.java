@@ -42,24 +42,12 @@ public class InteractionListener implements Listener{
 
 
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent event)
-    {
+    public void onPlayerInteract(PlayerInteractEvent event){
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
 
-        //PersistentDataContainer entityContainer = entity.getPersistentDataContainer();
-        //PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
-
-
-        boolean clickedRightButton;
-
-        // Detect left-click (can be left-clicking air or a block)
-        if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-            clickedRightButton = false;
-        }   else{
-            clickedRightButton = true;
-        }
+        boolean clickedRightButton = !(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK);
 
         if (clickedRightButton) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
@@ -81,21 +69,16 @@ public class InteractionListener implements Listener{
                 return;
             }
         }
+
+        // Off hand items only
         if (itemInOffHand != null && itemInOffHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
-                if (!(player.isHandRaised())) {
-                    CustomTools.effectRaisedShieldEffect(player, 3);
-                    return;
-                }
+            if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
+                CustomTools.effectRaisedShieldEffect(player, 3);
             }
-            if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
-                if (!(player.isHandRaised())) {
-                    CustomTools.effectRaisedShieldEffect(player, 2);
-                    return;
-                }
+            else if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
+                CustomTools.effectRaisedShieldEffect(player, 2);
             }
-
         }
     }
 
@@ -106,7 +89,6 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
-        //System.out.println("SNEAK");
 
         PersistentDataContainer playerContainer;
         if (itemOnChest != null && itemOnChest.hasItemMeta()) {
@@ -131,8 +113,7 @@ public class InteractionListener implements Listener{
  
 
     @EventHandler
-    public void onPlayerItemConsume(PlayerItemConsumeEvent event)
-    {
+    public void onPlayerItemConsume(PlayerItemConsumeEvent event){
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
         ItemStack itemOnLeg = player.getInventory().getItem(EquipmentSlot.LEGS);
@@ -156,9 +137,7 @@ public class InteractionListener implements Listener{
 
     @SuppressWarnings("deprecation")
     @EventHandler
-    public void onEntityDamageEntity(EntityDamageByEntityEvent event)
-    {   
-
+    public void onEntityDamageEntity(EntityDamageByEntityEvent event){   
         if (event.getDamager() instanceof Player) {
 
             Player player = (Player) event.getDamager();
@@ -167,6 +146,7 @@ public class InteractionListener implements Listener{
             if (itemInMainHand == null || itemInMainHand.getType() == Material.AIR) {
                 return;
             }
+
             LivingEntity hitEntity = (LivingEntity) event.getEntity();
             PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
             
@@ -193,21 +173,20 @@ public class InteractionListener implements Listener{
             Player player = (Player) event.getEntity();
             ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
 
-            LivingEntity damager = (LivingEntity) event.getDamager();
-
-            if (!(itemOnChest.hasItemMeta())) {
+            
+            if (itemOnChest == null || !itemOnChest.hasItemMeta()) {
                 return;
             }
 
+            LivingEntity damager = (LivingEntity) event.getDamager();
             PersistentDataContainer playerContainer;
+            
             if (itemOnChest.hasItemMeta()) {
                 playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
                     Armour.explosiveChestEffect(20 ,damager, player);
-                    return;
                 }
             }
-
         }
     }
 
@@ -215,10 +194,8 @@ public class InteractionListener implements Listener{
         //      On item held
         //
     @EventHandler
-    public void onPlayerItemHeld(PlayerItemHeldEvent event)
-    {
+    public void onPlayerItemHeld(PlayerItemHeldEvent event){
         Player player = event.getPlayer();
-
         ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
 
         if (itemInMainHand == null) {
@@ -231,7 +208,6 @@ public class InteractionListener implements Listener{
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BYTE)) {
                 CustomTools.hastyToolEffect(player);
-                return;
             }
         }
     }
@@ -287,8 +263,7 @@ public class InteractionListener implements Listener{
 
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event)
-    {
+    public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         ItemStack itemLeggings = player.getInventory().getLeggings();
         PersistentDataContainer playerContainer;

@@ -19,8 +19,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import net.md_5.bungee.api.ChatColor;
 
 public class CreateCustomItem {
-    static ItemStack createSoulFragment()
-    {
+    static ItemStack createSoulFragment(){
         ItemStack soulFragment = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta soulFragmentMeta = soulFragment.getItemMeta();
 
@@ -32,8 +31,7 @@ public class CreateCustomItem {
         return soulFragment;
     }
 
-    static ItemStack createMechanicalParts()
-    {
+    static ItemStack createMechanicalParts(){
         ItemStack mechanicalParts = new ItemStack(Material.NETHERITE_SCRAP);
         ItemMeta mechanicalPartsMeta = mechanicalParts.getItemMeta();
         
@@ -48,8 +46,7 @@ public class CreateCustomItem {
         return mechanicalParts;
     }
 
-    static ItemStack createAngelSword()
-    {
+    static ItemStack createAngelSword(){
         ItemStack angelSword = new ItemStack(Material.GOLDEN_SWORD);
         ItemMeta angelSwordMeta = angelSword.getItemMeta();
         
@@ -70,8 +67,7 @@ public class CreateCustomItem {
         return angelSword;
     }
 
-    static ItemStack createDaemonSword()
-    {
+    static ItemStack createDaemonSword(){
         ItemStack daemonSword = new ItemStack(Material.STONE_SWORD);
         ItemMeta daemonSwordMeta = daemonSword.getItemMeta();
         
@@ -90,8 +86,7 @@ public class CreateCustomItem {
         return daemonSword;
     }
 
-    static ItemStack createPyromancerSword()
-    {
+    static ItemStack createPyromancerSword(){
         ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
 
@@ -106,8 +101,7 @@ public class CreateCustomItem {
         return pyromancerSword;
     }
 
-    static ItemStack createThunderHammer()
-    {
+    static ItemStack createThunderHammer(){
         ItemStack thunderHammer = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta thunderHammerMeta = thunderHammer.getItemMeta();
 
@@ -122,8 +116,7 @@ public class CreateCustomItem {
         return thunderHammer;
     }
 
-    static ItemStack createGravityBow()
-    {
+    static ItemStack createGravityBow(){
         ItemStack gravityBow = new ItemStack(Material.BOW);
         ItemMeta gravityBowMeta = gravityBow.getItemMeta();
 
@@ -137,8 +130,7 @@ public class CreateCustomItem {
         return gravityBow;
     }
 
-    static ItemStack createRatBow()
-    {
+    static ItemStack createRatBow(){
         ItemStack ratBow = new ItemStack(Material.BOW);
         ItemMeta ratBowMeta = ratBow.getItemMeta();
 
@@ -155,8 +147,7 @@ public class CreateCustomItem {
     //
     //      ARMOR
     //
-    static ItemStack createHermesBoots()
-    {
+    static ItemStack createHermesBoots(){
         ItemStack hermesBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta hermesBootsMeta = hermesBoots.getItemMeta();
 
@@ -169,8 +160,7 @@ public class CreateCustomItem {
         return hermesBoots;
     }
 
-    static ItemStack createJetBoots()
-    {
+    static ItemStack createJetBoots(){
         ItemStack jetBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta jetBootsMeta = jetBoots.getItemMeta();
 
@@ -185,8 +175,7 @@ public class CreateCustomItem {
         return jetBoots;
     }
 
-    static ItemStack createExplosiveChest()
-    {
+    static ItemStack createExplosiveChest(){
         ItemStack explosiveChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
         ItemMeta explosiveChestMeta = explosiveChest.getItemMeta();
 
@@ -200,8 +189,7 @@ public class CreateCustomItem {
         return explosiveChest;
     }
 
-    static ItemStack createGolemChest()
-    {
+    static ItemStack createGolemChest(){
         ItemStack golemChest = new ItemStack(Material.IRON_CHESTPLATE);
         ItemMeta golemChestMeta = golemChest.getItemMeta();
 
@@ -221,8 +209,7 @@ public class CreateCustomItem {
         return golemChest;
     }
 
-    static ItemStack createMermaidTail()
-    {
+    static ItemStack createMermaidTail(){
         ItemStack mermaidTail = new ItemStack(Material.DIAMOND_LEGGINGS);
         ItemMeta mermaidTailMeta = mermaidTail.getItemMeta();
 
@@ -236,8 +223,7 @@ public class CreateCustomItem {
         return mermaidTail;
     }
 
-    static ItemStack createGluttonyPants()
-    {
+    static ItemStack createGluttonyPants(){
         ItemStack gluttonyPants = new ItemStack(Material.DIAMOND_LEGGINGS);
         ItemMeta gluttonyPantsMeta = gluttonyPants.getItemMeta();
 
@@ -255,8 +241,7 @@ public class CreateCustomItem {
     //
     //      MAGIC
     //
-    static ItemStack createTeleportSpell()
-    {
+    static ItemStack createTeleportSpell(){
         ItemStack teleportSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
         ItemMeta teleportSpellMeta = teleportSpell.getItemMeta();
 
@@ -272,8 +257,7 @@ public class CreateCustomItem {
         return teleportSpell;
     }
 
-    static ItemStack createSpiritLeech()
-    {
+    static ItemStack createSpiritLeech(){
         ItemStack spiritLeech = new ItemStack(Material.GLOBE_BANNER_PATTERN);
         ItemMeta spiritLeechMeta = spiritLeech.getItemMeta();
 
@@ -292,8 +276,7 @@ public class CreateCustomItem {
     //
     //      TOOLS
     //
-    static ItemStack createHastyPickaxe()
-    {
+    static ItemStack createHastyPickaxe(){
         ItemStack hastyPickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
         ItemMeta hastyPickaxeMeta = hastyPickaxe.getItemMeta();
 
@@ -305,8 +288,8 @@ public class CreateCustomItem {
 
         return hastyPickaxe;
     }
-    static ItemStack createHastyShovel()
-    {
+
+    static ItemStack createHastyShovel(){
         ItemStack hastyShovel = new ItemStack(Material.DIAMOND_SHOVEL);
         ItemMeta hastyShovelMeta = hastyShovel.getItemMeta();
 
@@ -318,8 +301,8 @@ public class CreateCustomItem {
 
         return hastyShovel;
     }
-    static ItemStack createHastyAxe()
-    {
+
+    static ItemStack createHastyAxe(){
         ItemStack hastyAxe = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta hastyAxeMeta = hastyAxe.getItemMeta();
 
@@ -331,8 +314,8 @@ public class CreateCustomItem {
 
         return hastyAxe;
     }
-    static ItemStack createTreasureFishingRod()
-    {
+
+    static ItemStack createTreasureFishingRod(){
         ItemStack treasureFishingRod = new ItemStack(Material.FISHING_ROD);
         ItemMeta treasureFishingRodMeta = treasureFishingRod.getItemMeta();
 
@@ -345,8 +328,8 @@ public class CreateCustomItem {
 
         return treasureFishingRod;
     }
-    static ItemStack createDwarfPickaxe()
-    {
+
+    static ItemStack createDwarfPickaxe(){
         ItemStack dwarfPickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
         ItemMeta dwarfPickaxeMeta = dwarfPickaxe.getItemMeta();
 
@@ -358,8 +341,8 @@ public class CreateCustomItem {
 
         return dwarfPickaxe;
     }
-    static ItemStack createIronBreakerShield()
-    {
+
+    static ItemStack createIronBreakerShield(){
         ItemStack ironBreakerShield = new ItemStack(Material.SHIELD);
         ItemMeta ironBreakerShieldMeta = ironBreakerShield.getItemMeta();
 
@@ -377,8 +360,8 @@ public class CreateCustomItem {
 
         return ironBreakerShield;
     }
-    static ItemStack createBerserkerShield()
-    {
+
+    static ItemStack createBerserkerShield(){
         ItemStack berserkerShield = new ItemStack(Material.SHIELD);
         ItemMeta berserkerShieldMeta = berserkerShield.getItemMeta();
 

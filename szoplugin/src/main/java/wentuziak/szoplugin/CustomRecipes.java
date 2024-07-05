@@ -10,8 +10,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 
 public final class CustomRecipes {
 
-    public static void register()
-    {
+    public static void register(){
         //
         //      Soul Fragment Recipe
         //

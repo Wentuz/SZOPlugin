@@ -16,9 +16,7 @@ public class EntityListener implements Listener {
 
 
     @EventHandler
-    public void onEntityRightClick(PlayerInteractEntityEvent event)
-    {
-
+    public void onEntityRightClick(PlayerInteractEntityEvent event){
         if (event.getHand() == EquipmentSlot.OFF_HAND) {
              return;
         }
