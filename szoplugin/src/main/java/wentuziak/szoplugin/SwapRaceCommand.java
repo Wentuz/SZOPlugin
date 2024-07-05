@@ -43,6 +43,7 @@ public class SwapRaceCommand implements TabExecutor{
 
         if (targetPlayer.getPersistentDataContainer().has(setKey, PersistentDataType.BOOLEAN)) {
             sender.sendMessage(ChatColor.GREEN + "The race '" + inputKey + "' has been set for the player.");
+            UpdateAttributes.attributeManager(targetPlayer, false, getKey.toString());
             return true;
         }else{
             sender.sendMessage(ChatColor.RED + "Failed to set the race '" + inputKey + "' for the player.");

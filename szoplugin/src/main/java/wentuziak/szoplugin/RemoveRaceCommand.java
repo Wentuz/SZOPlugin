@@ -46,6 +46,7 @@ public class RemoveRaceCommand implements TabExecutor {
             }
     
             sender.sendMessage("The race '" + inputKey + "' has been removed for the player.");
+            UpdateAttributes.attributeManager(targetPlayer, true, getKey.toString());
             return true;
     }
 

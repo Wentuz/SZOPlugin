@@ -1,23 +1,9 @@
 /----------------------------------------------------------------/
-TODO:
-1. Day counter -- message // Custom TAB
-2. Custom enchantments
-3. Custom potions
-4. Custom weapons
-5. 'Origins' with our twist
-6. Crawling
-7. Death timer // Pickup players
-8. Player name tags !
-9. Custom mobs ?
-
-IDEAS :
--   Custom craftables for certain 'races' : effect food for witch, Better equipment for dwarfen,
--   phantom membrane usability : feather fall for all, levitation for specials,
--   raw foor for Miskaru : Str, Saturation, Resistance, Water breathing,
--   some phantoms may spawn with skeleton jokeys,
--   spell tomes : thunderstrike, teleport, tnt throw, waterborn (dolphins grace, waterbreathing, conduit power),
--   Golden sword of pyromaniac : 1 in 10 -  explodes entity on hit
--   Fish stick : Knockback, heavy slowness, weakness + summons fish
+                            
+                        SZOPlugin
+            Official plugin used on SZOP smp
+    Includes various races, weapons, food items and tools
+    Designed specifficaly to play on multiplayer with friends
 
 /----------------------------------------------------------------/
 STUFF IN HERE:
@@ -37,17 +23,34 @@ STUFF IN HERE:
         ...
 
 > Races :
-    ...
+    >   Dwarf
+        Has ability to find treasure in stone and deepslate
+        Honey grants them regeneration and sum saturation
+        They may craft Dwarfen Ale using Honey bottle in main and Golden apple in Off hand
+        Only iron golems are worse swimmers than them
 
 > Custom items :
-    A. Weapons :
+    > Weapons :
         1.  Pyromancer Sword - 3 in 10 chance to explode on hit. Crafted using 2 tnt, 1 soul fragment, 2 diamonds. Can be upgraded to netherite
         2.  Thunder Hammer - 40% chance to debuff enemy and lightning strike him. 
-        3.  Daemon Sword - Huge dmg
-        4.  Angel Sword - Defensive capabilities
-    B. Ingerients :
+        3.  Daemon Sword - Huge dmg, chance for magical dmg
+        4.  Angel Sword - chance to heal on hit
+        5.  Anti grav bow - Levitation on hit
+        6.  ULTIMATE RAT LAUNCHER - silverfish wherever it hits
+    > Armor :
+        1.  Bombardiers vest - chance to explode attacker
+        2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
+        3.  Mermaid's tail - water becomes your secong home
+        4.  The gluttonous leggings  - regen and speed on eating anything
+        5.  Jet boots - jump and crouch to become a rocket
+        6.  Hermes boots - speed
+    > Tools :
+        1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
+        2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works
+        3.  Suspicious fishing rod - Possibility to fish out curiosities
+    > Ingerients :
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
-    C. Spells :
+    > Spells :
         1. Bound Teleport - 1 soul fragment, 4 ender pearls
         2. Spirit Leech - 1 soul fragment, notch apple, 3 lapis

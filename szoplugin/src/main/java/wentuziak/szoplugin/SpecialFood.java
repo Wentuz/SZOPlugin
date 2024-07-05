@@ -7,6 +7,8 @@ import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 public class SpecialFood {
 
@@ -27,6 +29,23 @@ public class SpecialFood {
         if (consumedItem.equals("GLOW_BERRIES")) {
             LogicHolder.givePotionEffect(player, "GLOWING", 400, 0);
             LogicHolder.givePotionEffect(player, "NIGHT_VISION", 400, 0);
+        }
+
+        //
+        //      META ITEMS
+        //
+        if (consumedStack.getItemMeta() != null) {
+            PersistentDataContainer foodContainer = consumedStack.getItemMeta().getPersistentDataContainer();
+
+            if (consumedItem.equals("HONEY_BOTTLE") && foodContainer.has(Keys.CUSTOM_DWARF_HONEY, PersistentDataType.BYTE)) {
+                LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 120, 1);
+                LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 120, 1);
+                LogicHolder.givePotionEffect(player, "CONFUSION", 20 * 60, 0);
+                LogicHolder.givePotionEffect(player, "INCREASE_DAMAGE", 20 * 120, 1);
+                LogicHolder.givePotionEffect(player, "SPEED", 20 * 120, 0);
+                LogicHolder.givePotionEffect(player, "FAST_DIGGING", 20 * 120, 1);
+                return;
+            }
         }
     }
 }

@@ -90,7 +90,9 @@ public class InteractionListener implements Listener{
         }
     }
 
-
+    //
+    //      Sneak
+    //
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
@@ -276,7 +278,9 @@ public class InteractionListener implements Listener{
         }
     }
 
-
+    //
+    //      Movement
+    //
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
@@ -298,6 +302,10 @@ public class InteractionListener implements Listener{
 
         if (!isInWater) {
             Armour.stopMermaidTailTask();
+            RaceEffects.stopDwarfSwimTask();
+        }
+        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater) {
+            RaceEffects.dwarfSwimEvent(player);
         }
     }
 
