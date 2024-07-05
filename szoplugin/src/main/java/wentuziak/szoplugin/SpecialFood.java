@@ -16,7 +16,7 @@ public class SpecialFood {
         String consumedItem = consumedMaterial.toString();
 
         Set<String> implementedFood = new HashSet<>(Arrays.asList(
-            "GLOW_BERRIES"
+            "GLOW_BERRIES", "HONEY_BOTTLE"
         ));
 
 

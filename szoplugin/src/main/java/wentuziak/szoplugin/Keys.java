@@ -35,6 +35,7 @@ public class Keys {
     //
     public static final NamespacedKey CUSTOM_SOUL_FRAGMENT = new NamespacedKey(SzoPlugin.getInstance(), "SoulFragment");
     public static final NamespacedKey CUSTOM_MECHANICAL_PARTS = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalParts");
+    public static final NamespacedKey CUSTOM_DWARF_HONEY = new NamespacedKey(SzoPlugin.getInstance(), "DwarfHoney");
 
     //
     //      Tools

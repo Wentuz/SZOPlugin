@@ -377,4 +377,21 @@ public class CreateCustomItem {
 
         return berserkerShield;
     }
+
+    //
+    //      RACE CRAFTABLES
+    //
+
+    static ItemStack createDwarfHoney(){
+        ItemStack dwarfHoney = new ItemStack(Material.HONEY_BOTTLE);
+        ItemMeta dwarfHoneyMeta = dwarfHoney.getItemMeta();
+
+        dwarfHoneyMeta.setDisplayName(ChatColor.YELLOW + "Dwarf Honey");
+        dwarfHoneyMeta.setLore(Arrays.asList(
+            "Will knock out even the toughest"));
+        dwarfHoneyMeta.getPersistentDataContainer().set(Keys.CUSTOM_DWARF_HONEY, PersistentDataType.BOOLEAN, true);
+        dwarfHoney.setItemMeta(dwarfHoneyMeta);
+
+        return dwarfHoney;
+    }
 }

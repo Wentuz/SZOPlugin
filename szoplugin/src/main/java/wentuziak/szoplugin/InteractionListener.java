@@ -51,6 +51,14 @@ public class InteractionListener implements Listener{
 
         if (clickedRightButton) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
+                    //
+                    //      RACE HAND CRAFTING
+                    //
+            if ((event.getHand() == EquipmentSlot.HAND && itemInMainHand.getType() != Material.AIR && itemInOffHand.getType() != Material.AIR)) {
+                if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
+                    RaceEffects.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
+            }
         }
 
         //
@@ -58,7 +66,7 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-        if (itemInMainHand != null && itemInMainHand.hasItemMeta()) {
+        if (itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
@@ -71,7 +79,7 @@ public class InteractionListener implements Listener{
         }
 
         // Off hand items only
-        if (itemInOffHand != null && itemInOffHand.hasItemMeta()) {
+        if (itemInOffHand.getType() != Material.AIR && itemInOffHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
                 CustomTools.effectRaisedShieldEffect(player, 3);
