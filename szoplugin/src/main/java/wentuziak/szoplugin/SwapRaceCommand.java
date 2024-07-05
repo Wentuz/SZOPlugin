@@ -50,9 +50,6 @@ public class SwapRaceCommand implements TabExecutor{
         }
     }
 
-        // sender.sendMessage("Player argument: " + targetPlayer.getName());
-        // return true;
-    
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {

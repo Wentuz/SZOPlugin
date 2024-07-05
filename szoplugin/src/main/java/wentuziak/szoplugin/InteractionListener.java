@@ -62,7 +62,7 @@ public class InteractionListener implements Listener{
         }
 
         if (clickedRightButton) {
-            SpecialItems.simpleItemFunc(player, itemInMainHand, itemInOffHand);
+            SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
         }
 
         //
@@ -137,7 +137,7 @@ public class InteractionListener implements Listener{
         ItemStack consumedItem = event.getItem();
         ItemStack itemOnLeg = player.getInventory().getItem(EquipmentSlot.LEGS);
 
-        if (itemOnLeg.hasItemMeta()) {
+        if (itemOnLeg != null && itemOnLeg.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemOnLeg.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_GLUTTONY_PANTS, PersistentDataType.BYTE)) {
@@ -172,19 +172,19 @@ public class InteractionListener implements Listener{
             
 
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                Weapons.explosiveSwordFunc(33, hitEntity);
+                Weapons.explosiveSwordEffect(33, hitEntity);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-                Weapons.thunderHammerFunc(40, hitEntity);
+                Weapons.thunderHammerEffect(40, hitEntity);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
-                Weapons.daemonSwordFunc(22, hitEntity);
+                Weapons.daemonSwordEffect(22, hitEntity);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
-                Weapons.angelSwordFunc(22, player);
+                Weapons.angelSwordEffect(22, player);
                 return;
             }
         }
@@ -361,11 +361,11 @@ public class InteractionListener implements Listener{
             if (event.getHitEntity() != null) {
                 LivingEntity target = (LivingEntity) event.getHitEntity();
                 if (value == "antiGravArrow") {
-                    Weapons.gravityBowFunc(target);
+                    Weapons.gravityBowEffect(target);
                 }
                 System.out.println(value);
                 if (value == "ratArrow") {
-                    Weapons.ratBowFunc(target.getLocation());
+                    Weapons.ratBowEffect(target.getLocation());
                 }
             }else{
 
@@ -373,7 +373,7 @@ public class InteractionListener implements Listener{
                 System.out.println(value);
 
                 if (value == "ratArrow") {
-                    Weapons.ratBowFunc(hitLocation);
+                    Weapons.ratBowEffect(hitLocation);
                 }
             }
         }

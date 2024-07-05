@@ -1,8 +1,8 @@
 package wentuziak.szoplugin;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -11,31 +11,24 @@ import org.bukkit.inventory.ItemStack;
 
 public class SpecialItems {
 
-    @SuppressWarnings("unchecked")
-    public static void simpleItemFunc(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand)
-    {
+    public static void simpleItemEffect(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand){
         Material getMainHandMaterial = itemInMainHand.getType();
         Material getOffHandMaterial = itemInOffHand.getType();
-        String usedMainItem = getMainHandMaterial.toString();
-        String usedOffItem = getOffHandMaterial.toString();
-        @SuppressWarnings("rawtypes")
-        List implementedItemList = new ArrayList<>();
-        String[] itemsToAdd = {
-            "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
-        };
+        String mainHandItem = getMainHandMaterial.toString();
+        String offHandItem = getOffHandMaterial.toString();
 
-        String itemUsed;
-        boolean mainHandUsed;
+        Set<String> implementedItems = new HashSet<>(Arrays.asList(
+                "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
+        ));
 
-        Collections.addAll(implementedItemList, itemsToAdd);
+        String itemUsed = null;
+        boolean mainHandUsed = false;
 
-
-        if (implementedItemList.contains(usedMainItem)) {
-            itemUsed = usedMainItem.toString();
+        if (implementedItems.contains(mainHandItem)) {
+            itemUsed = mainHandItem;
             mainHandUsed = true;
-        }else if (implementedItemList.contains(usedOffItem)) {
-            itemUsed = usedOffItem.toString();
-            mainHandUsed = false;
+        }else if (implementedItems.contains(offHandItem)) {
+            itemUsed = offHandItem;
         }else{
             return;
         }
@@ -43,34 +36,26 @@ public class SpecialItems {
             case "PHANTOM_MEMBRANE":
                 LogicHolder.givePotionEffect(player, "SLOW_FALLING", 200, 0);
                 player.playSound(player.getLocation(), Sound.ENTITY_PHANTOM_HURT, 10, 10);
-                
                 break;
 
             case "FIRE_CHARGE":
                 LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
                 player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
-
                 break;
 
             case "MAGMA_CREAM":
                 LogicHolder.givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
                 LogicHolder.givePotionEffect(player, "POISON", 200, 1);
-
                 player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
-                
                 break;
 
             default:
                 break;
         }
-        if (mainHandUsed != true) {
-            System.out.println(mainHandUsed);
-            LogicHolder.removeItem(player, itemInOffHand);
-            return;
-        }else{
-            System.out.println(mainHandUsed);
+        if (mainHandUsed) {
             LogicHolder.removeItem(player, itemInMainHand);
-            return;
+        }else{
+            LogicHolder.removeItem(player, itemInOffHand);
         }
     }
 
