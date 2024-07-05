@@ -30,13 +30,7 @@ public class LogicHolder {
 
     public static boolean critRoll(int critChance)
     {   
-        int isCrit = (int)(Math.random() * 100 + 1);
-        //System.out.println(isCrit);
-        if (critChance <= isCrit) {
-            return false;
-        }   else{
-            return true;
-        }
+        return (Math.random() * 100 + 1) <= critChance;
     }
 
     public static boolean isPlayerInWater(Player player)
@@ -44,11 +38,9 @@ public class LogicHolder {
             Block block = player.getLocation().getBlock();
             Block blockAbove = player.getLocation().add(0, 1, 0).getBlock();
 
-            if (block.getType() == Material.WATER || block.getType() == Material.KELP || 
-            block.getType() == Material.WATER_CAULDRON || blockAbove.getType() == Material.WATER) {
-                return true;
-            }
-            return false;
+            return (block.getType() == Material.WATER || block.getType() == Material.KELP || 
+            block.getType() == Material.WATER_CAULDRON || blockAbove.getType() == Material.WATER);
+
         }
     public static void throwSnowball(Player player)
     {
@@ -62,51 +54,44 @@ public class LogicHolder {
         return !blockBelow.getType().isSolid();
     }
 
-    public static void rollTreasure(int playerLuck, Location location)
-    {   
+    public static void rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
         while (playerLuck > 0) {
-            whatLoot = whatLoot + (int)(Math.random() * 35 + 1);
+            whatLoot += (int)(Math.random() * 35 + 1);
             playerLuck--;
         }
-        if (whatLoot >= 99) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.NETHERITE_SCRAP));
-            return;
+    
+        ItemStack item = new ItemStack(Material.COAL);
+        switch (typeOfLoot) {
+            case "Ore":
+                if (whatLoot >= 99) {
+                    item = new ItemStack(Material.NETHERITE_SCRAP);
+                } else if (whatLoot >= 98) {
+                    item = new ItemStack(Material.DIAMOND_BLOCK);
+                } else if (whatLoot >= 88) {
+                    item = new ItemStack(Material.DIAMOND);
+                } else if (whatLoot >= 75) {
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.QUARTZ, 3));
+                    return;
+                } else if (whatLoot >= 55) {
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.LAPIS_LAZULI, 3));
+                    return; 
+                } else if (whatLoot >= 40) {
+                    item = new ItemStack(Material.RAW_GOLD);
+                } else if (whatLoot >= 30) {
+                    item = new ItemStack(Material.RAW_IRON);   
+                } else if (whatLoot >= 19) {
+                    item = new ItemStack(Material.RAW_COPPER);
+                } else if (whatLoot >= 10) {
+                    item = new ItemStack(Material.EMERALD);
+                }
+                break;
+        
+            default:
+                break;
         }
-        if (whatLoot >= 98) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.DIAMOND_BLOCK));
-            return;
-        }
-        if (whatLoot >= 88) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.DIAMOND));
-            return;
-        }
-        else if (whatLoot >= 75) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_GOLD));
-            return;
-        }
-        else if (whatLoot >= 55) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_IRON));
-            return;
-        }
-        else if (whatLoot >= 40) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.GUNPOWDER));
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.GUNPOWDER));
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.GUNPOWDER));
-            return;
-        }
-        else if (whatLoot >= 19) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_COPPER));
-            return;
-        }
-        else if (whatLoot >= 10) {
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.EMERALD));
-            return;
-        }
-        else{
-            location.getWorld().dropItemNaturally(location, new ItemStack(Material.COAL));
-            return;
-        }
+
+        location.getWorld().dropItemNaturally(location, item);
     }
 
 }

@@ -31,18 +31,18 @@ public class CustomTools {
         }
     }
 
-    public static void treasureFishingRodFunc(int chanceForCrit, Player player, Projectile projectile, int playerLuck)
+    public static void treasureFishingRodFunc(int chanceForCrit, Player player, Projectile projectile, int playerLuck, String typeOfLoot)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             if (projectile instanceof org.bukkit.entity.FishHook) {
                 org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
                 Location bobberLocation = fishHook.getLocation();
-                LogicHolder.rollTreasure(playerLuck, bobberLocation);
+                LogicHolder.rollTreasure(playerLuck, bobberLocation, typeOfLoot);
             }
         }
     }
 
-    public static void dwarfPickaxeFunc(int chanceForCrit, Player player, int playerLuck, Block brokenBlock)
+    public static void dwarfPickaxeFunc(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot)
     {   
         if (brokenBlock.getType() == Material.STONE || brokenBlock.getType() == Material.DEEPSLATE || brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE) {
             if (brokenBlock.getType() == Material.DEEPSLATE) {
@@ -54,7 +54,7 @@ public class CustomTools {
             }
             if (LogicHolder.critRoll(chanceForCrit)) {
                 Location blockLocation = brokenBlock.getLocation();
-                LogicHolder.rollTreasure(playerLuck, blockLocation);
+                LogicHolder.rollTreasure(playerLuck, blockLocation, typeOfLoot);
             }
         }
     }

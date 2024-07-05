@@ -254,7 +254,7 @@ public class InteractionListener implements Listener{
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodFunc(66 ,player, projectile, luckLvl);
+                CustomTools.treasureFishingRodFunc(66 ,player, projectile, luckLvl, "Ore");
                 System.out.println(luckLvl);
             }
         }
@@ -279,10 +279,8 @@ public class InteractionListener implements Listener{
                 if (isDumb == 1) {
                     System.out.println(isDumb);
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
-                    return;
                 }
-                CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock);
-                return;
+                CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock, "Ore");
             }
         }
     }
