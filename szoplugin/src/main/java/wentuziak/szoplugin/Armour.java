@@ -11,18 +11,15 @@ public class Armour {
     
     static BukkitTask mermaidTailTask;
     
-    public static void jetBootsFunc(LivingEntity player)
-    {
-        if (LogicHolder.isPlayerAboveGround(player, 0.75)) 
-        {
+    public static void jetBootsEffect(LivingEntity player){
+        if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
             LogicHolder.givePotionEffect(player, "LEVITATION", 5, 9);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
             player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 10, 0, -1, 0, 0);
         }    
     }
 
-    public static void golemChestFunc(LivingEntity player)
-    {
+    public static void golemChestEffect(LivingEntity player){
         LogicHolder.givePotionEffect(player, "SLOW", 40, 4);
         LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 200, 0);
         LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);
@@ -30,10 +27,8 @@ public class Armour {
         player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
     }
 
-    public static void explosiveChestFunc(int chanceForCrit, LivingEntity damager, LivingEntity player)
-    {
-        if (LogicHolder.critRoll(chanceForCrit))
-        {
+    public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
+        if (LogicHolder.critRoll(chanceForCrit)){
             LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 5, 4);
             damager.getWorld().createExplosion(damager.getLocation(), 2, false, false);
             LogicHolder.givePotionEffect(player, "REGENERATION", 20, 4);
@@ -41,8 +36,7 @@ public class Armour {
     }
 
 
-    public static void mermaidTailFunc(Player player)
-    {   
+    public static void mermaidTailEffect(Player player){   
         final Player finalPlayer = player;
         mermaidTailTask = new BukkitRunnable() {
             @Override
@@ -54,7 +48,7 @@ public class Armour {
                 LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 200, 2);
                 LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 200, 1);
             }
-        }.runTaskTimer(SzoPlugin.getInstance(), 20, 20*1);
+        }.runTaskTimer(SzoPlugin.getInstance(), 20, 20);
 
     }
 
@@ -66,8 +60,7 @@ public class Armour {
         }
     }
 
-    public static void gluttonyPantsFunc(Player player)
-    {
+    public static void gluttonyPantsEffect(Player player){
         LogicHolder.givePotionEffect(player, "SPEED", 200, 1);    
         LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);    
     }

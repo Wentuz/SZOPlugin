@@ -85,13 +85,13 @@ public class InteractionListener implements Listener{
             PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
                 if (!(player.isHandRaised())) {
-                    CustomTools.effectRaisedShieldFunc(player, 3);
+                    CustomTools.effectRaisedShieldEffect(player, 3);
                     return;
                 }
             }
             if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton) {
                 if (!(player.isHandRaised())) {
-                    CustomTools.effectRaisedShieldFunc(player, 2);
+                    CustomTools.effectRaisedShieldEffect(player, 2);
                     return;
                 }
             }
@@ -112,14 +112,14 @@ public class InteractionListener implements Listener{
         if (itemOnChest != null && itemOnChest.hasItemMeta()) {
             playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BYTE)) {
-                Armour.golemChestFunc(player);
+                Armour.golemChestEffect(player);
             }
         }
     
         if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
-                Armour.jetBootsFunc(player);
+                Armour.jetBootsEffect(player);
             }
         }
         
@@ -141,7 +141,7 @@ public class InteractionListener implements Listener{
             PersistentDataContainer playerContainer = itemOnLeg.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_GLUTTONY_PANTS, PersistentDataType.BYTE)) {
-                Armour.gluttonyPantsFunc(player);
+                Armour.gluttonyPantsEffect(player);
             }
         }
 
@@ -203,7 +203,7 @@ public class InteractionListener implements Listener{
             if (itemOnChest.hasItemMeta()) {
                 playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
-                    Armour.explosiveChestFunc(20 ,damager, player);
+                    Armour.explosiveChestEffect(20 ,damager, player);
                     return;
                 }
             }
@@ -230,7 +230,7 @@ public class InteractionListener implements Listener{
         if (itemInMainHand.hasItemMeta()) {
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BYTE)) {
-                CustomTools.hastyToolFunc(player);
+                CustomTools.hastyToolEffect(player);
                 return;
             }
         }
@@ -254,7 +254,7 @@ public class InteractionListener implements Listener{
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodFunc(66 ,player, projectile, luckLvl, "Ore");
+                CustomTools.treasureFishingRodEffect(66 ,player, projectile, luckLvl, "Ore");
                 System.out.println(luckLvl);
             }
         }
@@ -280,7 +280,7 @@ public class InteractionListener implements Listener{
                     System.out.println(isDumb);
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
                 }
-                CustomTools.dwarfPickaxeFunc(11, player, luckLvl, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(11, player, luckLvl, brokenBlock, "Ore");
             }
         }
     }
@@ -301,7 +301,7 @@ public class InteractionListener implements Listener{
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE)) {
                 if (isInWater && Armour.mermaidTailTask == null) {
-                    Armour.mermaidTailFunc(player);
+                    Armour.mermaidTailEffect(player);
                 }
             }
         }

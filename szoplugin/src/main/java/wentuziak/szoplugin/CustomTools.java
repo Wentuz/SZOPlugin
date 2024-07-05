@@ -13,7 +13,7 @@ public class CustomTools {
     private static BukkitTask hastyToolTask;
     private static BukkitTask effectRaisedShieldTask;
     
-    public static void hastyToolFunc(Player player) 
+    public static void hastyToolEffect(Player player) 
     {
         final Player finalPlayer = player;
         hastyToolTask = new BukkitRunnable() {
@@ -31,7 +31,7 @@ public class CustomTools {
         }
     }
 
-    public static void treasureFishingRodFunc(int chanceForCrit, Player player, Projectile projectile, int playerLuck, String typeOfLoot)
+    public static void treasureFishingRodEffect(int chanceForCrit, Player player, Projectile projectile, int playerLuck, String typeOfLoot)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             if (projectile instanceof org.bukkit.entity.FishHook) {
@@ -42,7 +42,7 @@ public class CustomTools {
         }
     }
 
-    public static void dwarfPickaxeFunc(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot)
+    public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot)
     {   
         if (brokenBlock.getType() == Material.STONE || brokenBlock.getType() == Material.DEEPSLATE || brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE) {
             if (brokenBlock.getType() == Material.DEEPSLATE) {
@@ -59,7 +59,7 @@ public class CustomTools {
         }
     }
 
-    public static void effectRaisedShieldFunc(Player player, int whatShield)
+    public static void effectRaisedShieldEffect(Player player, int whatShield)
     {   
         final Player finalPlayer = player;
         final int finalShield = whatShield;

@@ -8,8 +8,7 @@ import org.bukkit.entity.Player;
 
 public class MagicItems {
 
-    public static void teleportSpell(Player player)
-    {
+    public static void teleportSpell(Player player){
         Block targetBlock = player.getTargetBlock(null, 50);
 
         Location blockLocation = targetBlock.getLocation();
@@ -31,8 +30,7 @@ public class MagicItems {
 
     }
 
-    public static void spiritLeech(Player player)
-    {
+    public static void spiritLeech(Player player){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 10, 10);
         LogicHolder.throwSnowball(player);
     }

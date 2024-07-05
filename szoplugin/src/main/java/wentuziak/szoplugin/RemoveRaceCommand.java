@@ -20,7 +20,6 @@ public class RemoveRaceCommand implements TabExecutor {
         }
 
         Player targetPlayer = Bukkit.getPlayer(args[1]);
-
         if (targetPlayer == null) {
             sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);
             return false;
