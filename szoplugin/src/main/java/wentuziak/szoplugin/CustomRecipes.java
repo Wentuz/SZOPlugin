@@ -85,6 +85,22 @@ public final class CustomRecipes {
             pyromancerSwordRecipe.setIngredient('T', Material.TNT);
             pyromancerSwordRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(pyromancerSwordRecipe);
+
+
+        //
+        //      ScurvyTrident Recipe
+        //
+        ItemStack scurvyTrident = CreateCustomItem.createScurvyTrident();
+
+        ShapedRecipe scurvyTridentRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ScurvyTridentRecipe"), scurvyTrident);
+        scurvyTridentRecipe.shape(
+            " S ",
+            "DTD",
+            "   ");
+            scurvyTridentRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            scurvyTridentRecipe.setIngredient('T', Material.TRIDENT);
+            scurvyTridentRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(scurvyTridentRecipe);
         
         
         //

@@ -28,6 +28,7 @@ STUFF IN HERE:
         Honey grants them regeneration and sum saturation
         They may craft Dwarfen Ale using Honey bottle in main and Golden apple in Off hand
         Only iron golems are worse swimmers than them
+        They minie faster and are short
 
 > Custom items :
     > Weapons :

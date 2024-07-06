@@ -116,6 +116,30 @@ public class CreateCustomItem {
         return thunderHammer;
     }
 
+    static ItemStack createScurvyTrident(){
+        ItemStack scurvyTrident = new ItemStack(Material.TRIDENT);
+        ItemMeta scurvyTridentMeta = scurvyTrident.getItemMeta();
+
+        scurvyTridentMeta.setDisplayName(ChatColor.DARK_BLUE + "Scurvy Trident");
+        scurvyTridentMeta.setLore(Arrays.asList(
+            "Ahoy !"));
+        AttributeModifier attackSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -3.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierScurvyTrident);
+        AttributeModifier attackDamageModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 12.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierScurvyTrident);
+        AttributeModifier waterSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "WaterSpeed", 1.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY, waterSpeedModifierScurvyTrident);
+        AttributeModifier attackSpeedModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "AttackSpeedOff", -3.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierScurvyTridentOff);
+        AttributeModifier attackDamageModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "AttackDamageOff", 12.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierScurvyTridentOff);
+        AttributeModifier waterSpeedModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "WaterSpeedOff", 1.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY, waterSpeedModifierScurvyTridentOff);
+        scurvyTrident.setItemMeta(scurvyTridentMeta);
+
+        return scurvyTrident;
+    }
+
     static ItemStack createGravityBow(){
         ItemStack gravityBow = new ItemStack(Material.BOW);
         ItemMeta gravityBowMeta = gravityBow.getItemMeta();

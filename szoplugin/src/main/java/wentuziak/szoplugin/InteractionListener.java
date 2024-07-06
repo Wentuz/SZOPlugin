@@ -1,9 +1,7 @@
 package wentuziak.szoplugin;
 
 
-import java.security.Key;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -304,7 +302,7 @@ public class InteractionListener implements Listener{
             Armour.stopMermaidTailTask();
             RaceEffects.stopDwarfSwimTask();
         }
-        if (player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater) {
+        if ((player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater)) {
             RaceEffects.dwarfSwimEvent(player);
         }
     }
