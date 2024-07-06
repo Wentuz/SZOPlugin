@@ -86,6 +86,34 @@ public class LogicHolder {
                     item = new ItemStack(Material.EMERALD);
                 }
                 break;
+            
+            case "Plant":
+                if (whatLoot >= 35) {
+                    item = new ItemStack(Material.MYCELIUM);
+                } else if (whatLoot >= 30) {
+                    item = new ItemStack(Material.LILY_PAD);
+                } else if (whatLoot >= 25) {
+                    item = new ItemStack(Material.SUGAR_CANE);
+                } else if (whatLoot >= 22) {
+                    item = new ItemStack(Material.CARROT);
+                } else if (whatLoot >= 19) {
+                    item = new ItemStack(Material.POTATO);
+                } else if (whatLoot >= 16) {
+                    item = new ItemStack(Material.BEETROOT_SEEDS);
+                } else if (whatLoot >= 13) {
+                    item = new ItemStack(Material.MELON_SEEDS);
+                } else if (whatLoot >= 10) {
+                    item = new ItemStack(Material.PUMPKIN_SEEDS);
+                } else if (whatLoot >= 7) {
+                    item = new ItemStack(Material.RED_MUSHROOM);
+                } else if (whatLoot >= 5) {
+                    item = new ItemStack(Material.BROWN_MUSHROOM);
+                } else if (whatLoot == 1) {
+                    item = new ItemStack(Material.BAMBOO);
+                } else {
+                    item = new ItemStack(Material.WHEAT_SEEDS);
+                }
+                break;
         
             default:
                 break;

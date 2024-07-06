@@ -276,6 +276,13 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             CustomTools.dwarfPickaxeEffect(5, player, 1, brokenBlock, "Ore");
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_WITCH) && 
+        (brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
+        || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
+            if (LogicHolder.critRoll(5 * (luckLvl + 1))) {
+                LogicHolder.rollTreasure((luckLvl / 2) + 1, brokenBlock.getLocation(), "Plant");
+            }
+        }
     }
 
     //
