@@ -168,6 +168,9 @@ public class InteractionListener implements Listener{
             if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                 RaceEffects.witchAttackEvent(player, hitEntity);
             }
+            if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)){
+                RaceEffects.celestialAttackEvent(player, hitEntity);
+            }
 
             //
             //      Special Weapons

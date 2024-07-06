@@ -7,6 +7,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -45,6 +47,20 @@ public class EntityListener implements Listener {
             chickenClicked.damage(damageAmount);
             if (!chickenClicked.isDead()) {
                 chickenClicked.getWorld().dropItem(chickenClicked.getLocation(), itemToDrop);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityRegainHealth(EntityRegainHealthEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            
+            //
+            //      Turn off Natural Regen for Celestial's
+            //
+            if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL) && event.getRegainReason() == RegainReason.REGEN) {
+                event.setCancelled(true);
             }
         }
     }

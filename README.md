@@ -36,6 +36,11 @@ STUFF IN HERE:
         Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart
         Gets random bonus effects on any potion drank
         Their weapons are poisoned. Even if it's just a stick
+    >   Celestial
+        Combat focused race. 2x health, 4 hand dmg. Slight hp regen when hitting an entity
+        Their heavenly origins make them less affected by gravity
+        They are higher than most
+        Natural health regen is turned off, fire burns 4x longer on them
 
 > Custom items :
     > Weapons :

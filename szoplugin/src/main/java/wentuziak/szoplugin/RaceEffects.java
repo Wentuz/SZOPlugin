@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -19,7 +21,6 @@ public class RaceEffects {
     //
     //      DWARF
     //
-
     public static void dwarfConsumptionEffect(Player player,  ItemStack consumedStack){
         Material consumedMaterial = consumedStack.getType();
         String consumedItem = consumedMaterial.toString();
@@ -77,7 +78,6 @@ public class RaceEffects {
     //
     //          WITCH       
     //
-
     public static void witchCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
         Material mainHandMaterial = itemInMainHand.getType();
         Material offHandMaterial = itemInOffHand.getType();
@@ -136,4 +136,17 @@ public class RaceEffects {
         }
     }
 
+    //
+    //      Celestial
+    //
+    public static void celestialAttackEvent(Player player,  LivingEntity targetEntity){
+        if (LogicHolder.critRoll(20)) {
+            LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 10, 0);
+        }
+        if (LogicHolder.critRoll(20)) {
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
+            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_AMBIENT, 10, 10);
+            player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 10);
+        }
+    }
 }

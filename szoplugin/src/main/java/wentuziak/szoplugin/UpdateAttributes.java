@@ -12,6 +12,9 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 20);
             modifyScale(player, 1);
             modifyMineSpeed(player, 1);
+            modifyAttackDamage(player, 1);
+            modifyFireTime(player, 1);
+            modifyGravity(player, 0.08);
             return;
         }
         if (raceName.equals("RACE_DWARF")) {
@@ -20,6 +23,13 @@ public class UpdateAttributes {
             modifyScale(player, 0.8);
             modifyMineSpeed(player, 1.2);
             return;
+        }
+        if (raceName.equals("RACE_CELESTIAL")) {
+            modifyHealthPoints(player, 40);
+            modifyAttackDamage(player, 4);
+            modifyFireTime(player, 4);
+            modifyGravity(player, 0.04);
+            modifyScale(player, 1.15);
         }
         
     }
@@ -38,6 +48,18 @@ public class UpdateAttributes {
     }
     public static void modifyMineSpeed(Player player, double value){
         AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.PLAYER_BLOCK_BREAK_SPEED);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyAttackDamage(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyFireTime(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_BURNING_TIME);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyGravity(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_GRAVITY);
         mineSpeedAttribute.setBaseValue(value);
     }
 }
