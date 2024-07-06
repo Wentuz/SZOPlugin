@@ -6,6 +6,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Silverfish;
 
 
 public class Weapons {
@@ -58,12 +59,12 @@ public class Weapons {
     {
         for(int i = 0; i < 4; i++){            
             if (LogicHolder.critRoll(66)) {
-                hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
+                Silverfish silverfish = (Silverfish) hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
+                LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
             }
         }
-
-        hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
-
+        Silverfish silverfish = (Silverfish) hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
+        LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
     }
 
 

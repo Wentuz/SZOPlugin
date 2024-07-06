@@ -138,6 +138,9 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             RaceEffects.dwarfConsumptionEffect(player, consumedItem);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
+            RaceEffects.witchConsumptionEffect(player, consumedItem);
+        }
         SpecialFood.effectFoodFunc(player, consumedItem);
         
     }
@@ -162,8 +165,13 @@ public class InteractionListener implements Listener{
 
             LivingEntity hitEntity = (LivingEntity) event.getEntity();
             PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
-            
+            if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
+                RaceEffects.witchAttackEvent(player, hitEntity);
+            }
 
+            //
+            //      Special Weapons
+            //
             if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
                 Weapons.explosiveSwordEffect(33, hitEntity);
                 return;

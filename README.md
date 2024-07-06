@@ -32,6 +32,10 @@ STUFF IN HERE:
         Only iron golems are worse swimmers than them
         They minie faster and are short
     >   Witch
+        Plants from breaking grass and fern
+        Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart
+        Gets random bonus effects on any potion drank
+        Their weapons are poisoned. Even if it's just a stick
 
 > Custom items :
     > Weapons :
