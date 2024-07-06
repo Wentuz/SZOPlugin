@@ -10,6 +10,8 @@ STUFF IN HERE:
 
 > Food category:
     1. Glowberries make you shine and see in darkness,
+    2. Dwarf Honey, strong ale
+    3. The most Suspicious Soup, very sus
 
 > Added usability to items:
     1. Fire Charges while used explode beneath your feet,
@@ -29,6 +31,7 @@ STUFF IN HERE:
         They may craft Dwarfen Ale using Honey bottle in main and Golden apple in Off hand
         Only iron golems are worse swimmers than them
         They minie faster and are short
+    >   Witch
 
 > Custom items :
     > Weapons :
@@ -38,6 +41,7 @@ STUFF IN HERE:
         4.  Angel Sword - chance to heal on hit
         5.  Anti grav bow - Levitation on hit
         6.  ULTIMATE RAT LAUNCHER - silverfish wherever it hits
+        7.  Scurvy Trident - Simply better
     > Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts

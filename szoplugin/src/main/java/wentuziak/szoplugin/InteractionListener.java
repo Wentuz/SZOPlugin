@@ -55,6 +55,8 @@ public class InteractionListener implements Listener{
             if ((event.getHand() == EquipmentSlot.HAND && itemInMainHand.getType() != Material.AIR && itemInOffHand.getType() != Material.AIR)) {
                 if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
                     RaceEffects.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
+                } else if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
+                    RaceEffects.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
             }
         }

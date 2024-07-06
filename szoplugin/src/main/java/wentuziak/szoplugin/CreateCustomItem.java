@@ -406,6 +406,9 @@ public class CreateCustomItem {
     //      RACE CRAFTABLES
     //
 
+    //
+    //      DWARF HONEY
+    //
     static ItemStack createDwarfHoney(){
         ItemStack dwarfHoney = new ItemStack(Material.HONEY_BOTTLE);
         ItemMeta dwarfHoneyMeta = dwarfHoney.getItemMeta();
@@ -417,5 +420,23 @@ public class CreateCustomItem {
         dwarfHoney.setItemMeta(dwarfHoneyMeta);
 
         return dwarfHoney;
+    }
+
+    //
+    //      WITCH SOUP
+    //
+    static ItemStack createWitchSoup(){
+        ItemStack witchSoup = new ItemStack(Material.MUSHROOM_STEW);
+        ItemMeta witchSoupMeta = witchSoup.getItemMeta();
+
+        witchSoupMeta.setDisplayName(ChatColor.DARK_PURPLE + "The most suspicious Soup");
+        witchSoupMeta.setLore(Arrays.asList(
+            "Poison ? No ? Okay"));
+        witchSoupMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        witchSoupMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        witchSoupMeta.getPersistentDataContainer().set(Keys.CUSTOM_WITCH_SOUP, PersistentDataType.BOOLEAN, true);
+        witchSoup.setItemMeta(witchSoupMeta);
+
+        return witchSoup;
     }
 }

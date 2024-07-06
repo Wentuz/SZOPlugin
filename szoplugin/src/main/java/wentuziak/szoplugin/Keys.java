@@ -37,6 +37,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_SOUL_FRAGMENT = new NamespacedKey(SzoPlugin.getInstance(), "SoulFragment");
     public static final NamespacedKey CUSTOM_MECHANICAL_PARTS = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalParts");
     public static final NamespacedKey CUSTOM_DWARF_HONEY = new NamespacedKey(SzoPlugin.getInstance(), "DwarfHoney");
+    public static final NamespacedKey CUSTOM_WITCH_SOUP = new NamespacedKey(SzoPlugin.getInstance(), "WitchSoup");
 
     //
     //      Tools
@@ -52,12 +53,14 @@ public class Keys {
     //
     public static final NamespacedKey RACE_DWARF = new NamespacedKey(SzoPlugin.getInstance(), "Dwarf");
     public static final NamespacedKey RACE_CELESTIAL = new NamespacedKey(SzoPlugin.getInstance(), "Celestial");
+    public static final NamespacedKey RACE_WITCH = new NamespacedKey(SzoPlugin.getInstance(), "Witch");
 
 
     public static NamespacedKey[] getRaceKeys(){
         return new NamespacedKey[] {
             RACE_DWARF,
-            RACE_CELESTIAL
+            RACE_CELESTIAL,
+            RACE_WITCH
         };
     }
     public static NamespacedKey getKeyByName(String keyName) {

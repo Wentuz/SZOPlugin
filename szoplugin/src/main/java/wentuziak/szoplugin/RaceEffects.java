@@ -15,6 +15,9 @@ public class RaceEffects {
 
     static BukkitTask dwarfSwimTask;
 
+    //
+    //      DWARF
+    //
 
     public static void dwarfConsumptionEffect(Player player,  ItemStack consumedStack){
         Material consumedMaterial = consumedStack.getType();
@@ -68,6 +71,22 @@ public class RaceEffects {
         if (dwarfSwimTask != null && !dwarfSwimTask.isCancelled()) {
             dwarfSwimTask.cancel();
             dwarfSwimTask = null;
+        }
+    }
+
+    //
+    //          WITCH       
+    //
+
+    public static void witchCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.SUSPICIOUS_STEW && offHandMaterial == Material.NETHER_WART) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createWitchSoup());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
         }
     }
 

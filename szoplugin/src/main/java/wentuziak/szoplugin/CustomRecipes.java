@@ -94,10 +94,10 @@ public final class CustomRecipes {
 
         ShapedRecipe scurvyTridentRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ScurvyTridentRecipe"), scurvyTrident);
         scurvyTridentRecipe.shape(
-            " S ",
+            " M ",
             "DTD",
             "   ");
-            scurvyTridentRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            scurvyTridentRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
             scurvyTridentRecipe.setIngredient('T', Material.TRIDENT);
             scurvyTridentRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(scurvyTridentRecipe);
