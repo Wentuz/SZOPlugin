@@ -141,6 +141,9 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
             RaceEffects.witchConsumptionEffect(player, consumedItem);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_MISKARU)) {
+            RaceEffects.miskaruConsumptionEffect(player, consumedItem);
+        }
         SpecialFood.effectFoodFunc(player, consumedItem);
         
     }

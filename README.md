@@ -41,6 +41,11 @@ STUFF IN HERE:
         Their heavenly origins make them less affected by gravity
         They are higher than most
         Natural health regen is turned off, fire burns 4x longer on them
+    >   Miskaru
+        Another combat focused race. +3 hearts, 4 hand dmg, lower attack speed
+        Falling hurts them a lot more due to their mass
+        Slightly taller
+        May eat rotten flesh, spider eyes and honey for effects
 
 > Custom items :
     > Weapons :

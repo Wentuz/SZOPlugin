@@ -141,12 +141,40 @@ public class RaceEffects {
     //
     public static void celestialAttackEvent(Player player,  LivingEntity targetEntity){
         if (LogicHolder.critRoll(20)) {
+            LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20 * 10, 0);
             LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 10, 0);
         }
         if (LogicHolder.critRoll(20)) {
             LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_AMBIENT, 10, 10);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 10);
+        }
+    }
+    
+    //
+    //      MISKARU
+    //
+    public static void miskaruConsumptionEffect(Player player,  ItemStack consumedStack){
+        Material consumedMaterial = consumedStack.getType();
+        String consumedItem = consumedMaterial.toString();
+
+        Set<String> implementedFood = new HashSet<>(Arrays.asList(
+            "HONEY_BOTTLE", "ROTTEN_FLESH", "SPIDER_EYE"
+        ));
+
+        if (!implementedFood.contains(consumedItem)) {
+            return;
+        }
+        
+        if (consumedItem.equals("HONEY_BOTTLE")) {
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
+            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+        }else if (consumedItem.equals("SPIDER_EYE")) {
+            LogicHolder.givePotionEffect(player, "SPEED", 20 * 20, 0);
+            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 20, 0);
+        }else if (consumedItem.equals("ROTTEN_FLESH")) {
+            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 20, 0);
+            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
         }
     }
 }

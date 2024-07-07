@@ -15,6 +15,10 @@ public class UpdateAttributes {
             modifyAttackDamage(player, 1);
             modifyFireTime(player, 1);
             modifyGravity(player, 0.08);
+            modifyFallDmgMultiplier(player, 1);
+            modifyKnockBack(player, 0);
+            modifyOxygenBonus(player, 0);
+            modifyAttackSpeed(player, 4);
             return;
         }
         if (raceName.equals("RACE_DWARF")) {
@@ -30,6 +34,15 @@ public class UpdateAttributes {
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);
+        }
+        if (raceName.equals("RACE_MISKARU")) {
+            modifyHealthPoints(player, 26);
+            modifyAttackDamage(player, 4);
+            modifyScale(player, 1.05);
+            modifyFallDmgMultiplier(player, 2);
+            modifyKnockBack(player, 0.2);
+            modifyOxygenBonus(player, 5);
+            modifyAttackSpeed(player, 3.8);
         }
         
     }
@@ -60,6 +73,22 @@ public class UpdateAttributes {
     }
     public static void modifyGravity(Player player, double value){
         AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_GRAVITY);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyFallDmgMultiplier(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyKnockBack(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyOxygenBonus(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_OXYGEN_BONUS);
+        mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifyAttackSpeed(Player player, double value){
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
         mineSpeedAttribute.setBaseValue(value);
     }
 }
