@@ -114,6 +114,12 @@ public class InteractionListener implements Listener{
                 Armour.jetBootsEffect(player);
             }
         }
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)) {
+            RaceEffects.caraGlideEvent(player);
+        }else{
+            RaceEffects.stopCaraGlideTask();
+        }
         
     }
     

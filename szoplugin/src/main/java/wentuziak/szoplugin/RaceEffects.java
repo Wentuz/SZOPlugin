@@ -17,6 +17,7 @@ import org.bukkit.scheduler.BukkitTask;
 public class RaceEffects {
 
     static BukkitTask dwarfSwimTask;
+    static BukkitTask caraGlideTask;
 
     //
     //      DWARF
@@ -59,6 +60,7 @@ public class RaceEffects {
             @Override
             public void run(){
                 if (!LogicHolder.isPlayerInWater(finalPlayer)) {
+                    finalPlayer.sendMessage("Nuh");
                     stopDwarfSwimTask();
                     return;
                 }
@@ -175,6 +177,36 @@ public class RaceEffects {
         }else if (consumedItem.equals("ROTTEN_FLESH")) {
             LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 20, 0);
             LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+        }
+    }
+        
+    //
+    //      CARA
+    //
+    public static void caraGlideEvent(Player player){   
+        final Player finalPlayer = player;
+
+        // if (caraGlideTask != null && !caraGlideTask.isCancelled()) {
+        //     return;
+        // }
+        caraGlideTask = new BukkitRunnable() {
+            @Override
+            public void run(){
+                if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.1)) {
+                    stopCaraGlideTask();
+                    finalPlayer.setGliding(false);
+                    return;
+                }
+                finalPlayer.setGliding(true);
+            }
+        }.runTaskTimer(SzoPlugin.getInstance(), 5, 0);
+
+    }
+
+    public static void stopCaraGlideTask() {
+        if (caraGlideTask != null && !caraGlideTask.isCancelled()) {
+            caraGlideTask.cancel();
+            caraGlideTask = null;
         }
     }
 }

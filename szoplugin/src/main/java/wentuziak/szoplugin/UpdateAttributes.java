@@ -44,6 +44,12 @@ public class UpdateAttributes {
             modifyOxygenBonus(player, 5);
             modifyAttackSpeed(player, 3.8);
         }
+        if (raceName.equals("RACE_CARA")) {
+            modifyScale(player, 0.75);
+            modifyGravity(player, 0.07);
+            modifyHealthPoints(player, 18);
+            modifyMovementSpeed(player, 0.11);
+        }
         
     }
 
