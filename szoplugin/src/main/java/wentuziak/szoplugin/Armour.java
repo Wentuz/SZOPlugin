@@ -37,11 +37,8 @@ public class Armour {
 
     //      For some reason works only on one player
     public static void mermaidTailEffect(Player player){   
-        player.sendMessage("Checking Mermaid !!");
-
         if (!TaskManager.isTaskRunning(player, "mermaidTail")) {            
             final Player finalPlayer = player;
-            player.sendMessage("Mermaid !!");
             mermaidTailTask = new BukkitRunnable() {
                 @Override
                 public void run(){

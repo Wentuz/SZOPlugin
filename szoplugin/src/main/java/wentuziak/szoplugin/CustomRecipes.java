@@ -1,17 +1,27 @@
 package wentuziak.szoplugin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 
 public final class CustomRecipes {
 
+    private static List<NamespacedKey> recipeKeys = new ArrayList<>();
+
+    public static List<NamespacedKey> getRecipeKeys() {
+        return recipeKeys;
+    }
+
     public static void register(){
+        NamespacedKey key;
+
         //
         //      Soul Fragment Recipe
         //
@@ -28,8 +38,10 @@ public final class CustomRecipes {
         //      Mechanical Parts Recipe
         //
         ItemStack mechanicalParts = CreateCustomItem.createMechanicalParts();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalPartsRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe mechanicalPartsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "MechanicalPartsRecipe"), mechanicalParts);
+        ShapedRecipe mechanicalPartsRecipe = new ShapedRecipe(key, mechanicalParts);
         mechanicalPartsRecipe.shape(
             " R ",
             "CNC",
@@ -44,8 +56,10 @@ public final class CustomRecipes {
         //      Angel Sword Recipe
         //
         ItemStack angelSword = CreateCustomItem.createAngelSword();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "AngelSwordRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe angelSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "AngelSwordRecipe"), angelSword);
+        ShapedRecipe angelSwordRecipe = new ShapedRecipe(key, angelSword);
         angelSwordRecipe.shape(
         " D ",
             " D ",
@@ -60,8 +74,10 @@ public final class CustomRecipes {
         //      Daemon Sword Recipe
         //
         ItemStack daemonSword = CreateCustomItem.createDaemonSword();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "DaemonSwordRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe daemonSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "DaemonSwordRecipe"), daemonSword);
+        ShapedRecipe daemonSwordRecipe = new ShapedRecipe(key, daemonSword);
         daemonSwordRecipe.shape(
             " D ",
             " D ",
@@ -76,8 +92,10 @@ public final class CustomRecipes {
         //      Pyromancer's Sword Recipe
         //
         ItemStack pyromancerSword = CreateCustomItem.createPyromancerSword();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "PyromancerSwordRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe pyromancerSwordRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "PyromancerSwordRecipe"), pyromancerSword);
+        ShapedRecipe pyromancerSwordRecipe = new ShapedRecipe(key, pyromancerSword);
         pyromancerSwordRecipe.shape(
             " D ",
             " D ",
@@ -92,8 +110,10 @@ public final class CustomRecipes {
         //      ScurvyTrident Recipe
         //
         ItemStack scurvyTrident = CreateCustomItem.createScurvyTrident();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "ScurvyTridentRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe scurvyTridentRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ScurvyTridentRecipe"), scurvyTrident);
+        ShapedRecipe scurvyTridentRecipe = new ShapedRecipe(key, scurvyTrident);
         scurvyTridentRecipe.shape(
             " M ",
             "DTD",
@@ -108,8 +128,10 @@ public final class CustomRecipes {
         //      Þrumuhamar Recipe
         //
         ItemStack thunderHammer = CreateCustomItem.createThunderHammer();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammerRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe thunderHammerRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammerRecipe"), thunderHammer);
+        ShapedRecipe thunderHammerRecipe = new ShapedRecipe(key , thunderHammer);
         thunderHammerRecipe.shape(
             "DS ",
             "DC ",
@@ -125,8 +147,10 @@ public final class CustomRecipes {
         //      IronBreakerShield Recipe
         //
         ItemStack ironBreakerShield = CreateCustomItem.createIronBreakerShield();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "IronBreakerShieldRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe ironBreakerShieldRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "IronBreakerShieldRecipe"), ironBreakerShield);
+        ShapedRecipe ironBreakerShieldRecipe = new ShapedRecipe(key , ironBreakerShield);
         ironBreakerShieldRecipe.shape(
             "I I",
             "IMI",
@@ -140,8 +164,10 @@ public final class CustomRecipes {
         //      BerserkerShield Recipe
         //
         ItemStack berserkerShield = CreateCustomItem.createBerserkerShield();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "BerserkerShieldRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe berserkerShieldRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "BerserkerShieldRecipe"), berserkerShield);
+        ShapedRecipe berserkerShieldRecipe = new ShapedRecipe(key, berserkerShield);
         berserkerShieldRecipe.shape(
             "E E",
             "WSW",
@@ -156,8 +182,10 @@ public final class CustomRecipes {
         //      gravityBow Recipe
         //
         ItemStack gravityBow = CreateCustomItem.createGravityBow();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GravityBowRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe gravityBowRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GravityBowRecipe"), gravityBow);
+        ShapedRecipe gravityBowRecipe = new ShapedRecipe(key, gravityBow);
         gravityBowRecipe.shape(
             "SW ",
             "S M",
@@ -172,8 +200,10 @@ public final class CustomRecipes {
         //      gravityBow Recipe
         //
         ItemStack ratBow = CreateCustomItem.createRatBow();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "RatBowRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe ratBowRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "RatBowRecipe"), ratBow);
+        ShapedRecipe ratBowRecipe = new ShapedRecipe(key, ratBow);
         ratBowRecipe.shape(
             "SW ",
             "S F",
@@ -188,8 +218,10 @@ public final class CustomRecipes {
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "HermesBootsRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe hermesBootsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "HermesBootsRecipe"), hermesBoots);
+        ShapedRecipe hermesBootsRecipe = new ShapedRecipe(key, hermesBoots);
         hermesBootsRecipe.shape(
             "   ",
             "FMF",
@@ -204,8 +236,10 @@ public final class CustomRecipes {
         //      Jet boots Recipe
         //
         ItemStack jetBoots = CreateCustomItem.createJetBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "JetBootsRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe jetBootsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "JetBootsRecipe"), jetBoots);
+        ShapedRecipe jetBootsRecipe = new ShapedRecipe(key, jetBoots);
         jetBootsRecipe.shape(
             "   ",
             "DMD",
@@ -220,8 +254,10 @@ public final class CustomRecipes {
         //      Golem Chest Recipe
         //
         ItemStack golemChest = CreateCustomItem.createGolemChest();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GolemChestRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe golemChestRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GolemChestRecipe"), golemChest);
+        ShapedRecipe golemChestRecipe = new ShapedRecipe(key, golemChest);
         golemChestRecipe.shape(
             "I I",
             "IMI",
@@ -236,8 +272,10 @@ public final class CustomRecipes {
         //      Explosive Chest Recipe
         //
         ItemStack explosiveChest = CreateCustomItem.createExplosiveChest();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveChestRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe explosiveChestRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveChestRecipe"), explosiveChest);
+        ShapedRecipe explosiveChestRecipe = new ShapedRecipe(key, explosiveChest);
         explosiveChestRecipe.shape(
             "D D",
             "TST",
@@ -252,8 +290,10 @@ public final class CustomRecipes {
         //      MermaidTail Recipe
         //
         ItemStack mermaidTail = CreateCustomItem.createMermaidTail();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MermaidTailRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe mermaidTailRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "MermaidTailRecipe"), mermaidTail);
+        ShapedRecipe mermaidTailRecipe = new ShapedRecipe(key, mermaidTail);
         mermaidTailRecipe.shape(
             "PSP",
             "D D",
@@ -268,8 +308,10 @@ public final class CustomRecipes {
         //      GluttonyPants Recipe
         //
         ItemStack gluttonyPants = CreateCustomItem.createGluttonyPants();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GluttonyPantsRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe gluttonyPantsRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "GluttonyPantsRecipe"), gluttonyPants);
+        ShapedRecipe gluttonyPantsRecipe = new ShapedRecipe(key, gluttonyPants);
         gluttonyPantsRecipe.shape(
             "GSG",
             "D D",
@@ -284,8 +326,10 @@ public final class CustomRecipes {
         //      Teleport Spell recipe
         //
         ItemStack teleportSpell = CreateCustomItem.createTeleportSpell();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "teleportSpellRecipe");
+        recipeKeys.add(key);
 
-        ShapedRecipe teleportSpellRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "teleportSpellRecipe"), teleportSpell);
+        ShapedRecipe teleportSpellRecipe = new ShapedRecipe(key, teleportSpell);
         teleportSpellRecipe.shape(
             " P ",
             "PSP",
@@ -299,7 +343,10 @@ public final class CustomRecipes {
         //      Hasty Shovel recipe
         //
         ItemStack hastyShovel = CreateCustomItem.createHastyShovel();
-        ShapedRecipe hastyShovelRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyShovelRecipe"), hastyShovel);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "hastyShovelRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe hastyShovelRecipe = new ShapedRecipe(key, hastyShovel);
         hastyShovelRecipe.shape(
             " D ",
             " M ",
@@ -314,7 +361,10 @@ public final class CustomRecipes {
         //      Hasty Axe recipe
         //
         ItemStack hastyAxe = CreateCustomItem.createHastyAxe();
-        ShapedRecipe hastyAxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyAxeRecipe"), hastyAxe);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "hastyAxeRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe hastyAxeRecipe = new ShapedRecipe(key, hastyAxe);
         hastyAxeRecipe.shape(
             "DM ",
             "DS ",
@@ -329,7 +379,10 @@ public final class CustomRecipes {
         //      Hasty Pickaxe recipe
         //
         ItemStack hastyPickaxe = CreateCustomItem.createHastyPickaxe();
-        ShapedRecipe hastyPickaxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "hastyPickRecipe"), hastyPickaxe);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "hastyPickRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe hastyPickaxeRecipe = new ShapedRecipe(key, hastyPickaxe);
         hastyPickaxeRecipe.shape(
             "DMD",
             " S ",
@@ -344,7 +397,10 @@ public final class CustomRecipes {
         //      Dwarf Pickaxe recipe
         //
         ItemStack dwarfPickaxe = CreateCustomItem.createDwarfPickaxe();
-        ShapedRecipe dwarfPickaxeRecipe = new ShapedRecipe(new NamespacedKey(SzoPlugin.getInstance(), "dwarfPickaxeRecipe"), dwarfPickaxe);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "dwarfPickaxeRecipe");
+        recipeKeys.add(key);
+        
+        ShapedRecipe dwarfPickaxeRecipe = new ShapedRecipe(key, dwarfPickaxe);
         dwarfPickaxeRecipe.shape(
             "DFD",
             " M ",
@@ -354,5 +410,23 @@ public final class CustomRecipes {
             dwarfPickaxeRecipe.setIngredient('D', Material.DIAMOND);
             dwarfPickaxeRecipe.setIngredient('S', Material.STICK);
         Bukkit.addRecipe(dwarfPickaxeRecipe);
+
+
+        //
+        //      Treasure Fishing Rod recipe
+        //
+        ItemStack treasureFish = CreateCustomItem.createTreasureFishingRod();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "treasureFishRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe treasureFishRecipe = new ShapedRecipe(key, treasureFish);
+        treasureFishRecipe.shape(
+            "F  ",
+            "TS ",
+            "T S");
+            treasureFishRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
+            treasureFishRecipe.setIngredient('T', Material.STRING);
+            treasureFishRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(treasureFishRecipe);
     }
 }
