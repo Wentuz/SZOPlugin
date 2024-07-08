@@ -55,28 +55,24 @@ public class RaceEffects {
     }
 
     public static void dwarfSwimEvent(Player player){   
-        final Player finalPlayer = player;
-
-        if (dwarfSwimTask != null && !dwarfSwimTask.isCancelled()) {
-            return;
-        }
-        dwarfSwimTask = new BukkitRunnable() {
-            @Override
-            public void run(){
-                if (!LogicHolder.isPlayerInWater(finalPlayer)) {
-                    stopDwarfSwimTask();
-                    return;
+        if (!TaskManager.isTaskRunning(player, "dwarfSwim")) {            
+            final Player finalPlayer = player;
+            dwarfSwimTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (!LogicHolder.isPlayerInWater(finalPlayer)) {
+                        stopDwarfSwimTask(finalPlayer);
+                        return;
+                    }
+                    LogicHolder.givePotionEffect(finalPlayer, "SLOW", 20 * 4, 2);
                 }
-                LogicHolder.givePotionEffect(finalPlayer, "SLOW", 20 * 4, 2);
-            }
-        }.runTaskTimer(SzoPlugin.getInstance(), 20, 20);
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 3);
+            TaskManager.addTask(player, "dwarfSwim", dwarfSwimTask);
+        }
     }
 
-    public static void stopDwarfSwimTask() {
-        if (dwarfSwimTask != null && !dwarfSwimTask.isCancelled()) {
-            dwarfSwimTask.cancel();
-            dwarfSwimTask = null;
-        }
+    public static void stopDwarfSwimTask(Player player) {
+        TaskManager.stopTask(player, "dwarfSwim");
     }
 
     //
@@ -186,29 +182,25 @@ public class RaceEffects {
     //      CARA
     //
     public static void caraGlideEvent(Player player){   
-        final Player finalPlayer = player;
-
-        // if (caraGlideTask != null && !caraGlideTask.isCancelled()) {
-        //     return;
-        // }
-        caraGlideTask = new BukkitRunnable() {
-            @Override
-            public void run(){
-                if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.1)) {
-                    stopCaraGlideTask();
-                    finalPlayer.setGliding(false);
-                    return;
+        if (!TaskManager.isTaskRunning(player, "caraGlide")) {            
+            final Player finalPlayer = player;
+            caraGlideTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.1)) {
+                        stopCaraGlideTask(finalPlayer);
+                        finalPlayer.setGliding(false);
+                        return;
+                    }
+                    finalPlayer.setGliding(true);
                 }
-                finalPlayer.setGliding(true);
-            }
-        }.runTaskTimer(SzoPlugin.getInstance(), 5, 0);
+            }.runTaskTimer(SzoPlugin.getInstance(), 0, 1);
+            TaskManager.addTask(player, "caraGlide", caraGlideTask);
+        }
 
     }
 
-    public static void stopCaraGlideTask() {
-        if (caraGlideTask != null && !caraGlideTask.isCancelled()) {
-            caraGlideTask.cancel();
-            caraGlideTask = null;
-        }
+    public static void stopCaraGlideTask(Player player) {
+        TaskManager.stopTask(player, "caraGlide");
     }
 }

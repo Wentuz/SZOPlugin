@@ -47,7 +47,7 @@ public class InteractionListener implements Listener{
 
         boolean clickedRightButton = !(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK);
 
-        if (clickedRightButton) {
+        if (clickedRightButton && (itemInMainHand != null && itemInOffHand != null)) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
                     //
                     //      RACE HAND CRAFTING
@@ -66,7 +66,7 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-        if (itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
+        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
@@ -79,7 +79,7 @@ public class InteractionListener implements Listener{
         }
 
         // Off hand items only
-        if (itemInOffHand.getType() != Material.AIR && itemInOffHand.hasItemMeta()) {
+        if (itemInOffHand != null && itemInOffHand.getType() != Material.AIR && itemInOffHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
                 CustomTools.effectRaisedShieldEffect(player, 3);
@@ -118,7 +118,7 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)) {
             RaceEffects.caraGlideEvent(player);
         }else{
-            RaceEffects.stopCaraGlideTask();
+            RaceEffects.stopCaraGlideTask(player);
         }
         
     }
@@ -231,7 +231,10 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
 
-        CustomTools.stopHastyToolTask(player);
+        if (itemInMainHand == null) {
+            CustomTools.stopHastyToolTask(player);
+            return;
+        }
 
         PersistentDataContainer playerContainer;
         if (itemInMainHand.hasItemMeta()) {
@@ -314,7 +317,7 @@ public class InteractionListener implements Listener{
         boolean isInWater = LogicHolder.isPlayerInWater(player);
         
         if (itemLeggings == null) {
-            Armour.stopMermaidTailTask();
+            Armour.stopMermaidTailTask(player);
         }else if (itemLeggings.hasItemMeta()) {
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE)) {
@@ -325,8 +328,8 @@ public class InteractionListener implements Listener{
         }
 
         if (!isInWater) {
-            Armour.stopMermaidTailTask();
-            RaceEffects.stopDwarfSwimTask();
+            Armour.stopMermaidTailTask(player);
+            RaceEffects.stopDwarfSwimTask(player);
         }
         if ((player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater)) {
             RaceEffects.dwarfSwimEvent(player);

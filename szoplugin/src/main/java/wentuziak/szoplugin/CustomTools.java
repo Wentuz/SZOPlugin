@@ -18,10 +18,9 @@ public class CustomTools {
             final Player finalPlayer = player;
             hastyToolTask = new BukkitRunnable() {
                 @Override
-                public void run(){
-                        finalPlayer.sendMessage("Run hasty tool");
-                        LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, 0);
-                    }
+                public void run(){                       
+                    LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, 0);
+                }
             }.runTaskTimer(SzoPlugin.getInstance(), 1, 20*15);
             TaskManager.addTask(player, "hastyTools", hastyToolTask);
         }
@@ -57,34 +56,34 @@ public class CustomTools {
         }
     }
 
-    public static void effectRaisedShieldEffect(Player player, int whatShield){   
-        final Player finalPlayer = player;
-        final int finalShield = whatShield;
-        effectRaisedShieldTask = new BukkitRunnable() {
-            @Override
-            public void run(){
-
-                if (!(finalPlayer.isHandRaised())) {
-                    stopeffectRaisedShieldTask();
-                    return;
-                }
-                if (finalShield == 3) {
-                    LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
-                    LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 0);
-                } else if (finalShield == 2) {
-                    LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
-                    LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);
-                }
-                }
-        }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
+    public static void effectRaisedShieldEffect(Player player, int whatShield){  
+        if (!TaskManager.isTaskRunning(player, "raisedShield")) {            
+            final Player finalPlayer = player;
+            final int finalShield = whatShield;
+            effectRaisedShieldTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+    
+                    if (!(finalPlayer.isHandRaised())) {
+                        stopeffectRaisedShieldTask(finalPlayer);
+                        return;
+                    }
+                    if (finalShield == 3) {
+                        LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
+                        LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 0);
+                    } else if (finalShield == 2) {
+                        LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
+                        LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);
+                    }
+                    }
+            }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
+            TaskManager.addTask(player, "raisedShield", effectRaisedShieldTask);
+        } 
 
     }
 
-    public static void stopeffectRaisedShieldTask() {
-        if (effectRaisedShieldTask != null && !effectRaisedShieldTask.isCancelled()) {
-            effectRaisedShieldTask.cancel();
-            effectRaisedShieldTask = null;
-        }
+    public static void stopeffectRaisedShieldTask(Player player) {
+        TaskManager.stopTask(player, "raisedShield");
     }
 
 }

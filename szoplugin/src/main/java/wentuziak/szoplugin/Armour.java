@@ -35,29 +35,29 @@ public class Armour {
         }
     }
 
-
+    //      For some reason works only on one player
     public static void mermaidTailEffect(Player player){   
-        final Player finalPlayer = player;
-        mermaidTailTask = new BukkitRunnable() {
-            @Override
-            public void run(){
-                if (!LogicHolder.isPlayerInWater(finalPlayer)) {
-                    stopMermaidTailTask();
-                    return;
+        if (!TaskManager.isTaskRunning(player, "mermaidTail")) {            
+            final Player finalPlayer = player;
+            mermaidTailTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    // if (!LogicHolder.isPlayerInWater(finalPlayer)) {
+                    //     stopMermaidTailTask(finalPlayer);
+                    //     return;
+                    // }
+                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 2);
+                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1);
                 }
-                LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 200, 2);
-                LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 200, 1);
-            }
-        }.runTaskTimer(SzoPlugin.getInstance(), 20, 20);
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 5);
+            TaskManager.addTask(player, "mermaidTail", mermaidTailTask);
+        }
 
     }
 
 
-    public static void stopMermaidTailTask() {
-        if (mermaidTailTask != null && !mermaidTailTask.isCancelled()) {
-            mermaidTailTask.cancel();
-            mermaidTailTask = null;
-        }
+    public static void stopMermaidTailTask(Player player) {
+        TaskManager.stopTask(player, "mermaidTail");
     }
 
     public static void gluttonyPantsEffect(Player player){
