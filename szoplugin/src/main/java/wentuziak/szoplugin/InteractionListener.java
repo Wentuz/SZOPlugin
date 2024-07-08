@@ -320,10 +320,8 @@ public class InteractionListener implements Listener{
             Armour.stopMermaidTailTask(player);
         }else if (itemLeggings.hasItemMeta()) {
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE)) {
-                if (isInWater && Armour.mermaidTailTask == null) {
-                    Armour.mermaidTailEffect(player);
-                }
+            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && isInWater) {
+                Armour.mermaidTailEffect(player);
             }
         }
 

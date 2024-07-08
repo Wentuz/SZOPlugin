@@ -37,15 +37,14 @@ public class Armour {
 
     //      For some reason works only on one player
     public static void mermaidTailEffect(Player player){   
+        player.sendMessage("Checking Mermaid !!");
+
         if (!TaskManager.isTaskRunning(player, "mermaidTail")) {            
             final Player finalPlayer = player;
+            player.sendMessage("Mermaid !!");
             mermaidTailTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    // if (!LogicHolder.isPlayerInWater(finalPlayer)) {
-                    //     stopMermaidTailTask(finalPlayer);
-                    //     return;
-                    // }
                     LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 2);
                     LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1);
                 }

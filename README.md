@@ -46,6 +46,11 @@ STUFF IN HERE:
         Falling hurts them a lot more due to their mass
         Slightly taller
         May eat rotten flesh, spider eyes and honey for effects
+    >   Cara
+        Allows gliding on pressing shift while in air. Can't use fireworks without elytra
+        A bit smaller than dwarfes but faster than most races
+        Fragile. One less heart than normal
+        Gravity is more forgiving for them
 
 > Custom items :
     > Weapons :
