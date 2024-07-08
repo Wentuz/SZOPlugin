@@ -1,4 +1,5 @@
 package wentuziak.szoplugin;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;

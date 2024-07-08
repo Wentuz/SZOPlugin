@@ -56,18 +56,20 @@ public class RaceEffects {
 
     public static void dwarfSwimEvent(Player player){   
         final Player finalPlayer = player;
+
+        if (dwarfSwimTask != null && !dwarfSwimTask.isCancelled()) {
+            return;
+        }
         dwarfSwimTask = new BukkitRunnable() {
             @Override
             public void run(){
                 if (!LogicHolder.isPlayerInWater(finalPlayer)) {
-                    finalPlayer.sendMessage("Nuh");
                     stopDwarfSwimTask();
                     return;
                 }
                 LogicHolder.givePotionEffect(finalPlayer, "SLOW", 20 * 4, 2);
             }
         }.runTaskTimer(SzoPlugin.getInstance(), 20, 20);
-
     }
 
     public static void stopDwarfSwimTask() {

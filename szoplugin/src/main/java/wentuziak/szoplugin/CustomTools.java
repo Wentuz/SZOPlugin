@@ -14,20 +14,21 @@ public class CustomTools {
     private static BukkitTask effectRaisedShieldTask;
     
     public static void hastyToolEffect(Player player) {
-        final Player finalPlayer = player;
-        hastyToolTask = new BukkitRunnable() {
-            @Override
-            public void run(){
-                    LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, 0);
-                }
-        }.runTaskTimer(SzoPlugin.getInstance(), 1, 20*15);
+        if (!TaskManager.isTaskRunning(player, "hastyTools")) {
+            final Player finalPlayer = player;
+            hastyToolTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                        finalPlayer.sendMessage("Run hasty tool");
+                        LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, 0);
+                    }
+            }.runTaskTimer(SzoPlugin.getInstance(), 1, 20*15);
+            TaskManager.addTask(player, "hastyTools", hastyToolTask);
+        }
     }
 
-    public static void stopHastyToolTask() {
-        if (hastyToolTask != null && !hastyToolTask.isCancelled()) {
-            hastyToolTask.cancel();
-            hastyToolTask = null; // Clear the reference to the cancelled task
-        }
+    public static void stopHastyToolTask(Player player) {
+        TaskManager.stopTask(player, "hastyTools");
     }
 
     public static void treasureFishingRodEffect(int chanceForCrit, Player player, Projectile projectile, int playerLuck, String typeOfLoot){
@@ -62,7 +63,6 @@ public class CustomTools {
         effectRaisedShieldTask = new BukkitRunnable() {
             @Override
             public void run(){
-                //System.out.println("RAISED SHIELD  ????");
 
                 if (!(finalPlayer.isHandRaised())) {
                     stopeffectRaisedShieldTask();
@@ -75,7 +75,6 @@ public class CustomTools {
                     LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
                     LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);
                 }
-                //System.out.println(finalPlayer.isHandRaised());
                 }
         }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
 

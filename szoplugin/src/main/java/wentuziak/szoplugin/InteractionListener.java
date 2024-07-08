@@ -231,10 +231,7 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
 
-        if (itemInMainHand == null) {
-            CustomTools.stopHastyToolTask();
-            return;
-        }
+        CustomTools.stopHastyToolTask(player);
 
         PersistentDataContainer playerContainer;
         if (itemInMainHand.hasItemMeta()) {
