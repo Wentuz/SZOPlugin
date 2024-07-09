@@ -53,7 +53,7 @@ public class RemoveRaceCommand implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         if(args.length == 1){
-            return java.util.Arrays.asList("dwarf", "celestial", "witch", "miskaru", "cara");
+            return java.util.Arrays.asList("dwarf", "celestial", "witch", "miskaru", "cara", "mewchant");
         }
          if (args.length == 2) {
             List<String> playerNames = new ArrayList<>();

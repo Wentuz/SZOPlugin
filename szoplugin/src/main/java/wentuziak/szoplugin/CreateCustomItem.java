@@ -13,8 +13,12 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
+import org.bukkit.inventory.meta.PotionMeta;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -438,5 +442,26 @@ public class CreateCustomItem {
         witchSoup.setItemMeta(witchSoupMeta);
 
         return witchSoup;
+    }
+
+    //
+    //      CURSED ARROW
+    //
+    static ItemStack createCursedArrow(){
+        ItemStack cursedArrow = new ItemStack(Material.TIPPED_ARROW);
+        ItemMeta cursedArrowMeta = cursedArrow.getItemMeta();
+        PotionMeta potionMeta = (PotionMeta) cursedArrow.getItemMeta();
+
+        cursedArrowMeta.setDisplayName(ChatColor.GREEN + "Cursed Arrow");
+        cursedArrowMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        cursedArrowMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        cursedArrow.setItemMeta(cursedArrowMeta);
+
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 20, 1), true);
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 20, 1), true);
+        potionMeta.setColor(Color.fromRGB(0, 255, 0));
+        cursedArrow.setItemMeta(potionMeta);
+
+        return cursedArrow;
     }
 }

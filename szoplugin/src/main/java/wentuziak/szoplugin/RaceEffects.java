@@ -87,6 +87,12 @@ public class RaceEffects {
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+        }else if (mainHandMaterial == Material.FERMENTED_SPIDER_EYE && offHandMaterial == Material.ARROW && itemInOffHand.getAmount() >= 4) {
+            for(int i = 0; i < 4; i++){
+                player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createCursedArrow());
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            LogicHolder.removeItem(player, itemInMainHand);
         }
     }
 
@@ -203,4 +209,32 @@ public class RaceEffects {
     public static void stopCaraGlideTask(Player player) {
         TaskManager.stopTask(player, "caraGlide");
     }
+
+    //
+    //      MEWCHANT
+    //
+    public static void mewchantConsumptionEffect(Player player,  ItemStack consumedStack){
+        Material consumedMaterial = consumedStack.getType();
+        String consumedItem = consumedMaterial.toString();
+
+        Set<String> implementedFood = new HashSet<>(Arrays.asList(
+            "TROPICAL_FISH", "COOKED_SALMON", "COOKED_COD", "SPIDER_EYE"
+        ));
+        if (!implementedFood.contains(consumedItem)) {
+            return;
+        }
+        
+        if (consumedItem.equals("TROPICAL_FISH")) {
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 30, 1);
+            LogicHolder.givePotionEffect(player, "SATURATION", 20, 0);
+        }else if (consumedItem.equals("COOKED_SALMON")) {
+            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+        }else if (consumedItem.equals("COOKED_COD")) {
+            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+        }else if (consumedItem.equals("SPIDER_EYE")) {
+            LogicHolder.givePotionEffect(player, "SPEED", 20 * 30, 0);
+            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 30, 0);
+        }
+    }
+       
 }

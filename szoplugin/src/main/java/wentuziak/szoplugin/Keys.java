@@ -56,6 +56,7 @@ public class Keys {
     public static final NamespacedKey RACE_WITCH = new NamespacedKey(SzoPlugin.getInstance(), "Witch");
     public static final NamespacedKey RACE_MISKARU = new NamespacedKey(SzoPlugin.getInstance(), "Miskaru");
     public static final NamespacedKey RACE_CARA = new NamespacedKey(SzoPlugin.getInstance(), "Cara");
+    public static final NamespacedKey RACE_MEWCHANT = new NamespacedKey(SzoPlugin.getInstance(), "Mewchant");
 
 
     public static NamespacedKey[] getRaceKeys(){
@@ -64,7 +65,8 @@ public class Keys {
             RACE_CELESTIAL,
             RACE_WITCH,
             RACE_MISKARU,
-            RACE_CARA
+            RACE_CARA,
+            RACE_MEWCHANT
         };
     }
     public static NamespacedKey getKeyByName(String keyName) {

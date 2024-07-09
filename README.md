@@ -36,6 +36,7 @@ STUFF IN HERE:
         Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart
         Gets random bonus effects on any potion drank
         Their weapons are poisoned. Even if it's just a stick
+        May craft cursed arrows : 4 arrows off hand + 1 fermented spider eye main hand
     >   Celestial
         Combat focused race. 2x health, 4 hand dmg. Slight hp regen when hitting an entity
         Their heavenly origins make them less affected by gravity
@@ -49,8 +50,13 @@ STUFF IN HERE:
     >   Cara
         Allows gliding on pressing shift while in air. Can't use fireworks without elytra
         A bit smaller than dwarfes but faster than most races
-        Fragile. One less heart than normal
+        Fragile. Two less hearts than normal
         Gravity is more forgiving for them
+    >   Mewchant
+        Fish and spider eyes are tasty
+        Slightly faster and almost immyne to fall dmg
+        lost 1 heart
+        Can upgrade compasses, 
 
 > Custom items :
     > Weapons :

@@ -34,6 +34,7 @@ public class UpdateAttributes {
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);
+            return;
         }
         if (raceName.equals("RACE_MISKARU")) {
             modifyHealthPoints(player, 26);
@@ -43,14 +44,21 @@ public class UpdateAttributes {
             modifyKnockBack(player, 0.2);
             modifyOxygenBonus(player, 5);
             modifyAttackSpeed(player, 3.8);
+            return;
         }
         if (raceName.equals("RACE_CARA")) {
             modifyScale(player, 0.75);
             modifyGravity(player, 0.07);
-            modifyHealthPoints(player, 18);
+            modifyHealthPoints(player, 16);
             modifyMovementSpeed(player, 0.11);
+            return;
         }
-        
+        if (raceName.equals("RACE_MEWCHANT")) {
+            modifyGravity(player, 0.07);
+            modifyFallDmgMultiplier(player, 0.8);
+            modifyHealthPoints(player, 18);
+            modifyMovementSpeed(player, 0.12);
+        }
     }
 
     public static void modifyMovementSpeed(Player player, double value){
