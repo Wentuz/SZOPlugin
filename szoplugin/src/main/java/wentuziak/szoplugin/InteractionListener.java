@@ -57,6 +57,8 @@ public class InteractionListener implements Listener{
                     RaceEffects.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
                 } else if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                     RaceEffects.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
+                } else if(player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)){
+                    RaceEffects.mewchantCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
             }
         }

@@ -114,7 +114,50 @@ public class LogicHolder {
                     item = new ItemStack(Material.WHEAT_SEEDS);
                 }
                 break;
-        
+
+            case "FishingTreasure":
+                if (whatLoot >= 99) {
+                    item = new ItemStack(Material.TOTEM_OF_UNDYING);
+                } else if (whatLoot >= 98) {
+                    item = new ItemStack(Material.NAUTILUS_SHELL, 3);
+                } else if (whatLoot >= 95) {
+                    item = new ItemStack(Material.ANCIENT_DEBRIS); // Consider enchanting this book with random enchantments.
+                } else if (whatLoot >= 90) {
+                    item = new ItemStack(Material.HEART_OF_THE_SEA);
+                } else if (whatLoot >= 85) {
+                    item = new ItemStack(Material.DIAMOND);
+                } else if (whatLoot >= 80) {
+                    item = new ItemStack(Material.EMERALD, 3);
+                } else if (whatLoot >= 75) {
+                    item = new ItemStack(Material.GOLDEN_APPLE);
+                } else if (whatLoot >= 70) {
+                    item = new ItemStack(Material.PRISMARINE_SHARD, 4);
+                } else if (whatLoot >= 65) {
+                    item = new ItemStack(Material.PRISMARINE_CRYSTALS, 4);
+                } else if (whatLoot >= 60) {
+                    item = new ItemStack(Material.AXOLOTL_BUCKET);
+                } else if (whatLoot >= 55) {
+                    item = new ItemStack(Material.INK_SAC, 5);
+                } else if (whatLoot >= 50) {
+                    item = new ItemStack(Material.TROPICAL_FISH_BUCKET);
+                } else if (whatLoot >= 45) {
+                    item = new ItemStack(Material.GOLD_INGOT, 3);
+                } else if (whatLoot >= 40) {
+                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, 5);
+                } else if (whatLoot >= 35) {
+                    item = CreateCustomItem.createCursedArrow();
+                } else if (whatLoot >= 30) {
+                    item = new ItemStack(Material.STRING, 5);
+                } else if (whatLoot >= 25) {
+                    item = new ItemStack(Material.BONE, 5);
+                } else if (whatLoot >= 20) {
+                    item = new ItemStack(Material.ROTTEN_FLESH, 5);
+                } else if (whatLoot >= 15) {
+                    item = new ItemStack(Material.TURTLE_SCUTE);
+                } else if (whatLoot >= 10) {
+                    item = new ItemStack(Material.SEA_PICKLE);
+                }
+                break;
             default:
                 break;
         }

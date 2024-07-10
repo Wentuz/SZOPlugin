@@ -54,9 +54,9 @@ STUFF IN HERE:
         Gravity is more forgiving for them
     >   Mewchant
         Fish and spider eyes are tasty
-        Slightly faster and almost immyne to fall dmg
+        Slightly faster and almost immune to fall dmg
         lost 1 heart
-        Can upgrade compasses, 
+        Can upgrade compasses, clocks and spyglasses
 
 > Custom items :
     > Weapons :

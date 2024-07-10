@@ -464,4 +464,22 @@ public class CreateCustomItem {
 
         return cursedArrow;
     }
+
+    //
+    //      Lucky Clock
+    //
+    static ItemStack createLuckyClock(){
+        ItemStack luckyClock = new ItemStack(Material.CLOCK);
+        ItemMeta luckyClockMeta = luckyClock.getItemMeta();
+
+        luckyClockMeta.setDisplayName(ChatColor.GOLD + "Lucky Clock");
+        luckyClockMeta.setLore(Arrays.asList(
+            "A finer booty be upon ye !"));
+        luckyClockMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        luckyClockMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        luckyClockMeta.getPersistentDataContainer().set(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BOOLEAN, true);
+        luckyClock.setItemMeta(luckyClockMeta);
+
+        return luckyClock;
+    }
 }

@@ -236,5 +236,16 @@ public class RaceEffects {
             LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 30, 0);
         }
     }
-       
+
+    public static void mewchantCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.CLOCK && itemInOffHand == CreateCustomItem.createMechanicalParts()) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+        }
+    } 
 }

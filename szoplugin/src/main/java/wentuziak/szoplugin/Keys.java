@@ -47,6 +47,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_TREASURE_FISHING = new NamespacedKey(SzoPlugin.getInstance(), "TreasureFishing");
     public static final NamespacedKey CUSTOM_IRON_BREAKER_SHIELD = new NamespacedKey(SzoPlugin.getInstance(), "IronBreakerShield");
     public static final NamespacedKey CUSTOM_BERSERKER_SHIELD = new NamespacedKey(SzoPlugin.getInstance(), "BerserkerShield");
+    public static final NamespacedKey CUSTOM_LUCKY_CLOCK = new NamespacedKey(SzoPlugin.getInstance(), "LuckyClock");
     
     //
     //      Races
