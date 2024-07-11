@@ -13,8 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class LogicHolder {
     
-    public static void removeItem(Player player, ItemStack itemUsed)
-    {
+    public static void removeItem(Player player, ItemStack itemUsed){
         if (itemUsed.getAmount() > 1) {
             itemUsed.setAmount(itemUsed.getAmount() - 1);
         } else{
@@ -22,19 +21,16 @@ public class LogicHolder {
         }
     }
 
-    public static void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier)
-    {
+    public static void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier){
         PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
         player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
     }
 
-    public static boolean critRoll(int critChance)
-    {   
+    public static boolean critRoll(int critChance){   
         return (Math.random() * 100 + 1) <= critChance;
     }
 
-    public static boolean isPlayerInWater(Player player)
-        {
+    public static boolean isPlayerInWater(Player player){
             Block block = player.getLocation().getBlock();
             Block blockAbove = player.getLocation().add(0, 1, 0).getBlock();
 
@@ -42,8 +38,7 @@ public class LogicHolder {
             block.getType() == Material.WATER_CAULDRON || blockAbove.getType() == Material.WATER);
 
         }
-    public static void throwSnowball(Player player)
-    {
+    public static void throwSnowball(Player player){
         Snowball snowball = player.launchProjectile(Snowball.class);
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
@@ -121,7 +116,7 @@ public class LogicHolder {
                 } else if (whatLoot >= 98) {
                     item = new ItemStack(Material.NAUTILUS_SHELL, 3);
                 } else if (whatLoot >= 95) {
-                    item = new ItemStack(Material.ANCIENT_DEBRIS); // Consider enchanting this book with random enchantments.
+                    item = new ItemStack(Material.ANCIENT_DEBRIS);
                 } else if (whatLoot >= 90) {
                     item = new ItemStack(Material.HEART_OF_THE_SEA);
                 } else if (whatLoot >= 85) {

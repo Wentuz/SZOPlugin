@@ -340,6 +340,23 @@ public final class CustomRecipes {
 
 
         //
+        //      Spirit Leech Spell recipe
+        //
+        ItemStack leechSpell = CreateCustomItem.createSpiritLeech();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "leechSpellRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe leechSpellRecipe = new ShapedRecipe(key, leechSpell);
+        leechSpellRecipe.shape(
+            " L ",
+            "LSL",
+            " L ");
+            leechSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            leechSpellRecipe.setIngredient('L', Material.SOUL_LANTERN);
+        Bukkit.addRecipe(leechSpellRecipe);
+
+
+        //
         //      Hasty Shovel recipe
         //
         ItemStack hastyShovel = CreateCustomItem.createHastyShovel();

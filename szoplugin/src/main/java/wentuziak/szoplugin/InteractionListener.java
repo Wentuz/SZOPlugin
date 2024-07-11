@@ -68,16 +68,18 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
+        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 35);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.spiritLeech(player);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 60);
                 return;
-            }
+            }   
         }
 
         // Off hand items only
@@ -371,7 +373,6 @@ public class InteractionListener implements Listener{
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
                     }
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
-                        System.out.println("CUSTOM RAT BOW WOWOW");
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
                     }
                 }

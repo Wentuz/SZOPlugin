@@ -56,7 +56,7 @@ STUFF IN HERE:
         Fish and spider eyes are tasty
         Slightly faster and almost immune to fall dmg
         lost 1 heart
-        Can upgrade clocks
+        Can upgrade clocks into Lucky Clocks
 
 > Custom items :
     > Weapons :
