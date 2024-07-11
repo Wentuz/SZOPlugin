@@ -241,7 +241,7 @@ public class RaceEffects {
         Material mainHandMaterial = itemInMainHand.getType();
         Material offHandMaterial = itemInOffHand.getType();
         Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.CLOCK && itemInOffHand == CreateCustomItem.createMechanicalParts()) {
+        if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
             
             LogicHolder.removeItem(player, itemInOffHand);

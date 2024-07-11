@@ -161,7 +161,6 @@ public class LogicHolder {
             default:
                 break;
         }
-
         location.getWorld().dropItemNaturally(location, item);
     }
 

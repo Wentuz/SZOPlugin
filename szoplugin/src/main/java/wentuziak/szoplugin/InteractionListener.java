@@ -257,19 +257,24 @@ public class InteractionListener implements Listener{
     public void onPlayerFish(PlayerFishEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
         PersistentDataContainer playerContainer;
+        PersistentDataContainer playerOffHandContainer;
         Projectile projectile = event.getHook();
-        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.FORTUNE);
+        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA);
 
         if (event.getState() == State.CAUGHT_FISH) {
-            if (!(itemInMainHand.hasItemMeta())) {
+            if (!(itemInMainHand.hasItemMeta()) && !(itemInOffHand.hasItemMeta())) {
                 return;
             }
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+            playerOffHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
                 CustomTools.treasureFishingRodEffect(66 ,player, projectile, luckLvl, "Ore");
-                System.out.println(luckLvl);
+            }
+            if (playerOffHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                CustomTools.treasureFishingRodEffect(66 ,player, projectile, luckLvl, "FishingTreasure");
             }
         }
     }
@@ -281,6 +286,7 @@ public class InteractionListener implements Listener{
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
         PersistentDataContainer playerContainer;
         Block brokenBlock = event.getBlock();
         int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.FORTUNE);
@@ -298,14 +304,26 @@ public class InteractionListener implements Listener{
             }
         }
 
+        if (itemInOffHand.hasItemMeta()) {
+            playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                CustomTools.dwarfPickaxeEffect(11, player, luckLvl - 1, brokenBlock, "Ore");
+            }
+        }
+
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             CustomTools.dwarfPickaxeEffect(5, player, 1, brokenBlock, "Ore");
         }
-        if (player.getPersistentDataContainer().has(Keys.RACE_WITCH) && 
-        (brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
+        if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
-            if (LogicHolder.critRoll(5 * (luckLvl + 1))) {
+            if (LogicHolder.critRoll(5 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 LogicHolder.rollTreasure((luckLvl / 2) + 1, brokenBlock.getLocation(), "Plant");
+            }
+            if(itemInOffHand.hasItemMeta()){
+                PersistentDataContainer offHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+                if (LogicHolder.critRoll(5 * (luckLvl + 1)) && offHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                    LogicHolder.rollTreasure((luckLvl / 2) + 1, brokenBlock.getLocation(), "Plant");
+                }
             }
         }
     }
