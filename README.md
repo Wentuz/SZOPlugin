@@ -33,7 +33,7 @@ STUFF IN HERE:
         They minie faster and are short
     >   Witch
         Plants from breaking grass and fern
-        Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart
+        Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart, Healing gas: main - ghast tear, off - gold melon, Toxic gas: main - pufferfish, off - fermented spider eye
         Gets random bonus effects on any potion drank
         Their weapons are poisoned. Even if it's just a stick
         May craft cursed arrows : 4 arrows off hand + 1 fermented spider eye main hand
@@ -56,7 +56,7 @@ STUFF IN HERE:
         Fish and spider eyes are tasty
         Slightly faster and almost immune to fall dmg
         lost 1 heart
-        Can upgrade compasses, clocks and spyglasses
+        Can upgrade clocks
 
 > Custom items :
     > Weapons :

@@ -449,20 +449,55 @@ public class CreateCustomItem {
     //
     static ItemStack createCursedArrow(){
         ItemStack cursedArrow = new ItemStack(Material.TIPPED_ARROW);
-        ItemMeta cursedArrowMeta = cursedArrow.getItemMeta();
         PotionMeta potionMeta = (PotionMeta) cursedArrow.getItemMeta();
 
-        cursedArrowMeta.setDisplayName(ChatColor.GREEN + "Cursed Arrow");
-        cursedArrowMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        cursedArrowMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        cursedArrow.setItemMeta(cursedArrowMeta);
+        potionMeta.setDisplayName(ChatColor.GREEN + "Cursed Arrow");
+        potionMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        potionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
-        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 20, 1), true);
-        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 20, 1), true);
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 80, 1), true);
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 80, 1), true);
         potionMeta.setColor(Color.fromRGB(0, 255, 0));
         cursedArrow.setItemMeta(potionMeta);
 
         return cursedArrow;
+    }
+
+    //
+    //      Healing Gas
+    //
+    static ItemStack createSuperHealingPot(){
+        ItemStack superHealth = new ItemStack(Material.LINGERING_POTION);
+        PotionMeta superHealthMeta = (PotionMeta) superHealth.getItemMeta();
+
+        superHealthMeta.setDisplayName(ChatColor.RED + "Healing Gas");
+        superHealthMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        superHealthMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        superHealthMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 80, 2), true);
+        superHealthMeta.setColor(Color.fromRGB(253, 135, 233));
+        superHealth.setItemMeta(superHealthMeta);
+
+        return superHealth;
+    }
+
+    //
+    //      Toxic Gas
+    //
+    static ItemStack createToxicPot(){
+        ItemStack toxicPot = new ItemStack(Material.LINGERING_POTION);
+        PotionMeta toxicPotMeta = (PotionMeta) toxicPot.getItemMeta();
+
+        toxicPotMeta.setDisplayName(ChatColor.GREEN + "Toxic Gas");
+        toxicPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        toxicPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        toxicPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 80, 3), true);
+        toxicPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 80, 3), true);
+        toxicPotMeta.setColor(Color.fromRGB(140, 120, 0));
+        toxicPot.setItemMeta(toxicPotMeta);
+
+        return toxicPot;
     }
 
     //

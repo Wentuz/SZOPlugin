@@ -93,6 +93,14 @@ public class RaceEffects {
                 LogicHolder.removeItem(player, itemInOffHand);
             }
             LogicHolder.removeItem(player, itemInMainHand);
+        }else if (mainHandMaterial == Material.GHAST_TEAR && offHandMaterial == Material.GLISTERING_MELON_SLICE) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSuperHealingPot());
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+        }else if (mainHandMaterial == Material.PUFFERFISH && offHandMaterial == Material.FERMENTED_SPIDER_EYE) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createToxicPot());
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
         }
     }
 
