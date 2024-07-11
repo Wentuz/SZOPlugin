@@ -80,6 +80,11 @@ public class InteractionListener implements Listener{
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 60);
                 return;
             }   
+            if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.obliterate(player);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
+                return;
+            }   
         }
 
         // Off hand items only

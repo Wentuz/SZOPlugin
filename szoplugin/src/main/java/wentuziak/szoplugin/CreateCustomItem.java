@@ -301,6 +301,21 @@ public class CreateCustomItem {
         return spiritLeech;
     }
 
+    static ItemStack createObliterateSpell(){
+        ItemStack obliterateSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta obliterateSpellMeta = obliterateSpell.getItemMeta();
+
+        obliterateSpellMeta.setDisplayName(ChatColor.RED + "OBLITERATE");
+        obliterateSpellMeta.setLore(Arrays.asList(
+            "A barbaric overkill"));
+        obliterateSpellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        obliterateSpellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        obliterateSpellMeta.getPersistentDataContainer().set(Keys.CUSTOM_OBLITERATE, PersistentDataType.BOOLEAN, true);
+        obliterateSpell.setItemMeta(obliterateSpellMeta);
+
+        return obliterateSpell;
+    }
+
     //
     //      TOOLS
     //

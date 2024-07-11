@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 public class MagicItems {
@@ -33,6 +35,19 @@ public class MagicItems {
     public static void spiritLeech(Player player){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 10, 10);
         LogicHolder.throwSnowball(player);
+    }
+
+    public static void obliterate(Player player){
+        Location location = player.getLocation();
+        for(int i = 0; i < 15; i++){            
+            if (LogicHolder.critRoll(66)) {
+                int x = (int)(Math.random() * 2);
+                int y = (int)(Math.random() * 2);
+                int z = (int)(Math.random() * 2);
+                location.getWorld().spawnEntity(location.add(x, y, z), EntityType.TNT_MINECART);
+            }
+        }
+        location.getWorld().createExplosion(location, 5, true, true);
     }
 
 

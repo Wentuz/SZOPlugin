@@ -357,6 +357,23 @@ public final class CustomRecipes {
 
 
         //
+        //      OBLITERATE Spell recipe
+        //
+        ItemStack obliterateSpell = CreateCustomItem.createObliterateSpell();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "obliterateSpellRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe obliterateSpellRecipe = new ShapedRecipe(key, obliterateSpell);
+        obliterateSpellRecipe.shape(
+            "TTT",
+            "TST",
+            "TTT");
+        obliterateSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        obliterateSpellRecipe.setIngredient('T', Material.TNT_MINECART);
+        Bukkit.addRecipe(obliterateSpellRecipe);
+
+
+        //
         //      Hasty Shovel recipe
         //
         ItemStack hastyShovel = CreateCustomItem.createHastyShovel();

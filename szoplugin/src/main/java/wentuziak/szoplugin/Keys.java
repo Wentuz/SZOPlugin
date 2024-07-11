@@ -30,6 +30,7 @@ public class Keys {
     //
     public static final NamespacedKey CUSTOM_TELEPORT_SPELL = new NamespacedKey(SzoPlugin.getInstance(), "TeleportSpell");
     public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");    
+    public static final NamespacedKey CUSTOM_OBLITERATE = new NamespacedKey(SzoPlugin.getInstance(), "ObliterateSpell");    
 
     //
     //      Craftables

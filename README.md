@@ -82,5 +82,6 @@ STUFF IN HERE:
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
     > Spells :
-        1. Bound Teleport - 1 soul fragment, 4 ender pearls
-        2. Spirit Leech - 1 soul fragment, notch apple, 3 lapis
+        1. Bound Teleport
+        2. Spirit Leech - non functional
+        3. OBLITERATE - A barbaric overkill with tnt
