@@ -4,7 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
+import org.bukkit.entity.CaveSpider;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -45,6 +45,20 @@ public class MagicItems {
         }
         LogicHolder.givePotionEffect(targetEntity, "WITHER", 20*10, 1);
         LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
+    }
+
+    public static void spiderYeet(Player player, PersistentDataContainer playerContainer){
+        player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 10, 10);
+        LogicHolder.throwSnowball(player, playerContainer);
+    }
+
+    public static void spiderYeetEffect(Location location){
+        for(int i = 0; i < 7; i++){            
+            if (LogicHolder.critRoll(66)) {
+                CaveSpider caveSpider = (CaveSpider) location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.CAVE_SPIDER);
+            }
+        }
+        CaveSpider caveSpider = (CaveSpider) location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.CAVE_SPIDER);
     }
 
     public static void obliterate(Player player){

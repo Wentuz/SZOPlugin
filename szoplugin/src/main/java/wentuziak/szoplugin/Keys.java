@@ -14,7 +14,6 @@ public class Keys {
     public static final NamespacedKey CUSTOM_THUNDER_HAMMER = new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammer");
     public static final NamespacedKey CUSTOM_GRAVITY_BOW = new NamespacedKey(SzoPlugin.getInstance(), "GravityBow");
     public static final NamespacedKey CUSTOM_RAT_BOW = new NamespacedKey(SzoPlugin.getInstance(), "RatBow");
-    public static final NamespacedKey CUSTOM_LOOTY_AXE = new NamespacedKey(SzoPlugin.getInstance(), "LootyAxe");
     
     //
     //      Armor
@@ -31,6 +30,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_TELEPORT_SPELL = new NamespacedKey(SzoPlugin.getInstance(), "TeleportSpell");
     public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");    
     public static final NamespacedKey CUSTOM_OBLITERATE = new NamespacedKey(SzoPlugin.getInstance(), "ObliterateSpell");    
+    public static final NamespacedKey CUSTOM_SPIDER_YEET = new NamespacedKey(SzoPlugin.getInstance(), "SpiderYeet");    
 
     //
     //      Craftables

@@ -80,6 +80,11 @@ public class InteractionListener implements Listener{
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
             }   
+            if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.spiderYeet(player, playerContainer);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 45);
+                return;
+            }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.obliterate(player);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);

@@ -374,6 +374,23 @@ public final class CustomRecipes {
 
 
         //
+        //      Spider Yeet Spell recipe
+        //
+        ItemStack spiderYeetSpell = CreateCustomItem.createSpiderYeetSpell();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "spiderYeetRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe spiderYeetSpellRecipe = new ShapedRecipe(key, spiderYeetSpell);
+        spiderYeetSpellRecipe.shape(
+            "CCC",
+            "CSC",
+            "CCC");
+        spiderYeetSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        spiderYeetSpellRecipe.setIngredient('C', Material.COBWEB);
+        Bukkit.addRecipe(spiderYeetSpellRecipe);
+
+
+        //
         //      Hasty Shovel recipe
         //
         ItemStack hastyShovel = CreateCustomItem.createHastyShovel();

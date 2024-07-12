@@ -316,6 +316,21 @@ public class CreateCustomItem {
         return obliterateSpell;
     }
 
+    static ItemStack createSpiderYeetSpell(){
+        ItemStack spiderYeetSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta spiderYeetSpellMeta = spiderYeetSpell.getItemMeta();
+
+        spiderYeetSpellMeta.setDisplayName(ChatColor.GREEN + "Spider" + ChatColor.RED + "Yeeter");
+        spiderYeetSpellMeta.setLore(Arrays.asList(
+            "BURN IT !"));
+        spiderYeetSpellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        spiderYeetSpellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        spiderYeetSpellMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BOOLEAN, true);
+        spiderYeetSpell.setItemMeta(spiderYeetSpellMeta);
+
+        return spiderYeetSpell;
+    }
+
     //
     //      TOOLS
     //

@@ -127,11 +127,13 @@ public class EntityListener implements Listener {
                 LivingEntity target = (LivingEntity) event.getHitEntity();
                 if (value == "spiritLeech") {
                     MagicItems.spiritLeechEffect(target);
+                }else if (value == "spiderYeet") {
+                    MagicItems.spiderYeetEffect(target.getLocation());
                 }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
-                if (value == "ratArrow") {
-                    Weapons.ratBowEffect(hitLocation);
+                if (value == "spiderYeet") {
+                    MagicItems.spiderYeetEffect(hitLocation);
                 }
             }
         }
