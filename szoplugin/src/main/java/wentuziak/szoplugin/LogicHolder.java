@@ -7,6 +7,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -38,8 +40,11 @@ public class LogicHolder {
             block.getType() == Material.WATER_CAULDRON || blockAbove.getType() == Material.WATER);
 
         }
-    public static void throwSnowball(Player player){
+    public static void throwSnowball(Player player, PersistentDataContainer playerContainer){
         Snowball snowball = player.launchProjectile(Snowball.class);
+        if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE)) {
+            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.STRING, "spiritLeech");
+        }
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
     }

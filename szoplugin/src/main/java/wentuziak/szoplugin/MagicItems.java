@@ -6,7 +6,9 @@ import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
 
 public class MagicItems {
 
@@ -32,9 +34,17 @@ public class MagicItems {
 
     }
 
-    public static void spiritLeech(Player player){
+    public static void spiritLeech(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player);
+        LogicHolder.throwSnowball(player, playerContainer);
+    }
+
+    public static void spiritLeechEffect(LivingEntity targetEntity){
+        if (targetEntity instanceof Player) {
+            ((Player) targetEntity).playSound(targetEntity.getLocation(), Sound.ENTITY_ENDERMITE_DEATH, 10, 10);
+        }
+        LogicHolder.givePotionEffect(targetEntity, "WITHER", 20*10, 1);
+        LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
     }
 
     public static void obliterate(Player player){

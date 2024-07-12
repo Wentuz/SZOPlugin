@@ -76,8 +76,8 @@ public class InteractionListener implements Listener{
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.spiritLeech(player);
-                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 60);
+                MagicItems.spiritLeech(player, playerContainer);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
@@ -380,37 +380,6 @@ public class InteractionListener implements Listener{
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
                     }
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void onArrowLand(ProjectileHitEvent event) {
-        if (event.getEntity() instanceof Arrow) {
-            Arrow arrow = (Arrow) event.getEntity();
-
-            PersistentDataContainer container = arrow.getPersistentDataContainer();
-            String value = null;
-
-            for (NamespacedKey key : container.getKeys()) {
-                if (container.has(key, PersistentDataType.STRING)) {
-                    value = container.get(key, PersistentDataType.STRING);
-                }
-            }
-            
-            if (event.getHitEntity() != null) {
-                LivingEntity target = (LivingEntity) event.getHitEntity();
-                if (value == "antiGravArrow") {
-                    Weapons.gravityBowEffect(target);
-                }
-                if (value == "ratArrow") {
-                    Weapons.ratBowEffect(target.getLocation());
-                }
-            }else{
-                Location hitLocation = event.getHitBlock().getLocation();
-                if (value == "ratArrow") {
-                    Weapons.ratBowEffect(hitLocation);
                 }
             }
         }

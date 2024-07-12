@@ -83,5 +83,5 @@ STUFF IN HERE:
         2.  Mechanical Parts - used for more advanced constructs
     > Spells :
         1. Bound Teleport
-        2. Spirit Leech - non functional
+        2. Spirit Leech - Withers target's soul
         3. OBLITERATE - A barbaric overkill with tnt
