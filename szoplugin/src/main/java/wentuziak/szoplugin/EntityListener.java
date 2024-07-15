@@ -47,17 +47,6 @@ public class EntityListener implements Listener {
             cowClicked.getWorld().dropItem(cowClicked.getLocation(), itemToDrop);
 
         }
-
-        if (event.getRightClicked().getType() == EntityType.CHICKEN) {
-            LivingEntity chickenClicked = (LivingEntity) event.getRightClicked();
-            ItemStack itemToDrop = new ItemStack(Material.FEATHER);
-            double damageAmount = 2.0;
-
-            chickenClicked.damage(damageAmount);
-            if (!chickenClicked.isDead()) {
-                chickenClicked.getWorld().dropItem(chickenClicked.getLocation(), itemToDrop);
-            }
-        }
     }
 
     @EventHandler

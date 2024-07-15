@@ -3,10 +3,13 @@ package wentuziak.szoplugin;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.RayTraceResult;
 
 public class CustomTools {
 
@@ -84,6 +87,16 @@ public class CustomTools {
 
     public static void stopeffectRaisedShieldTask(Player player) {
         TaskManager.stopTask(player, "raisedShield");
+    }
+
+    public static void markingSpyglassEffect(Player player){
+        RayTraceResult result = LogicHolder.rayTrace(150, 1.5f, player);
+
+        if (result != null && result.getHitEntity() != null) {
+            LivingEntity hitEntity = (LivingEntity) result.getHitEntity();
+
+            LogicHolder.givePotionEffect(hitEntity, "GLOWING", 20 * 20, 0);
+        }
     }
 
 }

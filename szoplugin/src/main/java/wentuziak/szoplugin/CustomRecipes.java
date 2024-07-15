@@ -29,8 +29,11 @@ public final class CustomRecipes {
         ItemStack soulFragment = CreateCustomItem.createSoulFragment();
         
         ShapelessRecipe soulFragmentRecipe = new ShapelessRecipe(new NamespacedKey(SzoPlugin.getInstance(), "SoulFragmentRecipe"), soulFragment);
-        soulFragmentRecipe.addIngredient(2, Material.DRAGON_BREATH);
-        soulFragmentRecipe.addIngredient(1, Material.NETHER_STAR);
+        soulFragmentRecipe.addIngredient(1, Material.HEART_OF_THE_SEA);
+        soulFragmentRecipe.addIngredient(1, Material.GHAST_TEAR);
+        soulFragmentRecipe.addIngredient(1, Material.ENDER_EYE);
+        soulFragmentRecipe.addIngredient(1, Material.ECHO_SHARD);
+        soulFragmentRecipe.addIngredient(2, Material.LAPIS_LAZULI);
         Bukkit.addRecipe(soulFragmentRecipe);
 
         

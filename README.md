@@ -67,6 +67,7 @@ STUFF IN HERE:
         5.  Anti grav bow - Levitation on hit
         6.  ULTIMATE RAT LAUNCHER - silverfish wherever it hits
         7.  Scurvy Trident - Simply better
+        8.  Cursed arrow - 4 arrows + fermented spider eye, hand crafting, witch
     > Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
@@ -78,10 +79,16 @@ STUFF IN HERE:
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works
         3.  Suspicious fishing rod - Possibility to fish out curiosities
-    > Ingerients :
+        4.  Lucky clock - craftable by MewChant, clock and mechanical parts, hand crafting
+        5.  Markin' Spyglass - craftable by MewChant and dwarf, spyglass and redstone torch, hand crafting
+    > Ingerients:
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
+    > Food:
+        1.  Most suspicious soup - sus soup + nether wart - hand crafting, witch
+        2.  Dwarf ale - honey bottle + golden apple - hand crafting, dwarf
     > Spells :
         1. Bound Teleport
         2. Spirit Leech - Withers target's soul
         3. OBLITERATE - A barbaric overkill with tnt
+        4. Spider Yeeter

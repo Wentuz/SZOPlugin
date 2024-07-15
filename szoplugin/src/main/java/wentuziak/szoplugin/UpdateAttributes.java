@@ -24,7 +24,7 @@ public class UpdateAttributes {
         if (raceName.equals("RACE_DWARF")) {
             modifyMovementSpeed(player, 0.08);
             modifyHealthPoints(player, 24);
-            modifyScale(player, 0.8);
+            modifyScale(player, 0.9);
             modifyMineSpeed(player, 1.2);
             return;
         }

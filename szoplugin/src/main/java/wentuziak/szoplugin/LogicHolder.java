@@ -11,6 +11,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.util.RayTraceResult;
 
 
 public class LogicHolder {
@@ -55,6 +56,17 @@ public class LogicHolder {
     public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {
         Block blockBelow = player.getLocation().subtract(0, minDistance, 0).getBlock();
         return !blockBelow.getType().isSolid();
+    }
+
+    public static RayTraceResult rayTrace(int maxDistance, float radius, Player player){
+        RayTraceResult result = player.getWorld().rayTraceEntities(
+            player.getEyeLocation(), 
+            player.getEyeLocation().getDirection(), 
+            maxDistance,
+            radius,
+            entity -> entity != player
+            );
+        return result;
     }
 
     public static void rollTreasure(int playerLuck, Location location, String typeOfLoot) {

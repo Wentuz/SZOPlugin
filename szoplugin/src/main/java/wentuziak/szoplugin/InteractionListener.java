@@ -11,6 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -30,6 +31,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.util.RayTraceResult;
 
 
 
@@ -49,6 +51,12 @@ public class InteractionListener implements Listener{
 
         if (clickedRightButton && (itemInMainHand != null && itemInOffHand != null)) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
+            if (itemInOffHand.hasItemMeta()) {
+                PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
+                    CustomTools.markingSpyglassEffect(player);
+                }
+            }
                     //
                     //      RACE HAND CRAFTING
                     //

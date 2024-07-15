@@ -547,4 +547,22 @@ public class CreateCustomItem {
 
         return luckyClock;
     }
+
+    //
+    //      Marking Spyglass
+    //
+    static ItemStack createMarkingSpyglass(){
+        ItemStack markingSpyglass = new ItemStack(Material.SPYGLASS);
+        ItemMeta markingSpyglassMeta = markingSpyglass.getItemMeta();
+
+        markingSpyglassMeta.setDisplayName(ChatColor.YELLOW + "Markin' Spyglass");
+        markingSpyglassMeta.setLore(Arrays.asList(
+            "Target spotted !"));
+        markingSpyglassMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        markingSpyglassMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        markingSpyglassMeta.getPersistentDataContainer().set(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BOOLEAN, true);
+        markingSpyglass.setItemMeta(markingSpyglassMeta);
+
+        return markingSpyglass;
+    }
 }
