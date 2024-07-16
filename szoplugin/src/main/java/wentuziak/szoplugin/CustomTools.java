@@ -44,7 +44,13 @@ public class CustomTools {
     }
 
     public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot){   
-        if (brokenBlock.getType() == Material.STONE || brokenBlock.getType() == Material.DEEPSLATE || brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE) {
+        if (brokenBlock.getType() == Material.STONE || brokenBlock.getType() == Material.DEEPSLATE 
+        || brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE
+        || brokenBlock.getType() == Material.IRON_ORE || brokenBlock.getType() == Material.DEEPSLATE_IRON_ORE
+        || brokenBlock.getType() == Material.COPPER_ORE || brokenBlock.getType() == Material.DEEPSLATE_COPPER_ORE
+        || brokenBlock.getType() == Material.GOLD_ORE || brokenBlock.getType() == Material.DEEPSLATE_GOLD_ORE
+        || brokenBlock.getType() == Material.REDSTONE_ORE || brokenBlock.getType() == Material.DEEPSLATE_REDSTONE_ORE
+        ) {
             if (brokenBlock.getType() == Material.DEEPSLATE) {
                 chanceForCrit = chanceForCrit * 2;
             }
