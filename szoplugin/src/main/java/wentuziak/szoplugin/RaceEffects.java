@@ -58,6 +58,12 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
         }
+        else if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+        }
     }
 
     public static void dwarfSwimEvent(Player player){   
