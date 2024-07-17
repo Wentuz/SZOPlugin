@@ -27,8 +27,10 @@ public final class CustomRecipes {
         //
         
         ItemStack soulFragment = CreateCustomItem.createSoulFragment();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "SoulFragmentRecipe");
+        recipeKeys.add(key);
         
-        ShapelessRecipe soulFragmentRecipe = new ShapelessRecipe(new NamespacedKey(SzoPlugin.getInstance(), "SoulFragmentRecipe"), soulFragment);
+        ShapelessRecipe soulFragmentRecipe = new ShapelessRecipe(key, soulFragment);
         soulFragmentRecipe.addIngredient(1, Material.HEART_OF_THE_SEA);
         soulFragmentRecipe.addIngredient(1, Material.GHAST_TEAR);
         soulFragmentRecipe.addIngredient(1, Material.ENDER_EYE);

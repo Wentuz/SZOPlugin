@@ -291,10 +291,11 @@ public class InteractionListener implements Listener{
             playerOffHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
 
             if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodEffect(66 ,player, projectile, luckLvl, "Ore");
+                CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "Ore");
+                CustomTools.treasureFishingRodEffect(22 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
             }
             if (playerOffHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodEffect(66 ,player, projectile, luckLvl, "FishingTreasure");
+                CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
             }
         }
     }
@@ -320,19 +321,19 @@ public class InteractionListener implements Listener{
                     System.out.println(isDumb);
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
                 }
-                CustomTools.dwarfPickaxeEffect(11, player, luckLvl, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl, brokenBlock, "Ore");
             }
         }
 
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.dwarfPickaxeEffect(11, player, luckLvl - 1, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(5 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
             }
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(5, player, 1, brokenBlock, "Ore");
+            CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, 1 * luckLvl, brokenBlock, "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {

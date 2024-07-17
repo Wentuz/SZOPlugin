@@ -20,7 +20,6 @@ public class LogicHolder {
         if (itemUsed.getAmount() > 1) {
             itemUsed.setAmount(itemUsed.getAmount() - 1);
         } else{
-            player.sendMessage("Removing item");
             itemUsed.setAmount(0);
         }
     }
