@@ -120,6 +120,20 @@ public class CreateCustomItem {
         return thunderHammer;
     }
 
+    static ItemStack createStinkyStick(){
+        ItemStack stinkyStick = new ItemStack(Material.STICK);
+        ItemMeta stinkyStickMeta = stinkyStick.getItemMeta();
+
+        stinkyStickMeta.setDisplayName(ChatColor.DARK_GREEN + "Stinky Stick");
+        stinkyStickMeta.setLore(Arrays.asList(
+            "Eww!"));
+        stinkyStickMeta.addEnchant(Enchantment.KNOCKBACK, 5, true);
+        stinkyStickMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        stinkyStick.setItemMeta(stinkyStickMeta);
+
+        return stinkyStick;
+    }
+
     static ItemStack createScurvyTrident(){
         ItemStack scurvyTrident = new ItemStack(Material.TRIDENT);
         ItemMeta scurvyTridentMeta = scurvyTrident.getItemMeta();
@@ -169,6 +183,20 @@ public class CreateCustomItem {
         ratBow.setItemMeta(ratBowMeta);
 
         return ratBow;
+    }
+
+    static ItemStack createRepeaterCrossbow(){
+        ItemStack repeaterCrossbow = new ItemStack(Material.CROSSBOW);
+        ItemMeta repeaterCrossbowMeta = repeaterCrossbow.getItemMeta();
+
+        repeaterCrossbowMeta.setDisplayName(ChatColor.YELLOW + "Repeater Crossbow");
+        repeaterCrossbowMeta.setLore(Arrays.asList(
+            ChatColor.YELLOW + "Pew pew pew"));
+        repeaterCrossbowMeta.addEnchant(Enchantment.QUICK_CHARGE, 5, true);
+        repeaterCrossbowMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        repeaterCrossbow.setItemMeta(repeaterCrossbowMeta);
+
+        return repeaterCrossbow;
     }
 
 
@@ -263,6 +291,65 @@ public class CreateCustomItem {
         gluttonyPants.setItemMeta(gluttonyPantsMeta);
 
         return gluttonyPants;
+    }
+
+    static ItemStack createIronCladChestplate(){
+        ItemStack ironCladChestplate = new ItemStack(Material.IRON_CHESTPLATE);
+        ItemMeta ironCladChestplateMeta = ironCladChestplate.getItemMeta();
+
+        ironCladChestplateMeta.setDisplayName(ChatColor.GOLD + "IronClad Chestplate");
+        ironCladChestplateMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Mark II Gladiator type"));
+        AttributeModifier attackModifierClad = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifierClad);
+        AttributeModifier attackSpeedModifierClad = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierClad);
+        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladChestplate.setItemMeta(ironCladChestplateMeta);
+
+        return ironCladChestplate;
+    }
+    static ItemStack createIronCladLeggings(){
+        ItemStack ironCladLeggings = new ItemStack(Material.IRON_LEGGINGS);
+        ItemMeta ironCladLeggingsMeta = ironCladLeggings.getItemMeta();
+
+        ironCladLeggingsMeta.setDisplayName(ChatColor.GOLD + "IronClad Leggings");
+        ironCladLeggingsMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Almost Exo... almost"));
+        AttributeModifier movementSpeedModifierClad = new AttributeModifier(UUID.randomUUID(), "Speed", 0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, movementSpeedModifierClad);
+        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        AttributeModifier healthModifierClad = new AttributeModifier(UUID.randomUUID(), "Health", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifierClad);
+        AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladLeggings.setItemMeta(ironCladLeggingsMeta);
+
+        return ironCladLeggings;
+    }
+
+    static ItemStack createIronCladBoots(){
+        ItemStack ironCladBoots = new ItemStack(Material.IRON_BOOTS);
+        ItemMeta ironCladBootsMeta = ironCladBoots.getItemMeta();
+
+        ironCladBootsMeta.setDisplayName(ChatColor.GOLD + "IronClad Stompers");
+        ironCladBootsMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "They feel heavy ? But not ?"));
+        AttributeModifier stepModifierClad = new AttributeModifier(UUID.randomUUID(), "Step", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_STEP_HEIGHT, stepModifierClad);
+        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        AttributeModifier jumpModifierClad = new AttributeModifier(UUID.randomUUID(), "Jump", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
+        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH, jumpModifierClad);
+        AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladBoots.setItemMeta(ironCladBootsMeta);
+
+        return ironCladBoots;
     }
 
 

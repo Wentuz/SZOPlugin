@@ -184,6 +184,23 @@ public final class CustomRecipes {
         
         
         //
+        //      stinkyStick Recipe
+        //
+        ItemStack stinkyStick = CreateCustomItem.createStinkyStick();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "stinkyStickRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe stinkyStickRecipe = new ShapedRecipe(key, stinkyStick);
+        stinkyStickRecipe.shape(
+            " P ",
+            " S ",
+            "   ");
+            stinkyStickRecipe.setIngredient('P', Material.PISTON);
+            stinkyStickRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(stinkyStickRecipe);
+        
+        
+        //
         //      gravityBow Recipe
         //
         ItemStack gravityBow = CreateCustomItem.createGravityBow();
@@ -220,6 +237,24 @@ public final class CustomRecipes {
         
         
         //
+        //      repeaterCrossbow Recipe
+        //
+        ItemStack repeaterCrossbow = CreateCustomItem.createRepeaterCrossbow();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "RepeaterCrossbowRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe repeaterCrossbowRecipe = new ShapedRecipe(key, repeaterCrossbow);
+        repeaterCrossbowRecipe.shape(
+            " M ",
+            "RCR",
+            "   ");
+            repeaterCrossbowRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            repeaterCrossbowRecipe.setIngredient('C', Material.CROSSBOW);
+            repeaterCrossbowRecipe.setIngredient('R', Material.REPEATER);
+        Bukkit.addRecipe(repeaterCrossbowRecipe);
+        
+        
+        //
         //      Hermes's boots Recipe
         //
         ItemStack hermesBoots = CreateCustomItem.createHermesBoots();
@@ -253,6 +288,43 @@ public final class CustomRecipes {
             jetBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
             jetBootsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(jetBootsRecipe);
+                
+        
+        //
+        //      IronCladBoots Recipe
+        //
+        ItemStack ironCladBoots = CreateCustomItem.createIronCladBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "IronCladBootsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe ironCladBootsRecipe = new ShapedRecipe(key, ironCladBoots);
+        ironCladBootsRecipe.shape(
+            "M  ",
+            "P P",
+            "I I");
+        ironCladBootsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        ironCladBootsRecipe.setIngredient('I', Material.IRON_INGOT);
+        ironCladBootsRecipe.setIngredient('P', Material.PISTON);
+        Bukkit.addRecipe(ironCladBootsRecipe);
+                
+        
+        //
+        //      IronCladChestplate Recipe
+        //
+        ItemStack ironCladChestplate = CreateCustomItem.createIronCladChestplate();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "IronCladChestplateRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe ironCladChestplateRecipe = new ShapedRecipe(key, ironCladChestplate);
+        ironCladChestplateRecipe.shape(
+            "I I",
+            "PMP",
+            "IRI");
+        ironCladChestplateRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        ironCladChestplateRecipe.setIngredient('I', Material.IRON_INGOT);
+        ironCladChestplateRecipe.setIngredient('R', Material.REDSTONE_BLOCK);
+        ironCladChestplateRecipe.setIngredient('P', Material.PISTON);
+        Bukkit.addRecipe(ironCladChestplateRecipe);
         
         
         //
@@ -307,6 +379,24 @@ public final class CustomRecipes {
             mermaidTailRecipe.setIngredient('P', Material.PRISMARINE_CRYSTALS);
             mermaidTailRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(mermaidTailRecipe);
+        
+        
+        //
+        //      IronCladLegs Recipe
+        //
+        ItemStack ironCladLeggings = CreateCustomItem.createIronCladLeggings();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "IronCladLeggingsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe ironCladLeggingsRecipe = new ShapedRecipe(key, ironCladLeggings);
+        ironCladLeggingsRecipe.shape(
+            "IMI",
+            "P P",
+            "I I");
+        ironCladLeggingsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        ironCladLeggingsRecipe.setIngredient('I', Material.IRON_INGOT);
+        ironCladLeggingsRecipe.setIngredient('P', Material.PISTON);
+        Bukkit.addRecipe(ironCladLeggingsRecipe);
         
         
         //

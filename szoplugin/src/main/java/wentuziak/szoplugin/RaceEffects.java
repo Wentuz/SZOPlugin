@@ -67,7 +67,7 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
-        else if (mainHandMaterial == Material.GUNPOWDER && itemInOffHand.getAmount() >= 8 && offHandMaterial == Material.STRING){
+        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 8) && offHandMaterial == Material.STRING){
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createGrenade());
             
             LogicHolder.removeItem(player, itemInOffHand);

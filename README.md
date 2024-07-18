@@ -69,6 +69,8 @@ STUFF IN HERE:
         7.  Scurvy Trident - Simply better
         8.  Cursed arrow - 4 arrows + fermented spider eye, hand crafting, witch
         9.  TnT stick - 8 gunpowder + string, hand crafting, dwarf
+        10. Repeater Crossbow - quick charge V
+        11. Stinky Stick - knockback
     > Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
@@ -76,6 +78,9 @@ STUFF IN HERE:
         4.  The gluttonous leggings  - regen and speed on eating anything
         5.  Jet boots - jump and crouch to become a rocket
         6.  Hermes boots - speed
+        7.  Ironclad leggings - strong pants, very cool
+        7.  Ironclad Chestplate - strong pants, very cool
+        7.  Ironclad Boots - strong pants, very cool
     > Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works
