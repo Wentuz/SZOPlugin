@@ -51,18 +51,30 @@ public class RaceEffects {
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
         else if (mainHandMaterial == Material.SPYGLASS && offHandMaterial == Material.REDSTONE_TORCH) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createMarkingSpyglass());
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
         else if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+        else if (mainHandMaterial == Material.GUNPOWDER && itemInOffHand.getAmount() >= 8 && offHandMaterial == Material.STRING){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createGrenade());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            for(int i = 0; i < 8; i++){
+                LogicHolder.removeItem(player, itemInMainHand);
+            }
+            return;
         }
     }
 
@@ -99,20 +111,26 @@ public class RaceEffects {
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }else if (mainHandMaterial == Material.FERMENTED_SPIDER_EYE && offHandMaterial == Material.ARROW && itemInOffHand.getAmount() >= 4) {
             for(int i = 0; i < 4; i++){
                 player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createCursedArrow());
                 LogicHolder.removeItem(player, itemInOffHand);
             }
+            player.sendMessage("HERE");
+
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }else if (mainHandMaterial == Material.GHAST_TEAR && offHandMaterial == Material.GLISTERING_MELON_SLICE) {
             player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSuperHealingPot());
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }else if (mainHandMaterial == Material.PUFFERFISH && offHandMaterial == Material.FERMENTED_SPIDER_EYE) {
             player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createToxicPot());
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
     }
 
@@ -266,12 +284,14 @@ public class RaceEffects {
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
         else if (mainHandMaterial == Material.SPYGLASS && offHandMaterial == Material.REDSTONE_TORCH) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createMarkingSpyglass());
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
     } 
 }

@@ -14,6 +14,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_THUNDER_HAMMER = new NamespacedKey(SzoPlugin.getInstance(), "ThunderHammer");
     public static final NamespacedKey CUSTOM_GRAVITY_BOW = new NamespacedKey(SzoPlugin.getInstance(), "GravityBow");
     public static final NamespacedKey CUSTOM_RAT_BOW = new NamespacedKey(SzoPlugin.getInstance(), "RatBow");
+    public static final NamespacedKey CUSTOM_GRENADE = new NamespacedKey(SzoPlugin.getInstance(), "Grenade");
     
     //
     //      Armor

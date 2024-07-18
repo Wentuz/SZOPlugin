@@ -119,11 +119,15 @@ public class EntityListener implements Listener {
                     MagicItems.spiritLeechEffect(target);
                 }else if (value == "spiderYeet") {
                     MagicItems.spiderYeetEffect(target.getLocation());
+                }else if (value == "grenade") {
+                    Weapons.grenadeEffect(target.getLocation());
                 }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
                 if (value == "spiderYeet") {
                     MagicItems.spiderYeetEffect(hitLocation);
+                }else if (value == "grenade") {
+                    Weapons.grenadeEffect(hitLocation);
                 }
             }
         }

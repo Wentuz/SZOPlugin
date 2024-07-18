@@ -49,6 +49,9 @@ public class LogicHolder {
         if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE)) {
             snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.STRING, "spiderYeet");
         }
+        if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
+            snowball.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.STRING, "grenade");
+        }
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
     }

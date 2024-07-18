@@ -76,7 +76,8 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
+        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() 
+        && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
@@ -98,6 +99,17 @@ public class InteractionListener implements Listener{
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
                 return;
             }   
+        }
+
+        // Main hand non magic
+        if (clickedRightButton && itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
+            PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE) && itemInOffHand.getType() == Material.FLINT_AND_STEEL 
+            && !player.hasCooldown(Material.SNOWBALL)) {
+                Weapons.grenadeThrow(player, playerContainer);
+                player.setCooldown(Material.SNOWBALL, 20 * 8);
+                return;
+            }
         }
 
         // Off hand items only

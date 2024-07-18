@@ -6,7 +6,9 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
+import org.bukkit.persistence.PersistentDataContainer;
 
 
 public class Weapons {
@@ -67,5 +69,15 @@ public class Weapons {
         LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
     }
 
+    public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
+        player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
+        LogicHolder.throwSnowball(player, playerContainer);
+    }
 
+    public static void grenadeEffect(Location location){
+        location.getWorld().createExplosion(location, 4, false, false);
+        location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.05);
+        location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.1);
+        location.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, location, 50, 0.1, 0.2, 0.1, 0.1);
+    }
 }

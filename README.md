@@ -68,6 +68,7 @@ STUFF IN HERE:
         6.  ULTIMATE RAT LAUNCHER - silverfish wherever it hits
         7.  Scurvy Trident - Simply better
         8.  Cursed arrow - 4 arrows + fermented spider eye, hand crafting, witch
+        9.  TnT stick - 8 gunpowder + string, hand crafting, dwarf
     > Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts

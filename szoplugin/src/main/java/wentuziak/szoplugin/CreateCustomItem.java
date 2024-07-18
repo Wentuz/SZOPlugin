@@ -565,4 +565,23 @@ public class CreateCustomItem {
 
         return markingSpyglass;
     }
+
+    //
+    //      Grenade
+    //
+    static ItemStack createGrenade(){
+        ItemStack grenade = new ItemStack(Material.SNOWBALL);
+        ItemMeta grenadeMeta = grenade.getItemMeta();
+
+        grenadeMeta.setDisplayName(ChatColor.RED + "TnT Stick");
+        grenadeMeta.setLore(Arrays.asList(
+            "Yeet !",
+            ChatColor.GRAY + "Flint'n steel in off hand to fire it dummy"));
+        grenadeMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        grenadeMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        grenadeMeta.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.BOOLEAN, true);
+        grenade.setItemMeta(grenadeMeta);
+
+        return grenade;
+    }
 }
