@@ -20,18 +20,18 @@ public class Armour {
     }
 
     public static void golemChestEffect(LivingEntity player){
-        LogicHolder.givePotionEffect(player, "SLOW", 40, 4);
-        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 200, 0);
-        LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);
+        LogicHolder.givePotionEffect(player, "SLOW", 20 * 2, 4);
+        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 10, 1);
+        LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
         player.getWorld().playSound(player.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
         player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
     }
 
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 5, 4);
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 5, 2);
             damager.getWorld().createExplosion(damager.getLocation(), 2, false, false);
-            LogicHolder.givePotionEffect(player, "REGENERATION", 20, 4);
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20, 3);
         }
     }
 
@@ -57,8 +57,9 @@ public class Armour {
     }
 
     public static void gluttonyPantsEffect(Player player){
-        LogicHolder.givePotionEffect(player, "SPEED", 200, 1);    
-        LogicHolder.givePotionEffect(player, "REGENERATION", 200, 1);    
+        LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);    
+        LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);    
+        LogicHolder.givePotionEffect(player, "SATURATION", 5, 0);    
     }
 
 }

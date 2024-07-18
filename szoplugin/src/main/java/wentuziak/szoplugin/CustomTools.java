@@ -2,11 +2,13 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
@@ -95,13 +97,18 @@ public class CustomTools {
         TaskManager.stopTask(player, "raisedShield");
     }
 
-    public static void markingSpyglassEffect(Player player){
-        RayTraceResult result = LogicHolder.rayTrace(150, 1.5f, player);
+    public static void markingSpyglassEffect(Player player, boolean mainHandUsed){
+        RayTraceResult result = LogicHolder.rayTrace(150, 0.5f, player);
 
         if (result != null && result.getHitEntity() != null) {
             LivingEntity hitEntity = (LivingEntity) result.getHitEntity();
-
-            LogicHolder.givePotionEffect(hitEntity, "GLOWING", 20 * 20, 0);
+            if (mainHandUsed) {
+                LogicHolder.givePotionEffect(hitEntity, "DARKNESS", 20 * 10, 0);
+                hitEntity.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, hitEntity.getLocation(), 5);
+                hitEntity.getWorld().playSound(hitEntity.getLocation(), Sound.ENTITY_WARDEN_AMBIENT, 1, 1);
+            }else{
+                LogicHolder.givePotionEffect(hitEntity, "GLOWING", 20 * 20, 0);
+            }
         }
     }
 

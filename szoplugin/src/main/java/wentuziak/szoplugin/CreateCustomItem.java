@@ -293,6 +293,26 @@ public class CreateCustomItem {
         return gluttonyPants;
     }
 
+    static ItemStack createIronCladHelmet(){
+        ItemStack ironCladHelmet = new ItemStack(Material.IRON_HELMET);
+        ItemMeta ironCladHelmetMeta = ironCladHelmet.getItemMeta();
+
+        ironCladHelmetMeta.setDisplayName(ChatColor.GOLD + "IronClad Helmet");
+        ironCladHelmetMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Enchanced target tracker and rebreather"));
+        AttributeModifier attackModifierClad = new AttributeModifier(UUID.randomUUID(), "Sweep", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.PLAYER_SWEEPING_DAMAGE_RATIO, attackModifierClad);
+        AttributeModifier oxygenModifierClad = new AttributeModifier(UUID.randomUUID(), "Oxygen", 0.75, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_OXYGEN_BONUS, oxygenModifierClad);
+        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladHelmet.setItemMeta(ironCladHelmetMeta);
+
+        return ironCladHelmet;
+    }
+
     static ItemStack createIronCladChestplate(){
         ItemStack ironCladChestplate = new ItemStack(Material.IRON_CHESTPLATE);
         ItemMeta ironCladChestplateMeta = ironCladChestplate.getItemMeta();
@@ -341,10 +361,10 @@ public class CreateCustomItem {
             ChatColor.DARK_GRAY + "They feel heavy ? But not ?"));
         AttributeModifier stepModifierClad = new AttributeModifier(UUID.randomUUID(), "Step", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_STEP_HEIGHT, stepModifierClad);
-        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier jumpModifierClad = new AttributeModifier(UUID.randomUUID(), "Jump", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
         ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH, jumpModifierClad);
+        AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
         ironCladBoots.setItemMeta(ironCladBootsMeta);

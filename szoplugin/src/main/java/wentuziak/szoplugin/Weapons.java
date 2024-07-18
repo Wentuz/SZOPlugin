@@ -16,10 +16,10 @@ public class Weapons {
 
     public static void thunderHammerEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(hitEntity, "WEAKNESS", 200, 1);
-            LogicHolder.givePotionEffect(hitEntity, "SLOW", 200, 1);
-            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 200, 1);
-            LogicHolder.givePotionEffect(hitEntity, "CONFUSION", 200, 1);
+            LogicHolder.givePotionEffect(hitEntity, "WEAKNESS", 20 * 10, 0);
+            LogicHolder.givePotionEffect(hitEntity, "SLOW", 20 * 10, 0);
+            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 5, 1);
+            LogicHolder.givePotionEffect(hitEntity, "CONFUSION", 20 * 5, 1);
             hitEntity.getWorld().strikeLightning(hitEntity.getLocation());
         }
     }
@@ -34,8 +34,8 @@ public class Weapons {
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
-            LogicHolder.givePotionEffect(hitEntity, "POISON", 100, 3);
-            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 80, 1);
+            LogicHolder.givePotionEffect(hitEntity, "POISON", 20 * 10, 1);
+            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 8, 1);
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
         }
     }
@@ -44,15 +44,15 @@ public class Weapons {
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             LogicHolder.givePotionEffect(player, "HEAL", 1, 0);
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 200, 1);
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 5, 0);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
         }
     }
 
     public static void gravityBowEffect(LivingEntity target)
     {
-        LogicHolder.givePotionEffect(target, "LEVITATION", 100, 1);
-        LogicHolder.givePotionEffect(target, "GLOWING", 100, 0);
+        LogicHolder.givePotionEffect(target, "LEVITATION", 20 * 5, 1);
+        LogicHolder.givePotionEffect(target, "GLOWING", 20 * 5, 0);
         target.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, target.getLocation(), 1);
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_PHANTOM_HURT, 1, 1);
     }

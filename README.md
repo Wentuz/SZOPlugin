@@ -79,8 +79,9 @@ STUFF IN HERE:
         5.  Jet boots - jump and crouch to become a rocket
         6.  Hermes boots - speed
         7.  Ironclad leggings - strong pants, very cool
-        7.  Ironclad Chestplate - strong pants, very cool
-        7.  Ironclad Boots - strong pants, very cool
+        8.  Ironclad Chestplate - strong chest, very cool
+        9.  Ironclad Boots - strong boots, very cool
+        10. Ironclad Helmet - strong helmet, very cool
     > Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works

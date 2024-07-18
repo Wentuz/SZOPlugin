@@ -252,7 +252,24 @@ public final class CustomRecipes {
             repeaterCrossbowRecipe.setIngredient('C', Material.CROSSBOW);
             repeaterCrossbowRecipe.setIngredient('R', Material.REPEATER);
         Bukkit.addRecipe(repeaterCrossbowRecipe);
-        
+
+
+        //
+        //      IronCladHelmet Recipe
+        //
+        ItemStack ironCladHelmet = CreateCustomItem.createIronCladHelmet();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "IronCladHelmetRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe ironCladHelmetRecipe = new ShapedRecipe(key, ironCladHelmet);
+        ironCladHelmetRecipe.shape(
+            "IMI",
+            "A A",
+            "   ");
+        ironCladHelmetRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        ironCladHelmetRecipe.setIngredient('I', Material.IRON_INGOT);
+        ironCladHelmetRecipe.setIngredient('A', Material.AMETHYST_SHARD);
+        Bukkit.addRecipe(ironCladHelmetRecipe);
         
         //
         //      Hermes's boots Recipe

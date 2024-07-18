@@ -54,7 +54,13 @@ public class InteractionListener implements Listener{
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
-                    CustomTools.markingSpyglassEffect(player);
+                    CustomTools.markingSpyglassEffect(player, false);
+                }
+            }
+            if (itemInMainHand.hasItemMeta()) {
+                PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
+                    CustomTools.markingSpyglassEffect(player, true);
                 }
             }
                     //
