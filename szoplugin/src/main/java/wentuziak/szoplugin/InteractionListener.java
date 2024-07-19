@@ -110,11 +110,20 @@ public class InteractionListener implements Listener{
         // Main hand non magic
         if (clickedRightButton && itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE) && itemInOffHand.getType() == Material.FLINT_AND_STEEL 
-            && !player.hasCooldown(Material.SNOWBALL)) {
-                Weapons.grenadeThrow(player, playerContainer);
-                player.setCooldown(Material.SNOWBALL, 20 * 8);
-                return;
+            if (itemInOffHand.getType() == Material.FLINT_AND_STEEL
+            && !player.hasCooldown(Material.FIREWORK_STAR)) {
+                if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
+                    Weapons.grenadeThrow(player, playerContainer);
+                    player.setCooldown(Material.FIREWORK_STAR, 20 * 8);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    return;
+                }
+                else if(playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)){
+                    Weapons.smokeThrow(player, playerContainer);
+                    player.setCooldown(Material.FIREWORK_STAR, 20 * 8);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    return;
+                }
             }
         }
 
@@ -138,6 +147,7 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
+        ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
 
 
         PersistentDataContainer playerContainer;
@@ -152,6 +162,12 @@ public class InteractionListener implements Listener{
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
                 Armour.jetBootsEffect(player);
+            }
+        }
+        if (itemOnHead != null && itemOnHead.hasItemMeta()) {
+            playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BYTE)) {
+                Armour.nightHelmetEffect(player);
             }
         }
 
@@ -210,38 +226,44 @@ public class InteractionListener implements Listener{
 
             Player player = (Player) event.getDamager();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+            PersistentDataContainer playerContainer;
             
-            if (itemInMainHand == null || itemInMainHand.getType() == Material.AIR) {
-                return;
+            if (!(itemInMainHand == null || itemInMainHand.getType() == Material.AIR)) {
+                LivingEntity hitEntity = (LivingEntity) event.getEntity();
+                playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
+                if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
+                    RaceEffects.witchAttackEvent(player, hitEntity);
+                }
+                if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)){
+                    RaceEffects.celestialAttackEvent(player, hitEntity);
+                }
+    
+                //
+                //      Special Weapons
+                //
+                if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
+                    Weapons.explosiveSwordEffect(33, hitEntity);
+                }
+                if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
+                    Weapons.thunderHammerEffect(40, hitEntity);
+                }
+                if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
+                    Weapons.daemonSwordEffect(22, hitEntity);
+                }
+                if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
+                    Weapons.angelSwordEffect(22, player);
+                }
             }
+            
+            ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
 
-            LivingEntity hitEntity = (LivingEntity) event.getEntity();
-            PersistentDataContainer playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
-            if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
-                RaceEffects.witchAttackEvent(player, hitEntity);
-            }
-            if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)){
-                RaceEffects.celestialAttackEvent(player, hitEntity);
-            }
-
-            //
-            //      Special Weapons
-            //
-            if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                Weapons.explosiveSwordEffect(33, hitEntity);
-                return;
-            }
-            if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-                Weapons.thunderHammerEffect(40, hitEntity);
-                return;
-            }
-            if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
-                Weapons.daemonSwordEffect(22, hitEntity);
-                return;
-            }
-            if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
-                Weapons.angelSwordEffect(22, player);
-                return;
+            if (!(itemOnHead == null || itemOnHead.getType() == Material.AIR)) {               
+                if (itemOnHead.hasItemMeta()) {
+                    playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BYTE)) {
+                        Armour.strigaVeilEffect(15, player);
+                    }
+                }
             }
         }
 
@@ -346,12 +368,12 @@ public class InteractionListener implements Listener{
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.dwarfPickaxeEffect(5 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
             }
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, 1 * luckLvl, brokenBlock, "Ore");
+            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, 1 * luckLvl, brokenBlock, "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {

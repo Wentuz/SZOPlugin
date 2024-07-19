@@ -22,6 +22,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import net.md_5.bungee.api.ChatColor;
+
 
 public class EntityListener implements Listener {
 
@@ -54,6 +56,17 @@ public class EntityListener implements Listener {
         Player player = event.getPlayer();
         CustomRecipes.getRecipeKeys().forEach(player::discoverRecipe);
 
+        PersistentDataContainer dataContainer = player.getPersistentDataContainer();
+
+        NamespacedKey[] raceKeys = Keys.getRaceKeys();
+
+        for (NamespacedKey key : raceKeys) {
+            if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
+                String keyString = "RACE_" + key.getKey().toUpperCase();
+                UpdateAttributes.attributeManager(player, false, keyString);
+                player.sendMessage(ChatColor.GREEN + key.getKey().toUpperCase() + " loaded.");
+            }
+        }
     }
 
     @EventHandler
@@ -70,7 +83,6 @@ public class EntityListener implements Listener {
             }
         }
     }
-
     
     @EventHandler
     public void onArrowLand(ProjectileHitEvent event) {
@@ -121,6 +133,8 @@ public class EntityListener implements Listener {
                     MagicItems.spiderYeetEffect(target.getLocation());
                 }else if (value == "grenade") {
                     Weapons.grenadeEffect(target.getLocation());
+                }else if (value == "smokeBomb") {
+                    Weapons.smokeEffect(target.getLocation());
                 }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
@@ -128,6 +142,8 @@ public class EntityListener implements Listener {
                     MagicItems.spiderYeetEffect(hitLocation);
                 }else if (value == "grenade") {
                     Weapons.grenadeEffect(hitLocation);
+                }else if (value == "smokeBomb") {
+                    Weapons.smokeEffect(hitLocation);
                 }
             }
         }

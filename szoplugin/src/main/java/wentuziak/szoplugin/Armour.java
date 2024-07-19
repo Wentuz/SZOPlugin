@@ -2,6 +2,7 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -35,7 +36,15 @@ public class Armour {
         }
     }
 
-    //      For some reason works only on one player
+    public static void nightHelmetEffect(Player player){
+        World world = player.getWorld();
+        if (!LogicHolder.isDaytime(world)){
+            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 120, 0);
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 120, 0);
+        }
+        LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 120, 0);
+    }
+
     public static void mermaidTailEffect(Player player){   
         if (!TaskManager.isTaskRunning(player, "mermaidTail")) {            
             final Player finalPlayer = player;
@@ -60,6 +69,17 @@ public class Armour {
         LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);    
         LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);    
         LogicHolder.givePotionEffect(player, "SATURATION", 5, 0);    
+    }
+
+    public static void strigaVeilEffect(int chanceForCrit, LivingEntity player)
+    {
+        if (LogicHolder.critRoll(chanceForCrit)) {
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 4, 2);
+            LogicHolder.givePotionEffect(player, "SPEED", 20 * 4, 0);
+            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 4, 0);
+            player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 50, 0.1, 0.1, 0.1, 0.1);
+            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_AMBIENT, 1, 1);
+        }
     }
 
 }

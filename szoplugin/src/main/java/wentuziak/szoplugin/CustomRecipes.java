@@ -432,6 +432,42 @@ public final class CustomRecipes {
             gluttonyPantsRecipe.setIngredient('G', Material.GOLDEN_APPLE);
             gluttonyPantsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(gluttonyPantsRecipe);
+        
+        
+        //
+        //      NightHelmet Recipe
+        //
+        ItemStack nightHelmet = CreateCustomItem.createNightHelmet();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "nightHelmetRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe nightHelmetRecipe = new ShapedRecipe(key, nightHelmet);
+        nightHelmetRecipe.shape(
+            "GSG",
+            "D D",
+            "   ");
+        nightHelmetRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        nightHelmetRecipe.setIngredient('G', Material.GLOWSTONE_DUST);
+        nightHelmetRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(nightHelmetRecipe);
+        
+        
+        //
+        //      StrigaVeil Recipe
+        //
+        ItemStack strigaVeil = CreateCustomItem.createStrigaVeil();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "strigaVeilRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe strigaVeilRecipe = new ShapedRecipe(key, strigaVeil);
+        strigaVeilRecipe.shape(
+            "GSG",
+            "D D",
+            "   ");
+        strigaVeilRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        strigaVeilRecipe.setIngredient('G', Material.GHAST_TEAR);
+        strigaVeilRecipe.setIngredient('D', Material.LIGHT_GRAY_DYE);
+        Bukkit.addRecipe(strigaVeilRecipe);
 
 
         //

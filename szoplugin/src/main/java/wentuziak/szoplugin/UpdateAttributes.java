@@ -19,6 +19,7 @@ public class UpdateAttributes {
             modifyKnockBack(player, 0);
             modifyOxygenBonus(player, 0);
             modifyAttackSpeed(player, 4);
+            modifySafeFallRange(player, 3);
             return;
         }
         if (raceName.equals("RACE_DWARF")) {
@@ -51,6 +52,8 @@ public class UpdateAttributes {
             modifyGravity(player, 0.07);
             modifyHealthPoints(player, 16);
             modifyMovementSpeed(player, 0.11);
+            modifySafeFallRange(player, 8);
+
             return;
         }
         if (raceName.equals("RACE_MEWCHANT")) {
@@ -58,6 +61,7 @@ public class UpdateAttributes {
             modifyFallDmgMultiplier(player, 0.8);
             modifyHealthPoints(player, 18);
             modifyMovementSpeed(player, 0.12);
+            modifySafeFallRange(player, 6);
         }
     }
 
@@ -104,5 +108,9 @@ public class UpdateAttributes {
     public static void modifyAttackSpeed(Player player, double value){
         AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
         mineSpeedAttribute.setBaseValue(value);
+    }
+    public static void modifySafeFallRange(Player player, double value){
+        AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.GENERIC_SAFE_FALL_DISTANCE);
+        safeFallRangeAttribute.setBaseValue(value);
     }
 }

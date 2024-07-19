@@ -103,6 +103,7 @@ public class CustomTools {
         if (result != null && result.getHitEntity() != null) {
             LivingEntity hitEntity = (LivingEntity) result.getHitEntity();
             if (mainHandUsed) {
+                LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 10, 0);
                 LogicHolder.givePotionEffect(hitEntity, "DARKNESS", 20 * 10, 0);
                 hitEntity.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, hitEntity.getLocation(), 5);
                 hitEntity.getWorld().playSound(hitEntity.getLocation(), Sound.ENTITY_WARDEN_AMBIENT, 1, 1);

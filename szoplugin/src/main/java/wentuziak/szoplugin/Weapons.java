@@ -4,11 +4,16 @@ package wentuziak.szoplugin;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 
 public class Weapons {
@@ -75,9 +80,31 @@ public class Weapons {
     }
 
     public static void grenadeEffect(Location location){
-        location.getWorld().createExplosion(location, 4, false, false);
+        location.getWorld().createExplosion(location, 3, false, false);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.05);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.1);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, location, 50, 0.1, 0.2, 0.1, 0.1);
+    }
+
+    public static void smokeThrow(Player player, PersistentDataContainer playerContainer){
+        player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
+        LogicHolder.throwSnowball(player, playerContainer);
+    }
+
+    public static void smokeEffect(Location location){
+        location.getWorld().playSound(location, Sound.ENTITY_GENERIC_EXTINGUISH_FIRE, 10, 10);
+
+        for(int i = 0; i < 12; i++){
+            float number = (float)(Math.random() * 3);
+            location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 200, number, number, number, 0.005);
+            location.getWorld().spawnParticle(Particle.CLOUD, location, 10, number, number, number, 0.015);
+        }
+        AreaEffectCloud cloud = (AreaEffectCloud) location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.AREA_EFFECT_CLOUD);
+
+        cloud.setBasePotionData(new PotionData(PotionType.SLOWNESS));
+        cloud.setDuration(20 * 10);
+        cloud.setRadius(3.0f);
+        cloud.setParticle(Particle.CAMPFIRE_COSY_SMOKE);
+        cloud.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 5, 1), true);
     }
 }

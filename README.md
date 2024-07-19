@@ -71,6 +71,7 @@ STUFF IN HERE:
         9.  TnT stick - 8 gunpowder + string, hand crafting, dwarf
         10. Repeater Crossbow - quick charge V
         11. Stinky Stick - knockback
+        12. Smoke bomb - 4 gunpowder + string, hand crafting, mewchant
     > Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
@@ -82,6 +83,7 @@ STUFF IN HERE:
         8.  Ironclad Chestplate - strong chest, very cool
         9.  Ironclad Boots - strong boots, very cool
         10. Ironclad Helmet - strong helmet, very cool
+        11. Night helmet - buffs in night
     > Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works

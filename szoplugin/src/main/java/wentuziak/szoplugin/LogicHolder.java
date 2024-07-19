@@ -2,6 +2,7 @@ package wentuziak.szoplugin;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -46,11 +47,14 @@ public class LogicHolder {
         if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE)) {
             snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.STRING, "spiritLeech");
         }
-        if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE)) {
+        else if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE)) {
             snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.STRING, "spiderYeet");
         }
-        if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
+        else if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
             snowball.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.STRING, "grenade");
+        }
+        else if (playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)) {
+            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.STRING, "smokeBomb");
         }
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
@@ -71,6 +75,11 @@ public class LogicHolder {
             );
         return result;
     }
+    
+    public static boolean isDaytime(World world) {
+        long time = world.getTime();
+        return time >= 0 && time < 12000;
+    }
 
     public static void rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
@@ -79,7 +88,8 @@ public class LogicHolder {
             playerLuck--;
         }
     
-        ItemStack item = new ItemStack(Material.COAL);
+        int numberOfItems = (int)(Math.random() * 6 + 1);
+        ItemStack item = new ItemStack(Material.COAL, numberOfItems);
         switch (typeOfLoot) {
             case "Ore":
                 if (whatLoot >= 99) {
@@ -89,17 +99,17 @@ public class LogicHolder {
                 } else if (whatLoot >= 88) {
                     item = new ItemStack(Material.DIAMOND);
                 } else if (whatLoot >= 75) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.QUARTZ, 3));
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.QUARTZ, numberOfItems));
                     return;
                 } else if (whatLoot >= 55) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.LAPIS_LAZULI, 3));
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.LAPIS_LAZULI, numberOfItems));
                     return; 
                 } else if (whatLoot >= 40) {
-                    item = new ItemStack(Material.RAW_GOLD);
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_GOLD, numberOfItems));
                 } else if (whatLoot >= 30) {
                     item = new ItemStack(Material.RAW_IRON);   
                 } else if (whatLoot >= 19) {
-                    item = new ItemStack(Material.RAW_COPPER);
+                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_COPPER, numberOfItems));
                 } else if (whatLoot >= 10) {
                     item = new ItemStack(Material.EMERALD);
                 }
@@ -137,7 +147,7 @@ public class LogicHolder {
                 if (whatLoot >= 99) {
                     item = new ItemStack(Material.TOTEM_OF_UNDYING);
                 } else if (whatLoot >= 98) {
-                    item = new ItemStack(Material.NAUTILUS_SHELL, 3);
+                    item = new ItemStack(Material.NAUTILUS_SHELL, numberOfItems);
                 } else if (whatLoot >= 95) {
                     item = new ItemStack(Material.ANCIENT_DEBRIS);
                 } else if (whatLoot >= 90) {
@@ -145,31 +155,31 @@ public class LogicHolder {
                 } else if (whatLoot >= 85) {
                     item = new ItemStack(Material.DIAMOND);
                 } else if (whatLoot >= 80) {
-                    item = new ItemStack(Material.EMERALD, 3);
+                    item = new ItemStack(Material.EMERALD, numberOfItems);
                 } else if (whatLoot >= 75) {
                     item = new ItemStack(Material.GOLDEN_APPLE);
                 } else if (whatLoot >= 70) {
-                    item = new ItemStack(Material.PRISMARINE_SHARD, 4);
+                    item = new ItemStack(Material.PRISMARINE_SHARD, numberOfItems);
                 } else if (whatLoot >= 65) {
-                    item = new ItemStack(Material.PRISMARINE_CRYSTALS, 4);
+                    item = new ItemStack(Material.PRISMARINE_CRYSTALS, numberOfItems);
                 } else if (whatLoot >= 60) {
                     item = new ItemStack(Material.AXOLOTL_BUCKET);
                 } else if (whatLoot >= 55) {
-                    item = new ItemStack(Material.INK_SAC, 5);
+                    item = new ItemStack(Material.INK_SAC, numberOfItems);
                 } else if (whatLoot >= 50) {
                     item = new ItemStack(Material.TROPICAL_FISH_BUCKET);
                 } else if (whatLoot >= 45) {
-                    item = new ItemStack(Material.GOLD_INGOT, 3);
+                    item = new ItemStack(Material.GOLD_INGOT, numberOfItems);
                 } else if (whatLoot >= 40) {
-                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, 5);
+                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);
                 } else if (whatLoot >= 35) {
                     item = CreateCustomItem.createCursedArrow();
                 } else if (whatLoot >= 30) {
-                    item = new ItemStack(Material.STRING, 5);
+                    item = new ItemStack(Material.STRING, numberOfItems);
                 } else if (whatLoot >= 25) {
-                    item = new ItemStack(Material.BONE, 5);
+                    item = new ItemStack(Material.BONE, numberOfItems);
                 } else if (whatLoot >= 20) {
-                    item = new ItemStack(Material.ROTTEN_FLESH, 5);
+                    item = new ItemStack(Material.ROTTEN_FLESH, numberOfItems);
                 } else if (whatLoot >= 15) {
                     item = new ItemStack(Material.TURTLE_SCUTE);
                 } else if (whatLoot >= 10) {

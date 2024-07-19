@@ -372,6 +372,36 @@ public class CreateCustomItem {
         return ironCladBoots;
     }
 
+    static ItemStack createNightHelmet(){
+        ItemStack nightHelmet = new ItemStack(Material.DIAMOND_HELMET);
+        ItemMeta nightHelmetMeta = nightHelmet.getItemMeta();
+
+        nightHelmetMeta.setDisplayName(ChatColor.DARK_BLUE + "Night Helmet");
+        nightHelmetMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "A bat person :p"));
+        nightHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BOOLEAN, true);
+        nightHelmet.setItemMeta(nightHelmetMeta);
+
+        return nightHelmet;
+    }
+
+    static ItemStack createStrigaVeil(){
+        ItemStack strigaVeil = new ItemStack(Material.CHAINMAIL_HELMET);
+        ItemMeta strigaVeilMeta = strigaVeil.getItemMeta();
+
+        strigaVeilMeta.setDisplayName(ChatColor.DARK_RED + "Striga's veil");
+        strigaVeilMeta.setLore(Arrays.asList(
+            ChatColor.RED + "Cursed with vampiric power"));
+        strigaVeilMeta.getPersistentDataContainer().set(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BOOLEAN, true);
+        AttributeModifier attackModifierStriga = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        strigaVeilMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackModifierStriga);
+        AttributeModifier speedModifierStriga = new AttributeModifier(UUID.randomUUID(), "speed", 0.10, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        strigaVeilMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierStriga);
+        strigaVeil.setItemMeta(strigaVeilMeta);
+
+        return strigaVeil;
+    }
+
 
     //
     //      MAGIC
@@ -677,18 +707,37 @@ public class CreateCustomItem {
     //      Grenade
     //
     static ItemStack createGrenade(){
-        ItemStack grenade = new ItemStack(Material.SNOWBALL);
+        ItemStack grenade = new ItemStack(Material.FIREWORK_STAR);
         ItemMeta grenadeMeta = grenade.getItemMeta();
 
         grenadeMeta.setDisplayName(ChatColor.RED + "TnT Stick");
         grenadeMeta.setLore(Arrays.asList(
-            "Yeet !",
-            ChatColor.GRAY + "Flint'n steel in off hand to fire it dummy"));
+            ChatColor.RED + "Yeet !",
+            ChatColor.DARK_GRAY + "Flint'n steel in off hand to fire it dummy"));
         grenadeMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         grenadeMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         grenadeMeta.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.BOOLEAN, true);
         grenade.setItemMeta(grenadeMeta);
 
         return grenade;
+    }
+
+    //
+    //      Smoke Bomb
+    //
+    static ItemStack createSmokeBomb(){
+        ItemStack smokeBomb = new ItemStack(Material.FIREWORK_STAR);
+        ItemMeta smokeBombMeta = smokeBomb.getItemMeta();
+
+        smokeBombMeta.setDisplayName(ChatColor.DARK_GRAY + "Smoke Bomb");
+        smokeBombMeta.setLore(Arrays.asList(
+            ChatColor.GRAY + "Confuzing",
+            ChatColor.DARK_GRAY + "Flint'n steel in off hand to fire it dummy"));
+        smokeBombMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        smokeBombMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        smokeBombMeta.getPersistentDataContainer().set(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BOOLEAN, true);
+        smokeBomb.setItemMeta(smokeBombMeta);
+
+        return smokeBomb;
     }
 }

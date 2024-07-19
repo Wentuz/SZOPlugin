@@ -293,5 +293,14 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
+        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 4) && offHandMaterial == Material.STRING){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createSmokeBomb());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            for(int i = 0; i < 4; i++){
+                LogicHolder.removeItem(player, itemInMainHand);
+            }
+            return;
+        }
     } 
 }
