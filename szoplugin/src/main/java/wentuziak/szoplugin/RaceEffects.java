@@ -11,6 +11,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -231,8 +232,9 @@ public class RaceEffects {
             caraGlideTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.1)) {
+                    if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.2)) {
                         stopCaraGlideTask(finalPlayer);
+                        LogicHolder.givePotionEffect(finalPlayer, "SLOW_FALLING", 20, 0);
                         finalPlayer.setGliding(false);
                         return;
                     }
