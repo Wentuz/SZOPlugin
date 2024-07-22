@@ -20,14 +20,12 @@ public class UpdateAttributes {
             modifyOxygenBonus(player, 0);
             modifyAttackSpeed(player, 4);
             modifySafeFallRange(player, 3);
-            return;
         }
         if (raceName.equals("RACE_DWARF")) {
             modifyMovementSpeed(player, 0.08);
             modifyHealthPoints(player, 24);
             modifyScale(player, 0.9);
             modifyMineSpeed(player, 1.2);
-            return;
         }
         if (raceName.equals("RACE_CELESTIAL")) {
             modifyHealthPoints(player, 40);
@@ -35,7 +33,6 @@ public class UpdateAttributes {
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);
-            return;
         }
         if (raceName.equals("RACE_MISKARU")) {
             modifyHealthPoints(player, 26);
@@ -45,7 +42,6 @@ public class UpdateAttributes {
             modifyKnockBack(player, 0.2);
             modifyOxygenBonus(player, 5);
             modifyAttackSpeed(player, 3.8);
-            return;
         }
         if (raceName.equals("RACE_CARA")) {
             modifyScale(player, 0.75);
@@ -53,8 +49,6 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 16);
             modifyMovementSpeed(player, 0.11);
             modifySafeFallRange(player, 8);
-
-            return;
         }
         if (raceName.equals("RACE_MEWCHANT")) {
             modifyGravity(player, 0.07);
@@ -62,6 +56,10 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 18);
             modifyMovementSpeed(player, 0.12);
             modifySafeFallRange(player, 6);
+        }
+        if (raceName.equals("RACE_FOSSIL")) {
+            modifyAttackDamage(player, 3);
+            modifyScale(player, 1.25);
         }
     }
 
