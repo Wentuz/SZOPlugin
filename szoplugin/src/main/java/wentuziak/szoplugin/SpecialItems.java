@@ -18,7 +18,7 @@ public class SpecialItems {
         String offHandItem = getOffHandMaterial.toString();
 
         Set<String> implementedItems = new HashSet<>(Arrays.asList(
-                "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM"
+                "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM", "BONE"
         ));
 
         String itemUsed = null;
@@ -47,6 +47,16 @@ public class SpecialItems {
                 LogicHolder.givePotionEffect(player, "FIRE_RESISTANCE", 400, 0);
                 LogicHolder.givePotionEffect(player, "POISON", 200, 1);
                 player.playSound(player.getLocation(), Sound.ENTITY_MAGMA_CUBE_SQUISH, 10, 10);
+                break;
+
+            case "BONE":
+                if (player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
+                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*60, 0);
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE",  20*60, 0);
+                    player.playSound(player.getLocation(), Sound.ENTITY_SKELETON_HURT, 1, 1);                    
+                }else{
+                    return;
+                }
                 break;
 
             default:

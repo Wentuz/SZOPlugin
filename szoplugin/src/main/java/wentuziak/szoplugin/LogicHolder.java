@@ -186,6 +186,29 @@ public class LogicHolder {
                     item = new ItemStack(Material.SEA_PICKLE);
                 }
                 break;
+            case "Mobs":
+                if (whatLoot >= 99) {
+                    item = new ItemStack(Material.GHAST_TEAR);
+                } else if (whatLoot >= 95) {
+                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);
+                } else if (whatLoot >= 85) {
+                    item = new ItemStack(Material.ENDER_PEARL);
+                } else if (whatLoot >= 70) {
+                    item = new ItemStack(Material.BLAZE_POWDER);
+                } else if (whatLoot >= 55) {
+                    item = new ItemStack(Material.BEEF);
+                } else if (whatLoot >= 40) {
+                    item = new ItemStack(Material.GUNPOWDER);
+                } else if (whatLoot >= 30) {
+                    item = new ItemStack(Material.BONE);
+                } else if (whatLoot >= 20) {
+                    item = new ItemStack(Material.RABBIT_FOOT);
+                } else if (whatLoot >= 10) {
+                    item = new ItemStack(Material.RABBIT_HIDE);
+                } else {
+                    item = new ItemStack(Material.SPIDER_EYE);
+                }
+                break;
             default:
                 break;
         }

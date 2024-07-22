@@ -20,6 +20,8 @@ public class UpdateAttributes {
             modifyOxygenBonus(player, 0);
             modifyAttackSpeed(player, 4);
             modifySafeFallRange(player, 3);
+            modifyReach(player, 4.5, 3);
+            return;
         }
         if (raceName.equals("RACE_DWARF")) {
             modifyMovementSpeed(player, 0.08);
@@ -58,6 +60,7 @@ public class UpdateAttributes {
             modifySafeFallRange(player, 6);
         }
         if (raceName.equals("RACE_FOSSIL")) {
+            modifyReach(player, 5.5, 4);
             modifyAttackDamage(player, 3);
             modifyScale(player, 1.25);
         }
@@ -110,5 +113,11 @@ public class UpdateAttributes {
     public static void modifySafeFallRange(Player player, double value){
         AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.GENERIC_SAFE_FALL_DISTANCE);
         safeFallRangeAttribute.setBaseValue(value);
+    }
+    public static void modifyReach(Player player, double valueBlockReach, double valueEntityReach){
+        AttributeInstance blockReachAttribute = player.getAttribute(Attribute.PLAYER_BLOCK_INTERACTION_RANGE);
+        AttributeInstance entityReachAttribute = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+        blockReachAttribute.setBaseValue(valueBlockReach);
+        entityReachAttribute.setBaseValue(valueEntityReach);
     }
 }
