@@ -740,4 +740,22 @@ public class CreateCustomItem {
 
         return smokeBomb;
     }
+
+    //
+    //      Ancient shell
+    //
+    static ItemStack createAncientShell(){
+        ItemStack ancientShell = new ItemStack(Material.NAUTILUS_SHELL);
+        ItemMeta ancientShellMeta = ancientShell.getItemMeta();
+
+        ancientShellMeta.setDisplayName(ChatColor.AQUA + "Ancient Shell");
+        ancientShellMeta.setLore(Arrays.asList(
+            ChatColor.DARK_AQUA + "Calls to the sea"));
+        ancientShellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        ancientShellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        ancientShellMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BOOLEAN, true);
+        ancientShell.setItemMeta(ancientShellMeta);
+
+        return ancientShell;
+    }
 }

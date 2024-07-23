@@ -9,8 +9,12 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 
 public class MagicItems {
+    static BukkitTask ancientShellTask;
+
 
     public static void teleportSpell(Player player){
         Block targetBlock = player.getTargetBlock(null, 50);
@@ -72,6 +76,35 @@ public class MagicItems {
             }
         }
         location.getWorld().createExplosion(location, 5, true, true);
+    }
+
+
+    public static void ancientShellEffect(Player player){   
+        if (!TaskManager.isTaskRunning(player, "ancientShell")) {            
+            final Player finalPlayer = player;
+            ancientShellTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (TaskManager.isTaskRunning(player, "mermaidTail")) {            
+                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 3);
+                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 2);
+                    }else if(finalPlayer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
+                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 1);
+                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1); 
+                    }else{
+                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 0);
+                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 0); 
+                    }
+                }
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 5);
+            TaskManager.addTask(player, "ancientShell", ancientShellTask);
+        }
+
+    }
+
+
+    public static void stopAncientShellTask(Player player) {
+        TaskManager.stopTask(player, "ancientShell");
     }
 
 

@@ -66,10 +66,15 @@ public class InteractionListener implements Listener{
             if ((event.getHand() == EquipmentSlot.HAND && itemInMainHand.getType() != Material.AIR && itemInOffHand.getType() != Material.AIR)) {
                 if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
                     RaceEffects.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
-                } else if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
+                }
+                if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                     RaceEffects.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
-                } else if(player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)){
+                }
+                if(player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)){
                     RaceEffects.mewchantCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
+                if(player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
+                    RaceEffects.fossilCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
             }
         }
@@ -393,6 +398,7 @@ public class InteractionListener implements Listener{
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         ItemStack itemLeggings = player.getInventory().getLeggings();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
         PersistentDataContainer playerContainer;
         
         boolean isInWater = LogicHolder.isPlayerInWater(player);
@@ -403,11 +409,23 @@ public class InteractionListener implements Listener{
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && isInWater) {
                 Armour.mermaidTailEffect(player);
+            }else{
+                MagicItems.stopAncientShellTask(player);
+            }
+        }
+        if (itemInOffHand.hasItemMeta()) {
+            playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && isInWater) {
+                MagicItems.ancientShellEffect(player);
+            }else{
+                MagicItems.stopAncientShellTask(player);
             }
         }
 
+
         if (!isInWater) {
             Armour.stopMermaidTailTask(player);
+            MagicItems.stopAncientShellTask(player);
             RaceEffects.stopDwarfSwimTask(player);
             RaceEffects.stopFossilSwimTask(player);
         }

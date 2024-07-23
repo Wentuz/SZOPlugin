@@ -11,7 +11,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -330,4 +329,17 @@ public class RaceEffects {
     public static void stopFossilSwimTask(Player player) {
         TaskManager.stopTask(player, "fossilSwim");
     }
+    
+    public static void fossilCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.NAUTILUS_SHELL && offHandMaterial == Material.PRISMARINE_CRYSTALS) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createAncientShell());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+    } 
 }
