@@ -32,6 +32,7 @@ public class UpdateAttributes {
         if (raceName.equals("RACE_CELESTIAL")) {
             modifyHealthPoints(player, 40);
             modifyAttackDamage(player, 4);
+            modifyAttackSpeed(player, 4.5);
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);
@@ -63,6 +64,11 @@ public class UpdateAttributes {
             modifyReach(player, 5.5, 4);
             modifyAttackDamage(player, 3);
             modifyScale(player, 1.25);
+        }
+        if (raceName.equals("RACE_SCULKY")) {
+            modifyFireTime(player, 2);
+            modifyHealthPoints(player, 30);
+            modifyAttackDamage(player, 4);
         }
     }
 

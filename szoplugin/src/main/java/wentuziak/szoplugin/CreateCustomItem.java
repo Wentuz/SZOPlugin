@@ -572,6 +572,20 @@ public class CreateCustomItem {
 
         return berserkerShield;
     }
+    static ItemStack createSoulEssence(){
+        ItemStack soulEssence = new ItemStack(Material.POPPED_CHORUS_FRUIT);
+        ItemMeta soulEssenceMeta = soulEssence.getItemMeta();
+
+        soulEssenceMeta.setDisplayName(ChatColor.DARK_PURPLE + "Soul Essence");
+        soulEssenceMeta.setLore(Arrays.asList(
+            "Unstable ? Sure. Effective ? Hell yeah"));
+        soulEssenceMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        soulEssenceMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        soulEssenceMeta.getPersistentDataContainer().set(Keys.CUSTOM_SOUL_ESSENCE, PersistentDataType.BOOLEAN, true);
+        soulEssence.setItemMeta(soulEssenceMeta);
+
+        return soulEssence;
+    }
 
     //
     //      RACE CRAFTABLES

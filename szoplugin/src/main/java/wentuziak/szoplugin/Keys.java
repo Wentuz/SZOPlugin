@@ -35,7 +35,12 @@ public class Keys {
     public static final NamespacedKey CUSTOM_SPIRIT_LEECH = new NamespacedKey(SzoPlugin.getInstance(), "SpiritLeech");    
     public static final NamespacedKey CUSTOM_OBLITERATE = new NamespacedKey(SzoPlugin.getInstance(), "ObliterateSpell");    
     public static final NamespacedKey CUSTOM_SPIDER_YEET = new NamespacedKey(SzoPlugin.getInstance(), "SpiderYeet");    
-
+    
+    //
+    // Loot
+    //
+    public static final NamespacedKey CUSTOM_SOUL_ESSENCE = new NamespacedKey(SzoPlugin.getInstance(), "SoulEssence");    
+    
     //
     //      Craftables
     //
@@ -66,6 +71,7 @@ public class Keys {
     public static final NamespacedKey RACE_CARA = new NamespacedKey(SzoPlugin.getInstance(), "Cara");
     public static final NamespacedKey RACE_MEWCHANT = new NamespacedKey(SzoPlugin.getInstance(), "Mewchant");
     public static final NamespacedKey RACE_FOSSIL = new NamespacedKey(SzoPlugin.getInstance(), "Fossil");
+    public static final NamespacedKey RACE_SCULKY = new NamespacedKey(SzoPlugin.getInstance(), "Sculky");
 
 
     public static NamespacedKey[] getRaceKeys(){
@@ -76,7 +82,8 @@ public class Keys {
             RACE_MISKARU,
             RACE_CARA,
             RACE_MEWCHANT,
-            RACE_FOSSIL
+            RACE_FOSSIL,
+            RACE_SCULKY
         };
     }
     public static NamespacedKey getKeyByName(String keyName) {

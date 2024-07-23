@@ -59,6 +59,9 @@ STUFF IN HERE:
         Can upgrade clocks into Lucky Clocks, spyglasses into markin' spyglasses, and craft smoke bombs
     VII Animated Fossil
         No natural regen. Can heal by using bones
+        Doesnt drown
+        Taller, stronger, greater reach
+        Can craft Ancient 
 
 > Custom items :
     I Weapons :
@@ -92,6 +95,7 @@ STUFF IN HERE:
         3.  Suspicious fishing rod - Possibility to fish out curiosities
         4.  Lucky clock - craftable by MewChant, clock and mechanical parts, hand crafting
         5.  Markin' Spyglass - craftable by MewChant and dwarf, spyglass and redstone torch, hand crafting
+        6.  Ancient Shell - craftable by Fossil, nautilus shell and prismarine crystals. Helps in water. Scales with mermaid tail & fossil
     IV Ingerients:
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
