@@ -19,6 +19,7 @@ public class RaceEffects {
 
     static BukkitTask dwarfSwimTask;
     static BukkitTask caraGlideTask;
+    static BukkitTask fossilSwimTask;
 
     //
     //      DWARF
@@ -305,4 +306,28 @@ public class RaceEffects {
             return;
         }
     } 
+
+    //
+    //      ANIMATED FOSSIL
+    //
+    public static void fossilSwimEvent(Player player){   
+        if (!TaskManager.isTaskRunning(player, "fossilSwim")) {            
+            final Player finalPlayer = player;
+            fossilSwimTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (!LogicHolder.isPlayerInWater(finalPlayer)) {
+                        stopFossilSwimTask(finalPlayer);
+                        return;
+                    }
+                    LogicHolder.givePotionEffect(finalPlayer, "WATER_BREATHING", 20 * 10, 0);
+                }
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 3);
+            TaskManager.addTask(player, "fossilSwim", fossilSwimTask);
+        }
+    }
+
+    public static void stopFossilSwimTask(Player player) {
+        TaskManager.stopTask(player, "fossilSwim");
+    }
 }

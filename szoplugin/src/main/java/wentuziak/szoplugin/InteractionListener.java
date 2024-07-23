@@ -409,9 +409,13 @@ public class InteractionListener implements Listener{
         if (!isInWater) {
             Armour.stopMermaidTailTask(player);
             RaceEffects.stopDwarfSwimTask(player);
+            RaceEffects.stopFossilSwimTask(player);
         }
         if ((player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater)) {
             RaceEffects.dwarfSwimEvent(player);
+        }
+        if ((player.getPersistentDataContainer().has(Keys.RACE_FOSSIL) && isInWater)) {
+            RaceEffects.fossilSwimEvent(player);
         }
     }
 

@@ -3,6 +3,8 @@ package wentuziak.szoplugin;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
@@ -11,6 +13,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -143,6 +146,21 @@ public class EntityListener implements Listener {
                     Weapons.grenadeEffect(hitLocation);
                 }else if (value == "smokeBomb") {
                     Weapons.smokeEffect(hitLocation);
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onEntityDeath(EntityDeathEvent event) {
+        Player killer = event.getEntity().getKiller();
+        Entity killedEntity = event.getEntity();
+        if (killer != null) {
+            if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
+                ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
+                int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOTING);
+                if (LogicHolder.critRoll(6 * luckLvl)) {
+                    LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
         }
