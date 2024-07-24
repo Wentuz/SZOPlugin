@@ -1,6 +1,8 @@
 package wentuziak.szoplugin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Color;
@@ -11,6 +13,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionData;
@@ -771,5 +774,96 @@ public class CreateCustomItem {
         ancientShell.setItemMeta(ancientShellMeta);
 
         return ancientShell;
+    }
+
+    //
+    //      Race Hand Crafting Book
+    //
+    public static ItemStack createRaceBook() {
+        ItemStack raceBook = new ItemStack(Material.WRITTEN_BOOK);
+        BookMeta raceBookMeta = (BookMeta) raceBook.getItemMeta();
+
+        // Set the title and author of the book
+        raceBookMeta.setTitle(ChatColor.DARK_PURPLE + "Race hand crafting");
+        raceBookMeta.setAuthor(ChatColor.DARK_PURPLE + "Wentuziak");
+
+        List<String> pages = new ArrayList<>();
+
+        pages.add(
+            ChatColor.BOLD + "Ancient Shell\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Nautilus Shell + Prismarine Crystal\n\n" +
+            "Who Can Make It:\n" +
+            "Animated Fossil"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Markin' Spyglass\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Spyglass + Redstone Torch\n\n" +
+            "Who Can Make It:\n" +
+            "Mewchant"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Lucky Clock\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Clock + Mechanical Part\n\n" +
+            "Who Can Make It:\n" +
+            "Mewchant"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Smoke Bombs\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "4 Gunpowder + Black Dye\n\n" +
+            "Who Can Make It:\n" +
+            "Mewchant"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Throwing Bombs\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "8 Gunpowder + String\n\n" +
+            "Who Can Make It:\n" +
+            "Any Race"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Healing Gas\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Ghast Tear + Gold Melon\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Toxic Gas\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Pufferfish + Fermented Spider Eye\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Most Sus Soup\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Suspicious Stew + Nether Wart\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Dwarf Ale\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Honey Bottle + Golden Apple\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+
+        raceBookMeta.setPages(pages);
+        raceBook.setItemMeta(raceBookMeta);
+
+        return raceBook;
     }
 }

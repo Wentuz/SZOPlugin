@@ -61,7 +61,7 @@ STUFF IN HERE:
         No natural regen. Can heal by using bones
         Doesnt drown
         Taller, stronger, greater reach
-        Can craft Ancient 
+        Can craft Ancient Shell
 
 > Custom items :
     I Weapons :
@@ -76,7 +76,7 @@ STUFF IN HERE:
         9.  TnT stick - 8 gunpowder + string, hand crafting, dwarf
         10. Repeater Crossbow - quick charge V
         11. Stinky Stick - knockback
-        12. Smoke bomb - 4 gunpowder + string, hand crafting, mewchant
+        12. Smoke bomb - 4 gunpowder + black dye, hand crafting, mewchant
     II Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts

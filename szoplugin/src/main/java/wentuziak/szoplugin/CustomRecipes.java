@@ -627,5 +627,18 @@ public final class CustomRecipes {
             treasureFishRecipe.setIngredient('T', Material.STRING);
             treasureFishRecipe.setIngredient('S', Material.STICK);
         Bukkit.addRecipe(treasureFishRecipe);
+
+
+        //
+        //      Treasure Fishing Rod recipe
+        //
+        ItemStack raceBook = CreateCustomItem.createRaceBook();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "raceBookRecipe");
+        recipeKeys.add(key);
+
+        ShapelessRecipe raceBookRecipe = new ShapelessRecipe(key, raceBook);
+        raceBookRecipe.addIngredient(2, Material.PAPER);
+        raceBookRecipe.addIngredient(1, Material.AMETHYST_SHARD);
+        Bukkit.addRecipe(raceBookRecipe);
     }
 }

@@ -295,7 +295,7 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
-        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 4) && offHandMaterial == Material.STRING){
+        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 4) && offHandMaterial == Material.BLACK_DYE){
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createSmokeBomb());
             
             LogicHolder.removeItem(player, itemInOffHand);

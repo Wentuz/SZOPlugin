@@ -67,7 +67,6 @@ public class UpdateAttributes {
         }
         if (raceName.equals("RACE_SCULKY")) {
             modifyFireTime(player, 2);
-            modifyHealthPoints(player, 30);
             modifyAttackDamage(player, 4);
         }
     }
