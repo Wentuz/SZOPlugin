@@ -637,7 +637,7 @@ public final class CustomRecipes {
         recipeKeys.add(key);
 
         ShapelessRecipe raceBookRecipe = new ShapelessRecipe(key, raceBook);
-        raceBookRecipe.addIngredient(2, Material.PAPER);
+        raceBookRecipe.addIngredient(3, Material.PAPER);
         raceBookRecipe.addIngredient(1, Material.AMETHYST_SHARD);
         Bukkit.addRecipe(raceBookRecipe);
     }

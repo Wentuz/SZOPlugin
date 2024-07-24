@@ -28,7 +28,7 @@ STUFF IN HERE:
     I   Dwarf
         Has ability to find treasure in stone and deepslate
         Honey grants them regeneration and sum saturation
-        They may craft Dwarfen Ale using Honey bottle in main and Golden apple in Off hand
+        They may craft Dwarfen Ale using Honey bottle, smoke bombs and lucky clocks
         Only iron golems are worse swimmers than them
         They minie faster and are short
     II  Witch

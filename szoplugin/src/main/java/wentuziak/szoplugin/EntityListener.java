@@ -155,13 +155,25 @@ public class EntityListener implements Listener {
         Player killer = event.getEntity().getKiller();
         Entity killedEntity = event.getEntity();
         if (killer != null) {
+            ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
+            ItemStack itemInOffHand = killer.getInventory().getItemInOffHand();
+            int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOTING);
+            if (itemInOffHand.hasItemMeta()) {
+                PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                    if (LogicHolder.critRoll(2 * (luckLvl + 1))) {
+                        killer.sendMessage("Here");
+                        LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
+                    }
+                }
+            }
             if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
-                ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
-                int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOTING);
-                if (LogicHolder.critRoll(6 * luckLvl)) {
+                if (LogicHolder.critRoll(6 * (luckLvl + 1))) {
+                    killer.sendMessage("Here !!!!");
                     LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
+
         }
     }
 }
