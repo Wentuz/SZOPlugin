@@ -187,7 +187,11 @@ public class LogicHolder {
                 }
                 break;
             case "Mobs":
-                if (whatLoot >= 99) {
+                if (whatLoot >= 103) {
+                    item = CreateCustomItem.createSoulEssence();
+                }else if (whatLoot >= 102) {
+                    item = CreateCustomItem.createSoulFragment();
+                }else if (whatLoot >= 99) {
                     item = new ItemStack(Material.GHAST_TEAR);
                 } else if (whatLoot >= 95) {
                     item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);

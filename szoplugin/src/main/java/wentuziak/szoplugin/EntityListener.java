@@ -9,6 +9,7 @@ import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -162,18 +163,38 @@ public class EntityListener implements Listener {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
                     if (LogicHolder.critRoll(2 * (luckLvl + 1))) {
-                        killer.sendMessage("Here");
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
                     }
                 }
             }
             if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
                 if (LogicHolder.critRoll(6 * (luckLvl + 1))) {
-                    killer.sendMessage("Here !!!!");
                     LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
 
+            if (killedEntity.getType() == EntityType.WITHER ||
+                killedEntity.getType() == EntityType.ENDER_DRAGON) {
+                    Location killedEntityLocation = killedEntity.getLocation();
+                    for(int i = 0; i < 4; i++){
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());
+                        if (LogicHolder.critRoll((luckLvl + 1) * 25)) {
+                            killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulFragment());
+                        }
+                    }
+                }
+            if ((killedEntity.getType() == EntityType.WARDEN ||
+                killedEntity.getType() == EntityType.ELDER_GUARDIAN)) {
+                    Location killedEntityLocation = killedEntity.getLocation();
+                    for(int i = 0; i < 6; i++){
+                        if (LogicHolder.critRoll((luckLvl + 1) * 15)) {
+                            killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());
+                        }
+                    }
+                    if (LogicHolder.critRoll((luckLvl + 1) * 5)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulFragment());
+                    }
+            }
         }
     }
 }
