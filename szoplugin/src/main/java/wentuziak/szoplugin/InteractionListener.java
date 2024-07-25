@@ -337,6 +337,9 @@ public class InteractionListener implements Listener{
             if (playerOffHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
                 CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
             }
+            if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
+                RaceEffects.witchFishEvent(player, projectile);
+            }
         }
     }
     

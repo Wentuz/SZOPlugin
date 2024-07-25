@@ -685,6 +685,63 @@ public class CreateCustomItem {
     }
 
     //
+    //      Iron Hide potion
+    //
+    static ItemStack createIronHide(){
+        ItemStack ironHide = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta ironHideMeta = (PotionMeta) ironHide.getItemMeta();
+
+        ironHideMeta.setDisplayName(ChatColor.GRAY + "Iron Hide Potion");
+        ironHideMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        ironHideMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        ironHideMeta.addCustomEffect(new PotionEffect(PotionEffectType.RESISTANCE, 20 * 120, 1), true);
+        ironHideMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 120, 1), true);
+        ironHideMeta.setColor(Color.fromRGB(128, 128, 128));
+        ironHide.setItemMeta(ironHideMeta);
+
+        return ironHide;
+    }
+
+    //
+    //      Gepard potion
+    //
+    static ItemStack createGepardPotion(){
+        ItemStack gepardPotion = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta gepardPotionMeta = (PotionMeta) gepardPotion.getItemMeta();
+
+        gepardPotionMeta.setDisplayName(ChatColor.YELLOW + "Gepard Legs Potion");
+        gepardPotionMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        gepardPotionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        gepardPotionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 120, 3), true);
+        gepardPotionMeta.addCustomEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 20 * 120, 1), true);
+        gepardPotionMeta.setColor(Color.fromRGB(255, 255, 0));
+        gepardPotion.setItemMeta(gepardPotionMeta);
+
+        return gepardPotion;
+    }
+
+    //
+    //      Paralyzing Gas
+    //
+    static ItemStack createParalyzingGas(){
+        ItemStack paralyzingGas = new ItemStack(Material.LINGERING_POTION);
+        PotionMeta paralyzingGasMeta = (PotionMeta) paralyzingGas.getItemMeta();
+
+        paralyzingGasMeta.setDisplayName(ChatColor.YELLOW + "Paralyzing Gas");
+        paralyzingGasMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        paralyzingGasMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        paralyzingGasMeta.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 4), true);
+        paralyzingGasMeta.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1), true);
+        paralyzingGasMeta.setColor(Color.fromRGB(171, 145, 68));
+        paralyzingGas.setItemMeta(paralyzingGasMeta);
+
+        return paralyzingGas;
+    }
+
+    //
     //      Lucky Clock
     //
     static ItemStack createLuckyClock(){
@@ -841,6 +898,30 @@ public class CreateCustomItem {
             ChatColor.BOLD + "Toxic Gas\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Pufferfish + Fermented Spider Eye\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Iron Hide\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul essence + iron ingot\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Gepard's Legs\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul essence + sugar\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Paralyzing Gass\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul essence + Pufferfish\n\n" +
             "Who Can Make It:\n" +
             "Witch"
         );

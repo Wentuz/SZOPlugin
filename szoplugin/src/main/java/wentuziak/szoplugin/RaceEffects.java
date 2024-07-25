@@ -10,6 +10,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -132,6 +133,21 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
             return;
+        }else if (mainHandMaterial == Material.IRON_INGOT && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createIronHide());
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }else if (mainHandMaterial == Material.SUGAR && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createGepardPotion());
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }else if (mainHandMaterial == Material.PUFFERFISH && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createParalyzingGas());
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
         }
     }
 
@@ -139,6 +155,16 @@ public class RaceEffects {
         if (LogicHolder.critRoll(33)) {
             LogicHolder.givePotionEffect(targetEntity, "POISON", 20 * 10, 0);
             LogicHolder.givePotionEffect(targetEntity, "SLOW", 20 * 10, 0);
+        }
+    }
+
+    public static void witchFishEvent(Player player, Projectile projectile){
+        if (LogicHolder.critRoll(5)) {
+            if (projectile instanceof org.bukkit.entity.FishHook) {
+                org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
+                Location bobberLocation = fishHook.getLocation();
+                bobberLocation.getWorld().dropItemNaturally(bobberLocation, CreateCustomItem.createSoulEssence());
+            }
         }
     }
 
