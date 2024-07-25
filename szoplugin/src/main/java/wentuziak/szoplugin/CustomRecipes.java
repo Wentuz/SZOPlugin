@@ -630,7 +630,24 @@ public final class CustomRecipes {
 
 
         //
-        //      Treasure Fishing Rod recipe
+        //      Super Shears recipe
+        //
+        ItemStack superShears = CreateCustomItem.createSuperShears();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "superShearsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe superShearsRecipe = new ShapedRecipe(key, superShears);
+        superShearsRecipe.shape(
+            " N ",
+            "NSN",
+            " N ");
+            superShearsRecipe.setIngredient('N', Material.QUARTZ);
+            superShearsRecipe.setIngredient('S', Material.SHEARS);
+        Bukkit.addRecipe(superShearsRecipe);
+
+
+        //
+        //      Race book recipe
         //
         ItemStack raceBook = CreateCustomItem.createRaceBook();
         key = new NamespacedKey(SzoPlugin.getInstance(), "raceBookRecipe");

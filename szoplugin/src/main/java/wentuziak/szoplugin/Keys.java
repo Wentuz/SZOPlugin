@@ -60,6 +60,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_BERSERKER_SHIELD = new NamespacedKey(SzoPlugin.getInstance(), "BerserkerShield");
     public static final NamespacedKey CUSTOM_LUCKY_CLOCK = new NamespacedKey(SzoPlugin.getInstance(), "LuckyClock");
     public static final NamespacedKey CUSTOM_ANCIENT_SHELL = new NamespacedKey(SzoPlugin.getInstance(), "AncientShell");
+    public static final NamespacedKey CUSTOM_SUPER_SHEARS = new NamespacedKey(SzoPlugin.getInstance(), "SuperShears");
     
     //
     //      Races

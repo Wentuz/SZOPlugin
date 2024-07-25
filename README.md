@@ -34,6 +34,7 @@ STUFF IN HERE:
     II  Witch
         Plants from breaking grass and fern
         Can craft the most suspicious soup, main hand - sus soup, off hand - nether wart, Healing gas: main - ghast tear, off - gold melon, Toxic gas: main - pufferfish, off - fermented spider eye
+        Okay a lot of custom potions
         Gets random bonus effects on any potion drank
         Their weapons are poisoned. Even if it's just a stick
         May craft cursed arrows : 4 arrows off hand + 1 fermented spider eye main hand
@@ -107,3 +108,9 @@ STUFF IN HERE:
         2. Spirit Leech - Withers target's soul
         3. OBLITERATE - A barbaric overkill with tnt
         4. Spider Yeeter
+    VII Potions :
+        1. Toxic gas
+        2. Healing gas
+        3. Paralyzing gas
+        4. Iron hide potion
+        5. Gepard legs potion

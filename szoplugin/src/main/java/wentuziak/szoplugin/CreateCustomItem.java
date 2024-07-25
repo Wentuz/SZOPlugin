@@ -513,6 +513,19 @@ public class CreateCustomItem {
         return hastyAxe;
     }
 
+    static ItemStack createSuperShears(){
+        ItemStack superShears = new ItemStack(Material.SHEARS);
+        ItemMeta superShearsMeta = superShears.getItemMeta();
+
+        superShearsMeta.setDisplayName(ChatColor.DARK_BLUE + "Gottish " + ChatColor.DARK_GREEN + "Shearsh");
+        superShearsMeta.setLore(Arrays.asList(
+            "emo."));
+        superShearsMeta.getPersistentDataContainer().set(Keys.CUSTOM_SUPER_SHEARS, PersistentDataType.BOOLEAN, true);
+        superShears.setItemMeta(superShearsMeta);
+
+        return superShears;
+    }
+
     static ItemStack createTreasureFishingRod(){
         ItemStack treasureFishingRod = new ItemStack(Material.FISHING_ROD);
         ItemMeta treasureFishingRodMeta = treasureFishingRod.getItemMeta();
