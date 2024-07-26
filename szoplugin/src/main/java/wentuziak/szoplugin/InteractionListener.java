@@ -9,6 +9,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -22,6 +24,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -51,11 +54,19 @@ public class InteractionListener implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
                     CustomTools.markingSpyglassEffect(player, false);
                 }
+                if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
+                    MagicItems.homeTeleport(player);
+                    LogicHolder.removeItem(player, itemInOffHand);
+                }
             }
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
                     CustomTools.markingSpyglassEffect(player, true);
+                }
+                if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
+                    MagicItems.homeTeleport(player);
+                    LogicHolder.removeItem(player, itemInMainHand);
                 }
             }
                     //
@@ -453,6 +464,22 @@ public class InteractionListener implements Listener{
                     }
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                    }
+                }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerShearEntity(PlayerShearEntityEvent event) {
+        Entity sheep = event.getEntity();
+        ItemStack shears = event.getItem();
+
+        if (shears.hasItemMeta() && sheep.getType() == EntityType.SHEEP) {
+            if (shears.getItemMeta().getPersistentDataContainer().has(Keys.CUSTOM_SUPER_SHEARS, PersistentDataType.BOOLEAN)) {
+                for(int i = 0; i < 8; i++){
+                    if (LogicHolder.critRoll(66)) {
+                        sheep.getWorld().dropItemNaturally(sheep.getLocation(), new ItemStack(Material.STRING));
                     }
                 }
             }

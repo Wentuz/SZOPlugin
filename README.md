@@ -97,6 +97,7 @@ STUFF IN HERE:
         4.  Lucky clock - craftable by MewChant, clock and mechanical parts, hand crafting
         5.  Markin' Spyglass - craftable by MewChant and dwarf, spyglass and redstone torch, hand crafting
         6.  Ancient Shell - craftable by Fossil, nautilus shell and prismarine crystals. Helps in water. Scales with mermaid tail & fossil
+        7.  Gottish shears - drops string from sheep
     IV Ingerients:
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs

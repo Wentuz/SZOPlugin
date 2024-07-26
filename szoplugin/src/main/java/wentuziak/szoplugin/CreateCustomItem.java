@@ -526,6 +526,19 @@ public class CreateCustomItem {
         return superShears;
     }
 
+    static ItemStack createHomecomingCompass(){
+        ItemStack homecomingCompass = new ItemStack(Material.COMPASS);
+        ItemMeta homecomingCompassMeta = homecomingCompass.getItemMeta();
+
+        homecomingCompassMeta.setDisplayName(ChatColor.DARK_RED + "Homecoming Compass");
+        homecomingCompassMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "It just wants you safe"));
+        homecomingCompassMeta.getPersistentDataContainer().set(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BOOLEAN, true);
+        homecomingCompass.setItemMeta(homecomingCompassMeta);
+
+        return homecomingCompass;
+    }
+
     static ItemStack createTreasureFishingRod(){
         ItemStack treasureFishingRod = new ItemStack(Material.FISHING_ROD);
         ItemMeta treasureFishingRodMeta = treasureFishingRod.getItemMeta();

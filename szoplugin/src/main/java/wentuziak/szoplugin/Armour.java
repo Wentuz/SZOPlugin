@@ -15,7 +15,7 @@ public class Armour {
     public static void jetBootsEffect(LivingEntity player){
         if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
             LogicHolder.givePotionEffect(player, "LEVITATION", 5, 9);
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
+            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
             player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 10, 0, -1, 0, 0);
         }    
     }

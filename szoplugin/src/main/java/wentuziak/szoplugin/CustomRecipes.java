@@ -647,6 +647,23 @@ public final class CustomRecipes {
 
 
         //
+        //      Homecoming Compass  recipe
+        //
+        ItemStack homecomingCompass = CreateCustomItem.createHomecomingCompass();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "homecomingCompassRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe homecomingCompassRecipe = new ShapedRecipe(key, homecomingCompass);
+        homecomingCompassRecipe.shape(
+            " E ",
+            "ECE",
+            " E ");
+            homecomingCompassRecipe.setIngredient('C', Material.COMPASS);
+            homecomingCompassRecipe.setIngredient('E', Material.ENDER_PEARL);
+        Bukkit.addRecipe(homecomingCompassRecipe);
+
+
+        //
         //      Race book recipe
         //
         ItemStack raceBook = CreateCustomItem.createRaceBook();

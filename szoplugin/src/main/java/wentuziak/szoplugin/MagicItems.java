@@ -1,5 +1,6 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -29,30 +30,44 @@ public class MagicItems {
         float pitch = player.getLocation().getPitch();
 
         Location targetLocation = new Location(player.getWorld(), blockX, blockY + 1, blockZ, yaw, pitch);
-        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
         player.teleport(targetLocation);
-        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 10, 10);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
         LogicHolder.givePotionEffect(player, "BLINDNESS", 80, 0);
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
 
     }
+    public static void homeTeleport(Player player){
+        Location bedLocation = player.getBedSpawnLocation();
+        if (bedLocation != null) {
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+            player.teleport(bedLocation);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+        }else{
+            Location targetLocation = new Location(Bukkit.getWorld("world"), 0, 120, 0);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+            player.teleport(targetLocation);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+
+        }
+    }
 
     public static void spiritLeech(Player player, PersistentDataContainer playerContainer){
-        player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 10, 10);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);
         LogicHolder.throwSnowball(player, playerContainer);
     }
 
     public static void spiritLeechEffect(LivingEntity targetEntity){
         if (targetEntity instanceof Player) {
-            ((Player) targetEntity).playSound(targetEntity.getLocation(), Sound.ENTITY_ENDERMITE_DEATH, 10, 10);
+            ((Player) targetEntity).playSound(targetEntity.getLocation(), Sound.ENTITY_ENDERMITE_DEATH, 1, 1);
         }
         LogicHolder.givePotionEffect(targetEntity, "WITHER", 20*10, 1);
         LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
     }
 
     public static void spiderYeet(Player player, PersistentDataContainer playerContainer){
-        player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 10, 10);
+        player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
         LogicHolder.throwSnowball(player, playerContainer);
     }
 
