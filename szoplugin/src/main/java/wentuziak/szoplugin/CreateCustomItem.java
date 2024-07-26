@@ -49,6 +49,7 @@ public class CreateCustomItem {
         return mechanicalParts;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createAngelSword(){
         ItemStack angelSword = new ItemStack(Material.GOLDEN_SWORD);
         ItemMeta angelSwordMeta = angelSword.getItemMeta();
@@ -68,6 +69,7 @@ public class CreateCustomItem {
         return angelSword;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createDaemonSword(){
         ItemStack daemonSword = new ItemStack(Material.STONE_SWORD);
         ItemMeta daemonSwordMeta = daemonSword.getItemMeta();
@@ -126,6 +128,7 @@ public class CreateCustomItem {
         return stinkyStick;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createScurvyTrident(){
         ItemStack scurvyTrident = new ItemStack(Material.TRIDENT);
         ItemMeta scurvyTridentMeta = scurvyTrident.getItemMeta();
@@ -193,6 +196,7 @@ public class CreateCustomItem {
     //
     //      ARMOR
     //
+    @SuppressWarnings("deprecation")
     static ItemStack createHermesBoots(){
         ItemStack hermesBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta hermesBootsMeta = hermesBoots.getItemMeta();
@@ -235,6 +239,7 @@ public class CreateCustomItem {
         return explosiveChest;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createGolemChest(){
         ItemStack golemChest = new ItemStack(Material.IRON_CHESTPLATE);
         ItemMeta golemChestMeta = golemChest.getItemMeta();
@@ -283,6 +288,7 @@ public class CreateCustomItem {
         return gluttonyPants;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createIronCladHelmet(){
         ItemStack ironCladHelmet = new ItemStack(Material.IRON_HELMET);
         ItemMeta ironCladHelmetMeta = ironCladHelmet.getItemMeta();
@@ -303,6 +309,7 @@ public class CreateCustomItem {
         return ironCladHelmet;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createIronCladChestplate(){
         ItemStack ironCladChestplate = new ItemStack(Material.IRON_CHESTPLATE);
         ItemMeta ironCladChestplateMeta = ironCladChestplate.getItemMeta();
@@ -322,6 +329,7 @@ public class CreateCustomItem {
 
         return ironCladChestplate;
     }
+    @SuppressWarnings("deprecation")
     static ItemStack createIronCladLeggings(){
         ItemStack ironCladLeggings = new ItemStack(Material.IRON_LEGGINGS);
         ItemMeta ironCladLeggingsMeta = ironCladLeggings.getItemMeta();
@@ -342,6 +350,7 @@ public class CreateCustomItem {
         return ironCladLeggings;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createIronCladBoots(){
         ItemStack ironCladBoots = new ItemStack(Material.IRON_BOOTS);
         ItemMeta ironCladBootsMeta = ironCladBoots.getItemMeta();
@@ -375,6 +384,7 @@ public class CreateCustomItem {
         return nightHelmet;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createStrigaVeil(){
         ItemStack strigaVeil = new ItemStack(Material.CHAINMAIL_HELMET);
         ItemMeta strigaVeilMeta = strigaVeil.getItemMeta();
@@ -553,6 +563,7 @@ public class CreateCustomItem {
         return dwarfPickaxe;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createIronBreakerShield(){
         ItemStack ironBreakerShield = new ItemStack(Material.SHIELD);
         ItemMeta ironBreakerShieldMeta = ironBreakerShield.getItemMeta();
@@ -572,6 +583,7 @@ public class CreateCustomItem {
         return ironBreakerShield;
     }
 
+    @SuppressWarnings("deprecation")
     static ItemStack createBerserkerShield(){
         ItemStack berserkerShield = new ItemStack(Material.SHIELD);
         ItemMeta berserkerShieldMeta = berserkerShield.getItemMeta();

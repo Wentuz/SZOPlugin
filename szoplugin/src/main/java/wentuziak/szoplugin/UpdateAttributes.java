@@ -21,6 +21,7 @@ public class UpdateAttributes {
             modifyAttackSpeed(player, 4);
             modifySafeFallRange(player, 3);
             modifyReach(player, 4.5, 3);
+            modifyWaterSpeed(player, 0);
             return;
         }
         if (raceName.equals("RACE_DWARF")) {
@@ -58,6 +59,7 @@ public class UpdateAttributes {
             modifyFallDmgMultiplier(player, 0.8);
             modifyHealthPoints(player, 18);
             modifyMovementSpeed(player, 0.12);
+            modifyWaterSpeed(player, 1);
             modifySafeFallRange(player, 6);
         }
         if (raceName.equals("RACE_FOSSIL")) {
@@ -67,7 +69,7 @@ public class UpdateAttributes {
         }
         if (raceName.equals("RACE_ZEPHYR")) {
             modifyFireTime(player, 3);
-            modifyHealthPoints(player, 26);
+            modifyHealthPoints(player, 24);
             modifyMovementSpeed(player, 0.1);
         }
     }
@@ -119,6 +121,10 @@ public class UpdateAttributes {
     public static void modifySafeFallRange(Player player, double value){
         AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.GENERIC_SAFE_FALL_DISTANCE);
         safeFallRangeAttribute.setBaseValue(value);
+    }
+    public static void modifyWaterSpeed(Player player, double value){
+        AttributeInstance waterSpeedAttribute = player.getAttribute(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY);
+        waterSpeedAttribute.setBaseValue(value);
     }
     public static void modifyReach(Player player, double valueBlockReach, double valueEntityReach){
         AttributeInstance blockReachAttribute = player.getAttribute(Attribute.PLAYER_BLOCK_INTERACTION_RANGE);

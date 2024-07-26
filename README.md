@@ -66,6 +66,8 @@ STUFF IN HERE:
     VIIIZephyr
         Slightly faster and more durable
         Burn longer
+        Chance to knockback everyone while attacking
+        Food is less nutritious for them
 
 > Custom items :
     I Weapons :

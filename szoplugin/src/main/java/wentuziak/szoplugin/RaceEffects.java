@@ -381,6 +381,7 @@ public class RaceEffects {
             entity.getWorld().spawnParticle(Particle.CLOUD, entity.getLocation(), 10, 1, 1, 1, 0.015);
             double force = 3.0;
             entity.setVelocity(direction.multiply(force));
+            LogicHolder.givePotionEffect((LivingEntity) entity, "SLOW", 20 * 10, 0);
         }
     }
 }

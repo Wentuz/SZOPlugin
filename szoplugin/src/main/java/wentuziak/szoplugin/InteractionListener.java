@@ -121,7 +121,7 @@ public class InteractionListener implements Listener{
         // Main hand non magic
         if (clickedRightButton && itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-            if (itemInOffHand.getType() == Material.FLINT_AND_STEEL
+            if (itemInOffHand != null && itemInOffHand.getType() == Material.FLINT_AND_STEEL
             && !player.hasCooldown(Material.FIREWORK_STAR)) {
                 if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
                     Weapons.grenadeThrow(player, playerContainer);
@@ -220,6 +220,15 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
             RaceEffects.mewchantConsumptionEffect(player, consumedItem);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_ZEPHYR)) {
+            if (player.getFoodLevel() > 0) {
+                player.setFoodLevel(player.getFoodLevel() - 1);
+                
+                if (player.getFoodLevel() < 0) {
+                    player.setFoodLevel(0);
+                }
+            }
+        }
         SpecialFood.effectFoodFunc(player, consumedItem);
         
     }
@@ -249,7 +258,7 @@ public class InteractionListener implements Listener{
                     RaceEffects.celestialAttackEvent(player, hitEntity);
                 }
                 if (player.getPersistentDataContainer().has(Keys.RACE_ZEPHYR)){
-                    if (LogicHolder.critRoll(22)) {    
+                    if (LogicHolder.critRoll(22)) {
                         RaceEffects.zaphyrKnockback(player);
                     }
                 }
