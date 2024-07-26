@@ -63,6 +63,9 @@ STUFF IN HERE:
         Doesnt drown
         Taller, stronger, greater reach
         Can craft Ancient Shell
+    VIIIZephyr
+        Slightly faster and more durable
+        Burn longer
 
 > Custom items :
     I Weapons :

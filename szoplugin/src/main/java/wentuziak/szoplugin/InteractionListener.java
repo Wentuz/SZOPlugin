@@ -248,6 +248,11 @@ public class InteractionListener implements Listener{
                 if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)){
                     RaceEffects.celestialAttackEvent(player, hitEntity);
                 }
+                if (player.getPersistentDataContainer().has(Keys.RACE_ZEPHYR)){
+                    if (LogicHolder.critRoll(22)) {    
+                        RaceEffects.zaphyrKnockback(player);
+                    }
+                }
     
                 //
                 //      Special Weapons

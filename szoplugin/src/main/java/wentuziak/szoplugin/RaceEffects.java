@@ -8,12 +8,14 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
 public class RaceEffects {
 
@@ -367,5 +369,18 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
-    } 
+    }
+
+    //
+    //      ZEPHYR
+    //
+    public static void zaphyrKnockback(Player player){
+        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_BREEZE_DEFLECT, 1, 1);
+        for (Entity entity : player.getNearbyEntities(5, 5, 5)) {
+            Vector direction = entity.getLocation().toVector().subtract(player.getLocation().toVector()).normalize();
+            entity.getWorld().spawnParticle(Particle.CLOUD, entity.getLocation(), 10, 1, 1, 1, 0.015);
+            double force = 3.0;
+            entity.setVelocity(direction.multiply(force));
+        }
+    }
 }

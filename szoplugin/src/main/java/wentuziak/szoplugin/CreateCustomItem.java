@@ -16,10 +16,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.bukkit.potion.PotionType;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 
@@ -45,8 +43,6 @@ public class CreateCustomItem {
         mechanicalPartsMeta.setDisplayName(ChatColor.GOLD + "Mechanical Parts");
         mechanicalPartsMeta.setLore(Arrays.asList(
             "Science is just engineering that does not work"));
-        mechanicalPartsMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        mechanicalPartsMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         mechanicalPartsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
         mechanicalParts.setItemMeta(mechanicalPartsMeta);
 
@@ -60,8 +56,6 @@ public class CreateCustomItem {
         angelSwordMeta.setDisplayName(ChatColor.YELLOW + "Celestial Razor");
         angelSwordMeta.setLore(Arrays.asList(
             ChatColor.YELLOW + "The absolute leader protects his kin !"));
-        angelSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        angelSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
         AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ArmorModifierAngelSword);
@@ -81,7 +75,6 @@ public class CreateCustomItem {
         daemonSwordMeta.setDisplayName(ChatColor.RED + "Withering Bastard Sword");
         daemonSwordMeta.setLore(Arrays.asList(
             ChatColor.RED + "Blood for Hound !"));
-        daemonSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
         daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
         AttributeModifier attackSpeedModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -100,8 +93,6 @@ public class CreateCustomItem {
         pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
         pyromancerSwordMeta.setLore(Arrays.asList(
             "Wonder what could go wrong"));
-        pyromancerSwordMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        pyromancerSwordMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         pyromancerSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BOOLEAN, true);
         pyromancerSword.setItemMeta(pyromancerSwordMeta);
 
@@ -115,8 +106,6 @@ public class CreateCustomItem {
         thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "Þrumuhamar");
         thunderHammerMeta.setLore(Arrays.asList(
             "Thunder warriors rise your arms !"));
-        thunderHammerMeta.addEnchant(Enchantment.CHANNELING, 1, true);
-        thunderHammerMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         thunderHammerMeta.getPersistentDataContainer().set(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BOOLEAN, true);
         thunderHammer.setItemMeta(thunderHammerMeta);
 
@@ -195,8 +184,6 @@ public class CreateCustomItem {
         repeaterCrossbowMeta.setDisplayName(ChatColor.YELLOW + "Repeater Crossbow");
         repeaterCrossbowMeta.setLore(Arrays.asList(
             ChatColor.YELLOW + "Pew pew pew"));
-        repeaterCrossbowMeta.addEnchant(Enchantment.QUICK_CHARGE, 5, true);
-        repeaterCrossbowMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         repeaterCrossbow.setItemMeta(repeaterCrossbowMeta);
 
         return repeaterCrossbow;
