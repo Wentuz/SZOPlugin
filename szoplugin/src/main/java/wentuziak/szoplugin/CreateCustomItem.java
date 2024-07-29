@@ -510,6 +510,19 @@ public class CreateCustomItem {
         return hastyAxe;
     }
 
+    static ItemStack createRichAxe(){
+        ItemStack richAxe = new ItemStack(Material.DIAMOND_AXE);
+        ItemMeta richAxeMeta = richAxe.getItemMeta();
+
+        richAxeMeta.setDisplayName(ChatColor.RED + "Mourning wood Ax");
+        richAxeMeta.setLore(Arrays.asList(
+            "... chop chop"));
+        richAxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_RICH_AX, PersistentDataType.BOOLEAN, true);
+        richAxe.setItemMeta(richAxeMeta);
+
+        return richAxe;
+    }
+
     static ItemStack createSuperShears(){
         ItemStack superShears = new ItemStack(Material.SHEARS);
         ItemMeta superShearsMeta = superShears.getItemMeta();

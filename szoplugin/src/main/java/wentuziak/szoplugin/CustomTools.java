@@ -8,6 +8,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
@@ -63,6 +64,46 @@ public class CustomTools {
                 Location blockLocation = brokenBlock.getLocation();
                 LogicHolder.rollTreasure(playerLuck, blockLocation, typeOfLoot);
             }
+        }
+    }
+
+    public static void richAxeEffect(int playerLuck, Block brokenBlock){
+        if (LogicHolder.critRoll((playerLuck + 2) * 40)) {
+            Material blockMaterial = brokenBlock.getType();
+            Location blockLocation = brokenBlock.getLocation();
+            ItemStack item = new ItemStack(Material.AIR);
+
+            if (blockMaterial == Material.OAK_LOG) {
+                item = new ItemStack(Material.OAK_LOG);
+            }
+            else if (blockMaterial == Material.BIRCH_LOG) {
+                item = new ItemStack(Material.BIRCH_LOG);
+            }
+            else if (blockMaterial == Material.SPRUCE_LOG) {
+                item = new ItemStack(Material.SPRUCE_LOG);
+            }
+            else if (blockMaterial == Material.JUNGLE_LOG) {
+                item = new ItemStack(Material.JUNGLE_LOG);
+            }
+            else if (blockMaterial == Material.ACACIA_LOG) {
+                item = new ItemStack(Material.ACACIA_LOG);
+            }
+            else if (blockMaterial == Material.CHERRY_LOG) {
+                item = new ItemStack(Material.CHERRY_LOG);
+            }
+            else if (blockMaterial == Material.MANGROVE_LOG) {
+                item = new ItemStack(Material.MANGROVE_LOG);
+            }
+            else if (blockMaterial == Material.DARK_OAK_LOG) {
+                item = new ItemStack(Material.DARK_OAK_LOG);
+            }
+            else if (blockMaterial == Material.CRIMSON_STEM) {
+                item = new ItemStack(Material.CRIMSON_STEM);
+            }
+            else if (blockMaterial == Material.WARPED_STEM) {
+                item = new ItemStack(Material.WARPED_STEM);
+            }
+            blockLocation.getWorld().dropItemNaturally(blockLocation, item);
         }
     }
 

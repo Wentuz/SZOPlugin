@@ -391,6 +391,9 @@ public class InteractionListener implements Listener{
                 }
                 CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl, brokenBlock, "Ore");
             }
+            if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
+                CustomTools.richAxeEffect(luckLvl, brokenBlock);;
+            }
         }
 
         if (itemInOffHand.hasItemMeta()) {

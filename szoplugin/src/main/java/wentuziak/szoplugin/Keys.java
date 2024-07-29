@@ -62,6 +62,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_ANCIENT_SHELL = new NamespacedKey(SzoPlugin.getInstance(), "AncientShell");
     public static final NamespacedKey CUSTOM_SUPER_SHEARS = new NamespacedKey(SzoPlugin.getInstance(), "SuperShears");
     public static final NamespacedKey CUSTOM_HOMECOMING_COMPASS = new NamespacedKey(SzoPlugin.getInstance(), "HomecomingCompass");
+    public static final NamespacedKey CUSTOM_RICH_AX = new NamespacedKey(SzoPlugin.getInstance(), "RichAx");
     
     //
     //      Races

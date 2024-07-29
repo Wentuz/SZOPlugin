@@ -575,6 +575,25 @@ public final class CustomRecipes {
 
 
         //
+        //      RichAxe recipe
+        //
+        ItemStack richAxe = CreateCustomItem.createRichAxe();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "richAxeRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe richAxeRecipe = new ShapedRecipe(key, richAxe);
+        richAxeRecipe.shape(
+            "DS ",
+            "DM ",
+            " W ");
+            richAxeRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            richAxeRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            richAxeRecipe.setIngredient('D', Material.DIAMOND);
+            richAxeRecipe.setIngredient('W', Material.STICK);
+        Bukkit.addRecipe(richAxeRecipe);
+
+
+        //
         //      Hasty Pickaxe recipe
         //
         ItemStack hastyPickaxe = CreateCustomItem.createHastyPickaxe();
