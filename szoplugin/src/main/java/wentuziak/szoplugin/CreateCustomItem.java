@@ -523,6 +523,19 @@ public class CreateCustomItem {
         return richAxe;
     }
 
+    static ItemStack createRichShovel(){
+        ItemStack richShovel = new ItemStack(Material.DIAMOND_SHOVEL);
+        ItemMeta richShovelMeta = richShovel.getItemMeta();
+
+        richShovelMeta.setDisplayName(ChatColor.GOLD + "Booty Shovel");
+        richShovelMeta.setLore(Arrays.asList(
+            "... diggy diggy"));
+        richShovelMeta.getPersistentDataContainer().set(Keys.CUSTOM_RICH_SHOVEL, PersistentDataType.BOOLEAN, true);
+        richShovel.setItemMeta(richShovelMeta);
+
+        return richShovel;
+    }
+
     static ItemStack createSuperShears(){
         ItemStack superShears = new ItemStack(Material.SHEARS);
         ItemMeta superShearsMeta = superShears.getItemMeta();

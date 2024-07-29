@@ -68,7 +68,7 @@ public class CustomTools {
     }
 
     public static void richAxeEffect(int playerLuck, Block brokenBlock){
-        if (LogicHolder.critRoll((playerLuck + 2) * 40)) {
+        if (LogicHolder.critRoll((playerLuck + 2) * 4)) {
             Material blockMaterial = brokenBlock.getType();
             Location blockLocation = brokenBlock.getLocation();
             ItemStack item = new ItemStack(Material.AIR);
@@ -103,6 +103,33 @@ public class CustomTools {
             else if (blockMaterial == Material.WARPED_STEM) {
                 item = new ItemStack(Material.WARPED_STEM);
             }
+            blockLocation.getWorld().dropItemNaturally(blockLocation, item);
+        }
+    }
+    public static void richShovelEffect(int playerLuck, Block brokenBlock){
+        if (LogicHolder.critRoll((playerLuck + 2) * 40)) {
+            Material blockMaterial = brokenBlock.getType();
+            Location blockLocation = brokenBlock.getLocation();
+            ItemStack item = new ItemStack(Material.AIR);
+
+            if (blockMaterial == Material.SAND) {
+                if (LogicHolder.critRoll((playerLuck + 2) * 4)) {
+                    item = new ItemStack(Material.SUSPICIOUS_SAND);
+                }else{
+                    item = new ItemStack(Material.SAND);
+                }
+            }
+            else if (blockMaterial == Material.GRAVEL) {
+                if (LogicHolder.critRoll((playerLuck + 2) * 4)) {
+                    item = new ItemStack(Material.SUSPICIOUS_GRAVEL);
+                }else{
+                    item = new ItemStack(Material.GRAVEL);
+                }
+            }
+            else if (blockMaterial == Material.RED_SAND) {
+                item = new ItemStack(Material.RED_SAND);
+            }
+    
             blockLocation.getWorld().dropItemNaturally(blockLocation, item);
         }
     }
