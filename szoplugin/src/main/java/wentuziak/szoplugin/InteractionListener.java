@@ -2,6 +2,7 @@ package wentuziak.szoplugin;
 
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -14,10 +15,12 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Trident;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerFishEvent.State;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -58,9 +61,7 @@ public class InteractionListener implements Listener{
                     MagicItems.homeTeleport(player);
                     LogicHolder.removeItem(player, itemInOffHand);
                 }
-                // else if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BYTE)) {
-                //     player.sendMessage("YEET");
-                // }
+
             }
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
@@ -71,9 +72,6 @@ public class InteractionListener implements Listener{
                     MagicItems.homeTeleport(player);
                     LogicHolder.removeItem(player, itemInMainHand);
                 }
-                // else if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BYTE)) {
-                //     player.sendMessage("YEET");
-                // }
             }
                     //
                     //      RACE HAND CRAFTING
@@ -489,6 +487,34 @@ public class InteractionListener implements Listener{
                     }
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                    }
+                }
+            }
+        }
+    }
+    
+    @EventHandler
+    public void onProjectileLaunch(ProjectileLaunchEvent event) {
+        PersistentDataContainer playerContainer;
+        
+        if (event.getEntity() instanceof Trident) {
+            Trident trident = (Trident) event.getEntity();
+            Player player = (Player) trident.getShooter();
+            ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+            ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
+
+            if (itemInMainHand.getType() == Material.TRIDENT) {
+                playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer != null) {
+                    if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BOOLEAN)) {
+                        Weapons.magneticTridentEffect(player);
+                    }
+                }
+            }if (itemInOffHand.getType() == Material.TRIDENT) {
+                playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer != null) {
+                    if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BOOLEAN)) {
+                        Weapons.magneticTridentEffect(player);
                     }
                 }
             }

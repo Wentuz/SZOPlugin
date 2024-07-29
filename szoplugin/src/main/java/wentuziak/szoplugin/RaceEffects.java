@@ -255,6 +255,17 @@ public class RaceEffects {
     //      CARA
     //
     public static void caraGlideEvent(Player player){   
+        //speed boost
+        if (player.getFoodLevel() > 0) {
+            Vector direction = player.getLocation().getDirection().normalize();
+            player.setVelocity(direction.multiply(1.1));
+            player.setFoodLevel(player.getFoodLevel() - 1);
+            
+            if (player.getFoodLevel() < 0) {
+                player.setFoodLevel(0);
+            }
+        }
+        // fly
         if (!TaskManager.isTaskRunning(player, "caraGlide")) {            
             final Player finalPlayer = player;
             caraGlideTask = new BukkitRunnable() {

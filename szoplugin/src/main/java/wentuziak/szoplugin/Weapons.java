@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -14,6 +15,7 @@ import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
+import org.bukkit.util.Vector;
 
 
 public class Weapons {
@@ -106,5 +108,10 @@ public class Weapons {
         cloud.setRadius(3.0f);
         cloud.setParticle(Particle.CAMPFIRE_COSY_SMOKE);
         cloud.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 5, 1), true);
+    }
+
+    public static void magneticTridentEffect(Player player){
+        Vector direction = player.getLocation().getDirection().normalize();
+        player.setVelocity(direction.multiply(2));
     }
 }

@@ -159,8 +159,7 @@ public class CreateCustomItem {
 
         magneticTridentMeta.setDisplayName(ChatColor.BLUE + "Magnetic" +ChatColor.RED + " Trident");
         magneticTridentMeta.setLore(Arrays.asList(
-            "YEET"
-            +   "//NOT IMPLEMENTED"));
+            "YEET"));
             magneticTridentMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BOOLEAN, true);
             magneticTrident.setItemMeta(magneticTridentMeta);
 

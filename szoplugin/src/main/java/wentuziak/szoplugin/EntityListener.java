@@ -1,6 +1,5 @@
 package wentuziak.szoplugin;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -9,7 +8,6 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
-import org.bukkit.entity.Trident;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -19,7 +17,6 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -200,21 +197,4 @@ public class EntityListener implements Listener {
             }
         }
     }
-
-    // @EventHandler    //TODO : Trident data check. Cuz current doesn't want to work
-    // public void onProjectileLaunch(ProjectileLaunchEvent event) {
-    //     PersistentDataContainer entityContainer;
-        
-    //     if (event.getEntity() instanceof Trident) {
-    //         Trident trident = (Trident) event.getEntity();
-    //         entityContainer = trident.getPersistentDataContainer();
-    //         Bukkit.getLogger().info("data : " + entityContainer);
-    //         if (entityContainer != null) {
-    //             if (entityContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BOOLEAN) || trident.hasMetadata("")) {
-                    
-    //                 Bukkit.getLogger().info("A trident was yeeted by " + trident.getShooter());
-    //             }
-    //         }
-    //     }
-    // }
 }
