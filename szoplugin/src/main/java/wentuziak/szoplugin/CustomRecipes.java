@@ -252,6 +252,25 @@ public final class CustomRecipes {
             repeaterCrossbowRecipe.setIngredient('C', Material.CROSSBOW);
             repeaterCrossbowRecipe.setIngredient('R', Material.REPEATER);
         Bukkit.addRecipe(repeaterCrossbowRecipe);
+        
+        
+        //
+        //      magneticTrident Recipe
+        //
+        ItemStack magneticTrident = CreateCustomItem.createMagneticTrident();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MagneticTridentRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe magneticTridentRecipe = new ShapedRecipe(key, magneticTrident);
+        magneticTridentRecipe.shape(
+            " M ",
+            "LTR",
+            "   ");
+            magneticTridentRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            magneticTridentRecipe.setIngredient('T', Material.TRIDENT);
+            magneticTridentRecipe.setIngredient('R', Material.REDSTONE);
+            magneticTridentRecipe.setIngredient('L', Material.LAPIS_LAZULI);
+        Bukkit.addRecipe(magneticTridentRecipe);
 
 
         //

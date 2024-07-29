@@ -153,6 +153,20 @@ public class CreateCustomItem {
         return scurvyTrident;
     }
 
+    static ItemStack createMagneticTrident(){
+        ItemStack magneticTrident = new ItemStack(Material.TRIDENT);
+        ItemMeta magneticTridentMeta = magneticTrident.getItemMeta();
+
+        magneticTridentMeta.setDisplayName(ChatColor.BLUE + "Magnetic" +ChatColor.RED + " Trident");
+        magneticTridentMeta.setLore(Arrays.asList(
+            "YEET"
+            +   "//NOT IMPLEMENTED"));
+            magneticTridentMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BOOLEAN, true);
+            magneticTrident.setItemMeta(magneticTridentMeta);
+
+        return magneticTrident;
+    }
+
     static ItemStack createGravityBow(){
         ItemStack gravityBow = new ItemStack(Material.BOW);
         ItemMeta gravityBowMeta = gravityBow.getItemMeta();

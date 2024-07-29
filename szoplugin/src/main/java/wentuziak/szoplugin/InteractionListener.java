@@ -54,20 +54,26 @@ public class InteractionListener implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
                     CustomTools.markingSpyglassEffect(player, false);
                 }
-                if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
+                else if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
                     MagicItems.homeTeleport(player);
                     LogicHolder.removeItem(player, itemInOffHand);
                 }
+                // else if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BYTE)) {
+                //     player.sendMessage("YEET");
+                // }
             }
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
                     CustomTools.markingSpyglassEffect(player, true);
                 }
-                if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
+                else if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
                     MagicItems.homeTeleport(player);
                     LogicHolder.removeItem(player, itemInMainHand);
                 }
+                // else if (playerContainer.has(Keys.CUSTOM_MAGNETIC_TRIDENT, PersistentDataType.BYTE)) {
+                //     player.sendMessage("YEET");
+                // }
             }
                     //
                     //      RACE HAND CRAFTING

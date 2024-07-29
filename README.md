@@ -83,6 +83,7 @@ STUFF IN HERE:
         10. Repeater Crossbow - quick charge V
         11. Stinky Stick - knockback
         12. Smoke bomb - 4 gunpowder + black dye, hand crafting, mewchant
+        13. Magnetic Trident - throws player with itself
     II Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
