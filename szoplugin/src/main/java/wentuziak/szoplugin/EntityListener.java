@@ -113,6 +113,9 @@ public class EntityListener implements Listener {
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(hitLocation);
                 }
+                if (value == "bouncyArrow") {
+                    Weapons.bouncyCrossbowEffect(arrow, event.getHitBlockFace().getDirection());
+                }
             }
         }
         if (event.getEntity() instanceof Snowball) {

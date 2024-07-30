@@ -205,6 +205,19 @@ public class CreateCustomItem {
         return repeaterCrossbow;
     }
 
+    static ItemStack createBouncyCrossbow(){
+        ItemStack bouncyCrossbow = new ItemStack(Material.CROSSBOW);
+        ItemMeta bouncyCrossbowMeta = bouncyCrossbow.getItemMeta();
+
+        bouncyCrossbowMeta.setDisplayName(ChatColor.GREEN + "Bouncy Crossbow");
+        bouncyCrossbowMeta.setLore(Arrays.asList(
+            ChatColor.GREEN + "womp womp"));
+            bouncyCrossbowMeta.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BOOLEAN, true);
+            bouncyCrossbow.setItemMeta(bouncyCrossbowMeta);
+
+        return bouncyCrossbow;
+    }
+
 
     //
     //      ARMOR

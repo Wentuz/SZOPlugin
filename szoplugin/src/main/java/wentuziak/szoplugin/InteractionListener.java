@@ -477,6 +477,7 @@ public class InteractionListener implements Listener{
         if (event.getEntity() instanceof Player && event.getProjectile() instanceof Arrow) {
             Player player = (Player) event.getEntity();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+            ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
 
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
@@ -487,6 +488,11 @@ public class InteractionListener implements Listener{
                     }
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                    }
+                }
+                if (itemInMainHand.getType() == Material.CROSSBOW) {
+                    if (playerContainer.has(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BYTE)) {
+                        arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
                     }
                 }
             }

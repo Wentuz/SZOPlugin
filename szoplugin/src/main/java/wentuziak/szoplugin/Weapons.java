@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.AreaEffectCloud;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -74,6 +75,16 @@ public class Weapons {
         }
         Silverfish silverfish = (Silverfish) hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
         LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
+    }
+
+    public static void bouncyCrossbowEffect(Arrow arrow, Vector normal){
+         Vector velocity = arrow.getVelocity();
+
+         Vector reflectedVelocity = velocity.subtract(normal.multiply(2 * velocity.dot(normal)));
+
+         reflectedVelocity.multiply(0.8);
+
+         arrow.setVelocity(reflectedVelocity);
     }
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){

@@ -255,6 +255,24 @@ public final class CustomRecipes {
         
         
         //
+        //      repeaterCrossbow Recipe
+        //
+        ItemStack bouncyCrossbow = CreateCustomItem.createBouncyCrossbow();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "BouncyCrossbowRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe bouncyCrossbowRecipe = new ShapedRecipe(key, bouncyCrossbow);
+        bouncyCrossbowRecipe.shape(
+            " M ",
+            "SCS",
+            " S ");
+            bouncyCrossbowRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            bouncyCrossbowRecipe.setIngredient('C', Material.CROSSBOW);
+            bouncyCrossbowRecipe.setIngredient('S', Material.SLIME_BALL);
+        Bukkit.addRecipe(bouncyCrossbowRecipe);
+        
+        
+        //
         //      magneticTrident Recipe
         //
         ItemStack magneticTrident = CreateCustomItem.createMagneticTrident();
