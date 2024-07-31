@@ -1,10 +1,10 @@
 package wentuziak.szoplugin;
 
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
@@ -51,7 +51,16 @@ public class Weapons {
     public static void angelSwordEffect(int chanceForCrit, LivingEntity player)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(player, "HEAL", 1, 0);
+            double currentHealth = player.getHealth();
+            double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+    
+            double newHealth = currentHealth + 4.0;
+    
+            if (newHealth > maxHealth) {
+                newHealth = maxHealth;
+            }
+    
+            player.setHealth(newHealth);
             LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 5, 0);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
         }

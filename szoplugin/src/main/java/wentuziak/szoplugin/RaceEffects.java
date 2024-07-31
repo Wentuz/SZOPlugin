@@ -305,11 +305,23 @@ public class RaceEffects {
         
         if (consumedItem.equals("TROPICAL_FISH")) {
             LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 30, 1);
-            LogicHolder.givePotionEffect(player, "SATURATION", 20, 0);
+            player.setFoodLevel(player.getFoodLevel() + 4);
+                
+            if (player.getFoodLevel() > 20) {
+                player.setFoodLevel(20);
+            }  
         }else if (consumedItem.equals("COOKED_SALMON")) {
-            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+            player.setFoodLevel(player.getFoodLevel() + 2);
+                
+            if (player.getFoodLevel() > 20) {
+                player.setFoodLevel(20);
+            }  
         }else if (consumedItem.equals("COOKED_COD")) {
-            LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
+            player.setFoodLevel(player.getFoodLevel() + 2);
+                
+            if (player.getFoodLevel() > 20) {
+                player.setFoodLevel(20);
+            }  
         }else if (consumedItem.equals("SPIDER_EYE")) {
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 30, 0);
             LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 30, 0);

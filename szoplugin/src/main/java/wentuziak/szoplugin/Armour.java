@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -68,13 +69,27 @@ public class Armour {
     public static void gluttonyPantsEffect(Player player){
         LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);    
         LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);    
-        LogicHolder.givePotionEffect(player, "SATURATION", 5, 0);    
+        player.setFoodLevel(player.getFoodLevel() + 2);
+                
+        if (player.getFoodLevel() > 20) {
+            player.setFoodLevel(20);
+        }   
     }
 
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 4, 2);
+            double currentHealth = player.getHealth();
+            double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+    
+            double newHealth = currentHealth + 4.0;
+    
+            if (newHealth > maxHealth) {
+                newHealth = maxHealth;
+            }
+    
+            player.setHealth(newHealth);
+
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 4, 0);
             LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 4, 0);
             player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 50, 0.1, 0.1, 0.1, 0.1);
