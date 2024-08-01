@@ -57,7 +57,10 @@ public class EntityListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         CustomRecipes.getRecipeKeys().forEach(player::discoverRecipe);
+        reloadRace(player);
+    }
 
+    public static void reloadRace(Player player){
         PersistentDataContainer dataContainer = player.getPersistentDataContainer();
 
         NamespacedKey[] raceKeys = Keys.getRaceKeys();
@@ -66,7 +69,6 @@ public class EntityListener implements Listener {
             if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
                 String keyString = "RACE_" + key.getKey().toUpperCase();
                 UpdateAttributes.attributeManager(player, false, keyString);
-                player.sendMessage(ChatColor.GREEN + key.getKey().toUpperCase() + " loaded.");
             }
         }
     }
