@@ -9,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Fire;
 import org.bukkit.entity.Firework;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
@@ -116,7 +117,7 @@ public class LogicHolder {
         return Color.fromRGB(red, green, blue);
     }
 
-    public static void rollTreasure(int playerLuck, Location location, String typeOfLoot) {
+    public static Item rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
         while (playerLuck > 0) {
             whatLoot += (int)(Math.random() * 35 + 1);
@@ -134,17 +135,15 @@ public class LogicHolder {
                 } else if (whatLoot >= 88) {
                     item = new ItemStack(Material.DIAMOND);
                 } else if (whatLoot >= 75) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.QUARTZ, numberOfItems));
-                    return;
+                    item = new ItemStack(Material.QUARTZ, numberOfItems);
                 } else if (whatLoot >= 55) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.LAPIS_LAZULI, numberOfItems));
-                    return; 
+                    item = new ItemStack(Material.LAPIS_LAZULI, numberOfItems);
                 } else if (whatLoot >= 40) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_GOLD, numberOfItems));
+                    item = new ItemStack(Material.RAW_GOLD, numberOfItems);
                 } else if (whatLoot >= 30) {
                     item = new ItemStack(Material.RAW_IRON);   
                 } else if (whatLoot >= 19) {
-                    location.getWorld().dropItemNaturally(location, new ItemStack(Material.RAW_COPPER, numberOfItems));
+                    item = new ItemStack(Material.RAW_COPPER, numberOfItems);
                 } else if (whatLoot >= 10) {
                     item = new ItemStack(Material.EMERALD);
                 }
@@ -251,7 +250,8 @@ public class LogicHolder {
             default:
                 break;
         }
-        location.getWorld().dropItemNaturally(location, item);
+        //location.getWorld().dropItemNaturally(location, item);
+        return location.getWorld().dropItemNaturally(location, item);
     }
 
 }

@@ -369,15 +369,19 @@ public class InteractionListener implements Listener{
             if (!(itemInMainHand.hasItemMeta()) && !(itemInOffHand.hasItemMeta())) {
                 return;
             }
-            playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-            playerOffHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-
-            if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "Ore");
-                CustomTools.treasureFishingRodEffect(22 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
+            if (itemInMainHand.hasItemMeta()){
+                playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
+                    CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "Ore");
+                    CustomTools.treasureFishingRodEffect(22 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
+                }
             }
-            if (playerOffHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
+            if (itemInOffHand.hasItemMeta()) {
+                playerOffHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+    
+                if (playerOffHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                    CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
+                }
             }
             if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 RaceEffects.witchFishEvent(player, projectile);

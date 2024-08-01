@@ -5,6 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -12,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 
 public class CustomTools {
 
@@ -40,7 +43,12 @@ public class CustomTools {
             if (projectile instanceof org.bukkit.entity.FishHook) {
                 org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
                 Location bobberLocation = fishHook.getLocation();
-                LogicHolder.rollTreasure(playerLuck, bobberLocation, typeOfLoot);
+                Item item = LogicHolder.rollTreasure(playerLuck, bobberLocation, typeOfLoot);
+
+                Location playerLocation = player.getLocation();
+                Vector direction = playerLocation.toVector().subtract(bobberLocation.toVector()).normalize();
+                direction.setY(direction.getY() + 0.5);
+                item.setVelocity(direction.multiply(0.5));
             }
         }
     }
