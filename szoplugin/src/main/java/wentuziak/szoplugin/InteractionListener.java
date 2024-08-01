@@ -3,6 +3,7 @@ package wentuziak.szoplugin;
 
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -12,6 +13,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -52,6 +54,11 @@ public class InteractionListener implements Listener{
 
         if (clickedRightButton && (itemInMainHand != null && itemInOffHand != null)) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
+            // if (itemInMainHand.getType() == Material.FEATHER) {
+            //     Location location = player.getLocation();
+            //     Firework firework = LogicHolder.randomFirework(0, location);
+            //     firework.detonate();
+            // }
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
@@ -136,6 +143,12 @@ public class InteractionListener implements Listener{
                 else if(playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)){
                     Weapons.smokeThrow(player, playerContainer);
                     player.setCooldown(Material.FIREWORK_STAR, 20 * 8);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    return;
+                }
+                else if(playerContainer.has(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.BYTE)){
+                    Weapons.fireworkThrow(player, playerContainer);
+                    player.setCooldown(Material.FIREWORK_STAR, 20 * 2);
                     LogicHolder.removeItem(player, itemInMainHand);
                     return;
                 }

@@ -1,19 +1,26 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Registry;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.Fire;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.RayTraceResult;
+
+import java.util.Random;
 
 
 public class LogicHolder {
@@ -57,6 +64,9 @@ public class LogicHolder {
         else if (playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)) {
             snowball.getPersistentDataContainer().set(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.STRING, "smokeBomb");
         }
+        else if (playerContainer.has(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.BYTE)) {
+            snowball.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.STRING, "throwingFirework");
+        }
         snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
         snowball.setShooter(player);
     }
@@ -80,6 +90,30 @@ public class LogicHolder {
     public static boolean isDaytime(World world) {
         long time = world.getTime();
         return time >= 0 && time < 12000;
+    }
+
+    public static Firework randomFirework(int power, Location location){
+        Firework firework = (Firework) location.getWorld().spawn(location, Firework.class);
+        FireworkMeta meta = firework.getFireworkMeta();
+
+        meta.setPower(power);
+
+        FireworkEffect effect = FireworkEffect.builder()
+            .withColor(getRandomColor())
+            .withFade(getRandomColor())
+            .with(FireworkEffect.Type.BALL_LARGE)
+            .build();
+        meta.addEffect(effect);
+        firework.setFireworkMeta(meta);
+
+        return firework;
+    }
+    private static Color getRandomColor() {
+        int red = (int)(Math.random() * 255 + 1);
+        int green = (int)(Math.random() * 255 + 1);
+        int blue = (int)(Math.random() * 255 + 1);
+
+        return Color.fromRGB(red, green, blue);
     }
 
     public static void rollTreasure(int playerLuck, Location location, String typeOfLoot) {

@@ -47,6 +47,7 @@ STUFF IN HERE:
         Another combat focused race. +3 hearts, 4 hand dmg, lower attack speed
         Falling hurts them a lot more due to their mass
         Slightly taller
+        Oxygen depletes 5x slower
         May eat rotten flesh, spider eyes and honey for effects
     V   Cara
         Allows gliding on pressing shift while in air. Can't use fireworks without elytra
@@ -84,6 +85,7 @@ STUFF IN HERE:
         11. Stinky Stick - knockback
         12. Smoke bomb - 4 gunpowder + black dye, hand crafting, mewchant
         13. Magnetic Trident - throws player with itself
+        14. Throwing firework - like a glitter bomb
     II Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts

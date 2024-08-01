@@ -667,6 +667,25 @@ public class CreateCustomItem {
         return soulEssence;
     }
 
+
+    //
+    //      Throwable firework
+    //
+    static ItemStack createThrowingFirework(){
+        ItemStack throwingFirework = new ItemStack(Material.FIREWORK_STAR);
+        ItemMeta throwingFireworkMeta = throwingFirework.getItemMeta();
+
+        throwingFireworkMeta.setDisplayName(ChatColor.GREEN + "Rioters Firework");
+        throwingFireworkMeta.setLore(Arrays.asList(
+            ChatColor.RED + "Glitter bomb :3",
+            ChatColor.DARK_GRAY + "Flint'n steel in off hand to fire it dummy"));
+        throwingFireworkMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        throwingFireworkMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        throwingFireworkMeta.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.BOOLEAN, true);
+        throwingFirework.setItemMeta(throwingFireworkMeta);
+
+        return throwingFirework;
+    }
     //
     //      RACE CRAFTABLES
     //
@@ -960,7 +979,7 @@ public class CreateCustomItem {
             ChatColor.RESET + "Crafting Recipe:\n" +
             "8 Gunpowder + String\n\n" +
             "Who Can Make It:\n" +
-            "Any Race"
+            "Dwarf"
         );
 
         pages.add(

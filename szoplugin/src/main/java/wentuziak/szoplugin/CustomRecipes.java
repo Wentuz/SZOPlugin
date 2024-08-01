@@ -749,5 +749,18 @@ public final class CustomRecipes {
         raceBookRecipe.addIngredient(3, Material.PAPER);
         raceBookRecipe.addIngredient(1, Material.AMETHYST_SHARD);
         Bukkit.addRecipe(raceBookRecipe);
+
+
+        //
+        //      throwingFirework recipe
+        //
+        ItemStack throwingFirework = CreateCustomItem.createThrowingFirework();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "throwingFireworkRecipe");
+        recipeKeys.add(key);
+
+        ShapelessRecipe throwingFireworkRecipe = new ShapelessRecipe(key, throwingFirework);
+        throwingFireworkRecipe.addIngredient(1, Material.FIREWORK_STAR);
+        throwingFireworkRecipe.addIngredient(1, Material.STRING);
+        Bukkit.addRecipe(throwingFireworkRecipe);
     }
 }

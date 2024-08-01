@@ -8,6 +8,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
@@ -106,6 +107,16 @@ public class Weapons {
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.05);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.1);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, location, 50, 0.1, 0.2, 0.1, 0.1);
+    }
+
+    public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
+        player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
+        LogicHolder.throwSnowball(player, playerContainer);
+    }
+
+    public static void fireworkEffect(Location location){
+        Firework firework = LogicHolder.randomFirework(0, location);
+        firework.detonate();
     }
 
     public static void smokeThrow(Player player, PersistentDataContainer playerContainer){

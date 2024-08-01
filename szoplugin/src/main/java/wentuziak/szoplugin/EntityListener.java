@@ -140,6 +140,8 @@ public class EntityListener implements Listener {
                     Weapons.grenadeEffect(target.getLocation());
                 }else if (value == "smokeBomb") {
                     Weapons.smokeEffect(target.getLocation());
+                }else if (value == "throwingFirework") {
+                    Weapons.fireworkEffect(target.getLocation());
                 }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
@@ -149,6 +151,9 @@ public class EntityListener implements Listener {
                     Weapons.grenadeEffect(hitLocation);
                 }else if (value == "smokeBomb") {
                     Weapons.smokeEffect(hitLocation);
+                }
+                else if (value == "throwingFirework") {
+                    Weapons.fireworkEffect(hitLocation);
                 }
             }
         }

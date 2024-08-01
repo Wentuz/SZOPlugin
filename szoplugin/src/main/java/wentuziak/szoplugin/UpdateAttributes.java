@@ -59,7 +59,7 @@ public class UpdateAttributes {
             modifyFallDmgMultiplier(player, 0.8);
             modifyHealthPoints(player, 18);
             modifyMovementSpeed(player, 0.12);
-            modifyWaterSpeed(player, 1);
+            modifyWaterSpeed(player, 0.5);
             modifySafeFallRange(player, 6);
         }
         if (raceName.equals("RACE_FOSSIL")) {
