@@ -8,12 +8,14 @@ import org.bukkit.Registry;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Fire;
+import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.AxolotlBucketMeta;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
@@ -21,6 +23,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.RayTraceResult;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 
@@ -198,6 +202,18 @@ public class LogicHolder {
                     item = new ItemStack(Material.PRISMARINE_CRYSTALS, numberOfItems);
                 } else if (whatLoot >= 60) {
                     item = new ItemStack(Material.AXOLOTL_BUCKET);
+                    AxolotlBucketMeta meta = (AxolotlBucketMeta) item.getItemMeta();
+
+                    if (meta != null) {
+                        List<Axolotl.Variant> variants = Arrays.asList(Axolotl.Variant.values());
+                        variants.remove(Axolotl.Variant.BLUE);
+
+                        Random random = new Random();
+                        Axolotl.Variant randomVariant = variants.get(random.nextInt(variants.size()));
+
+                        meta.setVariant(randomVariant);
+                        item.setItemMeta(meta);
+                    }
                 } else if (whatLoot >= 55) {
                     item = new ItemStack(Material.INK_SAC, numberOfItems);
                 } else if (whatLoot >= 50) {
@@ -211,13 +227,13 @@ public class LogicHolder {
                 } else if (whatLoot >= 30) {
                     item = new ItemStack(Material.STRING, numberOfItems);
                 } else if (whatLoot >= 25) {
-                    item = new ItemStack(Material.BONE, numberOfItems);
+                    item = new ItemStack(Material.COD, numberOfItems);
                 } else if (whatLoot >= 20) {
-                    item = new ItemStack(Material.ROTTEN_FLESH, numberOfItems);
+                    item = new ItemStack(Material.SALMON, numberOfItems);
                 } else if (whatLoot >= 15) {
                     item = new ItemStack(Material.TURTLE_SCUTE);
                 } else if (whatLoot >= 10) {
-                    item = new ItemStack(Material.SEA_PICKLE);
+                    item = new ItemStack(Material.SEA_PICKLE, numberOfItems);
                 }
                 break;
             case "Mobs":

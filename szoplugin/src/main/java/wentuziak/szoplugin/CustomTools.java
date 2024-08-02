@@ -48,7 +48,7 @@ public class CustomTools {
                 Location playerLocation = player.getLocation();
                 Vector direction = playerLocation.toVector().subtract(bobberLocation.toVector()).normalize();
                 direction.setY(direction.getY() + 0.5);
-                item.setVelocity(direction.multiply(0.5));
+                item.setVelocity(direction.multiply(0.6));
             }
         }
     }
