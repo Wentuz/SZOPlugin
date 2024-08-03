@@ -110,13 +110,16 @@ public class EntityListener implements Listener {
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(target.getLocation());
                 }
+                if (value == "bouncyArrow") {
+                    Weapons.bouncyCrossbowTargetEffect(arrow, target);
+                }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(hitLocation);
                 }
                 if (value == "bouncyArrow") {
-                    Weapons.bouncyCrossbowEffect(arrow, event.getHitBlockFace().getDirection());
+                    Weapons.bouncyCrossbowGroundEffect(arrow, event.getHitBlockFace().getDirection());
                 }
             }
         }

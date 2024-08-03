@@ -4,6 +4,7 @@ package wentuziak.szoplugin;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Arrow;
@@ -11,7 +12,9 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.PufferFish;
 import org.bukkit.entity.Silverfish;
+import org.bukkit.entity.Slime;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
@@ -87,14 +90,33 @@ public class Weapons {
         LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
     }
 
-    public static void bouncyCrossbowEffect(Arrow arrow, Vector normal){
-         Vector velocity = arrow.getVelocity();
+    public static void bouncyCrossbowGroundEffect(Arrow arrow, Vector normal) {
+        if (LogicHolder.critRoll(100)) {
+            Location location = arrow.getLocation();
+            World world = location.getWorld();
+    
+            PufferFish previousPuffer = null;
+            int numberOfPuffer = (int)(Math.random() * 4 + 1);
+    
+            for (int i = 0; i < numberOfPuffer; i++) {
+                Location spawnLocation = location.clone().add(0, i, 0);
+                PufferFish puffer = (PufferFish) world.spawnEntity(spawnLocation, EntityType.PUFFERFISH);
+    
+                if (previousPuffer != null) {
+                    puffer.addPassenger(previousPuffer);
+                }
+    
+                previousPuffer = puffer;
+            }
+        }
+    }
 
-         Vector reflectedVelocity = velocity.subtract(normal.multiply(2 * velocity.dot(normal)));
+    public static void bouncyCrossbowTargetEffect(Arrow arrow, LivingEntity target){
+            Vector arrowVelocity = arrow.getVelocity().normalize();
+            Vector knockback = arrowVelocity.multiply(1.2);
+            knockback.setY(1.2);
 
-         reflectedVelocity.multiply(0.8);
-
-         arrow.setVelocity(reflectedVelocity);
+            target.setVelocity(knockback);
     }
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
