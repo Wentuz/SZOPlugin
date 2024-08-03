@@ -203,17 +203,21 @@ public class LogicHolder {
                 } else if (whatLoot >= 60) {
                     item = new ItemStack(Material.AXOLOTL_BUCKET);
                     AxolotlBucketMeta meta = (AxolotlBucketMeta) item.getItemMeta();
-
-                    if (meta != null) {
-                        List<Axolotl.Variant> variants = Arrays.asList(Axolotl.Variant.values());
-                        variants.remove(Axolotl.Variant.BLUE);
-
-                        Random random = new Random();
-                        Axolotl.Variant randomVariant = variants.get(random.nextInt(variants.size()));
-
-                        meta.setVariant(randomVariant);
-                        item.setItemMeta(meta);
-                    }
+    
+                    List<Axolotl.Variant> variants = List.of(
+                        Axolotl.Variant.LUCY,
+                        Axolotl.Variant.WILD,
+                        Axolotl.Variant.GOLD,
+                        Axolotl.Variant.CYAN
+                        // Excluding the rare "Blue" variant
+                    );
+    
+                    int random = (int)(Math.random() * 4);
+    
+                    Axolotl.Variant randomVariant = variants.get(random);
+    
+                    meta.setVariant(randomVariant);
+                    item.setItemMeta(meta);
                 } else if (whatLoot >= 55) {
                     item = new ItemStack(Material.INK_SAC, numberOfItems);
                 } else if (whatLoot >= 50) {
@@ -263,6 +267,24 @@ public class LogicHolder {
                     item = new ItemStack(Material.SPIDER_EYE);
                 }
                 break;
+            case "Test":
+                item = new ItemStack(Material.AXOLOTL_BUCKET);
+                AxolotlBucketMeta meta = (AxolotlBucketMeta) item.getItemMeta();
+
+                List<Axolotl.Variant> variants = List.of(
+                    Axolotl.Variant.LUCY,
+                    Axolotl.Variant.WILD,
+                    Axolotl.Variant.GOLD,
+                    Axolotl.Variant.CYAN
+                    // Excluding the rare "Blue" variant
+                );
+
+                int random = (int)(Math.random() * 4);
+
+                Axolotl.Variant randomVariant = variants.get(random);
+
+                meta.setVariant(randomVariant);
+                item.setItemMeta(meta);
             default:
                 break;
         }
