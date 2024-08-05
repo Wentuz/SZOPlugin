@@ -200,6 +200,8 @@ public class CreateCustomItem {
         repeaterCrossbowMeta.setDisplayName(ChatColor.YELLOW + "Repeater Crossbow");
         repeaterCrossbowMeta.setLore(Arrays.asList(
             ChatColor.YELLOW + "Pew pew pew"));
+        repeaterCrossbowMeta.addEnchant(Enchantment.QUICK_CHARGE, 5, true);
+
         repeaterCrossbow.setItemMeta(repeaterCrossbowMeta);
 
         return repeaterCrossbow;

@@ -91,7 +91,7 @@ public class Weapons {
     }
 
     public static void bouncyCrossbowGroundEffect(Arrow arrow, Vector normal) {
-        if (LogicHolder.critRoll(100)) {
+        if (LogicHolder.critRoll(10)) {
             Location location = arrow.getLocation();
             World world = location.getWorld();
     
