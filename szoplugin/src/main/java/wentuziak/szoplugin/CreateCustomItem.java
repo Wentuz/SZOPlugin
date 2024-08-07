@@ -932,6 +932,24 @@ public class CreateCustomItem {
     }
 
     //
+    //      Wind Charm
+    //
+    static ItemStack createWindCharm(){
+        ItemStack windCharm = new ItemStack(Material.FEATHER);
+        ItemMeta windCharmMeta = windCharm.getItemMeta();
+
+        windCharmMeta.setDisplayName(ChatColor.GRAY + "Wind Charm");
+        windCharmMeta.setLore(Arrays.asList(
+            ChatColor.DARK_PURPLE + "Fast as wind..."));
+        windCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        windCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        windCharmMeta.getPersistentDataContainer().set(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BOOLEAN, true);
+        windCharm.setItemMeta(windCharmMeta);
+
+        return windCharm;
+    }
+
+    //
     //      Race Hand Crafting Book
     //
     public static ItemStack createRaceBook() {
@@ -1038,6 +1056,14 @@ public class CreateCustomItem {
             "Honey Bottle + Golden Apple\n\n" +
             "Who Can Make It:\n" +
             "Dwarf"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Wind Charm\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Feather + Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Cara"
         );
 
         raceBookMeta.setPages(pages);

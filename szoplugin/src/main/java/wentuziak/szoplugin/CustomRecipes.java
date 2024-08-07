@@ -752,6 +752,18 @@ public final class CustomRecipes {
 
 
         //
+        //      Race book recycle
+        //
+        ItemStack raceBookRecycle = CreateCustomItem.createRaceBook();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "raceBookRecycleRecipe");
+        recipeKeys.add(key);
+
+        ShapelessRecipe raceBookRecycleRecipe = new ShapelessRecipe(key, raceBookRecycle);
+        raceBookRecycleRecipe.addIngredient(1, Material.WRITTEN_BOOK);
+        Bukkit.addRecipe(raceBookRecycleRecipe);
+
+
+        //
         //      throwingFirework recipe
         //
         ItemStack throwingFirework = CreateCustomItem.createThrowingFirework();

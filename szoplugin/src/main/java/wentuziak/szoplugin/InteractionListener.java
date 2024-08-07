@@ -54,11 +54,7 @@ public class InteractionListener implements Listener{
 
         if (clickedRightButton && (itemInMainHand != null && itemInOffHand != null)) {
             SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
-            // if (itemInMainHand.getType() == Material.FEATHER) {
-            //     Location location = player.getLocation();
-            //     Firework firework = LogicHolder.randomFirework(0, location);
-            //     firework.detonate();
-            // }
+
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_MARKING_SPYGLASS, PersistentDataType.BYTE)) {
@@ -66,6 +62,10 @@ public class InteractionListener implements Listener{
                 }
                 else if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
                     MagicItems.homeTeleport(player);
+                    LogicHolder.removeItem(player, itemInOffHand);
+                }
+                else if (playerContainer.has(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BYTE)) {
+                    MagicItems.windCharmEffect(player);
                     LogicHolder.removeItem(player, itemInOffHand);
                 }
 
@@ -77,6 +77,10 @@ public class InteractionListener implements Listener{
                 }
                 else if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
                     MagicItems.homeTeleport(player);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                }
+                else if (playerContainer.has(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BYTE)) {
+                    MagicItems.windCharmEffect(player);
                     LogicHolder.removeItem(player, itemInMainHand);
                 }
             }
@@ -95,6 +99,9 @@ public class InteractionListener implements Listener{
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
                     RaceEffects.fossilCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
+                if(player.getPersistentDataContainer().has(Keys.RACE_CARA)){
+                    RaceEffects.caraCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
             }
         }

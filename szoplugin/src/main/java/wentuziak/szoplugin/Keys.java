@@ -51,11 +51,11 @@ public class Keys {
     public static final NamespacedKey CUSTOM_MECHANICAL_PARTS = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalParts");
     public static final NamespacedKey CUSTOM_DWARF_HONEY = new NamespacedKey(SzoPlugin.getInstance(), "DwarfHoney");
     public static final NamespacedKey CUSTOM_WITCH_SOUP = new NamespacedKey(SzoPlugin.getInstance(), "WitchSoup");
-    public static final NamespacedKey CUSTOM_MARKING_SPYGLASS = new NamespacedKey(SzoPlugin.getInstance(), "MarkingSpyglass");
-
+    
     //
     //      Tools
     //
+    public static final NamespacedKey CUSTOM_MARKING_SPYGLASS = new NamespacedKey(SzoPlugin.getInstance(), "MarkingSpyglass");
     public static final NamespacedKey CUSTOM_HASTY_TOOL = new NamespacedKey(SzoPlugin.getInstance(), "HastyTool");
     public static final NamespacedKey CUSTOM_DWARF_PICK = new NamespacedKey(SzoPlugin.getInstance(), "DwarfPick");
     public static final NamespacedKey CUSTOM_TREASURE_FISHING = new NamespacedKey(SzoPlugin.getInstance(), "TreasureFishing");
@@ -67,6 +67,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_HOMECOMING_COMPASS = new NamespacedKey(SzoPlugin.getInstance(), "HomecomingCompass");
     public static final NamespacedKey CUSTOM_RICH_AX = new NamespacedKey(SzoPlugin.getInstance(), "RichAx");
     public static final NamespacedKey CUSTOM_RICH_SHOVEL = new NamespacedKey(SzoPlugin.getInstance(), "RichShovel");
+    public static final NamespacedKey CUSTOM_WIND_CHARM = new NamespacedKey(SzoPlugin.getInstance(), "WindCharm");
     
     //
     //      Races

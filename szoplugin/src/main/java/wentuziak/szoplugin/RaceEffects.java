@@ -288,6 +288,19 @@ public class RaceEffects {
     public static void stopCaraGlideTask(Player player) {
         TaskManager.stopTask(player, "caraGlide");
     }
+    
+    public static void caraCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.FEATHER && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createWindCharm());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+    } 
 
     //
     //      MEWCHANT

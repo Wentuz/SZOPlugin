@@ -63,6 +63,7 @@ public class MagicItems {
             ((Player) targetEntity).playSound(targetEntity.getLocation(), Sound.ENTITY_ENDERMITE_DEATH, 1, 1);
         }
         LogicHolder.givePotionEffect(targetEntity, "WITHER", 20*10, 1);
+        LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20*10, 1);
         LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
     }
 
@@ -127,6 +128,11 @@ public class MagicItems {
 
     public static void stopAncientShellTask(Player player) {
         TaskManager.stopTask(player, "ancientShell");
+    }
+
+    public static void windCharmEffect(Player player){
+        LogicHolder.givePotionEffect(player, "SPEED", 20*60*5, 1);
+        LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
     }
 
 
