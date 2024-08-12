@@ -282,6 +282,20 @@ public class CreateCustomItem {
         return explosiveChest;
     }
 
+    static ItemStack createReflectiveChestpiece(){
+        ItemStack reflectiveChestpiece = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemMeta reflectiveChestpieceMeta = reflectiveChestpiece.getItemMeta();
+
+        reflectiveChestpieceMeta.setDisplayName(ChatColor.BLUE + "Reflective Chestpiece");
+        reflectiveChestpieceMeta.setLore(Arrays.asList(
+            "Cruel. Not flashy or shiny, just cruel"));
+            reflectiveChestpieceMeta.getPersistentDataContainer().set(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BOOLEAN, true);
+
+        reflectiveChestpiece.setItemMeta(reflectiveChestpieceMeta);
+
+        return reflectiveChestpiece;
+    }
+
     @SuppressWarnings("deprecation")
     static ItemStack createGolemChest(){
         ItemStack golemChest = new ItemStack(Material.IRON_CHESTPLATE);

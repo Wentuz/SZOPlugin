@@ -31,6 +31,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_NIGHT_HELMET = new NamespacedKey(SzoPlugin.getInstance(), "NightHelmet");
     public static final NamespacedKey CUSTOM_STRIGA_VEIL = new NamespacedKey(SzoPlugin.getInstance(), "StrigaVeil");
     public static final NamespacedKey CUSTOM_MAGIC_BOOTS = new NamespacedKey(SzoPlugin.getInstance(), "MagicBoots");
+    public static final NamespacedKey CUSTOM_REFLECTIVE_CHESTPIECE = new NamespacedKey(SzoPlugin.getInstance(), "ReflectiveChestpiece");
     
     //
     //      Spells

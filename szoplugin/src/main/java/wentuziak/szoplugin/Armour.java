@@ -36,6 +36,13 @@ public class Armour {
             LogicHolder.givePotionEffect(player, "REGENERATION", 20, 2);
         }
     }
+    public static void reflectiveChestEffect(int chanceForCrit, LivingEntity damager){
+        if (LogicHolder.critRoll(chanceForCrit)){
+            LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
+            LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 1);
+            damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
+        }
+    }
 
     public static void nightHelmetEffect(Player player){
         World world = player.getWorld();

@@ -398,6 +398,25 @@ public final class CustomRecipes {
         ironCladChestplateRecipe.setIngredient('P', Material.PISTON);
         Bukkit.addRecipe(ironCladChestplateRecipe);
         
+                
+        
+        //
+        //      reflectiveChestpiece Recipe
+        //
+        ItemStack reflectiveChestpiece = CreateCustomItem.createReflectiveChestpiece();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "ReflectiveChestpieceRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe reflectiveChestpieceRecipe = new ShapedRecipe(key, reflectiveChestpiece);
+        reflectiveChestpieceRecipe.shape(
+            "D D",
+            "DSD",
+            "DFD");
+            reflectiveChestpieceRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            reflectiveChestpieceRecipe.setIngredient('D', Material.DIAMOND);
+            reflectiveChestpieceRecipe.setIngredient('F', Material.FERMENTED_SPIDER_EYE);
+        Bukkit.addRecipe(reflectiveChestpieceRecipe);
+        
         
         //
         //      Golem Chest Recipe
