@@ -1,6 +1,7 @@
 package wentuziak.szoplugin;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -14,7 +15,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.PufferFish;
 import org.bukkit.entity.Silverfish;
-import org.bukkit.entity.Slime;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
@@ -45,10 +45,12 @@ public class Weapons {
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
+            hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
             LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 10, 1);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 8, 1);
-            hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
+            }, 5L);
         }
     }
 

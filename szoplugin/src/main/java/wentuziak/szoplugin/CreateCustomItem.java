@@ -257,9 +257,9 @@ public class CreateCustomItem {
         ItemStack magicBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta magicBootsMeta = magicBoots.getItemMeta();
 
-        magicBootsMeta.setDisplayName(ChatColor.MAGIC + "Magic Boots");
+        magicBootsMeta.setDisplayName(ChatColor.BLUE + "Magic Boots");
         magicBootsMeta.setLore(Arrays.asList(
-            "A cheap way to levitate"));
+            "Boosts magical capabilities"));
         ((LeatherArmorMeta) magicBootsMeta).setColor(Color.BLUE);
         magicBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BOOLEAN, true);
 

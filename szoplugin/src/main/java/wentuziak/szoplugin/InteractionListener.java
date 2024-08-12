@@ -35,6 +35,8 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
+
 
 
 
@@ -113,23 +115,53 @@ public class InteractionListener implements Listener{
         // Magic for main hand only
         if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() 
         && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
+            ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
+
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player);
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                    playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                        LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);
+                    }
+                }
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 35);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.spiritLeech(player, playerContainer);
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                    playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                        for(int i = 0; i <= 3; i++){
+                            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                                MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
+                            }, 5L);
+                        }
+                    }
+                }
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                    playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                        MagicItems.spiderYeet(player, playerContainer);
+                    }
+                }
                 MagicItems.spiderYeet(player, playerContainer);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 45);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                    playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*2, 1);
+                    }
+                }
                 MagicItems.obliterate(player);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
                 return;

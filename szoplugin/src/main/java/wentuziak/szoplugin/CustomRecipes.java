@@ -354,7 +354,7 @@ public final class CustomRecipes {
         ShapedRecipe magicBootsRecipe = new ShapedRecipe(key, magicBoots);
         magicBootsRecipe.shape(
             "   ",
-            "S D",
+            "S L",
             "D D");
             magicBootsRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
             magicBootsRecipe.setIngredient('L', Material.LAPIS_LAZULI);
