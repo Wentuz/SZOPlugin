@@ -197,7 +197,8 @@ public class EntityListener implements Listener {
                     }
                 }
             if ((killedEntity.getType() == EntityType.WARDEN ||
-                killedEntity.getType() == EntityType.ELDER_GUARDIAN)) {
+                killedEntity.getType() == EntityType.ELDER_GUARDIAN) &&
+                killedEntity.getType() != EntityType.GUARDIAN) {
                     Location killedEntityLocation = killedEntity.getLocation();
                     for(int i = 0; i < 6; i++){
                         if (LogicHolder.critRoll((luckLvl + 1) * 15)) {

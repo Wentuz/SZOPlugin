@@ -253,6 +253,21 @@ public class CreateCustomItem {
         return jetBoots;
     }
 
+    static ItemStack createMagicBoots(){
+        ItemStack magicBoots = new ItemStack(Material.LEATHER_BOOTS);
+        ItemMeta magicBootsMeta = magicBoots.getItemMeta();
+
+        magicBootsMeta.setDisplayName(ChatColor.MAGIC + "Magic Boots");
+        magicBootsMeta.setLore(Arrays.asList(
+            "A cheap way to levitate"));
+        ((LeatherArmorMeta) magicBootsMeta).setColor(Color.BLUE);
+        magicBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BOOLEAN, true);
+
+        magicBoots.setItemMeta(magicBootsMeta);
+
+        return magicBoots;
+    }
+
     static ItemStack createExplosiveChest(){
         ItemStack explosiveChest = new ItemStack(Material.DIAMOND_CHESTPLATE);
         ItemMeta explosiveChestMeta = explosiveChest.getItemMeta();

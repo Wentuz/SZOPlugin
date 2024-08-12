@@ -462,19 +462,19 @@ public class InteractionListener implements Listener{
         
         boolean isInWater = LogicHolder.isPlayerInWater(player);
         
-        if (itemLeggings == null) {
+        if (itemLeggings == null || !isInWater) {
             Armour.stopMermaidTailTask(player);
         }else if (itemLeggings.hasItemMeta()) {
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && isInWater) {
+            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater)) {
                 Armour.mermaidTailEffect(player);
             }else{
-                MagicItems.stopAncientShellTask(player);
+                Armour.stopMermaidTailTask(player);
             }
         }
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && isInWater) {
+            if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater)) {
                 MagicItems.ancientShellEffect(player);
             }else{
                 MagicItems.stopAncientShellTask(player);
@@ -488,10 +488,10 @@ public class InteractionListener implements Listener{
             RaceEffects.stopDwarfSwimTask(player);
             RaceEffects.stopFossilSwimTask(player);
         }
-        if ((player.getPersistentDataContainer().has(Keys.RACE_DWARF) && isInWater)) {
+        if ((player.getPersistentDataContainer().has(Keys.RACE_DWARF) && (player.isSwimming() || isInWater))) {
             RaceEffects.dwarfSwimEvent(player);
         }
-        if ((player.getPersistentDataContainer().has(Keys.RACE_FOSSIL) && isInWater)) {
+        if ((player.getPersistentDataContainer().has(Keys.RACE_FOSSIL) && (player.isSwimming() || isInWater))) {
             RaceEffects.fossilSwimEvent(player);
         }
     }

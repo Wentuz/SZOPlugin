@@ -38,7 +38,7 @@ public class Weapons {
 
     public static void explosiveSwordEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 2, false, false);
+            hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 1, false, false);
         }
     }
 
@@ -46,7 +46,7 @@ public class Weapons {
     {
         if (LogicHolder.critRoll(chanceForCrit)) {
             LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
-            LogicHolder.givePotionEffect(hitEntity, "POISON", 20 * 10, 1);
+            LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 10, 1);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 8, 1);
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
         }

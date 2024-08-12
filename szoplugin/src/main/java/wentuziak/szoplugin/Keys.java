@@ -30,6 +30,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_GLUTTONY_PANTS = new NamespacedKey(SzoPlugin.getInstance(), "GluttonyPants");
     public static final NamespacedKey CUSTOM_NIGHT_HELMET = new NamespacedKey(SzoPlugin.getInstance(), "NightHelmet");
     public static final NamespacedKey CUSTOM_STRIGA_VEIL = new NamespacedKey(SzoPlugin.getInstance(), "StrigaVeil");
+    public static final NamespacedKey CUSTOM_MAGIC_BOOTS = new NamespacedKey(SzoPlugin.getInstance(), "MagicBoots");
     
     //
     //      Spells
@@ -51,6 +52,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_MECHANICAL_PARTS = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalParts");
     public static final NamespacedKey CUSTOM_DWARF_HONEY = new NamespacedKey(SzoPlugin.getInstance(), "DwarfHoney");
     public static final NamespacedKey CUSTOM_WITCH_SOUP = new NamespacedKey(SzoPlugin.getInstance(), "WitchSoup");
+    public static final NamespacedKey CUSTOM_DWARF_UPGRADE = new NamespacedKey(SzoPlugin.getInstance(), "DwarfUpgrade");
     
     //
     //      Tools

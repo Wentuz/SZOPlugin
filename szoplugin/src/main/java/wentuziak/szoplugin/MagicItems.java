@@ -63,7 +63,9 @@ public class MagicItems {
             ((Player) targetEntity).playSound(targetEntity.getLocation(), Sound.ENTITY_ENDERMITE_DEATH, 1, 1);
         }
         LogicHolder.givePotionEffect(targetEntity, "WITHER", 20*10, 1);
+        LogicHolder.givePotionEffect(targetEntity, "HARM", 20*1, 0);
         LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20*10, 1);
+        LogicHolder.givePotionEffect(targetEntity, "BLINDNESS", 20*10,0);
         LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
     }
 
@@ -73,12 +75,21 @@ public class MagicItems {
     }
 
     public static void spiderYeetEffect(Location location){
+        Player nearestPlayer = LogicHolder.findNearestPlayer(location);
+
         for(int i = 0; i < 7; i++){            
             if (LogicHolder.critRoll(66)) {
                 CaveSpider caveSpider = (CaveSpider) location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.CAVE_SPIDER);
+                if (nearestPlayer != null) {
+                    caveSpider.setTarget(nearestPlayer);
+                }
             }
+            
         }
         CaveSpider caveSpider = (CaveSpider) location.getWorld().spawnEntity(location.add(0, 1, 0), EntityType.CAVE_SPIDER);
+        if (nearestPlayer != null) {
+            caveSpider.setTarget(nearestPlayer);
+        }
     }
 
     public static void obliterate(Player player){

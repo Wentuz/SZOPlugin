@@ -342,6 +342,24 @@ public final class CustomRecipes {
             jetBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
             jetBootsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(jetBootsRecipe);
+        
+        
+        //
+        //      magic boots Recipe
+        //
+        ItemStack magicBoots = CreateCustomItem.createMagicBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MagicBootsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe magicBootsRecipe = new ShapedRecipe(key, magicBoots);
+        magicBootsRecipe.shape(
+            "   ",
+            "S D",
+            "D D");
+            magicBootsRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            magicBootsRecipe.setIngredient('L', Material.LAPIS_LAZULI);
+            magicBootsRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(magicBootsRecipe);
                 
         
         //

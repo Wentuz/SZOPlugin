@@ -80,6 +80,18 @@ public class RaceEffects {
             }
             return;
         }
+
+        //
+        //      GEAR UPGRADES
+        //
+        // else if ((mainHandMaterial == Material.DIAMOND_AXE && itemInOffHand.getAmount() >= 8) && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())){
+        //     LogicHolder.addAttributeToItemInHand(player);
+            
+        //     for(int i = 0; i < 8; i++){
+        //         LogicHolder.removeItem(player, itemInOffHand);
+        //     }
+        //     return;
+        // }
     }
 
     public static void dwarfSwimEvent(Player player){   

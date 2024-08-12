@@ -6,17 +6,22 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Registry;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Fire;
 import org.bukkit.entity.Axolotl;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.AxolotlBucketMeta;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
@@ -26,6 +31,7 @@ import org.bukkit.util.RayTraceResult;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 
 public class LogicHolder {
@@ -119,6 +125,38 @@ public class LogicHolder {
         int blue = (int)(Math.random() * 255 + 1);
 
         return Color.fromRGB(red, green, blue);
+    }
+
+     public static void addAttributeToItemInHand(Player player) {
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+
+        if (itemInMainHand == null && itemInMainHand.getType() != Material.AIR) {
+            return;
+        }
+
+        ItemMeta itemMeta = itemInMainHand.getItemMeta();
+        
+        if (itemMeta == null) {
+            player.sendMessage("Whoops");
+            return; // No item meta to modify
+        }
+        
+    }
+
+    public static Player findNearestPlayer(Location location) {
+        Player nearestPlayer = null;
+        double nearestDistanceSquared = Double.MAX_VALUE;
+
+        for (Entity entity : location.getWorld().getNearbyEntities(location, 50, 50, 50)) {
+            if (entity instanceof Player) {
+                double distanceSquared = entity.getLocation().distanceSquared(location);
+                if (distanceSquared < nearestDistanceSquared) {
+                    nearestDistanceSquared = distanceSquared;
+                    nearestPlayer = (Player) entity;
+                }
+            }
+        }
+        return nearestPlayer;
     }
 
     public static Item rollTreasure(int playerLuck, Location location, String typeOfLoot) {
