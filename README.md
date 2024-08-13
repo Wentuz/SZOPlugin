@@ -99,7 +99,8 @@ STUFF IN HERE:
         10. Ironclad Helmet - strong helmet, very cool
         11. Night helmet - buffs in night
         12. Magic Boots - buffs for spells
-        13. Reflective Chestpiece - Reflects some damage in magical way.
+        13. Reflective Chestpiece - Reflects some damage in magical way
+        14. Guarding Vest - May guard you from death
     III Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works
@@ -127,3 +128,4 @@ STUFF IN HERE:
         3. Paralyzing gas
         4. Iron hide potion
         5. Gepard legs potion
+    

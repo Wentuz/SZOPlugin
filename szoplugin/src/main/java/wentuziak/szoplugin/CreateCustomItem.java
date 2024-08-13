@@ -441,6 +441,25 @@ public class CreateCustomItem {
         return nightHelmet;
     }
 
+    static ItemStack createGuardingVest(){
+        ItemStack guardingVest = new ItemStack(Material.GOLDEN_CHESTPLATE);
+        ItemMeta guardingVestMeta = guardingVest.getItemMeta();
+
+        guardingVestMeta.setDisplayName(ChatColor.YELLOW + "Angelic Vest");
+        guardingVestMeta.setLore(Arrays.asList(
+            ChatColor.MAGIC + "Gwuh huh yuh"));
+            AttributeModifier armorModifier = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifier);
+            AttributeModifier toughnessModifier = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifier);
+            AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifier);
+            guardingVestMeta.getPersistentDataContainer().set(Keys.CUSTOM_GUARDING_VEST, PersistentDataType.BOOLEAN, true);
+            guardingVest.setItemMeta(guardingVestMeta);
+
+        return guardingVest;
+    }
+
     @SuppressWarnings("deprecation")
     static ItemStack createStrigaVeil(){
         ItemStack strigaVeil = new ItemStack(Material.CHAINMAIL_HELMET);
@@ -716,6 +735,60 @@ public class CreateCustomItem {
         throwingFirework.setItemMeta(throwingFireworkMeta);
 
         return throwingFirework;
+    }
+
+
+    //
+    //      health charm
+    //
+    static ItemStack createHealthCharm(){
+        ItemStack healthCharm = new ItemStack(Material.RED_DYE);
+        ItemMeta healthCharmMeta = healthCharm.getItemMeta();
+
+        healthCharmMeta.setDisplayName(ChatColor.RED + "Health Charm");
+        healthCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        healthCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", +4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        healthCharmMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifier);
+        healthCharm.setItemMeta(healthCharmMeta);
+
+        return healthCharm;
+    }
+
+
+    //
+    //      attack charm
+    //
+    static ItemStack createAttackCharm(){
+        ItemStack attackCharm = new ItemStack(Material.FLINT);
+        ItemMeta attackCharmMeta = attackCharm.getItemMeta();
+
+        attackCharmMeta.setDisplayName(ChatColor.GRAY + "Attack Charm");
+        attackCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        attackCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "Attack", +2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        attackCharmMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifier);
+        attackCharm.setItemMeta(attackCharmMeta);
+
+        return attackCharm;
+    }
+
+
+    //
+    //      gravity charm
+    //
+    static ItemStack createGravityCharm(){
+        ItemStack gravityCharm = new ItemStack(Material.CHARCOAL);
+        ItemMeta gravityCharmMeta = gravityCharm.getItemMeta();
+
+        gravityCharmMeta.setDisplayName(ChatColor.GRAY + "Gravity Stone");
+        gravityCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        gravityCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        AttributeModifier gravityModifier = new AttributeModifier(UUID.randomUUID(), "Gravity", -0.05, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        gravityCharmMeta.addAttributeModifier(Attribute.GENERIC_GRAVITY, gravityModifier);
+        gravityCharm.setItemMeta(gravityCharmMeta);
+
+        return gravityCharm;
     }
     //
     //      RACE CRAFTABLES

@@ -55,8 +55,58 @@ public final class CustomRecipes {
             mechanicalPartsRecipe.setIngredient('R', Material.REPEATER);
             mechanicalPartsRecipe.setIngredient('C', Material.COPPER_INGOT);
         Bukkit.addRecipe(mechanicalPartsRecipe);
-
         
+
+        //
+        //      healthCharm recipe
+        //
+        ItemStack healthCharm = CreateCustomItem.createHealthCharm();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "HealthCharmRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe healthCharmRecipe = new ShapedRecipe(key, healthCharm);
+        healthCharmRecipe.shape(
+            " G ",
+            "GDG",
+            " G ");
+            healthCharmRecipe.setIngredient('G', Material.GLISTERING_MELON_SLICE);
+            healthCharmRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(healthCharmRecipe);
+
+
+        //
+        //      attackCharm recipe
+        //
+        ItemStack attackCharm = CreateCustomItem.createAttackCharm();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "AttackCharmRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe attackCharmRecipe = new ShapedRecipe(key, attackCharm);
+        attackCharmRecipe.shape(
+            " S ",
+            "SDS",
+            " S ");
+            attackCharmRecipe.setIngredient('S', Material.FERMENTED_SPIDER_EYE);
+            attackCharmRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(attackCharmRecipe);
+
+
+        //
+        //      gravityCharm recipe
+        //
+        ItemStack gravityCharm = CreateCustomItem.createGravityCharm();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GravityCharmRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe gravityCharmRecipe = new ShapedRecipe(key, gravityCharm);
+        gravityCharmRecipe.shape(
+            " L ",
+            "RDL",
+            " R ");
+            gravityCharmRecipe.setIngredient('L', Material.LAPIS_LAZULI);
+            gravityCharmRecipe.setIngredient('R', Material.REDSTONE);
+            gravityCharmRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(gravityCharmRecipe);
         //
         //      Angel Sword Recipe
         //
@@ -491,6 +541,25 @@ public final class CustomRecipes {
         
         
         //
+        //      GuardingVest Recipe
+        //
+        ItemStack guardingVest = CreateCustomItem.createGuardingVest();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GuardingVestRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe guardingVestRecipe = new ShapedRecipe(key, guardingVest);
+        guardingVestRecipe.shape(
+            "H H",
+            "DTD",
+            "DSD");
+        guardingVestRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        guardingVestRecipe.setIngredient('H', new RecipeChoice.ExactChoice(healthCharm));
+        guardingVestRecipe.setIngredient('T', Material.TOTEM_OF_UNDYING);
+        guardingVestRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(guardingVestRecipe);
+        
+        
+        //
         //      GluttonyPants Recipe
         //
         ItemStack gluttonyPants = CreateCustomItem.createGluttonyPants();
@@ -756,6 +825,7 @@ public final class CustomRecipes {
             superShearsRecipe.setIngredient('N', Material.QUARTZ);
             superShearsRecipe.setIngredient('S', Material.SHEARS);
         Bukkit.addRecipe(superShearsRecipe);
+
 
 
         //

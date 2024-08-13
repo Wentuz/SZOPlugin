@@ -3,6 +3,8 @@ package wentuziak.szoplugin;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Cow;
@@ -11,11 +13,14 @@ import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -211,4 +216,23 @@ public class EntityListener implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+
+            ItemStack itemOnChest = player.getInventory().getChestplate();
+    
+            if (itemOnChest != null && itemOnChest != null) {
+    
+                if (itemOnChest.hasItemMeta()) {
+                    PersistentDataContainer playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_GUARDING_VEST, PersistentDataType.BYTE)) {
+                        Armour.guardingVestEffect(player, event);
+                    }
+                }
+            }
+        }
+    }   
 }

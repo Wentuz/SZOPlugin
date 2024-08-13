@@ -1,11 +1,14 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -39,7 +42,7 @@ public class Armour {
     public static void reflectiveChestEffect(int chanceForCrit, LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
             LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
-            LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 1);
+            LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
             damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
         }
     }
@@ -83,8 +86,7 @@ public class Armour {
         }   
     }
 
-    public static void strigaVeilEffect(int chanceForCrit, LivingEntity player)
-    {
+    public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
             double currentHealth = player.getHealth();
             double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
@@ -104,4 +106,27 @@ public class Armour {
         }
     }
 
+
+    public static void guardingVestEffect(Player player, EntityDamageEvent event){
+        
+        if (!player.hasCooldown(Material.GOLDEN_CHESTPLATE)) {
+            // Check if the damage would kill the player
+            if (player.getHealth() - event.getFinalDamage() <= 0) {
+                player.setHealth(2);
+                event.setCancelled(true);
+    
+                LogicHolder.givePotionEffect(player, "REGENERATION", 20*20, 1);
+                LogicHolder.givePotionEffect(player, "ABSORPTION", 20*20, 1);
+                
+                player.getWorld().playSound(player.getLocation(), Sound.ITEM_TOTEM_USE, 1.0f, 1.0f);
+                player.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, player.getLocation(), 50, 0.1, 0.1, 0.1, 0.05);
+                player.setCooldown(Material.GOLDEN_CHESTPLATE, 20 * 60 * 15);
+            }else{
+                if (LogicHolder.critRoll(22)) {
+                    event.setCancelled(true);
+                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_VEX_CHARGE, 1.0f, 1.0f);
+                }
+            }
+        }
+    }
 }
