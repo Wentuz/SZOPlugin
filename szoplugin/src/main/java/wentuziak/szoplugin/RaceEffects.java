@@ -64,6 +64,13 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
+        else if (mainHandMaterial == Material.STICK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createEssencePicker());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
         else if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
             

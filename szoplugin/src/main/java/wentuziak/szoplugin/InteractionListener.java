@@ -459,12 +459,26 @@ public class InteractionListener implements Listener{
                 }
                 CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl, brokenBlock, "Ore");
             }
-            if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
+            else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);
+            }
+            //  Bootleg netherite pickaxe soul essence from diamonds
+            else if (playerContainer.has(Keys.CUSTOM_ESSENCE_PICKER, PersistentDataType.BYTE)) {
+                if (LogicHolder.critRoll((luckLvl + 1) * 25)) {
+                    if ((brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE || brokenBlock.getType() == Material.DIAMOND_ORE)) {
+                        for(int i = 3 - luckLvl; i < 4; i++){
+                            if (LogicHolder.critRoll((luckLvl + 1) * 20)) {
+                                brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
+                            }
+                        }
+                        brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
+                    }
+                }
+                return;
             }else if (playerContainer.has(Keys.CUSTOM_RICH_SHOVEL, PersistentDataType.BYTE)) {
                 CustomTools.richShovelEffect(luckLvl, brokenBlock);
             }
-        }
+        
 
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
@@ -480,6 +494,7 @@ public class InteractionListener implements Listener{
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
             if (LogicHolder.critRoll(5 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 LogicHolder.rollTreasure(1, brokenBlock.getLocation(), "Plant");
+            }
             }
         }
     }

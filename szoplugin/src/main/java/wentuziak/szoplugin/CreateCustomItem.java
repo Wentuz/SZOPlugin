@@ -1025,6 +1025,22 @@ public class CreateCustomItem {
     }
 
     //
+    //      Essence Picker
+    //
+    static ItemStack createEssencePicker(){
+        ItemStack essencePicker = new ItemStack(Material.STONE_PICKAXE);
+        ItemMeta essencePickerMeta = essencePicker.getItemMeta();
+
+        essencePickerMeta.setDisplayName(ChatColor.DARK_PURPLE + "Bootleg Netherite Pick");
+        essencePickerMeta.setLore(Arrays.asList(
+            "No way ^^"));
+            essencePickerMeta.getPersistentDataContainer().set(Keys.CUSTOM_ESSENCE_PICKER, PersistentDataType.BOOLEAN, true);
+            essencePicker.setItemMeta(essencePickerMeta);
+
+        return essencePicker;
+    }
+
+    //
     //      Grenade
     //
     static ItemStack createGrenade(){
@@ -1221,6 +1237,14 @@ public class CreateCustomItem {
             "Arrow + Soul Essence\n\n" +
             "Who Can Make It:\n" +
             "Mewchant"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Bootleg Neterite Pickaxe\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Stick + Mechanical Part\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
         );
 
         raceBookMeta.setPages(pages);
