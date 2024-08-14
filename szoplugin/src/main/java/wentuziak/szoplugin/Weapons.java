@@ -42,6 +42,14 @@ public class Weapons {
         }
     }
 
+    public static void armorPiercerEffect(LivingEntity hitEntity, Integer damage){
+        double currentHealth = hitEntity.getHealth();
+
+        double newHealth = currentHealth - damage;
+
+        hitEntity.setHealth(newHealth);
+    }
+
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity)
     {
         if (LogicHolder.critRoll(chanceForCrit)) {

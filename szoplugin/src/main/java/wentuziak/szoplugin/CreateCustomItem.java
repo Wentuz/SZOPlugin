@@ -238,6 +238,19 @@ public class CreateCustomItem {
         return hermesBoots;
     }
 
+    static ItemStack createRamCap(){
+        ItemStack ramCap = new ItemStack(Material.DIAMOND_HELMET);
+        ItemMeta ramCapMeta = ramCap.getItemMeta();
+
+        ramCapMeta.setDisplayName(ChatColor.RED + "Barani web");
+        ramCapMeta.setLore(Arrays.asList(
+            "RAM"));
+            ramCapMeta.getPersistentDataContainer().set(Keys.CUSTOM_RAM_CAP, PersistentDataType.BOOLEAN, true);
+            ramCap.setItemMeta(ramCapMeta);
+
+        return ramCap;
+    }
+
     static ItemStack createJetBoots(){
         ItemStack jetBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta jetBootsMeta = jetBoots.getItemMeta();
@@ -343,6 +356,20 @@ public class CreateCustomItem {
         gluttonyPants.setItemMeta(gluttonyPantsMeta);
 
         return gluttonyPants;
+    }
+
+    static ItemStack createArmourPiercingAxe(){
+        ItemStack armourPiercingAxe = new ItemStack(Material.DIAMOND_AXE);
+        ItemMeta armourPiercingAxeMeta = armourPiercingAxe.getItemMeta();
+
+        armourPiercingAxeMeta.setDisplayName(ChatColor.RED + "Ripping Axe");
+        armourPiercingAxeMeta.setLore(Arrays.asList(
+            "More blood..."));
+        armourPiercingAxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BOOLEAN, true);
+
+        armourPiercingAxe.setItemMeta(armourPiercingAxeMeta);
+
+        return armourPiercingAxe;
     }
 
     @SuppressWarnings("deprecation")
@@ -848,6 +875,26 @@ public class CreateCustomItem {
     }
 
     //
+    //      PARALYZING ARROW
+    //
+    static ItemStack createParalyzingArrow(){
+        ItemStack paralyzingArrow = new ItemStack(Material.TIPPED_ARROW);
+        PotionMeta potionMeta = (PotionMeta) paralyzingArrow.getItemMeta();
+
+        potionMeta.setDisplayName(ChatColor.DARK_PURPLE + "Paralyzing Arrow");
+        potionMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        potionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 40, 3), true);
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 40, 1), true);
+        potionMeta.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 40, 2), true);
+        potionMeta.setColor(Color.fromRGB(128, 0, 128));
+        paralyzingArrow.setItemMeta(potionMeta);
+
+        return paralyzingArrow;
+    }
+
+    //
     //      Healing Gas
     //
     static ItemStack createSuperHealingPot(){
@@ -1166,6 +1213,14 @@ public class CreateCustomItem {
             "Feather + Soul Essence\n\n" +
             "Who Can Make It:\n" +
             "Cara"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Paralyzing Arrow\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Arrow + Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Mewchant"
         );
 
         raceBookMeta.setPages(pages);

@@ -50,10 +50,12 @@ public class SpecialItems {
                 break;
 
             case "BONE":
-                if (player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
-                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*60, 0);
-                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE",  20*60, 0);
-                    player.playSound(player.getLocation(), Sound.ENTITY_SKELETON_HURT, 1, 1);                    
+                if (player.getPersistentDataContainer().has(Keys.RACE_FOSSIL) && !player.hasCooldown(Material.BONE)) {
+                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*10, 0);
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE",  20*5, 0);
+                    player.playSound(player.getLocation(), Sound.ENTITY_SKELETON_HURT, 1, 1);  
+                    player.setCooldown(Material.BONE, 20 * 10);
+                  
                 }else{
                     return;
                 }

@@ -191,31 +191,49 @@ public class LogicHolder {
                 break;
             
             case "Plant":
-                if (whatLoot >= 35) {
-                    item = new ItemStack(Material.MYCELIUM);
-                } else if (whatLoot >= 30) {
-                    item = new ItemStack(Material.LILY_PAD);
-                } else if (whatLoot >= 25) {
-                    item = new ItemStack(Material.SUGAR_CANE);
-                } else if (whatLoot >= 22) {
-                    item = new ItemStack(Material.CARROT);
-                } else if (whatLoot >= 19) {
-                    item = new ItemStack(Material.POTATO);
-                } else if (whatLoot >= 16) {
-                    item = new ItemStack(Material.BEETROOT_SEEDS);
-                } else if (whatLoot >= 13) {
-                    item = new ItemStack(Material.MELON_SEEDS);
-                } else if (whatLoot >= 10) {
-                    item = new ItemStack(Material.PUMPKIN_SEEDS);
-                } else if (whatLoot >= 7) {
-                    item = new ItemStack(Material.RED_MUSHROOM);
-                } else if (whatLoot >= 5) {
-                    item = new ItemStack(Material.BROWN_MUSHROOM);
-                } else if (whatLoot == 1) {
-                    item = new ItemStack(Material.BAMBOO);
-                } else {
-                    item = new ItemStack(Material.WHEAT_SEEDS);
-                }
+            if (whatLoot >= 35) {
+                item = CreateCustomItem.createSoulEssence();
+            } else if (whatLoot >= 33) {
+                item = new ItemStack(Material.LILY_PAD);
+            } else if (whatLoot >= 31) {
+                item = new ItemStack(Material.SMALL_DRIPLEAF);
+            } else if (whatLoot >= 29) {
+                item = new ItemStack(Material.PEONY);
+            } else if (whatLoot >= 27) {
+                item = new ItemStack(Material.ROSE_BUSH);
+            } else if (whatLoot >= 25) {
+                item = new ItemStack(Material.SUNFLOWER);
+            } else if (whatLoot >= 23) {
+                item = new ItemStack(Material.LILAC);
+            } else if (whatLoot >= 21) {
+                item = new ItemStack(Material.LILY_OF_THE_VALLEY);
+            } else if (whatLoot >= 19) {
+                item = new ItemStack(Material.BLUE_ORCHID);
+            } else if (whatLoot >= 17) {
+                item = new ItemStack(Material.ALLIUM);
+            } else if (whatLoot >= 15) {
+                item = new ItemStack(Material.AZURE_BLUET);
+            } else if (whatLoot >= 13) {
+                item = new ItemStack(Material.ORANGE_TULIP);
+            } else if (whatLoot >= 11) {
+                item = new ItemStack(Material.PINK_TULIP);
+            } else if (whatLoot >= 9) {
+                item = new ItemStack(Material.RED_TULIP);
+            } else if (whatLoot >= 7) {
+                item = new ItemStack(Material.WHITE_TULIP);
+            } else if (whatLoot >= 5) {
+                item = new ItemStack(Material.CORNFLOWER);
+            } else if (whatLoot >= 4) {
+                item = new ItemStack(Material.OXEYE_DAISY);
+            } else if (whatLoot >= 3) {
+                item = new ItemStack(Material.POTATO);
+            } else if (whatLoot >= 2) {
+                item = new ItemStack(Material.RED_MUSHROOM);
+            } else if (whatLoot >= 1) {
+                item = new ItemStack(Material.BROWN_MUSHROOM);
+            } else {
+                item = new ItemStack(Material.FERN);
+            }
                 break;
 
             case "FishingTreasure":
@@ -280,24 +298,16 @@ public class LogicHolder {
             case "Mobs":
                 if (whatLoot >= 103) {
                     item = CreateCustomItem.createSoulEssence();
-                }else if (whatLoot >= 102) {
-                    item = CreateCustomItem.createSoulFragment();
-                }else if (whatLoot >= 99) {
-                    item = new ItemStack(Material.GHAST_TEAR);
                 } else if (whatLoot >= 95) {
                     item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);
                 } else if (whatLoot >= 85) {
-                    item = new ItemStack(Material.ENDER_PEARL);
-                } else if (whatLoot >= 70) {
-                    item = new ItemStack(Material.BLAZE_POWDER);
-                } else if (whatLoot >= 55) {
-                    item = new ItemStack(Material.BEEF);
+                    item = new ItemStack(Material.FERMENTED_SPIDER_EYE);
                 } else if (whatLoot >= 40) {
-                    item = new ItemStack(Material.GUNPOWDER);
+                    item = new ItemStack(Material.ROTTEN_FLESH);
                 } else if (whatLoot >= 30) {
                     item = new ItemStack(Material.BONE);
                 } else if (whatLoot >= 20) {
-                    item = new ItemStack(Material.RABBIT_FOOT);
+                    item = new ItemStack(Material.LEATHER);
                 } else if (whatLoot >= 10) {
                     item = new ItemStack(Material.RABBIT_HIDE);
                 } else {

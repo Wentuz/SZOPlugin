@@ -19,6 +19,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_MAGNETIC_TRIDENT = new NamespacedKey(SzoPlugin.getInstance(), "MagneticTrident");
     public static final NamespacedKey CUSTOM_BOUNCY_CROSSBOW = new NamespacedKey(SzoPlugin.getInstance(), "BouncyCrossbow");
     public static final NamespacedKey CUSTOM_THROWING_FIREWORK = new NamespacedKey(SzoPlugin.getInstance(), "ThrowingFirework");
+    public static final NamespacedKey CUSTOM_ARMOR_PIERCER = new NamespacedKey(SzoPlugin.getInstance(), "ArmorPiercer");
     
     //
     //      Armor
@@ -33,6 +34,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_MAGIC_BOOTS = new NamespacedKey(SzoPlugin.getInstance(), "MagicBoots");
     public static final NamespacedKey CUSTOM_REFLECTIVE_CHESTPIECE = new NamespacedKey(SzoPlugin.getInstance(), "ReflectiveChestpiece");
     public static final NamespacedKey CUSTOM_GUARDING_VEST = new NamespacedKey(SzoPlugin.getInstance(), "GuardingVest");
+    public static final NamespacedKey CUSTOM_RAM_CAP = new NamespacedKey(SzoPlugin.getInstance(), "RamCap");
     
     //
     //      Spells

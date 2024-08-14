@@ -339,6 +339,24 @@ public final class CustomRecipes {
             magneticTridentRecipe.setIngredient('R', Material.REDSTONE);
             magneticTridentRecipe.setIngredient('L', Material.LAPIS_LAZULI);
         Bukkit.addRecipe(magneticTridentRecipe);
+        
+        
+        //
+        //      ArmorPiercingAxe Recipe
+        //
+        ItemStack armourPiercingAxe = CreateCustomItem.createArmourPiercingAxe();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "ArmourPiercingAxeRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe armourPiercingAxeRecipe = new ShapedRecipe(key, armourPiercingAxe);
+        armourPiercingAxeRecipe.shape(
+            "DMD",
+            "DS ",
+            " S ");
+            armourPiercingAxeRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            armourPiercingAxeRecipe.setIngredient('S', Material.STICK);
+            armourPiercingAxeRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(armourPiercingAxeRecipe);
 
 
         //
@@ -392,6 +410,24 @@ public final class CustomRecipes {
             jetBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
             jetBootsRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(jetBootsRecipe);
+        
+        
+        //
+        //      ramCap Recipe
+        //
+        ItemStack ramCap = CreateCustomItem.createRamCap();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "RamCapRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe ramCapRecipe = new ShapedRecipe(key, ramCap);
+        ramCapRecipe.shape(
+            "   ",
+            "BMB",
+            "D D");
+            ramCapRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            ramCapRecipe.setIngredient('B', Material.BONE);
+            ramCapRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(ramCapRecipe);
         
         
         //

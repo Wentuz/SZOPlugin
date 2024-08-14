@@ -11,6 +11,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
 public class Armour {
     
@@ -84,6 +85,15 @@ public class Armour {
         if (player.getFoodLevel() > 20) {
             player.setFoodLevel(20);
         }   
+    }
+
+    public static void ramCapEffect(Player attacker ,LivingEntity hitEntity){
+
+        Vector direction = hitEntity.getLocation().toVector().subtract(attacker.getLocation().toVector()).normalize();
+        hitEntity.getWorld().spawnParticle(Particle.CLOUD, hitEntity.getLocation(), 10, 1, 1, 1, 0.015);
+        double force = 8.0;
+        hitEntity.setVelocity(direction.multiply(force));
+
     }
 
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){

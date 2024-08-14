@@ -180,23 +180,31 @@ public class EntityListener implements Listener {
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                    if (LogicHolder.critRoll(2 * (luckLvl + 1))) {
+                    if (LogicHolder.critRoll((luckLvl))) {
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
                     }
                 }
             }
             if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
-                if (LogicHolder.critRoll(6 * (luckLvl + 1))) {
+                if (LogicHolder.critRoll((luckLvl + 1))) {
                     LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
+            if (killedEntity.getType() == EntityType.COD || 
+                killedEntity.getType() == EntityType.TROPICAL_FISH ||
+                killedEntity.getType() == EntityType.SALMON ||               
+                killer.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
+                    if (LogicHolder.critRoll(((luckLvl + 1) * 3))) {
+                        killedEntity.getLocation().getWorld().dropItemNaturally(killedEntity.getLocation(), CreateCustomItem.createSoulEssence());
+                    }
+            }
+            
 
             if (killedEntity.getType() == EntityType.WITHER ||
                 killedEntity.getType() == EntityType.ENDER_DRAGON) {
                     Location killedEntityLocation = killedEntity.getLocation();
                     for(int i = 0; i < 4; i++){
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());
-                        if (LogicHolder.critRoll((luckLvl + 1) * 25)) {
+                        if (LogicHolder.critRoll((luckLvl + 1) * 15)) {
                             killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulFragment());
                         }
                     }

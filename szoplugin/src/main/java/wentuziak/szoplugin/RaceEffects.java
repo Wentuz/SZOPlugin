@@ -172,16 +172,6 @@ public class RaceEffects {
         }
     }
 
-    public static void witchFishEvent(Player player, Projectile projectile){
-        if (LogicHolder.critRoll(5)) {
-            if (projectile instanceof org.bukkit.entity.FishHook) {
-                org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
-                Location bobberLocation = fishHook.getLocation();
-                bobberLocation.getWorld().dropItemNaturally(bobberLocation, CreateCustomItem.createSoulEssence());
-            }
-        }
-    }
-
     public static void witchConsumptionEffect(Player player,  ItemStack consumedStack){
         Material consumedMaterial = consumedStack.getType();
         String consumedItem = consumedMaterial.toString();
@@ -380,7 +370,26 @@ public class RaceEffects {
             }
             return;
         }
+        else if ((itemInMainHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInMainHand.getAmount() >= 8) && offHandMaterial == Material.ARROW){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createParalyzingArrow());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            for(int i = 0; i < 8; i++){
+                LogicHolder.removeItem(player, itemInMainHand);
+            }
+            return;
+        }
     } 
+    
+    public static void mewchantFishEvent(Player player, Projectile projectile){
+        if (LogicHolder.critRoll(5)) {
+            if (projectile instanceof org.bukkit.entity.FishHook) {
+                org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
+                Location bobberLocation = fishHook.getLocation();
+                bobberLocation.getWorld().dropItemNaturally(bobberLocation, CreateCustomItem.createSoulEssence());
+            }
+        }
+    }
 
     //
     //      ANIMATED FOSSIL

@@ -304,8 +304,8 @@ public class InteractionListener implements Listener{
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             PersistentDataContainer playerContainer;
             
+            LivingEntity hitEntity = (LivingEntity) event.getEntity();
             if (!(itemInMainHand == null || itemInMainHand.getType() == Material.AIR)) {
-                LivingEntity hitEntity = (LivingEntity) event.getEntity();
                 playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
                 if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                     RaceEffects.witchAttackEvent(player, hitEntity);
@@ -334,6 +334,9 @@ public class InteractionListener implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
                     Weapons.angelSwordEffect(22, player);
                 }
+                if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
+                    Weapons.armorPiercerEffect(hitEntity, 4);
+                }
             }
             
             ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
@@ -343,6 +346,9 @@ public class InteractionListener implements Listener{
                     playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
                     if (playerContainer.has(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BYTE)) {
                         Armour.strigaVeilEffect(15, player);
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && player.isSprinting()) {
+                        Armour.ramCapEffect(player, hitEntity);
                     }
                 }
             }
@@ -424,8 +430,8 @@ public class InteractionListener implements Listener{
                     CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
                 }
             }
-            if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
-                RaceEffects.witchFishEvent(player, projectile);
+            if (player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
+                RaceEffects.mewchantFishEvent(player, projectile);
             }
         }
     }
@@ -473,13 +479,7 @@ public class InteractionListener implements Listener{
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
             if (LogicHolder.critRoll(5 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
-                LogicHolder.rollTreasure((luckLvl / 2) + 1, brokenBlock.getLocation(), "Plant");
-            }
-            if(itemInOffHand.hasItemMeta()){
-                PersistentDataContainer offHandContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-                if (LogicHolder.critRoll(5 * (luckLvl + 1)) && offHandContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                    LogicHolder.rollTreasure((luckLvl / 2) + 1, brokenBlock.getLocation(), "Plant");
-                }
+                LogicHolder.rollTreasure(1, brokenBlock.getLocation(), "Plant");
             }
         }
     }
