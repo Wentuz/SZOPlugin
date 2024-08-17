@@ -190,9 +190,9 @@ public class EntityListener implements Listener {
                     LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
-            if (killedEntity.getType() == EntityType.COD || 
+            if ((killedEntity.getType() == EntityType.COD || 
                 killedEntity.getType() == EntityType.TROPICAL_FISH ||
-                killedEntity.getType() == EntityType.SALMON ||               
+                killedEntity.getType() == EntityType.SALMON) &&               
                 killer.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
                     if (LogicHolder.critRoll(((luckLvl + 1) * 3))) {
                         killedEntity.getLocation().getWorld().dropItemNaturally(killedEntity.getLocation(), CreateCustomItem.createSoulEssence());

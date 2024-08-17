@@ -505,6 +505,20 @@ public class CreateCustomItem {
         return strigaVeil;
     }
 
+    static ItemStack createWalkers(){
+        ItemStack walkers = new ItemStack(Material.DIAMOND_BOOTS);
+        ItemMeta walkersMeta = walkers.getItemMeta();
+
+        walkersMeta.setDisplayName(ChatColor.BLUE + "Walkies");
+        walkersMeta.setLore(Arrays.asList(
+            "Stomp on " + ChatColor.RED + "lava",
+            "Stomp on " + ChatColor.BLUE + "Waer"));
+            walkersMeta.getPersistentDataContainer().set(Keys.CUSTOM_WALKERS, PersistentDataType.BOOLEAN, true);
+            walkers.setItemMeta(walkersMeta);
+
+        return walkers;
+    }
+
 
     //
     //      MAGIC

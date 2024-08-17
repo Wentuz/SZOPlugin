@@ -139,4 +139,10 @@ public class Armour {
             }
         }
     }
+
+    public static void walkersEffect(Player player){
+        if (player.isInWater()) {
+            
+        }
+    }
 }

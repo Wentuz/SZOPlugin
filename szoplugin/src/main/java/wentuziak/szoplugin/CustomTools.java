@@ -66,7 +66,7 @@ public class CustomTools {
             }
             if (brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE || brokenBlock.getType() == Material.DIAMOND_ORE) {
                 chanceForCrit = chanceForCrit * 4;
-                playerLuck = playerLuck + 2;
+                playerLuck = playerLuck + 1;
             }
             if (LogicHolder.critRoll(chanceForCrit)) {
                 Location blockLocation = brokenBlock.getLocation();

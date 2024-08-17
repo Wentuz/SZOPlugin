@@ -2,6 +2,8 @@ package wentuziak.szoplugin;
 
 
 
+import java.security.Key;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -215,6 +217,7 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
         ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
+        Boolean isInWater = LogicHolder.isPlayerInWater(player);
 
 
         PersistentDataContainer playerContainer;
@@ -227,7 +230,7 @@ public class InteractionListener implements Listener{
     
         if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
+            if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE) && !player.isClimbing() && !isInWater) {
                 Armour.jetBootsEffect(player);
             }
         }
@@ -238,7 +241,8 @@ public class InteractionListener implements Listener{
             }
         }
 
-        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)) {
+        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)
+        && !player.isClimbing() && !isInWater) {
             RaceEffects.caraGlideEvent(player);
         }else{
             RaceEffects.stopCaraGlideTask(player);
@@ -506,6 +510,7 @@ public class InteractionListener implements Listener{
     public void onPlayerMove(PlayerMoveEvent event){
         Player player = event.getPlayer();
         ItemStack itemLeggings = player.getInventory().getLeggings();
+        ItemStack itemBoots = player.getInventory().getBoots();
         ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
         PersistentDataContainer playerContainer;
         
@@ -527,6 +532,12 @@ public class InteractionListener implements Listener{
                 MagicItems.ancientShellEffect(player);
             }else{
                 MagicItems.stopAncientShellTask(player);
+            }
+        }
+        if (itemBoots != null && itemBoots.hasItemMeta()) {
+            playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)) {
+                
             }
         }
 

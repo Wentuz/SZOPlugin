@@ -413,6 +413,25 @@ public final class CustomRecipes {
         
         
         //
+        //      Walkers Recipe
+        //
+        ItemStack walkers = CreateCustomItem.createWalkers();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "walkersRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe walkersRecipe = new ShapedRecipe(key, walkers);
+        walkersRecipe.shape(
+            "M  ",
+            "D D",
+            "L W");
+            walkersRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            walkersRecipe.setIngredient('W', Material.WATER_BUCKET);
+            walkersRecipe.setIngredient('L', Material.LAVA_BUCKET);
+            walkersRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(walkersRecipe);
+        
+        
+        //
         //      ramCap Recipe
         //
         ItemStack ramCap = CreateCustomItem.createRamCap();
