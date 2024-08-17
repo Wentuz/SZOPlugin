@@ -536,9 +536,12 @@ public class InteractionListener implements Listener{
         }
         if (itemBoots != null && itemBoots.hasItemMeta()) {
             playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)) {
-                
+            if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
+            && !player.isSneaking()) {
+                Armour.walkersEffect(player);
             }
+        }else{
+            Armour.stopWalkersEffect(player);
         }
 
 

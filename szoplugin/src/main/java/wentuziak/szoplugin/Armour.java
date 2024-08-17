@@ -9,6 +9,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -141,8 +142,30 @@ public class Armour {
     }
 
     public static void walkersEffect(Player player){
-        if (player.isInWater()) {
-            
+        if (player.isInWater() || player.isSwimming()) {
+            stopWalkersEffect(player);
+            return;
         }
+        Material blockBelow = player.getLocation().subtract(0, 0.2, 0).getBlock().getType();
+        Material blockAtFeet = player.getLocation().getBlock().getType();
+
+        // Check if the block below is water or lava and the player is not in water/lava
+        if ((blockBelow == Material.WATER || blockBelow == Material.LAVA) &&
+            (blockAtFeet != Material.WATER || blockAtFeet != Material.LAVA)) {
+
+            if (!player.isFlying()) {
+                    player.sendMessage("FLY !!!");
+                    player.setAllowFlight(true);
+                    player.setFlying(true);
+                    player.setFlySpeed(0.03f);
+            }
+        } else {
+            stopWalkersEffect(player);
+        }
+    }
+    public static void stopWalkersEffect(Player player){
+        player.setFlying(false);
+        player.setAllowFlight(false);
+        player.setFlySpeed(0.1f);
     }
 }
