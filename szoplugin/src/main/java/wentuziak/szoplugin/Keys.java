@@ -36,6 +36,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_GUARDING_VEST = new NamespacedKey(SzoPlugin.getInstance(), "GuardingVest");
     public static final NamespacedKey CUSTOM_RAM_CAP = new NamespacedKey(SzoPlugin.getInstance(), "RamCap");
     public static final NamespacedKey CUSTOM_WALKERS = new NamespacedKey(SzoPlugin.getInstance(), "Walkers");
+    public static final NamespacedKey CUSTOM_JUMP_PACK = new NamespacedKey(SzoPlugin.getInstance(), "JumpPack");
     
     //
     //      Spells

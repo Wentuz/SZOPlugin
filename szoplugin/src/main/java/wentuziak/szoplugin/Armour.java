@@ -41,8 +41,12 @@ public class Armour {
             LogicHolder.givePotionEffect(player, "REGENERATION", 20, 2);
         }
     }
-    public static void reflectiveChestEffect(int chanceForCrit, LivingEntity damager){
+    public static void reflectiveChestEffect(int chanceForCrit,int thornLvl, LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
+            double currentHealth = damager.getHealth();
+            double newHealth = currentHealth - thornLvl;
+            damager.setHealth(newHealth);
+            
             LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
             LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
             damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
@@ -97,6 +101,20 @@ public class Armour {
 
     }
 
+    public static void jumpPackEffect(Player player){
+
+        double speedMultiplier = 1.5;
+
+        Vector direction = player.getLocation().getDirection();
+        Vector velocity = direction.multiply(speedMultiplier);
+    
+        player.setVelocity(velocity);
+        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+        player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 50, 0.1, 0.2, 0.1, 0.1);
+
+        player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 10);
+    }
+
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
             double currentHealth = player.getHealth();
@@ -149,12 +167,10 @@ public class Armour {
         Material blockBelow = player.getLocation().subtract(0, 0.2, 0).getBlock().getType();
         Material blockAtFeet = player.getLocation().getBlock().getType();
 
-        // Check if the block below is water or lava and the player is not in water/lava
         if ((blockBelow == Material.WATER || blockBelow == Material.LAVA) &&
             (blockAtFeet != Material.WATER || blockAtFeet != Material.LAVA)) {
 
             if (!player.isFlying()) {
-                    player.sendMessage("FLY !!!");
                     player.setAllowFlight(true);
                     player.setFlying(true);
                     player.setFlySpeed(0.03f);

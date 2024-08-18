@@ -217,6 +217,7 @@ public class InteractionListener implements Listener{
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
         ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
+        ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
         Boolean isInWater = LogicHolder.isPlayerInWater(player);
 
 
@@ -227,13 +228,24 @@ public class InteractionListener implements Listener{
                 Armour.golemChestEffect(player);
             }
         }
-    
-        if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-            playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE) && !player.isClimbing() && !isInWater) {
-                Armour.jetBootsEffect(player);
+        
+            if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                if (!player.isClimbing() && !isInWater) {
+                    if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
+                        Armour.jetBootsEffect(player);
+                    }
+                }
             }
-        }
+        
+            if (itemOnLegs != null && itemOnLegs.hasItemMeta()) {
+                playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+                if (!player.isClimbing() && !isInWater) {
+                    if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE) && !player.hasCooldown(Material.LEATHER_LEGGINGS)) {
+                        Armour.jumpPackEffect(player);
+                    }
+                }
+            }
         if (itemOnHead != null && itemOnHead.hasItemMeta()) {
             playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BYTE)) {
@@ -310,6 +322,7 @@ public class InteractionListener implements Listener{
             
             LivingEntity hitEntity = (LivingEntity) event.getEntity();
             if (!(itemInMainHand == null || itemInMainHand.getType() == Material.AIR)) {
+                int sharpLvl = itemInMainHand.getEnchantmentLevel(Enchantment.SHARPNESS);
                 playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
                 if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                     RaceEffects.witchAttackEvent(player, hitEntity);
@@ -339,7 +352,7 @@ public class InteractionListener implements Listener{
                     Weapons.angelSwordEffect(22, player);
                 }
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-                    Weapons.armorPiercerEffect(hitEntity, 4);
+                    Weapons.armorPiercerEffect(hitEntity, sharpLvl + 1);
                 }
             }
             
@@ -371,11 +384,12 @@ public class InteractionListener implements Listener{
             PersistentDataContainer playerContainer;
             
             if (itemOnChest.hasItemMeta()) {
+                int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
                 playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
                     Armour.explosiveChestEffect(20 ,damager, player);
                 }else if(playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)){
-                    Armour.reflectiveChestEffect(25 ,damager);
+                    Armour.reflectiveChestEffect(25, thornLvl ,damager);
                 }
             }
         }
@@ -534,15 +548,15 @@ public class InteractionListener implements Listener{
                 MagicItems.stopAncientShellTask(player);
             }
         }
-        if (itemBoots != null && itemBoots.hasItemMeta()) {
-            playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
-            && !player.isSneaking()) {
-                Armour.walkersEffect(player);
-            }
-        }else{
-            Armour.stopWalkersEffect(player);
-        }
+        // if (itemBoots != null && itemBoots.hasItemMeta()) {
+        //     playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
+        //     if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
+        //     && !player.isSneaking()) {
+        //         //Armour.walkersEffect(player);
+        //     }
+        // }else{
+        //     //Armour.stopWalkersEffect(player);
+        // }
 
 
         if (!isInWater) {

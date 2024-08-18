@@ -432,6 +432,24 @@ public final class CustomRecipes {
         
         
         //
+        //      JumpPack Recipe
+        //
+        ItemStack jumpPack = CreateCustomItem.createJumpPack();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "jumpPackRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe jumpPackRecipe = new ShapedRecipe(key, jumpPack);
+        jumpPackRecipe.shape(
+            "DMD",
+            "D D",
+            "P P");
+            jumpPackRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            jumpPackRecipe.setIngredient('P', Material.PISTON);
+            jumpPackRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(jumpPackRecipe);
+        
+        
+        //
         //      ramCap Recipe
         //
         ItemStack ramCap = CreateCustomItem.createRamCap();

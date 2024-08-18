@@ -505,6 +505,27 @@ public class CreateCustomItem {
         return strigaVeil;
     }
 
+    @SuppressWarnings("deprecation")
+    static ItemStack createJumpPack(){
+        ItemStack jumpPack = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemMeta jumpPackMeta = jumpPack.getItemMeta();
+
+        jumpPackMeta.setDisplayName(ChatColor.YELLOW + "Jump Pack");
+        jumpPackMeta.setLore(Arrays.asList(
+            "kato humpo"));
+            ((LeatherArmorMeta) jumpPackMeta).setColor(Color.GRAY);
+
+
+        jumpPackMeta.getPersistentDataContainer().set(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BOOLEAN, true);
+        AttributeModifier armorModifier = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        jumpPackMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifier);
+        AttributeModifier speedModifier = new AttributeModifier(UUID.randomUUID(), "Speed", 0.10, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
+        jumpPackMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifier);
+        jumpPack.setItemMeta(jumpPackMeta);
+
+        return jumpPack;
+    }
+
     static ItemStack createWalkers(){
         ItemStack walkers = new ItemStack(Material.DIAMOND_BOOTS);
         ItemMeta walkersMeta = walkers.getItemMeta();
