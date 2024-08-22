@@ -229,23 +229,38 @@ public class InteractionListener implements Listener{
             }
         }
         
-            if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                if (!player.isClimbing() && !isInWater) {
-                    if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
-                        Armour.jetBootsEffect(player);
-                    }
+        if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+            playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+            if (!player.isClimbing() && !isInWater) {
+                if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
+                    Armour.jetBootsEffect(player);
                 }
             }
-        
-            if (itemOnLegs != null && itemOnLegs.hasItemMeta()) {
-                playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
-                if (!player.isClimbing() && !isInWater) {
-                    if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE) && !player.hasCooldown(Material.LEATHER_LEGGINGS)) {
+        }
+    
+        if (itemOnLegs != null && itemOnLegs.hasItemMeta()) {
+            playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+            if (!player.isClimbing() && !isInWater) {
+                if (!player.hasCooldown(Material.LEATHER_LEGGINGS)) {
+                    if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE) 
+                    && player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
+                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                            Armour.jumpPackEffect(player);
+                        }, 10L);
+                    }
+                    else if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE)) {
                         Armour.jumpPackEffect(player);
                     }
+                    
                 }
             }
+        }
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)
+        && !player.isClimbing() && !isInWater
+        && !player.hasCooldown(Material.NETHER_STAR)) {
+            RaceEffects.sanguiniteJumpEffect(player);
+        }
         if (itemOnHead != null && itemOnHead.hasItemMeta()) {
             playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BYTE)) {
@@ -548,15 +563,13 @@ public class InteractionListener implements Listener{
                 MagicItems.stopAncientShellTask(player);
             }
         }
-        // if (itemBoots != null && itemBoots.hasItemMeta()) {
-        //     playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
-        //     if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
-        //     && !player.isSneaking()) {
-        //         //Armour.walkersEffect(player);
-        //     }
-        // }else{
-        //     //Armour.stopWalkersEffect(player);
-        // }
+        if (itemBoots != null && itemBoots.hasItemMeta()) {
+            playerContainer = itemBoots.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
+            && !player.isSneaking()) {
+                Armour.walkersEffect(player);
+            }
+        }
 
 
         if (!isInWater) {

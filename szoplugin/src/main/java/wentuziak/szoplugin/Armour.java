@@ -102,17 +102,18 @@ public class Armour {
     }
 
     public static void jumpPackEffect(Player player){
-
-        double speedMultiplier = 1.5;
-
-        Vector direction = player.getLocation().getDirection();
-        Vector velocity = direction.multiply(speedMultiplier);
+        if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
+            double speedMultiplier = 1.5;
     
-        player.setVelocity(velocity);
-        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-        player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 50, 0.1, 0.2, 0.1, 0.1);
-
-        player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 10);
+            Vector direction = player.getLocation().getDirection();
+            Vector velocity = direction.multiply(speedMultiplier);
+        
+            player.setVelocity(velocity);
+            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+            player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 50, 0.0, 0.1, 0.0, 0.02);
+    
+            player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 10);
+        }
     }
 
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){
@@ -181,7 +182,6 @@ public class Armour {
     }
     public static void stopWalkersEffect(Player player){
         player.setFlying(false);
-        player.setAllowFlight(false);
         player.setFlySpeed(0.1f);
     }
 }

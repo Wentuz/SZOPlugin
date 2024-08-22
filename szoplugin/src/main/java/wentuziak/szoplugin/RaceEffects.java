@@ -448,4 +448,38 @@ public class RaceEffects {
             LogicHolder.givePotionEffect((LivingEntity) entity, "SLOW", 20 * 10, 0);
         }
     }
+
+    //
+    //      Sanguinite
+    //
+    public static void sanguiniteKillEffect(Player player){
+        if (LogicHolder.critRoll(50)) {
+            LogicHolder.givePotionEffect(player, "ABSORPTION", 20*10, 0);
+        }
+    }
+
+    public static void sanguiniteJumpEffect(Player player){
+        if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
+            double speedMultiplier = 1.3;
+    
+            Vector direction = player.getLocation().getDirection();
+            Vector velocity = direction.multiply(speedMultiplier);
+        
+            player.setVelocity(velocity);
+            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 1, 1);
+    
+            player.setCooldown(Material.NETHER_STAR, 20 * 10);
+        }
+    }
+
+    public static void sanguiniteBonusMagic(Player player, String effect){
+        switch (effect) {
+            case "spirit_leech":
+                
+                break;
+        
+            default:
+                break;
+        }
+    }
 }

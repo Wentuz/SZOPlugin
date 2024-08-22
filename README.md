@@ -69,6 +69,11 @@ STUFF IN HERE:
         Burn longer
         Chance to knockback everyone while attacking
         Food is less nutritious for them
+    IX  Sanguinite
+        Absorption after killing sth
+        Some bonus magic effects
+        Special jump
+        Eating parts of the dead enemies has some effects
 
 > Custom items :
     I Weapons :
@@ -86,6 +91,7 @@ STUFF IN HERE:
         12. Smoke bomb - 4 gunpowder + black dye, hand crafting, mewchant
         13. Magnetic Trident - throws player with itself
         14. Throwing firework - like a glitter bomb
+        15. Ripping axe - some armour ignoring bonus dmg on hit
     II Armor :
         1.  Bombardiers vest - chance to explode attacker
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts
@@ -101,6 +107,8 @@ STUFF IN HERE:
         12. Magic Boots - buffs for spells
         13. Reflective Chestpiece - Reflects some damage in magical way
         14. Guarding Vest - May guard you from death
+        15. Jump pack - gato jumpo
+        16. Walkers - water/lava walking
     III Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe)
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works

@@ -1,5 +1,7 @@
 package wentuziak.szoplugin;
 
+import java.security.Key;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -185,11 +187,16 @@ public class EntityListener implements Listener {
                     }
                 }
             }
+            //  By RACE
             if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
                 if (LogicHolder.critRoll((luckLvl + 1))) {
                     LogicHolder.rollTreasure(luckLvl + 1, killedEntity.getLocation(), "Mobs");
                 }
             }
+            if (killer.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
+                RaceEffects.sanguiniteKillEffect(killer);
+            }
+
             if ((killedEntity.getType() == EntityType.COD || 
                 killedEntity.getType() == EntityType.TROPICAL_FISH ||
                 killedEntity.getType() == EntityType.SALMON) &&               
