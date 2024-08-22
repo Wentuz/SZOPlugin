@@ -74,6 +74,7 @@ STUFF IN HERE:
         Some bonus magic effects
         Special jump
         Eating parts of the dead enemies has some effects
+        hungry.... always hunngry
 
 > Custom items :
     I Weapons :

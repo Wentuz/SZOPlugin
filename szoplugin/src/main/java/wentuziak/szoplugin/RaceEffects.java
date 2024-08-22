@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -14,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -23,6 +25,7 @@ public class RaceEffects {
     static BukkitTask dwarfSwimTask;
     static BukkitTask caraGlideTask;
     static BukkitTask fossilSwimTask;
+    static BukkitTask sanguiniteHungerTask;
 
     //
     //      DWARF
@@ -457,6 +460,7 @@ public class RaceEffects {
         if (LogicHolder.critRoll(50)) {
             LogicHolder.givePotionEffect(player, "ABSORPTION", 20*10, 0);
         }
+        stopSanguiniteHungerTask(player);
     }
 
     public static void sanguiniteJumpEffect(Player player){
@@ -471,6 +475,34 @@ public class RaceEffects {
     
             player.setCooldown(Material.NETHER_STAR, 20 * 10);
         }
+    }
+
+    public static void sanguiniteHunger(Player player){
+        if (!TaskManager.isTaskRunning(player, "sanguiniteHunger")){            
+            final Player finalPlayer = player;
+            sanguiniteHungerTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (finalPlayer.isSleeping()) {
+                        stopSanguiniteHungerTask(finalPlayer);
+                        return;
+                    }
+                    LogicHolder.givePotionEffect(finalPlayer, "HUNGER", 20 * 60 * 15, 0);
+                }
+                }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 60 * 3);
+            TaskManager.addTask(player, "sanguiniteHunger", sanguiniteHungerTask);
+        }
+    }
+    public static void stopSanguiniteHungerTask(Player player) {
+        TaskManager.stopTask(player, "sanguiniteHunger");
+
+        if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
+            player.removePotionEffect(PotionEffectType.HUNGER);
+        }
+
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            sanguiniteHunger(player);
+        }, 20 * 60 * 20);
     }
 
     public static void sanguiniteMagic(Player player, String effect){
@@ -492,6 +524,9 @@ public class RaceEffects {
         Set<String> implementedFood = new HashSet<>(Arrays.asList(
             "ROTTEN_FLESH", "SPIDER_EYE"
         ));
+
+        sanguiniteHunger(player);
+
         if (!implementedFood.contains(consumedItem)) {
             return;
         }
