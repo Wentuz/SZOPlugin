@@ -4,10 +4,14 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 public class SpecialItems {
 
@@ -39,8 +43,17 @@ public class SpecialItems {
                 break;
 
             case "FIRE_CHARGE":
-                LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20, 3);
-                player.getWorld().createExplosion(player.getLocation(), 4F, false, false);
+                Location playerLocation = player.getLocation();
+                Vector direction = player.getLocation().getDirection().normalize();
+                Location fireballLocation = playerLocation.add(direction).add(0, 1, 0);
+                
+                Fireball fireball = (Fireball) player.getWorld().spawnEntity(fireballLocation, EntityType.FIREBALL);
+                
+                fireball.setDirection(direction);
+                fireball.setVelocity(direction.multiply(1.5));
+
+                fireball.setIsIncendiary(false);
+                fireball.setYield(0);
                 break;
 
             case "MAGMA_CREAM":

@@ -13,6 +13,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -472,12 +473,37 @@ public class RaceEffects {
         }
     }
 
-    public static void sanguiniteBonusMagic(Player player, String effect){
+    public static void sanguiniteMagic(Player player, String effect){
+        //Not yet implemented
         switch (effect) {
-            case "spirit_leech":
+            case "1":
                 
                 break;
         
+            default:
+                break;
+        }
+    }
+
+    public static void sanguiniteConsumptionEffect(Player player,  ItemStack consumedStack){
+        Material consumedMaterial = consumedStack.getType();
+        String consumedItem = consumedMaterial.toString();
+
+        Set<String> implementedFood = new HashSet<>(Arrays.asList(
+            "ROTTEN_FLESH", "SPIDER_EYE"
+        ));
+        if (!implementedFood.contains(consumedItem)) {
+            return;
+        }
+
+        switch (consumedItem) {
+            case "ROTTEN_FLESH":
+                LogicHolder.givePotionEffect(player, "REGENERATION", 20*20, 0);
+                break;
+            case "SPIDER_EYE":
+                LogicHolder.givePotionEffect(player, "JUMP_BOOST", 20*20, 0);
+                LogicHolder.givePotionEffect(player, "SPEED", 20*20, 0);
+                break;
             default:
                 break;
         }

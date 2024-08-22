@@ -307,6 +307,9 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
             RaceEffects.mewchantConsumptionEffect(player, consumedItem);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
+            RaceEffects.sanguiniteConsumptionEffect(player, consumedItem);
+        }
         if (player.getPersistentDataContainer().has(Keys.RACE_ZEPHYR)) {
             if (player.getFoodLevel() > 0) {
                 player.setFoodLevel(player.getFoodLevel() - 1);
