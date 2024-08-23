@@ -77,6 +77,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_RICH_SHOVEL = new NamespacedKey(SzoPlugin.getInstance(), "RichShovel");
     public static final NamespacedKey CUSTOM_WIND_CHARM = new NamespacedKey(SzoPlugin.getInstance(), "WindCharm");
     public static final NamespacedKey CUSTOM_ESSENCE_PICKER = new NamespacedKey(SzoPlugin.getInstance(), "EssencePicker");
+    public static final NamespacedKey CUSTOM_BREACH_CHARGE = new NamespacedKey(SzoPlugin.getInstance(), "BreachCharge");
     
     //
     //      Races

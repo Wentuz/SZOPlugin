@@ -181,6 +181,12 @@ public class InteractionListener implements Listener{
                     LogicHolder.removeItem(player, itemInMainHand);
                     return;
                 }
+                else if (playerContainer.has(Keys.CUSTOM_BREACH_CHARGE, PersistentDataType.BYTE)) {
+                    Weapons.breachThrow(player);
+                    player.setCooldown(Material.FIREWORK_STAR, 20 * 10);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    return;
+                }
                 else if(playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)){
                     Weapons.smokeThrow(player, playerContainer);
                     player.setCooldown(Material.FIREWORK_STAR, 20 * 8);

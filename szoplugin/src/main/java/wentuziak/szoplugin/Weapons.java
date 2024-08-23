@@ -15,6 +15,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.PufferFish;
 import org.bukkit.entity.Silverfish;
+import org.bukkit.entity.TNTPrimed;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
@@ -139,6 +140,51 @@ public class Weapons {
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.05);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, location, 50, 0.1, 0.1, 0.1, 0.1);
         location.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, location, 50, 0.1, 0.2, 0.1, 0.1);
+    }
+    
+    public static void breachThrow(Player player){
+        player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
+        Location playerLocation = player.getLocation();
+        Vector direction = playerLocation.getDirection();
+
+        Location tntLocation = playerLocation.add(direction.clone().multiply(1).add(new Vector(0, 1, 0)));
+        TNTPrimed tnt = player.getWorld().spawn(tntLocation, TNTPrimed.class);
+
+        tnt.setVelocity(direction.multiply(1.0));
+        tnt.setYield(20.0F);
+        tnt.setFuseTicks(20 * 6);
+
+        Location[] newTntLocation = new Location[1];
+        newTntLocation[0] = tnt.getLocation(); // Initialize the location
+        
+        // Schedule the first task
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            newTntLocation[0] = tnt.getLocation(); // Update the location
+            tnt.getWorld().playSound(newTntLocation[0], Sound.ENTITY_CREEPER_PRIMED, 1, 1);
+        }, 20 * 3);
+        
+        // Schedule the second task
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            newTntLocation[0] = tnt.getLocation();
+            tnt.getWorld().playSound(newTntLocation[0], Sound.ENTITY_CREEPER_PRIMED, 2, 1);
+        }, 20 * 4);
+        
+        // Schedule the third task
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            newTntLocation[0] = tnt.getLocation();
+            tnt.getWorld().playSound(newTntLocation[0], Sound.ENTITY_TNT_PRIMED, 3, 1);
+        }, 20 * 5);
+        
+        // Schedule the particle effects
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            newTntLocation[0] = tnt.getLocation();
+            tnt.getWorld().spawnParticle(Particle.CAMPFIRE_SIGNAL_SMOKE, newTntLocation[0], 150, 0.1, 0.1, 0.1, 0.05);
+            tnt.getWorld().spawnParticle(Particle.EXPLOSION_EMITTER, newTntLocation[0], 150, 0.1, 0.1, 0.1, 0.05);
+            tnt.getWorld().spawnParticle(Particle.CLOUD, newTntLocation[0], 150, 0.2, 0.2, 0.2, 0.1);
+            tnt.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, newTntLocation[0], 150, 0.1, 0.2, 0.1, 0.3);
+        }, 20 * 6);
+
+
     }
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){

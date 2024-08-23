@@ -891,6 +891,25 @@ public class CreateCustomItem {
     }
 
     //
+    //      BREACH CHARGE
+    //
+    static ItemStack createBreachCharge(){
+        ItemStack breachCharge = new ItemStack(Material.FIREWORK_STAR);
+        ItemMeta breachChargeMeta = breachCharge.getItemMeta();
+
+        breachChargeMeta.setDisplayName(ChatColor.RED + "Breach Charge");
+        breachChargeMeta.setLore(Arrays.asList(
+            "Stay at leats 50 blocks away for safety",
+            ChatColor.DARK_GRAY + "Flint'n Steel in off hand"));
+            breachChargeMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        breachChargeMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        breachChargeMeta.getPersistentDataContainer().set(Keys.CUSTOM_BREACH_CHARGE, PersistentDataType.BOOLEAN, true);
+        breachCharge.setItemMeta(breachChargeMeta);
+
+        return breachCharge;
+    }
+
+    //
     //      CURSED ARROW
     //
     static ItemStack createCursedArrow(){
@@ -1254,6 +1273,14 @@ public class CreateCustomItem {
             ChatColor.BOLD + "Dwarf Ale\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Honey Bottle + Golden Apple\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+
+        pages.add(
+            ChatColor.BOLD + "Breach Charge\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Throwing TnT + 6 Soul Essence\n\n" +
             "Who Can Make It:\n" +
             "Dwarf"
         );

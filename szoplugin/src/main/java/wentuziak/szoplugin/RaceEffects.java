@@ -91,6 +91,16 @@ public class RaceEffects {
             }
             return;
         }
+        else if (itemInMainHand.isSimilar(CreateCustomItem.createGrenade()) 
+        && (itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 6)){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createBreachCharge());
+            
+            LogicHolder.removeItem(player, itemInMainHand);
+            for(int i = 0; i < 6; i++){
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            return;
+        }
 
         //
         //      GEAR UPGRADES
