@@ -72,6 +72,11 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 24);
             modifyMovementSpeed(player, 0.1);
         }
+        if (raceName.equals("RACE_ELF")) {
+            modifyFallDmgMultiplier(player, 0.7);
+            modifyHealthPoints(player, 18);
+            modifyMovementSpeed(player, 0.12);
+        }
     }
 
     public static void modifyMovementSpeed(Player player, double value){

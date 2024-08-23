@@ -75,6 +75,11 @@ STUFF IN HERE:
         Special jump
         Eating parts of the dead enemies has some effects
         hungry.... always hunngry
+    X   ELF
+        Softer falling
+        Animal affinity
+        Better shooting
+        Less health
 
 > Custom items :
     I Weapons :
@@ -120,6 +125,7 @@ STUFF IN HERE:
         7.  Gottish shears - drops string from sheep
         8.  Mourning Ax - bonus logs while chopping
         9.  Booty Shovel - sometimes sus sand / gravel
+        10. Breach Charge - giga boom
     IV Ingerients:
         1.  Soul Fragment - used for magical purposes
         2.  Mechanical Parts - used for more advanced constructs
