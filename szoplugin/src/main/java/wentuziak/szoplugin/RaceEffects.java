@@ -9,12 +9,13 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -51,58 +52,6 @@ public class RaceEffects {
         }
     }
 
-    public static void dwarfCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
-        Material mainHandMaterial = itemInMainHand.getType();
-        Material offHandMaterial = itemInOffHand.getType();
-        Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.HONEY_BOTTLE && offHandMaterial == Material.GOLDEN_APPLE) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createDwarfHoney());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if (mainHandMaterial == Material.SPYGLASS && offHandMaterial == Material.REDSTONE_TORCH) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createMarkingSpyglass());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if (mainHandMaterial == Material.STICK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createEssencePicker());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 8) && offHandMaterial == Material.STRING){
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createGrenade());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            for(int i = 0; i < 8; i++){
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
-            return;
-        }
-        else if (itemInMainHand.isSimilar(CreateCustomItem.createGrenade()) 
-        && (itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 6)){
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createBreachCharge());
-            
-            LogicHolder.removeItem(player, itemInMainHand);
-            for(int i = 0; i < 6; i++){
-                LogicHolder.removeItem(player, itemInOffHand);
-            }
-            return;
-        }
-
         //
         //      GEAR UPGRADES
         //
@@ -114,7 +63,6 @@ public class RaceEffects {
         //     }
         //     return;
         // }
-    }
 
     public static void dwarfSwimEvent(Player player){   
         if (!TaskManager.isTaskRunning(player, "dwarfSwim")) {            
@@ -140,52 +88,7 @@ public class RaceEffects {
     //
     //          WITCH       
     //
-    public static void witchCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
-        Material mainHandMaterial = itemInMainHand.getType();
-        Material offHandMaterial = itemInOffHand.getType();
-        Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.SUSPICIOUS_STEW && offHandMaterial == Material.NETHER_WART) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createWitchSoup());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.FERMENTED_SPIDER_EYE && offHandMaterial == Material.ARROW && itemInOffHand.getAmount() >= 4) {
-            for(int i = 0; i < 4; i++){
-                player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createCursedArrow());
-                LogicHolder.removeItem(player, itemInOffHand);
-            }
-            player.sendMessage("HERE");
 
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.GHAST_TEAR && offHandMaterial == Material.GLISTERING_MELON_SLICE) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSuperHealingPot());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.PUFFERFISH && offHandMaterial == Material.FERMENTED_SPIDER_EYE) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createToxicPot());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.IRON_INGOT && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createIronHide());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.SUGAR && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createGepardPotion());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.PUFFERFISH && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createParalyzingGas());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-    }
 
     public static void witchAttackEvent(Player player, LivingEntity targetEntity){
         if (LogicHolder.critRoll(33)) {
@@ -312,19 +215,6 @@ public class RaceEffects {
     public static void stopCaraGlideTask(Player player) {
         TaskManager.stopTask(player, "caraGlide");
     }
-    
-    public static void caraCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
-        Material mainHandMaterial = itemInMainHand.getType();
-        Material offHandMaterial = itemInOffHand.getType();
-        Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.FEATHER && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createWindCharm());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-    } 
 
     //
     //      MEWCHANT
@@ -363,44 +253,6 @@ public class RaceEffects {
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 30, 0);
             LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 30, 0);
         }
-    }
-
-    public static void mewchantCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
-        Material mainHandMaterial = itemInMainHand.getType();
-        Material offHandMaterial = itemInOffHand.getType();
-        Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if (mainHandMaterial == Material.SPYGLASS && offHandMaterial == Material.REDSTONE_TORCH) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createMarkingSpyglass());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
-        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 4) && offHandMaterial == Material.BLACK_DYE){
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createSmokeBomb());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            for(int i = 0; i < 4; i++){
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
-            return;
-        }
-        else if ((itemInMainHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInMainHand.getAmount() >= 8) && offHandMaterial == Material.ARROW){
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createParalyzingArrow());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            for(int i = 0; i < 8; i++){
-                LogicHolder.removeItem(player, itemInMainHand);
-            }
-            return;
-        }
     } 
     
     public static void mewchantFishEvent(Player player, Projectile projectile){
@@ -435,19 +287,6 @@ public class RaceEffects {
 
     public static void stopFossilSwimTask(Player player) {
         TaskManager.stopTask(player, "fossilSwim");
-    }
-    
-    public static void fossilCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
-        Material mainHandMaterial = itemInMainHand.getType();
-        Material offHandMaterial = itemInOffHand.getType();
-        Location dropLocation = player.getLocation();
-        if (mainHandMaterial == Material.NAUTILUS_SHELL && offHandMaterial == Material.PRISMARINE_CRYSTALS) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createAncientShell());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
     }
 
     //
@@ -557,6 +396,31 @@ public class RaceEffects {
                 break;
             default:
                 break;
+        }
+    }
+
+    //
+    //      Elf
+    //
+    public static void elfShotEffect(Player player, Vector velocity){
+        Vector direction = player.getLocation().getDirection().normalize();
+
+        // Spawn 5 arrows with slight angle variations
+        for (int i = 0; i < 5; i++) {
+            // Create a new arrow entity
+            Arrow arrow = (Arrow) player.getWorld().spawnEntity(player.getEyeLocation(), EntityType.ARROW);
+    
+            // Calculate a slight variation in the arrow's direction
+            Vector arrowDirection = direction.clone();
+            arrowDirection.setX(arrowDirection.getX() + (Math.random() - 0.5) * 0.2); // ±10% variation
+            arrowDirection.setY(arrowDirection.getY() + (Math.random() - 0.5) * 0.2); // ±10% variation
+            arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.2); // ±10% variation
+    
+            // Combine the arrow's direction with the provided velocity
+            Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
+    
+            // Set the arrow's velocity
+            arrow.setVelocity(finalVelocity);
         }
     }
 }

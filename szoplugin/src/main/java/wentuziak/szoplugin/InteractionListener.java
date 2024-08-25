@@ -36,6 +36,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.util.Vector;
 
 
 
@@ -99,19 +100,19 @@ public class InteractionListener implements Listener{
                     //
             if ((event.getHand() == EquipmentSlot.HAND && itemInMainHand.getType() != Material.AIR && itemInOffHand.getType() != Material.AIR)) {
                 if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-                    RaceEffects.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceCrafting.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
-                    RaceEffects.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceCrafting.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)){
-                    RaceEffects.mewchantCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceCrafting.mewchantCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
-                    RaceEffects.fossilCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceCrafting.fossilCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_CARA)){
-                    RaceEffects.caraCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceCrafting.caraCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
             }
         }
@@ -507,7 +508,7 @@ public class InteractionListener implements Listener{
                     System.out.println(isDumb);
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
                 }
-                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
             }
             else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);
@@ -533,12 +534,12 @@ public class InteractionListener implements Listener{
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl - 2, brokenBlock, "Ore");
             }
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, 1 * luckLvl, brokenBlock, "Ore");
+            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl + 1, brokenBlock, "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
@@ -626,6 +627,12 @@ public class InteractionListener implements Listener{
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
                     }
                 }
+            }
+            if (player.getPersistentDataContainer().has(Keys.RACE_ELF, PersistentDataType.BYTE)) {
+                Arrow arrow = (Arrow) event.getProjectile();
+
+                Vector arrowVelocity = arrow.getVelocity();
+                RaceEffects.elfShotEffect(player, arrowVelocity);
             }
         }
     }
