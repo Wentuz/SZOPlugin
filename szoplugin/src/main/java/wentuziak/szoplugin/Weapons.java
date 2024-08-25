@@ -57,9 +57,14 @@ public class Weapons {
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
             LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 10, 1);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 8, 1);
+
+            double currentHealth = hitEntity.getHealth();
+            double newHealth = currentHealth - 2;
+            hitEntity.setHealth(newHealth);
+
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 0);
-            }, 5L);
+                LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 1);
+            }, 10L);
         }
     }
 

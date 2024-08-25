@@ -1,5 +1,6 @@
 package wentuziak.szoplugin;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -28,7 +29,7 @@ public class Armour {
 
     public static void golemChestEffect(LivingEntity player){
         LogicHolder.givePotionEffect(player, "SLOW", 20 * 2, 4);
-        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 10, 1);
+        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 10, 2);
         LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
         player.getWorld().playSound(player.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
         player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
@@ -47,19 +48,21 @@ public class Armour {
             double newHealth = currentHealth - thornLvl;
             damager.setHealth(newHealth);
             
-            LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
-            LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
-            damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
+                LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
+                damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
+            }, 10L);
         }
     }
 
     public static void nightHelmetEffect(Player player){
         World world = player.getWorld();
         if (!LogicHolder.isDaytime(world)){
-            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 120, 0);
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 120, 0);
+            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 60 * 4, 0);
+            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 60 * 4, 0);
         }
-        LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 120, 0);
+        LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 60 * 4, 0);
     }
 
     public static void mermaidTailEffect(Player player){   

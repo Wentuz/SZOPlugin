@@ -78,6 +78,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_WIND_CHARM = new NamespacedKey(SzoPlugin.getInstance(), "WindCharm");
     public static final NamespacedKey CUSTOM_ESSENCE_PICKER = new NamespacedKey(SzoPlugin.getInstance(), "EssencePicker");
     public static final NamespacedKey CUSTOM_BREACH_CHARGE = new NamespacedKey(SzoPlugin.getInstance(), "BreachCharge");
+    public static final NamespacedKey CUSTOM_DEATH_CALLER = new NamespacedKey(SzoPlugin.getInstance(), "DeathCaller");
     
     //
     //      Races

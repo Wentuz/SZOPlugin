@@ -700,6 +700,19 @@ public class CreateCustomItem {
         return homecomingCompass;
     }
 
+    static ItemStack createDeathCaller(){
+        ItemStack deathCaller = new ItemStack(Material.RECOVERY_COMPASS);
+        ItemMeta deathCallerMeta = deathCaller.getItemMeta();
+
+        deathCallerMeta.setDisplayName(ChatColor.DARK_BLUE + "Death Caller");
+        deathCallerMeta.setLore(Arrays.asList(
+            ChatColor.DARK_AQUA + "It knows how and where it happened"));
+        deathCallerMeta.getPersistentDataContainer().set(Keys.CUSTOM_DEATH_CALLER, PersistentDataType.BOOLEAN, true);
+        deathCaller.setItemMeta(deathCallerMeta);
+
+        return deathCaller;
+    }
+
     static ItemStack createTreasureFishingRod(){
         ItemStack treasureFishingRod = new ItemStack(Material.FISHING_ROD);
         ItemMeta treasureFishingRodMeta = treasureFishingRod.getItemMeta();

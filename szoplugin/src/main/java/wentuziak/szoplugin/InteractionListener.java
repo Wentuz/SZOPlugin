@@ -66,6 +66,10 @@ public class InteractionListener implements Listener{
                     MagicItems.homeTeleport(player);
                     LogicHolder.removeItem(player, itemInOffHand);
                 }
+                else if (playerContainer.has(Keys.CUSTOM_DEATH_CALLER, PersistentDataType.BYTE)) {
+                    MagicItems.deathTeleport(player);
+                    LogicHolder.removeItem(player, itemInOffHand);
+                }
                 else if (playerContainer.has(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BYTE)) {
                     MagicItems.windCharmEffect(player);
                     LogicHolder.removeItem(player, itemInOffHand);
@@ -79,6 +83,10 @@ public class InteractionListener implements Listener{
                 }
                 else if (playerContainer.has(Keys.CUSTOM_HOMECOMING_COMPASS, PersistentDataType.BYTE)) {
                     MagicItems.homeTeleport(player);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                }
+                else if (playerContainer.has(Keys.CUSTOM_DEATH_CALLER, PersistentDataType.BYTE)) {
+                    MagicItems.deathTeleport(player);
                     LogicHolder.removeItem(player, itemInMainHand);
                 }
                 else if (playerContainer.has(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BYTE)) {
@@ -370,10 +378,10 @@ public class InteractionListener implements Listener{
                     Weapons.thunderHammerEffect(40, hitEntity);
                 }
                 if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
-                    Weapons.daemonSwordEffect(22, hitEntity);
+                    Weapons.daemonSwordEffect(40, hitEntity);
                 }
                 if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
-                    Weapons.angelSwordEffect(22, player);
+                    Weapons.angelSwordEffect(44, player);
                 }
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
                     Weapons.armorPiercerEffect(hitEntity, sharpLvl + 1);

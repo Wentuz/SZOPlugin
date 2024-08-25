@@ -8,6 +8,8 @@ import java.util.UUID;
 
 public class TaskManager {
     private static Map<UUID, Map<String, BukkitTask>> playerTasks = new HashMap<>();
+    private static Map<Player, Boolean> restartScheduled = new HashMap<>();
+
 
     public static void addTask(Player player, String taskName, BukkitTask task){
         Map<String, BukkitTask> tasks = playerTasks.getOrDefault(player.getUniqueId(), new HashMap<>());
@@ -50,5 +52,13 @@ public class TaskManager {
                 }
             }
         }
+    }
+
+    public static boolean isRestartScheduled(Player player) {
+        return restartScheduled.getOrDefault(player, false);
+    }
+
+    public static void setRestartScheduled(Player player, boolean status) {
+        restartScheduled.put(player, status);
     }
 }

@@ -52,6 +52,20 @@ public class MagicItems {
 
         }
     }
+    public static void deathTeleport(Player player){
+        Location deathLocation = player.getLastDeathLocation();
+        if (deathLocation != null) {
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+            player.teleport(deathLocation);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+        }else{
+            Location targetLocation = new Location(Bukkit.getWorld("world"), 0, 120, 0);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+            player.teleport(targetLocation);
+            player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
+
+        }
+    }
 
     public static void spiritLeech(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);

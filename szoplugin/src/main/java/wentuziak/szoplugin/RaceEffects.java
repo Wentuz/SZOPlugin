@@ -25,7 +25,8 @@ public class RaceEffects {
     static BukkitTask dwarfSwimTask;
     static BukkitTask caraGlideTask;
     static BukkitTask fossilSwimTask;
-    static BukkitTask sanguiniteHungerTask;
+    private static BukkitTask sanguiniteHungerTask;
+
 
     //
     //      DWARF
@@ -499,20 +500,26 @@ public class RaceEffects {
                     }
                     LogicHolder.givePotionEffect(finalPlayer, "HUNGER", 20 * 60 * 15, 0);
                 }
-                }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 60 * 3);
+                }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 60 * 5);
             TaskManager.addTask(player, "sanguiniteHunger", sanguiniteHungerTask);
         }
     }
     public static void stopSanguiniteHungerTask(Player player) {
-        TaskManager.stopTask(player, "sanguiniteHunger");
-
-        if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
-            player.removePotionEffect(PotionEffectType.HUNGER);
+        if (TaskManager.isTaskRunning(player, "sanguiniteHunger")){ 
+            if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
+                player.removePotionEffect(PotionEffectType.HUNGER);
+            }
+    
+            if (!TaskManager.isRestartScheduled(player)) {
+                TaskManager.setRestartScheduled(player, true);
+    
+                Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                    sanguiniteHunger(player);
+                    TaskManager.setRestartScheduled(player, false);
+                }, 20 * 60 * 20);
+            }
         }
-
-        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-            sanguiniteHunger(player);
-        }, 20 * 60 * 20);
+        TaskManager.stopTask(player, "sanguiniteHunger");
     }
 
     public static void sanguiniteMagic(Player player, String effect){
@@ -535,7 +542,6 @@ public class RaceEffects {
             "ROTTEN_FLESH", "SPIDER_EYE"
         ));
 
-        sanguiniteHunger(player);
 
         if (!implementedFood.contains(consumedItem)) {
             return;

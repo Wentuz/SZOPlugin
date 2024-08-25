@@ -918,6 +918,24 @@ public final class CustomRecipes {
         Bukkit.addRecipe(homecomingCompassRecipe);
 
 
+
+        //
+        //      deathCaller  recipe
+        //
+        ItemStack deathCaller = CreateCustomItem.createDeathCaller();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "deathCallerRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe deathCallerRecipe = new ShapedRecipe(key, deathCaller);
+        deathCallerRecipe.shape(
+            " E ",
+            "ECE",
+            " E ");
+            deathCallerRecipe.setIngredient('C', Material.COMPASS);
+            deathCallerRecipe.setIngredient('E', Material.ENDER_EYE);
+        Bukkit.addRecipe(deathCallerRecipe);
+
+
         //
         //      Race book recipe
         //
