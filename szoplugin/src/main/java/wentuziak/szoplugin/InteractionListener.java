@@ -114,6 +114,11 @@ public class InteractionListener implements Listener{
                 if(player.getPersistentDataContainer().has(Keys.RACE_CARA)){
                     RaceCrafting.caraCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
+                if (player.getPersistentDataContainer().has(Keys.RACE_ELF)) {
+                    if (!player.hasCooldown(Material.POPPED_CHORUS_FRUIT)) {
+                        RaceEffects.elfBreedingEffect(player, itemInMainHand, itemInOffHand);
+                    }
+                }
             }
         }
 

@@ -77,7 +77,7 @@ STUFF IN HERE:
         hungry.... always hunngry
     X   ELF
         Softer falling
-        Animal affinity
+        Animal affinity, summons animals with soul essence
         Better shooting
         Less health
 

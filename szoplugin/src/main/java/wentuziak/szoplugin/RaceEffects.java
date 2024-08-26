@@ -13,10 +13,12 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ItemType;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -442,16 +444,39 @@ public class RaceEffects {
         }
     }
 
-    public static void elfBreedingEffect(LivingEntity entity){
-        EntityType type = entity.getType();
+    public static void elfBreedingEffect(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand){
+        if (itemInMainHand.isSimilar(CreateCustomItem.createSoulEssence())) {
 
-        switch (type) {
-            case PARROT:
-                
-                break;
-        
-            default:
-                break;
+            Material offHandMaterial = itemInOffHand.getType();
+            EntityType summonedEntityType;
+            Location playerLocation = player.getLocation();
+
+            switch (offHandMaterial) {
+                case WHEAT_SEEDS:
+                    LogicHolder.summonRandomParrot(playerLocation);
+                    LogicHolder.removeItem(player, itemInOffHand);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    return;
+                case BONE:
+                    LogicHolder.summonRandomWolf(playerLocation);
+                    LogicHolder.removeItem(player, itemInOffHand);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    return;
+                case MUSHROOM_STEW:
+                    summonedEntityType = EntityType.MOOSHROOM;
+                    break;
+                case COD:
+                    summonedEntityType = EntityType.COD;
+                    break;
+                default:
+                    return;
+            }
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+            player.getWorld().spawnEntity(playerLocation, summonedEntityType);
         }
     }
 }

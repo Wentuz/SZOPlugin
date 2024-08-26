@@ -11,12 +11,17 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.type.Fire;
 import org.bukkit.entity.Axolotl;
+import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Parrot;
+import org.bukkit.entity.Parrot.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.AxolotlBucketMeta;
@@ -340,4 +345,39 @@ public class LogicHolder {
         return location.getWorld().dropItemNaturally(location, item);
     }
 
+    public static void summonRandomParrot(Location location) {
+        Parrot parrot = (Parrot) location.getWorld().spawnEntity(location, EntityType.PARROT);
+        List<Parrot.Variant> variants = List.of(
+            Parrot.Variant.BLUE,
+            Parrot.Variant.CYAN,
+            Parrot.Variant.GRAY,
+            Parrot.Variant.GREEN,
+            Parrot.Variant.RED
+        );
+        int random = (int)(Math.random() * 5);
+
+        Variant randomVariant = variants.get(random);
+
+        parrot.setVariant(randomVariant);
+    }
+
+    public static void summonRandomWolf(Location location) {
+        Wolf wolf = (Wolf) location.getWorld().spawnEntity(location, EntityType.WOLF);
+        List<Wolf.Variant> variants = List.of(
+            Wolf.Variant.ASHEN,
+            Wolf.Variant.BLACK,
+            Wolf.Variant.CHESTNUT,
+            Wolf.Variant.PALE,
+            Wolf.Variant.RUSTY,
+            Wolf.Variant.SNOWY,
+            Wolf.Variant.SPOTTED,
+            Wolf.Variant.STRIPED,
+            Wolf.Variant.WOODS
+        );
+        int random = (int)(Math.random() * 9);
+
+        org.bukkit.entity.Wolf.Variant randomVariant = variants.get(random);
+
+        wolf.setVariant(randomVariant);
+    }
 }
