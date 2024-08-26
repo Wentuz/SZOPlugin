@@ -119,6 +119,9 @@ public class InteractionListener implements Listener{
                         RaceEffects.elfBreedingEffect(player, itemInMainHand, itemInOffHand);
                     }
                 }
+                if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
+                    RaceCrafting.sanguiniteCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
             }
         }
 
@@ -180,6 +183,18 @@ public class InteractionListener implements Listener{
                 }
                 MagicItems.obliterate(player);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
+                return;
+            }   
+            if (playerContainer.has(Keys.CUSTOM_SANGUINITE_SCROLL, PersistentDataType.BYTE) && clickedRightButton) {
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                        RaceEffects.sanguiniteMagic(player, itemInOffHand, itemInMainHand, true);
+                    }
+                }else{
+                    RaceEffects.sanguiniteMagic(player, itemInOffHand, itemInMainHand, false);
+                }
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
                 return;
             }   
         }

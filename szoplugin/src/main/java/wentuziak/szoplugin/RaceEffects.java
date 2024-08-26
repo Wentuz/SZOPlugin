@@ -22,6 +22,7 @@ import org.bukkit.inventory.ItemType;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
 public class RaceEffects {
@@ -364,16 +365,35 @@ public class RaceEffects {
         }
     }
 
-    public static void sanguiniteMagic(Player player, String effect){
-        //Not yet implemented
-        switch (effect) {
-            case "1":
-                
+    public static void sanguiniteMagic(Player player, ItemStack itemInOffHand, ItemStack itemInMainHand, Boolean isBoosted){
+        Material type = itemInOffHand.getType();
+        Integer value = 0;
+
+        switch (type) {
+            case GLISTERING_MELON_SLICE:
+                RayTraceResult result = LogicHolder.rayTrace(25, 1, player);
+                if (isBoosted) {
+                    value = 1;
+                }
+                if (result != null) {
+                    LivingEntity entiy = (LivingEntity) result.getHitEntity();
+                    
+                    LogicHolder.givePotionEffect(entiy, "REGENERATION", 20*60*2, value);
+                    LogicHolder.givePotionEffect(entiy, "GLOWING", 20, 0);
+                    LogicHolder.givePotionEffect(entiy, "DAMAGE_RESISTANCE", 20*60*2, value);
+                    entiy.getWorld().spawnParticle(Particle.HEART, entiy.getLocation(), 20, 1, 1, 1);
+
+                } else {
+                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*60*2, value);
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*60*2, value); 
+                    player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 20, 1, 1, 1);
+                }                
                 break;
-        
             default:
-                break;
+                return;
         }
+        LogicHolder.removeItem(player, itemInMainHand);
+        LogicHolder.removeItem(player, itemInOffHand);
     }
 
     public static void sanguiniteConsumptionEffect(Player player,  ItemStack consumedStack){

@@ -73,6 +73,22 @@ public class RaceCrafting {
             return;
         }
     }
+       
+    // SANGUINITE
+    public static void sanguiniteCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.PAPER && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 4) {
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createSanguiniteScroll());
+            
+            for(int i = 0; i < 8; i++){
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+    }
 
     // WITCH
     public static void witchCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){

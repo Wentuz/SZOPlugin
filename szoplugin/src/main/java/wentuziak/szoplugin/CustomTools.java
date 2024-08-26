@@ -167,7 +167,6 @@ public class CustomTools {
             }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
             TaskManager.addTask(player, "raisedShield", effectRaisedShieldTask);
         } 
-
     }
 
     public static void stopeffectRaisedShieldTask(Player player) {

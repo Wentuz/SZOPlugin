@@ -1182,6 +1182,24 @@ public class CreateCustomItem {
     }
 
     //
+    //      SanguiniteScroll
+    //
+    static ItemStack createSanguiniteScroll(){
+        ItemStack sanguiniteScroll = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta sanguiniteScrollMeta = sanguiniteScroll.getItemMeta();
+
+        sanguiniteScrollMeta.setDisplayName(ChatColor.RED + "Crimson Scroll");
+        sanguiniteScrollMeta.setLore(Arrays.asList(
+            ChatColor.DARK_PURPLE + "Has many uses... Trial & error"));
+            sanguiniteScrollMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+            sanguiniteScrollMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            sanguiniteScrollMeta.getPersistentDataContainer().set(Keys.CUSTOM_SANGUINITE_SCROLL, PersistentDataType.BOOLEAN, true);
+            sanguiniteScroll.setItemMeta(sanguiniteScrollMeta);
+
+        return sanguiniteScroll;
+    }
+
+    //
     //      Race Hand Crafting Book
     //
     public static ItemStack createRaceBook() {
@@ -1320,6 +1338,15 @@ public class CreateCustomItem {
             "Nautilus Shell + Prismarine Crystal\n\n" +
             "Who Can Make It:\n" +
             "Animated Fossil"
+        );
+    
+        // Sanguinite Crafting Recipes
+        pages.add(
+            ChatColor.BOLD + "Crimson Scroll\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul essence x4 + Paper\n\n" +
+            "Who Can Make It:\n" +
+            "Sanguinite"
         );
 
         raceBookMeta.setPages(pages);

@@ -33,7 +33,7 @@ public class UpdateAttributes {
         if (raceName.equals("RACE_CELESTIAL")) {
             modifyHealthPoints(player, 40);
             modifyAttackDamage(player, 4);
-            modifyAttackSpeed(player, 4.5);
+            modifyAttackSpeed(player, 4.2);
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);
@@ -42,10 +42,10 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 26);
             modifyAttackDamage(player, 4);
             modifyScale(player, 1.05);
-            modifyFallDmgMultiplier(player, 2);
+            modifyFallDmgMultiplier(player, 2.5);
             modifyKnockBack(player, 0.2);
-            modifyOxygenBonus(player, 5);
-            modifyAttackSpeed(player, 3.8);
+            modifyOxygenBonus(player, 2);
+            modifyAttackSpeed(player, 3.7);
         }
         if (raceName.equals("RACE_CARA")) {
             modifyScale(player, 0.75);
