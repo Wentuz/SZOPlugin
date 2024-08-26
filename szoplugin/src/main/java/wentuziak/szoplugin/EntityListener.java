@@ -12,6 +12,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Cow;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.entity.Wolf;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -46,6 +47,7 @@ public class EntityListener implements Listener {
         Player player = event.getPlayer();
         Entity entity = event.getRightClicked();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
+        ItemStack itemOffHand = player.getInventory().getItemInOffHand();
 
 
         if (entity instanceof Cow && entity.hasMetadata("SzoPlugin") == true && itemInHand.getType() == Material.BUCKET) {
@@ -57,6 +59,11 @@ public class EntityListener implements Listener {
             cowClicked.getWorld().createExplosion(cowClicked.getLocation(), 2.5F);
             cowClicked.getWorld().dropItem(cowClicked.getLocation(), itemToDrop);
 
+        }
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_ELF)
+        && (itemInHand.getType().isEdible() || itemOffHand.getType().isEdible())) {
+            RaceEffects.elfFeedEffect((LivingEntity) entity);
         }
     }
 

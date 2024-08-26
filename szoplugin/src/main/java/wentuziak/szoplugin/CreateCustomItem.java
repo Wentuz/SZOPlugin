@@ -1195,29 +1195,19 @@ public class CreateCustomItem {
         List<String> pages = new ArrayList<>();
 
         pages.add(
-            ChatColor.BOLD + "Ancient Shell\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Nautilus Shell + Prismarine Crystal\n\n" +
-            "Who Can Make It:\n" +
-            "Animated Fossil"
-        );
-
-        pages.add(
             ChatColor.BOLD + "Markin' Spyglass\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Spyglass + Redstone Torch\n\n" +
             "Who Can Make It:\n" +
             "Mewchant"
         );
-
         pages.add(
             ChatColor.BOLD + "Lucky Clock\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Clock + Mechanical Part\n\n" +
             "Who Can Make It:\n" +
-            "Mewchant"
+            "Mewchant + Dwarf"
         );
-
         pages.add(
             ChatColor.BOLD + "Smoke Bombs\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
@@ -1225,87 +1215,6 @@ public class CreateCustomItem {
             "Who Can Make It:\n" +
             "Mewchant"
         );
-
-        pages.add(
-            ChatColor.BOLD + "Throwing Bombs\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "8 Gunpowder + String\n\n" +
-            "Who Can Make It:\n" +
-            "Dwarf"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Healing Gas\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Ghast Tear + Gold Melon\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Toxic Gas\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Pufferfish + Fermented Spider Eye\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Iron Hide\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul essence + iron ingot\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Gepard's Legs\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul essence + sugar\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Paralyzing Gass\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul essence + Pufferfish\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Most Sus Soup\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Suspicious Stew + Nether Wart\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Dwarf Ale\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Honey Bottle + Golden Apple\n\n" +
-            "Who Can Make It:\n" +
-            "Dwarf"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Breach Charge\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Throwing TnT + 6 Soul Essence\n\n" +
-            "Who Can Make It:\n" +
-            "Dwarf"
-        );
-
-        pages.add(
-            ChatColor.BOLD + "Wind Charm\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Feather + Soul Essence\n\n" +
-            "Who Can Make It:\n" +
-            "Cara"
-        );
-
         pages.add(
             ChatColor.BOLD + "Paralyzing Arrow\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
@@ -1313,13 +1222,104 @@ public class CreateCustomItem {
             "Who Can Make It:\n" +
             "Mewchant"
         );
-
+    
+        // Dwarf Crafting Recipes
         pages.add(
-            ChatColor.BOLD + "Bootleg Neterite Pickaxe\n\n" +
+            ChatColor.BOLD + "Throwing Bombs\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "8 Gunpowder + String\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+        pages.add(
+            ChatColor.BOLD + "Dwarf Ale\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Honey Bottle + Golden Apple\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+        pages.add(
+            ChatColor.BOLD + "Breach Charge\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Throwing TnT + 6 Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+        pages.add(
+            ChatColor.BOLD + "Bootleg Netherite Pickaxe\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Stick + Mechanical Part\n\n" +
             "Who Can Make It:\n" +
             "Dwarf"
+        );
+        pages.add(
+            ChatColor.BOLD + "6 xp Bottles\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Lapis + Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Dwarf"
+        );
+    
+        // Witch Crafting Recipes
+        pages.add(
+            ChatColor.BOLD + "Healing Gas\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Ghast Tear + Gold Melon\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+        pages.add(
+            ChatColor.BOLD + "Toxic Gas\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Pufferfish + Fermented Spider Eye\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+        pages.add(
+            ChatColor.BOLD + "Iron Hide\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul Essence + Iron Ingot\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+        pages.add(
+            ChatColor.BOLD + "Gepard's Legs\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul Essence + Sugar\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+        pages.add(
+            ChatColor.BOLD + "Paralyzing Gas\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Soul Essence + Pufferfish\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+        pages.add(
+            ChatColor.BOLD + "Most Sus Soup\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Suspicious Stew + Nether Wart\n\n" +
+            "Who Can Make It:\n" +
+            "Witch"
+        );
+    
+        // Cara Crafting Recipes
+        pages.add(
+            ChatColor.BOLD + "Wind Charm\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Feather + Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Cara"
+        );
+    
+        // Animated Fossil Crafting Recipes
+        pages.add(
+            ChatColor.BOLD + "Ancient Shell\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Nautilus Shell + Prismarine Crystal\n\n" +
+            "Who Can Make It:\n" +
+            "Animated Fossil"
         );
 
         raceBookMeta.setPages(pages);

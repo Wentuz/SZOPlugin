@@ -539,7 +539,7 @@ public class InteractionListener implements Listener{
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl + 1, brokenBlock, "Ore");
+            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl, brokenBlock, "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {

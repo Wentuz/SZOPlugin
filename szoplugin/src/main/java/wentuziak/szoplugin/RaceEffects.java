@@ -15,6 +15,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -348,17 +349,17 @@ public class RaceEffects {
             if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
                 player.removePotionEffect(PotionEffectType.HUNGER);
             }
-    
-            if (!TaskManager.isRestartScheduled(player)) {
-                TaskManager.setRestartScheduled(player, true);
-    
-                Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                    sanguiniteHunger(player);
-                    TaskManager.setRestartScheduled(player, false);
-                }, 20 * 60 * 20);
-            }
+
+            TaskManager.stopTask(player, "sanguiniteHunger");
         }
-        TaskManager.stopTask(player, "sanguiniteHunger");
+        if (!TaskManager.isRestartScheduled(player)) {
+            TaskManager.setRestartScheduled(player, true);
+
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                sanguiniteHunger(player);
+                TaskManager.setRestartScheduled(player, false);
+            }, 20 * 60 * 20);
+        }
     }
 
     public static void sanguiniteMagic(Player player, String effect){
@@ -389,6 +390,7 @@ public class RaceEffects {
         switch (consumedItem) {
             case "ROTTEN_FLESH":
                 LogicHolder.givePotionEffect(player, "REGENERATION", 20*20, 0);
+                player.removePotionEffect(PotionEffectType.HUNGER);
                 break;
             case "SPIDER_EYE":
                 LogicHolder.givePotionEffect(player, "JUMP_BOOST", 20*20, 0);
@@ -405,9 +407,7 @@ public class RaceEffects {
     public static void elfShotEffect(Player player, Vector velocity){
         Vector direction = player.getLocation().getDirection().normalize();
 
-        // Spawn 5 arrows with slight angle variations
         for (int i = 0; i < 5; i++) {
-            // Create a new arrow entity
             Arrow arrow = (Arrow) player.getWorld().spawnEntity(player.getEyeLocation(), EntityType.ARROW);
     
             // Calculate a slight variation in the arrow's direction
@@ -416,11 +416,42 @@ public class RaceEffects {
             arrowDirection.setY(arrowDirection.getY() + (Math.random() - 0.5) * 0.2); // ±10% variation
             arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.2); // ±10% variation
     
-            // Combine the arrow's direction with the provided velocity
             Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
     
-            // Set the arrow's velocity
             arrow.setVelocity(finalVelocity);
+        }
+    }
+
+    public static void elfFeedEffect(LivingEntity entity){
+        EntityType type = entity.getType();
+
+        switch (type) {
+            case WOLF:
+                Wolf wolf = (Wolf) entity;
+                if (!wolf.isLoveMode()) {
+                    LogicHolder.givePotionEffect(wolf, "REGENERATION", 20*60, 0);
+                    LogicHolder.givePotionEffect(wolf, "STRENGTH", 20*60, 0);
+                }
+                break;
+            case HORSE:
+                LogicHolder.givePotionEffect(entity, "SPEED", 20*60*5, 1);
+                LogicHolder.givePotionEffect(entity, "JUMP_BOOST", 20*60*5, 1);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public static void elfBreedingEffect(LivingEntity entity){
+        EntityType type = entity.getType();
+
+        switch (type) {
+            case PARROT:
+                
+                break;
+        
+            default:
+                break;
         }
     }
 }

@@ -149,6 +149,15 @@ public class RaceCrafting {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
+        else if (mainHandMaterial == Material.LAPIS_LAZULI && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
+            ItemStack item = new ItemStack(Material.EXPERIENCE_BOTTLE, 6);
+
+            player.getWorld().dropItem(dropLocation, item);
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
         else if (mainHandMaterial == Material.CLOCK && itemInOffHand.isSimilar(CreateCustomItem.createMechanicalParts())) {
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createLuckyClock());
             
