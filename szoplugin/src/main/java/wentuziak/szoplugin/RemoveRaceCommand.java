@@ -12,6 +12,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import wentuziak.szoplugin.entityevents.EntityListener;
+import wentuziak.szoplugin.races.UpdateAttributes;
+
 public class RemoveRaceCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

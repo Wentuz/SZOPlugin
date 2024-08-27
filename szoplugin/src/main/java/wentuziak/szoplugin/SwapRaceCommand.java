@@ -13,6 +13,8 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataType;
 
+import wentuziak.szoplugin.races.UpdateAttributes;
+
 
 public class SwapRaceCommand implements TabExecutor{
     @Override
