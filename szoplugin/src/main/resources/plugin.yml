@@ -3,12 +3,6 @@ main: wentuziak.szoplugin.SzoPlugin
 version: 0.1.0
 api-version: 1.21
 commands:
-  szopCow:
-    description: "Summon an exploding cow uwu"
-    usage: "/szopCow [baby]"
-    aliases: [ szoplugin ]
-    permissions: szoplugin.command.szopCow
-    permission-message: "You do not have the permissions to summon an exploding cow"
   swapRace:
     description: "Change players race"
     usage: "/swaprace [race] [player]"
