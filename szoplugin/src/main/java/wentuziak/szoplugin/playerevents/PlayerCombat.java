@@ -149,6 +149,8 @@ public class PlayerCombat implements Listener{
                     RaceEffects.elfShotEffect(player, arrowVelocity, "flame");
                 }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0)) {
                     RaceEffects.elfShotEffect(player, arrowVelocity, "multishot");
+                }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.PIERCING) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.PIERCING) > 0)) {
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "piercing");
                 }else{
                     RaceEffects.elfShotEffect(player, arrowVelocity, null);
                 }

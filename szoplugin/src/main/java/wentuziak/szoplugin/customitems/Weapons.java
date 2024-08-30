@@ -49,7 +49,7 @@ public class Weapons {
     public static void armorPiercerEffect(LivingEntity hitEntity, Integer damage){
         double currentHealth = hitEntity.getHealth();
 
-        double newHealth = currentHealth - damage;
+        double newHealth = currentHealth - (damage / 2);
 
         hitEntity.setHealth(newHealth);
     }

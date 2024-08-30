@@ -10,13 +10,17 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Axolotl;
+import org.bukkit.entity.Bogged;
 import org.bukkit.entity.Cat;
+import org.bukkit.entity.CaveSpider;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffectType;
@@ -265,7 +269,7 @@ public class RaceEffects {
     } 
     
     public static void mewchantFishEvent(Player player, Projectile projectile){
-        if (LogicHolder.critRoll(5)) {
+        if (LogicHolder.critRoll(10)) {
             if (projectile instanceof org.bukkit.entity.FishHook) {
                 org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
                 Location bobberLocation = fishHook.getLocation();
@@ -298,6 +302,30 @@ public class RaceEffects {
         TaskManager.stopTask(player, "fossilSwim");
     }
 
+
+    public static void fossilSummonEvilAxolotl(Player player, ItemStack itemInOffHand, ItemStack itemInMainHand){
+        if (itemInMainHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getType() == Material.AXOLOTL_BUCKET) {            
+            Axolotl axolotl = (Axolotl) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.AXOLOTL);
+            LogicHolder.givePotionEffect(axolotl, "STRENGTH", 20 * 60 * 10, 3);
+    
+            double speedMultiplier = 2;
+    
+            Vector direction = player.getLocation().getDirection();
+            Vector velocity = direction.multiply(speedMultiplier);
+        
+            axolotl.setVelocity(velocity);
+            
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                Player nearestPlayer = LogicHolder.findNearestPlayer(axolotl.getLocation());
+                if (nearestPlayer != null) {
+                    axolotl.setTarget(nearestPlayer);
+                }
+            }, 20 * 5);
+            
+            LogicHolder.removeItem(player, itemInMainHand);
+            LogicHolder.removeItem(player, itemInOffHand);
+        }
+    }
     //
     //      ZEPHYR
     //
@@ -394,12 +422,28 @@ public class RaceEffects {
                     player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 20, 1, 1, 1);
                 }                
                 break;
-            case ROTTEN_FLESH:
+            case BONE:
                 if (isBoosted) {
                     value = 4;
                 }
-                while (value > 0) {
-                    player.sendMessage(value + "");
+                while (value >= 0) {
+                    
+                    Bogged skeleton = (Bogged) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.BOGGED);
+                    LogicHolder.givePotionEffect(skeleton, "FIRE_RESISTANCE", 20 * 60, 0);
+
+                    double speedMultiplier = 1.5;
+    
+                    Vector direction = player.getLocation().getDirection();
+                    Vector velocity = direction.multiply(speedMultiplier);
+                
+                    skeleton.setVelocity(velocity);
+                    
+                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                        Player nearestPlayer = LogicHolder.findNearestPlayer(skeleton.getLocation());
+                        if (nearestPlayer != null) {
+                            skeleton.setTarget(nearestPlayer);
+                        }
+                    }, 20 * 5);
                     value--;
                 }
                 break;
@@ -426,7 +470,10 @@ public class RaceEffects {
         switch (consumedItem) {
             case "ROTTEN_FLESH":
                 LogicHolder.givePotionEffect(player, "REGENERATION", 20*20, 0);
-                player.removePotionEffect(PotionEffectType.HUNGER);
+                Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                    player.removePotionEffect(PotionEffectType.HUNGER);
+                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1, 1);
+                }, 20 * 1);
                 break;
             case "SPIDER_EYE":
                 LogicHolder.givePotionEffect(player, "JUMP_BOOST", 20*20, 0);
@@ -459,6 +506,8 @@ public class RaceEffects {
             }else if(specialType == "multishot"){
                 arrowDirection.setX(arrowDirection.getX() + (Math.random() - 0.5) * 0.8); // ±10% variation
                 arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.8); // ±10% variation
+            }else if(specialType == "piercing"){
+                arrow.setPierceLevel(1);
             }
             Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
     

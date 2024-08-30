@@ -107,6 +107,7 @@ public class InteractionListener implements Listener{
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
                     RaceCrafting.fossilCraftingEvent(player, itemInMainHand, itemInOffHand);
+                    RaceEffects.fossilSummonEvilAxolotl(player, itemInOffHand, itemInMainHand);
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_CARA)){
                     RaceCrafting.caraCraftingEvent(player, itemInMainHand, itemInOffHand);

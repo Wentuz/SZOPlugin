@@ -46,6 +46,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_OBLITERATE = new NamespacedKey(SzoPlugin.getInstance(), "ObliterateSpell");    
     public static final NamespacedKey CUSTOM_SPIDER_YEET = new NamespacedKey(SzoPlugin.getInstance(), "SpiderYeet");    
     public static final NamespacedKey CUSTOM_SANGUINITE_SCROLL = new NamespacedKey(SzoPlugin.getInstance(), "SanguiniteScroll");    
+    public static final NamespacedKey CUSTOM_EVIL_CREATURE = new NamespacedKey(SzoPlugin.getInstance(), "EvilCreature");    
     
     //
     // Loot
