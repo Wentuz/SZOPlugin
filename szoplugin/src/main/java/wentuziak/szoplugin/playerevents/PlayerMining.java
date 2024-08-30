@@ -49,7 +49,7 @@ public class PlayerMining implements Listener{
                 if (LogicHolder.critRoll((luckLvl + 1) * 25)) {
                     if ((brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE || brokenBlock.getType() == Material.DIAMOND_ORE)) {
                         for(int i = 3 - luckLvl; i < 4; i++){
-                            if (LogicHolder.critRoll((luckLvl + 1) * 20)) {
+                            if (LogicHolder.critRoll((luckLvl * 20))) {
                                 brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
                             }
                         }

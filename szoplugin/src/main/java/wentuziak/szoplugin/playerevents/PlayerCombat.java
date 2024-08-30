@@ -145,7 +145,13 @@ public class PlayerCombat implements Listener{
                 Arrow arrow = (Arrow) event.getProjectile();
 
                 Vector arrowVelocity = arrow.getVelocity();
-                RaceEffects.elfShotEffect(player, arrowVelocity);
+                if ((itemInMainHand.getEnchantmentLevel(Enchantment.FLAME) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.FLAME) > 0)) {
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "flame");
+                }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0)) {
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "multishot");
+                }else{
+                    RaceEffects.elfShotEffect(player, arrowVelocity, null);
+                }
             }
         }
     }

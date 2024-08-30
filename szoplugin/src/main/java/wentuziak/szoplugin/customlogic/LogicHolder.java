@@ -5,6 +5,7 @@ import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -146,7 +147,7 @@ public class LogicHolder {
         return location.getWorld().dropItemNaturally(location, item);
     }
 
-    public static void summonRandomParrot(Location location) {
+    public static Parrot summonRandomParrot(Location location) {
         Parrot parrot = (Parrot) location.getWorld().spawnEntity(location, EntityType.PARROT);
         List<Parrot.Variant> variants = List.of(
             Parrot.Variant.BLUE,
@@ -160,9 +161,10 @@ public class LogicHolder {
         Variant randomVariant = variants.get(random);
 
         parrot.setVariant(randomVariant);
+        return parrot;
     }
 
-    public static void summonRandomWolf(Location location) {
+    public static Wolf summonRandomWolf(Location location) {
         Wolf wolf = (Wolf) location.getWorld().spawnEntity(location, EntityType.WOLF);
         List<Wolf.Variant> variants = List.of(
             Wolf.Variant.ASHEN,
@@ -180,5 +182,28 @@ public class LogicHolder {
         org.bukkit.entity.Wolf.Variant randomVariant = variants.get(random);
 
         wolf.setVariant(randomVariant);
+        return wolf;
+    }
+
+    public static Cat summonRandomCat(Location location) {
+        Cat cat = (Cat) location.getWorld().spawnEntity(location, EntityType.CAT);
+        List<Cat.Type> variants = List.of(
+            Cat.Type.ALL_BLACK,
+            Cat.Type.BLACK,
+            Cat.Type.BRITISH_SHORTHAIR,
+            Cat.Type.CALICO,
+            Cat.Type.PERSIAN,
+            Cat.Type.RAGDOLL,
+            Cat.Type.RED,
+            Cat.Type.SIAMESE,
+            Cat.Type.TABBY,
+            Cat.Type.WHITE
+        );
+        int random = (int)(Math.random() * 10);
+
+        Cat.Type randomVariant = variants.get(random);
+
+        cat.setCatType(randomVariant);
+        return cat;
     }
 }

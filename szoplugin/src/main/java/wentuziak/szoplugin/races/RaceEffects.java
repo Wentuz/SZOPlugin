@@ -10,9 +10,11 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Wolf;
@@ -438,7 +440,7 @@ public class RaceEffects {
     //
     //      Elf
     //
-    public static void elfShotEffect(Player player, Vector velocity){
+    public static void elfShotEffect(Player player, Vector velocity, String specialType){
         Vector direction = player.getLocation().getDirection().normalize();
 
         for (int i = 0; i < 5; i++) {
@@ -450,6 +452,14 @@ public class RaceEffects {
             arrowDirection.setY(arrowDirection.getY() + (Math.random() - 0.5) * 0.2); // ±10% variation
             arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.2); // ±10% variation
     
+            
+            if (specialType == "flame") {
+                arrow.setVisualFire(true);
+                arrow.setFireTicks(20*10);
+            }else if(specialType == "multishot"){
+                arrowDirection.setX(arrowDirection.getX() + (Math.random() - 0.5) * 0.8); // ±10% variation
+                arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.8); // ±10% variation
+            }
             Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
     
             arrow.setVelocity(finalVelocity);
@@ -491,7 +501,8 @@ public class RaceEffects {
                     player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
                     return;
                 case BONE:
-                    LogicHolder.summonRandomWolf(playerLocation);
+                    Wolf wolf = LogicHolder.summonRandomWolf(playerLocation);
+                    wolf.setBaby();
                     LogicHolder.removeItem(player, itemInOffHand);
                     LogicHolder.removeItem(player, itemInMainHand);
                     player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
@@ -502,6 +513,13 @@ public class RaceEffects {
                 case COD:
                     summonedEntityType = EntityType.COD;
                     break;
+                case SALMON:
+                    Cat cat = LogicHolder.summonRandomCat(playerLocation);
+                    cat.setBaby();
+                    LogicHolder.removeItem(player, itemInOffHand);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    return;
                 default:
                     return;
             }

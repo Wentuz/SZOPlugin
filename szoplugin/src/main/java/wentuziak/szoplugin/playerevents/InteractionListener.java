@@ -53,7 +53,7 @@ public class InteractionListener implements Listener{
         boolean clickedRightButton = !(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK);
 
         if (clickedRightButton && (itemInMainHand != null && itemInOffHand != null)) {
-            //SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
+            SpecialItems.simpleItemEffect(player, itemInMainHand, itemInOffHand);
 
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();

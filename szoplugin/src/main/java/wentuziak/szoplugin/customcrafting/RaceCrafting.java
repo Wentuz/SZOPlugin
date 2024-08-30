@@ -166,7 +166,7 @@ public class RaceCrafting {
             return;
         }
         else if (mainHandMaterial == Material.LAPIS_LAZULI && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            ItemStack item = new ItemStack(Material.EXPERIENCE_BOTTLE, 6);
+            ItemStack item = new ItemStack(Material.EXPERIENCE_BOTTLE, 12);
 
             player.getWorld().dropItem(dropLocation, item);
             
