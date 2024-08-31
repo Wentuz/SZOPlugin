@@ -316,10 +316,11 @@ public class RaceEffects {
             axolotl.setVelocity(velocity);
             
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                Player nearestPlayer = LogicHolder.findNearestPlayer(axolotl.getLocation());
-                if (nearestPlayer != null) {
-                    axolotl.setTarget(nearestPlayer);
+                for (Entity entity : player.getNearbyEntities(5, 5, 5)) {
+                    entity.getWorld().strikeLightning(entity.getLocation());
+                    entity.getWorld().strikeLightning(entity.getLocation());
                 }
+                axolotl.getWorld().strikeLightning(axolotl.getLocation());
             }, 20 * 5);
             
             LogicHolder.removeItem(player, itemInMainHand);
@@ -431,7 +432,7 @@ public class RaceEffects {
                     Bogged skeleton = (Bogged) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.BOGGED);
                     LogicHolder.givePotionEffect(skeleton, "FIRE_RESISTANCE", 20 * 60, 0);
 
-                    double speedMultiplier = 1.5;
+                    double speedMultiplier = 2;
     
                     Vector direction = player.getLocation().getDirection();
                     Vector velocity = direction.multiply(speedMultiplier);
@@ -443,7 +444,7 @@ public class RaceEffects {
                         if (nearestPlayer != null) {
                             skeleton.setTarget(nearestPlayer);
                         }
-                    }, 20 * 5);
+                    }, 20 * 2);
                     value--;
                 }
                 break;

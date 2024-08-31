@@ -429,11 +429,11 @@ public class InteractionListener implements Listener{
         
         boolean isInWater = LogicHolder.isPlayerInWater(player);
         
-        if (itemLeggings == null || !isInWater) {
+        if (itemLeggings == null || (!isInWater && LogicHolder.isRaining(player.getWorld()))) {
             Armour.stopMermaidTailTask(player);
         }else if (itemLeggings.hasItemMeta()) {
             playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater)) {
+            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater || LogicHolder.isRaining(player.getWorld()))) {
                 Armour.mermaidTailEffect(player);
             }else{
                 Armour.stopMermaidTailTask(player);
@@ -441,7 +441,7 @@ public class InteractionListener implements Listener{
         }
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater)) {
+            if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater || LogicHolder.isRaining(player.getWorld()))) {
                 MagicItems.ancientShellEffect(player);
             }else{
                 MagicItems.stopAncientShellTask(player);

@@ -93,6 +93,9 @@ public class LogicHolder {
         long time = world.getTime();
         return time >= 0 && time < 12000;
     }
+    public static boolean isRaining(World world) {
+        return world.isClearWeather();
+    }
 
     public static Firework randomFirework(int power, Location location){
         Firework firework = (Firework) location.getWorld().spawn(location, Firework.class);
