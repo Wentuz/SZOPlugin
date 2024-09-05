@@ -346,6 +346,7 @@ public class RaceEffects {
     //
     public static void sanguiniteKillEffect(Player player){
         if (LogicHolder.critRoll(50)) {
+            LogicHolder.givePotionEffect(player, "SATURATION", 1, 0);
             LogicHolder.givePotionEffect(player, "ABSORPTION", 20*10, 0);
         }
         stopSanguiniteHungerTask(player);
@@ -397,62 +398,6 @@ public class RaceEffects {
                 TaskManager.setRestartScheduled(player, false);
             }, 20 * 60 * 20);
         }
-    }
-
-    public static void sanguiniteMagic(Player player, ItemStack itemInOffHand, ItemStack itemInMainHand, Boolean isBoosted){
-        Material type = itemInOffHand.getType();
-        Integer value = 0;
-
-        switch (type) {
-            case GLISTERING_MELON_SLICE:
-                RayTraceResult result = LogicHolder.rayTrace(25, 1, player);
-                if (isBoosted) {
-                    value = 1;
-                }
-                if (result != null) {
-                    LivingEntity entiy = (LivingEntity) result.getHitEntity();
-                    
-                    LogicHolder.givePotionEffect(entiy, "REGENERATION", 20*60*2, value);
-                    LogicHolder.givePotionEffect(entiy, "GLOWING", 20, 0);
-                    LogicHolder.givePotionEffect(entiy, "DAMAGE_RESISTANCE", 20*60*2, value);
-                    entiy.getWorld().spawnParticle(Particle.HEART, entiy.getLocation(), 20, 1, 1, 1);
-
-                } else {
-                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*60*2, value);
-                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*60*2, value); 
-                    player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 20, 1, 1, 1);
-                }                
-                break;
-            case BONE:
-                if (isBoosted) {
-                    value = 4;
-                }
-                while (value >= 0) {
-                    
-                    Bogged skeleton = (Bogged) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.BOGGED);
-                    LogicHolder.givePotionEffect(skeleton, "FIRE_RESISTANCE", 20 * 60, 0);
-
-                    double speedMultiplier = 2;
-    
-                    Vector direction = player.getLocation().getDirection();
-                    Vector velocity = direction.multiply(speedMultiplier);
-                
-                    skeleton.setVelocity(velocity);
-                    
-                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        Player nearestPlayer = LogicHolder.findNearestPlayer(skeleton.getLocation());
-                        if (nearestPlayer != null) {
-                            skeleton.setTarget(nearestPlayer);
-                        }
-                    }, 20 * 2);
-                    value--;
-                }
-                break;
-            default:
-                return;
-        }
-        LogicHolder.removeItem(player, itemInMainHand);
-        LogicHolder.removeItem(player, itemInOffHand);
     }
 
     public static void sanguiniteConsumptionEffect(Player player,  ItemStack consumedStack){

@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Trident;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
@@ -32,10 +33,14 @@ public class PlayerCombat implements Listener{
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event){   
         if (event.getDamager() instanceof Player) {
-
             Player player = (Player) event.getDamager();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             PersistentDataContainer playerContainer;
+
+            float attackCooldown = player.getAttackCooldown();
+            if (attackCooldown < 1) {
+                return;
+            }
             
             LivingEntity hitEntity = (LivingEntity) event.getEntity();
             if (!(itemInMainHand == null || itemInMainHand.getType() == Material.AIR)) {

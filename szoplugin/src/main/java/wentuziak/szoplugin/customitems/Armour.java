@@ -166,27 +166,22 @@ public class Armour {
     }
 
     public static void walkersEffect(Player player){
-        // if (player.isInWater() || player.isSwimming()) {
-        //     stopWalkersEffect(player);
-        //     return;
-        // }
-        // Material blockBelow = player.getLocation().subtract(0, 0.2, 0).getBlock().getType();
-        // Material blockAtFeet = player.getLocation().getBlock().getType();
+        if (player.isInWater() || player.isSwimming()) {
+            stopWalkersEffect(player);
+            return;
+        }
+        Material blockBelow = player.getLocation().subtract(0, 0.2, 0).getBlock().getType();
+        Material blockAtFeet = player.getLocation().getBlock().getType();
 
-        // if ((blockBelow == Material.WATER || blockBelow == Material.LAVA) &&
-        //     (blockAtFeet != Material.WATER || blockAtFeet != Material.LAVA)) {
+        if ((blockBelow == Material.WATER || blockBelow == Material.LAVA) &&
+            (blockAtFeet != Material.WATER || blockAtFeet != Material.LAVA)) {
+            player.setGravity(false);
 
-        //     if (!player.isFlying()) {
-        //             player.setAllowFlight(true);
-        //             player.setFlying(true);
-        //             player.setFlySpeed(0.03f);
-        //     }
-        // } else {
-        //     stopWalkersEffect(player);
-        // }
+        } else {
+            stopWalkersEffect(player);
+        }
     }
     public static void stopWalkersEffect(Player player){
-        // player.setFlying(false);
-        // player.setFlySpeed(0.1f);
+        player.setGravity(true);
     }
 }

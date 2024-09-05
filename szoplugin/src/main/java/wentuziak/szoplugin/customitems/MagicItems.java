@@ -2,16 +2,21 @@ package wentuziak.szoplugin.customitems;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Bogged;
 import org.bukkit.entity.CaveSpider;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
@@ -165,5 +170,60 @@ public class MagicItems {
         LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
     }
 
+    public static void crimsonMagic(Player player, ItemStack itemInOffHand, ItemStack itemInMainHand, Boolean isBoosted){
+        Material type = itemInOffHand.getType();
+        Integer value = 0;
+
+        switch (type) {
+            case GLISTERING_MELON_SLICE:
+                RayTraceResult result = LogicHolder.rayTrace(25, 1, player);
+                if (isBoosted) {
+                    value = 1;
+                }
+                if (result != null) {
+                    LivingEntity entiy = (LivingEntity) result.getHitEntity();
+                    
+                    LogicHolder.givePotionEffect(entiy, "REGENERATION", 20*60*2, value);
+                    LogicHolder.givePotionEffect(entiy, "GLOWING", 20, 0);
+                    LogicHolder.givePotionEffect(entiy, "DAMAGE_RESISTANCE", 20*60*2, value);
+                    entiy.getWorld().spawnParticle(Particle.HEART, entiy.getLocation(), 20, 1, 1, 1);
+
+                } else {
+                    LogicHolder.givePotionEffect(player, "REGENERATION", 20*60*2, value);
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*60*2, value); 
+                    player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 20, 1, 1, 1);
+                }                
+                break;
+            case BONE:
+                if (isBoosted) {
+                    value = 4;
+                }
+                while (value >= 0) {
+                    
+                    Bogged skeleton = (Bogged) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.BOGGED);
+                    LogicHolder.givePotionEffect(skeleton, "FIRE_RESISTANCE", 20 * 60, 0);
+
+                    double speedMultiplier = 2;
+    
+                    Vector direction = player.getLocation().getDirection();
+                    Vector velocity = direction.multiply(speedMultiplier);
+                
+                    skeleton.setVelocity(velocity);
+                    
+                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                        Player nearestPlayer = LogicHolder.findNearestPlayer(skeleton.getLocation());
+                        if (nearestPlayer != null) {
+                            skeleton.setTarget(nearestPlayer);
+                        }
+                    }, 20 * 2);
+                    value--;
+                }
+                break;
+            default:
+                return;
+        }
+        LogicHolder.removeItem(player, itemInMainHand);
+        LogicHolder.removeItem(player, itemInOffHand);
+    }
 
 }

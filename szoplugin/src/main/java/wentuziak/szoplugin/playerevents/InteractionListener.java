@@ -187,12 +187,15 @@ public class InteractionListener implements Listener{
                 if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
                     bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
                     if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        RaceEffects.sanguiniteMagic(player, itemInOffHand, itemInMainHand, true);
+                        MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, true);
+                        player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
+
                     }
                 }else{
-                    RaceEffects.sanguiniteMagic(player, itemInOffHand, itemInMainHand, false);
+                    MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, false);
+                    player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
+
                 }
-                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
                 return;
             }   
         }
