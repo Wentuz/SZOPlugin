@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -32,10 +33,15 @@ public class PlayerCombat implements Listener{
     @SuppressWarnings("deprecation")
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event){   
+        if (event.getCause() == EntityDamageEvent.DamageCause.THORNS) {
+            return;
+        }
+
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             PersistentDataContainer playerContainer;
+
 
             float attackCooldown = player.getAttackCooldown();
             if (attackCooldown < 1) {

@@ -34,6 +34,7 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 40);
             modifyAttackDamage(player, 4);
             modifyAttackSpeed(player, 4.2);
+            modifySafeFallRange(player, 5);
             modifyFireTime(player, 4);
             modifyGravity(player, 0.04);
             modifyScale(player, 1.15);

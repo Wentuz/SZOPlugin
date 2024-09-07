@@ -54,8 +54,7 @@ public class Weapons {
         hitEntity.setHealth(newHealth);
     }
 
-    public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity)
-    {
+    public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
             LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 10, 1);
@@ -71,8 +70,7 @@ public class Weapons {
         }
     }
 
-    public static void angelSwordEffect(int chanceForCrit, LivingEntity player)
-    {
+    public static void angelSwordEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
             double currentHealth = player.getHealth();
             double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();

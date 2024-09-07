@@ -157,11 +157,9 @@ public class RaceEffects {
             LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20 * 10, 0);
             LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 10, 0);
         }
-        if (LogicHolder.critRoll(20)) {
-            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 5, 0);
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_AMBIENT, 10, 10);
-            player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 10);
-        }
+        double currentHealth = player.getHealth();
+        double newHealth = currentHealth + 1;
+        player.setHealth(newHealth);
     }
     
     //
