@@ -172,7 +172,7 @@ public class EntityCombat implements Listener{
 
             ItemStack itemOnChest = player.getInventory().getChestplate();
     
-            if (itemOnChest != null && itemOnChest != null) {
+            if (itemOnChest != null) {
     
                 if (itemOnChest.hasItemMeta()) {
                     PersistentDataContainer playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();

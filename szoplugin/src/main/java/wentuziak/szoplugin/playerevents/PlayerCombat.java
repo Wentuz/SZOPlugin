@@ -117,9 +117,9 @@ public class PlayerCombat implements Listener{
                 int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
                 playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
-                    Armour.explosiveChestEffect(20 ,damager, player);
+                    Armour.explosiveChestEffect(20 & thornLvl ,damager, player);
                 }else if(playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)){
-                    Armour.reflectiveChestEffect(25, thornLvl ,damager);
+                    Armour.reflectiveChestEffect(20 * thornLvl, thornLvl ,damager);
                 }
             }
         }

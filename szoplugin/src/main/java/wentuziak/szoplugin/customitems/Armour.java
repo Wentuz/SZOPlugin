@@ -47,7 +47,7 @@ public class Armour {
     public static void reflectiveChestEffect(int chanceForCrit,int thornLvl, LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
             double currentHealth = damager.getHealth();
-            double newHealth = currentHealth - thornLvl;
+            double newHealth = currentHealth - thornLvl - 2;
             damager.setHealth(newHealth);
             
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
