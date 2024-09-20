@@ -19,14 +19,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
+import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
+import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class RaceEffects {
@@ -426,7 +429,7 @@ public class RaceEffects {
     //
     //      Elf
     //
-    public static void elfShotEffect(Player player, Vector velocity, String specialType){
+    public static void elfShotEffect(Player player, Vector velocity, String specialType, String  bowType){
         Vector direction = player.getLocation().getDirection().normalize();
 
         for (int i = 0; i < 5; i++) {
@@ -437,7 +440,6 @@ public class RaceEffects {
             arrowDirection.setX(arrowDirection.getX() + (Math.random() - 0.5) * 0.2); // ±10% variation
             arrowDirection.setY(arrowDirection.getY() + (Math.random() - 0.5) * 0.2); // ±10% variation
             arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.2); // ±10% variation
-    
             
             if (specialType == "flame") {
                 arrow.setVisualFire(true);
@@ -447,6 +449,17 @@ public class RaceEffects {
                 arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.8); // ±10% variation
             }else if(specialType == "piercing"){
                 arrow.setPierceLevel(1);
+            }
+            
+
+            if (bowType == "rat") {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                player.sendMessage(bowType + "jerry");
+            }else if (bowType == "gravity") {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
+                Weapons.gravityArrow(arrow);
+            }else if (bowType == "bouncy") {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
             }
             Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
     

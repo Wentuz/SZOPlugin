@@ -134,6 +134,7 @@ public class PlayerCombat implements Listener{
             Player player = (Player) event.getEntity();
             ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
             ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
+            String bowType = "normal";
 
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
@@ -141,14 +142,18 @@ public class PlayerCombat implements Listener{
                 if (itemInMainHand.getType() == Material.BOW) {
                     if (playerContainer.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
+                        Weapons.gravityArrow(arrow);
+                        bowType = "gravity";
                     }
                     if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                        bowType = "rat";
                     }
                 }
                 if (itemInMainHand.getType() == Material.CROSSBOW) {
                     if (playerContainer.has(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
+                        bowType = "bouncy";
                     }
                 }
             }
@@ -157,13 +162,13 @@ public class PlayerCombat implements Listener{
 
                 Vector arrowVelocity = arrow.getVelocity();
                 if ((itemInMainHand.getEnchantmentLevel(Enchantment.FLAME) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.FLAME) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "flame");
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "flame", bowType);
                 }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "multishot");
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "multishot",  bowType);
                 }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.PIERCING) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.PIERCING) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "piercing");
+                    RaceEffects.elfShotEffect(player, arrowVelocity, "piercing", bowType);
                 }else{
-                    RaceEffects.elfShotEffect(player, arrowVelocity, null);
+                    RaceEffects.elfShotEffect(player, arrowVelocity, null, bowType);
                 }
             }
         }

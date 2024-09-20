@@ -194,7 +194,6 @@ public class InteractionListener implements Listener{
                 }else{
                     MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, false);
                     player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
-
                 }
                 return;
             }   

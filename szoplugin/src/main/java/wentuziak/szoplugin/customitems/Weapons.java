@@ -96,16 +96,25 @@ public class Weapons {
         }
     }
 
-    public static void gravityBowEffect(LivingEntity target)
-    {
+    public static void gravityBowEffect(LivingEntity target){
         LogicHolder.givePotionEffect(target, "LEVITATION", 20 * 5, 1);
         LogicHolder.givePotionEffect(target, "GLOWING", 20 * 5, 0);
         target.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, target.getLocation(), 1);
         target.getWorld().playSound(target.getLocation(), Sound.ENTITY_PHANTOM_HURT, 1, 1);
     }
 
-    public static void ratBowEffect(Location hitLocation)
-    {
+    public static void gravityArrow(Arrow arrow){
+        arrow.setGravity(false);
+        
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            arrow.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, arrow.getLocation(), 1);
+            arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_WIND_CHARGE_WIND_BURST, 1, 1);
+            arrow.remove();
+        }, 20 * 10);
+
+    }
+
+    public static void ratBowEffect(Location hitLocation){
         for(int i = 0; i < 4; i++){            
             if (LogicHolder.critRoll(66)) {
                 Silverfish silverfish = (Silverfish) hitLocation.getWorld().spawnEntity(hitLocation.add(0, 1, 0), EntityType.SILVERFISH);
