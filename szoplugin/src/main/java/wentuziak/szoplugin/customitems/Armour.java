@@ -39,9 +39,11 @@ public class Armour {
 
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 5, 2);
+            double currentHealth = damager.getHealth(); //get hp to restore it later
+
             damager.getWorld().createExplosion(damager.getLocation(), 1, false, false);
-            LogicHolder.givePotionEffect(player, "REGENERATION", 20, 2);
+        
+            damager.setHealth(currentHealth); //restore hp
         }
     }
     public static void reflectiveChestEffect(int chanceForCrit,int thornLvl, LivingEntity damager){

@@ -54,11 +54,20 @@ public class Weapons {
         hitEntity.setHealth(newHealth);
     }
 
+    public static void bleedEffect(LivingEntity hitEntity, Integer damage, Integer secondsDuration){
+        double currentHealth = hitEntity.getHealth();
+
+        double newHealth = currentHealth - damage;
+        hitEntity.getWorld().playSound(hitEntity.getLocation(), Sound.ENTITY_PLAYER_HURT, 1, 1);
+
+        hitEntity.setHealth(newHealth);
+    }
+
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
-            LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 10, 1);
-            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 8, 1);
+            LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 5, 0);
+            LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 2, 1);
 
             double currentHealth = hitEntity.getHealth();
             double newHealth = currentHealth - 2;
