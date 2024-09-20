@@ -49,18 +49,21 @@ public class Weapons {
     public static void armorPiercerEffect(LivingEntity hitEntity, Integer damage){
         double currentHealth = hitEntity.getHealth();
 
-        double newHealth = currentHealth - (damage / 2);
+        double newHealth = currentHealth - damage;
 
         hitEntity.setHealth(newHealth);
     }
 
-    public static void bleedEffect(LivingEntity hitEntity, Integer damage, Integer secondsDuration){
-        double currentHealth = hitEntity.getHealth();
-
-        double newHealth = currentHealth - damage;
+    public static void bleedEffect(LivingEntity hitEntity, Double damage, Integer secondsDuration){
+        hitEntity.damage(damage);
+        hitEntity.playHurtAnimation(1);
         hitEntity.getWorld().playSound(hitEntity.getLocation(), Sound.ENTITY_PLAYER_HURT, 1, 1);
 
-        hitEntity.setHealth(newHealth);
+        if (secondsDuration >= 1) {
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                bleedEffect(hitEntity, damage, secondsDuration - 1);
+            }, 20L);
+        }
     }
 
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity){
@@ -68,10 +71,6 @@ public class Weapons {
             hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
             LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 5, 0);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 2, 1);
-
-            double currentHealth = hitEntity.getHealth();
-            double newHealth = currentHealth - 2;
-            hitEntity.setHealth(newHealth);
 
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 LogicHolder.givePotionEffect(hitEntity, "HARM", 1, 1);
@@ -108,7 +107,7 @@ public class Weapons {
         
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             arrow.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, arrow.getLocation(), 1);
-            arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_WIND_CHARGE_WIND_BURST, 1, 1);
+            arrow.getWorld().playSound(arrow.getLocation(), Sound.ENTITY_PHANTOM_HURT, 1, 1);
             arrow.remove();
         }, 20 * 10);
 
