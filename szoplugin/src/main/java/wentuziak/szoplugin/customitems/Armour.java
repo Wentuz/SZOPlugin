@@ -77,30 +77,24 @@ public class Armour {
                 // Apply the new effect with modified strength and duration
                 PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
                 player.addPotionEffect(newEffect);
-                player.setCooldown(Material.NETHER_STAR, newDuration + 20);
+                player.setCooldown(Material.NETHER_STAR, newDuration + );
             }
         }
 
     }
 
-    public static void mermaidTailEffect(Player player){   
-        if (!TaskManager.isTaskRunning(player, "mermaidTail")) {            
-            final Player finalPlayer = player;
-            mermaidTailTask = new BukkitRunnable() {
-                @Override
-                public void run(){
-                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 2);
-                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1);
-                }
-            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 5);
-            TaskManager.addTask(player, "mermaidTail", mermaidTailTask);
+    public static void ninjaPantEffect(Player player){
+        if (player.hasCooldown(Material.NETHERITE_LEGGINGS)) {
+            return;
         }
+        double currentHealth = player.getHealth();
+        double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
 
-    }
-
-
-    public static void stopMermaidTailTask(Player player) {
-        TaskManager.stopTask(player, "mermaidTail");
+        if (currentHealth <= maxHealth/2) {
+            Weapons.smokeEffect(player.getLocation());
+            LogicHolder.givePotionEffect(player, "INVISIBILITY", 20 * 10, 0);
+            player.setCooldown(Material.NETHERITE_LEGGINGS, 20 * 60);
+        }
     }
 
     public static void gluttonyPantsEffect(Player player){

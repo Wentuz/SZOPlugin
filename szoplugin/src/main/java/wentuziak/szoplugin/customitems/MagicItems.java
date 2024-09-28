@@ -136,17 +136,7 @@ public class MagicItems {
             ancientShellTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if (TaskManager.isTaskRunning(player, "mermaidTail") && finalPlayer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {            
-                        LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 4);
-                        LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 2);
-                        LogicHolder.givePotionEffect(finalPlayer, "STRENGTH", 20 * 10, 1);
-                    }
-                    else if (TaskManager.isTaskRunning(player, "mermaidTail")) {            
-                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 3);
-                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 2);
-                    LogicHolder.givePotionEffect(finalPlayer, "STRENGTH", 20 * 10, 0);
-
-                    }else if(finalPlayer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
+                    if(finalPlayer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
                     LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 1);
                     LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1); 
                     }else{

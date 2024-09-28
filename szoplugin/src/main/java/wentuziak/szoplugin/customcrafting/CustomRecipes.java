@@ -580,21 +580,21 @@ public final class CustomRecipes {
         
         
         //
-        //      MermaidTail Recipe
+        //      ninjaPant Recipe
         //
-        ItemStack mermaidTail = CreateCustomItem.createMermaidTail();
-        key = new NamespacedKey(SzoPlugin.getInstance(), "MermaidTailRecipe");
+        ItemStack ninjaPant = CreateCustomItem.createNinjaPant();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "NinjaPantRecipe");
         recipeKeys.add(key);
 
-        ShapedRecipe mermaidTailRecipe = new ShapedRecipe(key, mermaidTail);
-        mermaidTailRecipe.shape(
-            "PSP",
+        ShapedRecipe ninjaPantRecipe = new ShapedRecipe(key, ninjaPant);
+        ninjaPantRecipe.shape(
+            "ISI",
             "D D",
             "D D");
-            mermaidTailRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
-            mermaidTailRecipe.setIngredient('P', Material.PRISMARINE_CRYSTALS);
-            mermaidTailRecipe.setIngredient('D', Material.DIAMOND);
-        Bukkit.addRecipe(mermaidTailRecipe);
+            ninjaPantRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            ninjaPantRecipe.setIngredient('I', Material.INK_SAC);
+            ninjaPantRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(ninjaPantRecipe);
         
         
         //

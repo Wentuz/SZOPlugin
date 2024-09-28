@@ -107,24 +107,34 @@ public class PlayerCombat implements Listener{
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
             ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
+            ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
 
             
-            if (itemOnChest == null || !itemOnChest.hasItemMeta()) {
-                return;
-            }
-
-            LivingEntity damager = (LivingEntity) event.getDamager();
-            PersistentDataContainer playerContainer;
-            
-            if (itemOnChest.hasItemMeta()) {
-                int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
-                playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
-                if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
-                    Armour.explosiveChestEffect(20 & thornLvl ,damager, player);
-                }else if(playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)){
-                    Armour.reflectiveChestEffect(20 * thornLvl, thornLvl ,damager);
+            if (!(itemOnChest == null || !itemOnChest.hasItemMeta())) {
+                LivingEntity damager = (LivingEntity) event.getDamager();
+                PersistentDataContainer playerContainer;
+                
+                if (itemOnChest.hasItemMeta()) {
+                    int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
+                    playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
+                        Armour.explosiveChestEffect(20 & thornLvl ,damager, player);
+                    }else if(playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)){
+                        Armour.reflectiveChestEffect(20 * thornLvl, thornLvl ,damager);
+                    }
                 }
             }
+            if (itemOnLegs != null) {
+                PersistentDataContainer playerContainer;
+                
+                if (itemOnLegs.hasItemMeta()) {
+                    playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
+                        Armour.ninjaPantEffect(player);
+                    }
+                }
+            }
+
         }
     }
 

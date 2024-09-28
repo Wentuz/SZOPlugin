@@ -425,16 +425,6 @@ public class InteractionListener implements Listener{
         
         boolean isInWater = LogicHolder.isPlayerInWater(player);
         
-        if (itemLeggings == null || (!isInWater && LogicHolder.isRaining(player.getWorld()))) {
-            Armour.stopMermaidTailTask(player);
-        }else if (itemLeggings.hasItemMeta()) {
-            playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater || LogicHolder.isRaining(player.getWorld()))) {
-                Armour.mermaidTailEffect(player);
-            }else{
-                Armour.stopMermaidTailTask(player);
-            }
-        }
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater || LogicHolder.isRaining(player.getWorld()))) {
@@ -464,7 +454,6 @@ public class InteractionListener implements Listener{
 
 
         if (!isInWater) {
-            Armour.stopMermaidTailTask(player);
             MagicItems.stopAncientShellTask(player);
             RaceEffects.stopDwarfSwimTask(player);
             RaceEffects.stopFossilSwimTask(player);

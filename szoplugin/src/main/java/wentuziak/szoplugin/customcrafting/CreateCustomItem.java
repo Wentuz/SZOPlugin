@@ -332,18 +332,18 @@ public class CreateCustomItem {
         return golemChest;
     }
 
-    public static ItemStack createMermaidTail(){
-        ItemStack mermaidTail = new ItemStack(Material.DIAMOND_LEGGINGS);
-        ItemMeta mermaidTailMeta = mermaidTail.getItemMeta();
+    public static ItemStack createNinjaPant(){
+        ItemStack ninjaPant = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemMeta ninjaPantMeta = ninjaPant.getItemMeta();
 
-        mermaidTailMeta.setDisplayName(ChatColor.DARK_BLUE + "Mermaid's Tail");
-        mermaidTailMeta.setLore(Arrays.asList(
-            "Don't wet your pants !"));
-        mermaidTailMeta.getPersistentDataContainer().set(Keys.CUSTOM_MERMAID_TAIL, PersistentDataType.BOOLEAN, true);
+        ninjaPantMeta.setDisplayName(ChatColor.GRAY + "Sneaky Stockings");
+        ninjaPantMeta.setLore(Arrays.asList(
+            "Mhmmm ... Not sus"));
+            ninjaPantMeta.getPersistentDataContainer().set(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BOOLEAN, true);
 
-        mermaidTail.setItemMeta(mermaidTailMeta);
+        ninjaPant.setItemMeta(ninjaPantMeta);
 
-        return mermaidTail;
+        return ninjaPant;
     }
 
     public static ItemStack createGluttonyPants(){
