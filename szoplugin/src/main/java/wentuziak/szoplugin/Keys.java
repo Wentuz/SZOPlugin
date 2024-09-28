@@ -29,7 +29,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_EXPLOSIVE_CHEST = new NamespacedKey(SzoPlugin.getInstance(), "ExplosiveChest");
     public static final NamespacedKey CUSTOM_MERMAID_TAIL = new NamespacedKey(SzoPlugin.getInstance(), "MermaidTail");
     public static final NamespacedKey CUSTOM_GLUTTONY_PANTS = new NamespacedKey(SzoPlugin.getInstance(), "GluttonyPants");
-    public static final NamespacedKey CUSTOM_NIGHT_HELMET = new NamespacedKey(SzoPlugin.getInstance(), "NightHelmet");
+    public static final NamespacedKey CUSTOM_WITCH_HELMET = new NamespacedKey(SzoPlugin.getInstance(), "WitchHelmet");
     public static final NamespacedKey CUSTOM_STRIGA_VEIL = new NamespacedKey(SzoPlugin.getInstance(), "StrigaVeil");
     public static final NamespacedKey CUSTOM_MAGIC_BOOTS = new NamespacedKey(SzoPlugin.getInstance(), "MagicBoots");
     public static final NamespacedKey CUSTOM_REFLECTIVE_CHESTPIECE = new NamespacedKey(SzoPlugin.getInstance(), "ReflectiveChestpiece");

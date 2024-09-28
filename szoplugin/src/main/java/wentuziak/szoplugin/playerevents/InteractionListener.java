@@ -251,7 +251,6 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
         ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
-        ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
         ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
         Boolean isInWater = LogicHolder.isPlayerInWater(player);
 
@@ -295,12 +294,6 @@ public class InteractionListener implements Listener{
         && !player.isClimbing() && !isInWater
         && !player.hasCooldown(Material.NETHER_STAR)) {
             RaceEffects.sanguiniteJumpEffect(player);
-        }
-        if (itemOnHead != null && itemOnHead.hasItemMeta()) {
-            playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BYTE)) {
-                Armour.nightHelmetEffect(player);
-            }
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)
@@ -462,6 +455,11 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && (player.isSprinting())) {
                 Armour.ramCapSprint(player);
             }
+            if (playerContainer.has(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BYTE) && !player.hasCooldown(Material.NETHER_STAR)) {
+                player.setCooldown(Material.NETHER_STAR, 20 * 5);
+                Armour.witchHelmetEffect(player);
+            }
+            
         }
 
 

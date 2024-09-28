@@ -11,6 +11,8 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -60,13 +62,25 @@ public class Armour {
         }
     }
 
-    public static void nightHelmetEffect(Player player){
-        World world = player.getWorld();
-        if (!LogicHolder.isDaytime(world)){
-            LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 60 * 4, 0);
-            LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 60 * 4, 0);
+    public static void witchHelmetEffect(Player player){
+        if (player.getActivePotionEffects() == null) {
+            return;
+        }else{
+            for (PotionEffect effect : player.getActivePotionEffects()) {
+                PotionEffectType effectType = effect.getType(); // Get the potion effect type
+                int newAmplifier = effect.getAmplifier() + 1;   // Increase the strength by +1
+                int newDuration = effect.getDuration() / 2;     // Halve the duration
+    
+                // Remove the old effect
+                player.removePotionEffect(effectType);
+    
+                // Apply the new effect with modified strength and duration
+                PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
+                player.addPotionEffect(newEffect);
+                player.setCooldown(Material.NETHER_STAR, newDuration + 20);
+            }
         }
-        LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 60 * 4, 0);
+
     }
 
     public static void mermaidTailEffect(Player player){   

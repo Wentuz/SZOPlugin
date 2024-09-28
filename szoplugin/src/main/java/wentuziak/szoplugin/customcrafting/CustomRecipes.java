@@ -653,21 +653,21 @@ public final class CustomRecipes {
         
         
         //
-        //      NightHelmet Recipe
+        //      WitchHelmet Recipe CUSTOM_WITCH_HELMET
         //
-        ItemStack nightHelmet = CreateCustomItem.createNightHelmet();
-        key = new NamespacedKey(SzoPlugin.getInstance(), "nightHelmetRecipe");
+        ItemStack witchHelmet = CreateCustomItem.createWitchHelmet();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "witchHelmetRecipe");
         recipeKeys.add(key);
 
-        ShapedRecipe nightHelmetRecipe = new ShapedRecipe(key, nightHelmet);
-        nightHelmetRecipe.shape(
+        ShapedRecipe witchHelmetRecipe = new ShapedRecipe(key, witchHelmet);
+        witchHelmetRecipe.shape(
             "GSG",
             "D D",
             "   ");
-        nightHelmetRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
-        nightHelmetRecipe.setIngredient('G', Material.GLOWSTONE_DUST);
-        nightHelmetRecipe.setIngredient('D', Material.DIAMOND);
-        Bukkit.addRecipe(nightHelmetRecipe);
+        witchHelmetRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        witchHelmetRecipe.setIngredient('G', Material.GLOWSTONE_DUST);
+        witchHelmetRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(witchHelmetRecipe);
         
         
         //

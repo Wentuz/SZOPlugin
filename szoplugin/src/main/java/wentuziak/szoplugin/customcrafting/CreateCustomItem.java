@@ -457,17 +457,17 @@ public class CreateCustomItem {
         return ironCladBoots;
     }
 
-    public static ItemStack createNightHelmet(){
-        ItemStack nightHelmet = new ItemStack(Material.DIAMOND_HELMET);
-        ItemMeta nightHelmetMeta = nightHelmet.getItemMeta();
+    public static ItemStack createWitchHelmet(){
+        ItemStack witchHelmet = new ItemStack(Material.DIAMOND_HELMET);
+        ItemMeta witchHelmetMeta = witchHelmet.getItemMeta();
 
-        nightHelmetMeta.setDisplayName(ChatColor.DARK_BLUE + "Night Helmet");
-        nightHelmetMeta.setLore(Arrays.asList(
-            ChatColor.DARK_GRAY + "A bat person :p"));
-        nightHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_NIGHT_HELMET, PersistentDataType.BOOLEAN, true);
-        nightHelmet.setItemMeta(nightHelmetMeta);
+        witchHelmetMeta.setDisplayName(ChatColor.GRAY + "Black Cat Hat");
+        witchHelmetMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "black cat hat >:3"));
+        witchHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BOOLEAN, true);
+        witchHelmet.setItemMeta(witchHelmetMeta);
 
-        return nightHelmet;
+        return witchHelmet;
     }
 
     public static ItemStack createGuardingVest(){
