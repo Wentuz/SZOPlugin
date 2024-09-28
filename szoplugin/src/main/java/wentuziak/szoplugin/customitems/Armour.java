@@ -6,8 +6,10 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.WindCharge;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -98,12 +100,14 @@ public class Armour {
     }
 
     public static void ramCapEffect(Player attacker ,LivingEntity hitEntity){
-
-        Vector direction = hitEntity.getLocation().toVector().subtract(attacker.getLocation().toVector()).normalize();
-        hitEntity.getWorld().spawnParticle(Particle.CLOUD, hitEntity.getLocation(), 10, 1, 1, 1, 0.015);
-        double force = 8.0;
-        hitEntity.setVelocity(direction.multiply(force));
-
+        WindCharge windCharge = (WindCharge) hitEntity.getWorld().spawnEntity(hitEntity.getLocation(), EntityType.WIND_CHARGE);
+        windCharge.explode();
+        hitEntity.getWorld().spawnParticle(Particle.CLOUD, hitEntity.getLocation(), 10, 0, -1, 0, 0.015);
+        Weapons.bleedEffect(hitEntity, 2.0, 2);
+    }
+    public static void ramCapSprint(Player player){
+        LogicHolder.givePotionEffect(player, "SPEED", 20, 0);
+        player.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 1, 0, -1, 0, 0);
     }
 
     public static void jumpPackEffect(Player player){

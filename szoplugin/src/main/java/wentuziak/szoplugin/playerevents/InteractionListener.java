@@ -426,6 +426,7 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack itemLeggings = player.getInventory().getLeggings();
         ItemStack itemBoots = player.getInventory().getBoots();
+        ItemStack itemHelmet = player.getInventory().getHelmet();
         ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
         PersistentDataContainer playerContainer;
         
@@ -454,6 +455,12 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_WALKERS, PersistentDataType.BYTE) && (!player.isSwimming() || !isInWater)
             && !player.isSneaking()) {
                 Armour.walkersEffect(player);
+            }
+        }
+        if (itemHelmet != null && itemHelmet.hasItemMeta()) {
+            playerContainer = itemHelmet.getItemMeta().getPersistentDataContainer();
+            if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && (player.isSprinting())) {
+                Armour.ramCapSprint(player);
             }
         }
 
