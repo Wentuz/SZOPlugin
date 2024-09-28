@@ -160,11 +160,10 @@ public class CustomTools {
                         return;
                     }
                     if (finalShield == 3) {
-                        LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 100, 1);
-                        LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 100, 0);
+                        LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 20 * 10, 1);
                     } else if (finalShield == 2) {
-                        LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 100, 1);
-                        LogicHolder.givePotionEffect(finalPlayer, "SPEED", 100, 0);
+                        LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 20 * 5, 1);
+                        LogicHolder.givePotionEffect(finalPlayer, "SPEED", 20 * 5, 0);
                     }
                     }
             }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);

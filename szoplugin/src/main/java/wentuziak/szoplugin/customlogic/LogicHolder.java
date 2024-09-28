@@ -97,6 +97,14 @@ public class LogicHolder {
         return world.isClearWeather();
     }
 
+    public static void modifyCurrentHeatlhPoints(LivingEntity hitEntity, Double amount){
+        double currentHealth = hitEntity.getHealth();
+
+        double newHealth = currentHealth + amount;
+
+        hitEntity.setHealth(newHealth);
+    }
+
     public static Firework randomFirework(int power, Location location){
         Firework firework = (Firework) location.getWorld().spawn(location, Firework.class);
         FireworkMeta meta = firework.getFireworkMeta();

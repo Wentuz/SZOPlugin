@@ -155,9 +155,8 @@ public class RaceEffects {
             LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20 * 10, 0);
             LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 10, 0);
         }
-        double currentHealth = player.getHealth();
-        double newHealth = currentHealth + 1;
-        player.setHealth(newHealth);
+        LogicHolder.givePotionEffect(player, "INSTANT_HEALTH", 1, 0);
+        
     }
     
     //
@@ -358,7 +357,7 @@ public class RaceEffects {
             player.setVelocity(velocity);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 1, 1);
     
-            player.setCooldown(Material.NETHER_STAR, 20 * 10);
+            player.setCooldown(Material.NETHER_STAR, 20 * 4);
         }
     }
 

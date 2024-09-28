@@ -80,10 +80,9 @@ public class PlayerCombat implements Listener{
                     Weapons.angelSwordEffect(44, player);
                 }
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-                    Weapons.armorPiercerEffect(hitEntity, 2);
+                    LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) (sharpLvl));
                     if (LogicHolder.critRoll(sharpLvl * 10)) {
-                        player.sendMessage("Hello");
-                        //Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
+                        Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
                     }
                 }
             }

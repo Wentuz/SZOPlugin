@@ -48,10 +48,8 @@ public class Armour {
     }
     public static void reflectiveChestEffect(int chanceForCrit,int thornLvl, LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
-            double currentHealth = damager.getHealth();
-            double newHealth = currentHealth - thornLvl - 2;
-            damager.setHealth(newHealth);
-            
+            LogicHolder.modifyCurrentHeatlhPoints(damager, (double) (thornLvl - 2));
+
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
                 LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
@@ -119,7 +117,7 @@ public class Armour {
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
             player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 50, 0.0, 0.1, 0.0, 0.02);
     
-            player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 10);
+            player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 4);
         }
     }
 

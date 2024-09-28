@@ -46,14 +46,6 @@ public class Weapons {
         }
     }
 
-    public static void armorPiercerEffect(LivingEntity hitEntity, Integer damage){
-        double currentHealth = hitEntity.getHealth();
-
-        double newHealth = currentHealth - damage;
-
-        hitEntity.setHealth(newHealth);
-    }
-
     public static void bleedEffect(LivingEntity hitEntity, Double damage, Integer secondsDuration){
         hitEntity.damage(damage);
         hitEntity.playHurtAnimation(1);
@@ -62,7 +54,7 @@ public class Weapons {
         if (secondsDuration >= 1) {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 bleedEffect(hitEntity, damage, secondsDuration - 1);
-            }, 20L);
+            }, 20L * secondsDuration);
         }
     }
 
