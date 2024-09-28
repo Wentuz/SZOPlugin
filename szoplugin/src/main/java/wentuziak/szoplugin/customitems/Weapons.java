@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.PufferFish;
 import org.bukkit.entity.Silverfish;
 import org.bukkit.entity.TNTPrimed;
+import org.bukkit.entity.WindCharge;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
@@ -72,16 +73,8 @@ public class Weapons {
 
     public static void angelSwordEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            double currentHealth = player.getHealth();
-            double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-    
-            double newHealth = currentHealth + 4.0;
-    
-            if (newHealth > maxHealth) {
-                newHealth = maxHealth;
-            }
-    
-            player.setHealth(newHealth);
+            LogicHolder.modifyCurrentHeatlhPoints(player, 4.0);
+            
             LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 5, 0);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
         }
@@ -117,32 +110,21 @@ public class Weapons {
     }
 
     public static void bouncyCrossbowGroundEffect(Arrow arrow, Vector normal) {
-        if (LogicHolder.critRoll(10)) {
-            Location location = arrow.getLocation();
-            World world = location.getWorld();
-    
-            PufferFish previousPuffer = null;
-            int numberOfPuffer = (int)(Math.random() * 4 + 1);
-    
-            for (int i = 0; i < numberOfPuffer; i++) {
-                Location spawnLocation = location.clone().add(0, i, 0);
-                PufferFish puffer = (PufferFish) world.spawnEntity(spawnLocation, EntityType.PUFFERFISH);
-    
-                if (previousPuffer != null) {
-                    puffer.addPassenger(previousPuffer);
-                }
-    
-                previousPuffer = puffer;
-            }
-        }
+        Location location = arrow.getLocation();
+
+        WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
+        windCharge.explode();
+
+        fireworkEffect(location);
     }
 
     public static void bouncyCrossbowTargetEffect(Arrow arrow, LivingEntity target){
-            Vector arrowVelocity = arrow.getVelocity().normalize();
-            Vector knockback = arrowVelocity.multiply(1.2);
-            knockback.setY(1.2);
+        Location location = arrow.getLocation();
 
-            target.setVelocity(knockback);
+        WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
+        windCharge.explode();
+        
+        fireworkEffect(location);
     }
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){

@@ -4,6 +4,7 @@ import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
@@ -97,12 +98,16 @@ public class LogicHolder {
         return world.isClearWeather();
     }
 
-    public static void modifyCurrentHeatlhPoints(LivingEntity hitEntity, Double amount){
-        double currentHealth = hitEntity.getHealth();
+    public static void modifyCurrentHeatlhPoints(LivingEntity targetEntity, Double amount){
+        double currentHealth = targetEntity.getHealth();
+        double maxHealth = targetEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
 
         double newHealth = currentHealth + amount;
+        if (newHealth > maxHealth) {
+            newHealth = maxHealth;
+        }
 
-        hitEntity.setHealth(newHealth);
+        targetEntity.setHealth(newHealth);
     }
 
     public static Firework randomFirework(int power, Location location){
