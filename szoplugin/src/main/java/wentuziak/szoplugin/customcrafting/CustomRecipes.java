@@ -236,6 +236,26 @@ public final class CustomRecipes {
         
         
         //
+        //      EnchanterShield Recipe
+        //
+        ItemStack enchanterShield = CreateCustomItem.createEnchanterShield();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "EnchanterShieldRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe enchanterShieldRecipe = new ShapedRecipe(key, enchanterShield);
+        enchanterShieldRecipe.shape(
+            "A A",
+            "WSW",
+            " W ");
+            enchanterShieldRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            enchanterShieldRecipe.setIngredient('A', new RecipeChoice.ExactChoice(CreateCustomItem.createCursedArrow()) {
+                
+            });
+            enchanterShieldRecipe.setIngredient('W', Material.OAK_PLANKS);
+        Bukkit.addRecipe(enchanterShieldRecipe);
+        
+        
+        //
         //      stinkyStick Recipe
         //
         ItemStack stinkyStick = CreateCustomItem.createStinkyStick();
@@ -316,11 +336,11 @@ public final class CustomRecipes {
         ShapedRecipe bouncyCrossbowRecipe = new ShapedRecipe(key, bouncyCrossbow);
         bouncyCrossbowRecipe.shape(
             " M ",
-            "SCS",
-            " S ");
+            "FCF",
+            " F ");
             bouncyCrossbowRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
             bouncyCrossbowRecipe.setIngredient('C', Material.CROSSBOW);
-            bouncyCrossbowRecipe.setIngredient('S', Material.SLIME_BALL);
+            bouncyCrossbowRecipe.setIngredient('F', Material.FIREWORK_STAR);
         Bukkit.addRecipe(bouncyCrossbowRecipe);
         
         

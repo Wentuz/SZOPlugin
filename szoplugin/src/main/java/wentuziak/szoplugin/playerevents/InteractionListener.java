@@ -224,7 +224,7 @@ public class InteractionListener implements Listener{
                 }
                 else if(playerContainer.has(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.BYTE)){
                     Weapons.fireworkThrow(player, playerContainer);
-                    player.setCooldown(Material.FIREWORK_STAR, 20 * 2);
+                    player.setCooldown(Material.FIREWORK_STAR, 10);
                     LogicHolder.removeItem(player, itemInMainHand);
                     return;
                 }
@@ -445,8 +445,8 @@ public class InteractionListener implements Listener{
             if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && (player.isSprinting())) {
                 Armour.ramCapSprint(player);
             }
-            if (playerContainer.has(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BYTE) && !player.hasCooldown(Material.NETHER_STAR)) {
-                player.setCooldown(Material.NETHER_STAR, 20 * 5);
+            if (playerContainer.has(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BYTE) && !player.hasCooldown(Material.NETHERITE_HELMET)) {
+                player.setCooldown(Material.NETHERITE_HELMET, 20 * 5);
                 Armour.witchHelmetEffect(player);
             }
             

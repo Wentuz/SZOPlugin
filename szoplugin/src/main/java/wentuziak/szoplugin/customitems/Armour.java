@@ -77,7 +77,7 @@ public class Armour {
                 // Apply the new effect with modified strength and duration
                 PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
                 player.addPotionEffect(newEffect);
-                player.setCooldown(Material.NETHER_STAR, newDuration + );
+                player.setCooldown(Material.NETHERITE_HELMET, newDuration + 20);
             }
         }
 

@@ -213,9 +213,9 @@ public class CreateCustomItem {
         ItemStack bouncyCrossbow = new ItemStack(Material.CROSSBOW);
         ItemMeta bouncyCrossbowMeta = bouncyCrossbow.getItemMeta();
 
-        bouncyCrossbowMeta.setDisplayName(ChatColor.GREEN + "Bouncy Crossbow");
+        bouncyCrossbowMeta.setDisplayName(ChatColor.RED + "Rioters Crossbow");
         bouncyCrossbowMeta.setLore(Arrays.asList(
-            ChatColor.GREEN + "womp womp"));
+            ChatColor.RED + "x plode"));
             bouncyCrossbowMeta.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BOOLEAN, true);
             bouncyCrossbow.setItemMeta(bouncyCrossbowMeta);
 
@@ -778,6 +778,22 @@ public class CreateCustomItem {
         berserkerShield.setItemMeta(berserkerShieldMeta);
 
         return berserkerShield;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static ItemStack createEnchanterShield(){
+        ItemStack enchanterShield = new ItemStack(Material.SHIELD);
+        ItemMeta enchanterShieldMeta = enchanterShield.getItemMeta();
+
+        enchanterShieldMeta.setDisplayName(ChatColor.GREEN + "Enchanter Shield");
+        enchanterShieldMeta.setLore(Arrays.asList(
+            "High Arrows >:3"));
+        AttributeModifier dmgModifierenchanterShield = new AttributeModifier(UUID.randomUUID(), "Dmg", -0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        enchanterShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierenchanterShield);
+        enchanterShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BOOLEAN, true);
+        enchanterShield.setItemMeta(enchanterShieldMeta);
+
+        return enchanterShield;
     }
     public static ItemStack createSoulEssence(){
         ItemStack soulEssence = new ItemStack(Material.POPPED_CHORUS_FRUIT);
