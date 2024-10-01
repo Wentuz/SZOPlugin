@@ -1,18 +1,26 @@
 package wentuziak.szoplugin.customitems;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Bogged;
 import org.bukkit.entity.CaveSpider;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.ZombieHorse;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.potion.PotionData;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
@@ -27,8 +35,10 @@ public class MagicItems {
     static BukkitTask ancientShellTask;
 
 
-    public static void teleportSpell(Player player){
-        Block targetBlock = player.getTargetBlock(null, 50);
+    public static void teleportSpell(Player player, boolean isBoosted){
+        int distance = isBoosted ? 150 : 50;
+
+        Block targetBlock = player.getTargetBlock(null, distance);
 
         Location blockLocation = targetBlock.getLocation();
 
@@ -160,6 +170,13 @@ public class MagicItems {
         LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
     }
 
+    public static Arrow arrowEnchanterEffect(Arrow arrow){
+        PotionEffect poisonEffect = new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 1, 0);
+        arrow.addCustomEffect(poisonEffect, true);
+
+        return arrow;
+    }
+
     public static void crimsonMagic(Player player, ItemStack itemInOffHand, ItemStack itemInMainHand, Boolean isBoosted){
         Material type = itemInOffHand.getType();
         Integer value = 0;
@@ -185,30 +202,32 @@ public class MagicItems {
                 }                
                 break;
             case BONE:
+                EntityType typeOfEntity = EntityType.BOGGED;
+                value = 4;
                 if (isBoosted) {
-                    value = 4;
+                    typeOfEntity = EntityType.ZOGLIN;
                 }
                 while (value >= 0) {
                     
-                    Bogged skeleton = (Bogged) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), EntityType.BOGGED);
-                    LogicHolder.givePotionEffect(skeleton, "FIRE_RESISTANCE", 20 * 60, 0);
+                    LivingEntity mob = (LivingEntity) player.getWorld().spawnEntity(player.getLocation().add(0, 1, 0), typeOfEntity);
+                    LogicHolder.givePotionEffect(mob, "FIRE_RESISTANCE", 20 * 60, 0);
 
                     double speedMultiplier = 2;
     
                     Vector direction = player.getLocation().getDirection();
                     Vector velocity = direction.multiply(speedMultiplier);
                 
-                    skeleton.setVelocity(velocity);
+                    mob.setVelocity(velocity);
                     
-                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        Player nearestPlayer = LogicHolder.findNearestPlayer(skeleton.getLocation());
-                        if (nearestPlayer != null) {
-                            skeleton.setTarget(nearestPlayer);
-                        }
-                    }, 20 * 2);
                     value--;
                 }
                 break;
+            case SADDLE:
+                if (isBoosted) {
+                    player.getWorld().spawnEntity(player.getLocation(), EntityType.ZOMBIE_HORSE);
+                }else{
+                    player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
+                }
             default:
                 return;
         }

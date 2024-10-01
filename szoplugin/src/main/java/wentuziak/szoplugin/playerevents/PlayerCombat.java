@@ -21,6 +21,7 @@ import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customitems.Armour;
+import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.races.RaceEffects;
@@ -149,9 +150,16 @@ public class PlayerCombat implements Listener{
             ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
             String bowType = "normal";
 
+            Arrow arrow = (Arrow) event.getProjectile();
+            // Check for enchanter shield
+            if (itemInOffHand.hasItemMeta() && itemInOffHand.getType() == Material.SHIELD) {
+                PersistentDataContainer shieldContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
+                if (shieldContainer.has(Keys.CUSTOM_ARROW_ENCHANTER, PersistentDataType.BYTE)) {
+                    MagicItems.arrowEnchanterEffect(arrow);
+                }
+            }
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-                Arrow arrow = (Arrow) event.getProjectile();
                 if (itemInMainHand.getType() == Material.BOW) {
                     if (playerContainer.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
                         arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
@@ -171,7 +179,6 @@ public class PlayerCombat implements Listener{
                 }
             }
             if (player.getPersistentDataContainer().has(Keys.RACE_ELF, PersistentDataType.BYTE)) {
-                Arrow arrow = (Arrow) event.getProjectile();
 
                 Vector arrowVelocity = arrow.getVelocity();
                 if ((itemInMainHand.getEnchantmentLevel(Enchantment.FLAME) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.FLAME) > 0)) {

@@ -790,7 +790,7 @@ public class CreateCustomItem {
             "High Arrows >:3"));
         AttributeModifier dmgModifierenchanterShield = new AttributeModifier(UUID.randomUUID(), "Dmg", -0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         enchanterShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierenchanterShield);
-        enchanterShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BOOLEAN, true);
+        enchanterShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_ARROW_ENCHANTER, PersistentDataType.BOOLEAN, true);
         enchanterShield.setItemMeta(enchanterShieldMeta);
 
         return enchanterShield;

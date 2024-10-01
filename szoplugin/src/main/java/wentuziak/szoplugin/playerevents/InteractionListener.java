@@ -131,70 +131,56 @@ public class InteractionListener implements Listener{
         if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() 
         && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
             ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
-
             PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             PersistentDataContainer bootContainer;
-            if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.teleportSpell(player);
-                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);
-                    }
+            boolean isSpellBoosted = false;
+            if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+                bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+                if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
+                    isSpellBoosted = true;
                 }
+            }
+            if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.teleportSpell(player, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 35);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.spiritLeech(player, playerContainer);
-                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                            MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
-                        }, 5L);
-                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                            MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
-                        }, 10L);
-                    }
+                if (isSpellBoosted) {
+                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                        MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
+                    }, 5L);
+                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                        MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
+                    }, 10L);
                 }
+
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
-                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        MagicItems.spiderYeet(player, playerContainer);
-                    }
+                if (isSpellBoosted) {
+                    MagicItems.spiderYeet(player, playerContainer);
                 }
                 MagicItems.spiderYeet(player, playerContainer);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 45);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
-                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*2, 1);
-                    }
+                if (isSpellBoosted) {
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*2, 1);
+                    MagicItems.obliterate(player);
                 }
                 MagicItems.obliterate(player);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_SANGUINITE_SCROLL, PersistentDataType.BYTE) && clickedRightButton) {
-                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
-                    bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
-                    if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
-                        MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, true);
-                        player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
-
-                    }
-                }else{
-                    MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, false);
-                    player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
-                }
+            
+                MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, isSpellBoosted);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
+                
                 return;
             }   
         }
