@@ -760,6 +760,23 @@ public final class CustomRecipes {
 
 
         //
+        //      magic thunder Spell recipe
+        //
+        ItemStack thunderSpell = CreateCustomItem.createThunderSpell();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "thunderSpellRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe thunderSpellRecipe = new ShapedRecipe(key, thunderSpell);
+        thunderSpellRecipe.shape(
+            " C ",
+            "CSC",
+            " C ");
+            thunderSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            thunderSpellRecipe.setIngredient('C', Material.LIGHTNING_ROD);
+        Bukkit.addRecipe(thunderSpellRecipe);
+
+
+        //
         //      Spider Yeet Spell recipe
         //
         ItemStack spiderYeetSpell = CreateCustomItem.createSpiderYeetSpell();

@@ -56,7 +56,7 @@ public class SpecialItems {
                 fireball.setVelocity(direction.multiply(1.5));
 
                 fireball.setIsIncendiary(false);
-                fireball.setYield(0);
+                fireball.setYield(2);
                 break;
 
             case "MAGMA_CREAM":

@@ -593,6 +593,21 @@ public class CreateCustomItem {
         return obliterateSpell;
     }
 
+    public static ItemStack createThunderSpell(){
+        ItemStack thunderSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta thunderSpellMeta = thunderSpell.getItemMeta();
+
+        thunderSpellMeta.setDisplayName(ChatColor.BLUE + "Peron's Wrath");
+        thunderSpellMeta.setLore(Arrays.asList(
+            "Storm is comming"));
+            thunderSpellMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+            thunderSpellMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            thunderSpellMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGIC_STORM, PersistentDataType.BOOLEAN, true);
+            thunderSpell.setItemMeta(thunderSpellMeta);
+
+        return thunderSpell;
+    }
+
     public static ItemStack createSpiderYeetSpell(){
         ItemStack spiderYeetSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
         ItemMeta spiderYeetSpellMeta = spiderYeetSpell.getItemMeta();

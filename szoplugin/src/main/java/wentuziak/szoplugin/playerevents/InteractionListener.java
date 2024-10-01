@@ -142,7 +142,7 @@ public class InteractionListener implements Listener{
             }
             if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player, isSpellBoosted);
-                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 35);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
@@ -156,7 +156,7 @@ public class InteractionListener implements Listener{
                     }, 10L);
                 }
 
-                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 5);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
@@ -164,7 +164,7 @@ public class InteractionListener implements Listener{
                     MagicItems.spiderYeet(player, playerContainer);
                 }
                 MagicItems.spiderYeet(player, playerContainer);
-                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 45);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 15);
                 return;
             }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
@@ -180,6 +180,13 @@ public class InteractionListener implements Listener{
             
                 MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
+                
+                return;
+            }   
+            if (playerContainer.has(Keys.CUSTOM_MAGIC_STORM, PersistentDataType.BYTE) && clickedRightButton) {
+            
+                MagicItems.magicStormCall(player, isSpellBoosted);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 30);
                 
                 return;
             }   

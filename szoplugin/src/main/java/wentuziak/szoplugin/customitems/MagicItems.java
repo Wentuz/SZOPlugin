@@ -13,10 +13,12 @@ import org.bukkit.entity.CaveSpider;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
 import org.bukkit.entity.ZombieHorse;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -158,6 +160,63 @@ public class MagicItems {
             TaskManager.addTask(player, "ancientShell", ancientShellTask);
         }
 
+    }
+
+    public static void magicStormCall(Player player, boolean isBoosted){
+        int distance = isBoosted ? 100 : 50;
+
+        Block targetBlock = player.getTargetBlock(null, distance);
+
+        Location blockLocation = targetBlock.getLocation();
+
+        int blockX = blockLocation.getBlockX();
+        int blockY = blockLocation.getBlockY();
+        int blockZ = blockLocation.getBlockZ();
+
+        Location targetLocation = new Location(player.getWorld(), blockX + 5, blockY + 25, blockZ);
+
+        magicStormEffect(targetLocation, isBoosted);
+    }
+
+    public static void magicStormEffect(Location location, boolean isBoosted){
+        Weapons.smokeEffect(location);
+        int timeHalfSeconds = isBoosted ? 30 : 10;
+        if (isBoosted) {
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                Weapons.smokeEffect(location);
+            }, 5 * timeHalfSeconds);
+        }
+        while (timeHalfSeconds > 0) {
+
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                int numberOfProjectiles = (int) (Math.random() * 20 + 1);
+                while (numberOfProjectiles > 0) {                
+                    // Randomize the X and Z coordinates within a range of -5 to 5
+                    double randomX = location.getX() + (Math.random() * 10 - 5); // Random value between -5 and 5
+                    double randomZ = location.getZ() + (Math.random() * 10 - 5); // Random value between -5 and 5
+
+                    // Create a new location with the randomized X and Z
+                    Location randomizedLocation = location.clone();
+                    randomizedLocation.setX(randomX);
+                    randomizedLocation.setZ(randomZ);
+
+                    Snowball snowball = (Snowball) randomizedLocation.getWorld().spawnEntity(randomizedLocation, EntityType.SNOWBALL); 
+                    int critChance = isBoosted ? 10 : 20;
+                    if (LogicHolder.critRoll(critChance)) {
+                        if (LogicHolder.critRoll(critChance * 2)) {
+                            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.STRING, "spiritLeech");
+                        }else{
+                            snowball.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.STRING, "grenade");
+                        }
+                    }else{
+                        snowball.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.STRING, "throwingFirework");
+                    }              
+                    numberOfProjectiles--;
+                }
+            }, 10 * timeHalfSeconds);
+
+            timeHalfSeconds--;
+        }     
     }
 
 
