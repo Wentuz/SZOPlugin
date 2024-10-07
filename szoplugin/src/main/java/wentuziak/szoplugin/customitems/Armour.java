@@ -135,16 +135,8 @@ public class Armour {
 
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            double currentHealth = player.getHealth();
-            double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            LogicHolder.givePotionEffect(player, "HEAL", 20 * 2, 1);
     
-            double newHealth = currentHealth + 2.0;
-    
-            if (newHealth > maxHealth) {
-                newHealth = maxHealth;
-            }
-    
-            player.setHealth(newHealth);
 
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 4, 0);
             LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 4, 0);

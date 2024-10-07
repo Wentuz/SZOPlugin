@@ -70,7 +70,7 @@ public class Weapons {
 
     public static void angelSwordEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.modifyCurrentHeatlhPoints(player, 4.0);
+            LogicHolder.givePotionEffect(player, "HEAL", 20 * 2, 0);
             
             LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 5, 0);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
@@ -126,7 +126,7 @@ public class Weapons {
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer);
+        LogicHolder.throwSnowball(player, playerContainer, 1);
     }
 
     public static void grenadeEffect(Location location){
@@ -183,7 +183,7 @@ public class Weapons {
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer);
+        LogicHolder.throwSnowball(player, playerContainer, 3);
     }
 
     public static void fireworkEffect(Location location){
@@ -193,7 +193,7 @@ public class Weapons {
 
     public static void smokeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer);
+        LogicHolder.throwSnowball(player, playerContainer, 2);
     }
 
     public static void smokeEffect(Location location){

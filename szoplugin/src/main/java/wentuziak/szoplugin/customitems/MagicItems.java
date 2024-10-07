@@ -91,7 +91,7 @@ public class MagicItems {
 
     public static void spiritLeech(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);
-        LogicHolder.throwSnowball(player, playerContainer);
+        LogicHolder.throwSnowball(player, playerContainer, 4);
     }
 
     public static void spiritLeechEffect(LivingEntity targetEntity){
@@ -107,7 +107,7 @@ public class MagicItems {
 
     public static void spiderYeet(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
-        LogicHolder.throwSnowball(player, playerContainer);
+        LogicHolder.throwSnowball(player, playerContainer, 4);
     }
 
     public static void spiderYeetEffect(Location location){

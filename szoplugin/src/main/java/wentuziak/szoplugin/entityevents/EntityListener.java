@@ -2,12 +2,15 @@ package wentuziak.szoplugin.entityevents;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Zombie;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
+import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -77,5 +80,14 @@ public class EntityListener implements Listener {
                 event.setCancelled(true);
             }
         }
-    }   
+    }  
+
+    @EventHandler
+    public void onAggro(EntityTargetEvent event) {
+        LivingEntity livingEntity = (LivingEntity) event.getTarget();
+
+        if (event.getEntity().getType() == EntityType.ZOMBIE) {
+            MobActions.onZombieAggro((LivingEntity) event.getEntity(), livingEntity);
+        }
+    }
 }

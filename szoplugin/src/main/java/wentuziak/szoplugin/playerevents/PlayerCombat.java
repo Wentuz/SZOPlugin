@@ -144,55 +144,83 @@ public class PlayerCombat implements Listener{
         //
     @EventHandler
     public void onPlayerShootArrow(EntityShootBowEvent event) {
-        if (event.getEntity() instanceof Player && event.getProjectile() instanceof Arrow) {
-            Player player = (Player) event.getEntity();
-            ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
-            ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
-            String bowType = "normal";
-
-            Arrow arrow = (Arrow) event.getProjectile();
-            // Check for enchanter shield
-            if (itemInOffHand.hasItemMeta() && itemInOffHand.getType() == Material.SHIELD) {
-                PersistentDataContainer shieldContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-                if (shieldContainer.has(Keys.CUSTOM_ARROW_ENCHANTER, PersistentDataType.BYTE)) {
-                    MagicItems.arrowEnchanterEffect(arrow);
-                }
+        if (!(event.getEntity() instanceof Player) || !(event.getProjectile() instanceof Arrow)) {
+            return;
+        }
+    
+        Player player = (Player) event.getEntity();
+        Arrow arrow = (Arrow) event.getProjectile();
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
+    
+        // Handle arrow effects based on bow type
+        String bowType = determineBowType(itemInMainHand, arrow);
+    
+        // Handle shield effects (offhand item)
+        applyShieldEffects(itemInOffHand, arrow);
+    
+        // Handle Elf Race special effects
+        if (player.getPersistentDataContainer().has(Keys.RACE_ELF, PersistentDataType.BYTE)) {
+            applyElfEffects(player, arrow, itemInMainHand, itemInOffHand, bowType);
+        }
+    }
+    
+    // Method to determine and apply bow effects
+    private String determineBowType(ItemStack mainHandItem, Arrow arrow) {
+        PersistentDataContainer container = mainHandItem.getItemMeta().getPersistentDataContainer();
+        String bowType = "normal"; // Default type
+    
+        if (mainHandItem.getType() == Material.BOW) {
+            if (container.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
+                Weapons.gravityArrow(arrow);
+                bowType = "gravity";
+            } else if (container.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
+                bowType = "rat";
             }
-            if (itemInMainHand.hasItemMeta()) {
-                PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-                if (itemInMainHand.getType() == Material.BOW) {
-                    if (playerContainer.has(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BYTE)) {
-                        arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
-                        Weapons.gravityArrow(arrow);
-                        bowType = "gravity";
-                    }
-                    if (playerContainer.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
-                        arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
-                        bowType = "rat";
-                    }
-                }
-                if (itemInMainHand.getType() == Material.CROSSBOW) {
-                    if (playerContainer.has(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BYTE)) {
-                        arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
-                        bowType = "bouncy";
-                    }
-                }
+        } else if (mainHandItem.getType() == Material.CROSSBOW) {
+            if (container.has(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BYTE)) {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
+                bowType = "bouncy";
             }
-            if (player.getPersistentDataContainer().has(Keys.RACE_ELF, PersistentDataType.BYTE)) {
-
-                Vector arrowVelocity = arrow.getVelocity();
-                if ((itemInMainHand.getEnchantmentLevel(Enchantment.FLAME) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.FLAME) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "flame", bowType);
-                }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.MULTISHOT) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "multishot",  bowType);
-                }else if ((itemInMainHand.getEnchantmentLevel(Enchantment.PIERCING) > 0) || (itemInOffHand.getEnchantmentLevel(Enchantment.PIERCING) > 0)) {
-                    RaceEffects.elfShotEffect(player, arrowVelocity, "piercing", bowType);
-                }else{
-                    RaceEffects.elfShotEffect(player, arrowVelocity, null, bowType);
-                }
+        }
+    
+        return bowType;
+    }
+    
+    // Method to apply shield effects (offhand item)
+    private void applyShieldEffects(ItemStack offHandItem, Arrow arrow) {
+        if (offHandItem.hasItemMeta() && offHandItem.getType() == Material.SHIELD) {
+            PersistentDataContainer shieldContainer = offHandItem.getItemMeta().getPersistentDataContainer();
+            if (shieldContainer.has(Keys.CUSTOM_ARROW_ENCHANTER, PersistentDataType.BYTE)) {
+                MagicItems.arrowEnchanterEffect(arrow);
             }
         }
     }
+    
+    // Method to apply Elf race specific effects
+    private void applyElfEffects(Player player, Arrow arrow, ItemStack mainHandItem, ItemStack offHandItem, String bowType) {
+        Vector arrowVelocity = arrow.getVelocity();
+        
+        String effectType = getEffectType(mainHandItem, offHandItem);
+        
+        RaceEffects.elfShotEffect(player, arrowVelocity, effectType, bowType);
+    }
+    
+    // Helper method to get the type of arrow effect (based on enchantments)
+    private String getEffectType(ItemStack mainHandItem, ItemStack offHandItem) {
+        if ((mainHandItem.getEnchantmentLevel(Enchantment.FLAME) > 0) || (offHandItem.getEnchantmentLevel(Enchantment.FLAME) > 0)) {
+            return "flame";
+        } else if ((mainHandItem.getEnchantmentLevel(Enchantment.MULTISHOT) > 0) || (offHandItem.getEnchantmentLevel(Enchantment.MULTISHOT) > 0)) {
+            return "multishot";
+        } else if ((mainHandItem.getEnchantmentLevel(Enchantment.PIERCING) > 0) || (offHandItem.getEnchantmentLevel(Enchantment.PIERCING) > 0)) {
+            return "piercing";
+        } else {
+            return null;
+        }
+    }
+    
     
     @EventHandler
     public void onProjectileLaunch(ProjectileLaunchEvent event) {

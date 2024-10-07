@@ -3,6 +3,7 @@ package wentuziak.szoplugin.customlogic;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
@@ -27,17 +28,15 @@ import org.bukkit.util.RayTraceResult;
 
 import wentuziak.szoplugin.Keys;
 import java.util.List;
+import java.util.Map;
 
 
 
 public class LogicHolder {
     
     public static void removeItem(Player player, ItemStack itemUsed){
-        if (itemUsed.getAmount() > 1) {
-            itemUsed.setAmount(itemUsed.getAmount() - 1);
-        } else{
-            itemUsed.setAmount(0);
-        }
+        int amount = itemUsed.getAmount() > 1 ? itemUsed.getAmount() - 1 : 0;
+        itemUsed.setAmount(amount);
     }
 
     public static void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier){
@@ -50,29 +49,30 @@ public class LogicHolder {
     }
 
     public static boolean isPlayerInWater(Player player){
-            return player.isInWater();
+        return player.isInWater();
     }
 
-    public static void throwSnowball(Player player, PersistentDataContainer playerContainer){
-        Snowball snowball = player.launchProjectile(Snowball.class);
-        if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE)) {
-            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.STRING, "spiritLeech");
+    public static void throwSnowball(LivingEntity livingEntity, PersistentDataContainer playerContainer, int velocity){
+        Snowball snowball = livingEntity.launchProjectile(Snowball.class);
+
+        Map<NamespacedKey, String> customTags = Map.of(
+            Keys.CUSTOM_SPIRIT_LEECH, "spiritLeech",
+            Keys.CUSTOM_SPIDER_YEET, "spiderYeet",
+            Keys.CUSTOM_GRENADE, "grenade",
+            Keys.CUSTOM_SMOKE_BOMB, "smokeBomb",
+            Keys.CUSTOM_THROWING_FIREWORK, "throwingFirework"
+        );
+        // Iterate over the map and set the matching key-value pair
+        for (Map.Entry<NamespacedKey, String> entry : customTags.entrySet()) {
+            if (playerContainer.has(entry.getKey(), PersistentDataType.BYTE)) {
+                snowball.getPersistentDataContainer().set(entry.getKey(), PersistentDataType.STRING, entry.getValue());
+                break; // Exit loop once we find a matching key
+            }
         }
-        else if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE)) {
-            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.STRING, "spiderYeet");
+
+        snowball.setVelocity(livingEntity.getLocation().getDirection().multiply(velocity));
+            snowball.setShooter(livingEntity);
         }
-        else if (playerContainer.has(Keys.CUSTOM_GRENADE, PersistentDataType.BYTE)) {
-            snowball.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.STRING, "grenade");
-        }
-        else if (playerContainer.has(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.BYTE)) {
-            snowball.getPersistentDataContainer().set(Keys.CUSTOM_SMOKE_BOMB, PersistentDataType.STRING, "smokeBomb");
-        }
-        else if (playerContainer.has(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.BYTE)) {
-            snowball.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.STRING, "throwingFirework");
-        }
-        snowball.setVelocity(player.getLocation().getDirection().multiply(2)); // Adjust velocity as needed
-        snowball.setShooter(player);
-    }
 
     public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {
         Block blockBelow = player.getLocation().subtract(0, minDistance, 0).getBlock();
@@ -105,6 +105,8 @@ public class LogicHolder {
         double newHealth = currentHealth + amount;
         if (newHealth > maxHealth) {
             newHealth = maxHealth;
+        }else if(newHealth < 0){
+            newHealth = 0;
         }
 
         targetEntity.setHealth(newHealth);
