@@ -5,10 +5,13 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.WindCharge;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -173,6 +176,13 @@ public class CustomTools {
 
     public static void stopeffectRaisedShieldTask(Player player) {
         TaskManager.stopTask(player, "raisedShield");
+    }
+
+    public static void windBlastShieldEffect(Player player){
+        for (Entity entity : player.getNearbyEntities(5, 5, 5)) {
+            WindCharge windCharge = (WindCharge) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.WIND_CHARGE);
+            windCharge.explode();
+        }
     }
 
     public static void markingSpyglassEffect(Player player, boolean mainHandUsed){

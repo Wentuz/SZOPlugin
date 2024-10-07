@@ -777,6 +777,19 @@ public class CreateCustomItem {
         return ironBreakerShield;
     }
 
+    public static ItemStack createWindBlastShield(){
+        ItemStack windBlastShield = new ItemStack(Material.SHIELD);
+        ItemMeta windBlastShieldMeta = windBlastShield.getItemMeta();
+
+        windBlastShieldMeta.setDisplayName(ChatColor.AQUA + "Wind Blast Shield");
+        windBlastShieldMeta.setLore(Arrays.asList(
+            "Powered by wichrzyk"));
+            windBlastShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_WIND_BLAST_SHIELD, PersistentDataType.BOOLEAN, true);
+            windBlastShield.setItemMeta(windBlastShieldMeta);
+
+        return windBlastShield;
+    }
+
     @SuppressWarnings("deprecation")
     public static ItemStack createBerserkerShield(){
         ItemStack berserkerShield = new ItemStack(Material.SHIELD);

@@ -256,6 +256,24 @@ public final class CustomRecipes {
         
         
         //
+        //      windBlastShield Recipe
+        //
+        ItemStack windBlastShield = CreateCustomItem.createWindBlastShield();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "WindBlastShieldRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe windBlastShieldRecipe = new ShapedRecipe(key, windBlastShield);
+        windBlastShieldRecipe.shape(
+            "A A",
+            "WMW",
+            " W ");
+            windBlastShieldRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            windBlastShieldRecipe.setIngredient('A', Material.BREEZE_ROD);
+            windBlastShieldRecipe.setIngredient('W', Material.OAK_PLANKS);
+        Bukkit.addRecipe(windBlastShieldRecipe);
+        
+        
+        //
         //      stinkyStick Recipe
         //
         ItemStack stinkyStick = CreateCustomItem.createStinkyStick();

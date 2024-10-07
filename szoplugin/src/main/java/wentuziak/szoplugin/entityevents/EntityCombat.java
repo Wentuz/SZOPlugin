@@ -21,6 +21,7 @@ import org.bukkit.persistence.PersistentDataType;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.Armour;
+import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
@@ -178,6 +179,17 @@ public class EntityCombat implements Listener{
                     PersistentDataContainer playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
                     if (playerContainer.has(Keys.CUSTOM_GUARDING_VEST, PersistentDataType.BYTE)) {
                         Armour.guardingVestEffect(player, event);
+                    }
+                }
+            }
+
+            if (player.isBlocking()) {
+                ItemStack itemShield = player.getInventory().getItemInOffHand();
+
+                if (itemShield.hasItemMeta()) {
+                    PersistentDataContainer playerContainer = itemShield.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_WIND_BLAST_SHIELD, PersistentDataType.BYTE)) {
+                        CustomTools.windBlastShieldEffect(player);
                     }
                 }
             }
