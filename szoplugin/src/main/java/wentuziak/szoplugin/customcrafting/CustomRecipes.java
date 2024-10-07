@@ -1004,6 +1004,7 @@ public final class CustomRecipes {
         //      throwingFirework recipe
         //
         ItemStack throwingFirework = CreateCustomItem.createThrowingFirework();
+        throwingFirework.setAmount(3);
         key = new NamespacedKey(SzoPlugin.getInstance(), "throwingFireworkRecipe");
         recipeKeys.add(key);
 

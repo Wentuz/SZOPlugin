@@ -31,111 +31,135 @@ public class PlayerCombat implements Listener{
         //
         //      On hit effects
         //
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onEntityDamageEntity(EntityDamageByEntityEvent event){   
+    public void onEntityDamageEntity(EntityDamageByEntityEvent event) {
         if (event.getCause() == EntityDamageEvent.DamageCause.THORNS) {
             return;
         }
 
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
-            ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
-            PersistentDataContainer playerContainer;
-
-
-            float attackCooldown = player.getAttackCooldown();
-            if (attackCooldown < 1) {
-                return;
-            }
-            
-            LivingEntity hitEntity = (LivingEntity) event.getEntity();
-            if (!(itemInMainHand == null || itemInMainHand.getType() == Material.AIR)) {
-                int sharpLvl = itemInMainHand.getEnchantmentLevel(Enchantment.SHARPNESS);
-                playerContainer = player.getItemInHand().getItemMeta().getPersistentDataContainer();
-                if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
-                    RaceEffects.witchAttackEvent(player, hitEntity);
-                }
-                if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)){
-                    RaceEffects.celestialAttackEvent(player, hitEntity);
-                }
-                if (player.getPersistentDataContainer().has(Keys.RACE_ZEPHYR)){
-                    if (LogicHolder.critRoll(22)) {
-                        RaceEffects.zaphyrKnockback(player);
-                    }
-                }
-    
-                //
-                //      Special Weapons
-                //
-                if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-                    Weapons.explosiveSwordEffect(33, hitEntity);
-                }
-                if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-                    Weapons.thunderHammerEffect(40, hitEntity);
-                }
-                if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
-                    Weapons.daemonSwordEffect(40, hitEntity);
-                }
-                if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
-                    Weapons.angelSwordEffect(44, player);
-                }
-                if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-                    LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) (sharpLvl));
-                    if (LogicHolder.critRoll(sharpLvl * 10)) {
-                        Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
-                    }
-                }
-            }
-            
-            ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
-
-            if (!(itemOnHead == null || itemOnHead.getType() == Material.AIR)) {               
-                if (itemOnHead.hasItemMeta()) {
-                    playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
-                    if (playerContainer.has(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BYTE)) {
-                        Armour.strigaVeilEffect(15, player);
-                    }
-                    if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && player.isSprinting()) {
-                        Armour.ramCapEffect(player, hitEntity);
-                    }
-                }
-            }
+            handlePlayerAttack(player, event);
         }
-        //
-        //      Player got hit
-        //
+
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
-            ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
-            ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
+            handlePlayerDamage(player, event);
+        }
+    }
 
-            
-            if (!(itemOnChest == null || !itemOnChest.hasItemMeta())) {
-                LivingEntity damager = (LivingEntity) event.getDamager();
-                PersistentDataContainer playerContainer;
-                
-                if (itemOnChest.hasItemMeta()) {
-                    int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
-                    playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
-                    if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
-                        Armour.explosiveChestEffect(20 & thornLvl ,damager, player);
-                    }else if(playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)){
-                        Armour.reflectiveChestEffect(20 * thornLvl, thornLvl ,damager);
-                    }
-                }
-            }
-            if (itemOnLegs != null) {
-                PersistentDataContainer playerContainer;
-                
-                if (itemOnLegs.hasItemMeta()) {
-                    playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
-                    if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
-                        Armour.ninjaPantEffect(player);
-                    }
-                }
-            }
+    // Method to handle when a player attacks another entity
+    private void handlePlayerAttack(Player player, EntityDamageByEntityEvent event) {
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        if (itemInMainHand == null || itemInMainHand.getType() == Material.AIR) {
+            return;
+        }
 
+        float attackCooldown = player.getAttackCooldown();
+        if (attackCooldown < 1) {
+            return;
+        }
+
+        LivingEntity hitEntity = (LivingEntity) event.getEntity();
+        PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+
+        applyRaceEffects(player, hitEntity);
+        applySpecialWeapons(playerContainer, itemInMainHand, hitEntity, player);
+        applyHeadgearEffects(player, hitEntity);
+    }
+
+    // Method to apply race-specific effects when a player attacks
+    private void applyRaceEffects(Player player, LivingEntity hitEntity) {
+        PersistentDataContainer playerContainer = player.getPersistentDataContainer();
+
+        if (playerContainer.has(Keys.RACE_WITCH, PersistentDataType.BYTE)) {
+            RaceEffects.witchAttackEvent(player, hitEntity);
+        }
+
+        if (playerContainer.has(Keys.RACE_CELESTIAL, PersistentDataType.BYTE)) {
+            RaceEffects.celestialAttackEvent(player, hitEntity);
+        }
+
+        if (playerContainer.has(Keys.RACE_ZEPHYR, PersistentDataType.BYTE) && LogicHolder.critRoll(22)) {
+            RaceEffects.zaphyrKnockback(player);
+        }
+    }
+
+    // Method to apply special weapon effects when a player attacks
+    private void applySpecialWeapons(PersistentDataContainer playerContainer, ItemStack itemInMainHand, LivingEntity hitEntity, Player player) {
+        int sharpLvl = itemInMainHand.getEnchantmentLevel(Enchantment.SHARPNESS);
+
+        if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
+            Weapons.explosiveSwordEffect(33, hitEntity);
+        }
+        if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
+            Weapons.thunderHammerEffect(40, hitEntity);
+        }
+        if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
+            Weapons.daemonSwordEffect(40, hitEntity);
+        }
+        if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
+            Weapons.angelSwordEffect(44, player);
+        }
+        if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
+            LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) sharpLvl);
+            if (LogicHolder.critRoll(sharpLvl * 10)) {
+                Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
+            }
+        }
+    }
+
+    // Method to apply headgear effects when a player attacks
+    private void applyHeadgearEffects(Player player, LivingEntity hitEntity) {
+        ItemStack itemOnHead = player.getInventory().getItem(EquipmentSlot.HEAD);
+        if (itemOnHead == null || itemOnHead.getType() == Material.AIR || !itemOnHead.hasItemMeta()) {
+            return;
+        }
+
+        PersistentDataContainer playerContainer = itemOnHead.getItemMeta().getPersistentDataContainer();
+        if (playerContainer.has(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BYTE)) {
+            Armour.strigaVeilEffect(15, player);
+        }
+
+        if (playerContainer.has(Keys.CUSTOM_RAM_CAP, PersistentDataType.BYTE) && player.isSprinting()) {
+            Armour.ramCapEffect(player, hitEntity);
+        }
+    }
+
+    // Method to handle when a player gets hit
+    private void handlePlayerDamage(Player player, EntityDamageByEntityEvent event) {
+        LivingEntity damager = (LivingEntity) event.getDamager();
+        applyChestArmorEffects(player, damager);
+        applyLegArmorEffects(player);
+    }
+
+    // Method to apply chest armor effects when a player gets hit
+    private void applyChestArmorEffects(Player player, LivingEntity damager) {
+        ItemStack itemOnChest = player.getInventory().getItem(EquipmentSlot.CHEST);
+        if (itemOnChest == null || !itemOnChest.hasItemMeta()) {
+            return;
+        }
+
+        int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
+        PersistentDataContainer playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
+
+        if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
+            Armour.explosiveChestEffect(20 * (1 + thornLvl), damager, player);
+        } else if (playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)) {
+            Armour.reflectiveChestEffect(20 * (1 + thornLvl), thornLvl, damager);
+        }
+    }
+
+    // Method to apply leg armor effects when a player gets hit
+    private void applyLegArmorEffects(Player player) {
+        ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
+        if (itemOnLegs == null || !itemOnLegs.hasItemMeta()) {
+            return;
+        }
+
+        PersistentDataContainer playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+        if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
+            Armour.ninjaPantEffect(player);
         }
     }
 

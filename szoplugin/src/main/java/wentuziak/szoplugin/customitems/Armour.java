@@ -135,7 +135,7 @@ public class Armour {
 
     public static void strigaVeilEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(player, "HEAL", 20 * 2, 1);
+            LogicHolder.givePotionEffect(player, "HEAL", 2, 1);
     
 
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 4, 0);

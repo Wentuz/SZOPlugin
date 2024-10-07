@@ -70,7 +70,7 @@ public class Weapons {
 
     public static void angelSwordEffect(int chanceForCrit, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            LogicHolder.givePotionEffect(player, "HEAL", 20 * 2, 0);
+            LogicHolder.givePotionEffect(player, "HEAL", 2, 0);
             
             LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 5, 0);
             player.getWorld().spawnParticle(Particle.HEART, player.getLocation(), 1);
