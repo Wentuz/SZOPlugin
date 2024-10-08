@@ -375,6 +375,23 @@ public class CreateCustomItem {
     }
 
     @SuppressWarnings("deprecation")
+    public static ItemStack createMiningHat(){
+        ItemStack miningHat = new ItemStack(Material.LEATHER_HELMET);
+        ItemMeta miningHatMeta = miningHat.getItemMeta();
+
+        miningHatMeta.setDisplayName(ChatColor.YELLOW + "Mining Helmet");
+        ((LeatherArmorMeta) miningHatMeta).setColor(Color.ORANGE);
+
+
+        miningHatMeta.getPersistentDataContainer().set(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BOOLEAN, true);
+        AttributeModifier breakModifier = new AttributeModifier(UUID.randomUUID(), "breakBlock", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        miningHatMeta.addAttributeModifier(Attribute.PLAYER_BLOCK_BREAK_SPEED, breakModifier);
+        miningHat.setItemMeta(miningHatMeta);
+
+        return miningHat;
+    }
+
+    @SuppressWarnings("deprecation")
     public static ItemStack createIronCladHelmet(){
         ItemStack ironCladHelmet = new ItemStack(Material.IRON_HELMET);
         ItemMeta ironCladHelmetMeta = ironCladHelmet.getItemMeta();

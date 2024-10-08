@@ -22,7 +22,10 @@ public class RemoveRaceCommand implements TabExecutor {
             sender.sendMessage("Usage: /rmvrace [race] [player]");
             return false;
         }
-
+        if (!sender.isOp()) {
+            sender.sendMessage("Need op to use this command");
+            return false;
+        }
         Player targetPlayer = Bukkit.getPlayer(args[1]);
         if (targetPlayer == null) {
             sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);

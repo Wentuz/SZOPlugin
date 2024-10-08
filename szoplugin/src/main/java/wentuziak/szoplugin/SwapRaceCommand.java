@@ -23,6 +23,10 @@ public class SwapRaceCommand implements TabExecutor{
             sender.sendMessage("Usage: /swaprace [race] [player]");
             return false;
         }
+        if (!sender.isOp()) {
+            sender.sendMessage("Need op to use this command");
+            return false;
+        }
 
         Player targetPlayer = Bukkit.getPlayer(args[1]);
         if (targetPlayer == null) {

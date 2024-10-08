@@ -90,10 +90,11 @@ STUFF IN HERE:
         13. Magnetic Trident - throws player with itself,
         14. Throwing firework - like a glitter bomb,
         15. Ripping axe - some armour ignoring bonus dmg on hit,
+        16. Rioters crossbow - fireworks + wind charge on impact
     # II Armor :
         1.  Bombardiers vest - chance to explode attacker,
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts,
-        3.  Mermaid's tail - water becomes your secong home,
+        3.  Ninja pant - drops smoke bomb on low hp,
         4.  The gluttonous leggings  - regen and speed on eating anything,
         5.  Jet boots - jump and crouch to become a rocket,
         6.  Hermes boots - speed,
@@ -101,7 +102,7 @@ STUFF IN HERE:
         8.  Ironclad Chestplate - strong chest, very cool,
         9.  Ironclad Boots - strong boots, very cool,
         10. Ironclad Helmet - strong helmet, very cool,
-        11. Night helmet - buffs in night,
+        11. Black cat hat - stronger potion effects,
         12. Magic Boots - buffs for spells,
         13. Reflective Chestpiece - Reflects some damage in magical way,
         14. Guarding Vest - May guard you from death,
@@ -118,6 +119,10 @@ STUFF IN HERE:
         8.  Mourning Ax - bonus logs while chopping,
         9.  Booty Shovel - sometimes sus sand / gravel,
         10. Breach Charge - giga boom,
+        11. Berserker shield - stronger attacks, less defence
+        12. iron breaker shield - stronger defence, less attack
+        13. enchanter shield - makes ur arrows stronger
+        12. wind blast shield - knockback at entities around
     # IV Ingerients:
         1.  Soul Fragment - used for magical purposes,
         2.  Mechanical Parts - used for more advanced constructs,
@@ -130,6 +135,8 @@ STUFF IN HERE:
         2. Spirit Leech - Withers target's soul,
         3. OBLITERATE - A barbaric overkill with tnt,
         4. Spider Yeeter,
+        5. Perons wrath - Magic storm
+        6. Crimson scroll - Some one time use spells
     # VII Potions :
         1. Toxic gas,
         2. Healing gas,

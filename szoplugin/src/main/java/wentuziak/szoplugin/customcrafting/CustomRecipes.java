@@ -400,6 +400,23 @@ public final class CustomRecipes {
 
 
         //
+        //      miningHat Recipe
+        //
+        ItemStack miningHat = CreateCustomItem.createMiningHat();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MiningHatRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe miningHatRecipe = new ShapedRecipe(key, miningHat);
+        miningHatRecipe.shape(
+            "IMI",
+            "I I",
+            "   ");
+            miningHatRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            miningHatRecipe.setIngredient('I', Material.IRON_INGOT);
+        Bukkit.addRecipe(miningHatRecipe);
+
+
+        //
         //      IronCladHelmet Recipe
         //
         ItemStack ironCladHelmet = CreateCustomItem.createIronCladHelmet();

@@ -50,12 +50,10 @@ public class Armour {
             damager.setHealth(currentHealth); //restore hp
         }
     }
-    public static void reflectiveChestEffect(int chanceForCrit,int thornLvl, LivingEntity damager){
+    public static void reflectiveChestEffect(int chanceForCrit,int thornLvl , LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
-            LogicHolder.modifyCurrentHeatlhPoints(damager, (double) (thornLvl - 2));
-
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                LogicHolder.givePotionEffect(damager, "HARM", 1, 0);
+                LogicHolder.givePotionEffect(damager, "HARM", thornLvl, 0);
                 LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
                 damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
             }, 10L);
@@ -77,7 +75,7 @@ public class Armour {
                 // Apply the new effect with modified strength and duration
                 PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
                 player.addPotionEffect(newEffect);
-                player.setCooldown(Material.NETHERITE_HELMET, newDuration + 20);
+                player.setCooldown(Material.NETHERITE_HELMET, newDuration / 2);
             }
         }
 

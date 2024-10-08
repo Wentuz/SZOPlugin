@@ -37,7 +37,13 @@
     		<version>1.21-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
     		<scope>provided</scope>
 		</dependency>
-	</dependencies>
+	
+   <dependency>
+     <groupId>org.eclipse.jetty</groupId>
+     <artifactId>jetty-servlet</artifactId>
+     <version>9.4.20.v20190813</version>
+   </dependency>
+ </dependencies>
 
 	<build>
 		<pluginManagement>

@@ -18,7 +18,15 @@ public class MobActions {
     public static void onZombieAggro(LivingEntity entity, LivingEntity targetedEntity){
         if (targetedEntity instanceof Player) {
             
+            return;
+
+        }
+    }
+
+    public static void onSkeletonAggro(LivingEntity entity, LivingEntity targetedEntity){
+        if (targetedEntity instanceof Player) {
             
+            return;
 
         }
     }
