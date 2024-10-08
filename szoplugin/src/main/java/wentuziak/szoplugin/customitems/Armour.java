@@ -7,6 +7,7 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.WindCharge;
@@ -116,18 +117,20 @@ public class Armour {
         player.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 1, 0, -1, 0, 0);
     }
 
-    public static void jumpPackEffect(Player player){
-        if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
+    public static void jumpPackEffect(LivingEntity entity){
+        if (LogicHolder.isPlayerAboveGround(entity, 0.75)) {
             double speedMultiplier = 1.5;
     
-            Vector direction = player.getLocation().getDirection();
+            Vector direction = entity.getLocation().getDirection();
             Vector velocity = direction.multiply(speedMultiplier);
         
-            player.setVelocity(velocity);
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-            player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 50, 0.0, 0.1, 0.0, 0.02);
-    
-            player.setCooldown(Material.LEATHER_LEGGINGS, 20 * 4);
+            entity.setVelocity(velocity);
+            entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+            entity.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, entity.getLocation(), 50, 0.0, 0.1, 0.0, 0.02);
+            
+            if(entity instanceof Player){
+                ((HumanEntity) entity).setCooldown(Material.LEATHER_LEGGINGS, 20 * 4);
+            }
         }
     }
 

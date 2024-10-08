@@ -88,15 +88,6 @@ public class EntityListener implements Listener {
     }  
 
     @EventHandler
-    public void onAggro(EntityTargetEvent event) {
-        LivingEntity livingEntity = (LivingEntity) event.getTarget();
-
-        if (event.getEntity().getType() == EntityType.ZOMBIE) {
-            MobActions.onZombieAggro((LivingEntity) event.getEntity(), livingEntity);
-        }
-    }
-
-    @EventHandler
      public void onEntitySpawn(CreatureSpawnEvent event) {
         LivingEntity entity = event.getEntity();
         
