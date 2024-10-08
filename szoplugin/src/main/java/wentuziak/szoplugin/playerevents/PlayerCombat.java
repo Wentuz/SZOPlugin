@@ -33,7 +33,7 @@ public class PlayerCombat implements Listener{
         //
     @EventHandler
     public void onEntityDamageEntity(EntityDamageByEntityEvent event) {
-        if (event.getCause() == EntityDamageEvent.DamageCause.THORNS) {
+        if (event.getCause() == EntityDamageEvent.DamageCause.THORNS || event.getCause() == EntityDamageEvent.DamageCause.PROJECTILE) {
             return;
         }
 

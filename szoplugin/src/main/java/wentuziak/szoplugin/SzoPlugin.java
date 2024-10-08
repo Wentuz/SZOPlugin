@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import wentuziak.szoplugin.customcrafting.CustomRecipes;
 import wentuziak.szoplugin.entityevents.EntityCombat;
 import wentuziak.szoplugin.entityevents.EntityListener;
+import wentuziak.szoplugin.entityevents.MobActions;
 import wentuziak.szoplugin.entityevents.tagSpawnedMob;
 import wentuziak.szoplugin.playerevents.InteractionListener;
 import wentuziak.szoplugin.playerevents.PlayerCombat;
@@ -26,6 +27,7 @@ public class SzoPlugin extends JavaPlugin
     getServer().getPluginManager().registerEvents(new PlayerMining(), this);
     getServer().getPluginManager().registerEvents(new PlayerCombat(), this);
     getServer().getPluginManager().registerEvents(new EntityCombat(), this);
+    getServer().getPluginManager().registerEvents(new MobActions(), this);
     getCommand("swapRace").setExecutor(new SwapRaceCommand());
     getCommand("removeRace").setExecutor(new RemoveRaceCommand());
 

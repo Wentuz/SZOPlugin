@@ -1,5 +1,7 @@
 package wentuziak.szoplugin.entityevents;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
@@ -8,6 +10,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.entity.EntityTargetEvent;
@@ -27,6 +30,8 @@ import wentuziak.szoplugin.races.UpdateAttributes;
 
 
 public class EntityListener implements Listener {
+
+    private static ItemStack mobHeadGear = new ItemStack(Material.CARVED_PUMPKIN);
 
 
     @EventHandler
@@ -88,6 +93,21 @@ public class EntityListener implements Listener {
 
         if (event.getEntity().getType() == EntityType.ZOMBIE) {
             MobActions.onZombieAggro((LivingEntity) event.getEntity(), livingEntity);
+        }
+    }
+
+    @EventHandler
+     public void onEntitySpawn(CreatureSpawnEvent event) {
+        LivingEntity entity = event.getEntity();
+        
+        if (LogicHolder.critRoll(75)) {
+            return;
+        }
+
+        // Check if the spawned entity is a skeleton
+        if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
+            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+            tagSpawnedMob.equipArmorEntity(entity);
         }
     }
 }
