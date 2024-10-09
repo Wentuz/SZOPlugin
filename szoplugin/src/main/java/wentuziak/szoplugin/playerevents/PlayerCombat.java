@@ -24,6 +24,7 @@ import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.KeySelector;
 import wentuziak.szoplugin.races.RaceEffects;
 
 public class PlayerCombat implements Listener{
@@ -89,6 +90,10 @@ public class PlayerCombat implements Listener{
     private void applySpecialWeapons(PersistentDataContainer playerContainer, ItemStack itemInMainHand, LivingEntity hitEntity, Player player) {
         int sharpLvl = itemInMainHand.getEnchantmentLevel(Enchantment.SHARPNESS);
 
+        String keyString = KeySelector.getMatchingKey(KeySelector.entityKeyList(player, playerContainer), 1);
+
+        player.sendMessage( keyString + "" );
+
         if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
             Weapons.explosiveSwordEffect(33, hitEntity);
         }
@@ -100,6 +105,7 @@ public class PlayerCombat implements Listener{
         }
         if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
             Weapons.angelSwordEffect(44, player);
+            
         }
         if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
             LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) sharpLvl);
