@@ -1,6 +1,11 @@
 package wentuziak.szoplugin.playerevents;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
@@ -24,7 +29,6 @@ import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
-import wentuziak.szoplugin.customlogic.KeySelector;
 import wentuziak.szoplugin.races.RaceEffects;
 
 public class PlayerCombat implements Listener{
@@ -87,31 +91,39 @@ public class PlayerCombat implements Listener{
     }
 
     // Method to apply special weapon effects when a player attacks
+    private static final Map<NamespacedKey, BiConsumer<Player, LivingEntity>> weaponEffectsMap = new HashMap<>();
+
+    // Static block to initialize the map
+    static {
+        weaponEffectsMap.put(Keys.CUSTOM_EXPLOSIVE_SWORD, (player, hitEntity) -> Weapons.explosiveSwordEffect(33, hitEntity));
+        weaponEffectsMap.put(Keys.CUSTOM_THUNDER_HAMMER, (player, hitEntity) -> Weapons.thunderHammerEffect(40, hitEntity));
+        weaponEffectsMap.put(Keys.CUSTOM_DAEMON_SWORD, (player, hitEntity) -> Weapons.daemonSwordEffect(40, hitEntity));
+        weaponEffectsMap.put(Keys.CUSTOM_ANGEL_SWORD, (player, hitEntity) -> Weapons.angelSwordEffect(44, player));
+        weaponEffectsMap.put(Keys.CUSTOM_ARMOR_PIERCER, (player, hitEntity) -> applyArmorPiercerEffect(player, hitEntity));
+    }
+
+    // Method for applying the weapon effects dynamically
     private void applySpecialWeapons(PersistentDataContainer playerContainer, ItemStack itemInMainHand, LivingEntity hitEntity, Player player) {
+        // Loop through the weapon effects map and apply the effect if the player has the corresponding key
+        for (Map.Entry<NamespacedKey, BiConsumer<Player, LivingEntity>> entry : weaponEffectsMap.entrySet()) {
+            NamespacedKey weaponKey = entry.getKey();
+            BiConsumer<Player, LivingEntity> effect = entry.getValue();
+
+            // Check if the player has the key, if yes, apply the effect
+            if (playerContainer.has(weaponKey, PersistentDataType.BYTE)) {
+                effect.accept(player, hitEntity);
+            }
+        }
+    }
+
+    // Custom effect for Armor Piercer, needs specific logic
+    private static void applyArmorPiercerEffect(Player player, LivingEntity hitEntity) {
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         int sharpLvl = itemInMainHand.getEnchantmentLevel(Enchantment.SHARPNESS);
 
-        String keyString = KeySelector.getMatchingKey(KeySelector.entityKeyList(player, playerContainer), 1);
-
-        player.sendMessage( keyString + "" );
-
-        if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)) {
-            Weapons.explosiveSwordEffect(33, hitEntity);
-        }
-        if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)) {
-            Weapons.thunderHammerEffect(40, hitEntity);
-        }
-        if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE)) {
-            Weapons.daemonSwordEffect(40, hitEntity);
-        }
-        if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)) {
-            Weapons.angelSwordEffect(44, player);
-            
-        }
-        if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-            LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) sharpLvl);
-            if (LogicHolder.critRoll(sharpLvl * 10)) {
-                Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
-            }
+        LogicHolder.modifyCurrentHeatlhPoints(hitEntity, (double) sharpLvl);
+        if (LogicHolder.critRoll(sharpLvl * 10)) {
+            Weapons.bleedEffect(hitEntity, 2.0, sharpLvl);
         }
     }
 
