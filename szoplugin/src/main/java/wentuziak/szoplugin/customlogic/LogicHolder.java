@@ -3,6 +3,7 @@ package wentuziak.szoplugin.customlogic;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
@@ -223,5 +224,48 @@ public class LogicHolder {
 
         cat.setCatType(randomVariant);
         return cat;
+    }
+
+    private static final Material[] helmets = new Material[] {
+        Material.LEATHER_HELMET, Material.CHAINMAIL_HELMET, Material.IRON_HELMET, 
+        Material.GOLDEN_HELMET, Material.DIAMOND_HELMET, Material.NETHERITE_HELMET
+    };
+
+    private static final Material[] chestplates = new Material[] {
+        Material.LEATHER_CHESTPLATE, Material.CHAINMAIL_CHESTPLATE, Material.IRON_CHESTPLATE,
+        Material.GOLDEN_CHESTPLATE, Material.DIAMOND_CHESTPLATE, Material.NETHERITE_CHESTPLATE
+    };
+
+    private static final Material[] leggings = new Material[] {
+        Material.LEATHER_LEGGINGS, Material.CHAINMAIL_LEGGINGS, Material.IRON_LEGGINGS,
+        Material.GOLDEN_LEGGINGS, Material.DIAMOND_LEGGINGS, Material.NETHERITE_LEGGINGS
+    };
+
+    private static final Material[] boots = new Material[] {
+        Material.LEATHER_BOOTS, Material.CHAINMAIL_BOOTS, Material.IRON_BOOTS,
+        Material.GOLDEN_BOOTS, Material.DIAMOND_BOOTS, Material.NETHERITE_BOOTS
+    };
+
+    public static void equipRandomArmor(boolean isTiered, LivingEntity entity){
+        int random = (int)(Math.random() * 5);
+
+        Material generatedHelmet = isTiered ? helmets[random] : helmets[random];
+        Material generatedChestplate = isTiered ? chestplates[random] : chestplates[(int)(Math.random() * 5)];
+        Material generatedLeggings = isTiered ? leggings[random] : leggings[(int)(Math.random() * 5)];
+        Material generatedBoots = isTiered ? boots[random] : boots[(int)(Math.random() * 5)];
+
+         // Equip random helmet
+         entity.getEquipment().setHelmet(new ItemStack(generatedHelmet));
+         // Equip random chestplate
+         entity.getEquipment().setChestplate(new ItemStack(generatedChestplate));
+         // Equip random leggings
+         entity.getEquipment().setLeggings(new ItemStack(generatedLeggings));
+         // Equip random boots
+         entity.getEquipment().setBoots(new ItemStack(generatedBoots));
+
+         entity.getEquipment().setHelmetDropChance(0.05F);
+         entity.getEquipment().setChestplateDropChance(0.05F);
+         entity.getEquipment().setLeggingsDropChance(0.05F);
+         entity.getEquipment().setBootsDropChance(0.05F);
     }
 }

@@ -98,7 +98,8 @@ public class EntityListener implements Listener {
         // Check if the spawned entity is a skeleton
         if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            tagSpawnedMob.equipArmorEntity(entity);
+            boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
+            LogicHolder.equipRandomArmor(isArmorTiered, entity);
         }
     }
 }

@@ -19,7 +19,7 @@ import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class tagSpawnedMob implements Listener {
 
-    private static ItemStack mobHeadGear = new ItemStack(Material.CARVED_PUMPKIN);
+    private static ItemStack mobAirItem = new ItemStack(Material.AIR);
 
     public static void startTagger() {
         // Schedule the repeating task to run every 10 minutes (600 seconds)
@@ -36,7 +36,8 @@ public class tagSpawnedMob implements Listener {
         for (Entity entity : Bukkit.getWorlds().get(0).getEntities()) { // Loop through all entities in the main world
             if ((entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) && LogicHolder.critRoll(10)) {
                 LivingEntity undead = (LivingEntity) entity;
-                equipArmorEntity(undead);
+                boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
+                equipArmorEntity(undead, true, mobAirItem, mobAirItem, mobAirItem, mobAirItem, isArmorTiered);
                 PersistentDataContainer container = undead.getPersistentDataContainer();
                 container.set(Keys.MOB_RIOT, PersistentDataType.BYTE, (byte) 1);  // Tag the undead
             }
@@ -48,9 +49,23 @@ public class tagSpawnedMob implements Listener {
         container.set(key, PersistentDataType.BYTE, (byte) 1);
     }
 
-    public static void equipArmorEntity(LivingEntity entity){
+    public static void equipArmorEntity(LivingEntity entity, boolean isRandom, ItemStack mobHeadGear, ItemStack mobChest, ItemStack mobLegs, ItemStack mobBoots, boolean isArmorTiered){
         LogicHolder.givePotionEffect(entity, "GLOWING", 20 * 2, 0);
+
+        entity.getEquipment().setHelmetDropChance(0.05F);
+        entity.getEquipment().setChestplateDropChance(0.05F);
+        entity.getEquipment().setLeggingsDropChance(0.05F);
+        entity.getEquipment().setBootsDropChance(0.05F);
+
+        if (isRandom) {
+            LogicHolder.equipRandomArmor(isArmorTiered, entity);
+            return;
+        }
         entity.getEquipment().setHelmet(mobHeadGear);
+        entity.getEquipment().setChestplate(mobChest);
+        entity.getEquipment().setLeggings(mobLegs);
+        entity.getEquipment().setBoots(mobBoots);
+
     }
 
 }
