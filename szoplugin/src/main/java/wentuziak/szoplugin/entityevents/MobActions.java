@@ -1,20 +1,26 @@
 package wentuziak.szoplugin.entityevents;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Spider;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.customitems.Armour;
+import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.races.RaceEffects;
 
@@ -50,6 +56,28 @@ public class MobActions implements Listener{
         direction.multiply(1.5);
 
         entity.setVelocity(direction);
+    }
+
+    @EventHandler
+    public static void onSpiderAggro(EntityTargetEvent event){
+        if (!(event.getEntity() instanceof Spider)) {
+            return;
+        }
+
+        Spider spider = (Spider) event.getEntity();
+    
+        // Handle Tagged mobs events
+        if (spider.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
+            PersistentDataContainer spiderContainer = spider.getPersistentDataContainer();
+
+            NamespacedKey webTrapKey = Keys.CUSTOM_WEB_TRAP;
+            spiderContainer.set(webTrapKey, PersistentDataType.BYTE, (byte) 1);
+
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                LogicHolder.throwSnowball(spider, spiderContainer, 3);
+            }, 20L * 3);
+
+        }
     }
 
     @EventHandler

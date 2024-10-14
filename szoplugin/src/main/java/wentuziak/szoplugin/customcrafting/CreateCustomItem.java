@@ -595,6 +595,21 @@ public class CreateCustomItem {
         return spiritLeech;
     }
 
+    public static ItemStack createWebTrap(){
+        ItemStack webTrap = new ItemStack(Material.GLOBE_BANNER_PATTERN);
+        ItemMeta webTrapMeta = webTrap.getItemMeta();
+
+        webTrapMeta.setDisplayName(ChatColor.DARK_PURPLE + "Web Trap");
+        webTrapMeta.setLore(Arrays.asList(
+            "Australian spider season"));
+        webTrapMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        webTrapMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        webTrapMeta.getPersistentDataContainer().set(Keys.CUSTOM_WEB_TRAP, PersistentDataType.BOOLEAN, true);
+        webTrap.setItemMeta(webTrapMeta);
+
+        return webTrap;
+    }
+
     public static ItemStack createObliterateSpell(){
         ItemStack obliterateSpell = new ItemStack(Material.GLOBE_BANNER_PATTERN);
         ItemMeta obliterateSpellMeta = obliterateSpell.getItemMeta();

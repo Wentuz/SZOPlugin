@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Bogged;
@@ -227,6 +228,37 @@ public class MagicItems {
     public static void windCharmEffect(Player player){
         LogicHolder.givePotionEffect(player, "SPEED", 20*60*5, 1);
         LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
+    }
+
+    public static void webTrapThrow(Player player, PersistentDataContainer playerContainer){
+        player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
+        LogicHolder.throwSnowball(player, playerContainer, 6);
+    }
+
+    public static void webTrapEffect(Location location){
+        World world = location.getWorld();
+    
+        // Ensure the world is not null
+        if (world == null) {
+            return;
+        }
+
+        int startX = location.getBlockX();
+        int startY = location.getBlockY() + 1;
+        int startZ = location.getBlockZ();
+
+        Material replaceWith = Material.COBWEB;
+
+        // Loop over the 2x2 area horizontally (X and Z axes)
+        for (int x = startX; x < startX + 2; x++) {
+            for (int z = startZ; z < startZ + 2; z++) {
+                Block block = world.getBlockAt(x, startY, z);
+
+                if (block.getType() == Material.AIR) {
+                    block.setType(replaceWith);
+                }
+            }
+        }
     }
 
     public static Arrow arrowEnchanterEffect(Arrow arrow){

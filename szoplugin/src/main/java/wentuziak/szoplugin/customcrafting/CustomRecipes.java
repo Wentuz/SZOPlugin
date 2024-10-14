@@ -795,6 +795,24 @@ public final class CustomRecipes {
 
 
         //
+        //      OBLITERATE Spell recipe
+        //
+        ItemStack webTrapSpell = CreateCustomItem.createWebTrap();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "webTrapSpellRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe webTrapSpellRecipe = new ShapedRecipe(key, webTrapSpell);
+        webTrapSpellRecipe.shape(
+            "TET",
+            "ESE",
+            "TET");
+        webTrapSpellRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        webTrapSpellRecipe.setIngredient('E', Material.SPIDER_EYE);
+        webTrapSpellRecipe.setIngredient('T', Material.STRING);
+        Bukkit.addRecipe(webTrapSpellRecipe);
+
+
+        //
         //      magic thunder Spell recipe
         //
         ItemStack thunderSpell = CreateCustomItem.createThunderSpell();

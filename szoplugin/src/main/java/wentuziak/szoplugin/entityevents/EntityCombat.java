@@ -88,6 +88,9 @@ public class EntityCombat implements Listener{
                 }else if (value == "throwingFirework") {
                     Weapons.fireworkEffect(target.getLocation());
                 }
+                else if (value == "webTrap") {
+                    MagicItems.webTrapEffect(target.getLocation());
+                }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
                 if (value == "spiderYeet") {
@@ -99,6 +102,9 @@ public class EntityCombat implements Listener{
                 }
                 else if (value == "throwingFirework") {
                     Weapons.fireworkEffect(hitLocation);
+                }
+                else if (value == "webTrap") {
+                    MagicItems.webTrapEffect(hitLocation);
                 }
             }
         }

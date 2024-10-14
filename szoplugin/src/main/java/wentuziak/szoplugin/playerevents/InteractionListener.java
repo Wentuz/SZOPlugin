@@ -167,6 +167,11 @@ public class InteractionListener implements Listener{
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 15);
                 return;
             }   
+            if (playerContainer.has(Keys.CUSTOM_WEB_TRAP, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.webTrapThrow(player, playerContainer);
+                player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
+                return;
+            }   
             if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
                 if (isSpellBoosted) {
                     LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*2, 1);

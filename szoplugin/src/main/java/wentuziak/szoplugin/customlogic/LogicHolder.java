@@ -61,7 +61,8 @@ public class LogicHolder {
             Keys.CUSTOM_SPIDER_YEET, "spiderYeet",
             Keys.CUSTOM_GRENADE, "grenade",
             Keys.CUSTOM_SMOKE_BOMB, "smokeBomb",
-            Keys.CUSTOM_THROWING_FIREWORK, "throwingFirework"
+            Keys.CUSTOM_THROWING_FIREWORK, "throwingFirework",
+            Keys.CUSTOM_WEB_TRAP, "webTrap"
         );
         // Iterate over the map and set the matching key-value pair
         for (Map.Entry<NamespacedKey, String> entry : customTags.entrySet()) {
@@ -254,16 +255,12 @@ public class LogicHolder {
         Material generatedLeggings = isTiered ? leggings[random] : leggings[(int)(Math.random() * 5)];
         Material generatedBoots = isTiered ? boots[random] : boots[(int)(Math.random() * 5)];
 
-         // Equip random helmet
          entity.getEquipment().setHelmet(new ItemStack(generatedHelmet));
-         // Equip random chestplate
          entity.getEquipment().setChestplate(new ItemStack(generatedChestplate));
-         // Equip random leggings
          entity.getEquipment().setLeggings(new ItemStack(generatedLeggings));
-         // Equip random boots
          entity.getEquipment().setBoots(new ItemStack(generatedBoots));
 
-         entity.getEquipment().setHelmetDropChance(0.05F);
+         entity.getEquipment().setHelmetDropChance(0.05F);  // 5% chance
          entity.getEquipment().setChestplateDropChance(0.05F);
          entity.getEquipment().setLeggingsDropChance(0.05F);
          entity.getEquipment().setBootsDropChance(0.05F);

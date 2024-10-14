@@ -1,10 +1,12 @@
 package wentuziak.szoplugin.entityevents;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -101,5 +103,19 @@ public class EntityListener implements Listener {
             boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
             LogicHolder.equipRandomArmor(isArmorTiered, entity);
         }
+        if (entity.getType() == EntityType.SPIDER) {
+            if (LogicHolder.critRoll(20)) {
+                repleaceEntity(entity, EntityType.CAVE_SPIDER);
+            }
+            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+        }
+    }
+
+    public static void repleaceEntity(LivingEntity entityToRelpeace, EntityType newType){
+        Location entityLocation = entityToRelpeace.getLocation();
+        
+        entityLocation.getWorld().spawnEntity(entityLocation, newType);
+
+        entityToRelpeace.setHealth(0);
     }
 }
