@@ -16,6 +16,7 @@ import org.bukkit.util.Vector;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.races.RaceEffects;
 
 public class MobActions implements Listener{
     
@@ -62,6 +63,11 @@ public class MobActions implements Listener{
     
         // Handle Tagged mobs events
         if (skeleton.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
+            if (LogicHolder.critRoll(25)) {
+                Vector arrowVelocity = arrow.getVelocity();
+                RaceEffects.elfShotEffect(skeleton, arrowVelocity, null, "bouncy");
+
+            }
             arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
         }
     }

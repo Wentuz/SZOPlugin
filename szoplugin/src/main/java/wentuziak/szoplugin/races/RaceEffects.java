@@ -428,11 +428,11 @@ public class RaceEffects {
     //
     //      Elf
     //
-    public static void elfShotEffect(Player player, Vector velocity, String specialType, String  bowType){
-        Vector direction = player.getLocation().getDirection().normalize();
+    public static void elfShotEffect(LivingEntity entity, Vector velocity, String specialType, String  bowType){
+        Vector direction = entity.getLocation().getDirection().normalize();
 
         for (int i = 0; i < 5; i++) {
-            Arrow arrow = (Arrow) player.getWorld().spawnEntity(player.getEyeLocation(), EntityType.ARROW);
+            Arrow arrow = (Arrow) entity.getWorld().spawnEntity(entity.getEyeLocation(), EntityType.ARROW);
     
             // Calculate a slight variation in the arrow's direction
             Vector arrowDirection = direction.clone();
@@ -453,7 +453,7 @@ public class RaceEffects {
 
             if (bowType == "rat") {
                 arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
-                player.sendMessage(bowType + "jerry");
+                entity.sendMessage(bowType + "jerry");
             }else if (bowType == "gravity") {
                 arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
                 Weapons.gravityArrow(arrow);
