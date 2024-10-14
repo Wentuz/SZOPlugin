@@ -191,6 +191,12 @@ public class EntityCombat implements Listener{
                     if (playerContainer.has(Keys.CUSTOM_WIND_BLAST_SHIELD, PersistentDataType.BYTE)) {
                         CustomTools.windBlastShieldEffect(player);
                     }
+                    if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE)) {
+                        CustomTools.effectShieldBlock(player, 3);
+                    }
+                    else if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE)) {
+                        CustomTools.effectShieldBlock(player, 2);
+                    }
                 }
             }
         }

@@ -223,17 +223,6 @@ public class InteractionListener implements Listener{
                 }
             }
         }
-
-        // Off hand items only
-        if (itemInOffHand != null && itemInOffHand.getType() != Material.AIR && itemInOffHand.hasItemMeta()) {
-            PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
-            if (playerContainer.has(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
-                CustomTools.effectRaisedShieldEffect(player, 3);
-            }
-            else if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE) && clickedRightButton && !(player.isHandRaised())) {
-                CustomTools.effectRaisedShieldEffect(player, 2);
-            }
-        }
     }
 
     //

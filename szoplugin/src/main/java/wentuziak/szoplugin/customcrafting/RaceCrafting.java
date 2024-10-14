@@ -35,13 +35,6 @@ public class RaceCrafting {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
-        else if (mainHandMaterial == Material.SPYGLASS && offHandMaterial == Material.REDSTONE_TORCH) {
-            player.getWorld().dropItem(dropLocation, CreateCustomItem.createMarkingSpyglass());
-            
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }
         else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 4) && offHandMaterial == Material.BLACK_DYE){
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createSmokeBomb());
             

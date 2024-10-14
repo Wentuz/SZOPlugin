@@ -150,28 +150,18 @@ public class CustomTools {
         }
     }
 
-    public static void effectRaisedShieldEffect(Player player, int whatShield){  
-        if (!TaskManager.isTaskRunning(player, "raisedShield")) {            
-            final Player finalPlayer = player;
-            final int finalShield = whatShield;
-            effectRaisedShieldTask = new BukkitRunnable() {
-                @Override
-                public void run(){
-    
-                    if (!(finalPlayer.isHandRaised())) {
-                        stopeffectRaisedShieldTask(finalPlayer);
-                        return;
-                    }
-                    if (finalShield == 3) {
-                        LogicHolder.givePotionEffect(finalPlayer, "REGENERATION", 20 * 10, 1);
-                    } else if (finalShield == 2) {
-                        LogicHolder.givePotionEffect(finalPlayer, "INCREASE_DAMAGE", 20 * 5, 1);
-                        LogicHolder.givePotionEffect(finalPlayer, "SPEED", 20 * 5, 0);
-                    }
-                    }
-            }.runTaskTimer(SzoPlugin.getInstance(), 4, 20*2);
-            TaskManager.addTask(player, "raisedShield", effectRaisedShieldTask);
-        } 
+    public static void effectShieldBlock(Player player, int whatShield){  
+        if (!(player.isHandRaised())) {
+            stopeffectRaisedShieldTask(player);
+            return;
+        }
+        if (whatShield == 3) {
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 20, 1);
+        } else if (whatShield == 2) {
+            LogicHolder.givePotionEffect(player, "INCREASE_DAMAGE", 20 * 10, 1);
+            LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);
+        }
+
     }
 
     public static void stopeffectRaisedShieldTask(Player player) {

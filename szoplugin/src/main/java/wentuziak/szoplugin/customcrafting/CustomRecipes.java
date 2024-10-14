@@ -1010,6 +1010,24 @@ public final class CustomRecipes {
         Bukkit.addRecipe(deathCallerRecipe);
 
 
+
+        //
+        //      markinSpyglass  recipe
+        //
+        ItemStack markinSpyglass = CreateCustomItem.createMarkingSpyglass();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MarkinSpyglassRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe markinSpyglassRecipe = new ShapedRecipe(key, markinSpyglass);
+        markinSpyglassRecipe.shape(
+            "   ",
+            "RSR",
+            "   ");
+            markinSpyglassRecipe.setIngredient('S', Material.SPYGLASS);
+            markinSpyglassRecipe.setIngredient('R', Material.REDSTONE_TORCH);
+        Bukkit.addRecipe(markinSpyglassRecipe);
+
+
         //
         //      Race book recipe
         //

@@ -1276,13 +1276,6 @@ public class CreateCustomItem {
         List<String> pages = new ArrayList<>();
 
         pages.add(
-            ChatColor.BOLD + "Markin' Spyglass\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Spyglass + Redstone Torch\n\n" +
-            "Who Can Make It:\n" +
-            "Mewchant"
-        );
-        pages.add(
             ChatColor.BOLD + "Lucky Clock\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Clock + Mechanical Part\n\n" +
