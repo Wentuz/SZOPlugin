@@ -112,6 +112,10 @@ public class RaceEffects {
         Material consumedMaterial = consumedStack.getType();
         String consumedItem = consumedMaterial.toString();
 
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            LogicHolder.entityPotionEffectTimer(player, 1.5F, 0);
+        }, 5);
+
         Set<String> implementedFood = new HashSet<>(Arrays.asList(
             "POTION"
         ));

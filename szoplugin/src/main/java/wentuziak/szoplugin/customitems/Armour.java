@@ -65,19 +65,10 @@ public class Armour {
         if (player.getActivePotionEffects() == null) {
             return;
         }else{
-            for (PotionEffect effect : player.getActivePotionEffects()) {
-                PotionEffectType effectType = effect.getType(); // Get the potion effect type
-                int newAmplifier = effect.getAmplifier() + 1;   // Increase the strength by +1
-                int newDuration = effect.getDuration() / 2;     // Halve the duration
-    
-                // Remove the old effect
-                player.removePotionEffect(effectType);
-    
-                // Apply the new effect with modified strength and duration
-                PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
-                player.addPotionEffect(newEffect);
-                player.setCooldown(Material.NETHERITE_HELMET, newDuration / 2);
-            }
+            
+            LogicHolder.entityPotionEffectTimer(player, 0.75F, 1);
+            player.setCooldown(Material.NETHERITE_HELMET, 20 * 10);
+            
         }
 
     }

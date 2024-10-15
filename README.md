@@ -12,7 +12,7 @@ STUFF IN HERE:
     1. Glowberries make you shine and see in darkness,
 
  ## Added usability to items:
-    1. Fire Charges while used explode beneath your feet,
+    1. Fire Charges can be thrown now,
     2. Magma Cream gives you temporarily fire resistance but hurts you a bit,
     3. Phantom Membranes give you slow falling,
 

@@ -847,6 +847,62 @@ public final class CustomRecipes {
 
 
         //
+        //      roseTea recipe
+        //
+        ItemStack roseTea = CreateCustomItem.createRoseTea();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "RoseTeaRecipe");
+        recipeKeys.add(key);
+        
+        ShapelessRecipe roseTeaRecipe = new ShapelessRecipe(key, roseTea);
+        roseTeaRecipe.addIngredient(1, Material.POTION);
+        roseTeaRecipe.addIngredient(2, Material.ROSE_BUSH);
+
+        Bukkit.addRecipe(roseTeaRecipe);
+
+
+        //
+        //      cocoa recipe
+        //
+        ItemStack cocoa = CreateCustomItem.createCocoa();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "CocoaRecipe");
+        recipeKeys.add(key);
+        
+        ShapelessRecipe cocoaRecipe = new ShapelessRecipe(key, cocoa);
+        cocoaRecipe.addIngredient(1, Material.POTION);
+        cocoaRecipe.addIngredient(2, Material.COCOA_BEANS);
+
+        Bukkit.addRecipe(cocoaRecipe);
+
+
+        //
+        //      sweetBerryTea recipe
+        //
+        ItemStack sweetBerryTea = CreateCustomItem.createSweetBerryTea();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "SweetBerryTeaRecipe");
+        recipeKeys.add(key);
+        
+        ShapelessRecipe sweetBerryTeaRecipe = new ShapelessRecipe(key, sweetBerryTea);
+        sweetBerryTeaRecipe.addIngredient(1, Material.POTION);
+        sweetBerryTeaRecipe.addIngredient(2, Material.SWEET_BERRIES);
+
+        Bukkit.addRecipe(sweetBerryTeaRecipe);
+
+
+        //
+        //      glowBerryTea recipe
+        //
+        ItemStack glowBerryTea = CreateCustomItem.createGlowBerryTea();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GlowBerryTeaRecipe");
+        recipeKeys.add(key);
+        
+        ShapelessRecipe glowBerryTeaRecipe = new ShapelessRecipe(key, glowBerryTea);
+        glowBerryTeaRecipe.addIngredient(1, Material.POTION);
+        glowBerryTeaRecipe.addIngredient(2, Material.GLOW_BERRIES);
+
+        Bukkit.addRecipe(glowBerryTeaRecipe);
+
+
+        //
         //      Hasty Shovel recipe
         //
         ItemStack hastyShovel = CreateCustomItem.createHastyShovel();

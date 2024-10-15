@@ -1134,6 +1134,70 @@ public class CreateCustomItem {
     }
 
     //
+    //      Rose tea
+    //
+    public static ItemStack createRoseTea(){
+        ItemStack roseTea = new ItemStack(Material.POTION);
+        PotionMeta roseTeaMeta = (PotionMeta) roseTea.getItemMeta();
+
+        roseTeaMeta.setDisplayName(ChatColor.RED + "Rose Tea");
+
+        roseTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 30, 0), true);
+        roseTeaMeta.setColor(Color.fromRGB(255, 0, 0));
+        roseTea.setItemMeta(roseTeaMeta);
+
+        return roseTea;
+    }
+
+    //
+    //      Cocoa
+    //
+    public static ItemStack createCocoa(){
+        ItemStack Cocoa = new ItemStack(Material.POTION);
+        PotionMeta CocoaMeta = (PotionMeta) Cocoa.getItemMeta();
+
+        CocoaMeta.setDisplayName(ChatColor.WHITE + "Cocoa");
+
+        CocoaMeta.addCustomEffect(new PotionEffect(PotionEffectType.HASTE, 20 * 60 * 3, 0), true);
+        CocoaMeta.setColor(Color.fromRGB(135, 30, 0));
+        Cocoa.setItemMeta(CocoaMeta);
+
+        return Cocoa;
+    }
+
+    //
+    //      berryTea
+    //
+    public static ItemStack createSweetBerryTea(){
+        ItemStack berryTea = new ItemStack(Material.POTION);
+        PotionMeta berryTeaMeta = (PotionMeta) berryTea.getItemMeta();
+
+        berryTeaMeta.setDisplayName(ChatColor.WHITE + "Sweet Berry Tea");
+
+        berryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 60, 0), true);
+        berryTeaMeta.setColor(Color.fromRGB(230, 40, 0));
+        berryTea.setItemMeta(berryTeaMeta);
+
+        return berryTea;
+    }
+
+    //
+    //      glowBerryTea
+    //
+    public static ItemStack createGlowBerryTea(){
+        ItemStack glowBerryTea = new ItemStack(Material.POTION);
+        PotionMeta glowBerryTeaMeta = (PotionMeta) glowBerryTea.getItemMeta();
+
+        glowBerryTeaMeta.setDisplayName(ChatColor.WHITE + "Glow Berry Tea");
+
+        glowBerryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 60 * 2, 0), true);
+        glowBerryTeaMeta.setColor(Color.fromRGB(240, 255, 0));
+        glowBerryTea.setItemMeta(glowBerryTeaMeta);
+
+        return glowBerryTea;
+    }
+
+    //
     //      Lucky Clock
     //
     public static ItemStack createLuckyClock(){

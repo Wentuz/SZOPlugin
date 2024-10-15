@@ -7,6 +7,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Zombie;
 import org.bukkit.entity.Cat;
+import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -97,17 +98,25 @@ public class EntityListener implements Listener {
             return;
         }
 
-        // Check if the spawned entity is a skeleton
         if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
             LogicHolder.equipRandomArmor(isArmorTiered, entity);
+            return;
         }
         if (entity.getType() == EntityType.SPIDER) {
             if (LogicHolder.critRoll(20)) {
                 repleaceEntity(entity, EntityType.CAVE_SPIDER);
             }
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+            return;
+        }
+        if (entity.getType() == EntityType.CREEPER) {
+            if (LogicHolder.critRoll(25)) {
+                ((Creeper) entity).setPowered(true);
+            }
+            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+            return;
         }
     }
 

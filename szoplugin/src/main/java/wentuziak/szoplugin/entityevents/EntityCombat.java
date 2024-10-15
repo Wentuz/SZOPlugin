@@ -169,6 +169,11 @@ public class EntityCombat implements Listener{
                     }
             }
         }
+
+        if (killedEntity.getType() == EntityType.CREEPER 
+        && killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
+            Weapons.smokeEffect(killedEntity.getLocation());
+        }
     }
 
     @EventHandler

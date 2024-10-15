@@ -53,6 +53,21 @@ public class LogicHolder {
         return player.isInWater();
     }
 
+    public static void entityPotionEffectTimer(LivingEntity entity, Float duration, Integer strength){
+        for (PotionEffect effect : entity.getActivePotionEffects()) {
+            PotionEffectType effectType = effect.getType(); // Get the potion effect type
+            int newAmplifier = effect.getAmplifier() + strength;
+            int newDuration = (int) (effect.getDuration() * duration);
+
+            // Remove the old effect
+            entity.removePotionEffect(effectType);
+
+            // Apply the new effect with modified strength and duration
+            PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
+            entity.addPotionEffect(newEffect);
+        }
+    }
+
     public static void throwSnowball(LivingEntity livingEntity, PersistentDataContainer playerContainer, int velocity){
         Snowball snowball = livingEntity.launchProjectile(Snowball.class);
 

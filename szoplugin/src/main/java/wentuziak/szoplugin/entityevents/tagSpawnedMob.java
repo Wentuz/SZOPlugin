@@ -50,8 +50,7 @@ public class tagSpawnedMob implements Listener {
     }
 
     public static void equipArmorEntity(LivingEntity entity, boolean isRandom, ItemStack mobHeadGear, ItemStack mobChest, ItemStack mobLegs, ItemStack mobBoots, boolean isArmorTiered){
-        LogicHolder.givePotionEffect(entity, "GLOWING", 20 * 2, 0);
-
+        
         entity.getEquipment().setHelmetDropChance(0.05F);
         entity.getEquipment().setChestplateDropChance(0.05F);
         entity.getEquipment().setLeggingsDropChance(0.05F);
