@@ -10,6 +10,7 @@ STUFF IN HERE:
 
  ## Food category:
     1. Glowberries make you shine and see in darkness,
+    2. Tea : rose tea, glowberry tea, sweetberry tea
 
  ## Added usability to items:
     1. Fire Charges can be thrown now,

@@ -138,18 +138,19 @@ public class CreateCustomItem {
         scurvyTridentMeta.setDisplayName(ChatColor.DARK_BLUE + "Scurvy Trident");
         scurvyTridentMeta.setLore(Arrays.asList(
             "Ahoy !"));
-        AttributeModifier attackSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -3.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier attackSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -2.9, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierScurvyTrident);
         AttributeModifier attackDamageModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 12.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierScurvyTrident);
-        AttributeModifier waterSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "WaterSpeed", 1.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY, waterSpeedModifierScurvyTrident);
-        AttributeModifier attackSpeedModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "AttackSpeedOff", -3.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierScurvyTridentOff);
-        AttributeModifier attackDamageModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "AttackDamageOff", 12.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierScurvyTridentOff);
-        AttributeModifier waterSpeedModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "WaterSpeedOff", 1.5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY, waterSpeedModifierScurvyTridentOff);
+        AttributeModifier fallModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "fall", -0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTrident);
+        AttributeModifier flyModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "fly", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, flyModifierScurvyTrident);
+
+        AttributeModifier fallModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "fallOff", -0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTridentOff);
+        AttributeModifier flyModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "flyOff", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, flyModifierScurvyTridentOff);
         scurvyTrident.setItemMeta(scurvyTridentMeta);
 
         return scurvyTrident;
@@ -372,6 +373,26 @@ public class CreateCustomItem {
         armourPiercingAxe.setItemMeta(armourPiercingAxeMeta);
 
         return armourPiercingAxe;
+    }
+
+    public static ItemStack createLongSword(){
+        ItemStack longSword = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta longSwordMeta = longSword.getItemMeta();
+
+        longSwordMeta.setDisplayName(ChatColor.AQUA + "Long Sword");
+
+        AttributeModifier reachModifier = new AttributeModifier(UUID.randomUUID(), "reachBlock", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+        longSwordMeta.addAttributeModifier(Attribute.PLAYER_BLOCK_INTERACTION_RANGE, reachModifier);
+        AttributeModifier reachEntityModifier = new AttributeModifier(UUID.randomUUID(), "reachEntity", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
+        longSwordMeta.addAttributeModifier(Attribute.PLAYER_ENTITY_INTERACTION_RANGE, reachEntityModifier);
+        AttributeModifier speedModifier = new AttributeModifier(UUID.randomUUID(), "Speed", -3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        longSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speedModifier);
+        AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "dmg", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        longSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifier);
+        
+        longSword.setItemMeta(longSwordMeta);
+
+        return longSword;
     }
 
     @SuppressWarnings("deprecation")

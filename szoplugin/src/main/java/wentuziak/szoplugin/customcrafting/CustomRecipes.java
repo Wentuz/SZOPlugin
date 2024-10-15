@@ -397,6 +397,24 @@ public final class CustomRecipes {
             armourPiercingAxeRecipe.setIngredient('S', Material.STICK);
             armourPiercingAxeRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(armourPiercingAxeRecipe);
+        
+        
+        //
+        //      Long Sword Recipe
+        //
+        ItemStack longSword = CreateCustomItem.createLongSword();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "LongSwordRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe longSwordRecipe = new ShapedRecipe(key, longSword);
+        longSwordRecipe.shape(
+            " D ",
+            " M ",
+            " S ");
+            longSwordRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+            longSwordRecipe.setIngredient('S', Material.DIAMOND_SWORD);
+            longSwordRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(longSwordRecipe);
 
 
         //
