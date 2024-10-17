@@ -1,5 +1,7 @@
 package wentuziak.szoplugin.entityevents;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,12 +13,14 @@ import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Piglin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.PiglinBarterEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -136,5 +140,17 @@ public class EntityListener implements Listener {
         entityLocation.getWorld().spawnEntity(entityLocation, newType);
 
         entityToRelpeace.setHealth(0);
+    }
+
+    @EventHandler
+    public static void piglinBarterEvent(PiglinBarterEvent event){
+        List<ItemStack> barteredItems = event.getOutcome();
+        Piglin piglin = event.getEntity();
+
+        Player player = LogicHolder.findNearestPlayer(piglin.getLocation());
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
+            RaceEffects.mewchantBarterEvent(barteredItems);
+        }
     }
 }

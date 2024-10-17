@@ -124,6 +124,7 @@ STUFF IN HERE:
         12. iron breaker shield - stronger defence, less attack
         13. enchanter shield - makes ur arrows stronger
         12. wind blast shield - knockback at entities around
+        13. Effect Transfuser - gives 50% of your current effect duration to hit entity
     # IV Ingerients:
         1.  Soul Fragment - used for magical purposes,
         2.  Mechanical Parts - used for more advanced constructs,

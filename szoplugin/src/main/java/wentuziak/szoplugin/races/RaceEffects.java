@@ -2,6 +2,8 @@ package wentuziak.szoplugin.races;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -9,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Cat;
@@ -31,6 +34,7 @@ import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.RandomLoot;
 
 public class RaceEffects {
 
@@ -38,6 +42,7 @@ public class RaceEffects {
     static BukkitTask caraGlideTask;
     static BukkitTask fossilSwimTask;
     private static BukkitTask sanguiniteHungerTask;
+    private final static Random rand = new Random();
 
 
     //
@@ -274,6 +279,50 @@ public class RaceEffects {
                 Location bobberLocation = fishHook.getLocation();
                 bobberLocation.getWorld().dropItemNaturally(bobberLocation, CreateCustomItem.createSoulEssence());
             }
+        }
+    }
+
+    public static void mewchantBarterEvent(List<ItemStack> barteredItems){
+        barteredItems.clear();
+
+        barteredItems.add(getRandomBarterItem());
+    }
+
+    private static ItemStack getRandomBarterItem() {
+        int roll = rand.nextInt(100);
+
+        if (roll < 5) {
+            return new ItemStack(Material.NETHERITE_SCRAP, 1);
+        } else if (roll < 12) {
+            ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
+            RandomLoot.addRandomEnchantment(enchantedBook);
+            return enchantedBook;
+        } else if (roll < 20) {
+            return new ItemStack(Material.ENDER_PEARL, rand.nextInt(3) + 1);
+        } else if (roll < 28) {
+            return new ItemStack(Material.OBSIDIAN, rand.nextInt(2) + 1);
+        } else if (roll < 38) {
+            return new ItemStack(Material.CRYING_OBSIDIAN, rand.nextInt(2) + 1);
+        } else if (roll < 48) {
+            return new ItemStack(Material.SPECTRAL_ARROW, rand.nextInt(6) + 10);
+        } else if (roll < 58) {
+            return new ItemStack(CreateCustomItem.createSoulEssence());
+        } else if (roll < 68) {
+            return new ItemStack(Material.IRON_INGOT, rand.nextInt(3) + 2);
+        } else if (roll < 78) {
+            return new ItemStack(Material.STRING, rand.nextInt(6) + 6);
+        } else if (roll < 88) {
+            return new ItemStack(Material.LEATHER, rand.nextInt(4) + 3);
+        } else if (roll < 93) {
+            return new ItemStack(Material.GLOWSTONE_DUST, rand.nextInt(4) + 2);
+        } else if (roll < 96) {
+            return new ItemStack(Material.MAGMA_CREAM, rand.nextInt(2) + 1);
+        } else if (roll < 98) {
+            return new ItemStack(Material.SADDLE, 1);
+        } else if (roll < 99) {
+            return new ItemStack(Material.GHAST_TEAR, 1);
+        } else {
+            return new ItemStack(Material.GOLDEN_APPLE, 1);
         }
     }
 
