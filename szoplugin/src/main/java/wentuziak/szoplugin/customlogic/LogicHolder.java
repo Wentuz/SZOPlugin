@@ -26,6 +26,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
 import java.util.List;
