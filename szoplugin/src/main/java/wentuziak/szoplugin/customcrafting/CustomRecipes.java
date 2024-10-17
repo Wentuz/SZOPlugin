@@ -109,6 +109,24 @@ public final class CustomRecipes {
             gravityCharmRecipe.setIngredient('R', Material.REDSTONE);
             gravityCharmRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(gravityCharmRecipe);
+
+
+        //
+        //      effectTransfuser recipe
+        //
+        ItemStack effectTransfuser = CreateCustomItem.createEffectTransfuser();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "EffectTransfuserRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe effectTransfuserRecipe = new ShapedRecipe(key, effectTransfuser);
+        effectTransfuserRecipe.shape(
+            " G ",
+            "RBR",
+            " G ");
+            effectTransfuserRecipe.setIngredient('B', Material.GOLDEN_PICKAXE);
+            effectTransfuserRecipe.setIngredient('G', Material.GUNPOWDER);
+            effectTransfuserRecipe.setIngredient('R', Material.AMETHYST_SHARD);
+        Bukkit.addRecipe(effectTransfuserRecipe);
         //
         //      Angel Sword Recipe
         //

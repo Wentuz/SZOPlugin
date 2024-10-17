@@ -149,13 +149,8 @@ public class MagicItems {
             ancientShellTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if(finalPlayer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)){
                     LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 1);
                     LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 1); 
-                    }else{
-                    LogicHolder.givePotionEffect(finalPlayer, "DOLPHINS_GRACE", 20 * 10, 0);
-                    LogicHolder.givePotionEffect(finalPlayer, "CONDUIT_POWER", 20 * 10, 0); 
-                    }
                 }
             }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 5);
             TaskManager.addTask(player, "ancientShell", ancientShellTask);
@@ -324,6 +319,23 @@ public class MagicItems {
         }
         LogicHolder.removeItem(player, itemInMainHand);
         LogicHolder.removeItem(player, itemInOffHand);
+    }
+
+    public static void effectTransfuserEffect(Player player, LivingEntity entity){
+        LogicHolder.entityPotionEffectTimer(player, 0.5F, -1);
+
+        for (PotionEffect effect : player.getActivePotionEffects()) {
+            PotionEffectType effectType = effect.getType(); // Get the potion effect type
+            int newAmplifier = effect.getAmplifier() + 1;
+            int newDuration = (int) (effect.getDuration() * 0.5F);
+
+            // Remove the old effect
+            entity.removePotionEffect(effectType);
+
+            // Apply the new effect with modified strength and duration
+            PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
+            entity.addPotionEffect(newEffect);
+        }
     }
 
 }

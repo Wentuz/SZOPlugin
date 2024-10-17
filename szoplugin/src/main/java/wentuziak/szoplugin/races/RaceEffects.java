@@ -286,7 +286,7 @@ public class RaceEffects {
             fossilSwimTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if (finalPlayer.isSwimming() && !finalPlayer.isRiptiding()) {
+                    if (finalPlayer.isSwimming()) {
                         fossilRiptide(finalPlayer);
                     }
                     if (!LogicHolder.isPlayerInWater(finalPlayer)) {
@@ -306,13 +306,10 @@ public class RaceEffects {
 
     private static void fossilRiptide(Player player) {
         Vector direction = player.getLocation().getDirection().normalize().multiply(2); // Adjust the multiplier to control speed
-            direction.setY(1); // Add some upward force
+            direction.setY(1);
             player.setVelocity(direction);
 
-            // Play sound effect
             player.getWorld().playSound(player.getLocation(), Sound.ITEM_TRIDENT_RIPTIDE_3, 1.0f, 1.0f);
-
-            // Play particle effects for visuals (customizable)
             player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 30);
     }
 

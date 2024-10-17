@@ -10,6 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Damageable;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -962,6 +963,24 @@ public class CreateCustomItem {
         gravityCharm.setItemMeta(gravityCharmMeta);
 
         return gravityCharm;
+    }
+
+
+    //
+    //      effect Transfuser
+    //
+    public static ItemStack createEffectTransfuser(){
+        ItemStack effectTransfuser = new ItemStack(Material.GOLDEN_PICKAXE);
+        ItemMeta effectTransfuserMeta = effectTransfuser.getItemMeta();
+
+        effectTransfuserMeta.setDisplayName(ChatColor.GREEN + "Effect Transfuser");
+        effectTransfuserMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        effectTransfuserMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        effectTransfuserMeta.getPersistentDataContainer().set(Keys.CUSTOM_EFFECT_TRANSFUSER, PersistentDataType.BOOLEAN, true);
+        effectTransfuser.setItemMeta(effectTransfuserMeta);
+
+        return effectTransfuser;
     }
     //
     //      RACE CRAFTABLES

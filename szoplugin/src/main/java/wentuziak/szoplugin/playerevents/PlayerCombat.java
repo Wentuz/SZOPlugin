@@ -1,5 +1,6 @@
 package wentuziak.szoplugin.playerevents;
 
+import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -100,7 +101,9 @@ public class PlayerCombat implements Listener{
         weaponEffectsMap.put(Keys.CUSTOM_DAEMON_SWORD, (player, hitEntity) -> Weapons.daemonSwordEffect(40, hitEntity));
         weaponEffectsMap.put(Keys.CUSTOM_ANGEL_SWORD, (player, hitEntity) -> Weapons.angelSwordEffect(44, player));
         weaponEffectsMap.put(Keys.CUSTOM_ARMOR_PIERCER, (player, hitEntity) -> applyArmorPiercerEffect(player, hitEntity));
+        weaponEffectsMap.put(Keys.CUSTOM_EFFECT_TRANSFUSER, (player, hitEntity) -> MagicItems.effectTransfuserEffect(player, (LivingEntity) hitEntity));
     }
+
 
     // Method for applying the weapon effects dynamically
     private void applySpecialWeapons(PersistentDataContainer playerContainer, ItemStack itemInMainHand, LivingEntity hitEntity, Player player) {

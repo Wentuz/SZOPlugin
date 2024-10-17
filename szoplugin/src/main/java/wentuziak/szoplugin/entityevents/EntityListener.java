@@ -27,6 +27,7 @@ import net.md_5.bungee.api.ChatColor;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.CustomRecipes;
+import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.races.RaceEffects;
 import wentuziak.szoplugin.races.UpdateAttributes;
@@ -51,6 +52,15 @@ public class EntityListener implements Listener {
             if (LogicHolder.critRoll(5)) {
                 entity.getWorld().dropItemNaturally(entity.getLocation(), CreateCustomItem.createSoulEssence());
             }
+        }
+        
+        if (itemInHand == null || !itemInHand.hasItemMeta()) {
+            return;
+        }
+        PersistentDataContainer playerContainer = itemInHand.getItemMeta().getPersistentDataContainer();
+        
+        if (playerContainer.has(Keys.CUSTOM_EFFECT_TRANSFUSER, PersistentDataType.BYTE)) {
+            MagicItems.effectTransfuserEffect(player, (LivingEntity) entity);
         }
     }
 
