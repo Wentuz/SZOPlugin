@@ -88,6 +88,7 @@ public class Keys {
 
     //
     public static final NamespacedKey MOB_RIOT = new NamespacedKey(SzoPlugin.getInstance(), "RiotMob");
+    public static final NamespacedKey MOB_HUNT = new NamespacedKey(SzoPlugin.getInstance(), "HuntMob");
 
     //
     //      Races

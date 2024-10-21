@@ -114,6 +114,17 @@ public class EntityCombat implements Listener{
     public void onEntityDeath(EntityDeathEvent event) {
         Player killer = event.getEntity().getKiller();
         Entity killedEntity = event.getEntity();
+
+
+        if (killedEntity.getPersistentDataContainer().has(Keys.MOB_HUNT, PersistentDataType.BYTE)) {
+            System.out.println("HERE");
+            Location killedEntityLocation = killedEntity.getLocation();
+            for(int i = 0; i < 6; i++){
+                if (LogicHolder.critRoll(50)) {killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());}
+                if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, killedEntityLocation, "Mobs");}
+                if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, killedEntityLocation, "Ore");}
+            }
+        }
         if (killer != null) {
             ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
             ItemStack itemInOffHand = killer.getInventory().getItemInOffHand();
@@ -174,6 +185,7 @@ public class EntityCombat implements Listener{
         && killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             Weapons.smokeEffect(killedEntity.getLocation());
         }
+
     }
 
     @EventHandler

@@ -35,6 +35,7 @@ import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.customlogic.RandomLoot;
+import wentuziak.szoplugin.entityevents.tagSpawnedMob;
 
 public class RaceEffects {
 
@@ -193,6 +194,12 @@ public class RaceEffects {
             LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 20, 0);
             LogicHolder.givePotionEffect(player, "SATURATION", 3, 0);
         }
+    }
+
+    public static void miskaruCallToHunt(Player player){
+        player.sendMessage("Call to hunt");
+
+        tagSpawnedMob.callToHuntTag(player);
     }
         
     //

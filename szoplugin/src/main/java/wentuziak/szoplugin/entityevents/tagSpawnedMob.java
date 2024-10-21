@@ -1,12 +1,21 @@
 package wentuziak.szoplugin.entityevents;
 
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
+import org.bukkit.attribute.Attributable;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -18,7 +27,8 @@ import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class tagSpawnedMob implements Listener {
-
+    
+    private static final Random rand = new Random();
     private static ItemStack mobAirItem = new ItemStack(Material.AIR);
 
     public static void startTagger() {
@@ -36,10 +46,13 @@ public class tagSpawnedMob implements Listener {
         for (Entity entity : Bukkit.getWorlds().get(0).getEntities()) { // Loop through all entities in the main world
             if ((entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) && LogicHolder.critRoll(10)) {
                 LivingEntity undead = (LivingEntity) entity;
-                boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
-                equipArmorEntity(undead, true, mobAirItem, mobAirItem, mobAirItem, mobAirItem, isArmorTiered);
-                PersistentDataContainer container = undead.getPersistentDataContainer();
-                container.set(Keys.MOB_RIOT, PersistentDataType.BYTE, (byte) 1);  // Tag the undead
+                if (LogicHolder.critRoll(2)) {
+                    createHuntedMob(entity);
+                }else{
+                    boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
+                    equipArmorEntity(undead, true, mobAirItem, mobAirItem, mobAirItem, mobAirItem, isArmorTiered);
+                    tagSpawnedEntity(undead, Keys.MOB_RIOT);  // Tag the undead
+                }
             }
         }
     }
@@ -65,6 +78,38 @@ public class tagSpawnedMob implements Listener {
         entity.getEquipment().setLeggings(mobLegs);
         entity.getEquipment().setBoots(mobBoots);
 
+    }
+
+    public static void callToHuntTag(Player player){
+        List<Entity> nearbyEntities = player.getNearbyEntities(100, 100, 100);
+
+        List<Entity> validEntities = nearbyEntities.stream()
+                .filter(entity -> entity instanceof Zombie || entity instanceof Skeleton)
+                .collect(Collectors.toList());
+
+        if (validEntities.isEmpty()) {
+            player.sendMessage("No Zombies or Skeletons found within 100 blocks.");
+            return;
+        }
+
+        // Select a random Zombie or Skeleton from the list
+        Entity randomEntity = validEntities.get(rand.nextInt(validEntities.size()));
+
+        createHuntedMob(randomEntity);
+
+    }
+
+    private static void createHuntedMob(Entity entity){
+        tagSpawnedEntity((LivingEntity) entity, Keys.MOB_HUNT);
+        tagSpawnedEntity((LivingEntity) entity, Keys.MOB_RIOT);
+
+        entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 5, 1);
+
+        LogicHolder.equipRandomArmor(true, (LivingEntity) entity);
+        ((Attributable) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.75);
+        ((Attributable) entity).getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(4);
+        ((Attributable) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
+        entity.setGlowing(true);
     }
 
 }

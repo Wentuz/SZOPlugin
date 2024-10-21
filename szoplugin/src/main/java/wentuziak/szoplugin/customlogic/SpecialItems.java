@@ -14,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.races.RaceEffects;
 
 public class SpecialItems {
 
@@ -22,10 +23,10 @@ public class SpecialItems {
         Material getOffHandMaterial = itemInOffHand.getType();
         String mainHandItem = getMainHandMaterial.toString();
         String offHandItem = getOffHandMaterial.toString();
-
+  
 
         Set<String> implementedItems = new HashSet<>(Arrays.asList(
-                "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM", "BONE"
+                "PHANTOM_MEMBRANE", "FIRE_CHARGE", "MAGMA_CREAM", "BONE", "GOAT_HORN"
         ));
 
         String itemUsed = null;
@@ -77,6 +78,11 @@ public class SpecialItems {
                 }
                 break;
 
+            case "GOAT_HORN":
+                if (player.getPersistentDataContainer().has(Keys.RACE_MISKARU) && !player.hasCooldown(Material.GOAT_HORN) ) {
+                    RaceEffects.miskaruCallToHunt(player);
+                }
+                return;
             default:
                 break;
         }
