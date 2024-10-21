@@ -1505,6 +1505,15 @@ public class CreateCustomItem {
             "Cara"
         );
     
+        // Miskaru Crafting Recipes
+        pages.add(
+            ChatColor.BOLD + "Enchanted book\n\n" +
+            ChatColor.RESET + "Crafting Recipe:\n" +
+            "Book + 8 Soul Essence\n\n" +
+            "Who Can Make It:\n" +
+            "Miskaru"
+        );
+    
         // Animated Fossil Crafting Recipes
         pages.add(
             ChatColor.BOLD + "Ancient Shell\n\n" +

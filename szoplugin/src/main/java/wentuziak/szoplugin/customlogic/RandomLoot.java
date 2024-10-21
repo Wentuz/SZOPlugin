@@ -213,7 +213,12 @@ public class RandomLoot {
         maxEnchantmentLevels.put(Enchantment.FLAME, 1);
         maxEnchantmentLevels.put(Enchantment.INFINITY, 1);
         maxEnchantmentLevels.put(Enchantment.LUCK_OF_THE_SEA, 3);
-        maxEnchantmentLevels.put(Enchantment.LURE, 3);
+        maxEnchantmentLevels.put(Enchantment.WIND_BURST, 3);
+        maxEnchantmentLevels.put(Enchantment.BREACH, 5);
+        maxEnchantmentLevels.put(Enchantment.SWIFT_SNEAK, 3);
+        maxEnchantmentLevels.put(Enchantment.SOUL_SPEED, 3);
+        maxEnchantmentLevels.put(Enchantment.FROST_WALKER, 3);
+        maxEnchantmentLevels.put(Enchantment.DENSITY, 5);
     }
 
     // Method to add a random enchantment to the ItemStack

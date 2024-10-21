@@ -120,6 +120,9 @@ public class InteractionListener implements Listener{
                 if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
                     RaceCrafting.sanguiniteCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
+                if (player.getPersistentDataContainer().has(Keys.RACE_MISKARU)) {
+                    RaceCrafting.miskaruCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
             }
         }
 

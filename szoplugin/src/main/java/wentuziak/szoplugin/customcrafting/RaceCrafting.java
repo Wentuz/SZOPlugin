@@ -6,6 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.RandomLoot;
 
 public class RaceCrafting {
 
@@ -66,6 +67,28 @@ public class RaceCrafting {
             
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+    }
+
+       
+    // MISKARU
+    public static void miskaruCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+
+        if (mainHandMaterial == Material.BOOK && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 8) {
+            
+            ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
+            RandomLoot.addRandomEnchantment(enchantedBook);
+            player.getWorld().dropItem(dropLocation, enchantedBook);
+
+            for(int i = 0; i < 8; i++){
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            LogicHolder.removeItem(player, itemInMainHand);
+
             return;
         }
     }
