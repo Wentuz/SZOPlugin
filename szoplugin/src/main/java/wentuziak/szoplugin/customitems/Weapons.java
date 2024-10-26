@@ -22,6 +22,7 @@ import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.SzoPlugin;
+import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 
 
@@ -40,7 +41,9 @@ public class Weapons {
 
     public static void explosiveSwordEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 1, false, false);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                hitEntity.getWorld().createExplosion(hitEntity.getLocation(), 1, false, false);
+            }, 5L);
         }
     }
 
@@ -106,22 +109,23 @@ public class Weapons {
         LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
     }
 
-    public static void bouncyCrossbowGroundEffect(Arrow arrow, Vector normal) {
+
+    public static void bouncyCrossbowTargetEffect(Arrow arrow){
         Location location = arrow.getLocation();
 
-        WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
-        windCharge.explode();
-
-        fireworkEffect(location);
+        randomiseTimeExplosionCrossbow(location);
     }
+    private static void randomiseTimeExplosionCrossbow(Location location){
+        int randomInt = (int) (Math.random() * 5);
 
-    public static void bouncyCrossbowTargetEffect(Arrow arrow, LivingEntity target){
-        Location location = arrow.getLocation();
-
-        WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
-        windCharge.explode();
-        
-        fireworkEffect(location);
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
+            windCharge.explode();
+            fireworkEffect(location);
+        }, randomInt +2L);
+        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            location.getWorld().createExplosion(location, 1, false, false);
+        }, randomInt);
     }
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){

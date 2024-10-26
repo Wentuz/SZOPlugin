@@ -51,7 +51,7 @@ public class EntityCombat implements Listener{
                     Weapons.ratBowEffect(target.getLocation());
                 }
                 if (value == "bouncyArrow") {
-                    Weapons.bouncyCrossbowTargetEffect(arrow, target);
+                    Weapons.bouncyCrossbowTargetEffect(arrow);
                 }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
@@ -59,7 +59,7 @@ public class EntityCombat implements Listener{
                     Weapons.ratBowEffect(hitLocation);
                 }
                 if (value == "bouncyArrow") {
-                    Weapons.bouncyCrossbowGroundEffect(arrow, event.getHitBlockFace().getDirection());
+                    Weapons.bouncyCrossbowTargetEffect(arrow);
                 }
             }
         }
