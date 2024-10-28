@@ -30,8 +30,8 @@ public class SpecialFood {
         }
         
         if (consumedItem.equals("GLOW_BERRIES")) {
-            LogicHolder.givePotionEffect(player, "GLOWING", 20 * 60 * 3, 0);
-            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 60 * 3, 0);
+            LogicHolder.givePotionEffect(player, "GLOWING", 20 * 60 * 2, 0);
+            LogicHolder.givePotionEffect(player, "NIGHT_VISION", 20 * 60 * 2, 0);
         }
 
         //

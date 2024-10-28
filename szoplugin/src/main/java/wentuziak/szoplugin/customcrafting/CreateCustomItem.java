@@ -495,6 +495,24 @@ public class CreateCustomItem {
         return ironCladBoots;
     }
 
+    @SuppressWarnings("deprecation")
+    public static ItemStack createMiskaHelmet(){
+        ItemStack miskaHelmet = new ItemStack(Material.NETHERITE_HELMET);
+        ItemMeta miskaHelmetMeta = miskaHelmet.getItemMeta();
+
+        miskaHelmetMeta.setDisplayName(ChatColor.RED + "Miska Helmet");
+        miskaHelmetMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + ""));
+
+        AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        miskaHelmet.setItemMeta(miskaHelmetMeta);
+
+        return miskaHelmet;
+    }
+
     public static ItemStack createWitchHelmet(){
         ItemStack witchHelmet = new ItemStack(Material.DIAMOND_HELMET);
         ItemMeta witchHelmetMeta = witchHelmet.getItemMeta();

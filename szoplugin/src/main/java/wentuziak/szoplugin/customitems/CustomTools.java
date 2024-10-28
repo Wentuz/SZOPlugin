@@ -151,10 +151,6 @@ public class CustomTools {
     }
 
     public static void effectShieldBlock(Player player, int whatShield){  
-        if (!(player.isHandRaised())) {
-            stopeffectRaisedShieldTask(player);
-            return;
-        }
         if (whatShield == 3) {
             LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 20, 1);
         } else if (whatShield == 2) {
@@ -162,10 +158,6 @@ public class CustomTools {
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);
         }
 
-    }
-
-    public static void stopeffectRaisedShieldTask(Player player) {
-        TaskManager.stopTask(player, "raisedShield");
     }
 
     public static void windBlastShieldEffect(Player player){

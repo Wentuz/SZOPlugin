@@ -468,6 +468,24 @@ public final class CustomRecipes {
         ironCladHelmetRecipe.setIngredient('I', Material.IRON_INGOT);
         ironCladHelmetRecipe.setIngredient('A', Material.AMETHYST_SHARD);
         Bukkit.addRecipe(ironCladHelmetRecipe);
+
+
+        //
+        //      miskaHelmet Recipe
+        //
+        ItemStack miskaHelmet = CreateCustomItem.createMiskaHelmet();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MiskaHelmetRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe miskaHelmetRecipe = new ShapedRecipe(key, miskaHelmet);
+        miskaHelmetRecipe.shape(
+            " M ",
+            " N ",
+            "   ");
+        miskaHelmetRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        miskaHelmetRecipe.setIngredient('N', Material.NETHERITE_HELMET);
+        miskaHelmetRecipe.setIngredient('A', Material.AMETHYST_SHARD);
+        Bukkit.addRecipe(miskaHelmetRecipe);
         
         //
         //      Hermes's boots Recipe
