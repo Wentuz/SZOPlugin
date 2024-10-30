@@ -502,15 +502,87 @@ public class CreateCustomItem {
 
         miskaHelmetMeta.setDisplayName(ChatColor.RED + "Miska Helmet");
         miskaHelmetMeta.setLore(Arrays.asList(
-            ChatColor.DARK_GRAY + ""));
+            ChatColor.DARK_GRAY + "Luck or just skill?"));
 
         AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
         AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        AttributeModifier luckModifierMiska = new AttributeModifier(UUID.randomUUID(), "Luck", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_LUCK, luckModifierMiska);
+        AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
         miskaHelmet.setItemMeta(miskaHelmetMeta);
 
         return miskaHelmet;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static ItemStack createMiskaChestplate(){
+        ItemStack miskaChestplate = new ItemStack(Material.NETHERITE_CHESTPLATE);
+        ItemMeta miskaChestplateMeta = miskaChestplate.getItemMeta();
+
+        miskaChestplateMeta.setDisplayName(ChatColor.RED + "Miska Chestplate");
+        miskaChestplateMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Mark I Thorn type"));
+
+        AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        AttributeModifier attackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Attack", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifierMiska);
+        AttributeModifier attackSpeedModifierMiska = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", 0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierMiska);
+        AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
+        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaChestplate.setItemMeta(miskaChestplateMeta);
+
+        return miskaChestplate;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static ItemStack createMiskaLeggings(){
+        ItemStack miskaLeggings = new ItemStack(Material.NETHERITE_LEGGINGS);
+        ItemMeta miskaLeggingsMeta = miskaLeggings.getItemMeta();
+
+        miskaLeggingsMeta.setDisplayName(ChatColor.RED + "Miska Leggings");
+        miskaLeggingsMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Belt made from skulls"));
+
+        AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        AttributeModifier speedModifierMiska = new AttributeModifier(UUID.randomUUID(), "speed", 0.01, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierMiska);
+        AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaLeggings.setItemMeta(miskaLeggingsMeta);
+
+        return miskaLeggings;
+    }
+
+    @SuppressWarnings("deprecation")
+    public static ItemStack createMiskaBoots(){
+        ItemStack miskaBoots = new ItemStack(Material.NETHERITE_BOOTS);
+        ItemMeta miskaBootsMeta = miskaBoots.getItemMeta();
+
+        miskaBootsMeta.setDisplayName(ChatColor.RED + "Miska Boots");
+        miskaBootsMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Maybe they'll catch you"));
+
+        AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        AttributeModifier fallModifierMiska = new AttributeModifier(UUID.randomUUID(), "Fall", -0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
+        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierMiska);
+        AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaBoots.setItemMeta(miskaBootsMeta);
+
+        return miskaBoots;
     }
 
     public static ItemStack createWitchHelmet(){

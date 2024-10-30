@@ -479,13 +479,71 @@ public final class CustomRecipes {
 
         ShapedRecipe miskaHelmetRecipe = new ShapedRecipe(key, miskaHelmet);
         miskaHelmetRecipe.shape(
-            " M ",
-            " N ",
-            "   ");
+            " D ",
+            "RNR",
+            " M ");
         miskaHelmetRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
         miskaHelmetRecipe.setIngredient('N', Material.NETHERITE_HELMET);
-        miskaHelmetRecipe.setIngredient('A', Material.AMETHYST_SHARD);
+        miskaHelmetRecipe.setIngredient('R', Material.RABBIT_FOOT);
+        miskaHelmetRecipe.setIngredient('D', Material.GOAT_HORN);
         Bukkit.addRecipe(miskaHelmetRecipe);
+
+
+        //
+        //      miskaChestplate Recipe
+        //
+        ItemStack miskaChestplate = CreateCustomItem.createMiskaChestplate();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MiskaChestplateRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe miskaChestplateRecipe = new ShapedRecipe(key, miskaChestplate);
+        miskaChestplateRecipe.shape(
+            " M ",
+            "ANA",
+            " D ");
+        miskaChestplateRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        miskaChestplateRecipe.setIngredient('A', new RecipeChoice.ExactChoice(attackCharm));
+        miskaChestplateRecipe.setIngredient('N', Material.NETHERITE_CHESTPLATE);
+        miskaChestplateRecipe.setIngredient('D', Material.HEAVY_CORE);
+        Bukkit.addRecipe(miskaChestplateRecipe);
+
+
+        //
+        //      miskaLeggings Recipe
+        //
+        ItemStack miskaLeggings = CreateCustomItem.createMiskaLeggings();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MiskaLeggingsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe miskaLeggingsRecipe = new ShapedRecipe(key, miskaLeggings);
+        miskaLeggingsRecipe.shape(
+            " M ",
+            "FNF",
+            " D ");
+        miskaLeggingsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        miskaLeggingsRecipe.setIngredient('N', Material.NETHERITE_LEGGINGS);
+        miskaLeggingsRecipe.setIngredient('D', Material.SKELETON_SKULL);
+        miskaLeggingsRecipe.setIngredient('F', Material.FEATHER);
+        Bukkit.addRecipe(miskaLeggingsRecipe);
+
+
+        //
+        //      miskaBoots Recipe
+        //
+        ItemStack miskaBoots = CreateCustomItem.createMiskaBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "MiskaBootsRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe miskaBootsRecipe = new ShapedRecipe(key, miskaBoots);
+        miskaBootsRecipe.shape(
+            " M ",
+            "PNP",
+            " D ");
+        miskaBootsRecipe.setIngredient('M', new RecipeChoice.ExactChoice(mechanicalParts));
+        miskaBootsRecipe.setIngredient('N', Material.NETHERITE_BOOTS);
+        miskaBootsRecipe.setIngredient('D', Material.WIND_CHARGE);
+        miskaBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
+        Bukkit.addRecipe(miskaBootsRecipe);
         
         //
         //      Hermes's boots Recipe
@@ -700,7 +758,7 @@ public final class CustomRecipes {
             "ISI",
             "D D",
             "D D");
-            ninjaPantRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            ninjaPantRecipe.setIngredient('S', new RecipeChoice.ExactChoice(mechanicalParts));
             ninjaPantRecipe.setIngredient('I', Material.INK_SAC);
             ninjaPantRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(ninjaPantRecipe);
