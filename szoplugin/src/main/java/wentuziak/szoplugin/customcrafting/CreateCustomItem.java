@@ -90,6 +90,20 @@ public class CreateCustomItem {
         return daemonSword;
     }
 
+    @SuppressWarnings("deprecation")
+    public static ItemStack createspellSword(){
+        ItemStack spellSword = new ItemStack(Material.DIAMOND_SWORD);
+        ItemMeta spellSwordMeta = spellSword.getItemMeta();
+        
+        spellSwordMeta.setDisplayName(ChatColor.BLUE + "Spell Sword");
+        spellSwordMeta.setLore(Arrays.asList(
+            ChatColor.RED + "Imbuded with magic"));
+        spellSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPELL_SWORD, PersistentDataType.BOOLEAN, true);
+        spellSword.setItemMeta(spellSwordMeta);
+
+        return spellSword;
+    }
+
     public static ItemStack createPyromancerSword(){
         ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
@@ -181,6 +195,19 @@ public class CreateCustomItem {
         gravityBow.setItemMeta(gravityBowMeta);
 
         return gravityBow;
+    }
+
+    public static ItemStack createDedalusBow(){
+        ItemStack dedalusBow = new ItemStack(Material.BOW);
+        ItemMeta dedalusBowMeta = dedalusBow.getItemMeta();
+
+        dedalusBowMeta.setDisplayName(ChatColor.YELLOW + "Dedalus StormBow");
+        dedalusBowMeta.setLore(Arrays.asList(
+            ChatColor.BLUE + "Forged from storms"));
+        dedalusBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_DEDALUS_BOW, PersistentDataType.BOOLEAN, true);
+        dedalusBow.setItemMeta(dedalusBowMeta);
+
+        return dedalusBow;
     }
 
     public static ItemStack createRatBow(){
@@ -345,6 +372,26 @@ public class CreateCustomItem {
         ninjaPant.setItemMeta(ninjaPantMeta);
 
         return ninjaPant;
+    }
+
+    public static ItemStack createCerberusChain(){
+        ItemStack cerberusChain = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+        ItemMeta cerberusChainMeta = cerberusChain.getItemMeta();
+
+        cerberusChainMeta.setDisplayName(ChatColor.DARK_GRAY + "Cerberus Chain");
+        cerberusChainMeta.setLore(Arrays.asList(
+            "Guards remain loyal"));
+            AttributeModifier armorModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Armor", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierCerberusChain);
+            AttributeModifier armorPercentModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "ArmorPercent", 0.33, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
+            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorPercentModifierCerberusChain);
+            AttributeModifier speedModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Speed", 0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierCerberusChain);
+            cerberusChainMeta.getPersistentDataContainer().set(Keys.CUSTOM_CERBERUS_CHAIN, PersistentDataType.BOOLEAN, true);
+
+        cerberusChain.setItemMeta(cerberusChainMeta);
+
+        return cerberusChain;
     }
 
     public static ItemStack createGluttonyPants(){

@@ -219,6 +219,25 @@ public final class CustomRecipes {
         
         
         //
+        //      spellSword Recipe
+        //
+        ItemStack spellSword = CreateCustomItem.createspellSword();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "SpellSwordRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe spellSwordRecipe = new ShapedRecipe(key , spellSword);
+        spellSwordRecipe.shape(
+            " D ",
+            " D ",
+            "SBL");
+            spellSwordRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            spellSwordRecipe.setIngredient('B', Material.BONE);
+            spellSwordRecipe.setIngredient('L', Material.LAPIS_LAZULI);
+            spellSwordRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(spellSwordRecipe);
+        
+        
+        //
         //      IronBreakerShield Recipe
         //
         ItemStack ironBreakerShield = CreateCustomItem.createIronBreakerShield();
@@ -327,7 +346,25 @@ public final class CustomRecipes {
         
         
         //
-        //      gravityBow Recipe
+        //      dedalusBow Recipe
+        //
+        ItemStack dedalusBow = CreateCustomItem.createDedalusBow();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "DedalusBowRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe dedalusBowRecipe = new ShapedRecipe(key, dedalusBow);
+        dedalusBowRecipe.shape(
+            "SW ",
+            "S M",
+            "SW ");
+            dedalusBowRecipe.setIngredient('M', new RecipeChoice.ExactChoice(soulFragment));
+            dedalusBowRecipe.setIngredient('S', Material.STRING);
+            dedalusBowRecipe.setIngredient('W', Material.LIGHTNING_ROD);
+        Bukkit.addRecipe(dedalusBowRecipe);
+        
+        
+        //
+        //      ratBow Recipe
         //
         ItemStack ratBow = CreateCustomItem.createRatBow();
         key = new NamespacedKey(SzoPlugin.getInstance(), "RatBowRecipe");
@@ -762,6 +799,24 @@ public final class CustomRecipes {
             ninjaPantRecipe.setIngredient('I', Material.INK_SAC);
             ninjaPantRecipe.setIngredient('D', Material.DIAMOND);
         Bukkit.addRecipe(ninjaPantRecipe);
+        
+        
+        //
+        //      cerberusChain Recipe
+        //
+        ItemStack cerberusChain = CreateCustomItem.createCerberusChain();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "CerberusChainRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe cerberusChainRecipe = new ShapedRecipe(key, cerberusChain);
+        cerberusChainRecipe.shape(
+            "BSB",
+            "C C",
+            "C C");
+            cerberusChainRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+            cerberusChainRecipe.setIngredient('B', Material.BONE);
+            cerberusChainRecipe.setIngredient('C', Material.CHAIN);
+        Bukkit.addRecipe(cerberusChainRecipe);
         
         
         //

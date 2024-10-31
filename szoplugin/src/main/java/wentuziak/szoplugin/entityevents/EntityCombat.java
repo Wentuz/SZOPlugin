@@ -47,6 +47,9 @@ public class EntityCombat implements Listener{
                 if (value == "antiGravArrow") {
                     Weapons.gravityBowEffect(target);
                 }
+                if (value == "dedalusArrow") {
+                    Weapons.dedalusBowEffect(target);
+                }
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(target.getLocation());
                 }
@@ -57,6 +60,9 @@ public class EntityCombat implements Listener{
                 Location hitLocation = event.getHitBlock().getLocation();
                 if (value == "ratArrow") {
                     Weapons.ratBowEffect(hitLocation);
+                }
+                if (value == "dedalusArrow") {
+                    Weapons.dedalusBowEffect(arrow);
                 }
                 if (value == "bouncyArrow") {
                     Weapons.bouncyCrossbowTargetEffect(arrow);

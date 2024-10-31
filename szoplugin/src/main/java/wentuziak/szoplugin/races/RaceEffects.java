@@ -108,10 +108,10 @@ public class RaceEffects {
     //
 
 
-    public static void witchAttackEvent(Player player, LivingEntity targetEntity){
+    public static void witchAttackEvent(LivingEntity targetEntity){
         if (LogicHolder.critRoll(33)) {
-            LogicHolder.givePotionEffect(targetEntity, "POISON", 20 * 10, 0);
-            LogicHolder.givePotionEffect(targetEntity, "SLOW", 20 * 10, 0);
+            LogicHolder.givePotionEffect(targetEntity, "POISON", 20 * 10, rand.nextInt(2));
+            LogicHolder.givePotionEffect(targetEntity, "SLOW", 20 * 10, rand.nextInt(4));
         }
     }
 
@@ -466,6 +466,17 @@ public class RaceEffects {
                 TaskManager.setRestartScheduled(player, false);
             }, 20 * 60 * 20);
         }
+
+        int numberOfDrops = (int)(Math.random() * 12 + 1);
+
+        LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");
+        while (numberOfDrops > 0) {
+            if (LogicHolder.critRoll(80)) {player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());}
+            if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");}
+            if (LogicHolder.critRoll(33)) {LogicHolder.rollTreasure(3, player.getLocation(), "Fishing");}
+            
+            numberOfDrops--;
+        }
     }
 
     public static void sanguiniteConsumptionEffect(Player player,  ItemStack consumedStack){
@@ -530,12 +541,13 @@ public class RaceEffects {
                 
                 if (bowType == "rat") {
                     arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
-                    entity.sendMessage(bowType + "jerry");
                 }else if (bowType == "gravity") {
                     arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
                     Weapons.gravityArrow(arrow);
                 }else if (bowType == "bouncy") {
                     arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
+                }else if (bowType == "dedalus") {
+                    arrow.getPersistentDataContainer().set(Keys.CUSTOM_DEDALUS_BOW, PersistentDataType.STRING, "dedalusArrow");
                 }
                 Vector finalVelocity = arrowDirection.multiply(1).add(velocity);
                 

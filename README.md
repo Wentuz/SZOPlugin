@@ -92,6 +92,7 @@ STUFF IN HERE:
         14. Throwing firework - like a glitter bomb,
         15. Ripping axe - some armour ignoring bonus dmg on hit,
         16. Rioters crossbow - fireworks + wind charge on impact
+        17. Dedalus StormBow - lightning bolt at hit
     # II Armor :
         1.  Bombardiers vest - chance to explode attacker,
         2.  Sentinels chestplate - pressing and releasing shift grants defensive boosts,
@@ -109,6 +110,7 @@ STUFF IN HERE:
         14. Guarding Vest - May guard you from death,
         15. Jump pack - gato jumpo,
         16. Walkers - water/lava walking,
+        17. Miska armor - upgraded netherite
     # III Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe),
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works,

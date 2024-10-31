@@ -1,12 +1,16 @@
 package wentuziak.szoplugin.customitems;
 
 
+import java.util.Random;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
@@ -24,6 +28,7 @@ import org.bukkit.util.Vector;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.races.RaceEffects;
 
 
 public class Weapons {
@@ -80,6 +85,15 @@ public class Weapons {
         }
     }
 
+    public static void spellSwordEffect(int chanceForCrit, LivingEntity target){
+        if (LogicHolder.critRoll(chanceForCrit)) {
+            target.getWorld().spawnParticle(Particle.ENCHANT, target.getLocation(), 1);
+
+            MagicItems.spiritLeechEffect(target);
+        }
+        if (LogicHolder.critRoll(chanceForCrit * 2)) {RaceEffects.witchAttackEvent(target);} 
+    }
+
     public static void gravityBowEffect(LivingEntity target){
         LogicHolder.givePotionEffect(target, "LEVITATION", 20 * 5, 1);
         LogicHolder.givePotionEffect(target, "GLOWING", 20 * 5, 0);
@@ -109,6 +123,24 @@ public class Weapons {
         LogicHolder.givePotionEffect(silverfish, "WEAVING", 20*20, 0);
     }
 
+    public static void dedalusBowEffect(Entity hitEntity){
+
+        if (hitEntity instanceof LivingEntity) {
+            Weapons.thunderHammerEffect(100, (LivingEntity) hitEntity);
+        }
+        else{
+            Location initialLocation = hitEntity.getLocation();
+    
+            Random random = new Random();
+            int offsetX = random.nextInt(10) - 2;
+            int offsetY = random.nextInt(5) - 2;
+            int offsetZ = random.nextInt(10) - 2;
+        
+            Location randomLocation = initialLocation.clone().add(offsetX, offsetY, offsetZ);
+        
+            hitEntity.getWorld().strikeLightning(randomLocation);
+        }
+    }
 
     public static void bouncyCrossbowTargetEffect(Arrow arrow){
         Location location = arrow.getLocation();
@@ -124,8 +156,14 @@ public class Weapons {
             fireworkEffect(location);
         }, randomInt +2L);
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-            location.getWorld().createExplosion(location, 1, false, false);
-        }, randomInt);
+            AreaEffectCloud cloud = (AreaEffectCloud) location.getWorld().spawnEntity(location.add(0, -(float) (Math.random() * 1), 0), EntityType.AREA_EFFECT_CLOUD);
+
+            cloud.setBasePotionData(new PotionData(PotionType.HARMING));
+            cloud.setDuration(20 * 2);
+            cloud.setRadius(3.0f);
+            cloud.setParticle(Particle.FLAME);
+            cloud.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 5, 1), true);
+        }, 4);
     }
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){

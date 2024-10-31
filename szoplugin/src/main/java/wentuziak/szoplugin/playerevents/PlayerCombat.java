@@ -77,7 +77,7 @@ public class PlayerCombat implements Listener{
         PersistentDataContainer playerContainer = player.getPersistentDataContainer();
 
         if (playerContainer.has(Keys.RACE_WITCH, PersistentDataType.BYTE)) {
-            RaceEffects.witchAttackEvent(player, hitEntity);
+            RaceEffects.witchAttackEvent(hitEntity);
         }
 
         if (playerContainer.has(Keys.RACE_CELESTIAL, PersistentDataType.BYTE)) {
@@ -99,6 +99,7 @@ public class PlayerCombat implements Listener{
         weaponEffectsMap.put(Keys.CUSTOM_DAEMON_SWORD, (player, hitEntity) -> Weapons.daemonSwordEffect(40, hitEntity));
         weaponEffectsMap.put(Keys.CUSTOM_ANGEL_SWORD, (player, hitEntity) -> Weapons.angelSwordEffect(44, player));
         weaponEffectsMap.put(Keys.CUSTOM_ARMOR_PIERCER, (player, hitEntity) -> applyArmorPiercerEffect(player, hitEntity));
+        weaponEffectsMap.put(Keys.CUSTOM_SPELL_SWORD, (player, hitEntity) -> Weapons.spellSwordEffect(33, hitEntity));
         weaponEffectsMap.put(Keys.CUSTOM_EFFECT_TRANSFUSER, (player, hitEntity) -> MagicItems.effectTransfuserEffect(player, (LivingEntity) hitEntity));
     }
 
@@ -218,11 +219,17 @@ public class PlayerCombat implements Listener{
                 arrow.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.STRING, "antiGravArrow");
                 Weapons.gravityArrow(arrow);
                 bowType = "gravity";
-            } else if (container.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
+            } 
+            else if (container.has(Keys.CUSTOM_RAT_BOW, PersistentDataType.BYTE)) {
                 arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "ratArrow");
                 bowType = "rat";
             }
-        } else if (bow.getType() == Material.CROSSBOW) {
+            else if (container.has(Keys.CUSTOM_DEDALUS_BOW, PersistentDataType.BYTE)) {
+                arrow.getPersistentDataContainer().set(Keys.CUSTOM_RAT_BOW, PersistentDataType.STRING, "dedalusArrow");
+                bowType = "dedalus";
+            }
+        }
+        else if (bow.getType() == Material.CROSSBOW) {
             if (container.has(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BYTE)) {
                 arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
                 bowType = "bouncy";
@@ -231,6 +238,7 @@ public class PlayerCombat implements Listener{
     
         return bowType;
     }
+
     
     // Method to apply shield effects (offhand item)
     private void applyShieldEffects(ItemStack itemShield, Arrow arrow) {
