@@ -1,5 +1,7 @@
 package wentuziak.szoplugin.customitems;
 
+import java.security.Key;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -15,6 +17,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.entity.Wolf;
 import org.bukkit.entity.ZombieHorse;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -33,6 +36,7 @@ import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.entityevents.tagSpawnedMob;
 
 public class MagicItems {
     static BukkitTask ancientShellTask;
@@ -329,13 +333,42 @@ public class MagicItems {
             int newAmplifier = effect.getAmplifier() + 1;
             int newDuration = (int) (effect.getDuration() * 0.5F);
 
-            // Remove the old effect
             entity.removePotionEffect(effectType);
 
-            // Apply the new effect with modified strength and duration
             PotionEffect newEffect = new PotionEffect(effectType, newDuration, newAmplifier);
             entity.addPotionEffect(newEffect);
         }
+    }
+
+    public static void summonCerberus(Player player){
+        if (player.getPersistentDataContainer().has(Keys.MOB_PLAYER_SUMMON, PersistentDataType.BOOLEAN)) {
+            return;
+        }
+        Wolf wolf = LogicHolder.summonRandomWolf(player.getLocation());
+        tagSpawnedMob.tagSpawnedEntity(wolf, Keys.MOB_PLAYER_SUMMON);
+        tagSpawnedMob.tagSpawnedEntity(player, Keys.MOB_PLAYER_SUMMON);
+        
+        wolf.setInvisible(true);
+        wolf.setInvulnerable(true);
+        wolf.setGlowing(true);
+        wolf.setOwner(player);
+    }
+
+    public static void killCerberus(Player player){
+        player.getLocation().getWorld().getNearbyEntities(player.getLocation(), 20, 20, 20).forEach(entity -> {
+            if (entity instanceof Wolf) {
+                Wolf wolf = (Wolf) entity;
+
+                if (wolf.getOwner() != null && wolf.getOwner().equals(player) && 
+                    wolf.getPersistentDataContainer().has(Keys.MOB_PLAYER_SUMMON, PersistentDataType.BOOLEAN)) {
+    
+                    wolf.getWorld().spawnParticle(Particle.SOUL, wolf.getLocation(), 20, 1, 1, 1);
+                    
+                    player.getPersistentDataContainer().remove(Keys.MOB_PLAYER_SUMMON);
+                    wolf.remove();
+                }
+            }
+        });
     }
 
 }

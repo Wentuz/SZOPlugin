@@ -363,6 +363,7 @@ public class InteractionListener implements Listener{
         }
     }
 
+
     //
     //      Fishing Events
     //
@@ -414,7 +415,18 @@ public class InteractionListener implements Listener{
         PersistentDataContainer playerContainer;
         
         boolean isInWater = LogicHolder.isPlayerInWater(player);
-        
+        if (itemLeggings != null ) {
+            if (itemLeggings.hasItemMeta()) {
+                playerContainer = itemLeggings.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_CERBERUS_CHAIN, PersistentDataType.BYTE)) {
+                    MagicItems.summonCerberus(player);
+                }else{
+                    MagicItems.killCerberus(player);
+                }
+            }
+        }else{
+            MagicItems.killCerberus(player);
+        }
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_ANCIENT_SHELL, PersistentDataType.BYTE) && (player.isSwimming() || isInWater || LogicHolder.isRaining(player.getWorld()))) {

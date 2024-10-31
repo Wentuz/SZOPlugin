@@ -111,6 +111,7 @@ STUFF IN HERE:
         15. Jump pack - gato jumpo,
         16. Walkers - water/lava walking,
         17. Miska armor - upgraded netherite
+        17. Cerberus chain - summons ghostly hound for you
     # III Tools :
         1.  Hasty tools - tools with haste (axe, shovel, pickaxe),
         2.  Dawi gem finder - Possibility of finding treasure in stone and deepslate, fortune works,

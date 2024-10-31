@@ -385,7 +385,7 @@ public class CreateCustomItem {
             cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierCerberusChain);
             AttributeModifier armorPercentModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "ArmorPercent", 0.33, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
             cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorPercentModifierCerberusChain);
-            AttributeModifier speedModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Speed", 0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+            AttributeModifier speedModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Speed", 0.03, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
             cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierCerberusChain);
             cerberusChainMeta.getPersistentDataContainer().set(Keys.CUSTOM_CERBERUS_CHAIN, PersistentDataType.BOOLEAN, true);
 
