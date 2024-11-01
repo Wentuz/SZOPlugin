@@ -1,6 +1,7 @@
 package wentuziak.szoplugin.entityevents;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
@@ -92,7 +93,7 @@ public class EntityCombat implements Listener{
                 }else if (value == "smokeBomb") {
                     Weapons.smokeEffect(target.getLocation());
                 }else if (value == "throwingFirework") {
-                    Weapons.fireworkEffect(target.getLocation());
+                    Weapons.fireworkEffect(target.getLocation(), 1);
                 }
                 else if (value == "webTrap") {
                     MagicItems.webTrapEffect(target.getLocation());
@@ -107,7 +108,7 @@ public class EntityCombat implements Listener{
                     Weapons.smokeEffect(hitLocation);
                 }
                 else if (value == "throwingFirework") {
-                    Weapons.fireworkEffect(hitLocation);
+                    Weapons.fireworkEffect(hitLocation, 1);
                 }
                 else if (value == "webTrap") {
                     MagicItems.webTrapEffect(hitLocation);
@@ -123,7 +124,6 @@ public class EntityCombat implements Listener{
 
 
         if (killedEntity.getPersistentDataContainer().has(Keys.MOB_HUNT, PersistentDataType.BYTE)) {
-            System.out.println("HERE");
             Location killedEntityLocation = killedEntity.getLocation();
             for(int i = 0; i < 6; i++){
                 if (LogicHolder.critRoll(50)) {killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());}
@@ -181,8 +181,8 @@ public class EntityCombat implements Listener{
                             killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());
                         }
                     }
-                    if (LogicHolder.critRoll((luckLvl + 1) * 5)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulFragment());
+                    if (LogicHolder.critRoll((luckLvl + 1) * 10)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, new ItemStack(Material.ECHO_SHARD));
                     }
             }
         }
@@ -190,6 +190,12 @@ public class EntityCombat implements Listener{
         if (killedEntity.getType() == EntityType.CREEPER 
         && killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             Weapons.smokeEffect(killedEntity.getLocation());
+            Location killedEntityLocation = killedEntity.getLocation();
+            for(int i = 0; i < 4; i++){
+                if (LogicHolder.critRoll(45)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
+                }
+            }
         }
 
     }

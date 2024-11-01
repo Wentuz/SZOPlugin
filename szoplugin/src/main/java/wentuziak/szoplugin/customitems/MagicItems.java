@@ -261,8 +261,8 @@ public class MagicItems {
     }
 
     public static Arrow arrowEnchanterEffect(Arrow arrow){
-        PotionEffect poisonEffect = new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 1, 0);
-        arrow.addCustomEffect(poisonEffect, true);
+        double damage = arrow.getDamage();
+        arrow.setDamage(damage * 2);
 
         return arrow;
     }

@@ -153,7 +153,7 @@ public class Weapons {
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             WindCharge windCharge = (WindCharge) location.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
             windCharge.explode();
-            fireworkEffect(location);
+            fireworkEffect(location, (int)(Math.random() * 3 + 1));
         }, randomInt +2L);
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             AreaEffectCloud cloud = (AreaEffectCloud) location.getWorld().spawnEntity(location.add(0, -(float) (Math.random() * 1), 0), EntityType.AREA_EFFECT_CLOUD);
@@ -228,8 +228,8 @@ public class Weapons {
         LogicHolder.throwSnowball(player, playerContainer, 3);
     }
 
-    public static void fireworkEffect(Location location){
-        Firework firework = LogicHolder.randomFirework(0, location);
+    public static void fireworkEffect(Location location, int power){
+        Firework firework = LogicHolder.randomFirework(power, location);
         firework.detonate();
     }
 

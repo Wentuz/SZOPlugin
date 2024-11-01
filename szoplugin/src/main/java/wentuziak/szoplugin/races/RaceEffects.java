@@ -453,6 +453,16 @@ public class RaceEffects {
     public static void stopSanguiniteHungerTask(Player player) {
         if (TaskManager.isTaskRunning(player, "sanguiniteHunger")){ 
             if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
+                int numberOfDrops = (int)(Math.random() * 12 + 1);
+
+                LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");
+                while (numberOfDrops > 0) {
+                    if (LogicHolder.critRoll(80)) {player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());}
+                    if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");}
+                    if (LogicHolder.critRoll(33)) {LogicHolder.rollTreasure(3, player.getLocation(), "Fishing");}
+                    
+                    numberOfDrops--;
+                }
                 player.removePotionEffect(PotionEffectType.HUNGER);
             }
 
@@ -465,17 +475,6 @@ public class RaceEffects {
                 sanguiniteHunger(player);
                 TaskManager.setRestartScheduled(player, false);
             }, 20 * 60 * 20);
-        }
-
-        int numberOfDrops = (int)(Math.random() * 12 + 1);
-
-        LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");
-        while (numberOfDrops > 0) {
-            if (LogicHolder.critRoll(80)) {player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());}
-            if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");}
-            if (LogicHolder.critRoll(33)) {LogicHolder.rollTreasure(3, player.getLocation(), "Fishing");}
-            
-            numberOfDrops--;
         }
     }
 

@@ -80,6 +80,9 @@ public class EntityListener implements Listener {
 
         NamespacedKey[] raceKeys = Keys.getRaceKeys();
 
+        //  TODO:
+        //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
+        //  
         for (NamespacedKey key : raceKeys) {
             if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
                 String keyString = "RACE_" + key.getKey().toUpperCase();
