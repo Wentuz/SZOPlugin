@@ -109,7 +109,7 @@ public class tagSpawnedMob implements Listener {
         ((Attributable) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.75);
         ((Attributable) entity).getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(4);
         ((Attributable) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
-        entity.setGlowing(true);
+        LogicHolder.givePotionEffect((LivingEntity) entity, "GLOWING", 20 * 60 * 30, 0);
     }
 
 }

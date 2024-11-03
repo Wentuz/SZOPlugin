@@ -53,7 +53,8 @@ public class Armour {
     public static void reflectiveChestEffect(int chanceForCrit,int thornLvl , LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                LogicHolder.givePotionEffect(damager, "HARM", 2, thornLvl);
+                int damage = thornLvl < 1 ? 0 : thornLvl/2 + 1;
+                LogicHolder.givePotionEffect(damager, "HARM", 2, damage);
                 LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
                 damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
             }, 10L);
