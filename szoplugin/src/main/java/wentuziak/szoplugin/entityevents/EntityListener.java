@@ -53,7 +53,7 @@ public class EntityListener implements Listener {
         if (player.getPersistentDataContainer().has(Keys.RACE_ELF)
         && (itemInHand.getType().isEdible() || itemOffHand.getType().isEdible())) {
             RaceEffects.elfFeedEffect((LivingEntity) entity);
-            if (LogicHolder.critRoll(5)) {
+            if (LogicHolder.critRoll(25)) {
                 entity.getWorld().dropItemNaturally(entity.getLocation(), CreateCustomItem.createSoulEssence());
             }
         }

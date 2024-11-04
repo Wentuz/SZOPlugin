@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
@@ -18,6 +19,7 @@ import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 
+import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
@@ -142,8 +144,83 @@ public class CustomTools {
                     item = new ItemStack(Material.GRAVEL);
                 }
             }
+            else if (blockMaterial == Material.DIRT) {
+                if (LogicHolder.critRoll((playerLuck + 2) * 4)) {
+                    item = new ItemStack(Material.ROOTED_DIRT);
+                }else{
+                    item = new ItemStack(Material.COARSE_DIRT);
+                }
+            }
             else if (blockMaterial == Material.RED_SAND) {
                 item = new ItemStack(Material.RED_SAND);
+            }
+    
+            blockLocation.getWorld().dropItemNaturally(blockLocation, item);
+        }
+    }
+
+    public static void superHoeEffect(int playerLuck, Block brokenBlock){
+        if (LogicHolder.critRoll((playerLuck + 2) * 15)) {
+            Material blockMaterial = brokenBlock.getType();
+            Location blockLocation = brokenBlock.getLocation();
+            ItemStack item = new ItemStack(Material.AIR);
+
+
+            if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
+            || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
+                LogicHolder.rollTreasure(1, brokenBlock.getLocation(), "Plant");
+                return;
+            }
+        
+            if (blockMaterial == Material.WHEAT || blockMaterial == Material.CARROTS || 
+            blockMaterial == Material.POTATOES || blockMaterial == Material.BEETROOTS) {
+                Ageable ageable = (Ageable) brokenBlock.getBlockData();
+
+                if (ageable.getAge() == ageable.getMaximumAge()) {                    
+                    switch (blockMaterial) {
+                        case WHEAT:
+                            item = new ItemStack(Material.WHEAT);
+                            break;
+                        case CARROTS:
+                            item = LogicHolder.critRoll((playerLuck + 2) * 4) ? 
+                                   new ItemStack(Material.GOLDEN_CARROT) : new ItemStack(Material.CARROT);
+                            break;
+                        case POTATOES:
+                            item = new ItemStack(Material.POTATO);
+                            break;
+                        case BEETROOTS:
+                            item = new ItemStack(Material.BEETROOT);
+                            break;
+                        default:
+                            return;
+                    }
+        
+                    blockLocation.getWorld().dropItemNaturally(blockLocation, item);
+                }
+            }
+
+
+            else if (blockMaterial == Material.OAK_LEAVES) {
+                item = new ItemStack(Material.OAK_SAPLING);
+                blockLocation.getWorld().dropItemNaturally(blockLocation, item);
+                if (LogicHolder.critRoll((playerLuck + 2) * 2)) {
+                    item = new ItemStack(Material.GOLDEN_APPLE);
+                }
+            }
+            else if (blockMaterial == Material.BIRCH_LEAVES) {
+                item = new ItemStack(Material.BIRCH_SAPLING);
+            }
+            else if (blockMaterial == Material.SPRUCE_LEAVES) {
+                item = new ItemStack(Material.SPRUCE_SAPLING);
+            }
+            else if (blockMaterial == Material.ACACIA_LEAVES) {
+                item = new ItemStack(Material.ACACIA_SAPLING);
+            }
+            else if (blockMaterial == Material.JUNGLE_LEAVES) {
+                item = new ItemStack(Material.JUNGLE_SAPLING);
+            }
+            else if (blockMaterial == Material.MANGROVE_LEAVES) {
+                item = new ItemStack(Material.MANGROVE_PROPAGULE);
             }
     
             blockLocation.getWorld().dropItemNaturally(blockLocation, item);

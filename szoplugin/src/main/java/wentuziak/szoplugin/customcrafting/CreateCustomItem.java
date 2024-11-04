@@ -947,6 +947,19 @@ public class CreateCustomItem {
         return dwarfPickaxe;
     }
 
+    public static ItemStack createSuperHoe(){
+        ItemStack superHoe = new ItemStack(Material.DIAMOND_HOE);
+        ItemMeta superHoeMeta = superHoe.getItemMeta();
+
+        superHoeMeta.setDisplayName(ChatColor.DARK_PURPLE + "Your mom");
+        superHoeMeta.setLore(Arrays.asList(
+            "TOUCH GRASS !!!"));
+        superHoeMeta.getPersistentDataContainer().set(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BOOLEAN, true);
+        superHoe.setItemMeta(superHoeMeta);
+
+        return superHoe;
+    }
+
     @SuppressWarnings("deprecation")
     public static ItemStack createIronBreakerShield(){
         ItemStack ironBreakerShield = new ItemStack(Material.SHIELD);

@@ -1181,6 +1181,24 @@ public final class CustomRecipes {
 
 
         //
+        //      superHoe Pickaxe recipe
+        //
+        ItemStack superHoePickaxe = CreateCustomItem.createSuperHoe();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "SuperHoeRecipe");
+        recipeKeys.add(key);
+        
+        ShapedRecipe superHoePickaxeRecipe = new ShapedRecipe(key, superHoePickaxe);
+        superHoePickaxeRecipe.shape(
+            "DF ",
+            " S ",
+            " S ");
+            superHoePickaxeRecipe.setIngredient('F', new RecipeChoice.ExactChoice(soulFragment));
+            superHoePickaxeRecipe.setIngredient('D', Material.DIAMOND);
+            superHoePickaxeRecipe.setIngredient('S', Material.STICK);
+        Bukkit.addRecipe(superHoePickaxeRecipe);
+
+
+        //
         //      Treasure Fishing Rod recipe
         //
         ItemStack treasureFish = CreateCustomItem.createTreasureFishingRod();

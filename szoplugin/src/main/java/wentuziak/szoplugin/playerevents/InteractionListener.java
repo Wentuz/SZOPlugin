@@ -384,6 +384,7 @@ public class InteractionListener implements Listener{
             if (itemInMainHand.hasItemMeta()){
                 playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
+                    CustomTools.treasureFishingRodEffect(8 * luckLvl ,player, projectile, luckLvl, "Mobs");
                     CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "Ore");
                     CustomTools.treasureFishingRodEffect(22 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
                 }
@@ -397,6 +398,7 @@ public class InteractionListener implements Listener{
             }
             if (player.getPersistentDataContainer().has(Keys.RACE_MEWCHANT)) {
                 RaceEffects.mewchantFishEvent(player, projectile);
+                CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
             }
         }
     }

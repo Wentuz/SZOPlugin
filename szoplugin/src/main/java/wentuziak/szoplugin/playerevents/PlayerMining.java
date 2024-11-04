@@ -44,11 +44,14 @@ public class PlayerMining implements Listener{
             else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);
             }
+            else if (playerContainer.has(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BYTE)) {
+                CustomTools.superHoeEffect(luckLvl, brokenBlock);
+            }
             //  Bootleg netherite pickaxe soul essence from diamonds
             else if (playerContainer.has(Keys.CUSTOM_ESSENCE_PICKER, PersistentDataType.BYTE)) {
                 if (LogicHolder.critRoll((luckLvl + 1) * 25)) {
                     if ((brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE || brokenBlock.getType() == Material.DIAMOND_ORE)) {
-                        for(int i = 3 - luckLvl; i < 4; i++){
+                        for(int i = 3 - luckLvl; i < 4 + luckLvl; i++){
                             if (LogicHolder.critRoll((luckLvl * 20))) {
                                 brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
                             }
