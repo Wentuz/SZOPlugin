@@ -128,6 +128,7 @@ STUFF IN HERE:
         13. enchanter shield - makes ur arrows stronger
         12. wind blast shield - knockback at entities around
         13. Effect Transfuser - gives 50% of your current effect duration to hit entity
+        14. Ur mom - perfect hoe
     # IV Ingerients:
         1.  Soul Fragment - used for magical purposes,
         2.  Mechanical Parts - used for more advanced constructs,

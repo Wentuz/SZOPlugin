@@ -17,6 +17,7 @@ import org.bukkit.entity.Piglin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.EntityBreedEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
 import org.bukkit.event.entity.EntityTargetEvent;
@@ -49,15 +50,6 @@ public class EntityListener implements Listener {
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         ItemStack itemOffHand = player.getInventory().getItemInOffHand();
 
-
-        if (player.getPersistentDataContainer().has(Keys.RACE_ELF)
-        && (itemInHand.getType().isEdible() || itemOffHand.getType().isEdible())) {
-            RaceEffects.elfFeedEffect((LivingEntity) entity);
-            if (LogicHolder.critRoll(25)) {
-                entity.getWorld().dropItemNaturally(entity.getLocation(), CreateCustomItem.createSoulEssence());
-            }
-        }
-        
         if (itemInHand == null || !itemInHand.hasItemMeta()) {
             return;
         }
@@ -65,6 +57,22 @@ public class EntityListener implements Listener {
         
         if (playerContainer.has(Keys.CUSTOM_EFFECT_TRANSFUSER, PersistentDataType.BYTE)) {
             MagicItems.effectTransfuserEffect(player, (LivingEntity) entity);
+        }
+    }
+
+    @EventHandler
+    public void onEntityBreed(EntityBreedEvent event){
+        Entity entity = event.getEntity();
+
+        if (event.getBreeder() instanceof Player) {            
+            Player player = (Player) event.getBreeder();
+    
+            if (player.getPersistentDataContainer().has(Keys.RACE_ELF)) {
+                RaceEffects.elfFeedEffect((LivingEntity) entity);
+                if (LogicHolder.critRoll(45)) {
+                    entity.getWorld().dropItemNaturally(entity.getLocation(), CreateCustomItem.createSoulEssence());
+                }
+            }
         }
     }
 

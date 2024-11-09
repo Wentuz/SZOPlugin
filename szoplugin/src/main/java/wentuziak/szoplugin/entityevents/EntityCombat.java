@@ -186,16 +186,28 @@ public class EntityCombat implements Listener{
                     }
             }
         }
-
-        if (killedEntity.getType() == EntityType.CREEPER 
-        && killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
-            Weapons.smokeEffect(killedEntity.getLocation());
+        //
+        //      By tag
+        //
+        if (killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             Location killedEntityLocation = killedEntity.getLocation();
-            for(int i = 0; i < 4; i++){
-                if (LogicHolder.critRoll(45)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
+            if (killedEntity.getType() == EntityType.CREEPER ){
+                Weapons.smokeEffect(killedEntity.getLocation());
+                for(int i = 0; i < 4; i++){
+                    if (LogicHolder.critRoll(45)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
+                    }
                 }
             }
+            if (killedEntity.getType() == EntityType.SKELETON ){
+                Weapons.smokeEffect(killedEntity.getLocation());
+                for(int i = 0; i < 8; i++){
+                    if (LogicHolder.critRoll(65)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createCursedArrow());
+                    }
+                }
+            }
+            
         }
 
     }

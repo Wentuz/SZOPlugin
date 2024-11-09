@@ -953,7 +953,7 @@ public class CreateCustomItem {
 
         superHoeMeta.setDisplayName(ChatColor.DARK_PURPLE + "Your mom");
         superHoeMeta.setLore(Arrays.asList(
-            "TOUCH GRASS !!!"));
+            "Perfect hoe"));
         superHoeMeta.getPersistentDataContainer().set(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BOOLEAN, true);
         superHoe.setItemMeta(superHoeMeta);
 
@@ -1329,7 +1329,7 @@ public class CreateCustomItem {
 
         roseTeaMeta.setDisplayName(ChatColor.RED + "Rose Tea");
 
-        roseTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 30, 0), true);
+        roseTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 60, 0), true);
         roseTeaMeta.setColor(Color.fromRGB(255, 0, 0));
         roseTea.setItemMeta(roseTeaMeta);
 
@@ -1361,7 +1361,7 @@ public class CreateCustomItem {
 
         berryTeaMeta.setDisplayName(ChatColor.WHITE + "Sweet Berry Tea");
 
-        berryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 60, 0), true);
+        berryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 60 * 2, 0), true);
         berryTeaMeta.setColor(Color.fromRGB(230, 40, 0));
         berryTea.setItemMeta(berryTeaMeta);
 
@@ -1377,7 +1377,7 @@ public class CreateCustomItem {
 
         glowBerryTeaMeta.setDisplayName(ChatColor.WHITE + "Glow Berry Tea");
 
-        glowBerryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 60 * 2, 0), true);
+        glowBerryTeaMeta.addCustomEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 60 * 4, 0), true);
         glowBerryTeaMeta.setColor(Color.fromRGB(240, 255, 0));
         glowBerryTea.setItemMeta(glowBerryTeaMeta);
 
