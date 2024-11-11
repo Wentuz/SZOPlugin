@@ -140,6 +140,9 @@ public class EntityCombat implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
                     if (LogicHolder.critRoll((luckLvl))) {
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
+                        int droppedXp = event.getDroppedExp();
+                        
+                        event.setDroppedExp(droppedXp * 2);
                     }
                 }
             }

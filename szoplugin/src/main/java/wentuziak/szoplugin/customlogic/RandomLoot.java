@@ -234,6 +234,6 @@ public class RandomLoot {
         int randomLevel = rand.nextInt(maxLevel) + 1;
 
         // Apply the enchantment to the item
-        item.addUnsafeEnchantment(randomEnchantment, randomLevel);
+        item.addEnchantment(randomEnchantment, randomLevel);
     }
 }

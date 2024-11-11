@@ -291,6 +291,7 @@ public class RaceEffects {
     }
 
     public static void mewchantBarterEvent(List<ItemStack> barteredItems){
+        if (LogicHolder.critRoll(10)) { return; }
         barteredItems.clear();
 
         barteredItems.add(getRandomBarterItem());
@@ -298,31 +299,33 @@ public class RaceEffects {
 
     private static ItemStack getRandomBarterItem() {
         int roll = rand.nextInt(100);
-
-        if (roll < 5) {
-            return new ItemStack(Material.NETHERITE_SCRAP, 1);
-        } else if (roll < 12) {
+        
+        if (roll < 2) {
+            return new ItemStack(Material.GOLDEN_APPLE, 1);
+        } else if (roll < 8) {
             ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
             RandomLoot.addRandomEnchantment(enchantedBook);
             return enchantedBook;
-        } else if (roll < 20) {
+        } else if (roll < 15) {
             return new ItemStack(Material.ENDER_PEARL, rand.nextInt(3) + 1);
-        } else if (roll < 28) {
+        } else if (roll < 20) {
             return new ItemStack(Material.OBSIDIAN, rand.nextInt(2) + 1);
-        } else if (roll < 38) {
+        } else if (roll < 25) {
             return new ItemStack(Material.CRYING_OBSIDIAN, rand.nextInt(2) + 1);
-        } else if (roll < 48) {
+        } else if (roll < 30) {
             return new ItemStack(Material.SPECTRAL_ARROW, rand.nextInt(6) + 10);
-        } else if (roll < 58) {
+        } else if (roll < 35) {
             return new ItemStack(CreateCustomItem.createSoulEssence());
-        } else if (roll < 68) {
-            return new ItemStack(Material.IRON_INGOT, rand.nextInt(3) + 2);
-        } else if (roll < 78) {
+        } else if (roll < 45) {
+            return new ItemStack(Material.BLACKSTONE, rand.nextInt(15) + 2);
+        } else if (roll < 60) {
             return new ItemStack(Material.STRING, rand.nextInt(6) + 6);
-        } else if (roll < 88) {
+        } else if (roll < 70) {
             return new ItemStack(Material.LEATHER, rand.nextInt(4) + 3);
-        } else if (roll < 93) {
+        } else if (roll < 80) {
             return new ItemStack(Material.GLOWSTONE_DUST, rand.nextInt(4) + 2);
+        } else if (roll < 90) {
+            return new ItemStack(Material.NETHER_BRICKS, rand.nextInt(24) + 2);
         } else if (roll < 96) {
             return new ItemStack(Material.MAGMA_CREAM, rand.nextInt(2) + 1);
         } else if (roll < 98) {
@@ -330,7 +333,7 @@ public class RaceEffects {
         } else if (roll < 99) {
             return new ItemStack(Material.GHAST_TEAR, 1);
         } else {
-            return new ItemStack(Material.GOLDEN_APPLE, 1);
+            return new ItemStack(Material.NETHERITE_SCRAP, 1);
         }
     }
 
