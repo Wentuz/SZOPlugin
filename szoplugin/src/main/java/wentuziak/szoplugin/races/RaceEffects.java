@@ -208,14 +208,15 @@ public class RaceEffects {
     //
     public static void caraGlideEvent(Player player){   
         //speed boost
-        if (player.getFoodLevel() > 0) {
+        if (player.getFoodLevel() > 0 && !player.hasCooldown(Material.NETHER_STAR)) {
             Vector direction = player.getLocation().getDirection().normalize();
-            player.setVelocity(direction.multiply(1.1));
+            player.setVelocity(direction.multiply(1.3));
             player.setFoodLevel(player.getFoodLevel() - 1);
             
             if (player.getFoodLevel() < 0) {
                 player.setFoodLevel(0);
             }
+            player.setCooldown(Material.NETHER_STAR, 20 * 2);
         }
         // fly
         if (!TaskManager.isTaskRunning(player, "caraGlide")) {            
@@ -223,7 +224,7 @@ public class RaceEffects {
             caraGlideTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.2)) {
+                    if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.2) || player.isInWater()) {
                         stopCaraGlideTask(finalPlayer);
                         LogicHolder.givePotionEffect(finalPlayer, "SLOW_FALLING", 20, 0);
                         finalPlayer.setGliding(false);

@@ -203,7 +203,6 @@ public class EntityCombat implements Listener{
                 }
             }
             if (killedEntity.getType() == EntityType.SKELETON ){
-                Weapons.smokeEffect(killedEntity.getLocation());
                 for(int i = 0; i < 8; i++){
                     if (LogicHolder.critRoll(65)) {
                         killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createCursedArrow());
