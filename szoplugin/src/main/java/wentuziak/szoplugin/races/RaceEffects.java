@@ -417,8 +417,9 @@ public class RaceEffects {
     //      Sanguinite
     //
     public static void sanguiniteKillEffect(Player player){
+        LogicHolder.givePotionEffect(player, "SATURATION", 1, 0);
         if (LogicHolder.critRoll(50)) {
-            LogicHolder.givePotionEffect(player, "SATURATION", 1, 0);
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20*10, 0);
             LogicHolder.givePotionEffect(player, "ABSORPTION", 20*10, 0);
         }
         stopSanguiniteHungerTask(player);
@@ -449,6 +450,7 @@ public class RaceEffects {
                         return;
                     }
                     LogicHolder.givePotionEffect(finalPlayer, "HUNGER", 20 * 60 * 15, 0);
+                    LogicHolder.givePotionEffect(finalPlayer, "STRENGTH", 20 * 60 * 15, 0);
                 }
                 }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 60 * 5);
             TaskManager.addTask(player, "sanguiniteHunger", sanguiniteHungerTask);
@@ -459,15 +461,14 @@ public class RaceEffects {
             if (player.hasPotionEffect(PotionEffectType.HUNGER)) {
                 int numberOfDrops = (int)(Math.random() * 12 + 1);
 
-                LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");
                 while (numberOfDrops > 0) {
                     if (LogicHolder.critRoll(80)) {player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());}
-                    if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, player.getLocation(), "Mobs");}
-                    if (LogicHolder.critRoll(33)) {LogicHolder.rollTreasure(3, player.getLocation(), "Fishing");}
-                    
                     numberOfDrops--;
                 }
+                if (LogicHolder.critRoll(80)) {player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSanguiniteScroll());}
+
                 player.removePotionEffect(PotionEffectType.HUNGER);
+                player.removePotionEffect(PotionEffectType.STRENGTH);
             }
 
             TaskManager.stopTask(player, "sanguiniteHunger");

@@ -30,7 +30,7 @@ public class PlayerMining implements Listener{
         Block brokenBlock = event.getBlock();
         int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.FORTUNE);
 
-
+        
         if (itemInMainHand.hasItemMeta()) {
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_DWARF_PICK, PersistentDataType.BYTE)) {

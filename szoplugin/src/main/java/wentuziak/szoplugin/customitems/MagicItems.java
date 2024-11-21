@@ -10,6 +10,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.type.AmethystCluster;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Bogged;
 import org.bukkit.entity.CaveSpider;
@@ -94,9 +95,18 @@ public class MagicItems {
         }
     }
 
-    public static void spiritLeech(Player player, PersistentDataContainer playerContainer){
+    public static void spiritLeech(Player player, PersistentDataContainer playerContainer, boolean isSpellBoosted){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);
         LogicHolder.throwSnowball(player, playerContainer, 4);
+
+        if (isSpellBoosted) {
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                spiritLeech(player, playerContainer, false);
+            }, 5L);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                spiritLeech(player, playerContainer, false);
+            }, 10L);
+        }
     }
 
     public static void spiritLeechEffect(LivingEntity targetEntity){
@@ -318,6 +328,12 @@ public class MagicItems {
                 }else{
                     player.getWorld().spawnEntity(player.getLocation(), EntityType.HORSE);
                 }
+                break;
+            case AMETHYST_SHARD:
+                
+                //spiritLeech(player, container, isBoosted);
+                return;
+                //break;
             default:
                 return;
         }

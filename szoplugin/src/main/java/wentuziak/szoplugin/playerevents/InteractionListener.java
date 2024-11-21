@@ -149,15 +149,7 @@ public class InteractionListener implements Listener{
                 return;
             }
             if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.spiritLeech(player, playerContainer);
-                if (isSpellBoosted) {
-                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
-                    }, 5L);
-                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        MagicItems.spiritLeech(player, itemInMainHand.getItemMeta().getPersistentDataContainer());
-                    }, 10L);
-                }
+                MagicItems.spiritLeech(player, playerContainer, isSpellBoosted);
 
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 5);
                 return;
