@@ -43,17 +43,16 @@ public class Armour {
 
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
-            double currentHealth = damager.getHealth(); //get hp to restore it later
 
             damager.getWorld().createExplosion(damager.getLocation(), 1, false, false);
         
-            damager.setHealth(currentHealth); //restore hp
+            LogicHolder.givePotionEffect(player, "HEAL", 1, 1);
         }
     }
-    public static void reflectiveChestEffect(int chanceForCrit,int thornLvl , LivingEntity damager){
+    public static void reflectiveChestEffect(int chanceForCrit, int thornLvl , LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                int damage = thornLvl < 1 ? 0 : thornLvl/2 + 1;
+                int damage = thornLvl < 1 ? 0 : 1;
                 LogicHolder.givePotionEffect(damager, "HARM", 2, damage);
                 LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
                 damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
