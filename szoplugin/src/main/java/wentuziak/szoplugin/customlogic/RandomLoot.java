@@ -11,6 +11,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.AxolotlBucketMeta;
+import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 
@@ -221,19 +222,26 @@ public class RandomLoot {
         maxEnchantmentLevels.put(Enchantment.DENSITY, 5);
     }
 
-    // Method to add a random enchantment to the ItemStack
     public static void addRandomEnchantment(ItemStack item) {
         // Get a random enchantment from the map
         Enchantment[] enchantments = maxEnchantmentLevels.keySet().toArray(new Enchantment[0]);
         Enchantment randomEnchantment = enchantments[rand.nextInt(enchantments.length)];
 
-        // Get the max level for that enchantment
         int maxLevel = maxEnchantmentLevels.get(randomEnchantment);
-
-        // Generate a random level between 1 and the max level
         int randomLevel = rand.nextInt(maxLevel) + 1;
 
         // Apply the enchantment to the item
-        item.addEnchantment(randomEnchantment, randomLevel);
+        if (item.getType() == Material.ENCHANTED_BOOK) {
+            addBookEnchantment(item, randomEnchantment, randomLevel);
+        }else{   
+            item.addUnsafeEnchantment(randomEnchantment, randomLevel);
+        }
+    }   
+
+    public static ItemStack addBookEnchantment(ItemStack item, Enchantment enchantment, int level) {
+        EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();
+        meta.addStoredEnchant(enchantment, level, true);
+        item.setItemMeta(meta);
+        return item;
     }
 }

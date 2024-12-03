@@ -304,11 +304,11 @@ public class RaceEffects {
         if (roll < 2) {
             return new ItemStack(Material.GOLDEN_APPLE, 1);
         } else if (roll < 8) {
+            return new ItemStack(Material.ENDER_PEARL, rand.nextInt(3) + 1);
+        } else if (roll < 150) {
             ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
             RandomLoot.addRandomEnchantment(enchantedBook);
             return enchantedBook;
-        } else if (roll < 15) {
-            return new ItemStack(Material.ENDER_PEARL, rand.nextInt(3) + 1);
         } else if (roll < 20) {
             return new ItemStack(Material.OBSIDIAN, rand.nextInt(2) + 1);
         } else if (roll < 25) {
