@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -95,16 +96,16 @@ public class MagicItems {
         }
     }
 
-    public static void spiritLeech(Player player, PersistentDataContainer playerContainer, boolean isSpellBoosted){
+    public static void spiritLeech(Player player, NamespacedKey key, boolean isSpellBoosted){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);
-        LogicHolder.throwSnowball(player, playerContainer, 4);
+        LogicHolder.throwSnowball(player, key, 4);
 
         if (isSpellBoosted) {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                spiritLeech(player, playerContainer, false);
+                spiritLeech(player, key, false);
             }, 5L);
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                spiritLeech(player, playerContainer, false);
+                spiritLeech(player, key, false);
             }, 10L);
         }
     }
@@ -120,9 +121,9 @@ public class MagicItems {
         LogicHolder.givePotionEffect(targetEntity, "DARKNESS", 20*10,0);
     }
 
-    public static void spiderYeet(Player player, PersistentDataContainer playerContainer){
+    public static void spiderYeet(Player player, NamespacedKey key){
         player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
-        LogicHolder.throwSnowball(player, playerContainer, 4);
+        LogicHolder.throwSnowball(player, key, 4);
     }
 
     public static void spiderYeetEffect(Location location){
@@ -239,9 +240,9 @@ public class MagicItems {
         LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
     }
 
-    public static void webTrapThrow(Player player, PersistentDataContainer playerContainer){
+    public static void webTrapThrow(Player player, NamespacedKey key){
         player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
-        LogicHolder.throwSnowball(player, playerContainer, 6);
+        LogicHolder.throwSnowball(player, key, 6);
     }
 
     public static void webTrapEffect(Location location){
@@ -330,10 +331,17 @@ public class MagicItems {
                 }
                 break;
             case AMETHYST_SHARD:
-                
-                //spiritLeech(player, container, isBoosted);
-                return;
-                //break;
+                spiritLeech(player, Keys.CUSTOM_SPIRIT_LEECH, isBoosted);
+                break;
+            case COPPER_INGOT:
+                magicStormCall(player, isBoosted);
+                break;
+            case SPIDER_EYE:
+                spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
+                break;
+            case :
+                spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
+                break;
             default:
                 return;
         }

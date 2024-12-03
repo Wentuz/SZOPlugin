@@ -133,66 +133,78 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-        if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta() 
-        && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
-            ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
-            PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-            PersistentDataContainer bootContainer;
-            boolean isSpellBoosted = false;
-            if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
+            if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()
+            && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
+
+                ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
+                PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                PersistentDataContainer bootContainer;
+                boolean isSpellBoosted = false;
+
+                // Check if boots have the spell boost key
+                if (itemOnFeet != null && itemOnFeet.hasItemMeta()) {
                 bootContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
                 if (bootContainer.has(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BYTE)) {
                     isSpellBoosted = true;
                 }
-            }
-            if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
+                }
+
+                // Handle teleport spell
+                if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.teleportSpell(player, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
-            }
-            if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.spiritLeech(player, playerContainer, isSpellBoosted);
+                }
 
+                // Handle spirit leech
+                if (playerContainer.has(Keys.CUSTOM_SPIRIT_LEECH, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.spiritLeech(player, Keys.CUSTOM_SPIRIT_LEECH, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 5);
                 return;
-            }   
-            if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
-                if (isSpellBoosted) {
-                    MagicItems.spiderYeet(player, playerContainer);
                 }
-                MagicItems.spiderYeet(player, playerContainer);
+
+                // Handle spider yeet
+                if (playerContainer.has(Keys.CUSTOM_SPIDER_YEET, PersistentDataType.BYTE) && clickedRightButton) {
+                if (isSpellBoosted) {
+                    MagicItems.spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
+                }
+                MagicItems.spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 15);
                 return;
-            }   
-            if (playerContainer.has(Keys.CUSTOM_WEB_TRAP, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.webTrapThrow(player, playerContainer);
+                }
+
+                // Handle web trap
+                if (playerContainer.has(Keys.CUSTOM_WEB_TRAP, PersistentDataType.BYTE) && clickedRightButton) {
+                MagicItems.webTrapThrow(player, Keys.CUSTOM_WEB_TRAP);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
-            }   
-            if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
+                }
+
+                // Handle obliterate
+                if (playerContainer.has(Keys.CUSTOM_OBLITERATE, PersistentDataType.BYTE) && clickedRightButton) {
                 if (isSpellBoosted) {
-                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20*2, 1);
+                    LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 2, 1);
                     MagicItems.obliterate(player);
                 }
                 MagicItems.obliterate(player);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 360);
                 return;
-            }   
-            if (playerContainer.has(Keys.CUSTOM_SANGUINITE_SCROLL, PersistentDataType.BYTE) && clickedRightButton) {
-            
+                }
+
+                // Handle sanguinite scroll
+                if (playerContainer.has(Keys.CUSTOM_SANGUINITE_SCROLL, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.crimsonMagic(player, itemInOffHand, itemInMainHand, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 20);
-                
                 return;
-            }   
-            if (playerContainer.has(Keys.CUSTOM_MAGIC_STORM, PersistentDataType.BYTE) && clickedRightButton) {
-            
+                }
+
+                // Handle magic storm
+                if (playerContainer.has(Keys.CUSTOM_MAGIC_STORM, PersistentDataType.BYTE) && clickedRightButton) {
                 MagicItems.magicStormCall(player, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 30);
-                
                 return;
-            }   
-        }
+                }
+            }
 
         // Main hand non magic
         if (clickedRightButton && itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()) {

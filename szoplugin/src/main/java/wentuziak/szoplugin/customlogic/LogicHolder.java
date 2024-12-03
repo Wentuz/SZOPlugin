@@ -68,7 +68,7 @@ public class LogicHolder {
         }
     }
 
-    public static void throwSnowball(LivingEntity livingEntity, PersistentDataContainer playerContainer, int velocity){
+    public static void throwSnowball(LivingEntity livingEntity, NamespacedKey key, int velocity){
         Snowball snowball = livingEntity.launchProjectile(Snowball.class);
 
         Map<NamespacedKey, String> customTags = Map.of(
@@ -79,16 +79,13 @@ public class LogicHolder {
             Keys.CUSTOM_THROWING_FIREWORK, "throwingFirework",
             Keys.CUSTOM_WEB_TRAP, "webTrap"
         );
-        // Iterate over the map and set the matching key-value pair
-        for (Map.Entry<NamespacedKey, String> entry : customTags.entrySet()) {
-            if (playerContainer.has(entry.getKey(), PersistentDataType.BYTE)) {
-                snowball.getPersistentDataContainer().set(entry.getKey(), PersistentDataType.STRING, entry.getValue());
-                break; // Exit loop once we find a matching key
-            }
+        
+        if (customTags.containsKey(key)) {
+            snowball.getPersistentDataContainer().set(key, PersistentDataType.STRING, customTags.get(key));
         }
 
         snowball.setVelocity(livingEntity.getLocation().getDirection().multiply(velocity));
-            snowball.setShooter(livingEntity);
+        snowball.setShooter(livingEntity);
         }
 
     public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {

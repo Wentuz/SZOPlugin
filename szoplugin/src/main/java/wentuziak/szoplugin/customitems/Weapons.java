@@ -1,6 +1,7 @@
 package wentuziak.szoplugin.customitems;
 
 
+import java.security.Key;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -25,6 +26,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
 
+import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
@@ -168,7 +170,7 @@ public class Weapons {
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer, 1);
+        LogicHolder.throwSnowball(player, Keys.CUSTOM_GRENADE, 1);
     }
 
     public static void grenadeEffect(Location location){
@@ -225,7 +227,7 @@ public class Weapons {
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer, 3);
+        LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 3);
     }
 
     public static void fireworkEffect(Location location, int power){
@@ -235,7 +237,7 @@ public class Weapons {
 
     public static void smokeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player, playerContainer, 2);
+        LogicHolder.throwSnowball(player, Keys.CUSTOM_SMOKE_BOMB, 2);
     }
 
     public static void smokeEffect(Location location){
