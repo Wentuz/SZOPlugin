@@ -339,8 +339,8 @@ public class MagicItems {
             case SPIDER_EYE:
                 spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
                 break;
-            case :
-                spiderYeet(player, Keys.CUSTOM_SPIDER_YEET);
+            case TNT_MINECART:
+                obliterate(player);
                 break;
             default:
                 return;

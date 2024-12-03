@@ -1,5 +1,7 @@
 package wentuziak.szoplugin.customitems;
 
+import java.util.Collection;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -61,15 +63,15 @@ public class Armour {
     }
 
     public static void witchHelmetEffect(Player player){
-        if (player.getActivePotionEffects() == null) {
+        if (player.getActivePotionEffects() == null || player.hasCooldown(Material.NETHERITE_HELMET)) {
             return;
         }else{
+            Collection<PotionEffect> potionCollection = player.getActivePotionEffects();
             
             LogicHolder.entityPotionEffectTimer(player, 0.75F, 1);
-            player.setCooldown(Material.NETHERITE_HELMET, 20 * 10);
+            player.setCooldown(Material.NETHERITE_HELMET, 20 * 20);
             
         }
-
     }
 
     public static void ninjaPantEffect(Player player){

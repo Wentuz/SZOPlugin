@@ -74,7 +74,7 @@ public class MobActions implements Listener{
             spiderContainer.set(webTrapKey, PersistentDataType.BYTE, (byte) 1);
 
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                LogicHolder.throwSnowball(spider, spiderContainer, 3);
+                LogicHolder.throwSnowball(spider, Keys.CUSTOM_WEB_TRAP, 3);
             }, 20L * 3);
 
         }

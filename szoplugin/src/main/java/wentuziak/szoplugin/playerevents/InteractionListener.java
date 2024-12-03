@@ -461,7 +461,6 @@ public class InteractionListener implements Listener{
                 Armour.ramCapSprint(player);
             }
             if (playerContainer.has(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BYTE) && !player.hasCooldown(Material.NETHERITE_HELMET)) {
-                player.setCooldown(Material.NETHERITE_HELMET, 20 * 2);
                 Armour.witchHelmetEffect(player);
             }
             
