@@ -20,6 +20,7 @@ import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -27,6 +28,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
+import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customcrafting.RaceCrafting;
 import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.CustomTools;
@@ -259,7 +261,7 @@ public class InteractionListener implements Listener{
             if (!player.isClimbing() && !isInWater) {
                 if (!player.hasCooldown(Material.LEATHER_LEGGINGS)) {
                     if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE) 
-                    && player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
+                    && (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE) || player.getPersistentDataContainer().has(Keys.RACE_CARA))) {
                         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                             Armour.jumpPackEffect(player);
                         }, 10L);
@@ -278,9 +280,14 @@ public class InteractionListener implements Listener{
             RaceEffects.sanguiniteJumpEffect(player);
         }
 
-        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 0.5)
-        && !player.isClimbing() && !isInWater) {
-            RaceEffects.caraGlideEvent(player);
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && LogicHolder.isPlayerAboveGround(player, 1)
+        && !player.isClimbing() && !isInWater && player.isSneaking()) {
+            if (!TaskManager.isTaskRunning(player, "caraGlide")) {
+                RaceEffects.caraGlideEvent(player);
+            }else{
+                RaceEffects.stopCaraGlideTask(player);
+            }
         }else{
             RaceEffects.stopCaraGlideTask(player);
         }
@@ -475,6 +482,22 @@ public class InteractionListener implements Listener{
                     }
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerSwapHand(PlayerSwapHandItemsEvent event){
+        Player player = event.getPlayer();
+        ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
+        ItemStack itemInOffHand = player.getInventory().getItemInOffHand();
+
+        if (itemInMainHand.getType() != Material.AIR || itemInOffHand.getType() != Material.AIR) {
+            return;
+        }
+
+        if (player.getPersistentDataContainer().has(Keys.RACE_CARA) && 
+        LogicHolder.isPlayerAboveGround(player, 0.5) && !player.isClimbing()) {
+            RaceEffects.caraJumpEvent(player);
         }
     }
 }

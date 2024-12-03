@@ -206,11 +206,11 @@ public class RaceEffects {
     //
     //      CARA
     //
-    public static void caraGlideEvent(Player player){   
+    public static void caraJumpEvent(Player player){
         //speed boost
         if (player.getFoodLevel() > 0 && !player.hasCooldown(Material.NETHER_STAR)) {
             Vector direction = player.getLocation().getDirection().normalize();
-            player.setVelocity(direction.multiply(1.3));
+            player.setVelocity(direction.multiply(1.5));
             player.setFoodLevel(player.getFoodLevel() - 1);
             
             if (player.getFoodLevel() < 0) {
@@ -218,6 +218,10 @@ public class RaceEffects {
             }
             player.setCooldown(Material.NETHER_STAR, 20 * 2);
         }
+    }
+
+    public static void caraGlideEvent(Player player){   
+        
         // fly
         if (!TaskManager.isTaskRunning(player, "caraGlide")) {            
             final Player finalPlayer = player;
@@ -305,7 +309,7 @@ public class RaceEffects {
             return new ItemStack(Material.GOLDEN_APPLE, 1);
         } else if (roll < 8) {
             return new ItemStack(Material.ENDER_PEARL, rand.nextInt(3) + 1);
-        } else if (roll < 150) {
+        } else if (roll < 15) {
             ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
             RandomLoot.addRandomEnchantment(enchantedBook);
             return enchantedBook;
