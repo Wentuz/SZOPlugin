@@ -292,14 +292,14 @@ public class RaceEffects {
     }
 
     public static void mewchantBarterEvent(List<ItemStack> barteredItems){
-        if (LogicHolder.critRoll(10)) { return; }
+        if (LogicHolder.critRoll(5)) { return; }
         barteredItems.clear();
 
         barteredItems.add(getRandomBarterItem());
     }
 
     private static ItemStack getRandomBarterItem() {
-        int roll = rand.nextInt(100);
+        int roll = rand.nextInt(101);
         
         if (roll < 2) {
             return new ItemStack(Material.GOLDEN_APPLE, 1);
@@ -326,13 +326,13 @@ public class RaceEffects {
         } else if (roll < 80) {
             return new ItemStack(Material.GLOWSTONE_DUST, rand.nextInt(4) + 2);
         } else if (roll < 90) {
-            return new ItemStack(Material.NETHER_BRICKS, rand.nextInt(24) + 2);
+            return new ItemStack(Material.NETHER_BRICK, rand.nextInt(12) + 2);
         } else if (roll < 96) {
             return new ItemStack(Material.MAGMA_CREAM, rand.nextInt(2) + 1);
         } else if (roll < 98) {
             return new ItemStack(Material.SADDLE, 1);
         } else if (roll < 99) {
-            return new ItemStack(Material.GHAST_TEAR, 1);
+            return new ItemStack(Material.GHAST_TEAR, rand.nextInt(2) + 1);
         } else {
             return new ItemStack(Material.NETHERITE_SCRAP, 1);
         }
