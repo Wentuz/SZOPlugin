@@ -1,5 +1,6 @@
 package wentuziak.szoplugin.customitems;
 
+import java.lang.reflect.AccessFlag.Location;
 import java.util.Collection;
 
 import org.bukkit.Bukkit;
@@ -54,9 +55,11 @@ public class Armour {
     public static void reflectiveChestEffect(int chanceForCrit, int thornLvl , LivingEntity damager){
         if (LogicHolder.critRoll(chanceForCrit)){
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                int damage = thornLvl < 1 ? 0 : 1;
-                LogicHolder.givePotionEffect(damager, "HARM", 2, damage);
-                LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 2);
+
+                damager.getWorld().spawnParticle(Particle.LAVA, damager.getLocation(), 1, 0, 0, 0, 0); // Adjust particle settings as needed
+
+                damager.damage(thornLvl * 3);
+                LogicHolder.givePotionEffect(damager, "SLOW", 20 * 5, 1);
                 damager.getLocation().getWorld().spawnParticle(Particle.ENCHANTED_HIT, damager.getLocation(), 10, 0.1, 0.1, 0.1, 0.05);
             }, 10L);
         }

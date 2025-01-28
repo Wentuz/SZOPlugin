@@ -21,15 +21,16 @@ import org.bukkit.entity.Snowball;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.RayTraceResult;
+import org.bukkit.Particle;
 
 import wentuziak.szoplugin.Keys;
 import java.util.List;
 import java.util.Map;
+
 
 
 
@@ -259,6 +260,8 @@ public class LogicHolder {
         Material.GOLDEN_BOOTS, Material.DIAMOND_BOOTS, Material.NETHERITE_BOOTS
     };
 
+    public static final String VerticalParticleLine = null;
+
     public static void equipRandomArmor(boolean isTiered, LivingEntity entity){
         int random = (int)(Math.random() * 5);
 
@@ -277,4 +280,6 @@ public class LogicHolder {
          entity.getEquipment().setLeggingsDropChance(0.05F);
          entity.getEquipment().setBootsDropChance(0.05F);
     }
+
+    
 }
