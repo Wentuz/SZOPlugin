@@ -114,7 +114,7 @@ public class LogicHolder {
 
     public static void modifyCurrentHeatlhPoints(LivingEntity targetEntity, Double amount){
         double currentHealth = targetEntity.getHealth();
-        double maxHealth = targetEntity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double maxHealth = targetEntity.getAttribute(Attribute.MAX_HEALTH).getValue();
 
         double newHealth = currentHealth + amount;
         if (newHealth > maxHealth) {

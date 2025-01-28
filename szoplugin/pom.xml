@@ -7,7 +7,7 @@
 
 	<groupId>wentuziak</groupId>
 	<artifactId>szoplugin</artifactId>
-	<version>0.2.0</version>
+	<version>spigot-0.3.0</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +34,7 @@
 		<dependency>
     		<groupId>org.spigotmc</groupId>
     		<artifactId>spigot-api</artifactId>
-    		<version>1.21-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
+    		<version>1.21.4-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
     		<scope>provided</scope>
 		</dependency>
 	

@@ -17,6 +17,7 @@ import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -163,11 +164,18 @@ public class RaceEffects {
     //
     public static void celestialAttackEvent(Player player,  LivingEntity targetEntity){
         if (LogicHolder.critRoll(20)) {
-            LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20 * 10, 0);
-            LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 10, 0);
+            LogicHolder.givePotionEffect(targetEntity, "GLOWING", 20 * 15, 0);
         }
         LogicHolder.givePotionEffect(player, "INSTANT_HEALTH", 1, 0);
-        
+
+        if (targetEntity.hasPotionEffect(PotionEffectType.GLOWING)) {
+            LogicHolder.givePotionEffect(targetEntity, "WEAKNESS", 20 * 5, 0);
+            LogicHolder.givePotionEffect(targetEntity, "SLOWNESS", 20 * 5, 0);
+
+            if (targetEntity.getHealth() <= 4) {
+                targetEntity.getWorld().createExplosion(targetEntity.getLocation(), 2, false, false);
+            }
+        }
     }
     
     //

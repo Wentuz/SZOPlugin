@@ -61,11 +61,11 @@ public class CreateCustomItem {
             ChatColor.YELLOW + "The absolute leader protects his kin !"));
         angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
         AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ArmorModifierAngelSword);
+        angelSwordMeta.addAttributeModifier(Attribute.ARMOR, ArmorModifierAngelSword);
         AttributeModifier attackSpeedModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -2.4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierAngelSword);
+        angelSwordMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierAngelSword);
         AttributeModifier attackDamageModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 8.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        angelSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierAngelSword);
+        angelSwordMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackDamageModifierAngelSword);
         angelSword.setItemMeta(angelSwordMeta);
 
         return angelSword;
@@ -82,9 +82,9 @@ public class CreateCustomItem {
         daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
         daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
         AttributeModifier attackSpeedModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierDaemonSword);
+        daemonSwordMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierDaemonSword);
         AttributeModifier attackDamageModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 10.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        daemonSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierDaemonSword);
+        daemonSwordMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackDamageModifierDaemonSword);
         daemonSword.setItemMeta(daemonSwordMeta);
 
         return daemonSword;
@@ -153,18 +153,18 @@ public class CreateCustomItem {
         scurvyTridentMeta.setLore(Arrays.asList(
             "Ahoy !"));
         AttributeModifier attackSpeedModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -2.9, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierScurvyTrident);
+        scurvyTridentMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierScurvyTrident);
         AttributeModifier attackDamageModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 12.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackDamageModifierScurvyTrident);
+        scurvyTridentMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackDamageModifierScurvyTrident);
         AttributeModifier fallModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "fall", -0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTrident);
+        scurvyTridentMeta.addAttributeModifier(Attribute.FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTrident);
         AttributeModifier flyModifierScurvyTrident = new AttributeModifier(UUID.randomUUID(), "fly", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, flyModifierScurvyTrident);
+        scurvyTridentMeta.addAttributeModifier(Attribute.FLYING_SPEED, flyModifierScurvyTrident);
 
         AttributeModifier fallModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "fallOff", -0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTridentOff);
+        scurvyTridentMeta.addAttributeModifier(Attribute.FALL_DAMAGE_MULTIPLIER, fallModifierScurvyTridentOff);
         AttributeModifier flyModifierScurvyTridentOff = new AttributeModifier(UUID.randomUUID(), "flyOff", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        scurvyTridentMeta.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, flyModifierScurvyTridentOff);
+        scurvyTridentMeta.addAttributeModifier(Attribute.FLYING_SPEED, flyModifierScurvyTridentOff);
         scurvyTrident.setItemMeta(scurvyTridentMeta);
 
         return scurvyTrident;
@@ -261,7 +261,7 @@ public class CreateCustomItem {
 
         hermesBootsMeta.setDisplayName(ChatColor.DARK_GREEN + "Hermes Boots");
         AttributeModifier movementSpeedModifierHermes = new AttributeModifier(UUID.randomUUID(), "Speed", 0.15, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        hermesBootsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, movementSpeedModifierHermes);
+        hermesBootsMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, movementSpeedModifierHermes);
         ((LeatherArmorMeta) hermesBootsMeta).setColor(Color.GREEN);
         hermesBoots.setItemMeta(hermesBootsMeta);
 
@@ -348,11 +348,11 @@ public class CreateCustomItem {
         golemChestMeta.setLore(Arrays.asList(
             "Incredible resilience while crouching"));
         AttributeModifier armorModifierGolem = new AttributeModifier(UUID.randomUUID(), "Armor", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        golemChestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierGolem);
+        golemChestMeta.addAttributeModifier(Attribute.ARMOR, armorModifierGolem);
         AttributeModifier healthModifierGolem = new AttributeModifier(UUID.randomUUID(), "Health", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        golemChestMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifierGolem);
+        golemChestMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifierGolem);
         AttributeModifier speedModifierGolem = new AttributeModifier(UUID.randomUUID(), "Speed", -0.1, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
-        golemChestMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierGolem);
+        golemChestMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierGolem);
         golemChestMeta.getPersistentDataContainer().set(Keys.CUSTOM_GOLEM_CHEST, PersistentDataType.BOOLEAN, true);
 
         golemChest.setItemMeta(golemChestMeta);
@@ -382,11 +382,11 @@ public class CreateCustomItem {
         cerberusChainMeta.setLore(Arrays.asList(
             "Guards remain loyal"));
             AttributeModifier armorModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Armor", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierCerberusChain);
+            cerberusChainMeta.addAttributeModifier(Attribute.ARMOR, armorModifierCerberusChain);
             AttributeModifier armorPercentModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "ArmorPercent", 0.33, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
-            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorPercentModifierCerberusChain);
+            cerberusChainMeta.addAttributeModifier(Attribute.ARMOR, armorPercentModifierCerberusChain);
             AttributeModifier speedModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Speed", 0.03, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-            cerberusChainMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierCerberusChain);
+            cerberusChainMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierCerberusChain);
             cerberusChainMeta.getPersistentDataContainer().set(Keys.CUSTOM_CERBERUS_CHAIN, PersistentDataType.BOOLEAN, true);
 
         cerberusChain.setItemMeta(cerberusChainMeta);
@@ -429,13 +429,13 @@ public class CreateCustomItem {
         longSwordMeta.setDisplayName(ChatColor.AQUA + "Long Sword");
 
         AttributeModifier reachModifier = new AttributeModifier(UUID.randomUUID(), "reachBlock", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        longSwordMeta.addAttributeModifier(Attribute.PLAYER_BLOCK_INTERACTION_RANGE, reachModifier);
+        longSwordMeta.addAttributeModifier(Attribute.BLOCK_INTERACTION_RANGE, reachModifier);
         AttributeModifier reachEntityModifier = new AttributeModifier(UUID.randomUUID(), "reachEntity", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HAND);
-        longSwordMeta.addAttributeModifier(Attribute.PLAYER_ENTITY_INTERACTION_RANGE, reachEntityModifier);
+        longSwordMeta.addAttributeModifier(Attribute.ENTITY_INTERACTION_RANGE, reachEntityModifier);
         AttributeModifier speedModifier = new AttributeModifier(UUID.randomUUID(), "Speed", -3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        longSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, speedModifier);
+        longSwordMeta.addAttributeModifier(Attribute.ATTACK_SPEED, speedModifier);
         AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "dmg", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        longSwordMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifier);
+        longSwordMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifier);
         
         longSword.setItemMeta(longSwordMeta);
 
@@ -453,7 +453,7 @@ public class CreateCustomItem {
 
         miningHatMeta.getPersistentDataContainer().set(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BOOLEAN, true);
         AttributeModifier breakModifier = new AttributeModifier(UUID.randomUUID(), "breakBlock", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
-        miningHatMeta.addAttributeModifier(Attribute.PLAYER_BLOCK_BREAK_SPEED, breakModifier);
+        miningHatMeta.addAttributeModifier(Attribute.BLOCK_BREAK_SPEED, breakModifier);
         miningHat.setItemMeta(miningHatMeta);
 
         return miningHat;
@@ -468,13 +468,13 @@ public class CreateCustomItem {
         ironCladHelmetMeta.setLore(Arrays.asList(
             ChatColor.DARK_GRAY + "Enchanced target tracker and rebreather"));
         AttributeModifier attackModifierClad = new AttributeModifier(UUID.randomUUID(), "Sweep", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
-        ironCladHelmetMeta.addAttributeModifier(Attribute.PLAYER_SWEEPING_DAMAGE_RATIO, attackModifierClad);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.SWEEPING_DAMAGE_RATIO, attackModifierClad);
         AttributeModifier oxygenModifierClad = new AttributeModifier(UUID.randomUUID(), "Oxygen", 0.75, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
-        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_OXYGEN_BONUS, oxygenModifierClad);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.OXYGEN_BONUS, oxygenModifierClad);
         AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        ironCladHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladHelmetMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
         ironCladHelmet.setItemMeta(ironCladHelmetMeta);
 
         return ironCladHelmet;
@@ -489,13 +489,13 @@ public class CreateCustomItem {
         ironCladChestplateMeta.setLore(Arrays.asList(
             ChatColor.DARK_GRAY + "Mark II Gladiator type"));
         AttributeModifier attackModifierClad = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
-        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifierClad);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifierClad);
         AttributeModifier attackSpeedModifierClad = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
-        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierClad);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierClad);
         AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        ironCladChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladChestplateMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
         ironCladChestplate.setItemMeta(ironCladChestplateMeta);
 
         return ironCladChestplate;
@@ -509,13 +509,13 @@ public class CreateCustomItem {
         ironCladLeggingsMeta.setLore(Arrays.asList(
             ChatColor.DARK_GRAY + "Almost Exo... almost"));
         AttributeModifier movementSpeedModifierClad = new AttributeModifier(UUID.randomUUID(), "Speed", 0.02, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, movementSpeedModifierClad);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, movementSpeedModifierClad);
         AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier healthModifierClad = new AttributeModifier(UUID.randomUUID(), "Health", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
-        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifierClad);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        ironCladLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladLeggingsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
         ironCladLeggings.setItemMeta(ironCladLeggingsMeta);
 
         return ironCladLeggings;
@@ -530,13 +530,13 @@ public class CreateCustomItem {
         ironCladBootsMeta.setLore(Arrays.asList(
             ChatColor.DARK_GRAY + "They feel heavy ? But not ?"));
         AttributeModifier stepModifierClad = new AttributeModifier(UUID.randomUUID(), "Step", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_STEP_HEIGHT, stepModifierClad);
+        ironCladBootsMeta.addAttributeModifier(Attribute.STEP_HEIGHT, stepModifierClad);
         AttributeModifier jumpModifierClad = new AttributeModifier(UUID.randomUUID(), "Jump", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
-        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH, jumpModifierClad);
+        ironCladBootsMeta.addAttributeModifier(Attribute.JUMP_STRENGTH, jumpModifierClad);
         AttributeModifier toughnessModifierClad = new AttributeModifier(UUID.randomUUID(), "Toughness", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierClad);
+        ironCladBootsMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        ironCladBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierClad);
+        ironCladBootsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
         ironCladBoots.setItemMeta(ironCladBootsMeta);
 
         return ironCladBoots;
@@ -552,13 +552,13 @@ public class CreateCustomItem {
             ChatColor.DARK_GRAY + "Luck or just skill?"));
 
         AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        miskaHelmetMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierMiska);
         AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        miskaHelmetMeta.addAttributeModifier(Attribute.ARMOR, armorModifierMiska);
         AttributeModifier luckModifierMiska = new AttributeModifier(UUID.randomUUID(), "Luck", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_LUCK, luckModifierMiska);
+        miskaHelmetMeta.addAttributeModifier(Attribute.LUCK, luckModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
-        miskaHelmetMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaHelmetMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
         miskaHelmet.setItemMeta(miskaHelmetMeta);
 
         return miskaHelmet;
@@ -574,15 +574,15 @@ public class CreateCustomItem {
             ChatColor.DARK_GRAY + "Mark I Thorn type"));
 
         AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        miskaChestplateMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierMiska);
         AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 10, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        miskaChestplateMeta.addAttributeModifier(Attribute.ARMOR, armorModifierMiska);
         AttributeModifier attackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Attack", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifierMiska);
+        miskaChestplateMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifierMiska);
         AttributeModifier attackSpeedModifierMiska = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", 0.2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifierMiska);
+        miskaChestplateMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-        miskaChestplateMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaChestplateMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
         miskaChestplate.setItemMeta(miskaChestplateMeta);
 
         return miskaChestplate;
@@ -598,13 +598,13 @@ public class CreateCustomItem {
             ChatColor.DARK_GRAY + "Belt made from skulls"));
 
         AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierMiska);
         AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierMiska);
         AttributeModifier speedModifierMiska = new AttributeModifier(UUID.randomUUID(), "speed", 0.01, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierMiska);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        miskaLeggingsMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaLeggingsMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
         miskaLeggings.setItemMeta(miskaLeggingsMeta);
 
         return miskaLeggings;
@@ -620,13 +620,13 @@ public class CreateCustomItem {
             ChatColor.DARK_GRAY + "Maybe they'll catch you"));
 
         AttributeModifier toughnessModifierMiska = new AttributeModifier(UUID.randomUUID(), "Toughness", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifierMiska);
+        miskaBootsMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierMiska);
         AttributeModifier armorModifierMiska = new AttributeModifier(UUID.randomUUID(), "Armor", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierMiska);
+        miskaBootsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierMiska);
         AttributeModifier fallModifierMiska = new AttributeModifier(UUID.randomUUID(), "Fall", -0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
-        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER, fallModifierMiska);
+        miskaBootsMeta.addAttributeModifier(Attribute.FALL_DAMAGE_MULTIPLIER, fallModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
-        miskaBootsMeta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaBootsMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
         miskaBoots.setItemMeta(miskaBootsMeta);
 
         return miskaBoots;
@@ -653,11 +653,11 @@ public class CreateCustomItem {
         guardingVestMeta.setLore(Arrays.asList(
             ChatColor.MAGIC + "Gwuh huh yuh"));
             AttributeModifier armorModifier = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifier);
+            guardingVestMeta.addAttributeModifier(Attribute.ARMOR, armorModifier);
             AttributeModifier toughnessModifier = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, toughnessModifier);
+            guardingVestMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifier);
             AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
-            guardingVestMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifier);
+            guardingVestMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifier);
             guardingVestMeta.getPersistentDataContainer().set(Keys.CUSTOM_GUARDING_VEST, PersistentDataType.BOOLEAN, true);
             guardingVest.setItemMeta(guardingVestMeta);
 
@@ -674,9 +674,9 @@ public class CreateCustomItem {
             ChatColor.RED + "Cursed with vampiric power"));
         strigaVeilMeta.getPersistentDataContainer().set(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BOOLEAN, true);
         AttributeModifier attackModifierStriga = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
-        strigaVeilMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackModifierStriga);
+        strigaVeilMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackModifierStriga);
         AttributeModifier speedModifierStriga = new AttributeModifier(UUID.randomUUID(), "speed", 0.10, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
-        strigaVeilMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifierStriga);
+        strigaVeilMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierStriga);
         strigaVeil.setItemMeta(strigaVeilMeta);
 
         return strigaVeil;
@@ -695,9 +695,9 @@ public class CreateCustomItem {
 
         jumpPackMeta.getPersistentDataContainer().set(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BOOLEAN, true);
         AttributeModifier armorModifier = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
-        jumpPackMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifier);
+        jumpPackMeta.addAttributeModifier(Attribute.ARMOR, armorModifier);
         AttributeModifier speedModifier = new AttributeModifier(UUID.randomUUID(), "Speed", 0.10, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
-        jumpPackMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, speedModifier);
+        jumpPackMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifier);
         jumpPack.setItemMeta(jumpPackMeta);
 
         return jumpPack;
@@ -969,11 +969,11 @@ public class CreateCustomItem {
         ironBreakerShieldMeta.setLore(Arrays.asList(
             "Might make a difference between life and death..."));
         AttributeModifier armorModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Armor", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierIronBreaker);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.ARMOR, armorModifierIronBreaker);
         AttributeModifier dmgModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Dmg", -0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierIronBreaker);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, dmgModifierIronBreaker);
         AttributeModifier hpModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Hp", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        ironBreakerShieldMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, hpModifierIronBreaker);
+        ironBreakerShieldMeta.addAttributeModifier(Attribute.MAX_HEALTH, hpModifierIronBreaker);
         ironBreakerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BOOLEAN, true);
         ironBreakerShield.setItemMeta(ironBreakerShieldMeta);
 
@@ -1002,9 +1002,9 @@ public class CreateCustomItem {
         berserkerShieldMeta.setLore(Arrays.asList(
             "Bathe in their blood !"));
         AttributeModifier armorModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Armor", -0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, armorModifierberserkerShield);
+        berserkerShieldMeta.addAttributeModifier(Attribute.ARMOR, armorModifierberserkerShield);
         AttributeModifier dmgModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        berserkerShieldMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, dmgModifierberserkerShield);
+        berserkerShieldMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, dmgModifierberserkerShield);
         berserkerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BOOLEAN, true);
         berserkerShield.setItemMeta(berserkerShieldMeta);
 
@@ -1071,7 +1071,7 @@ public class CreateCustomItem {
         healthCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         healthCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", +4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        healthCharmMeta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, healthModifier);
+        healthCharmMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifier);
         healthCharm.setItemMeta(healthCharmMeta);
 
         return healthCharm;
@@ -1089,7 +1089,7 @@ public class CreateCustomItem {
         attackCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         attackCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "Attack", +2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        attackCharmMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, attackModifier);
+        attackCharmMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifier);
         attackCharm.setItemMeta(attackCharmMeta);
 
         return attackCharm;
@@ -1107,7 +1107,7 @@ public class CreateCustomItem {
         gravityCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         gravityCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         AttributeModifier gravityModifier = new AttributeModifier(UUID.randomUUID(), "Gravity", -0.05, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
-        gravityCharmMeta.addAttributeModifier(Attribute.GENERIC_GRAVITY, gravityModifier);
+        gravityCharmMeta.addAttributeModifier(Attribute.GRAVITY, gravityModifier);
         gravityCharm.setItemMeta(gravityCharmMeta);
 
         return gravityCharm;

@@ -46,7 +46,7 @@ public class Armour {
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
 
-            damager.getWorld().createExplosion(damager.getLocation(), 1, false, false);
+            damager.getWorld().createExplosion(damager.getLocation(), 2, false, false);
         
             LogicHolder.givePotionEffect(player, "HEAL", 1, 1);
         }
@@ -79,7 +79,7 @@ public class Armour {
             return;
         }
         double currentHealth = player.getHealth();
-        double maxHealth = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double maxHealth = player.getAttribute(Attribute.MAX_HEALTH).getValue();
 
         if (currentHealth <= maxHealth/2) {
             Weapons.smokeEffect(player.getLocation());

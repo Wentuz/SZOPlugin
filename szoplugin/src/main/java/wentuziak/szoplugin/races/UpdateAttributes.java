@@ -81,60 +81,60 @@ public class UpdateAttributes {
     }
 
     public static void modifyMovementSpeed(Player player, double value){
-        AttributeInstance speedAttribute = player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+        AttributeInstance speedAttribute = player.getAttribute(Attribute.MOVEMENT_SPEED);
         speedAttribute.setBaseValue(value);
     }
     public static void modifyHealthPoints(Player player, double value){
-        AttributeInstance healthAttribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance healthAttribute = player.getAttribute(Attribute.MAX_HEALTH);
         healthAttribute.setBaseValue(value);
     }
     public static void modifyScale(Player player, double value){
-        AttributeInstance scaleAttribute = player.getAttribute(Attribute.GENERIC_SCALE);
+        AttributeInstance scaleAttribute = player.getAttribute(Attribute.SCALE);
         scaleAttribute.setBaseValue(value);
     }
     public static void modifyMineSpeed(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.PLAYER_BLOCK_BREAK_SPEED);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.BLOCK_BREAK_SPEED);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyAttackDamage(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.ATTACK_DAMAGE);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyFireTime(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_BURNING_TIME);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.BURNING_TIME);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyGravity(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_GRAVITY);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GRAVITY);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyFallDmgMultiplier(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_FALL_DAMAGE_MULTIPLIER);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.FALL_DAMAGE_MULTIPLIER);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyKnockBack(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyOxygenBonus(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_OXYGEN_BONUS);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.OXYGEN_BONUS);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyAttackSpeed(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.ATTACK_SPEED);
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifySafeFallRange(Player player, double value){
-        AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.GENERIC_SAFE_FALL_DISTANCE);
+        AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.SAFE_FALL_DISTANCE);
         safeFallRangeAttribute.setBaseValue(value);
     }
     public static void modifyWaterSpeed(Player player, double value){
-        AttributeInstance waterSpeedAttribute = player.getAttribute(Attribute.GENERIC_WATER_MOVEMENT_EFFICIENCY);
+        AttributeInstance waterSpeedAttribute = player.getAttribute(Attribute.WATER_MOVEMENT_EFFICIENCY);
         waterSpeedAttribute.setBaseValue(value);
     }
     public static void modifyReach(Player player, double valueBlockReach, double valueEntityReach){
-        AttributeInstance blockReachAttribute = player.getAttribute(Attribute.PLAYER_BLOCK_INTERACTION_RANGE);
-        AttributeInstance entityReachAttribute = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+        AttributeInstance blockReachAttribute = player.getAttribute(Attribute.BLOCK_INTERACTION_RANGE);
+        AttributeInstance entityReachAttribute = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
         blockReachAttribute.setBaseValue(valueBlockReach);
         entityReachAttribute.setBaseValue(valueEntityReach);
     }

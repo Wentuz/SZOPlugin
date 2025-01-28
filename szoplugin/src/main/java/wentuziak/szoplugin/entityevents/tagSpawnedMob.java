@@ -106,9 +106,9 @@ public class tagSpawnedMob implements Listener {
         entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 5, 1);
 
         LogicHolder.equipRandomArmor(true, (LivingEntity) entity);
-        ((Attributable) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.75);
-        ((Attributable) entity).getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue(4);
-        ((Attributable) entity).getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(40);
+        ((Attributable) entity).getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.75);
+        ((Attributable) entity).getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(4);
+        ((Attributable) entity).getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
         LogicHolder.givePotionEffect((LivingEntity) entity, "GLOWING", 20 * 60 * 30, 0);
     }
 
