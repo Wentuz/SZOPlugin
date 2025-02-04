@@ -89,11 +89,27 @@ public class Weapons {
 
     public static void spellSwordEffect(int chanceForCrit, LivingEntity target){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            target.getWorld().spawnParticle(Particle.ENCHANT, target.getLocation(), 1);
-
-            MagicItems.spiritLeechEffect(target);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                AreaEffectCloud cloud = (AreaEffectCloud) target.getWorld().spawnEntity(target.getLocation().add(0, 1, 0), EntityType.AREA_EFFECT_CLOUD);
+    
+                cloud.setBasePotionData(new PotionData(PotionType.HARMING));
+                cloud.setDuration(20 * 2);
+                cloud.setRadius(2.0f);
+                cloud.setParticle(Particle.SOUL);
+                cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 5, 2), true);
+                cloud.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 5, 0), true);
+            }, 4);
         }
-        if (LogicHolder.critRoll(chanceForCrit * 2)) {RaceEffects.witchAttackEvent(target);} 
+        if (LogicHolder.critRoll(chanceForCrit)) {
+            PotionEffect currentEffect = target.getPotionEffect(PotionEffectType.POISON);
+        
+            if (currentEffect != null) {
+                int newAmplifier = currentEffect.getAmplifier() + 1;
+                int duration = currentEffect.getDuration();
+                
+                target.addPotionEffect(new PotionEffect(PotionEffectType.POISON, duration, newAmplifier, false, true));
+            }
+        } 
     }
 
     public static void gravityBowEffect(LivingEntity target){

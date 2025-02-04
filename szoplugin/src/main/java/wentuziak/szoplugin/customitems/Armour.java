@@ -47,9 +47,8 @@ public class Armour {
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
 
-            damager.getWorld().createExplosion(damager.getLocation(), 2, false, false);
-        
-            LogicHolder.givePotionEffect(player, "HEAL", 1, 1);
+            damager.getWorld().createExplosion(damager.getLocation(), 3, false, false);
+            player.getWorld().spawnParticle(Particle.EXPLOSION, player.getLocation(), 3, 0, 0, 0, 0);
         }
     }
     public static void reflectiveChestEffect(int chanceForCrit, int thornLvl , LivingEntity damager){
@@ -136,7 +135,7 @@ public class Armour {
 
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 4, 0);
             LogicHolder.givePotionEffect(player, "STRENGTH", 20 * 4, 0);
-            player.getWorld().spawnParticle(Particle.FLAME, player.getLocation(), 50, 0.1, 0.1, 0.1, 0.1);
+            player.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, player.getLocation(), 50, 0.1, 0.1, 0.1, 0.1);
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GHAST_AMBIENT, 1, 1);
         }
     }
@@ -159,7 +158,8 @@ public class Armour {
             }else{
                 if (LogicHolder.critRoll(33)) {
                     event.setCancelled(true);
-                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_VEX_CHARGE, 1.0f, 1.0f);
+                    player.getWorld().playSound(player.getLocation(), Sound.BLOCK_ENCHANTMENT_TABLE_USE, 1.0f, 1.0f);
+                    player.getWorld().spawnParticle(Particle.ENCHANT, player.getLocation(), 25, 0.1, 0.1, 0.1, 0.1);
                 }
             }
         }

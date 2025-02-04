@@ -91,13 +91,17 @@ public class CreateCustomItem {
 
     @SuppressWarnings("deprecation")
     public static ItemStack createspellSword(){
-        ItemStack spellSword = new ItemStack(Material.DIAMOND_SWORD);
+        ItemStack spellSword = new ItemStack(Material.IRON_SWORD);
         ItemMeta spellSwordMeta = spellSword.getItemMeta();
         
         spellSwordMeta.setDisplayName(ChatColor.BLUE + "Spell Sword");
         spellSwordMeta.setLore(Arrays.asList(
             ChatColor.RED + "Imbuded with magic"));
         spellSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPELL_SWORD, PersistentDataType.BOOLEAN, true);
+        AttributeModifier attackSpeedModifierSpellSword = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -1.8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        spellSwordMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierSpellSword);
+        AttributeModifier attackDamageModifierSpellSword = new AttributeModifier(UUID.randomUUID(), "AttackDamage", 7.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        spellSwordMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackDamageModifierSpellSword);
         spellSword.setItemMeta(spellSwordMeta);
 
         return spellSword;

@@ -103,7 +103,11 @@ public class RandomLoot {
                     item = new ItemStack(Material.DIAMOND);
                 } else if (lootNum >= 80) {
                     item = new ItemStack(Material.EMERALD, numberOfItems);
-                } else if (lootNum >= 75) {
+                } else if (lootNum >= 77) {
+                    ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
+                    addRandomEnchantment(enchantedBook);
+                    return enchantedBook;
+                } else if (lootNum >= 73) {
                     item = new ItemStack(Material.GOLDEN_APPLE);
                 } else if (lootNum >= 70) {
                     item = new ItemStack(Material.PRISMARINE_SHARD, numberOfItems);
