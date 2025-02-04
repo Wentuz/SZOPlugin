@@ -106,6 +106,12 @@ public class CustomTools {
             else if (blockMaterial == Material.ACACIA_LOG) {
                 item = new ItemStack(Material.ACACIA_LOG);
             }
+            else if (blockMaterial == Material.DARK_OAK_LOG) {
+                item = new ItemStack(Material.DARK_OAK_LOG);
+            }
+            else if (blockMaterial == Material.PALE_OAK_LOG) {
+                item = new ItemStack(Material.PALE_OAK_LOG);
+            }
             else if (blockMaterial == Material.CHERRY_LOG) {
                 item = new ItemStack(Material.CHERRY_LOG);
             }
@@ -209,6 +215,12 @@ public class CustomTools {
             }
             else if (blockMaterial == Material.BIRCH_LEAVES) {
                 item = new ItemStack(Material.BIRCH_SAPLING);
+            }
+            else if (blockMaterial == Material.PALE_OAK_LEAVES) {
+                item = new ItemStack(Material.PALE_OAK_SAPLING);
+            }
+            else if (blockMaterial == Material.DARK_OAK_LEAVES) {
+                item = new ItemStack(Material.DARK_OAK_SAPLING);
             }
             else if (blockMaterial == Material.SPRUCE_LEAVES) {
                 item = new ItemStack(Material.SPRUCE_SAPLING);

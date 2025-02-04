@@ -1324,5 +1324,33 @@ public final class CustomRecipes {
         throwingFireworkRecipe.addIngredient(1, Material.FIREWORK_STAR);
         throwingFireworkRecipe.addIngredient(1, Material.STRING);
         Bukkit.addRecipe(throwingFireworkRecipe);
+
+
+        //
+        //      grenade recipe
+        //
+        ItemStack grenade = CreateCustomItem.createGrenade();
+        grenade.setAmount(1);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "grenadeRecipe");
+        recipeKeys.add(key);
+
+        ShapelessRecipe grenadeRecipe = new ShapelessRecipe(key, grenade);
+        grenadeRecipe.addIngredient(new RecipeChoice.ExactChoice(throwingFirework));
+        grenadeRecipe.addIngredient(8, Material.GUNPOWDER);
+        Bukkit.addRecipe(grenadeRecipe);
+
+
+        //
+        //      smoke recipe
+        //
+        ItemStack smoke = CreateCustomItem.createSmokeBomb();
+        smoke.setAmount(1);
+        key = new NamespacedKey(SzoPlugin.getInstance(), "smokeRecipe");
+        recipeKeys.add(key);
+
+        ShapelessRecipe smokeRecipe = new ShapelessRecipe(key, smoke);
+        smokeRecipe.addIngredient(new RecipeChoice.ExactChoice(throwingFirework));
+        smokeRecipe.addIngredient(3, Material.INK_SAC);
+        Bukkit.addRecipe(smokeRecipe);
     }
 }

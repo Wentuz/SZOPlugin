@@ -164,7 +164,7 @@ public class Weapons {
             cloud.setDuration(20 * 2);
             cloud.setRadius(3.0f);
             cloud.setParticle(Particle.FLAME);
-            cloud.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_DAMAGE, 5, 1), true);
+            cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 10, 2), true);
         }, 4);
     }
 
