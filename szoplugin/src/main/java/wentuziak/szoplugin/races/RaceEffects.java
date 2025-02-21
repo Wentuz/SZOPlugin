@@ -12,6 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Allay;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Cat;
@@ -21,11 +22,15 @@ import org.bukkit.entity.Fireball;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -174,6 +179,44 @@ public class RaceEffects {
 
             if (targetEntity.getHealth() <= 4) {
                 targetEntity.getWorld().createExplosion(targetEntity.getLocation(), 2, false, false);
+            }
+        }
+    }
+
+    public static void celestialSummonEvent(Player player){
+        if (player.getFoodLevel() >= 20 && !player.hasCooldown(Material.NETHER_STAR)) {
+            player.setFoodLevel(0);
+            player.setCooldown(Material.NETHER_STAR, 20 * 60 * 5);
+        }else{
+            return;
+        }
+
+        Location playerLocation = player.getLocation();
+        Allay allay = (Allay) playerLocation.getWorld().spawnEntity(playerLocation, EntityType.ALLAY);
+
+        int x = 5;
+        for(int i = 1; i <= x; i++){
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                 // Create a lingering healing potion
+                ItemStack potion = new ItemStack(Material.LINGERING_POTION);
+                PotionMeta meta = (PotionMeta) potion.getItemMeta();
+                meta.setBasePotionData(new org.bukkit.potion.PotionData(PotionType.HEALING));
+                meta.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 1), true);
+                potion.setItemMeta(meta);
+
+                // Throw the potion directly below the player
+                ThrownPotion thrownPotion = allay.getWorld().spawn(allay.getLocation().subtract(0, 1, 0), ThrownPotion.class);
+                thrownPotion.setItem(potion);
+                thrownPotion.setVelocity(allay.getLocation().getDirection().multiply(0)); // Drop straight down
+
+                // Particle effect for visual feedback
+                allay.getWorld().spawnParticle(Particle.HEART, allay.getLocation(), 10);
+            }, 20 * x * i);
+
+            if (i == x) {
+                Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                    allay.setHealth(0);
+                }, 20 * x * i);
             }
         }
     }

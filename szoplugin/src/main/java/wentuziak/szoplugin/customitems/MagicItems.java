@@ -39,6 +39,7 @@ import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.entityevents.tagSpawnedMob;
+import wentuziak.szoplugin.races.RaceEffects;
 
 public class MagicItems {
     static BukkitTask ancientShellTask;
@@ -236,8 +237,11 @@ public class MagicItems {
     }
 
     public static void windCharmEffect(Player player){
-        LogicHolder.givePotionEffect(player, "SPEED", 20*60*5, 1);
-        LogicHolder.givePotionEffect(player, "SLOW_FALLING", 20*60*5, 1);
+        RaceEffects.caraGlideEvent(player);
+        
+        Vector direction = player.getLocation().getDirection().normalize();
+        player.setVelocity(direction.multiply(3.5));
+        player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
     }
 
     public static void webTrapThrow(Player player, NamespacedKey key){

@@ -510,5 +510,8 @@ public class InteractionListener implements Listener{
         LogicHolder.isPlayerAboveGround(player, 0.5) && !player.isClimbing()) {
             RaceEffects.caraJumpEvent(player);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
+            RaceEffects.celestialSummonEvent(player);
+        }
     }
 }

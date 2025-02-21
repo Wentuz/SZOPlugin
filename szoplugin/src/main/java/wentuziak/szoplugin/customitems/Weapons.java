@@ -90,14 +90,14 @@ public class Weapons {
     public static void spellSwordEffect(int chanceForCrit, LivingEntity target){
         if (LogicHolder.critRoll(chanceForCrit)) {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                AreaEffectCloud cloud = (AreaEffectCloud) target.getWorld().spawnEntity(target.getLocation().add(0, 1, 0), EntityType.AREA_EFFECT_CLOUD);
+                AreaEffectCloud cloud = (AreaEffectCloud) target.getWorld().spawnEntity(target.getLocation().add(0, 0, 0), EntityType.AREA_EFFECT_CLOUD);
     
                 cloud.setBasePotionData(new PotionData(PotionType.HARMING));
-                cloud.setDuration(20 * 2);
-                cloud.setRadius(2.0f);
+                cloud.setDuration(20 * 4);
+                cloud.setRadius(1.5f);
                 cloud.setParticle(Particle.SOUL);
-                cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 5, 2), true);
-                cloud.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 5, 0), true);
+                cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 1, 2), true);
+                cloud.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 1, 0), true);
             }, 4);
         }
         if (LogicHolder.critRoll(chanceForCrit)) {
