@@ -19,8 +19,8 @@ import wentuziak.szoplugin.races.UpdateAttributes;
 public class SwapRaceCommand implements TabExecutor{
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 2) {
-            sender.sendMessage("Usage: /swaprace [race] [player]");
+        if (args.length < 3) {
+            sender.sendMessage("Usage: /swaprace [race] [true/false] [player]");
             return false;
         }
         if (!sender.isOp()) {
@@ -28,9 +28,9 @@ public class SwapRaceCommand implements TabExecutor{
             return false;
         }
 
-        Player targetPlayer = Bukkit.getPlayer(args[1]);
+        Player targetPlayer = Bukkit.getPlayer(args[2]);
         if (targetPlayer == null) {
-            sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);
+            sender.sendMessage(ChatColor.RED + "Player not found: " + args[2]);
             return false;
         }
 
@@ -47,9 +47,14 @@ public class SwapRaceCommand implements TabExecutor{
         NamespacedKey setKey = Keys.getKeyByName(getKey);
         targetPlayer.getPersistentDataContainer().set(setKey, PersistentDataType.BOOLEAN, true);
 
+        String isMainRace =  args[1].toUpperCase();
+
         if (targetPlayer.getPersistentDataContainer().has(setKey, PersistentDataType.BOOLEAN)) {
             sender.sendMessage(ChatColor.GREEN + "The race '" + inputKey + "' has been set for the player.");
-            UpdateAttributes.attributeManager(targetPlayer, false, getKey.toString());
+            if (isMainRace.equals("TRUE")) {
+                UpdateAttributes.attributeManager(targetPlayer, false, getKey.toString());
+                sender.sendMessage(ChatColor.GREEN + "Attributes updated.");
+            }
             return true;
         }else{
             sender.sendMessage(ChatColor.RED + "Failed to set the race '" + inputKey + "' for the player.");
@@ -63,10 +68,15 @@ public class SwapRaceCommand implements TabExecutor{
         if(args.length == 1){
             return java.util.Arrays.asList(
                 "dwarf", "celestial", "witch", "miskaru", "cara", "mewchant", "fossil",
-                "zephyr", "sanguinite", "elf"
+                "zephyr", "sanguinite", "elf", "hobbit"
                 );
         }
-         if (args.length == 2) {
+        if(args.length == 2){
+            return java.util.Arrays.asList(
+                "true", "false"
+                );
+        }
+         if (args.length == 3) {
             List<String> playerNames = new ArrayList<>();
             for (Player player : Bukkit.getOnlinePlayers()) {
                 playerNames.add(player.getName());

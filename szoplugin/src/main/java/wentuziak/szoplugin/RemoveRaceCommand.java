@@ -62,7 +62,7 @@ public class RemoveRaceCommand implements TabExecutor {
         if(args.length == 1){
             return java.util.Arrays.asList(
                 "dwarf", "celestial", "witch", "miskaru", "cara", "mewchant", "fossil",
-                "zephyr", "sanguinite", "elf"
+                "zephyr", "sanguinite", "elf", "hobbit"
                 );
         }
          if (args.length == 2) {

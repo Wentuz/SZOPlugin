@@ -80,7 +80,7 @@ public class EntityListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         CustomRecipes.getRecipeKeys().forEach(player::discoverRecipe);
-        reloadRace(player);
+        //reloadRace(player);
     }
 
     public static void reloadRace(Player player){
