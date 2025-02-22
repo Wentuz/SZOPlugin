@@ -3,14 +3,18 @@ package wentuziak.szoplugin.playerevents;
 
 
 
+import java.lang.reflect.AccessFlag.Location;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.WindCharge;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerFishEvent;
@@ -26,6 +30,9 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
+
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
@@ -133,9 +140,11 @@ public class InteractionListener implements Listener{
         //
 
         // Magic for main hand only
-            if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()
-            && !player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
-
+            if (itemInMainHand != null && itemInMainHand.getType() != Material.AIR && itemInMainHand.hasItemMeta()){
+                //
+                // Spell scrolls
+                //                
+                if(!player.hasCooldown(Material.GLOBE_BANNER_PATTERN)) {
                 ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 PersistentDataContainer bootContainer;
@@ -203,6 +212,35 @@ public class InteractionListener implements Listener{
                 MagicItems.magicStormCall(player, isSpellBoosted);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 30);
                 return;
+                }
+                }
+
+                //
+                //      Sword Skills
+                //
+                if (itemInOffHand.getType() == Material.AIR && !player.hasCooldown(Material.POPPED_CHORUS_FRUIT)) {
+                    PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                    if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                        MagicItems.spiritLeech(player, Keys.CUSTOM_SPIRIT_LEECH, false);
+                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 15);
+                        return;
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                        LogicHolder.lingeringPotionDrop(PotionType.HEALING, PotionEffectType.INSTANT_HEALTH, player);
+                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 30);
+                        return;
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                        org.bukkit.Location location = player.getLocation();
+                        WindCharge windCharge = (WindCharge) player.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
+                        windCharge.explode();
+                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                            Weapons.grenadeEffect(location);
+                        }, 5L);
+                        
+                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 5);
+                        return;
+                    }
                 }
             }
 
@@ -310,6 +348,22 @@ public class InteractionListener implements Listener{
         //      Food effects
         //
  
+    @EventHandler
+    public void onPlayerLooseHunger(FoodLevelChangeEvent event){
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            int oldHunger = player.getFoodLevel();
+            int newHunger = event.getFoodLevel();
+
+            if ((newHunger < oldHunger) && newHunger > 0) {
+                if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT) && LogicHolder.critRoll(25)) {
+                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                        player.setFoodLevel(newHunger-1);
+                    }, 10L);
+                }
+            }
+        }
+    }
 
     @EventHandler
     public void onPlayerItemConsume(PlayerItemConsumeEvent event){
@@ -326,6 +380,9 @@ public class InteractionListener implements Listener{
         }
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             RaceEffects.dwarfConsumptionEffect(player, consumedItem);
+        }
+        if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+            RaceEffects.hobbitConsumptionEffect(player, consumedItem);
         }
         if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
             RaceEffects.witchConsumptionEffect(player, consumedItem);

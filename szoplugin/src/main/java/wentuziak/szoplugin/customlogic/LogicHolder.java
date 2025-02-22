@@ -18,13 +18,18 @@ import org.bukkit.entity.Parrot;
 import org.bukkit.entity.Parrot.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
+import org.bukkit.util.Vector;
 import org.bukkit.Particle;
 
 import wentuziak.szoplugin.Keys;
@@ -280,6 +285,21 @@ public class LogicHolder {
          entity.getEquipment().setLeggingsDropChance(0.05F);
          entity.getEquipment().setBootsDropChance(0.05F);
     }
+
+    public static void lingeringPotionDrop(PotionType baseType ,PotionEffectType effectType, Entity entity){
+                // Create a lingering healing potion
+        ItemStack potion = new ItemStack(Material.LINGERING_POTION);
+        PotionMeta meta = (PotionMeta) potion.getItemMeta();
+        meta.setBasePotionData(new org.bukkit.potion.PotionData(baseType));
+        meta.addCustomEffect(new PotionEffect(effectType, 1, 1), true);
+        potion.setItemMeta(meta);
+
+        // Throw the potion directly below the player
+        ThrownPotion thrownPotion = entity.getWorld().spawn(entity.getLocation().subtract(0, 0, 0), ThrownPotion.class);
+        thrownPotion.setItem(potion);
+        thrownPotion.setVelocity(entity.getLocation().getDirection().multiply(0)); // Drop straight down
+    }
+
 
     
 }

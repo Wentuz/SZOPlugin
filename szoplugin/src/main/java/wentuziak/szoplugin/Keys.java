@@ -124,7 +124,8 @@ public class Keys {
             RACE_FOSSIL,
             RACE_ZEPHYR,
             RACE_SANGUINITE,
-            RACE_ELF
+            RACE_ELF,
+            RACE_HOBBIT
         };
     }
     public static NamespacedKey getKeyByName(String keyName) {

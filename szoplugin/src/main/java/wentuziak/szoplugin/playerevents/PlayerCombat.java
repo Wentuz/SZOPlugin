@@ -152,6 +152,7 @@ public class PlayerCombat implements Listener{
         LivingEntity damager = (LivingEntity) event.getDamager();
         applyChestArmorEffects(player, damager);
         applyLegArmorEffects(player);
+        applyRaceEffects(player);
     }
 
     // Method to apply chest armor effects when a player gets hit
@@ -181,6 +182,13 @@ public class PlayerCombat implements Listener{
         PersistentDataContainer playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
         if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
             Armour.ninjaPantEffect(player);
+        }
+    }
+
+    // Method to apply race effects effects when a player gets hit
+    private void applyRaceEffects(Player player) {
+        if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+            LogicHolder.givePotionEffect(player, "SPEED", 20*5, 0);
         }
     }
 

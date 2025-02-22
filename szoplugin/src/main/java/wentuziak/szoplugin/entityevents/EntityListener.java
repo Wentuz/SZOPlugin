@@ -27,9 +27,12 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 import net.md_5.bungee.api.ChatColor;
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.CustomRecipes;
 import wentuziak.szoplugin.customitems.MagicItems;
@@ -49,6 +52,11 @@ public class EntityListener implements Listener {
         Entity entity = event.getRightClicked();
         ItemStack itemInHand = player.getInventory().getItemInMainHand();
         ItemStack itemOffHand = player.getInventory().getItemInOffHand();
+
+        if (itemInHand.getType() == Material.AIR && itemOffHand.getType() == Material.AIR && player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+            entity.addPassenger(player);
+        }
+
 
         if (itemInHand == null || !itemInHand.hasItemMeta()) {
             return;
@@ -83,22 +91,27 @@ public class EntityListener implements Listener {
         //reloadRace(player);
     }
 
-    public static void reloadRace(Player player){
-        PersistentDataContainer dataContainer = player.getPersistentDataContainer();
+    //
+    //      Disabled untill further notice
+    //
 
-        NamespacedKey[] raceKeys = Keys.getRaceKeys();
 
-        //  TODO:
-        //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
-        //  
-        for (NamespacedKey key : raceKeys) {
-            if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
-                String keyString = "RACE_" + key.getKey().toUpperCase();
-                player.sendMessage(ChatColor.GREEN + keyString + " Loaded");
-                UpdateAttributes.attributeManager(player, false, keyString);
-            }
-        }
-    }
+    // public static void reloadRace(Player player){    
+    //     PersistentDataContainer dataContainer = player.getPersistentDataContainer();
+
+    //     NamespacedKey[] raceKeys = Keys.getRaceKeys();
+
+    //     //  TODO:
+    //     //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
+    //     //  
+    //     for (NamespacedKey key : raceKeys) {
+    //         if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
+    //             String keyString = "RACE_" + key.getKey().toUpperCase();
+    //             player.sendMessage(ChatColor.GREEN + keyString + " Loaded");
+    //             UpdateAttributes.attributeManager(player, false, keyString);
+    //         }
+    //     }
+    // }
 
     @EventHandler
     public void onEntityRegainHealth(EntityRegainHealthEvent event) {

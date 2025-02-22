@@ -78,6 +78,12 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 18);
             modifyMovementSpeed(player, 0.12);
         }
+        if (raceName.equals("RACE_HOBBIT")) {
+            modifyMovementSpeed(player, 0.085);
+            modifyHealthPoints(player, 16);
+            modifyScale(player, 0.85);
+            modifyAttackSpeed(player, 4.25);
+        }
     }
 
     public static void modifyMovementSpeed(Player player, double value){

@@ -197,19 +197,7 @@ public class RaceEffects {
         int x = 5;
         for(int i = 1; i <= x; i++){
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                 // Create a lingering healing potion
-                ItemStack potion = new ItemStack(Material.LINGERING_POTION);
-                PotionMeta meta = (PotionMeta) potion.getItemMeta();
-                meta.setBasePotionData(new org.bukkit.potion.PotionData(PotionType.HEALING));
-                meta.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 1), true);
-                potion.setItemMeta(meta);
-
-                // Throw the potion directly below the player
-                ThrownPotion thrownPotion = allay.getWorld().spawn(allay.getLocation().subtract(0, 1, 0), ThrownPotion.class);
-                thrownPotion.setItem(potion);
-                thrownPotion.setVelocity(allay.getLocation().getDirection().multiply(0)); // Drop straight down
-
-                // Particle effect for visual feedback
+                LogicHolder.lingeringPotionDrop(PotionType.HEALING, PotionEffectType.INSTANT_HEALTH, allay);
                 allay.getWorld().spawnParticle(Particle.HEART, allay.getLocation(), 10);
             }, 20 * x * i);
 
@@ -676,6 +664,28 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInMainHand);
             player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
             player.getWorld().spawnEntity(playerLocation, summonedEntityType);
+        }
+    }
+
+    //
+    //      HOBBIT
+    //
+    public static void hobbitConsumptionEffect(Player player,  ItemStack consumedStack){
+        Material consumedMaterial = consumedStack.getType();
+        String consumedItem = consumedMaterial.toString();
+
+        Set<String> implementedFood = new HashSet<>(Arrays.asList(
+            "ROTTEN_FLESH", "SPIDER_EYE", "PUFFER_FISH"
+        ));
+
+        if (implementedFood.contains(consumedItem)) {
+            LogicHolder.givePotionEffect(player, "HARM", 20 * 1, 0);
+            return;
+        }else{
+            int foodLevel = player.getFoodLevel();
+            if (foodLevel < 18) {
+                player.setFoodLevel(foodLevel + 2);
+            }
         }
     }
 }
