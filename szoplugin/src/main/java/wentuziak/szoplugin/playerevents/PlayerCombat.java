@@ -25,6 +25,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
@@ -189,6 +190,11 @@ public class PlayerCombat implements Listener{
     private void applyRaceEffects(Player player) {
         if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
             LogicHolder.givePotionEffect(player, "SPEED", 20*5, 0);
+        }
+        if (player.getPersistentDataContainer().has(Keys.RACE_CARA)) {
+            
+            RaceEffects.caraOnHitEffect(player);
+
         }
     }
 

@@ -7,6 +7,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Skeleton;
+import org.bukkit.entity.Witch;
 import org.bukkit.entity.Zombie;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Creeper;
@@ -146,12 +148,24 @@ public class EntityListener implements Listener {
             if (LogicHolder.critRoll(20)) {
                 repleaceEntity(entity, EntityType.CAVE_SPIDER);
             }
+            if (LogicHolder.critRoll(10)) {
+                Witch witch = (Witch) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.WITCH);
+                entity.addPassenger(witch);
+            }
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             return;
         }
         if (entity.getType() == EntityType.CREEPER) {
             if (LogicHolder.critRoll(25)) {
                 ((Creeper) entity).setPowered(true);
+            }
+            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+            return;
+        }
+        if (entity.getType() == EntityType.PHANTOM) {
+            if (LogicHolder.critRoll(25)) {
+                Skeleton skeleton = (Skeleton) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.SKELETON);
+                entity.addPassenger(skeleton);
             }
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             return;

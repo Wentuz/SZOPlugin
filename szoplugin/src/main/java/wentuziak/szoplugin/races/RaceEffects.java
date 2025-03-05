@@ -11,6 +11,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Allay;
 import org.bukkit.entity.Arrow;
@@ -284,7 +285,21 @@ public class RaceEffects {
     public static void stopCaraGlideTask(Player player) {
         TaskManager.stopTask(player, "caraGlide");
     }
+    
+    public static void caraOnHitEffect(Player player) {
+        if (LogicHolder.critRoll(5)) {
+            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());
+        }
 
+        double currentHealth = player.getHealth();
+
+        if (currentHealth <= 6) {
+            for(int i = 0; i < 2; i++){
+                WindCharge windCharge = (WindCharge) player.getWorld().spawnEntity(player.getLocation(), EntityType.WIND_CHARGE);
+                windCharge.explode();
+            }
+        }
+    }
     //
     //      MEWCHANT
     //
@@ -565,6 +580,9 @@ public class RaceEffects {
 
         for (int i = 0; i < 5; i++) {
             randomInt = (int) (Math.random() * 5 + 1);
+            if (specialType != "multishot") {
+                randomInt = randomInt + (2 * i);
+            }
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                     
                 Arrow arrow = (Arrow) entity.getWorld().spawnEntity(entity.getEyeLocation(), EntityType.ARROW);
@@ -578,6 +596,7 @@ public class RaceEffects {
                 if (specialType == "flame") {
                     arrow.setVisualFire(true);
                     arrow.setFireTicks(20*10);
+
                 }else if(specialType == "multishot"){
                     arrowDirection.setX(arrowDirection.getX() + (Math.random() - 0.5) * 0.8); // ±10% variation
                     arrowDirection.setZ(arrowDirection.getZ() + (Math.random() - 0.5) * 0.8); // ±10% variation
