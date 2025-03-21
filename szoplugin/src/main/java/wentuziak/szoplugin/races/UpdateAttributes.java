@@ -6,6 +6,28 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 
 public class UpdateAttributes {
+    static double[] getBaseValues(){
+        double [] baseAttributes = new double[13];
+        baseAttributes[0] = 0.1;    //Movement speed
+        baseAttributes[1] = 20;     //Health points
+        baseAttributes[2] = 1;      //Scale
+        baseAttributes[3] = 1;      //Mining speed
+        baseAttributes[4] = 1;      //Attack damage
+        baseAttributes[5] = 1;      //Fire time
+        baseAttributes[6] = 0.08;   //Gravity
+        baseAttributes[7] = 1;      //Fall damage multiplier
+        baseAttributes[8] = 0;      //Knockback
+        baseAttributes[9] = 0;      //Oxygen bonus
+        baseAttributes[10] = 4;     //Attack speed
+        baseAttributes[11] = 3;     //Safe fall range
+        baseAttributes[12] = 4.5;   //Block reach
+        baseAttributes[13] = 3;     //Entity reach
+        baseAttributes[14] = 0;     //WaterSpeed
+
+        return baseAttributes;
+    }
+
+
     public static void attributeManager(Player player, boolean toRemove, String raceName){
         if (toRemove) {
             modifyMovementSpeed(player, 0.1);

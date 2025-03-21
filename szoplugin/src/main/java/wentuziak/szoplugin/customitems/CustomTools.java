@@ -23,6 +23,7 @@ import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.RandomLoot;
 
 public class CustomTools {
 
@@ -61,28 +62,46 @@ public class CustomTools {
         }
     }
 
-    public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot){   
-        if (brokenBlock.getType() == Material.STONE || brokenBlock.getType() == Material.DEEPSLATE 
-        || brokenBlock.getType() == Material.GRANITE || brokenBlock.getType() == Material.TUFF
-        || brokenBlock.getType() == Material.DIORITE || brokenBlock.getType() == Material.ANDESITE
-        || brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE
-        || brokenBlock.getType() == Material.IRON_ORE || brokenBlock.getType() == Material.DEEPSLATE_IRON_ORE
-        || brokenBlock.getType() == Material.COPPER_ORE || brokenBlock.getType() == Material.DEEPSLATE_COPPER_ORE
-        || brokenBlock.getType() == Material.GOLD_ORE || brokenBlock.getType() == Material.DEEPSLATE_GOLD_ORE
-        || brokenBlock.getType() == Material.REDSTONE_ORE || brokenBlock.getType() == Material.DEEPSLATE_REDSTONE_ORE
-        ) {
-            if (brokenBlock.getType() == Material.DEEPSLATE) {
-                chanceForCrit = chanceForCrit * 2;
-            }
-            if (brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE || brokenBlock.getType() == Material.DIAMOND_ORE) {
-                chanceForCrit = chanceForCrit * 4;
-                playerLuck = playerLuck + 3;
-            }
-            if (LogicHolder.critRoll(chanceForCrit)) {
-                Location blockLocation = brokenBlock.getLocation();
-                LogicHolder.rollTreasure(playerLuck, blockLocation, typeOfLoot);
-            }
+    public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot){ 
+        if (!LogicHolder.critRoll(chanceForCrit * 2)) {
+            return;
+        }  
+        Material material = Material.AIR;
+        if (brokenBlock.getType() == Material.DIAMOND_ORE || brokenBlock.getType() == Material.DEEPSLATE_DIAMOND_ORE){
+            material = Material.DIAMOND;
         }
+        else if(brokenBlock.getType() == Material.IRON_ORE || brokenBlock.getType() == Material.DEEPSLATE_IRON_ORE){
+            material = Material.RAW_IRON;
+            playerLuck = playerLuck + 1;
+        }
+        else if(brokenBlock.getType() == Material.COPPER_ORE || brokenBlock.getType() == Material.DEEPSLATE_COPPER_ORE){
+            material = Material.RAW_COPPER;
+            playerLuck = playerLuck * 2 + 2;
+        }
+        else if(brokenBlock.getType() == Material.LAPIS_ORE || brokenBlock.getType() == Material.DEEPSLATE_LAPIS_ORE){
+            material = Material.LAPIS_LAZULI;
+            playerLuck = playerLuck * 2 + 1;
+        }
+        else if(brokenBlock.getType() == Material.COAL_ORE || brokenBlock.getType() == Material.DEEPSLATE_COAL_ORE){
+            material = Material.COAL;
+            playerLuck = playerLuck * 2 + 1;
+        }
+        else if(brokenBlock.getType() == Material.GOLD_ORE || brokenBlock.getType() == Material.DEEPSLATE_GOLD_ORE){
+            material = Material.RAW_GOLD;
+        }
+        else if(brokenBlock.getType() == Material.REDSTONE_ORE || brokenBlock.getType() == Material.DEEPSLATE_REDSTONE_ORE){
+            material = Material.REDSTONE;
+            playerLuck = playerLuck * 2 + 1;
+
+        }
+        else{
+            return;
+        }
+        int numberOfItems = (int)(Math.random() * playerLuck + 1);
+        ItemStack loot = new ItemStack(material, numberOfItems);
+        
+        brokenBlock.getWorld().dropItemNaturally(brokenBlock.getLocation(), loot);
+        return;
     }
 
     public static void richAxeEffect(int playerLuck, Block brokenBlock){
