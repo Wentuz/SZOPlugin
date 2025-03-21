@@ -265,6 +265,8 @@ public class CreateCustomItem {
         hermesBootsMeta.setDisplayName(ChatColor.DARK_GREEN + "Hermes Boots");
         AttributeModifier movementSpeedModifierHermes = new AttributeModifier(UUID.randomUUID(), "Speed", 0.15, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         hermesBootsMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, movementSpeedModifierHermes);
+        AttributeModifier stepModifierHermes = new AttributeModifier(UUID.randomUUID(), "Step", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        hermesBootsMeta.addAttributeModifier(Attribute.STEP_HEIGHT, stepModifierHermes);
         ((LeatherArmorMeta) hermesBootsMeta).setColor(Color.GREEN);
         hermesBoots.setItemMeta(hermesBootsMeta);
 
@@ -291,6 +293,8 @@ public class CreateCustomItem {
         jetBootsMeta.setDisplayName(ChatColor.GRAY + "Jet Boots");
         jetBootsMeta.setLore(Arrays.asList(
             "A cheap way to levitate"));
+        AttributeModifier fallModifierJetBoots = new AttributeModifier(UUID.randomUUID(), "Fall", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        jetBootsMeta.addAttributeModifier(Attribute.SAFE_FALL_DISTANCE, fallModifierJetBoots);
         ((LeatherArmorMeta) jetBootsMeta).setColor(Color.SILVER);
         jetBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BOOLEAN, true);
 
@@ -455,8 +459,10 @@ public class CreateCustomItem {
 
 
         miningHatMeta.getPersistentDataContainer().set(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BOOLEAN, true);
-        AttributeModifier breakModifier = new AttributeModifier(UUID.randomUUID(), "breakBlock", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        AttributeModifier breakModifier = new AttributeModifier(UUID.randomUUID(), "breakBlock", 0.40, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
+        AttributeModifier reachModifier = new AttributeModifier(UUID.randomUUID(), "reachBlock", 0.50, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
         miningHatMeta.addAttributeModifier(Attribute.BLOCK_BREAK_SPEED, breakModifier);
+        miningHatMeta.addAttributeModifier(Attribute.BLOCK_INTERACTION_RANGE, reachModifier);
         miningHat.setItemMeta(miningHatMeta);
 
         return miningHat;

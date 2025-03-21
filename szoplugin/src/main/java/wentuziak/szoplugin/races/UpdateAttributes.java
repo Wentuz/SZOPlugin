@@ -83,6 +83,7 @@ public class UpdateAttributes {
             modifyHealthPoints(player, 16);
             modifyScale(player, 0.85);
             modifyAttackSpeed(player, 4.25);
+            modifySafeFallRange(player, 5);
         }
     }
 
