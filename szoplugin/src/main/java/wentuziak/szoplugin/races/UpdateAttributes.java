@@ -6,9 +6,9 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 
 public class UpdateAttributes {
-    static double[] getBaseValues(){
+    static double getBaseValues(int attributeID){
         double [] baseAttributes = new double[13];
-        baseAttributes[0] = 0.1;    //Movement speed
+        baseAttributes[2] = 0.1;    //Movement speed
         baseAttributes[1] = 20;     //Health points
         baseAttributes[2] = 1;      //Scale
         baseAttributes[3] = 1;      //Mining speed
@@ -24,89 +24,65 @@ public class UpdateAttributes {
         baseAttributes[13] = 3;     //Entity reach
         baseAttributes[14] = 0;     //WaterSpeed
 
-        return baseAttributes;
+        return baseAttributes[attributeID];
     }
 
 
     public static void attributeManager(Player player, boolean toRemove, String raceName){
-        if (toRemove) {
-            modifyMovementSpeed(player, 0.1);
-            modifyHealthPoints(player, 20);
-            modifyScale(player, 1);
-            modifyMineSpeed(player, 1);
-            modifyAttackDamage(player, 1);
-            modifyFireTime(player, 1);
-            modifyGravity(player, 0.08);
-            modifyFallDmgMultiplier(player, 1);
-            modifyKnockBack(player, 0);
-            modifyOxygenBonus(player, 0);
-            modifyAttackSpeed(player, 4);
-            modifySafeFallRange(player, 3);
-            modifyReach(player, 4.5, 3);
-            modifyWaterSpeed(player, 0);
+        if (toRemove) { // reset to base values
+            modifyMovementSpeed(player, getBaseValues(0));
+            modifyHealthPoints(player, getBaseValues(1));
+            modifyScale(player, getBaseValues(2));
+            modifyMineSpeed(player, getBaseValues(3));
+            modifyAttackDamage(player, getBaseValues(4));
+            modifyFireTime(player, getBaseValues(5));
+            modifyGravity(player, getBaseValues(6));
+            modifyFallDmgMultiplier(player, getBaseValues(7));
+            modifyKnockBack(player, getBaseValues(8));
+            modifyOxygenBonus(player, getBaseValues(9));
+            modifyAttackSpeed(player, getBaseValues(10));
+            modifySafeFallRange(player, getBaseValues(11));
+            modifyReach(player, getBaseValues(12), getBaseValues(13));
+            modifyWaterSpeed(player, getBaseValues(14));
             return;
         }
-        if (raceName.equals("RACE_DWARF")) {
-            modifyMovementSpeed(player, 0.08);
-            modifyHealthPoints(player, 24);
-            modifyScale(player, 0.9);
-            modifyMineSpeed(player, 1.2);
-        }
-        if (raceName.equals("RACE_CELESTIAL")) {
-            modifyHealthPoints(player, 40);
-            modifyAttackDamage(player, 4);
-            modifyAttackSpeed(player, 4.2);
-            modifySafeFallRange(player, 5);
-            modifyFireTime(player, 4);
-            modifyGravity(player, 0.04);
-            modifyScale(player, 1.15);
-        }
-        if (raceName.equals("RACE_MISKARU")) {
-            modifyHealthPoints(player, 26);
-            modifyAttackDamage(player, 4);
-            modifyScale(player, 1.05);
-            modifyFallDmgMultiplier(player, 2.5);
-            modifyKnockBack(player, 0.2);
-            modifyOxygenBonus(player, 2);
-            modifyAttackSpeed(player, 3.7);
-        }
-        if (raceName.equals("RACE_CARA")) {
-            modifyScale(player, 0.75);
-            modifyGravity(player, 0.07);
-            modifyHealthPoints(player, 16);
-            modifyMovementSpeed(player, 0.11);
-            modifySafeFallRange(player, 8);
-        }
-        if (raceName.equals("RACE_MEWCHANT")) {
-            modifyGravity(player, 0.07);
-            modifyFallDmgMultiplier(player, 0.8);
-            modifyHealthPoints(player, 18);
-            modifyMovementSpeed(player, 0.12);
-            modifyWaterSpeed(player, 0.5);
-            modifySafeFallRange(player, 6);
-        }
-        if (raceName.equals("RACE_FOSSIL")) {
-            modifyReach(player, 5.5, 4);
-            modifyAttackDamage(player, 3);
-            modifyScale(player, 1.25);
-        }
-        if (raceName.equals("RACE_ZEPHYR")) {
-            modifyFireTime(player, 3);
-            modifyHealthPoints(player, 24);
-            modifyMovementSpeed(player, 0.1);
-        }
-        if (raceName.equals("RACE_ELF")) {
-            modifyFallDmgMultiplier(player, 0.7);
-            modifyHealthPoints(player, 18);
-            modifyMovementSpeed(player, 0.12);
-        }
-        if (raceName.equals("RACE_HOBBIT")) {
-            modifyMovementSpeed(player, 0.085);
-            modifyHealthPoints(player, 16);
-            modifyScale(player, 0.85);
-            modifyAttackSpeed(player, 4.25);
-            modifySafeFallRange(player, 5);
-        }
+        double playerMovementSpeed = getBaseValues(0);
+        double playerHP = getBaseValues(1);
+        double playerScale = getBaseValues(2);
+        double playerMiningSpeed = getBaseValues(3);
+        double playerAttackDamage = getBaseValues(4);
+        double playerFireTime = getBaseValues(5);
+        double playerGravity = getBaseValues(6);
+        double playerFallDamage = getBaseValues(7);
+        double playerKnockback = getBaseValues(8);
+        double playerOxygenBonus = getBaseValues(9);
+        double playerAttackSpeed = getBaseValues(10);
+        double playerSafeFallRange = getBaseValues(11);
+        double playerBlockReach = getBaseValues(12);
+        double playerEntityReach = getBaseValues(13);
+        double playerWaterSpeed = getBaseValues(14);
+        
+        //get player keys through loop
+        
+        //roll through keys
+        
+        //add values
+        
+        //modify attributes
+        modifyMovementSpeed(player, playerMovementSpeed);
+        modifyHealthPoints(player, playerHP);
+        modifyScale(player, playerScale);
+        modifyMineSpeed(player, playerMiningSpeed);
+        modifyAttackDamage(player, playerAttackDamage);
+        modifyFireTime(player, playerFireTime);
+        modifyGravity(player, playerGravity);
+        modifyFallDmgMultiplier(player, playerFallDamage);
+        modifyKnockBack(player, playerKnockback);
+        modifyOxygenBonus(player, playerOxygenBonus);
+        modifyAttackSpeed(player, playerAttackSpeed);
+        modifySafeFallRange(player, playerSafeFallRange);
+        modifyReach(player, playerBlockReach, playerEntityReach);
+        modifyWaterSpeed(player, playerWaterSpeed);
     }
 
     public static void modifyMovementSpeed(Player player, double value){
