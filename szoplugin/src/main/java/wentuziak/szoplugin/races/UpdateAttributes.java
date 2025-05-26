@@ -6,6 +6,23 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 
 public class UpdateAttributes {
+	
+    private static double playerMovementSpeed;     
+    private static double playerHP;                
+    private static double playerScale;             
+    private static double playerMiningSpeed;       
+    private static double playerAttackDamage;      
+    private static double playerFireTime;          
+    private static double playerGravit;            
+    private static double playerFallDamage;        
+    private static double playerKnockback;         
+    private static double playerOxygenBonus;       
+    private static double playerAttackSpeed;       
+    private static double playerSafeFallRange;     
+    private static double playerBlockReach;        
+    private static double playerEntityReach;       
+    private static double playerWaterSpeed;        
+	
     static double getBaseValues(int attributeID){
         double [] baseAttributes = new double[15];
         baseAttributes[0] = 0.1;    //Movement speed
@@ -26,8 +43,7 @@ public class UpdateAttributes {
 
         return baseAttributes[attributeID];
     }
-
-
+    
     public static void attributeManager(Player player, boolean toRemove, String raceName){
         
     	if (toRemove) { // reset to base values if "removerace"
@@ -81,9 +97,23 @@ public class UpdateAttributes {
         double playerBlockReach = blockReachAttribute.getValue();
         double playerEntityReach = entityReachAttribute.getValue();
         double playerWaterSpeed = waterSpeedAttribute.getValue();
-        
+        player.sendMessage(playerMovementSpeed + "");
         //multiply values "RACE_NAME"
-        
+        switch (raceName) {
+        case "RACE_DWARF" -> handleDwarf();
+        case "RACE_CELESTIAL" -> handleCelestial();
+        case "RACE_WITCH" -> handleWitch();
+        case "RACE_MISKARU" -> handleMiskaru();
+        case "RACE_CARA" -> handleCara();
+        case "RACE_MEWCHANT" -> handleMewchant();
+        case "RACE_FOSSIL" -> handleFossil();
+        case "RACE_ZEPHYR" -> handleZephyr();
+        case "RACE_SANGUINITE" -> handleSanguinite();
+        case "RACE_ELF" -> handleElf();
+        case "RACE_HOBBIT" -> handleHobbit();
+        default -> handleUnknownRace();
+    }
+        player.sendMessage(playerMovementSpeed + "");
         //modify attributes
         modifyMovementSpeed(player, playerMovementSpeed);
         modifyHealthPoints(player, playerHP);
@@ -101,7 +131,60 @@ public class UpdateAttributes {
         modifyWaterSpeed(player, playerWaterSpeed);
     }
 
-    public static void modifyMovementSpeed(Player player, double value){
+    
+    // Attributes of all races
+    static void handleDwarf() {
+    	playerMovementSpeed = playerMovementSpeed * 5;
+        System.out.println("Handling Dwarf race..." + playerMovementSpeed);
+    }
+
+    static void handleCelestial() {
+        System.out.println("Handling Celestial race...");
+    }
+
+    static void handleWitch() {
+        System.out.println("Handling Witch race...");
+    }
+
+    static void handleMiskaru() {
+        System.out.println("Handling Miskaru race...");
+    }
+
+    static void handleCara() {
+        System.out.println("Handling Cara race...");
+    }
+
+    static void handleMewchant() {
+        System.out.println("Handling Mewchant race...");
+    }
+
+    static void handleFossil() {
+        System.out.println("Handling Fossil race...");
+    }
+
+    static void handleZephyr() {
+        System.out.println("Handling Zephyr race...");
+    }
+
+    static void handleSanguinite() {
+        System.out.println("Handling Sanguinite race...");
+    }
+
+    static void handleElf() {
+        System.out.println("Handling Elf race...");
+    }
+
+    static void handleHobbit() {
+        System.out.println("Handling Hobbit race...");
+    }
+
+    static void handleUnknownRace() {
+        System.out.println("Unknown race. Applying default settings...");
+    }
+
+
+    
+	public static void modifyMovementSpeed(Player player, double value){
         AttributeInstance speedAttribute = player.getAttribute(Attribute.MOVEMENT_SPEED);
         speedAttribute.setBaseValue(value);
     }
