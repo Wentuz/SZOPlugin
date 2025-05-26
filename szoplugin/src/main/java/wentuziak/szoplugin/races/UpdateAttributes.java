@@ -29,64 +29,60 @@ public class UpdateAttributes {
 
 
     public static void attributeManager(Player player, boolean toRemove, String raceName){
-        if (toRemove) { // reset to base values
-            modifyMovementSpeed(player, getBaseValues(0));
-            modifyHealthPoints(player, getBaseValues(1));
-            modifyScale(player, getBaseValues(2));
-            modifyMineSpeed(player, getBaseValues(3));
-            modifyAttackDamage(player, getBaseValues(4));
-            modifyFireTime(player, getBaseValues(5));
-            modifyGravity(player, getBaseValues(6));
-            modifyFallDmgMultiplier(player, getBaseValues(7));
-            modifyKnockBack(player, getBaseValues(8));
-            modifyOxygenBonus(player, getBaseValues(9));
-            modifyAttackSpeed(player, getBaseValues(10));
-            modifySafeFallRange(player, getBaseValues(11));
-            modifyReach(player, getBaseValues(12), getBaseValues(13));
-            modifyWaterSpeed(player, getBaseValues(14));
-            return;
-        }
-//        double playerMovementSpeed = getBaseValues(0);
-//        double playerHP = getBaseValues(1);
-//        double playerScale = getBaseValues(2);
-//        double playerMiningSpeed = getBaseValues(3);
-//        double playerAttackDamage = getBaseValues(4);
-//        double playerFireTime = getBaseValues(5);
-//        double playerGravity = getBaseValues(6);
-//        double playerFallDamage = getBaseValues(7);
-//        double playerKnockback = getBaseValues(8);
-//        double playerOxygenBonus = getBaseValues(9);
-//        double playerAttackSpeed = getBaseValues(10);
-//        double playerSafeFallRange = getBaseValues(11);
-//        double playerBlockReach = getBaseValues(12);
-//        double playerEntityReach = getBaseValues(13);
-//        double playerWaterSpeed = getBaseValues(14);
         
+    	if (toRemove) { // reset to base values if "removerace"
+    		modifyMovementSpeed(player, getBaseValues(0));
+    		modifyHealthPoints(player, getBaseValues(1));
+    		modifyScale(player, getBaseValues(2));
+    		modifyMineSpeed(player, getBaseValues(3));
+    		modifyAttackDamage(player, getBaseValues(4));
+    		modifyFireTime(player, getBaseValues(5));
+    		modifyGravity(player, getBaseValues(6));
+    		modifyFallDmgMultiplier(player, getBaseValues(7));
+    		modifyKnockBack(player, getBaseValues(8));
+    		modifyOxygenBonus(player, getBaseValues(9));
+    		modifyAttackSpeed(player, getBaseValues(10));
+    		modifySafeFallRange(player, getBaseValues(11));
+    		modifyReach(player, getBaseValues(12), getBaseValues(13));
+    		modifyWaterSpeed(player, getBaseValues(14));
+    		return;
+    	}
+
         // get current player attributes
-        double playerMovementSpeed = getBaseValues(0);
-        double playerHP = getBaseValues(1);
-        double playerScale = getBaseValues(2);
-        double playerMiningSpeed = getBaseValues(3);
-        double playerAttackDamage = getBaseValues(4);
-        double playerFireTime = getBaseValues(5);
-        double playerGravity = getBaseValues(6);
-        double playerFallDamage = getBaseValues(7);
-        double playerKnockback = getBaseValues(8);
-        double playerOxygenBonus = getBaseValues(9);
-        double playerAttackSpeed = getBaseValues(10);
-        double playerSafeFallRange = getBaseValues(11);
-        double playerBlockReach = getBaseValues(12);
-        double playerEntityReach = getBaseValues(13);
-        double playerWaterSpeed = getBaseValues(14);
+        AttributeInstance speedAttribute = player.getAttribute(Attribute.MOVEMENT_SPEED);
+        AttributeInstance healthAttribute = player.getAttribute(Attribute.MAX_HEALTH);
+        AttributeInstance scaleAttribute = player.getAttribute(Attribute.SCALE);
+        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.BLOCK_BREAK_SPEED);
+        AttributeInstance attackAttribute = player.getAttribute(Attribute.ATTACK_DAMAGE);
+        AttributeInstance burnTimeAttribute = player.getAttribute(Attribute.BURNING_TIME);
+        AttributeInstance gravityAttribute = player.getAttribute(Attribute.GRAVITY);
+        AttributeInstance fallDmgAttribute = player.getAttribute(Attribute.FALL_DAMAGE_MULTIPLIER);
+        AttributeInstance knockbackResistAttribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
+        AttributeInstance oxygenAttribute = player.getAttribute(Attribute.OXYGEN_BONUS);
+        AttributeInstance attackSpeedAttribute = player.getAttribute(Attribute.ATTACK_SPEED);
+        AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.SAFE_FALL_DISTANCE);
+        AttributeInstance waterSpeedAttribute = player.getAttribute(Attribute.WATER_MOVEMENT_EFFICIENCY);
+        AttributeInstance blockReachAttribute = player.getAttribute(Attribute.BLOCK_INTERACTION_RANGE);
+        AttributeInstance entityReachAttribute = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
         
-        //get player keys through loop
+        // get current values
+        double playerMovementSpeed = speedAttribute.getValue();
+        double playerHP = healthAttribute.getValue();
+        double playerScale = scaleAttribute.getValue();
+        double playerMiningSpeed = mineSpeedAttribute.getValue();
+        double playerAttackDamage = attackAttribute.getValue();
+        double playerFireTime = burnTimeAttribute.getValue();
+        double playerGravity = gravityAttribute.getValue();
+        double playerFallDamage = fallDmgAttribute.getValue();
+        double playerKnockback = knockbackResistAttribute.getValue();
+        double playerOxygenBonus = oxygenAttribute.getValue();
+        double playerAttackSpeed = attackSpeedAttribute.getValue();
+        double playerSafeFallRange = safeFallRangeAttribute.getValue();
+        double playerBlockReach = blockReachAttribute.getValue();
+        double playerEntityReach = entityReachAttribute.getValue();
+        double playerWaterSpeed = waterSpeedAttribute.getValue();
         
-        
-        
-//        AttributeInstance test = player.getAttribute(Attribute.ATTACK_DAMAGE);
-//        double teee = test.getBaseValue();
-        
-        //add values
+        //multiply values "RACE_NAME"
         
         //modify attributes
         modifyMovementSpeed(player, playerMovementSpeed);
@@ -122,32 +118,32 @@ public class UpdateAttributes {
         mineSpeedAttribute.setBaseValue(value);
     }
     public static void modifyAttackDamage(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.ATTACK_DAMAGE);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance attackSpeedAttribute = player.getAttribute(Attribute.ATTACK_DAMAGE);
+        attackSpeedAttribute.setBaseValue(value);
     }
     public static void modifyFireTime(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.BURNING_TIME);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance burnTimeAttribute = player.getAttribute(Attribute.BURNING_TIME);
+        burnTimeAttribute.setBaseValue(value);
     }
     public static void modifyGravity(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.GRAVITY);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance gravityAttribute = player.getAttribute(Attribute.GRAVITY);
+        gravityAttribute.setBaseValue(value);
     }
     public static void modifyFallDmgMultiplier(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.FALL_DAMAGE_MULTIPLIER);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance fallDmgAttribute = player.getAttribute(Attribute.FALL_DAMAGE_MULTIPLIER);
+        fallDmgAttribute.setBaseValue(value);
     }
     public static void modifyKnockBack(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance knockbackResistAttribute = player.getAttribute(Attribute.KNOCKBACK_RESISTANCE);
+        knockbackResistAttribute.setBaseValue(value);
     }
     public static void modifyOxygenBonus(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.OXYGEN_BONUS);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance oxygenAttribute = player.getAttribute(Attribute.OXYGEN_BONUS);
+        oxygenAttribute.setBaseValue(value);
     }
     public static void modifyAttackSpeed(Player player, double value){
-        AttributeInstance mineSpeedAttribute = player.getAttribute(Attribute.ATTACK_SPEED);
-        mineSpeedAttribute.setBaseValue(value);
+        AttributeInstance attackSpeedAttribute = player.getAttribute(Attribute.ATTACK_SPEED);
+        attackSpeedAttribute.setBaseValue(value);
     }
     public static void modifySafeFallRange(Player player, double value){
         AttributeInstance safeFallRangeAttribute = player.getAttribute(Attribute.SAFE_FALL_DISTANCE);
