@@ -90,7 +90,7 @@ public class EntityListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         CustomRecipes.getRecipeKeys().forEach(player::discoverRecipe);
-        //reloadRace(player);
+        reloadRace(player);
     }
 
     //
@@ -98,22 +98,21 @@ public class EntityListener implements Listener {
     //
 
 
-    // public static void reloadRace(Player player){    
-    //     PersistentDataContainer dataContainer = player.getPersistentDataContainer();
+     public static void reloadRace(Player player){    
+         PersistentDataContainer dataContainer = player.getPersistentDataContainer();
+         NamespacedKey[] raceKeys = Keys.getRaceKeys();
 
-    //     NamespacedKey[] raceKeys = Keys.getRaceKeys();
-
-    //     //  TODO:
-    //     //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
-    //     //  
-    //     for (NamespacedKey key : raceKeys) {
-    //         if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
-    //             String keyString = "RACE_" + key.getKey().toUpperCase();
-    //             player.sendMessage(ChatColor.GREEN + keyString + " Loaded");
-    //             UpdateAttributes.attributeManager(player, false, keyString);
-    //         }
-    //     }
-    // }
+         //  TODO:
+         //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
+         //  
+         for (NamespacedKey key : raceKeys) {
+             if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
+                 String keyString = "RACE_" + key.getKey().toUpperCase();
+                 player.sendMessage(ChatColor.GREEN + keyString + " Loaded");
+                 UpdateAttributes.attributeManager(player, false, keyString);
+             }
+         }
+     }
 
     @EventHandler
     public void onEntityRegainHealth(EntityRegainHealthEvent event) {

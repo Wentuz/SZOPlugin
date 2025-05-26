@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 
 public class UpdateAttributes {
     static double getBaseValues(int attributeID){
-        double [] baseAttributes = new double[13];
-        baseAttributes[2] = 0.1;    //Movement speed
+        double [] baseAttributes = new double[15];
+        baseAttributes[0] = 0.1;    //Movement speed
         baseAttributes[1] = 20;     //Health points
         baseAttributes[2] = 1;      //Scale
         baseAttributes[3] = 1;      //Mining speed
@@ -46,6 +46,23 @@ public class UpdateAttributes {
             modifyWaterSpeed(player, getBaseValues(14));
             return;
         }
+//        double playerMovementSpeed = getBaseValues(0);
+//        double playerHP = getBaseValues(1);
+//        double playerScale = getBaseValues(2);
+//        double playerMiningSpeed = getBaseValues(3);
+//        double playerAttackDamage = getBaseValues(4);
+//        double playerFireTime = getBaseValues(5);
+//        double playerGravity = getBaseValues(6);
+//        double playerFallDamage = getBaseValues(7);
+//        double playerKnockback = getBaseValues(8);
+//        double playerOxygenBonus = getBaseValues(9);
+//        double playerAttackSpeed = getBaseValues(10);
+//        double playerSafeFallRange = getBaseValues(11);
+//        double playerBlockReach = getBaseValues(12);
+//        double playerEntityReach = getBaseValues(13);
+//        double playerWaterSpeed = getBaseValues(14);
+        
+        // get current player attributes
         double playerMovementSpeed = getBaseValues(0);
         double playerHP = getBaseValues(1);
         double playerScale = getBaseValues(2);
@@ -64,7 +81,10 @@ public class UpdateAttributes {
         
         //get player keys through loop
         
-        //roll through keys
+        
+        
+//        AttributeInstance test = player.getAttribute(Attribute.ATTACK_DAMAGE);
+//        double teee = test.getBaseValue();
         
         //add values
         
