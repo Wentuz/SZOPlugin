@@ -7,13 +7,13 @@ import org.bukkit.entity.Player;
 
 public class UpdateAttributes {
 	
-    private static double playerMovementSpeed;     
+    private static double playerMovementSpeed;
     private static double playerHP;                
     private static double playerScale;             
     private static double playerMiningSpeed;       
     private static double playerAttackDamage;      
     private static double playerFireTime;          
-    private static double playerGravit;            
+    private static double playerGravity;            
     private static double playerFallDamage;        
     private static double playerKnockback;         
     private static double playerOxygenBonus;       
@@ -82,21 +82,21 @@ public class UpdateAttributes {
         AttributeInstance entityReachAttribute = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
         
         // get current values
-        double playerMovementSpeed = speedAttribute.getValue();
-        double playerHP = healthAttribute.getValue();
-        double playerScale = scaleAttribute.getValue();
-        double playerMiningSpeed = mineSpeedAttribute.getValue();
-        double playerAttackDamage = attackAttribute.getValue();
-        double playerFireTime = burnTimeAttribute.getValue();
-        double playerGravity = gravityAttribute.getValue();
-        double playerFallDamage = fallDmgAttribute.getValue();
-        double playerKnockback = knockbackResistAttribute.getValue();
-        double playerOxygenBonus = oxygenAttribute.getValue();
-        double playerAttackSpeed = attackSpeedAttribute.getValue();
-        double playerSafeFallRange = safeFallRangeAttribute.getValue();
-        double playerBlockReach = blockReachAttribute.getValue();
-        double playerEntityReach = entityReachAttribute.getValue();
-        double playerWaterSpeed = waterSpeedAttribute.getValue();
+       playerMovementSpeed = speedAttribute.getValue();
+       playerHP = healthAttribute.getValue();
+       playerScale = scaleAttribute.getValue();
+       playerMiningSpeed = mineSpeedAttribute.getValue();
+       playerAttackDamage = attackAttribute.getValue();
+       playerFireTime = burnTimeAttribute.getValue();
+       playerGravity = gravityAttribute.getValue();
+       playerFallDamage = fallDmgAttribute.getValue();
+       playerKnockback = knockbackResistAttribute.getValue();
+       playerOxygenBonus = oxygenAttribute.getValue();
+       playerAttackSpeed = attackSpeedAttribute.getValue();
+       playerSafeFallRange = safeFallRangeAttribute.getValue();
+       playerBlockReach = blockReachAttribute.getValue();
+       playerEntityReach = entityReachAttribute.getValue();
+       playerWaterSpeed = waterSpeedAttribute.getValue();
         player.sendMessage(playerMovementSpeed + "");
         //multiply values "RACE_NAME"
         switch (raceName) {
@@ -134,7 +134,7 @@ public class UpdateAttributes {
     
     // Attributes of all races
     static void handleDwarf() {
-    	playerMovementSpeed = playerMovementSpeed * 5;
+    	playerMovementSpeed = playerMovementSpeed * 0.2;
         System.out.println("Handling Dwarf race..." + playerMovementSpeed);
     }
 
@@ -155,6 +155,7 @@ public class UpdateAttributes {
     }
 
     static void handleMewchant() {
+    	playerMovementSpeed = playerMovementSpeed * 1.2;
         System.out.println("Handling Mewchant race...");
     }
 
