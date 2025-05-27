@@ -102,13 +102,11 @@ public class EntityListener implements Listener {
          PersistentDataContainer dataContainer = player.getPersistentDataContainer();
          NamespacedKey[] raceKeys = Keys.getRaceKeys();
 
-         //  TODO:
-         //  read attributes -> for each attribute create a table -> average from all stats -> update player attributes
-         //  
+         UpdateAttributes.attributeManager(player, true, ""); // ensure none are loaded
          for (NamespacedKey key : raceKeys) {
              if (dataContainer.has(key, PersistentDataType.BOOLEAN)) {
                  String keyString = "RACE_" + key.getKey().toUpperCase();
-                 player.sendMessage(ChatColor.GREEN + keyString + " Loaded");
+                 player.sendMessage(ChatColor.GREEN + keyString + " Loaded"); // load attributes
                  UpdateAttributes.attributeManager(player, false, keyString);
              }
          }

@@ -97,7 +97,7 @@ public class UpdateAttributes {
        playerBlockReach = blockReachAttribute.getValue();
        playerEntityReach = entityReachAttribute.getValue();
        playerWaterSpeed = waterSpeedAttribute.getValue();
-        player.sendMessage(playerMovementSpeed + "");
+       
         //multiply values "RACE_NAME"
         switch (raceName) {
         case "RACE_DWARF" -> handleDwarf();
@@ -113,7 +113,7 @@ public class UpdateAttributes {
         case "RACE_HOBBIT" -> handleHobbit();
         default -> handleUnknownRace();
     }
-        player.sendMessage(playerMovementSpeed + "");
+        
         //modify attributes
         modifyMovementSpeed(player, playerMovementSpeed);
         modifyHealthPoints(player, playerHP);
@@ -134,48 +134,127 @@ public class UpdateAttributes {
     
     // Attributes of all races
     static void handleDwarf() {
-    	playerMovementSpeed = playerMovementSpeed * 0.2;
+    	playerMovementSpeed = playerMovementSpeed * 0.85;
+    	playerHP = playerHP * 1.25;
+    	playerScale = playerScale * 0.75;
+    	playerMiningSpeed = playerMiningSpeed * 1.3;
+    	playerFireTime = playerFireTime * 0.5;
+    	playerKnockback = playerKnockback * 0.8; // to check if it should be inverted
+    	playerSafeFallRange = playerSafeFallRange * 1.25;
         System.out.println("Handling Dwarf race..." + playerMovementSpeed);
     }
 
     static void handleCelestial() {
+    	playerMovementSpeed = playerMovementSpeed * 0.9;
+    	playerHP = playerHP * 2;
+    	playerScale = playerScale * 1.5;
+    	playerMiningSpeed = playerMiningSpeed * 1.15;
+    	playerAttackDamage = playerAttackDamage * 4;
+    	playerFireTime = playerFireTime * 2;
+    	playerGravity = playerGravity * 0.75;
+    	playerFallDamage = playerFallDamage * 0.5;
+    	playerSafeFallRange = playerSafeFallRange * 3;
+    	playerBlockReach = playerBlockReach * 1.25;
+    	playerEntityReach = playerEntityReach * 1.25;
+    	
         System.out.println("Handling Celestial race...");
     }
 
     static void handleWitch() {
+    	playerMiningSpeed = playerMiningSpeed * 1.15;
+    	playerFallDamage = playerFallDamage * 0.9;
+    	playerKnockback = playerKnockback * 1.25; // to check if it should be inverted
+    	playerAttackSpeed = playerAttackSpeed * 1.15;
+    	playerSafeFallRange = playerSafeFallRange * 1.25;
+    	playerWaterSpeed = playerWaterSpeed * 1.25;
+
         System.out.println("Handling Witch race...");
     }
 
     static void handleMiskaru() {
+    	playerMovementSpeed = playerMovementSpeed * 0.9;
+    	playerHP = playerHP * 1.3;
+    	playerScale = playerScale * 1.25;
+    	playerMiningSpeed = playerMiningSpeed * 1.15;
+    	playerAttackDamage = playerAttackDamage * 2;
+    	playerFallDamage = playerFallDamage * 1.25;
+    	playerKnockback = playerKnockback * 0.8; // to check if it should be inverted
+    	playerOxygenBonus = playerOxygenBonus * 1.2;
+    	playerSafeFallRange = playerSafeFallRange * 0.75;
+    	playerBlockReach = playerBlockReach * 1.25;
+    	playerEntityReach = playerEntityReach * 1.25;
+
         System.out.println("Handling Miskaru race...");
     }
 
     static void handleCara() {
+    	playerMovementSpeed = playerMovementSpeed * 1.3;
+    	playerHP = playerHP * 0.70;
+    	playerScale = playerScale * 0.65;
+    	playerFireTime = playerFireTime * 1.5;
+    	playerGravity = playerGravity * 0.75;
+    	playerFallDamage = playerFallDamage * 0.75;
+    	playerKnockback = playerKnockback * 1.3; // to check if it should be inverted
+    	playerAttackSpeed = playerAttackSpeed * 0.85;
+    	playerSafeFallRange = playerSafeFallRange * 1.75;
+    	playerBlockReach = playerBlockReach * 0.75;
+    	playerEntityReach = playerEntityReach * 0.75;
+
         System.out.println("Handling Cara race...");
     }
 
     static void handleMewchant() {
     	playerMovementSpeed = playerMovementSpeed * 1.2;
+    	playerHP = playerHP * 0.9;
+    	playerFallDamage = playerFallDamage * 0.8;
+    	playerSafeFallRange = playerSafeFallRange * 1.5;
+
         System.out.println("Handling Mewchant race...");
     }
 
     static void handleFossil() {
+    	playerHP = playerHP * 1.25;
+    	playerScale = playerScale * 1.1;
+    	playerMiningSpeed = playerMiningSpeed * 1.15;
+    	playerFireTime = playerFireTime * 0.5;
+    	playerKnockback = playerKnockback * 0.9; // to check if it should be inverted
+    	playerOxygenBonus = playerOxygenBonus * 1.5;
+
         System.out.println("Handling Fossil race...");
     }
 
     static void handleZephyr() {
+    	playerMovementSpeed = playerMovementSpeed * 1.1;
+    	playerKnockback = playerKnockback * 1.3; // to check if it should be inverted
         System.out.println("Handling Zephyr race...");
     }
 
     static void handleSanguinite() {
+    	playerMovementSpeed = playerMovementSpeed * 1.1;
+    	playerAttackDamage = playerAttackDamage * 2;
+    	playerFireTime = playerFireTime * 2;
+    	playerAttackSpeed = playerAttackSpeed * 1.2;
+
         System.out.println("Handling Sanguinite race...");
     }
 
     static void handleElf() {
+    	playerMovementSpeed = playerMovementSpeed * 1.1;
+    	playerScale = playerScale * 1.1;
+    	playerGravity = playerGravity * 0.9;
+    	playerFallDamage = playerFallDamage * 0.9;
+    	playerKnockback = playerKnockback * 1.15; // to check if it should be inverted
+    	playerAttackSpeed = playerAttackSpeed * 1.30;
+    	playerSafeFallRange = playerSafeFallRange * 2;
+    	playerWaterSpeed = playerWaterSpeed * 1.5;
+
         System.out.println("Handling Elf race...");
     }
 
     static void handleHobbit() {
+    	playerHP = playerHP * 0.9;
+    	playerMovementSpeed = playerMovementSpeed * 1.2;
+    	playerScale = playerScale * 0.70;
         System.out.println("Handling Hobbit race...");
     }
 
