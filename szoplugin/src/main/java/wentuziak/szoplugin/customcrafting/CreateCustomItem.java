@@ -29,7 +29,7 @@ public class CreateCustomItem {
         ItemStack soulFragment = new ItemStack(Material.AMETHYST_SHARD);
         ItemMeta soulFragmentMeta = soulFragment.getItemMeta();
 
-        soulFragmentMeta.setDisplayName(ChatColor.DARK_PURPLE + "Soul Fragment");
+        soulFragmentMeta.setDisplayName(ChatColor.DARK_PURPLE + "Life Essence");
         soulFragmentMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         soulFragmentMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         soulFragment.setItemMeta(soulFragmentMeta);
@@ -55,9 +55,9 @@ public class CreateCustomItem {
         ItemStack angelSword = new ItemStack(Material.GOLDEN_SWORD);
         ItemMeta angelSwordMeta = angelSword.getItemMeta();
         
-        angelSwordMeta.setDisplayName(ChatColor.YELLOW + "Celestial Razor");
+        angelSwordMeta.setDisplayName(ChatColor.YELLOW + "Seraphim Protocol 02");
         angelSwordMeta.setLore(Arrays.asList(
-            ChatColor.YELLOW + "The absolute leader protects his kin !"));
+            ChatColor.YELLOW + "Model designation from a forgotten war"));
         angelSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BOOLEAN, true);
         AttributeModifier ArmorModifierAngelSword = new AttributeModifier(UUID.randomUUID(), "Armor", 4.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         angelSwordMeta.addAttributeModifier(Attribute.ARMOR, ArmorModifierAngelSword);
@@ -75,9 +75,9 @@ public class CreateCustomItem {
         ItemStack daemonSword = new ItemStack(Material.STONE_SWORD);
         ItemMeta daemonSwordMeta = daemonSword.getItemMeta();
         
-        daemonSwordMeta.setDisplayName(ChatColor.RED + "Withering Bastard Sword");
+        daemonSwordMeta.setDisplayName(ChatColor.RED + "Mk-X NullCutter");
         daemonSwordMeta.setLore(Arrays.asList(
-            ChatColor.RED + "Blood for Hound !"));
+            ChatColor.RED + "Swift & sharp"));
         daemonSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BOOLEAN, true);
         daemonSwordMeta.addEnchant(Enchantment.FIRE_ASPECT, -1, true);
         AttributeModifier attackSpeedModifierDaemonSword = new AttributeModifier(UUID.randomUUID(), "Armor", -2.0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
@@ -94,9 +94,9 @@ public class CreateCustomItem {
         ItemStack spellSword = new ItemStack(Material.IRON_SWORD);
         ItemMeta spellSwordMeta = spellSword.getItemMeta();
         
-        spellSwordMeta.setDisplayName(ChatColor.BLUE + "Spell Sword");
+        spellSwordMeta.setDisplayName(ChatColor.BLUE + "Electro Stabber 06");
         spellSwordMeta.setLore(Arrays.asList(
-            ChatColor.RED + "Imbuded with magic"));
+            ChatColor.RED + "Broken energy core..."));
         spellSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_SPELL_SWORD, PersistentDataType.BOOLEAN, true);
         AttributeModifier attackSpeedModifierSpellSword = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", -1.8, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
         spellSwordMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierSpellSword);
@@ -111,9 +111,9 @@ public class CreateCustomItem {
         ItemStack pyromancerSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta pyromancerSwordMeta = pyromancerSword.getItemMeta();
 
-        pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Pyromancer Sword");
+        pyromancerSwordMeta.setDisplayName(ChatColor.DARK_BLUE + "Solar Flare 03");
         pyromancerSwordMeta.setLore(Arrays.asList(
-            "Wonder what could go wrong"));
+            "Very unstable explosion emitter"));
         pyromancerSwordMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BOOLEAN, true);
         pyromancerSword.setItemMeta(pyromancerSwordMeta);
 
@@ -126,7 +126,7 @@ public class CreateCustomItem {
 
         thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "Þrumuhamar");
         thunderHammerMeta.setLore(Arrays.asList(
-            "Thunder warriors rise your arms !"));
+            "He who brings thunder"));
         thunderHammerMeta.getPersistentDataContainer().set(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BOOLEAN, true);
         thunderHammer.setItemMeta(thunderHammerMeta);
 
@@ -190,10 +190,10 @@ public class CreateCustomItem {
         ItemStack gravityBow = new ItemStack(Material.BOW);
         ItemMeta gravityBowMeta = gravityBow.getItemMeta();
 
-        gravityBowMeta.setDisplayName(ChatColor.DARK_BLUE + "Anti Grav Bow");
+        gravityBowMeta.setDisplayName(ChatColor.DARK_BLUE + "Horizon's End");
         gravityBowMeta.setLore(Arrays.asList(
-            ChatColor.GREEN + "pew pew pew",
-            ChatColor.GREEN + "haha :)"));
+            ChatColor.GREEN + "Marksman's favourite",
+            ChatColor.GREEN + "VII"));
         gravityBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_GRAVITY_BOW, PersistentDataType.BOOLEAN, true);
         gravityBow.setItemMeta(gravityBowMeta);
 
@@ -206,7 +206,8 @@ public class CreateCustomItem {
 
         dedalusBowMeta.setDisplayName(ChatColor.YELLOW + "Dedalus StormBow");
         dedalusBowMeta.setLore(Arrays.asList(
-            ChatColor.BLUE + "Forged from storms"));
+            ChatColor.BLUE + "Anti everything",
+            ChatColor.BLUE + "I"));
         dedalusBowMeta.getPersistentDataContainer().set(Keys.CUSTOM_DEDALUS_BOW, PersistentDataType.BOOLEAN, true);
         dedalusBow.setItemMeta(dedalusBowMeta);
 
@@ -232,7 +233,9 @@ public class CreateCustomItem {
 
         repeaterCrossbowMeta.setDisplayName(ChatColor.YELLOW + "Repeater Crossbow");
         repeaterCrossbowMeta.setLore(Arrays.asList(
-            ChatColor.YELLOW + "Pew pew pew"));
+            ChatColor.YELLOW + "Pew pew pew",
+            ChatColor.YELLOW + "IX"));
+        	
         repeaterCrossbowMeta.addEnchant(Enchantment.QUICK_CHARGE, 5, true);
 
         repeaterCrossbow.setItemMeta(repeaterCrossbowMeta);
@@ -246,7 +249,8 @@ public class CreateCustomItem {
 
         bouncyCrossbowMeta.setDisplayName(ChatColor.RED + "Rioters Crossbow");
         bouncyCrossbowMeta.setLore(Arrays.asList(
-            ChatColor.RED + "x plode"));
+            ChatColor.RED + "The latest breach model",
+        	ChatColor.RED + "VI"));
             bouncyCrossbowMeta.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.BOOLEAN, true);
             bouncyCrossbow.setItemMeta(bouncyCrossbowMeta);
 
@@ -279,7 +283,7 @@ public class CreateCustomItem {
 
         ramCapMeta.setDisplayName(ChatColor.RED + "Barani web");
         ramCapMeta.setLore(Arrays.asList(
-            "RAM"));
+            "You are the battle RAM !"));
             ramCapMeta.getPersistentDataContainer().set(Keys.CUSTOM_RAM_CAP, PersistentDataType.BOOLEAN, true);
             ramCap.setItemMeta(ramCapMeta);
 
@@ -292,7 +296,7 @@ public class CreateCustomItem {
 
         jetBootsMeta.setDisplayName(ChatColor.GRAY + "Jet Boots");
         jetBootsMeta.setLore(Arrays.asList(
-            "A cheap way to levitate"));
+            "A reliable way to go up"));
         AttributeModifier fallModifierJetBoots = new AttributeModifier(UUID.randomUUID(), "Fall", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         jetBootsMeta.addAttributeModifier(Attribute.SAFE_FALL_DISTANCE, fallModifierJetBoots);
         ((LeatherArmorMeta) jetBootsMeta).setColor(Color.SILVER);
@@ -307,9 +311,9 @@ public class CreateCustomItem {
         ItemStack magicBoots = new ItemStack(Material.LEATHER_BOOTS);
         ItemMeta magicBootsMeta = magicBoots.getItemMeta();
 
-        magicBootsMeta.setDisplayName(ChatColor.BLUE + "Magic Boots");
+        magicBootsMeta.setDisplayName(ChatColor.BLUE + "Old Man's Sneakers");
         magicBootsMeta.setLore(Arrays.asList(
-            "Boosts magical capabilities"));
+            "Boosts old scrolls"));
         ((LeatherArmorMeta) magicBootsMeta).setColor(Color.BLUE);
         magicBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MAGIC_BOOTS, PersistentDataType.BOOLEAN, true);
 
@@ -324,7 +328,7 @@ public class CreateCustomItem {
 
         explosiveChestMeta.setDisplayName(ChatColor.DARK_RED + "Bombardiers Vest");
         explosiveChestMeta.setLore(Arrays.asList(
-            "Hey you dropped something !"));
+            "Reactive defence mechanism 02"));
         explosiveChestMeta.getPersistentDataContainer().set(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BOOLEAN, true);
 
         explosiveChest.setItemMeta(explosiveChestMeta);
@@ -338,7 +342,7 @@ public class CreateCustomItem {
 
         reflectiveChestpieceMeta.setDisplayName(ChatColor.BLUE + "Reflective Chestpiece");
         reflectiveChestpieceMeta.setLore(Arrays.asList(
-            "Cruel. Not flashy or shiny, just cruel"));
+            "Stings a lot. Just don't try and lick it"));
             reflectiveChestpieceMeta.getPersistentDataContainer().set(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BOOLEAN, true);
 
         reflectiveChestpiece.setItemMeta(reflectiveChestpieceMeta);
@@ -371,9 +375,9 @@ public class CreateCustomItem {
         ItemStack ninjaPant = new ItemStack(Material.DIAMOND_LEGGINGS);
         ItemMeta ninjaPantMeta = ninjaPant.getItemMeta();
 
-        ninjaPantMeta.setDisplayName(ChatColor.GRAY + "Sneaky Stockings");
+        ninjaPantMeta.setDisplayName(ChatColor.GRAY + "Cat Burglars");
         ninjaPantMeta.setLore(Arrays.asList(
-            "Mhmmm ... Not sus"));
+            "reactive defence mechanism 05"));
             ninjaPantMeta.getPersistentDataContainer().set(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BOOLEAN, true);
 
         ninjaPant.setItemMeta(ninjaPantMeta);
@@ -387,7 +391,7 @@ public class CreateCustomItem {
 
         cerberusChainMeta.setDisplayName(ChatColor.DARK_GRAY + "Cerberus Chain");
         cerberusChainMeta.setLore(Arrays.asList(
-            "Guards remain loyal"));
+            "Spectral guardian bound to your ..."));
             AttributeModifier armorModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "Armor", 3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
             cerberusChainMeta.addAttributeModifier(Attribute.ARMOR, armorModifierCerberusChain);
             AttributeModifier armorPercentModifierCerberusChain = new AttributeModifier(UUID.randomUUID(), "ArmorPercent", 0.33, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
@@ -407,7 +411,7 @@ public class CreateCustomItem {
 
         gluttonyPantsMeta.setDisplayName(ChatColor.DARK_GREEN + "The Gluttonous Leggings");
         gluttonyPantsMeta.setLore(Arrays.asList(
-            "Devour !"));
+            "For the hungry sausage you are"));
         gluttonyPantsMeta.getPersistentDataContainer().set(Keys.CUSTOM_GLUTTONY_PANTS, PersistentDataType.BOOLEAN, true);
 
         gluttonyPants.setItemMeta(gluttonyPantsMeta);
@@ -496,7 +500,7 @@ public class CreateCustomItem {
 
         ironCladChestplateMeta.setDisplayName(ChatColor.GOLD + "IronClad Chestplate");
         ironCladChestplateMeta.setLore(Arrays.asList(
-            ChatColor.DARK_GRAY + "Mark II Gladiator type"));
+            ChatColor.DARK_GRAY + "MK II Gladiator type"));
         AttributeModifier attackModifierClad = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
         ironCladChestplateMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifierClad);
         AttributeModifier attackSpeedModifierClad = new AttributeModifier(UUID.randomUUID(), "AttackSpeed", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.CHEST);
@@ -537,7 +541,7 @@ public class CreateCustomItem {
 
         ironCladBootsMeta.setDisplayName(ChatColor.GOLD + "IronClad Stompers");
         ironCladBootsMeta.setLore(Arrays.asList(
-            ChatColor.DARK_GRAY + "They feel heavy ? But not ?"));
+            ChatColor.DARK_GRAY + "Mud is no longer your concern"));
         AttributeModifier stepModifierClad = new AttributeModifier(UUID.randomUUID(), "Step", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         ironCladBootsMeta.addAttributeModifier(Attribute.STEP_HEIGHT, stepModifierClad);
         AttributeModifier jumpModifierClad = new AttributeModifier(UUID.randomUUID(), "Jump", 0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.FEET);
@@ -645,9 +649,9 @@ public class CreateCustomItem {
         ItemStack witchHelmet = new ItemStack(Material.DIAMOND_HELMET);
         ItemMeta witchHelmetMeta = witchHelmet.getItemMeta();
 
-        witchHelmetMeta.setDisplayName(ChatColor.GRAY + "Black Cat Hat");
+        witchHelmetMeta.setDisplayName(ChatColor.GRAY + "StimHelm ver2.0");
         witchHelmetMeta.setLore(Arrays.asList(
-            ChatColor.DARK_GRAY + "black cat hat >:3"));
+            ChatColor.DARK_GRAY + "A relic of ancient biotech"));
         witchHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_WITCH_HELMET, PersistentDataType.BOOLEAN, true);
         witchHelmet.setItemMeta(witchHelmetMeta);
 
@@ -658,9 +662,9 @@ public class CreateCustomItem {
         ItemStack guardingVest = new ItemStack(Material.GOLDEN_CHESTPLATE);
         ItemMeta guardingVestMeta = guardingVest.getItemMeta();
 
-        guardingVestMeta.setDisplayName(ChatColor.YELLOW + "Angelic Vest");
+        guardingVestMeta.setDisplayName(ChatColor.YELLOW + "HeartCore Aegis");
         guardingVestMeta.setLore(Arrays.asList(
-            ChatColor.MAGIC + "Gwuh huh yuh"));
+            ChatColor.RED + "Lifeguard protocol ... long forgotten"));
             AttributeModifier armorModifier = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
             guardingVestMeta.addAttributeModifier(Attribute.ARMOR, armorModifier);
             AttributeModifier toughnessModifier = new AttributeModifier(UUID.randomUUID(), "Toughness", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
@@ -680,7 +684,7 @@ public class CreateCustomItem {
 
         strigaVeilMeta.setDisplayName(ChatColor.DARK_RED + "Striga's veil");
         strigaVeilMeta.setLore(Arrays.asList(
-            ChatColor.RED + "Cursed with vampiric power"));
+            ChatColor.RED + "Siphon your foe"));
         strigaVeilMeta.getPersistentDataContainer().set(Keys.CUSTOM_STRIGA_VEIL, PersistentDataType.BOOLEAN, true);
         AttributeModifier attackModifierStriga = new AttributeModifier(UUID.randomUUID(), "Strength", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.HEAD);
         strigaVeilMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackModifierStriga);

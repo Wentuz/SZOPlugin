@@ -252,8 +252,8 @@ public class CustomTools {
             }
             else if (blockMaterial == Material.MANGROVE_LEAVES) {
                 item = new ItemStack(Material.MANGROVE_PROPAGULE);
-            }
-    
+            }            
+
             blockLocation.getWorld().dropItemNaturally(blockLocation, item);
         }
     }

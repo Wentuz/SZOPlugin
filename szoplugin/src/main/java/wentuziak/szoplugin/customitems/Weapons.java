@@ -68,7 +68,7 @@ public class Weapons {
 
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity){
         if (LogicHolder.critRoll(chanceForCrit)) {
-            hitEntity.getWorld().spawnParticle(Particle.SOUL, hitEntity.getLocation(), 40);
+            hitEntity.getWorld().spawnParticle(Particle.PORTAL, hitEntity.getLocation(), 40);
             LogicHolder.givePotionEffect(hitEntity, "WITHER", 20 * 5, 0);
             LogicHolder.givePotionEffect(hitEntity, "BLINDNESS", 20 * 2, 1);
 
@@ -95,7 +95,7 @@ public class Weapons {
                 cloud.setBasePotionData(new PotionData(PotionType.HARMING));
                 cloud.setDuration(20 * 4);
                 cloud.setRadius(1.5f);
-                cloud.setParticle(Particle.SOUL);
+                cloud.setParticle(Particle.ELECTRIC_SPARK);
                 cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 1, 2), true);
                 cloud.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 1, 0), true);
             }, 4);

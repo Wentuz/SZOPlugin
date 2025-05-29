@@ -34,7 +34,7 @@
 		<dependency>
     		<groupId>org.spigotmc</groupId>
     		<artifactId>spigot-api</artifactId>
-    		<version>1.21.4-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
+    		<version>1.21.5-R0.1-SNAPSHOT</version> <!-- Ensure this is 1.17 or higher -->
     		<scope>provided</scope>
 		</dependency>
 	
