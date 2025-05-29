@@ -1,5 +1,6 @@
 package wentuziak.szoplugin.customlogic;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -19,6 +20,7 @@ import org.bukkit.entity.Parrot.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.ThrownPotion;
+import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -31,8 +33,11 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.SzoPlugin;
+
 import java.util.List;
 import java.util.Map;
 
@@ -74,7 +79,7 @@ public class LogicHolder {
         }
     }
 
-    public static void throwSnowball(LivingEntity livingEntity, NamespacedKey key, int velocity){
+    public static Snowball throwSnowball(LivingEntity livingEntity, NamespacedKey key, int velocity){
         Snowball snowball = livingEntity.launchProjectile(Snowball.class);
 
         Map<NamespacedKey, String> customTags = Map.of(
@@ -92,6 +97,8 @@ public class LogicHolder {
 
         snowball.setVelocity(livingEntity.getLocation().getDirection().multiply(velocity));
         snowball.setShooter(livingEntity);
+        
+        return snowball;
         }
 
     public static boolean isPlayerAboveGround(LivingEntity player, double minDistance) {
@@ -299,7 +306,17 @@ public class LogicHolder {
         thrownPotion.setItem(potion);
         thrownPotion.setVelocity(entity.getLocation().getDirection().multiply(0)); // Drop straight down
     }
-
-
     
+    public static void particleEmitterOnEntity(Entity target, Particle particle, int particleNumber, int ticks) {
+        target.getWorld().spawnParticle(particle, target.getLocation(), particleNumber);
+        if(ticks == 0) {
+        	return;        	
+        }else {
+        	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            	particleEmitterOnEntity(target, particle, particleNumber, ticks - 1);
+            },  1);
+        }
+    }
+
+
 }

@@ -17,6 +17,7 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Silverfish;
+import org.bukkit.entity.Snowball;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -121,6 +122,8 @@ public class Weapons {
 
     public static void gravityArrow(Arrow arrow){
         arrow.setGravity(false);
+        arrow.setVisibleByDefault(false);
+        LogicHolder.particleEmitterOnEntity(arrow, Particle.ELECTRIC_SPARK, 5, 10 * 20);
         
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             arrow.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, arrow.getLocation(), 1);
@@ -186,7 +189,8 @@ public class Weapons {
 
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
-        LogicHolder.throwSnowball(player, Keys.CUSTOM_GRENADE, 1);
+        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_GRENADE, 1);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.ASH, 1, 5 * 20);
     }
 
     public static void grenadeEffect(Location location){
@@ -203,6 +207,8 @@ public class Weapons {
 
         Location tntLocation = playerLocation.add(direction.clone().multiply(1).add(new Vector(0, 1, 0)));
         TNTPrimed tnt = player.getWorld().spawn(tntLocation, TNTPrimed.class);
+        
+        LogicHolder.particleEmitterOnEntity(tnt, Particle.DRIPPING_LAVA, 2, 10 * 20);
 
         tnt.setVelocity(direction.multiply(1.0));
         tnt.setYield(20.0F);
@@ -243,7 +249,9 @@ public class Weapons {
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-        LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 3);
+        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 3);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.FIREWORK, 4, 3 * 20);
+
     }
 
     public static void fireworkEffect(Location location, int power){
