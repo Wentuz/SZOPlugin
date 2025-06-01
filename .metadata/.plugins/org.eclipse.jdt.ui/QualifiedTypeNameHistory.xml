@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.bukkit.attribute.Attribute"/>
     <fullyQualifiedTypeName name="org.bukkit.attribute.AttributeInstance"/>
+    <fullyQualifiedTypeName name="org.bukkit.Particle"/>
 </qualifiedTypeNameHistroy>

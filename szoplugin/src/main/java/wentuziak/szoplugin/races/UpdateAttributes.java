@@ -136,18 +136,19 @@ public class UpdateAttributes {
     static void handleDwarf() {
     	playerMovementSpeed = playerMovementSpeed * 0.85;
     	playerHP = playerHP * 1.25;
-    	playerScale = playerScale * 0.75;
+    	playerScale = playerScale * 0.8;
     	playerMiningSpeed = playerMiningSpeed * 1.3;
     	playerFireTime = playerFireTime * 0.5;
     	playerKnockback = playerKnockback * 0.8; // to check if it should be inverted
     	playerSafeFallRange = playerSafeFallRange * 1.25;
-        System.out.println("Handling Dwarf race..." + playerMovementSpeed);
+    	
+        System.out.println("Handling Dwarf race...");
     }
 
     static void handleCelestial() {
-    	playerMovementSpeed = playerMovementSpeed * 0.9;
+    	playerMovementSpeed = playerMovementSpeed * 1.05;
     	playerHP = playerHP * 2;
-    	playerScale = playerScale * 1.5;
+    	playerScale = playerScale * 1.35;
     	playerMiningSpeed = playerMiningSpeed * 1.15;
     	playerAttackDamage = playerAttackDamage * 4;
     	playerFireTime = playerFireTime * 2;
@@ -190,11 +191,11 @@ public class UpdateAttributes {
     static void handleCara() {
     	playerMovementSpeed = playerMovementSpeed * 1.3;
     	playerHP = playerHP * 0.70;
-    	playerScale = playerScale * 0.65;
+    	playerScale = playerScale * 0.7;
     	playerFireTime = playerFireTime * 1.5;
     	playerGravity = playerGravity * 0.75;
     	playerFallDamage = playerFallDamage * 0.75;
-    	playerKnockback = playerKnockback * 1.3; // to check if it should be inverted
+    	playerKnockback = playerKnockback * 2.3; // to check if it should be inverted
     	playerAttackSpeed = playerAttackSpeed * 0.85;
     	playerSafeFallRange = playerSafeFallRange * 1.75;
     	playerBlockReach = playerBlockReach * 0.75;
@@ -204,7 +205,7 @@ public class UpdateAttributes {
     }
 
     static void handleMewchant() {
-    	playerMovementSpeed = playerMovementSpeed * 1.2;
+    	playerMovementSpeed = playerMovementSpeed * 1.25;
     	playerHP = playerHP * 0.9;
     	playerFallDamage = playerFallDamage * 0.8;
     	playerSafeFallRange = playerSafeFallRange * 1.5;
@@ -214,7 +215,7 @@ public class UpdateAttributes {
 
     static void handleFossil() {
     	playerHP = playerHP * 1.25;
-    	playerScale = playerScale * 1.1;
+    	playerScale = playerScale * 1.15;
     	playerMiningSpeed = playerMiningSpeed * 1.15;
     	playerFireTime = playerFireTime * 0.5;
     	playerKnockback = playerKnockback * 0.9; // to check if it should be inverted
@@ -254,7 +255,7 @@ public class UpdateAttributes {
     static void handleHobbit() {
     	playerHP = playerHP * 0.9;
     	playerMovementSpeed = playerMovementSpeed * 1.2;
-    	playerScale = playerScale * 0.70;
+    	playerScale = playerScale * 0.75;
         System.out.println("Handling Hobbit race...");
     }
 
