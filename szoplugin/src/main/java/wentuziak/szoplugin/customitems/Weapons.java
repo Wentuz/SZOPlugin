@@ -63,8 +63,9 @@ public class Weapons {
         if (secondsDuration >= 1) {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 bleedEffect(hitEntity, damage, secondsDuration - 1);
-            }, 20L * secondsDuration);
+            }, 20L);
         }
+        LogicHolder.particleEmitterOnEntity(hitEntity, Particle.FALLING_LAVA, 20, 10, 0.5, 0.5, 0.5, 0.01);
     }
 
     public static void daemonSwordEffect(int chanceForCrit, LivingEntity hitEntity){

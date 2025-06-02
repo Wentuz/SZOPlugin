@@ -45,8 +45,8 @@ public class MagicItems {
     static BukkitTask ancientShellTask;
 
 
-    public static void teleportSpell(Player player, boolean isBoosted){
-        int distance = isBoosted ? 150 : 50;
+    public static void teleportSpell(Player player, boolean isBoosted, int distance){
+        distance = isBoosted ? distance * 2 : distance;
 
         Block targetBlock = player.getTargetBlock(null, distance);
 
@@ -64,7 +64,7 @@ public class MagicItems {
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
         player.teleport(targetLocation);
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 1, 1);
-        LogicHolder.givePotionEffect(player, "BLINDNESS", 80, 0);
+        LogicHolder.givePotionEffect(player, "BLINDNESS", 5, 0);
         player.getWorld().spawnParticle(Particle.PORTAL, player.getLocation(), 100);
 
     }
@@ -99,7 +99,7 @@ public class MagicItems {
 
     public static void spiritLeech(Player player, NamespacedKey key, boolean isSpellBoosted){
         player.playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1, 1);
-        LogicHolder.throwSnowball(player, key, 4);
+        Snowball snowball = LogicHolder.throwSnowball(player, key, 4);
 
         if (isSpellBoosted) {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
@@ -109,6 +109,8 @@ public class MagicItems {
                 spiritLeech(player, key, false);
             }, 10L);
         }
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.PORTAL, 20, 3 * 20, 0.1, 0.1, 0.1, 0.05);
+        snowball.setVisibleByDefault(false);
     }
 
     public static void spiritLeechEffect(LivingEntity targetEntity){
@@ -124,7 +126,9 @@ public class MagicItems {
 
     public static void spiderYeet(Player player, NamespacedKey key){
         player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
-        LogicHolder.throwSnowball(player, key, 4);
+        Snowball snowball = LogicHolder.throwSnowball(player, key, 4);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.ASH, 10, 2 * 20);
+        snowball.setVisibleByDefault(false);
     }
 
     public static void spiderYeetEffect(Location location){
@@ -222,7 +226,10 @@ public class MagicItems {
                         }
                     }else{
                         snowball.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.STRING, "throwingFirework");
-                    }              
+                    } 
+                    LogicHolder.particleEmitterOnEntity(snowball, Particle.SOUL, 2, 2 * 20, 0.1, 0.1, 0.1, 0.05);
+                    snowball.setVisibleByDefault(false);
+
                     numberOfProjectiles--;
                 }
             }, 10 * timeHalfSeconds);
@@ -242,6 +249,8 @@ public class MagicItems {
         Vector direction = player.getLocation().getDirection().normalize();
         player.setVelocity(direction.multiply(3.5));
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+        
+        LogicHolder.particleEmitterOnEntity(player, Particle.CLOUD, 10, 4 * 20, 0.1, 0.1, 0.1, 0.05);
     }
 
     public static void webTrapThrow(Player player, NamespacedKey key){

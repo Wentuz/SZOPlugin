@@ -7,11 +7,13 @@ import java.lang.reflect.AccessFlag.Location;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.WindCharge;
@@ -32,6 +34,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
+import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
@@ -160,7 +163,7 @@ public class InteractionListener implements Listener{
 
                 // Handle teleport spell
                 if (playerContainer.has(Keys.CUSTOM_TELEPORT_SPELL, PersistentDataType.BYTE) && clickedRightButton) {
-                MagicItems.teleportSpell(player, isSpellBoosted);
+                MagicItems.teleportSpell(player, isSpellBoosted, 50);
                 player.setCooldown(Material.GLOBE_BANNER_PATTERN, 20 * 10);
                 return;
                 }
@@ -218,20 +221,54 @@ public class InteractionListener implements Listener{
                 //
                 //      Sword Skills
                 //
-                if (itemInOffHand.getType() == Material.AIR && !player.hasCooldown(Material.POPPED_CHORUS_FRUIT)) {
+                if (itemInOffHand.getType() == Material.AIR && clickedRightButton) {
                     PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-                    if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                    if (playerContainer.has(Keys.CUSTOM_DAEMON_SWORD, PersistentDataType.BYTE) 
+                    		&& !player.hasCooldown(Material.STONE_SWORD)) {
                         MagicItems.spiritLeech(player, Keys.CUSTOM_SPIRIT_LEECH, false);
-                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 15);
+                        player.setCooldown(Material.STONE_SWORD, 20 * 15);
                         return;
                     }
-                    if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
-                    	player.sendMessage("HERE");
+                    if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE)
+                    		&& !player.hasCooldown(Material.GOLDEN_SWORD)) {
                         LogicHolder.lingeringPotionDrop(PotionType.HEALING, PotionEffectType.INSTANT_HEALTH, player);
-                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 30);
+                        player.setCooldown(Material.GOLDEN_SWORD, 20 * 30);
                         return;
                     }
-                    if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                    if (playerContainer.has(Keys.CUSTOM_SPELL_SWORD, PersistentDataType.BYTE)
+                    		&& !player.hasCooldown(Material.IRON_SWORD)) {
+                    	MagicItems.teleportSpell(player, false, 5);
+                        player.setCooldown(Material.IRON_SWORD, 20 * 2);
+                        return;
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)
+                    		&& !player.hasCooldown(Material.DIAMOND_AXE)) {
+                        for (Entity entity : player.getNearbyEntities(3, 3, 3)) {
+                            Vector direction = entity.getLocation().toVector().subtract(player.getLocation().toVector()).normalize();
+                            entity.getWorld().spawnParticle(Particle.SMOKE, entity.getLocation(), 10, 1, 1, 1, 0.015);
+                            double force = 3.0;
+                            entity.setVelocity(direction.multiply(force));
+                            LogicHolder.givePotionEffect((LivingEntity) entity, "SLOW", 20 * 5, 0);
+                            Weapons.bleedEffect((LivingEntity)entity, 3.0, 5);
+                        }
+                        player.setCooldown(Material.DIAMOND_AXE, 20 * 10);
+                        return;
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BYTE)
+                    		&& !player.hasCooldown(Material.DIAMOND_AXE)) {
+                        for (Entity entity : player.getNearbyEntities(10, 3, 10)) {
+                            Vector direction = entity.getLocation().toVector().subtract(player.getLocation().toVector()).normalize();
+                            entity.getWorld().spawnParticle(Particle.SMOKE, entity.getLocation(), 10, 1, 1, 1, 0.015);
+                            double force = 3.0;
+                            entity.setVelocity(direction.multiply(force));
+                            Weapons.thunderHammerEffect(100, (LivingEntity) entity);
+                        }
+                        player.setCooldown(Material.DIAMOND_AXE, 20 * 30);
+                        LogicHolder.givePotionEffect(player, "WEAKNESS", 20 * 30, 1);
+                        return;
+                    }
+                    if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_SWORD, PersistentDataType.BYTE)
+                    		&& !player.hasCooldown(Material.DIAMOND_SWORD)) {
                         org.bukkit.Location location = player.getLocation();
                         WindCharge windCharge = (WindCharge) player.getWorld().spawnEntity(location, EntityType.WIND_CHARGE);
                         windCharge.explode();
@@ -240,6 +277,8 @@ public class InteractionListener implements Listener{
                         }, 5L);
                         
                         player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 5);
+                        player.setCooldown(Material.DIAMOND_SWORD, 20 * 5);
+
                         return;
                     }
                 }

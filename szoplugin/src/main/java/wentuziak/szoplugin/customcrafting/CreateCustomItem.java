@@ -124,9 +124,9 @@ public class CreateCustomItem {
         ItemStack thunderHammer = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta thunderHammerMeta = thunderHammer.getItemMeta();
 
-        thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "Þrumuhamar");
+        thunderHammerMeta.setDisplayName(ChatColor.DARK_BLUE + "StormBringer");
         thunderHammerMeta.setLore(Arrays.asList(
-            "He who brings thunder"));
+            "Old gods power"));
         thunderHammerMeta.getPersistentDataContainer().set(Keys.CUSTOM_THUNDER_HAMMER, PersistentDataType.BOOLEAN, true);
         thunderHammer.setItemMeta(thunderHammerMeta);
 
@@ -423,9 +423,9 @@ public class CreateCustomItem {
         ItemStack armourPiercingAxe = new ItemStack(Material.DIAMOND_AXE);
         ItemMeta armourPiercingAxeMeta = armourPiercingAxe.getItemMeta();
 
-        armourPiercingAxeMeta.setDisplayName(ChatColor.RED + "Ripping Axe");
+        armourPiercingAxeMeta.setDisplayName(ChatColor.RED + "Jack");
         armourPiercingAxeMeta.setLore(Arrays.asList(
-            "More blood..."));
+            "London No.1"));
         armourPiercingAxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BOOLEAN, true);
 
         armourPiercingAxe.setItemMeta(armourPiercingAxeMeta);
