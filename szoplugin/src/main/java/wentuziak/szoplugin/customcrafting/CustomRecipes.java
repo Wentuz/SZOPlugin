@@ -37,7 +37,7 @@ public final class CustomRecipes {
         soulFragmentRecipe.addIngredient(1, Material.GHAST_TEAR);
         soulFragmentRecipe.addIngredient(1, Material.ENDER_EYE);
         soulFragmentRecipe.addIngredient(1, Material.ECHO_SHARD);
-        soulFragmentRecipe.addIngredient(2, Material.LAPIS_LAZULI);
+        soulFragmentRecipe.addIngredient(2, Material.POPPED_CHORUS_FRUIT);
         Bukkit.addRecipe(soulFragmentRecipe);
 
         

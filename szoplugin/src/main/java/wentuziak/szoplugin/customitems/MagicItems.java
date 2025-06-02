@@ -246,7 +246,9 @@ public class MagicItems {
 
     public static void webTrapThrow(Player player, NamespacedKey key){
         player.playSound(player.getLocation(), Sound.ENTITY_SPIDER_AMBIENT, 1, 1);
-        LogicHolder.throwSnowball(player, key, 6);
+        Snowball snowball = LogicHolder.throwSnowball(player, key, 6);
+        snowball.setVisibleByDefault(false);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.SNOWFLAKE, 10, 40, 0.1, 0.1, 0.1, 0.05);
     }
 
     public static void webTrapEffect(Location location){

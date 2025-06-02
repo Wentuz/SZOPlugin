@@ -123,7 +123,7 @@ public class Weapons {
     public static void gravityArrow(Arrow arrow){
         arrow.setGravity(false);
         arrow.setVisibleByDefault(false);
-        LogicHolder.particleEmitterOnEntity(arrow, Particle.ELECTRIC_SPARK, 5, 10 * 20);
+        LogicHolder.particleEmitterOnEntity(arrow, Particle.ELECTRIC_SPARK, 5, 10 * 20, 0.2, 0.2, 0.2, 0.01);
         
         Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             arrow.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, arrow.getLocation(), 1);
@@ -190,7 +190,7 @@ public class Weapons {
     public static void grenadeThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
         Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_GRENADE, 1);
-        LogicHolder.particleEmitterOnEntity(snowball, Particle.ASH, 1, 5 * 20);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.FLAME, 1, 5 * 20, 0.1, 0.1, 0.1, 0.05);
     }
 
     public static void grenadeEffect(Location location){

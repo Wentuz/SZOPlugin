@@ -226,6 +226,7 @@ public class InteractionListener implements Listener{
                         return;
                     }
                     if (playerContainer.has(Keys.CUSTOM_ANGEL_SWORD, PersistentDataType.BYTE) && clickedRightButton) {
+                    	player.sendMessage("HERE");
                         LogicHolder.lingeringPotionDrop(PotionType.HEALING, PotionEffectType.INSTANT_HEALTH, player);
                         player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 30);
                         return;

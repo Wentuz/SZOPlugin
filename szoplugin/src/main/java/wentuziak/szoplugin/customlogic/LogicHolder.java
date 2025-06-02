@@ -1,6 +1,7 @@
 package wentuziak.szoplugin.customlogic;
 
 import org.bukkit.Bukkit;
+
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -34,6 +35,8 @@ import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
+import org.bukkit.potion.PotionData;
+
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
@@ -293,18 +296,22 @@ public class LogicHolder {
          entity.getEquipment().setBootsDropChance(0.05F);
     }
 
-    public static void lingeringPotionDrop(PotionType baseType ,PotionEffectType effectType, Entity entity){
-                // Create a lingering healing potion
+
+    public static void lingeringPotionDrop(PotionType baseType, PotionEffectType effectType, Entity entity) {
         ItemStack potion = new ItemStack(Material.LINGERING_POTION);
         PotionMeta meta = (PotionMeta) potion.getItemMeta();
-        meta.setBasePotionData(new org.bukkit.potion.PotionData(baseType));
-        meta.addCustomEffect(new PotionEffect(effectType, 1, 1), true);
+
+        meta.setBasePotionData(new PotionData(baseType, false, false)); // not extended or upgraded
+
+        meta.addCustomEffect(new PotionEffect(effectType, 60, 1), true);
         potion.setItemMeta(meta);
 
-        // Throw the potion directly below the player
-        ThrownPotion thrownPotion = entity.getWorld().spawn(entity.getLocation().subtract(0, 0, 0), ThrownPotion.class);
+        ThrownPotion thrownPotion = (ThrownPotion) entity.getWorld().spawnEntity(
+            entity.getLocation().add(0, 1, 0), EntityType.LINGERING_POTION
+        );
+
         thrownPotion.setItem(potion);
-        thrownPotion.setVelocity(entity.getLocation().getDirection().multiply(0)); // Drop straight down
+        thrownPotion.setVelocity(entity.getVelocity().multiply(0)); // no movement
     }
     
     public static void particleEmitterOnEntity(Entity target, Particle particle, int particleNumber, int ticks) {
@@ -314,6 +321,17 @@ public class LogicHolder {
         }else {
         	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             	particleEmitterOnEntity(target, particle, particleNumber, ticks - 1);
+            },  1);
+        }
+    }
+    //overload for more specifics
+    public static void particleEmitterOnEntity(Entity target, Particle particle, int particleNumber, int ticks, double x, double y, double z, double a) {
+        target.getWorld().spawnParticle(particle, target.getLocation(), particleNumber, x, y, z, a);
+        if(ticks == 0) {
+        	return;        	
+        }else {
+        	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            	particleEmitterOnEntity(target, particle, particleNumber, ticks - 1, x, y, z, a);
             },  1);
         }
     }

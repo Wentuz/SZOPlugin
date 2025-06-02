@@ -2371,3 +2371,26 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.spigotmc:
 2025-05-29 17:47:19,225 [Worker-33: Launching szoplugin (29)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
 2025-05-29 17:47:19,226 [Worker-33: Launching szoplugin (29)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
 2025-05-29 17:47:19,226 [Worker-33: Launching szoplugin (29)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-01 20:25:23,508 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-06-01 21:19:34,162 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/maven-metadata.xml
+2025-06-01 21:19:34,339 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/maven-metadata.xml
+2025-06-01 21:19:34,499 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/spigot-api-1.21.5-R0.1-20250601.015513-39.pom
+2025-06-01 21:19:34,660 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/spigot-api-1.21.5-R0.1-20250601.015513-39.pom
+2025-06-01 21:19:35,182 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/spigot-api-1.21.5-R0.1-20250601.015513-39.jar
+2025-06-01 21:19:35,407 [Worker-35: Building] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://hub.spigotmc.org/nexus/content/repositories/snapshots/org/spigotmc/spigot-api/1.21.5-R0.1-SNAPSHOT/spigot-api-1.21.5-R0.1-20250601.015513-39.jar
+2025-06-01 21:19:35,782 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:35,785 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-01 21:19:35,791 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:35,791 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-01 21:19:37,792 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:37,792 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-01 21:19:37,808 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:37,809 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-01 21:19:47,006 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:47,007 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-01 21:19:47,009 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:19:47,009 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-01 21:32:06,292 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:32:06,292 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-01 21:32:06,294 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-01 21:32:06,294 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
