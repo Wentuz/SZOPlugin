@@ -111,6 +111,7 @@ public class UpdateAttributes {
         case "RACE_SANGUINITE" -> handleSanguinite();
         case "RACE_ELF" -> handleElf();
         case "RACE_HOBBIT" -> handleHobbit();
+        case "RACE_MECHANICAL" -> handleMechanical();
         default -> handleUnknownRace();
     }
         
@@ -189,9 +190,9 @@ public class UpdateAttributes {
     }
 
     static void handleCara() {
-    	playerMovementSpeed = playerMovementSpeed * 1.3;
+    	playerMovementSpeed = playerMovementSpeed * 1.2;
     	playerHP = playerHP * 0.70;
-    	playerScale = playerScale * 0.7;
+    	playerScale = playerScale * 0.75;
     	playerFireTime = playerFireTime * 1.5;
     	playerGravity = playerGravity * 0.75;
     	playerFallDamage = playerFallDamage * 0.75;
@@ -259,6 +260,15 @@ public class UpdateAttributes {
         System.out.println("Handling Hobbit race...");
     }
 
+    static void handleMechanical() {
+    	playerMovementSpeed = playerMovementSpeed * 1.1;
+    	playerFireTime = playerFireTime * 1.5;
+    	playerOxygenBonus = playerOxygenBonus * 0.5;
+    	playerSafeFallRange = playerSafeFallRange * 2;
+    	playerFallDamage = playerFallDamage * 2;
+    	
+    	System.out.println("Handling Mechanical race ...");
+    }
     static void handleUnknownRace() {
         System.out.println("Unknown race. Applying default settings...");
     }

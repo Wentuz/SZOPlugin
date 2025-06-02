@@ -3,6 +3,7 @@ package wentuziak.szoplugin.entityevents;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -219,7 +220,7 @@ public class EntityCombat implements Listener{
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
-
+            
             ItemStack itemOnChest = player.getInventory().getChestplate();
     
             if (itemOnChest != null) {
@@ -246,6 +247,15 @@ public class EntityCombat implements Listener{
                     else if (playerContainer.has(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BYTE)) {
                         CustomTools.effectShieldBlock(player, 2);
                     }
+                }
+            }
+            
+            if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
+                double currentHealth = player.getHealth();
+                double maxHealth = player.getAttribute(Attribute.MAX_HEALTH).getValue();
+
+                if (currentHealth <= maxHealth * 0.25) {
+                    RaceEffects.mechanicalGotHitEffect(player);
                 }
             }
         }

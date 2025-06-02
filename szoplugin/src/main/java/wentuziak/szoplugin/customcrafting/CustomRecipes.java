@@ -25,7 +25,7 @@ public final class CustomRecipes {
         NamespacedKey key;
 
         //
-        //      Soul Fragment Recipe
+        //      Life Essence Recipe // Former soul fragment
         //
         
         ItemStack soulFragment = CreateCustomItem.createSoulFragment();

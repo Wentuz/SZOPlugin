@@ -3,4 +3,7 @@
     <fullyQualifiedTypeName name="org.bukkit.attribute.Attribute"/>
     <fullyQualifiedTypeName name="org.bukkit.attribute.AttributeInstance"/>
     <fullyQualifiedTypeName name="org.bukkit.Particle"/>
+    <fullyQualifiedTypeName name="org.bukkit.potion.PotionType"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customitems.MagicItems"/>
 </qualifiedTypeNameHistroy>

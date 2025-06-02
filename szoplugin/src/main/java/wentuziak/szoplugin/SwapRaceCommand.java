@@ -65,7 +65,7 @@ public class SwapRaceCommand implements TabExecutor{
         if(args.length == 1){
             return java.util.Arrays.asList(
                 "dwarf", "celestial", "witch", "miskaru", "cara", "mewchant", "fossil",
-                "zephyr", "sanguinite", "elf", "hobbit"
+                "zephyr", "sanguinite", "elf", "hobbit", "mechanical", "spiritbearer"
                 );
         }
          if (args.length == 2) {

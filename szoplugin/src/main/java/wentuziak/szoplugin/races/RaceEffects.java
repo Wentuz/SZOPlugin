@@ -707,4 +707,11 @@ public class RaceEffects {
             }
         }
     }
+    
+    //
+    //		MECHANICAL
+    //
+    public static void mechanicalGotHitEffect(Player player) {
+    	LogicHolder.particleEmitterOnEntity(player, Particle.ELECTRIC_SPARK, 2, 2 * 20, 0.25, 1, 0.25, 0.5);
+    }
 }
