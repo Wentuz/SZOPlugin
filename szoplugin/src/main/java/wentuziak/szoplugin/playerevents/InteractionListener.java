@@ -584,6 +584,9 @@ public class InteractionListener implements Listener{
         if ((player.getPersistentDataContainer().has(Keys.RACE_FOSSIL) && (player.isSwimming() || isInWater))) {
             RaceEffects.fossilSwimEvent(player);
         }
+        if ((player.getPersistentDataContainer().has(Keys.RACE_HOBBIT) && (!LogicHolder.isDaytime(player.getWorld())))) {
+            RaceEffects.hobbitNightEvent(player);
+        }
     }
 
     @EventHandler

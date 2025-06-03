@@ -4351,3 +4351,413 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.spigotmc:
 2025-06-02 14:13:22,956 [Worker-62: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
 2025-06-02 14:13:22,956 [Worker-62: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
 2025-06-02 18:27:58,533 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-06-02 20:00:13,915 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2025-06-02 20:04:20,562 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:04:20,566 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:04:20,575 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:04:20,575 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:04:25,054 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:04:25,055 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:04:25,058 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:04:25,058 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:05:33,080 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:05:33,080 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:05:33,082 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:05:33,082 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:09:24,019 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:09:24,020 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:09:24,023 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:09:24,023 [Worker-2: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:11:35,470 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:11:35,470 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:11:35,473 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:11:35,473 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:11:40,996 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:11:40,997 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:11:40,998 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:11:40,999 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:16:05,435 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:16:05,436 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:16:05,439 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:16:05,439 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:18:14,254 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:18:14,255 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:18:14,257 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:18:14,257 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:18:47,461 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:18:47,461 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:18:47,464 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:18:47,464 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:19:41,784 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:19:41,784 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:19:41,787 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:19:41,787 [Worker-33: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:32:04,484 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:32:04,484 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:32:04,486 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:32:04,486 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:35:19,849 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:35:19,849 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:35:19,852 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:35:19,852 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:38:30,166 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:38:30,167 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:38:30,169 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:38:30,169 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:39:34,342 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [298])
+2025-06-02 20:39:34,344 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-02 20:39:34,345 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-02 20:39:34,345 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-02 20:39:34,345 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-02 20:39:34,345 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-02 20:39:34,346 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-02 20:39:34,346 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-02 20:39:34,346 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-02 20:39:34,346 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-02 20:39:34,346 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-02 20:39:34,347 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-02 20:39:34,347 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-02 20:39:34,347 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-02 20:39:34,347 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-02 20:39:34,347 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-02 20:39:34,348 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-02 20:39:34,348 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-02 20:39:34,348 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-02 20:39:34,348 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-02 20:39:34,348 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-02 20:39:34,349 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-02 20:39:34,349 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-02 20:39:34,349 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-02 20:39:34,349 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-02 20:39:34,350 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-02 20:39:34,351 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-02 20:39:34,351 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-02 20:39:34,351 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-02 20:39:34,351 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-02 20:39:34,351 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-02 20:39:34,352 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-02 20:39:34,352 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-02 20:39:34,352 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-02 20:39:34,352 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-02 20:39:34,352 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-02 20:39:34,353 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-02 20:39:34,353 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-02 20:39:34,353 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-02 20:39:34,353 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-02 20:39:34,358 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [12])
+2025-06-02 20:39:34,359 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-02 20:39:34,359 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.16 [522])
+2025-06-02 20:39:34,359 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\slf4j.api_2.0.16.jar
+2025-06-02 20:39:34,359 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.inject.jakarta.inject-api_1.0.5 [24])
+2025-06-02 20:39:34,360 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.inject.jakarta.inject-api_1.0.5.jar
+2025-06-02 20:39:34,360 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.annotation-api_1.3.5 [22])
+2025-06-02 20:39:34,360 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.annotation-api_1.3.5.jar
+2025-06-02 20:39:34,360 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [48])
+2025-06-02 20:39:34,361 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-02 20:39:34,361 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [49])
+2025-06-02 20:39:34,361 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-02 20:39:34,361 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [13])
+2025-06-02 20:39:34,361 [Worker-36: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-02 20:39:34,364 [Worker-36: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
+2025-06-02 20:39:34,367 [Worker-36: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-02 20:39:34,525 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:39:34,525 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:39:34,529 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:39:34,529 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:40:50,717 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:40:50,717 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:40:50,720 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:40:50,720 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:40:54,972 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [298])
+2025-06-02 20:40:54,972 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-02 20:40:54,973 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-02 20:40:54,973 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-02 20:40:54,973 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-02 20:40:54,973 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-02 20:40:54,973 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-02 20:40:54,974 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-02 20:40:54,975 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-02 20:40:54,976 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-02 20:40:54,977 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-02 20:40:54,978 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [12])
+2025-06-02 20:40:54,978 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-02 20:40:54,978 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.16 [522])
+2025-06-02 20:40:54,978 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\slf4j.api_2.0.16.jar
+2025-06-02 20:40:54,978 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.inject.jakarta.inject-api_1.0.5 [24])
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.inject.jakarta.inject-api_1.0.5.jar
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.annotation-api_1.3.5 [22])
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.annotation-api_1.3.5.jar
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [48])
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [49])
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-02 20:40:54,979 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [13])
+2025-06-02 20:40:54,980 [Worker-31: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-02 20:40:54,980 [Worker-31: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
+2025-06-02 20:40:54,980 [Worker-31: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-02 20:47:40,759 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:47:40,760 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:47:40,765 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:47:40,765 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:47:47,115 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [298])
+2025-06-02 20:47:47,116 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-02 20:47:47,116 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-02 20:47:47,117 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-02 20:47:47,117 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-02 20:47:47,117 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-02 20:47:47,117 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-02 20:47:47,117 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-02 20:47:47,118 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-02 20:47:47,119 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-02 20:47:47,120 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-02 20:47:47,121 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-02 20:47:47,122 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-02 20:47:47,122 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-02 20:47:47,122 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-02 20:47:47,122 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-02 20:47:47,123 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-02 20:47:47,124 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-02 20:47:47,124 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-02 20:47:47,124 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-02 20:47:47,125 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [12])
+2025-06-02 20:47:47,125 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-02 20:47:47,125 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.16 [522])
+2025-06-02 20:47:47,125 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\slf4j.api_2.0.16.jar
+2025-06-02 20:47:47,125 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.inject.jakarta.inject-api_1.0.5 [24])
+2025-06-02 20:47:47,126 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.inject.jakarta.inject-api_1.0.5.jar
+2025-06-02 20:47:47,126 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.annotation-api_1.3.5 [22])
+2025-06-02 20:47:47,127 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.annotation-api_1.3.5.jar
+2025-06-02 20:47:47,127 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [48])
+2025-06-02 20:47:47,127 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-02 20:47:47,127 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [49])
+2025-06-02 20:47:47,128 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-02 20:47:47,128 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [13])
+2025-06-02 20:47:47,128 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-02 20:47:47,130 [Worker-40: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
+2025-06-02 20:47:47,130 [Worker-40: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-02 20:47:47,296 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:47:47,296 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:47:47,300 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:47:47,301 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:49:38,569 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:49:38,569 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:49:38,573 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:49:38,574 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:49:42,731 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [298])
+2025-06-02 20:49:42,732 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-02 20:49:42,732 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-02 20:49:42,732 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-02 20:49:42,733 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-02 20:49:42,734 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-02 20:49:42,735 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-02 20:49:42,736 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-02 20:49:42,737 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-02 20:49:42,737 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-02 20:49:42,737 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-02 20:49:42,737 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-02 20:49:42,737 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-02 20:49:42,738 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-02 20:49:42,739 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [12])
+2025-06-02 20:49:42,739 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-02 20:49:42,739 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.16 [522])
+2025-06-02 20:49:42,739 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\slf4j.api_2.0.16.jar
+2025-06-02 20:49:42,739 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.inject.jakarta.inject-api_1.0.5 [24])
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.inject.jakarta.inject-api_1.0.5.jar
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.annotation-api_1.3.5 [22])
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.annotation-api_1.3.5.jar
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [48])
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [49])
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-02 20:49:42,740 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [13])
+2025-06-02 20:49:42,741 [Worker-40: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-02 20:49:42,742 [Worker-40: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
+2025-06-02 20:49:42,742 [Worker-40: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-02 20:50:26,034 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:50:26,035 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:50:26,039 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:50:26,040 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:50:28,145 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:50:28,145 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:50:28,148 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:50:28,148 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:50:32,227 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013 [298])
+2025-06-02 20:50:32,228 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\aopalliance-1.0.jar
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\guice-5.1.0.jar
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpclient-4.5.14.jar
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\httpcore-4.4.16.jar
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jansi-2.4.1.jar
+2025-06-02 20:50:32,229 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\jcl-over-slf4j-1.7.36.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-artifact-3.9.9.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-builder-support-3.9.9.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-compat-3.9.9.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-core-3.9.9.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-embedder-3.9.9.jar
+2025-06-02 20:50:32,230 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-3.9.9.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-model-builder-3.9.9.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-plugin-api-3.9.9.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-repository-metadata-3.9.9.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-api-1.9.22.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-connector-basic-1.9.22.jar
+2025-06-02 20:50:32,231 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-impl-1.9.22.jar
+2025-06-02 20:50:32,232 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-named-locks-1.9.22.jar
+2025-06-02 20:50:32,232 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-provider-3.9.9.jar
+2025-06-02 20:50:32,232 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-spi-1.9.22.jar
+2025-06-02 20:50:32,232 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-file-1.9.22.jar
+2025-06-02 20:50:32,232 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-http-1.9.22.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-transport-wagon-1.9.22.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-resolver-util-1.9.22.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-3.9.9.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-settings-builder-3.9.9.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\maven-shared-utils-3.4.2.jar
+2025-06-02 20:50:32,233 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.inject-0.9.0.M3.jar
+2025-06-02 20:50:32,234 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\org.eclipse.sisu.plexus-0.9.0.M3.jar
+2025-06-02 20:50:32,234 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-0.0.7.jar
+2025-06-02 20:50:32,234 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-build-api-1.2.0.jar
+2025-06-02 20:50:32,234 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-cipher-2.0.jar
+2025-06-02 20:50:32,234 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-classworlds-2.8.0.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-component-annotations-2.1.0.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-interpolation-1.27.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-sec-dispatcher-2.0.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-utils-3.5.1.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\plexus-xml-3.0.1.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-file-3.5.3.jar
+2025-06-02 20:50:32,235 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-3.5.3.jar
+2025-06-02 20:50:32,236 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-http-shared-3.5.3.jar
+2025-06-02 20:50:32,236 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_3.9.900.20250220-2013\jars\wagon-provider-api-3.5.3.jar
+2025-06-02 20:50:32,236 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava_33.4.0.jre [12])
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava_33.4.0.jre.jar
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=slf4j.api_2.0.16 [522])
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\slf4j.api_2.0.16.jar
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.inject.jakarta.inject-api_1.0.5 [24])
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.inject.jakarta.inject-api_1.0.5.jar
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=jakarta.annotation-api_1.3.5 [22])
+2025-06-02 20:50:32,237 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\jakarta.annotation-api_1.3.5.jar
+2025-06-02 20:50:32,238 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.cli_1.9.0 [48])
+2025-06-02 20:50:32,238 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.cli_1.9.0.jar
+2025-06-02 20:50:32,238 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=org.apache.commons.commons-codec_1.16.0 [49])
+2025-06-02 20:50:32,238 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\org.apache.commons.commons-codec_1.16.0.jar
+2025-06-02 20:50:32,238 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - getClasspathEntries(Bundle=com.google.guava.failureaccess_1.0.2 [13])
+2025-06-02 20:50:32,239 [Worker-41: Launching szoplugin (1)] INFO  o.eclipse.m2e.core.internal.Bundles - 	Entry: C:\Users\gabri\.p2\pool\plugins\com.google.guava.failureaccess_1.0.2.jar
+2025-06-02 20:50:32,241 [Worker-41: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate - Run build in "D:\RandomProjects\GIT\SZOPlugin\szoplugin":
+2025-06-02 20:50:32,241 [Worker-41: Launching szoplugin (1)] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B -Dstyle.color=always package
+2025-06-02 20:51:35,399 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:51:35,399 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:51:35,402 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:51:35,402 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:54:59,836 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:54:59,837 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:54:59,840 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:54:59,840 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:56:09,735 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:56:09,735 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:56:09,738 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:56:09,738 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:58:42,884 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:58:42,885 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:58:42,888 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:58:42,888 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:58:48,297 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:58:48,298 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:58:48,300 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:58:48,300 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources
+2025-06-02 20:59:24,141 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:59:24,142 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2025-06-02 20:59:24,144 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2025-06-02 20:59:24,144 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\RandomProjects\GIT\SZOPlugin\szoplugin\src\test\resources

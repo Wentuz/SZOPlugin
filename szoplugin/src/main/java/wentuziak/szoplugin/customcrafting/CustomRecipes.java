@@ -44,7 +44,7 @@ public final class CustomRecipes {
         //
         //      Mechanical Parts Recipe
         //
-        ItemStack mechanicalParts = CreateCustomItem.createMechanicalParts();
+       ItemStack mechanicalParts = CreateCustomItem.createMechanicalParts();
         key = new NamespacedKey(SzoPlugin.getInstance(), "MechanicalPartsRecipe");
         recipeKeys.add(key);
 

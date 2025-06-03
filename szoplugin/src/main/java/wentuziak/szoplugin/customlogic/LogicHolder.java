@@ -1,7 +1,7 @@
 package wentuziak.szoplugin.customlogic;
 
 import org.bukkit.Bukkit;
-
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -10,6 +10,9 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Cat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -31,8 +34,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
+
+import net.md_5.bungee.api.ChatMessageType;
+
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.potion.PotionData;
@@ -40,6 +47,7 @@ import org.bukkit.potion.PotionData;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
+import wentuziak.szoplugin.TaskManager;
 
 import java.util.List;
 import java.util.Map;
@@ -48,6 +56,8 @@ import java.util.Map;
 
 
 public class LogicHolder {
+	
+    static BukkitTask cooldownTask;
     
     public static void removeItem(Player player, ItemStack itemUsed){
         int amount = itemUsed.getAmount() > 1 ? itemUsed.getAmount() - 1 : 0;
@@ -335,6 +345,73 @@ public class LogicHolder {
             },  1);
         }
     }
+    
+
+//    public static void startCooldownCountdown(Player player, int seconds){   
+//        if (!TaskManager.isTaskRunning(player, "raceCooldown")) {            
+//            final Player finalPlayer = player;
+//            cooldownTask = new BukkitRunnable() {
+//                int timeLeft = seconds;
+//
+//                @Override
+//                public void run() {
+//                    if (timeLeft <= 0) {
+//                        finalPlayer.sendTitle("", ChatColor.GREEN + "Ready!", 10, 40, 10);
+//                        cancel();
+//                        return;
+//                    }
+//
+//                    finalPlayer.sendTitle("", ChatColor.RED + "Cooldown: " + timeLeft + "s", 0, 20, 10);
+//                    timeLeft--;
+//                }
+//            }.runTaskTimer(SzoPlugin.getInstance(), 0, 20L);
+//            TaskManager.addTask(player, "raceCooldown", cooldownTask);
+//        }
+//
+//    }
+    
+    public static void startCooldownCountdown(Player player, int seconds) {
+        if (!TaskManager.isTaskRunning(player, "raceCooldown")) {
+            final Player finalPlayer = player;
+
+            // Create and configure the boss bar
+            BossBar bossBar = Bukkit.createBossBar(ChatColor.RED + "" + seconds + "s", BarColor.RED, BarStyle.SOLID);
+            bossBar.addPlayer(finalPlayer);
+            bossBar.setProgress(1.0);
+
+            BukkitRunnable cooldownTask = new BukkitRunnable() {
+                int timeLeft = seconds;
+
+                @Override
+                public void run() {
+                    if (timeLeft <= 0) {
+                        bossBar.setTitle(ChatColor.GREEN + "");
+                        bossBar.setProgress(1.0);
+                        bossBar.setColor(BarColor.GREEN);
+
+                        // Remove the boss bar after a delay
+                        new BukkitRunnable() {
+                            public void run() {
+                                bossBar.removeAll();
+                            }
+                        }.runTaskLater(SzoPlugin.getInstance(), 40L); // ~2 seconds
+                        cancel();
+                        return;
+                    }
+                    
+                    // Update progress and title
+                    double progress = (double) timeLeft / seconds;
+                    bossBar.setProgress(progress);
+                    bossBar.setTitle(ChatColor.RED + "Cooldown: " + timeLeft + "s");
+                    timeLeft--;
+                }
+            };
+            cooldownTask.runTaskTimer(SzoPlugin.getInstance(), 0, 20L); // 20 ticks = 1 second
+        }
+
+
+    }
+
 
 
 }

@@ -50,6 +50,8 @@ public class RaceEffects {
     static BukkitTask dwarfSwimTask;
     static BukkitTask caraGlideTask;
     static BukkitTask fossilSwimTask;
+    static BukkitTask hobbitNightTask;
+
     private static BukkitTask sanguiniteHungerTask;
     private final static Random rand = new Random();
 
@@ -188,6 +190,8 @@ public class RaceEffects {
         if (player.getFoodLevel() >= 20 && !player.hasCooldown(Material.NETHER_STAR)) {
             player.setFoodLevel(0);
             player.setCooldown(Material.NETHER_STAR, 20 * 60 * 5);
+            LogicHolder.startCooldownCountdown(player, 60 * 5);
+
         }else{
             return;
         }
@@ -257,6 +261,8 @@ public class RaceEffects {
                 player.setFoodLevel(0);
             }
             player.setCooldown(Material.NETHER_STAR, 20 * 2);
+            
+            LogicHolder.startCooldownCountdown(player, 2);
         }
     }
 
@@ -706,6 +712,27 @@ public class RaceEffects {
                 player.setFoodLevel(foodLevel + 2);
             }
         }
+    }
+    
+    public static void hobbitNightEvent(Player player){   
+        if (!TaskManager.isTaskRunning(player, "hobbitNight")) {            
+            final Player finalPlayer = player;
+            hobbitNightTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (LogicHolder.isDaytime(player.getWorld())) {
+                        stopHobbitNightTask(finalPlayer);
+                        return;
+                    }
+                    LogicHolder.givePotionEffect(finalPlayer, "SPEED", 20 * 4, 0);
+                }
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 3);
+            TaskManager.addTask(player, "hobbitNight", hobbitNightTask);
+        }
+    }
+
+    public static void stopHobbitNightTask(Player player) {
+        TaskManager.stopTask(player, "hobbitNight");
     }
     
     //
