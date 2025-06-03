@@ -392,21 +392,25 @@ public class InteractionListener implements Listener{
             int oldHunger = player.getFoodLevel();
             int newHunger = event.getFoodLevel();
 
-            if ((newHunger < oldHunger) && newHunger > 0) {
-                if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT) && LogicHolder.critRoll(25)) {
-                    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        player.setFoodLevel(newHunger-1);
-                    }, 10L);
+            if(newHunger < oldHunger) {
+                if (newHunger > 0) {
+                    if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT) && LogicHolder.critRoll(25)) {
+                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                            player.setFoodLevel(newHunger-1);
+                        }, 10L);
+                    }
                 }
-            }
-            if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
-            	if(newHunger < 10 && LogicHolder.critRoll(35)) {
-            		Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                        player.setFoodLevel(newHunger-2);
-                    }, 10L);
-            	}else if(LogicHolder.critRoll(newHunger * 2)) {
-                	event.setCancelled(true);
-            	}
+                if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
+                	if(newHunger < 6) RaceEffects.mechanicalHungerEvent(player);
+
+                	if(newHunger > 10 && LogicHolder.critRoll(35)) {
+                		Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                            player.setFoodLevel(newHunger-2);
+                        }, 10L);
+                	}else if(LogicHolder.critRoll(newHunger * 8)) {
+                    	event.setCancelled(true);
+                	}
+                }
             }
         }
     }

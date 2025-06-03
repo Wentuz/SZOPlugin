@@ -51,6 +51,7 @@ public class RaceEffects {
     static BukkitTask caraGlideTask;
     static BukkitTask fossilSwimTask;
     static BukkitTask hobbitNightTask;
+    static BukkitTask mechanicalHungerTask;
 
     private static BukkitTask sanguiniteHungerTask;
     private final static Random rand = new Random();
@@ -747,5 +748,34 @@ public class RaceEffects {
     //
     public static void mechanicalGotHitEffect(Player player) {
     	LogicHolder.particleEmitterOnEntity(player, Particle.ELECTRIC_SPARK, 2, 2 * 20, 0.25, 1, 0.25, 0.5);
+    	
+    	int randInt = (int)(Math.random() * 10);
+    	switch (randInt){
+    		case 1 -> Weapons.fireworkEffect(player.getLocation(), 1);
+    		default -> LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 20, 5 * 20, 0.25, 1, 0.25, 2);
+    	}
+    	
+    }
+    
+    public static void mechanicalHungerEvent(Player player){   
+        if (!TaskManager.isTaskRunning(player, "mechanicalHunger")) {            
+            final Player finalPlayer = player;
+            mechanicalHungerTask = new BukkitRunnable() {
+                @Override
+                public void run(){
+                    if (finalPlayer.getFoodLevel() > 6) {
+                        stopMechanicalHungerTask(finalPlayer);
+                        return;
+                    }
+                    LogicHolder.givePotionEffect(finalPlayer, "SLOW", 20 * 10, 0);
+                    LogicHolder.givePotionEffect(finalPlayer, "WEAKNESS", 20 * 10, 0);
+                }
+            }.runTaskTimer(SzoPlugin.getInstance(), 20, 20 * 5);
+            TaskManager.addTask(player, "mechanicalHunger", mechanicalHungerTask);
+        }
+    }
+
+    public static void stopMechanicalHungerTask(Player player) {
+        TaskManager.stopTask(player, "mechanicalHunger");
     }
 }
