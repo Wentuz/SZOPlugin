@@ -276,7 +276,6 @@ public class InteractionListener implements Listener{
                             Weapons.grenadeEffect(location);
                         }, 5L);
                         
-                        player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 5);
                         player.setCooldown(Material.DIAMOND_SWORD, 20 * 5);
 
                         return;
@@ -341,7 +340,7 @@ public class InteractionListener implements Listener{
             playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
             if (!player.isClimbing() && !isInWater) {
                 if (playerContainer.has(Keys.CUSTOM_JET_BOOTS, PersistentDataType.BYTE)) {
-                    Armour.jetBootsEffect(player);
+                    Armour.jetBootsEffect(player, 2);
                 }
             }
         }

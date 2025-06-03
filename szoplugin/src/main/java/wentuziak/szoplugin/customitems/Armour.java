@@ -29,12 +29,25 @@ public class Armour {
     
     static BukkitTask mermaidTailTask;
     
-    public static void jetBootsEffect(LivingEntity player){
-        if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
-            LogicHolder.givePotionEffect(player, "LEVITATION", 5, 9);
-            player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-            player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 10, 0, -1, 0, 0);
-        }    
+    public static void jetBootsEffect(LivingEntity player, int strength){
+    	int x = 4;
+    	Vector velocity = player.getVelocity();
+
+        while(x != 0) {
+        	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            	if (LogicHolder.isPlayerAboveGround(player, 0.75)) {
+                	double upStr = (velocity.getY() > strength ) ? 0 : 0.1 * strength;
+                    velocity.setY(velocity.getY() + upStr);
+                    player.setVelocity(velocity);
+                    
+                    LogicHolder.givePotionEffect(player, "SLOW_FALLING", 2, 0);
+                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
+                    player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 5, 0, -1, 0, 0);
+                } 
+            }, 2L * x);
+        	x--;
+        }
+        
     }
 
     public static void golemChestEffect(LivingEntity player){

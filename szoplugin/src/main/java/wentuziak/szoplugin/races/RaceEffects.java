@@ -500,6 +500,8 @@ public class RaceEffects {
             player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 1, 1);
     
             player.setCooldown(Material.NETHER_STAR, 20 * 4);
+            LogicHolder.startCooldownCountdown(player, 4);
+
         }
     }
 
@@ -661,6 +663,7 @@ public class RaceEffects {
                     LogicHolder.removeItem(player, itemInOffHand);
                     LogicHolder.removeItem(player, itemInMainHand);
                     player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    LogicHolder.startCooldownCountdown(player, 60);
                     return;
                 case BONE:
                     Wolf wolf = LogicHolder.summonRandomWolf(playerLocation);
@@ -668,6 +671,8 @@ public class RaceEffects {
                     LogicHolder.removeItem(player, itemInOffHand);
                     LogicHolder.removeItem(player, itemInMainHand);
                     player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    LogicHolder.startCooldownCountdown(player, 60);
+
                     return;
                 case MUSHROOM_STEW:
                     summonedEntityType = EntityType.MOOSHROOM;
@@ -681,6 +686,7 @@ public class RaceEffects {
                     LogicHolder.removeItem(player, itemInOffHand);
                     LogicHolder.removeItem(player, itemInMainHand);
                     player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+                    LogicHolder.startCooldownCountdown(player, 60);
                     return;
                 default:
                     return;
@@ -688,6 +694,7 @@ public class RaceEffects {
             LogicHolder.removeItem(player, itemInOffHand);
             LogicHolder.removeItem(player, itemInMainHand);
             player.setCooldown(Material.POPPED_CHORUS_FRUIT, 20 * 60);
+            LogicHolder.startCooldownCountdown(player, 60);
             player.getWorld().spawnEntity(playerLocation, summonedEntityType);
         }
     }
