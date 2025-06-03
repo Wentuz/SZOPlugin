@@ -42,7 +42,7 @@ public class Armour {
                     
                     LogicHolder.givePotionEffect(player, "SLOW_FALLING", 2, 0);
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-                    player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 5, 0, -1, 0, 0);
+                    LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 2, 5, 0, -0.3, 0, 0.05);
                 } 
             }, 2L * x);
         	x--;
@@ -54,7 +54,7 @@ public class Armour {
         LogicHolder.givePotionEffect(player, "SLOW", 20 * 2, 3);
         LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 20, 0);
         player.getWorld().playSound(player.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
-        player.getWorld().spawnParticle(Particle.WAX_ON, player.getLocation(), 5, 0, -1, 0, 0);
+        LogicHolder.particleEmitterOnEntity(player, Particle.WAX_ON, 5, 20, 0, -1, 0, 0);
     }
 
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
@@ -124,16 +124,15 @@ public class Armour {
         player.getWorld().spawnParticle(Particle.CLOUD, player.getLocation(), 1, 0, -1, 0, 0);
     }
 
-    public static void jumpPackEffect(LivingEntity entity){
-        if (LogicHolder.isPlayerAboveGround(entity, 0.75)) {
-            double speedMultiplier = 1.5;
+    public static void jumpPackEffect(LivingEntity entity, double speedMultiplier){
+        if (LogicHolder.isPlayerAboveGround(entity, 0.75) && !LogicHolder.isPlayerAboveGround(entity, 1.5)) {
     
             Vector direction = entity.getLocation().getDirection();
             Vector velocity = direction.multiply(speedMultiplier);
         
             entity.setVelocity(velocity);
-            entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
-            entity.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, entity.getLocation(), 50, 0.0, 0.1, 0.0, 0.02);
+            entity.getWorld().playSound(entity.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
+            LogicHolder.particleEmitterOnEntity(entity, Particle.VIBRATION, 10, 5, 0, 0.1, 0, 0.02);
             
             if(entity instanceof Player){
                 ((HumanEntity) entity).setCooldown(Material.LEATHER_LEGGINGS, 20 * 4);

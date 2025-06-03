@@ -347,18 +347,16 @@ public class InteractionListener implements Listener{
     
         if (itemOnLegs != null && itemOnLegs.hasItemMeta()) {
             playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
-            if (!player.isClimbing() && !isInWater) {
+            if (!player.isClimbing() && !isInWater ) {
                 if (!player.hasCooldown(Material.LEATHER_LEGGINGS)) {
                     if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE) 
-                    && (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE) || player.getPersistentDataContainer().has(Keys.RACE_CARA))) {
-                        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-                            Armour.jumpPackEffect(player);
-                        }, 10L);
+                    && ((player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE) || (player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL))))) { 
+                        Armour.jumpPackEffect(player, 2.0);
                     }
                     else if (playerContainer.has(Keys.CUSTOM_JUMP_PACK, PersistentDataType.BYTE)) {
-                        Armour.jumpPackEffect(player);
+                        Armour.jumpPackEffect(player, 1.1);
                     }
-                    
+                    player.setCooldown(Material.LEATHER_LEGGINGS, 20);
                 }
             }
         }
