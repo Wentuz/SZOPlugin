@@ -89,6 +89,9 @@ public class PlayerCombat implements Listener{
         if (playerContainer.has(Keys.RACE_ZEPHYR, PersistentDataType.BYTE) && LogicHolder.critRoll(22)) {
             RaceEffects.zaphyrKnockback(player);
         }
+        if (playerContainer.has(Keys.RACE_MECHANICAL, PersistentDataType.BYTE) && LogicHolder.critRoll(22)) {
+            RaceEffects.mechanicalAttack(player, hitEntity);
+        }
     }
 
     // Method to apply special weapon effects when a player attacks

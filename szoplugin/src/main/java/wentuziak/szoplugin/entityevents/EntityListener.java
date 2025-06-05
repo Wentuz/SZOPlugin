@@ -118,9 +118,10 @@ public class EntityListener implements Listener {
             Player player = (Player) event.getEntity();
             
             //
-            //      Turn off Natural Regen for Celestial's and Fossils
+            //      Turn off Natural Regen for Celestial's, Fossils and Mechanical
             //
-            if ((player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL) || player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) && 
+            if ((player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL) || player.getPersistentDataContainer().has(Keys.RACE_FOSSIL)
+            		|| player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) &&
             (event.getRegainReason() == RegainReason.REGEN || event.getRegainReason() == RegainReason.SATIATED)) {
                 event.setCancelled(true);
             }

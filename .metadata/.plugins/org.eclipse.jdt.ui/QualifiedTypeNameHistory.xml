@@ -5,6 +5,10 @@
     <fullyQualifiedTypeName name="org.bukkit.Particle"/>
     <fullyQualifiedTypeName name="org.bukkit.potion.PotionType"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customitems.MagicItems"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.TaskManager"/>
+    <fullyQualifiedTypeName name="net.md_5.bungee.api.ChatMessageType"/>
+    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffect"/>
+    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
 </qualifiedTypeNameHistroy>

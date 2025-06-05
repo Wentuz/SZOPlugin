@@ -751,10 +751,10 @@ public class RaceEffects {
     	
     	int randInt = (int)(Math.random() * 10);
     	switch (randInt){
-    		case 1 -> Weapons.fireworkEffect(player.getLocation(), 1);
-    		default -> LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 20, 5 * 20, 0.25, 1, 0.25, 2);
+    		case 1 -> Weapons.grenadeEffect(player.getLocation());
+    		case 2, 3 -> mechanicalHealing(player);
+    		default -> LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 1, 3 * 20, 0.25, 1, 0.25, 0.01);
     	}
-    	
     }
     
     public static void mechanicalHungerEvent(Player player){   
@@ -777,5 +777,32 @@ public class RaceEffects {
 
     public static void stopMechanicalHungerTask(Player player) {
         TaskManager.stopTask(player, "mechanicalHunger");
+    }
+    
+    public static void mechanicalAttack(Player player, LivingEntity hitEntity) {
+    	int randInt = (int)(Math.random() * 10);
+    	switch (randInt){
+    		case 1 : 
+    			Weapons.bleedEffect(hitEntity, 2.0, 6);
+    			Weapons.fireworkEffect(hitEntity.getLocation(), 3);
+    		default: 
+    			LogicHolder.particleEmitterOnEntity(hitEntity, Particle.CRIT, 1, 1 * 20, 0.25, 1, 0.25, 0.01); 
+    			Weapons.spellSwordEffect(100, hitEntity);
+    	}
+    }
+    
+    public static void mechanicalHealing(Player player) {
+    	LogicHolder.particleEmitterOnEntity(player, Particle.SNOWFLAKE, 1, 10 * 20, 0.1, 0.1, 0.1, 0.01);
+    	int randInt = (int)(Math.random() * 10);
+    	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+        	switch (randInt){
+    		case 1 :
+    			Weapons.angelSwordEffect(100, player);
+    			LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);
+    			LogicHolder.particleEmitterOnEntity(player, Particle.HEART, 1, 20);
+    		default : 
+    			Weapons.angelSwordEffect(100, player);
+        	}
+        }, 20 * 10);
     }
 }
