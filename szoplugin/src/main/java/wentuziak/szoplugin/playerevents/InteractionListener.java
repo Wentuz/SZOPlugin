@@ -8,9 +8,15 @@ import java.lang.reflect.AccessFlag.Location;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockCookEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.FurnaceExtractEvent;
+import org.bukkit.event.inventory.FurnaceSmeltEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -623,5 +629,19 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
             RaceEffects.celestialSummonEvent(player);
         }
+    }
+    
+    @EventHandler
+    public void onFurnanceExtract(FurnaceExtractEvent event) {
+    	Block block = event.getBlock();
+    	Material item = event.getItemType();
+    	int amount = event.getItemAmount();
+    	Player player = event.getPlayer();
+    	
+    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+    	    if(RaceEffects.hobbitFood(player, item, amount)) {
+    	    	player.sendMessage("YES");
+    	    }
+    	}
     }
 }

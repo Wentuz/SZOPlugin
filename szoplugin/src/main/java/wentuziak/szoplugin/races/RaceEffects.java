@@ -743,6 +743,14 @@ public class RaceEffects {
         TaskManager.stopTask(player, "hobbitNight");
     }
     
+    public static boolean hobbitFood(Player player, Material usedItem, int amount) {
+    	player.sendMessage("FOOD ! " + usedItem + " " + amount);
+    	
+    	
+    	
+    	return true;
+    }
+    
     //
     //		MECHANICAL
     //
