@@ -30,13 +30,13 @@ public class CustomTools {
     private static BukkitTask hastyToolTask;
     private static BukkitTask effectRaisedShieldTask;
     
-    public static void hastyToolEffect(Player player) {
+    public static void hastyToolEffect(Player player, int effectStr) {
         if (!TaskManager.isTaskRunning(player, "hastyTools")) {
             final Player finalPlayer = player;
             hastyToolTask = new BukkitRunnable() {
                 @Override
                 public void run(){                       
-                    LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, 0);
+                    LogicHolder.givePotionEffect(finalPlayer, "FAST_DIGGING", 20*30, effectStr);
                 }
             }.runTaskTimer(SzoPlugin.getInstance(), 1, 20*15);
             TaskManager.addTask(player, "hastyTools", hastyToolTask);

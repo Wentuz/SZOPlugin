@@ -54,6 +54,8 @@ import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.*;
 import wentuziak.szoplugin.races.RaceEffects;
+import wentuziak.szoplugin.customcrafting.DwarfUpgradedGear;
+
 
 
 
@@ -480,6 +482,8 @@ public class InteractionListener implements Listener{
     public void onPlayerItemHeld(PlayerItemHeldEvent event){
         Player player = event.getPlayer();
         ItemStack itemInMainHand = player.getInventory().getItem(event.getNewSlot());
+        
+        int effectStr = (player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) ? 1 : 0;
 
         if (itemInMainHand == null) {
             CustomTools.stopHastyToolTask(player);
@@ -490,7 +494,7 @@ public class InteractionListener implements Listener{
         if (itemInMainHand.hasItemMeta()) {
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_HASTY_TOOL, PersistentDataType.BYTE)) {
-                CustomTools.hastyToolEffect(player);
+                CustomTools.hastyToolEffect(player, 0);
             }
         }
     }
@@ -655,13 +659,19 @@ public class InteractionListener implements Listener{
     
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getInventory().getType() == InventoryType.SMOKER && event.getSlotType() == InventoryType.SlotType.RESULT) {
-            ItemStack result = event.getCurrentItem();
-            Player player = (Player) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
 
-            if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
-        	    RaceEffects.hobbitFoodCreate(player, result);  
-            }
+    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {        
+	        if (event.getInventory().getType() == InventoryType.SMOKER && event.getSlotType() == InventoryType.SlotType.RESULT) {
+	            ItemStack result = event.getCurrentItem();
+	        	RaceEffects.hobbitFoodCreate(player, result);  
+	        }
+        }
+    	if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {        
+	        if (event.getInventory().getType() == InventoryType.WORKBENCH && event.getSlotType() == InventoryType.SlotType.RESULT) {
+	            ItemStack result = event.getCurrentItem();
+	        	DwarfUpgradedGear.dwarfGearCraft(player, result);
+	        }
         }
     }
 }

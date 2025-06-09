@@ -8,12 +8,15 @@
     <fullyQualifiedTypeName name="net.md_5.bungee.api.ChatMessageType"/>
     <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffect"/>
     <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
     <fullyQualifiedTypeName name="org.bukkit.Particle"/>
     <fullyQualifiedTypeName name="org.bukkit.event.block.BlockCookEvent"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.FurnaceSmeltEvent"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.FurnaceExtractEvent"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryClickEvent"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.ItemStack"/>
+    <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
+    <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataType"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
 </qualifiedTypeNameHistroy>
