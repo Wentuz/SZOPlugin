@@ -1,6 +1,7 @@
 package wentuziak.szoplugin.races;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -27,6 +28,7 @@ import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
@@ -36,6 +38,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
+import net.md_5.bungee.api.ChatColor;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
@@ -743,10 +746,26 @@ public class RaceEffects {
         TaskManager.stopTask(player, "hobbitNight");
     }
     
-    public static boolean hobbitFood(Player player, Material usedItem, int amount) {
-    	player.sendMessage("FOOD ! " + usedItem + " " + amount);
+    public static boolean hobbitFoodCreate(Player player, ItemStack item) {
+
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(Collections.singletonList(ChatColor.GRAY + "Gastronomic triumph"));
+        meta.setEnchantmentGlintOverride(true);
+        meta.getPersistentDataContainer().set(Keys.CUSTOM_BETTER_FOOD, PersistentDataType.BOOLEAN, true);
+
+        item.setItemMeta(meta);
     	
+    	return true;
+    }
+    
+    
+    public static boolean hobbitFoodEffects(Player player, ItemStack consumedItem) {
     	
+    	Material material = consumedItem.getType();
+    	
+    	switch (material) {
+    	default -> LogicHolder.givePotionEffect(player, "SATURATION", 2, 0);
+    	}
     	
     	return true;
     }

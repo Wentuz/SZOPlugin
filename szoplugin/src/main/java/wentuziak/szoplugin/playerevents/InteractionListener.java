@@ -3,6 +3,7 @@ package wentuziak.szoplugin.playerevents;
 
 
 
+import java.awt.RenderingHints.Key;
 import java.lang.reflect.AccessFlag.Location;
 
 import org.bukkit.Bukkit;
@@ -36,6 +37,7 @@ import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
@@ -426,7 +428,7 @@ public class InteractionListener implements Listener{
         Player player = event.getPlayer();
         ItemStack consumedItem = event.getItem();
         ItemStack itemOnLeg = player.getInventory().getItem(EquipmentSlot.LEGS);
-
+        
         if (itemOnLeg != null && itemOnLeg.hasItemMeta()) {
             PersistentDataContainer playerContainer = itemOnLeg.getItemMeta().getPersistentDataContainer();
 
@@ -462,6 +464,12 @@ public class InteractionListener implements Listener{
             }
         }
         SpecialFood.effectFoodFunc(player, consumedItem);
+        
+        ItemMeta meta = consumedItem.getItemMeta();
+        if(meta == null) return;
+        PersistentDataContainer data = meta.getPersistentDataContainer();
+
+        if(data.has(Keys.CUSTOM_BETTER_FOOD, PersistentDataType.BOOLEAN)) RaceEffects.hobbitFoodEffects(player, consumedItem);
         
     }
 
@@ -631,17 +639,29 @@ public class InteractionListener implements Listener{
         }
     }
     
+//    @EventHandler
+//    public void onFurnanceExtract(FurnaceExtractEvent event) {
+//    	Block block = event.getBlock();
+//    	Material item = event.getItemType();
+//    	int amount = event.getItemAmount();
+//    	Player player = event.getPlayer();
+//    	
+//    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+//    	    if(RaceEffects.hobbitFoodCreate(player, item)) {
+//    	    	player.sendMessage("YES");
+//    	    }
+//    	}
+//    }
+    
     @EventHandler
-    public void onFurnanceExtract(FurnaceExtractEvent event) {
-    	Block block = event.getBlock();
-    	Material item = event.getItemType();
-    	int amount = event.getItemAmount();
-    	Player player = event.getPlayer();
-    	
-    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
-    	    if(RaceEffects.hobbitFood(player, item, amount)) {
-    	    	player.sendMessage("YES");
-    	    }
-    	}
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getInventory().getType() == InventoryType.SMOKER && event.getSlotType() == InventoryType.SlotType.RESULT) {
+            ItemStack result = event.getCurrentItem();
+            Player player = (Player) event.getWhoClicked();
+
+            if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+        	    RaceEffects.hobbitFoodCreate(player, result);  
+            }
+        }
     }
 }

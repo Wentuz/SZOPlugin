@@ -15,4 +15,5 @@
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.FurnaceExtractEvent"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryClickEvent"/>
+    <fullyQualifiedTypeName name="org.bukkit.inventory.ItemStack"/>
 </qualifiedTypeNameHistroy>
