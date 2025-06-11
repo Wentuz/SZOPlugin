@@ -641,6 +641,18 @@ public class InteractionListener implements Listener{
         if (player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
             RaceEffects.celestialSummonEvent(player);
         }
+        if (player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
+            if (player.getFoodLevel() >= 10 && !player.hasCooldown(Material.NETHER_STAR)) {
+            	int foodLvl = player.getFoodLevel();
+                player.setFoodLevel(foodLvl - 4);
+                player.setCooldown(Material.NETHER_STAR, 20 * 60);
+                LogicHolder.startCooldownCountdown(player, 60);
+                RaceEffects.mechanicalHealing(player);
+                LogicHolder.givePotionEffect(player, "HUNGER", 0, 20 * 60);
+            }else{
+                return;
+            }
+        }
     }
     
 //    @EventHandler

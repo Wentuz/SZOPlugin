@@ -814,7 +814,7 @@ public class RaceEffects {
     			Weapons.fireworkEffect(hitEntity.getLocation(), 3);
     		default: 
     			LogicHolder.particleEmitterOnEntity(hitEntity, Particle.CRIT, 1, 1 * 20, 0.25, 1, 0.25, 0.01); 
-    			Weapons.spellSwordEffect(100, hitEntity);
+    			Weapons.bleedEffect(hitEntity, 2.0, 2);
     	}
     }
     
