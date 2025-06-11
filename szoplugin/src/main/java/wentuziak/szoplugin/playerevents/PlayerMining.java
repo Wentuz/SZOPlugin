@@ -44,7 +44,7 @@ public class PlayerMining implements Listener{
             else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);
             }
-            else if (playerContainer.has(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BYTE)) {
+            else if (playerContainer.has(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BYTE) || player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 CustomTools.superHoeEffect(luckLvl, brokenBlock);
             }
             //  Bootleg netherite pickaxe soul essence from diamonds
@@ -78,8 +78,8 @@ public class PlayerMining implements Listener{
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
             if (LogicHolder.critRoll(5 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
-                LogicHolder.rollTreasure(1, brokenBlock.getLocation(), "Plant");
-                CustomTools.superHoeEffect(luckLvl, brokenBlock);
+                LogicHolder.rollTreasure(5 * (luckLvl + 1), brokenBlock.getLocation(), "Plant");
+                CustomTools.superHoeEffect(20 * (luckLvl + 1), brokenBlock);
             }
             }
         }

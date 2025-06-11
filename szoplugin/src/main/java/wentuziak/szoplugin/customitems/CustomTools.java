@@ -193,7 +193,7 @@ public class CustomTools {
 
             if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
             || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
-                LogicHolder.rollTreasure(1, brokenBlock.getLocation(), "Plant");
+                LogicHolder.rollTreasure(playerLuck, brokenBlock.getLocation(), "Plant");
                 return;
             }
         

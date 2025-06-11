@@ -519,7 +519,7 @@ public class InteractionListener implements Listener{
             }
             if (itemInMainHand.hasItemMeta()){
                 playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
-                if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE)) {
+                if (playerContainer.has(Keys.CUSTOM_TREASURE_FISHING, PersistentDataType.BYTE) || !player.getWorld().isClearWeather()) {
                     CustomTools.treasureFishingRodEffect(8 * luckLvl ,player, projectile, luckLvl, "Mobs");
                     CustomTools.treasureFishingRodEffect(11 * luckLvl ,player, projectile, luckLvl, "Ore");
                     CustomTools.treasureFishingRodEffect(22 * luckLvl ,player, projectile, luckLvl, "FishingTreasure");
