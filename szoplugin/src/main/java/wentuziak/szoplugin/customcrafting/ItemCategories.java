@@ -69,8 +69,21 @@ public class ItemCategories {
             Material.DIAMOND_PICKAXE,
             Material.NETHERITE_PICKAXE
     );
+    
+    public static final Set<Material> FOODS = EnumSet.of(
+            Material.BREAD,
+            Material.CAKE,
+            Material.COOKIE,
+            Material.GOLDEN_APPLE,
+            Material.GOLDEN_CARROT,
+            Material.PUMPKIN_PIE,
+            Material.RABBIT_STEW,
+            Material.BEETROOT_SOUP,
+            Material.MUSHROOM_STEW,
+            Material.SUSPICIOUS_STEW
+    );
 
-    // Example utility method:
+    
     public static boolean isSword(Material material) {
         return SWORDS.contains(material);
     }
@@ -97,6 +110,10 @@ public class ItemCategories {
 
     public static boolean isBoots(Material material) {
         return BOOTS_ITEMS.contains(material);
+    }
+    
+    public static boolean isFood(Material material) {
+        return FOODS.contains(material);
     }
 
 }

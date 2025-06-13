@@ -54,7 +54,9 @@ import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.*;
 import wentuziak.szoplugin.races.RaceEffects;
+import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.DwarfUpgradedGear;
+import wentuziak.szoplugin.customcrafting.ItemCategories;
 
 
 
@@ -673,10 +675,28 @@ public class InteractionListener implements Listener{
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
-    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {        
+    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {   
 	        if (event.getInventory().getType() == InventoryType.SMOKER && event.getSlotType() == InventoryType.SlotType.RESULT) {
 	            ItemStack result = event.getCurrentItem();
-	        	RaceEffects.hobbitFoodCreate(player, result);  
+	        	RaceEffects.hobbitFoodCreate(player, result);
+	        	int amount = result.getAmount();
+            	for (int i = 0; i < amount; i++) {
+            		if(LogicHolder.critRoll(10)) {
+		                player.getLocation().getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());
+		        	}
+            	}
+	        }
+	        if (event.getInventory().getType() == InventoryType.WORKBENCH && event.getSlotType() == InventoryType.SlotType.RESULT) {
+	            ItemStack result = event.getCurrentItem();
+	            if(ItemCategories.isFood(result.getType())) {
+	            	RaceEffects.hobbitFoodCreate(player, result);  
+	            	int amount = result.getAmount();
+	            	for (int i = 0; i < amount; i++) {
+	            		if(LogicHolder.critRoll(10)) {
+			                player.getLocation().getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());
+			        	}
+	            	}
+	            }
 	        }
         }
     	if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {        

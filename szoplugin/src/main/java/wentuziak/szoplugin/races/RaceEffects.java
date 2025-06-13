@@ -759,12 +759,21 @@ public class RaceEffects {
     
     public static boolean hobbitFoodEffects(Player player, ItemStack consumedItem) {
     	
+    	int value = 0;
     	Material material = consumedItem.getType();
     	
     	switch (material) {
+    	case COOKED_COD, COOKED_SALMON -> LogicHolder.givePotionEffect(player, "WATER_BREATHING", 20 * 60, 0);
+    	case COOKED_BEEF, COOKED_PORKCHOP, COOKED_MUTTON -> LogicHolder.givePotionEffect(player, "RESISTANCE", 20 * 20, 0);
+    	case COOKED_RABBIT, COOKED_CHICKEN -> LogicHolder.givePotionEffect(player, "JUMP_BOOST", 20 * 60, 1);
+    	case DRIED_KELP, BAKED_POTATO -> LogicHolder.givePotionEffect(player, "HASTE", 20 * 60, 0);
+    	case COOKIE, BREAD -> LogicHolder.givePotionEffect(player, "HASTE", 20 * 60, 0);
+    	case BEETROOT_SOUP, MUSHROOM_STEW, RABBIT_STEW -> value = 1;
+    	case PUMPKIN_PIE, GOLDEN_CARROT -> value = 2;
+    	case GOLDEN_APPLE -> LogicHolder.givePotionEffect(player, "HEAL", 1, 0);
     	default -> LogicHolder.givePotionEffect(player, "SATURATION", 2, 0);
     	}
-    	
+    	LogicHolder.givePotionEffect(player, "SATURATION", 2, value);
     	return true;
     }
     
@@ -774,10 +783,11 @@ public class RaceEffects {
     public static void mechanicalGotHitEffect(Player player) {
     	LogicHolder.particleEmitterOnEntity(player, Particle.ELECTRIC_SPARK, 2, 2 * 20, 0.25, 1, 0.25, 0.5);
     	
-    	int randInt = (int)(Math.random() * 10);
+    	int randInt = (int)(Math.random() * 20);
     	switch (randInt){
     		case 1 -> Weapons.grenadeEffect(player.getLocation());
-    		case 2, 3 -> mechanicalHealing(player);
+    		case 2, 3, 4, 5, 6 -> mechanicalHealing(player);
+    		case 7, 8, 9 -> Weapons.fireworkEffect(player.getLocation(), 2);
     		default -> LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 1, 3 * 20, 0.25, 1, 0.25, 0.01);
     	}
     }
@@ -808,11 +818,10 @@ public class RaceEffects {
     	int randInt = (int)(Math.random() * 10);
     	switch (randInt){
     		case 1 : 
-    			Weapons.bleedEffect(hitEntity, 2.0, 6);
+    			Weapons.bleedEffect(hitEntity, 4.0, 6);
     			Weapons.fireworkEffect(hitEntity.getLocation(), 3);
     		default: 
-    			LogicHolder.particleEmitterOnEntity(hitEntity, Particle.CRIT, 1, 1 * 20, 0.25, 1, 0.25, 0.01); 
-    			Weapons.bleedEffect(hitEntity, 2.0, 2);
+    			Weapons.bleedEffect(hitEntity, 2.0, 4);
     	}
     }
     
@@ -823,11 +832,10 @@ public class RaceEffects {
         	switch (randInt){
     		case 1 :
     			Weapons.angelSwordEffect(100, player);
-    			LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);
-    			LogicHolder.particleEmitterOnEntity(player, Particle.HEART, 1, 20);
+    			LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 45, 1);
     		default : 
-    			Weapons.angelSwordEffect(100, player);
+    			LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 20, 1);
         	}
-        }, 20 * 10);
+        }, 20 * 3);
     }
 }
