@@ -74,6 +74,7 @@ public class PlayerMining implements Listener{
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
             CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl, brokenBlock, "Ore");
+            if(LogicHolder.critRoll(luckLvl + 1)) brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {

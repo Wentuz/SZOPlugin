@@ -95,7 +95,7 @@ public class RaceEffects {
         //     return;
         // }
 
-    public static void dwarfSwimEvent(Player player){   
+    public static void dwarfSwimEvent(Player player){    
         if (!TaskManager.isTaskRunning(player, "dwarfSwim")) {            
             final Player finalPlayer = player;
             dwarfSwimTask = new BukkitRunnable() {
@@ -258,7 +258,7 @@ public class RaceEffects {
         //speed boost
         if (player.getFoodLevel() > 0 && !player.hasCooldown(Material.NETHER_STAR)) {
             Vector direction = player.getLocation().getDirection().normalize();
-            player.setVelocity(direction.multiply(1.5));
+            player.setVelocity(direction.multiply(1.2));
             player.setFoodLevel(player.getFoodLevel() - 1);
             
             if (player.getFoodLevel() < 0) {
@@ -280,8 +280,6 @@ public class RaceEffects {
                 public void run(){
                     if (!LogicHolder.isPlayerAboveGround(finalPlayer, 0.2) || player.isInWater()) {
                         stopCaraGlideTask(finalPlayer);
-                        LogicHolder.givePotionEffect(finalPlayer, "SLOW_FALLING", 20, 0);
-                        finalPlayer.setGliding(false);
                         return;
                     }
                     finalPlayer.setGliding(true);

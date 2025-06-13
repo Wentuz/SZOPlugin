@@ -195,7 +195,7 @@ public class UpdateAttributes {
     	playerScale = playerScale * 0.75;
     	playerFireTime = playerFireTime * 1.5;
     	playerGravity = playerGravity * 0.75;
-    	playerFallDamage = playerFallDamage * 0.75;
+    	playerFallDamage = playerFallDamage * 1.25;
     	playerKnockback = playerKnockback * 2.3; // to check if it should be inverted
     	playerAttackSpeed = playerAttackSpeed * 0.85;
     	playerSafeFallRange = playerSafeFallRange * 1.75;

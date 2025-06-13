@@ -184,7 +184,7 @@ public class Weapons {
             cloud.setDuration(20 * 2);
             cloud.setRadius(3.0f);
             cloud.setParticle(Particle.FLAME);
-            cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 10, 2), true);
+            cloud.addCustomEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 5, 0), true);
         }, 4);
     }
 
@@ -250,9 +250,8 @@ public class Weapons {
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 3);
+        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 5);
         LogicHolder.particleEmitterOnEntity(snowball, Particle.FIREWORK, 4, 3 * 20);
-
     }
 
     public static void fireworkEffect(Location location, int power){
