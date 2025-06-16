@@ -22,4 +22,5 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.DwarfUpgradedGear"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.ItemCategories"/>
 </qualifiedTypeNameHistroy>

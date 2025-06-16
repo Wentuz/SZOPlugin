@@ -170,6 +170,10 @@ public class RaceEffects {
             }
         }
     }
+    
+    public static void witchBrewEvent() {
+    	
+    }
 
     //
     //      Celestial

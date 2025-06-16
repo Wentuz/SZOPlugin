@@ -10,10 +10,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
+import org.bukkit.block.BrewingStand;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockCookEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.BrewEvent;
 import org.bukkit.event.inventory.FurnaceExtractEvent;
 import org.bukkit.event.inventory.FurnaceSmeltEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -35,11 +37,14 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.inventory.BrewerInventory;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
@@ -143,6 +148,9 @@ public class InteractionListener implements Listener{
                 }
                 if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
                     RaceCrafting.sanguiniteCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
+                if (player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
+                    RaceCrafting.mechanicalCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
                 if (player.getPersistentDataContainer().has(Keys.RACE_MISKARU)) {
                     RaceCrafting.miskaruCraftingEvent(player, itemInMainHand, itemInOffHand);
@@ -706,4 +714,26 @@ public class InteractionListener implements Listener{
 	        }
         }
     }
+    
+//    @EventHandler
+//    public void onBrew(BrewEvent event) {
+//    	BrewingStand stand = event.getBlock().getState() instanceof BrewingStand ? (BrewingStand) event.getBlock().getState() : null;
+//    	if (stand == null) return;
+//    	
+//    	BrewerInventory inventory = stand.getInventory();
+//    	
+//    	for (int i = 0; i < 3; i++) {
+//    		ItemStack item = inventory.getItem(i);
+//    		if(item != null && item.getType() == Material.POTION) {
+//    			// You can check the potion meta
+//                PotionMeta meta = (PotionMeta) item.getItemMeta();
+//                System.out.print(true);
+//
+//                meta.setDisplayName("Custom Brewed Potion");
+//
+//                item.setItemMeta(meta);
+//                inventory.setItem(i, item);
+//    		}
+//    	}
+//    }
 }

@@ -198,11 +198,39 @@ public class RaceCrafting {
             LogicHolder.removeItem(player, itemInMainHand);
             return;
         }
-        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 8) && offHandMaterial == Material.STRING){
+        else if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 2) && offHandMaterial == Material.STRING){
             player.getWorld().dropItem(dropLocation, CreateCustomItem.createGrenade());
             
             LogicHolder.removeItem(player, itemInOffHand);
-            for(int i = 0; i < 8; i++){
+            for(int i = 0; i < 2; i++){
+                LogicHolder.removeItem(player, itemInMainHand);
+            }
+            return;
+        }
+        else if (itemInMainHand.isSimilar(CreateCustomItem.createGrenade()) 
+        && (itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 6)){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createBreachCharge());
+            
+            LogicHolder.removeItem(player, itemInMainHand);
+            for(int i = 0; i < 6; i++){
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            return;
+        }
+    }
+    
+    // MECHANICAL
+    public static void mechanicalCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        
+
+        if ((mainHandMaterial == Material.GUNPOWDER && itemInMainHand.getAmount() >= 2) && offHandMaterial == Material.STRING){
+            player.getWorld().dropItem(dropLocation, CreateCustomItem.createGrenade());
+            
+            LogicHolder.removeItem(player, itemInOffHand);
+            for(int i = 0; i < 2; i++){
                 LogicHolder.removeItem(player, itemInMainHand);
             }
             return;
