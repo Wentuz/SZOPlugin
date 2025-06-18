@@ -46,9 +46,9 @@ public class tagSpawnedMob implements Listener {
         for (Entity entity : Bukkit.getWorlds().get(0).getEntities()) { // Loop through all entities in the main world
             if ((entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) && LogicHolder.critRoll(10)) {
                 LivingEntity undead = (LivingEntity) entity;
-                if (LogicHolder.critRoll(2)) {
-                    createHuntedMob(entity);
-                }else{
+                if(LogicHolder.critRoll(2)) createBossMob(entity);
+                else if (LogicHolder.critRoll(2)) createHuntedMob(entity);
+                else{
                     boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
                     equipArmorEntity(undead, true, mobAirItem, mobAirItem, mobAirItem, mobAirItem, isArmorTiered);
                     tagSpawnedEntity(undead, Keys.MOB_RIOT);  // Tag the undead
@@ -95,7 +95,8 @@ public class tagSpawnedMob implements Listener {
         // Select a random Zombie or Skeleton from the list
         Entity randomEntity = validEntities.get(rand.nextInt(validEntities.size()));
 
-        createHuntedMob(randomEntity);
+        if(LogicHolder.critRoll(100)) createBossMob(randomEntity);
+        //createHuntedMob(randomEntity);
 
     }
 
@@ -109,6 +110,17 @@ public class tagSpawnedMob implements Listener {
         ((Attributable) entity).getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.75);
         ((Attributable) entity).getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue(4);
         ((Attributable) entity).getAttribute(Attribute.MAX_HEALTH).setBaseValue(40);
+        LogicHolder.givePotionEffect((LivingEntity) entity, "GLOWING", 20 * 60 * 30, 0);
+    }
+    private static void createBossMob(Entity entity){
+        tagSpawnedEntity((LivingEntity) entity, Keys.MOB_MINI_BOSS);
+
+        entity.getWorld().playSound(entity.getLocation(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 5, 1);
+
+        LogicHolder.equipRandomArmor(true, (LivingEntity) entity);
+        ((Attributable) entity).getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.60 * (Math.random() * 0.2 + 1));
+        ((Attributable) entity).getAttribute(Attribute.ATTACK_DAMAGE).setBaseValue((int)(Math.random() * 4 + 4));
+        ((Attributable) entity).getAttribute(Attribute.MAX_HEALTH).setBaseValue(40 + (int)(Math.random() * 40));
         LogicHolder.givePotionEffect((LivingEntity) entity, "GLOWING", 20 * 60 * 30, 0);
     }
 

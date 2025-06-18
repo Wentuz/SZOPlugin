@@ -100,30 +100,22 @@ public class MobActions implements Listener{
         // Handle Tagged mobs events
         if (skeleton.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             if (LogicHolder.critRoll(25)) {
+                arrow.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1), true);
+            }
+            arrow.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 1), true);
+            arrow.setPierceLevel(1);
+        }
+        else if (skeleton.getPersistentDataContainer().has(Keys.MOB_MINI_BOSS, PersistentDataType.BYTE)) {
+            if (LogicHolder.critRoll(25)) {
                 Vector arrowVelocity = arrow.getVelocity();
-                RaceEffects.elfShotEffect(skeleton, arrowVelocity, null, "bouncy");
+                RaceEffects.elfShotEffect(skeleton, arrowVelocity, "multishot", "bouncy");
 
             }
             arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
         }
     }
     
-    @EventHandler
-    public void onWitchThrowPotion(PotionSplashEvent event) {
-        ThrownPotion potion = event.getPotion();
-        if (!(potion.getShooter() instanceof Witch) || !(((PersistentDataHolder) potion.getShooter()).getPersistentDataContainer().has(Keys.MOB_HUNT, PersistentDataType.BYTE))) return;
-
-        // Cancel the default potion effect
-        event.setCancelled(true);
-
-        // Apply your custom gas effects to affected entities
-        for (LivingEntity target : event.getAffectedEntities()) {
-            target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 4));
-            target.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1));
-        }
-
-        // Optional: Spawn particles/sounds to match the visual
-        potion.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, potion.getLocation(), 30, 0.5, 0.5, 0.5, 0.05);
-        potion.getWorld().playSound(potion.getLocation(), Sound.ENTITY_WITCH_THROW, 1f, 1f);
+    public void onWitchRollPotion(PotionSplashEvent event) {
+        
     }
 }

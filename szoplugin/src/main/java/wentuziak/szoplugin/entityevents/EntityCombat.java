@@ -3,6 +3,7 @@ package wentuziak.szoplugin.entityevents;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
@@ -125,6 +126,31 @@ public class EntityCombat implements Listener{
         }
     }
     
+    @EventHandler
+    public void onWitchThrowPotion(PotionSplashEvent event) {
+    	System.out.print("here 1");
+        ThrownPotion potion = event.getPotion();
+        if (!(potion.getShooter() instanceof Witch) || !(((PersistentDataHolder) potion.getShooter()).getPersistentDataContainer().has(Keys.MOB_HUNT, PersistentDataType.BYTE))) return;
+    	System.out.print("here 2");
+
+        // Cancel the default potion effect
+        event.setCancelled(true);
+    	System.out.print("here 3");
+
+        // Apply your custom gas effects to affected entities
+        for (LivingEntity target : event.getAffectedEntities()) {
+            target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 4));
+            target.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1));
+        }
+    	System.out.print("here 4");
+
+        potion.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, potion.getLocation(), 30, 0.5, 0.5, 0.5, 0.05);
+        potion.getWorld().playSound(potion.getLocation(), Sound.ENTITY_WITCH_THROW, 1f, 1f);
+    }
+
+    
+    
+    
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
@@ -138,6 +164,14 @@ public class EntityCombat implements Listener{
                 if (LogicHolder.critRoll(50)) {killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());}
                 if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, killedEntityLocation, "Mobs");}
                 if (LogicHolder.critRoll(50)) {LogicHolder.rollTreasure(3, killedEntityLocation, "Ore");}
+            }
+        }
+        if (killedEntity.getPersistentDataContainer().has(Keys.MOB_MINI_BOSS, PersistentDataType.BYTE)) {
+            Location killedEntityLocation = killedEntity.getLocation();
+            killedEntity.getWorld().dropItemNaturally(killedEntityLocation, new ItemStack(Material.ECHO_SHARD, 1));
+            for(int i = 0; i < 6; i++){
+                if (LogicHolder.critRoll(20)) {killedEntity.getWorld().dropItemNaturally(killedEntityLocation, new ItemStack(Material.ECHO_SHARD, 1));}
+                if (LogicHolder.critRoll(75)) {LogicHolder.rollTreasure(3, killedEntityLocation, "Mobs");}
             }
         }
         if (killer != null) {
