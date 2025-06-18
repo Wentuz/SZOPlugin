@@ -3,18 +3,26 @@ package wentuziak.szoplugin.entityevents;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Spider;
+import org.bukkit.entity.ThrownPotion;
+import org.bukkit.entity.Witch;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
@@ -98,5 +106,24 @@ public class MobActions implements Listener{
             }
             arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
         }
+    }
+    
+    @EventHandler
+    public void onWitchThrowPotion(PotionSplashEvent event) {
+        ThrownPotion potion = event.getPotion();
+        if (!(potion.getShooter() instanceof Witch) || !(((PersistentDataHolder) potion.getShooter()).getPersistentDataContainer().has(Keys.MOB_HUNT, PersistentDataType.BYTE))) return;
+
+        // Cancel the default potion effect
+        event.setCancelled(true);
+
+        // Apply your custom gas effects to affected entities
+        for (LivingEntity target : event.getAffectedEntities()) {
+            target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 4));
+            target.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1));
+        }
+
+        // Optional: Spawn particles/sounds to match the visual
+        potion.getWorld().spawnParticle(Particle.SOUL_FIRE_FLAME, potion.getLocation(), 30, 0.5, 0.5, 0.5, 0.05);
+        potion.getWorld().playSound(potion.getLocation(), Sound.ENTITY_WITCH_THROW, 1f, 1f);
     }
 }

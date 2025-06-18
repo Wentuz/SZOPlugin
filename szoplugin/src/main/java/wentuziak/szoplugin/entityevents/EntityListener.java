@@ -93,11 +93,6 @@ public class EntityListener implements Listener {
         reloadRace(player);
     }
 
-    //
-    //      Disabled untill further notice
-    //
-
-
      public static void reloadRace(Player player){    
          PersistentDataContainer dataContainer = player.getPersistentDataContainer();
          NamespacedKey[] raceKeys = Keys.getRaceKeys();
@@ -146,7 +141,7 @@ public class EntityListener implements Listener {
             if (LogicHolder.critRoll(20)) {
                 repleaceEntity(entity, EntityType.CAVE_SPIDER);
             }
-            if (LogicHolder.critRoll(10)) {
+            if (LogicHolder.critRoll(100)) { // test value
                 Witch witch = (Witch) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.WITCH);
                 entity.addPassenger(witch);
             }
@@ -165,6 +160,10 @@ public class EntityListener implements Listener {
                 Skeleton skeleton = (Skeleton) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.SKELETON);
                 entity.addPassenger(skeleton);
             }
+            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+            return;
+        }
+        if (entity.getType() == EntityType.WITCH) {
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             return;
         }

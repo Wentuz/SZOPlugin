@@ -3,6 +3,7 @@ package wentuziak.szoplugin.entityevents;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
@@ -11,14 +12,20 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
+import org.bukkit.entity.ThrownPotion;
+import org.bukkit.entity.Witch;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
@@ -117,6 +124,7 @@ public class EntityCombat implements Listener{
             }
         }
     }
+    
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
@@ -203,11 +211,27 @@ public class EntityCombat implements Listener{
                     }
                 }
             }
-            if (killedEntity.getType() == EntityType.SKELETON ){
+            else if (killedEntity.getType() == EntityType.SKELETON ){
                 for(int i = 0; i < 8; i++){
                     if (LogicHolder.critRoll(65)) {
                         killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createCursedArrow());
                     }
+                    if (LogicHolder.critRoll(15)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingArrow());
+                    }
+                }
+            }else if (killedEntity.getType() == EntityType.WITCH ){
+                if (LogicHolder.critRoll(20)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSuperHealingPot());
+                }
+                if (LogicHolder.critRoll(20)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingGas());
+                }
+                if (LogicHolder.critRoll(20)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createIronHide());
+                }
+                if (LogicHolder.critRoll(20)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGepardPotion());
                 }
             }
             

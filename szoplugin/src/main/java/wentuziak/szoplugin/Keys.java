@@ -96,6 +96,7 @@ public class Keys {
 
     //
     public static final NamespacedKey MOB_RIOT = new NamespacedKey(SzoPlugin.getInstance(), "RiotMob");
+    public static final NamespacedKey MOB_MINI_BOSS = new NamespacedKey(SzoPlugin.getInstance(), "MiniBossMob");
     public static final NamespacedKey MOB_HUNT = new NamespacedKey(SzoPlugin.getInstance(), "HuntMob");
     public static final NamespacedKey MOB_PLAYER_SUMMON = new NamespacedKey(SzoPlugin.getInstance(), "PlayerSummon");
 

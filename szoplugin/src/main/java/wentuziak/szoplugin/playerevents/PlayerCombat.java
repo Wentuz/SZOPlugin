@@ -153,10 +153,12 @@ public class PlayerCombat implements Listener{
 
     // Method to handle when a player gets hit
     private void handlePlayerDamage(Player player, EntityDamageByEntityEvent event) {
-        LivingEntity damager = (LivingEntity) event.getDamager();
-        applyChestArmorEffects(player, damager);
-        applyLegArmorEffects(player);
-        applyRaceEffects(player);
+    	if(event.getDamager() instanceof LivingEntity) {
+    		LivingEntity damager = (LivingEntity) event.getDamager();
+            applyChestArmorEffects(player, damager);
+            applyLegArmorEffects(player);
+            applyRaceEffects(player);
+    	}
     }
 
     // Method to apply chest armor effects when a player gets hit
