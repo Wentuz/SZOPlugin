@@ -79,7 +79,7 @@ public class SpecialItems {
                 break;
 
             case "GOAT_HORN":
-                if (player.getPersistentDataContainer().has(Keys.RACE_MISKARU) && !player.hasCooldown(Material.GOAT_HORN) ) {
+                if (!player.hasCooldown(Material.GOAT_HORN) ) {
                     RaceEffects.miskaruCallToHunt(player);
                 }
                 return;

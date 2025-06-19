@@ -72,6 +72,8 @@ public class PlayerCombat implements Listener{
         applyRaceEffects(player, hitEntity);
         applySpecialWeapons(playerContainer, itemInMainHand, hitEntity, player);
         applyHeadgearEffects(player, hitEntity);
+        
+        if(playerContainer.has(Keys.CUSTOM_DWARF_UPGRADE, PersistentDataType.BYTE)) applyArmorPiercerEffect(player, hitEntity); // effect for dwarf upgrade
     }
 
     // Method to apply race-specific effects when a player attacks

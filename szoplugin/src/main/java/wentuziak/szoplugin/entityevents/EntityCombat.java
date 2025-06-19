@@ -248,6 +248,12 @@ public class EntityCombat implements Listener{
                 for(int i = 0; i < 4; i++){
                     if (LogicHolder.critRoll(45)) {
                         killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
+                    }else if (LogicHolder.critRoll(45)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSmokeBomb());
+                    }else if (LogicHolder.critRoll(15)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGrenade());
+                    }else if (LogicHolder.critRoll(15)) {
+                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createScatterBomb());
                     }
                 }
             }

@@ -33,6 +33,8 @@ public class PlayerMining implements Listener{
         
         if (itemInMainHand.hasItemMeta()) {
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+            if(playerContainer.has(Keys.CUSTOM_DWARF_UPGRADE, PersistentDataType.BYTE)) luckLvl += 1; // dwarf upgrade +1 luck
+
             if (playerContainer.has(Keys.CUSTOM_DWARF_PICK, PersistentDataType.BYTE)) {
                 int isDumb = itemInMainHand.getEnchantmentLevel(Enchantment.SILK_TOUCH);
                 if (isDumb == 1) {
@@ -46,6 +48,7 @@ public class PlayerMining implements Listener{
             }
             else if (playerContainer.has(Keys.CUSTOM_SUPER_HOE, PersistentDataType.BYTE) || player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 CustomTools.superHoeEffect(luckLvl, brokenBlock);
+        
             }
             //  Bootleg netherite pickaxe soul essence from diamonds
             else if (playerContainer.has(Keys.CUSTOM_ESSENCE_PICKER, PersistentDataType.BYTE)) {

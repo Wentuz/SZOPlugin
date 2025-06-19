@@ -43,8 +43,11 @@ public class MobActions implements Listener{
         Zombie zombie = (Zombie) event.getEntity();
     
         // Handle Tagged mobs events
-        if (zombie.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
+        if (zombie.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE) || zombie.getPersistentDataContainer().has(Keys.MOB_MINI_BOSS, PersistentDataType.BYTE)) {
             mobLeapOnPlayer(zombie);
+        }
+        if (zombie.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
+            zombieFireworkOnPlayer(zombie);
         }
     }
 
@@ -65,6 +68,25 @@ public class MobActions implements Listener{
 
         entity.setVelocity(direction);
     }
+    
+    private static void zombieFireworkOnPlayer(Zombie zombie) {
+    	PersistentDataContainer zombieContainer = zombie.getPersistentDataContainer();
+
+        NamespacedKey fireworkKey = Keys.CUSTOM_THROWING_FIREWORK;
+        zombieContainer.set(fireworkKey, PersistentDataType.BYTE, (byte) 1);
+
+        int seconds = (int) (Math.random() * 10 + 1);
+
+        if(!zombie.isDead()) {
+        	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                LogicHolder.throwSnowball(zombie, Keys.CUSTOM_THROWING_FIREWORK, 3);
+            }, 20L * seconds);
+        	
+        	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+            	zombieFireworkOnPlayer(zombie);
+            }, 20L * 5 + seconds);
+        }
+    	}
 
     @EventHandler
     public static void onSpiderAggro(EntityTargetEvent event){

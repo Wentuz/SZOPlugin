@@ -21,6 +21,7 @@ import org.bukkit.entity.Snowball;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -202,14 +203,55 @@ public class Weapons {
     }
     
     public static void scatterThrow(Player player, PersistentDataContainer playerContainer){
-    	player.sendMessage("HERE !!!");
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
         Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_SCATTER_BOMB, 1);
         LogicHolder.particleEmitterOnEntity(snowball, Particle.END_ROD, 1, 5 * 20, 0.1, 0.1, 0.1, 0.05);
     }
 
     public static void scatterEffect(Location location){
-        location.getWorld().createExplosion(location, 3, true, true);
+    	int timeQuarterSeconds = 6;
+    	while (timeQuarterSeconds > 0) {
+
+    	    Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+    	        int numberOfProjectiles = (int) (Math.random() * 5 + 1);
+    	        while (numberOfProjectiles > 0) {
+    	            // Randomize the X and Z coordinates within a range of -5 to 5
+    	            double randomX = location.getX() + (Math.random() * 2 - 1);
+    	            double randomZ = location.getZ() + (Math.random() * 2 - 1);
+
+
+    	            // Create a new location with the randomized X and Z
+    	            Location randomizedLocation = location.clone();
+    	            randomizedLocation.setX(randomX);
+    	            randomizedLocation.setZ(randomZ);
+    	            randomizedLocation.setY(location.getY() + 1);
+
+
+    	            Snowball snowball = (Snowball) randomizedLocation.getWorld().spawnEntity(randomizedLocation, EntityType.SNOWBALL);
+
+    	            // Add small horizontal tilt (±10% of vertical speed)
+    	            double tiltFactor = 0.3;
+    	            double upwardSpeed = 0.5;
+    	            double tiltX = (Math.random() * 2 - 1) * upwardSpeed * tiltFactor; // ±10%
+    	            double tiltZ = (Math.random() * 2 - 1) * upwardSpeed * tiltFactor;
+
+    	            // Apply fountain-like velocity
+    	            snowball.setVelocity(new Vector(tiltX, upwardSpeed, tiltZ));
+
+    	            // Tagging the projectile
+    	            if (LogicHolder.critRoll(75)) {
+    	                snowball.getPersistentDataContainer().set(Keys.CUSTOM_GRENADE, PersistentDataType.STRING, "grenade");
+    	            } else {
+    	                snowball.getPersistentDataContainer().set(Keys.CUSTOM_THROWING_FIREWORK, PersistentDataType.STRING, "throwingFirework");
+    	            }
+
+    	            numberOfProjectiles--;
+    	        }
+    	    }, 10L * timeQuarterSeconds);
+
+    	    timeQuarterSeconds--;
+    	}
+ 
 
     }
     
@@ -262,7 +304,7 @@ public class Weapons {
 
     public static void fireworkThrow(Player player, PersistentDataContainer playerContainer){
         player.playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 10, 10);
-        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 5);
+        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_THROWING_FIREWORK, 3);
         LogicHolder.particleEmitterOnEntity(snowball, Particle.FIREWORK, 4, 3 * 20);
     }
 

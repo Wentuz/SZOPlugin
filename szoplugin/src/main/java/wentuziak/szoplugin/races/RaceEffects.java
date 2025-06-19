@@ -787,11 +787,12 @@ public class RaceEffects {
     public static void mechanicalGotHitEffect(Player player) {
     	LogicHolder.particleEmitterOnEntity(player, Particle.ELECTRIC_SPARK, 2, 2 * 20, 0.25, 1, 0.25, 0.5);
     	
-    	int randInt = (int)(Math.random() * 20);
+    	int randInt = (int)(Math.random() * 12);
     	switch (randInt){
     		case 1 -> Weapons.grenadeEffect(player.getLocation());
-    		case 2, 3, 4, 5, 6 -> mechanicalHealing(player);
-    		case 7, 8, 9 -> Weapons.fireworkEffect(player.getLocation(), 2);
+    		case 2 -> Weapons.smokeEffect(player.getLocation());
+    		case 3, 4, 5, 6, 7 -> mechanicalHealing(player);
+    		case 8, 9 -> Weapons.fireworkEffect(player.getLocation(), 2);
     		default -> LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 1, 3 * 20, 0.25, 1, 0.25, 0.01);
     	}
     }
