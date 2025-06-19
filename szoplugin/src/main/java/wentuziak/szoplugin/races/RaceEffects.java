@@ -132,10 +132,6 @@ public class RaceEffects {
         Material consumedMaterial = consumedStack.getType();
         String consumedItem = consumedMaterial.toString();
 
-        Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
-            LogicHolder.entityPotionEffectTimer(player, 1.5F, 0);
-        }, 5);
-
         Set<String> implementedFood = new HashSet<>(Arrays.asList(
             "POTION"
         ));
@@ -146,6 +142,10 @@ public class RaceEffects {
         
         if (consumedItem.equals("POTION")) {
             int whatEffect = (int)(Math.random() * 100 + 1);
+            
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                LogicHolder.entityPotionEffectTimer(player, 1.5F, 0);
+            }, 5);
 
             if (whatEffect >= 90) {
                 LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 45, 0);
@@ -171,7 +171,7 @@ public class RaceEffects {
         }
     }
     
-    public static void witchBrewEvent() {
+    public static void witchBrewEvent(ItemStack potion) {
     	
     }
 

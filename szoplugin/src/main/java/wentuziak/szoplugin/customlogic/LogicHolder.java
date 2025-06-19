@@ -102,7 +102,8 @@ public class LogicHolder {
             Keys.CUSTOM_GRENADE, "grenade",
             Keys.CUSTOM_SMOKE_BOMB, "smokeBomb",
             Keys.CUSTOM_THROWING_FIREWORK, "throwingFirework",
-            Keys.CUSTOM_WEB_TRAP, "webTrap"
+            Keys.CUSTOM_WEB_TRAP, "webTrap",
+            Keys.CUSTOM_SCATTER_BOMB, "scatterBomb"
         );
         
         if (customTags.containsKey(key)) {

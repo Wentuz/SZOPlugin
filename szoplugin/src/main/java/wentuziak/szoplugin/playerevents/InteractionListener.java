@@ -332,6 +332,12 @@ public class InteractionListener implements Listener{
                     LogicHolder.removeItem(player, itemInMainHand);
                     return;
                 }
+                else if(playerContainer.has(Keys.CUSTOM_SCATTER_BOMB, PersistentDataType.BYTE)){
+                    Weapons.scatterThrow(player, playerContainer);
+                    player.setCooldown(Material.FIREWORK_STAR, 20 * 2);
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    return;
+                }
             }
         }
     }
@@ -713,27 +719,18 @@ public class InteractionListener implements Listener{
 	        	DwarfUpgradedGear.dwarfGearCraft(player, result);
 	        }
         }
+    	if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
+    	    if (event.getInventory().getType() == InventoryType.BREWING &&
+    	        event.getSlotType() == InventoryType.SlotType.RESULT) {
+	            player.sendMessage("HELLO !!");
+
+    	        int rawSlot = event.getRawSlot();
+    	        if (rawSlot >= 0 && rawSlot <= 2) {
+    	            ItemStack result = event.getCurrentItem();
+    	            RaceEffects.witchBrewEvent(result);
+    	            player.sendMessage("HELLO !!! " + rawSlot);
+    	        }
+    	    }
+    	}
     }
-    
-//    @EventHandler
-//    public void onBrew(BrewEvent event) {
-//    	BrewingStand stand = event.getBlock().getState() instanceof BrewingStand ? (BrewingStand) event.getBlock().getState() : null;
-//    	if (stand == null) return;
-//    	
-//    	BrewerInventory inventory = stand.getInventory();
-//    	
-//    	for (int i = 0; i < 3; i++) {
-//    		ItemStack item = inventory.getItem(i);
-//    		if(item != null && item.getType() == Material.POTION) {
-//    			// You can check the potion meta
-//                PotionMeta meta = (PotionMeta) item.getItemMeta();
-//                System.out.print(true);
-//
-//                meta.setDisplayName("Custom Brewed Potion");
-//
-//                item.setItemMeta(meta);
-//                inventory.setItem(i, item);
-//    		}
-//    	}
-//    }
 }

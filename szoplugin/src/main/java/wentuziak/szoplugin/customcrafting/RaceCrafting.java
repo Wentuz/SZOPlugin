@@ -217,6 +217,16 @@ public class RaceCrafting {
             }
             return;
         }
+        else if (itemInMainHand.isSimilar(CreateCustomItem.createThrowingFirework()) 
+                && (itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 2)){
+                    player.getWorld().dropItem(dropLocation, CreateCustomItem.createScatterBomb());
+                    
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    for(int i = 0; i < 2; i++){
+                        LogicHolder.removeItem(player, itemInOffHand);
+                    }
+                    return;
+                }
     }
     
     // MECHANICAL
@@ -245,6 +255,16 @@ public class RaceCrafting {
             }
             return;
         }
+        else if (itemInMainHand.isSimilar(CreateCustomItem.createThrowingFirework()) 
+                && (itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 2)){
+                    player.getWorld().dropItem(dropLocation, CreateCustomItem.createScatterBomb());
+                    
+                    LogicHolder.removeItem(player, itemInMainHand);
+                    for(int i = 0; i < 2; i++){
+                        LogicHolder.removeItem(player, itemInOffHand);
+                    }
+                    return;
+              	}
     }
     
     

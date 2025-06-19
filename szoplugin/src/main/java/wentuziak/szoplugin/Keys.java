@@ -24,6 +24,8 @@ public class Keys {
     public static final NamespacedKey CUSTOM_ARMOR_PIERCER = new NamespacedKey(SzoPlugin.getInstance(), "ArmorPiercer");
     public static final NamespacedKey CUSTOM_SPELL_SWORD = new NamespacedKey(SzoPlugin.getInstance(), "SpellSword");
     public static final NamespacedKey CUSTOM_DEDALUS_BOW = new NamespacedKey(SzoPlugin.getInstance(), "DedalusBow");
+    public static final NamespacedKey CUSTOM_SCATTER_BOMB = new NamespacedKey(SzoPlugin.getInstance(), "ScatterBomb");
+
     
     //
     //      Armor
@@ -68,7 +70,6 @@ public class Keys {
     public static final NamespacedKey CUSTOM_WITCH_SOUP = new NamespacedKey(SzoPlugin.getInstance(), "WitchSoup");
     public static final NamespacedKey CUSTOM_DWARF_UPGRADE = new NamespacedKey(SzoPlugin.getInstance(), "DwarfUpgrade");
     public static final NamespacedKey CUSTOM_BETTER_FOOD = new NamespacedKey(SzoPlugin.getInstance(), "BetterFood");
-
     
     //
     //      Tools

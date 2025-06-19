@@ -488,6 +488,8 @@ public class CreateCustomItem {
         ironCladHelmetMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         ironCladHelmetMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
+        ironCladHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         ironCladHelmet.setItemMeta(ironCladHelmetMeta);
 
         return ironCladHelmet;
@@ -509,6 +511,8 @@ public class CreateCustomItem {
         ironCladChestplateMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 6, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         ironCladChestplateMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
+        ironCladChestplateMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         ironCladChestplate.setItemMeta(ironCladChestplateMeta);
 
         return ironCladChestplate;
@@ -529,6 +533,8 @@ public class CreateCustomItem {
         ironCladLeggingsMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         ironCladLeggingsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
+        ironCladLeggingsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         ironCladLeggings.setItemMeta(ironCladLeggingsMeta);
 
         return ironCladLeggings;
@@ -550,6 +556,8 @@ public class CreateCustomItem {
         ironCladBootsMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierClad);
         AttributeModifier armorModifierClad = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         ironCladBootsMeta.addAttributeModifier(Attribute.ARMOR, armorModifierClad);
+        ironCladBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         ironCladBoots.setItemMeta(ironCladBootsMeta);
 
         return ironCladBoots;
@@ -572,6 +580,8 @@ public class CreateCustomItem {
         miskaHelmetMeta.addAttributeModifier(Attribute.LUCK, luckModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
         miskaHelmetMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         miskaHelmet.setItemMeta(miskaHelmetMeta);
 
         return miskaHelmet;
@@ -596,6 +606,8 @@ public class CreateCustomItem {
         miskaChestplateMeta.addAttributeModifier(Attribute.ATTACK_SPEED, attackSpeedModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "Knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.CHEST);
         miskaChestplateMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaChestplateMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         miskaChestplate.setItemMeta(miskaChestplateMeta);
 
         return miskaChestplate;
@@ -618,6 +630,8 @@ public class CreateCustomItem {
         miskaLeggingsMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
         miskaLeggingsMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaLeggingsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         miskaLeggings.setItemMeta(miskaLeggingsMeta);
 
         return miskaLeggings;
@@ -640,6 +654,8 @@ public class CreateCustomItem {
         miskaBootsMeta.addAttributeModifier(Attribute.FALL_DAMAGE_MULTIPLIER, fallModifierMiska);
         AttributeModifier knockbackModifierMiska = new AttributeModifier(UUID.randomUUID(), "knockback", 0.1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
         miskaBootsMeta.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, knockbackModifierMiska);
+        miskaBootsMeta.getPersistentDataContainer().set(Keys.CUSTOM_MECHANICAL_PARTS, PersistentDataType.BOOLEAN, true);
+
         miskaBoots.setItemMeta(miskaBootsMeta);
 
         return miskaBoots;
@@ -983,8 +999,6 @@ public class CreateCustomItem {
             "Might make a difference between life and death..."));
         AttributeModifier armorModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Armor", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         ironBreakerShieldMeta.addAttributeModifier(Attribute.ARMOR, armorModifierIronBreaker);
-        AttributeModifier dmgModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Dmg", -0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        ironBreakerShieldMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, dmgModifierIronBreaker);
         AttributeModifier hpModifierIronBreaker = new AttributeModifier(UUID.randomUUID(), "Hp", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
         ironBreakerShieldMeta.addAttributeModifier(Attribute.MAX_HEALTH, hpModifierIronBreaker);
         ironBreakerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_IRON_BREAKER_SHIELD, PersistentDataType.BOOLEAN, true);
@@ -1000,6 +1014,8 @@ public class CreateCustomItem {
         windBlastShieldMeta.setDisplayName(ChatColor.AQUA + "Wind Blast Shield");
         windBlastShieldMeta.setLore(Arrays.asList(
             "Powered by wichrzyk"));
+        AttributeModifier speedModifierWindBlastShield = new AttributeModifier(UUID.randomUUID(), "Speed", 0.15, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        windBlastShieldMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED, speedModifierWindBlastShield);
             windBlastShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_WIND_BLAST_SHIELD, PersistentDataType.BOOLEAN, true);
             windBlastShield.setItemMeta(windBlastShieldMeta);
 
@@ -1014,9 +1030,7 @@ public class CreateCustomItem {
         berserkerShieldMeta.setDisplayName(ChatColor.RED + "Berserker Shield");
         berserkerShieldMeta.setLore(Arrays.asList(
             "Bathe in their blood !"));
-        AttributeModifier armorModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Armor", -0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
-        berserkerShieldMeta.addAttributeModifier(Attribute.ARMOR, armorModifierberserkerShield);
-        AttributeModifier dmgModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        AttributeModifier dmgModifierberserkerShield = new AttributeModifier(UUID.randomUUID(), "Dmg", 0.20, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         berserkerShieldMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, dmgModifierberserkerShield);
         berserkerShieldMeta.getPersistentDataContainer().set(Keys.CUSTOM_BERSERKER_SHIELD, PersistentDataType.BOOLEAN, true);
         berserkerShield.setItemMeta(berserkerShieldMeta);
@@ -1070,6 +1084,25 @@ public class CreateCustomItem {
         throwingFirework.setItemMeta(throwingFireworkMeta);
 
         return throwingFirework;
+    }
+
+
+    //
+    //      Scatter Bomb
+    //
+    public static ItemStack createScatterBomb(){
+        ItemStack scatterBomb = new ItemStack(Material.FIREWORK_STAR);
+        ItemMeta scatterBombMeta = scatterBomb.getItemMeta();
+
+        scatterBombMeta.setDisplayName(ChatColor.GREEN + "Scatter Bomb");
+        scatterBombMeta.setLore(Arrays.asList(
+            ChatColor.DARK_GRAY + "Flint'n steel in off hand to fire it dummy"));
+        scatterBombMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        scatterBombMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        scatterBombMeta.getPersistentDataContainer().set(Keys.CUSTOM_SCATTER_BOMB, PersistentDataType.BOOLEAN, true);
+        scatterBomb.setItemMeta(scatterBombMeta);
+
+        return scatterBomb;
     }
 
 
@@ -1580,9 +1613,9 @@ public class CreateCustomItem {
         pages.add(
             ChatColor.BOLD + "Throwing Bombs\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +
-            "8 Gunpowder + String\n\n" +
+            "2 Gunpowder + String\n\n" +
             "Who Can Make It:\n" +
-            "Dwarf"
+            "Dwarf + Mechanical"
         );
         pages.add(
             ChatColor.BOLD + "Dwarf Ale\n\n" +
@@ -1596,8 +1629,15 @@ public class CreateCustomItem {
             ChatColor.RESET + "Crafting Recipe:\n" +
             "Throwing TnT + 6 Soul Essence\n\n" +
             "Who Can Make It:\n" +
-            "Dwarf"
+            "Dwarf + Mechanical"
         );
+        pages.add(
+                ChatColor.BOLD + "Scatter Bomb\n\n" +
+                ChatColor.RESET + "Crafting Recipe:\n" +
+                "Rioters firework + 2 Soul Essence\n\n" +
+                "Who Can Make It:\n" +
+                "Dwarf + Mechanical"
+            );
         pages.add(
             ChatColor.BOLD + "Bootleg Netherite Pickaxe\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +

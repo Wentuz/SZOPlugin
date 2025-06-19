@@ -201,6 +201,18 @@ public class Weapons {
         location.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, location, 50, 0.1, 0.2, 0.1, 0.1);
     }
     
+    public static void scatterThrow(Player player, PersistentDataContainer playerContainer){
+    	player.sendMessage("HERE !!!");
+        player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
+        Snowball snowball = LogicHolder.throwSnowball(player, Keys.CUSTOM_SCATTER_BOMB, 1);
+        LogicHolder.particleEmitterOnEntity(snowball, Particle.END_ROD, 1, 5 * 20, 0.1, 0.1, 0.1, 0.05);
+    }
+
+    public static void scatterEffect(Location location){
+        location.getWorld().createExplosion(location, 3, true, true);
+
+    }
+    
     public static void breachThrow(Player player){
         player.playSound(player.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 10, 10);
         Location playerLocation = player.getLocation();

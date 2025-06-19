@@ -100,16 +100,16 @@ public class MobActions implements Listener{
         // Handle Tagged mobs events
         if (skeleton.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             if (LogicHolder.critRoll(25)) {
-                arrow.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 1), true);
+                arrow.addCustomEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20 * 5, 0), true);
+                arrow.addCustomEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 2, 0), true);
             }
             arrow.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 5, 1), true);
             arrow.setPierceLevel(1);
         }
-        else if (skeleton.getPersistentDataContainer().has(Keys.MOB_MINI_BOSS, PersistentDataType.BYTE)) {
+        if (skeleton.getPersistentDataContainer().has(Keys.MOB_MINI_BOSS, PersistentDataType.BYTE)) {
             if (LogicHolder.critRoll(25)) {
                 Vector arrowVelocity = arrow.getVelocity();
                 RaceEffects.elfShotEffect(skeleton, arrowVelocity, "multishot", "bouncy");
-
             }
             arrow.getPersistentDataContainer().set(Keys.CUSTOM_BOUNCY_CROSSBOW, PersistentDataType.STRING, "bouncyArrow");
         }

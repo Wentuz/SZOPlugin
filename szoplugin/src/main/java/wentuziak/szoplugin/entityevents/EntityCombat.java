@@ -107,6 +107,9 @@ public class EntityCombat implements Listener{
                 else if (value == "webTrap") {
                     MagicItems.webTrapEffect(target.getLocation());
                 }
+                else if (value == "scatterBomb") {
+                    Weapons.scatterEffect(target.getLocation());
+                }
             }else{
                 Location hitLocation = event.getHitBlock().getLocation();
                 if (value == "spiderYeet") {
@@ -121,6 +124,9 @@ public class EntityCombat implements Listener{
                 }
                 else if (value == "webTrap") {
                     MagicItems.webTrapEffect(hitLocation);
+                }
+                else if (value == "scatterBomb") {
+                    Weapons.scatterEffect(hitLocation);
                 }
             }
         }
