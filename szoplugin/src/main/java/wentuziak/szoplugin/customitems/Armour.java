@@ -1,13 +1,11 @@
 package wentuziak.szoplugin.customitems;
 
-import java.lang.reflect.AccessFlag.Location;
 import java.util.Collection;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.World;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.HumanEntity;
@@ -16,13 +14,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.WindCharge;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.SzoPlugin;
-import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class Armour {

@@ -1,7 +1,6 @@
 package wentuziak.szoplugin;
 
 import org.bukkit.NamespacedKey;
-import org.bukkit.persistence.PersistentDataContainer;
 
 import java.lang.reflect.Field;
 

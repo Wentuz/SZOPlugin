@@ -2,22 +2,13 @@ package wentuziak.szoplugin.playerevents;
 
 
 
-
-import java.awt.RenderingHints.Key;
-import java.lang.reflect.AccessFlag.Location;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.block.Block;
-import org.bukkit.block.BrewingStand;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockCookEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.inventory.BrewEvent;
-import org.bukkit.event.inventory.FurnaceExtractEvent;
-import org.bukkit.event.inventory.FurnaceSmeltEvent;
+
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.entity.Entity;
@@ -37,14 +28,11 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
-import org.bukkit.inventory.BrewerInventory;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.util.Vector;
@@ -62,12 +50,6 @@ import wentuziak.szoplugin.races.RaceEffects;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.DwarfUpgradedGear;
 import wentuziak.szoplugin.customcrafting.ItemCategories;
-
-
-
-
-
-
 
 
 public class InteractionListener implements Listener{

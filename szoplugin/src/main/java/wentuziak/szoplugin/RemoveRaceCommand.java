@@ -1,7 +1,6 @@
 package wentuziak.szoplugin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -14,7 +13,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
-import wentuziak.szoplugin.entityevents.EntityListener;
 import wentuziak.szoplugin.races.UpdateAttributes;
 
 public class RemoveRaceCommand implements TabExecutor {

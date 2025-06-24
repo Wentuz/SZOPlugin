@@ -1,12 +1,10 @@
 package wentuziak.szoplugin.customitems;
 
 
-import java.security.Key;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.AreaEffectCloud;
@@ -30,9 +28,7 @@ import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
-import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customlogic.LogicHolder;
-import wentuziak.szoplugin.races.RaceEffects;
 
 
 public class Weapons {

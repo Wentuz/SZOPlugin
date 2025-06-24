@@ -2,15 +2,12 @@ package wentuziak.szoplugin.entityevents;
 
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Witch;
-import org.bukkit.entity.Zombie;
-import org.bukkit.entity.Cat;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -22,19 +19,16 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityBreedEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent.RegainReason;
-import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.PiglinBarterEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
+
 
 import net.md_5.bungee.api.ChatColor;
 import wentuziak.szoplugin.Keys;
-import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.CustomRecipes;
 import wentuziak.szoplugin.customitems.MagicItems;

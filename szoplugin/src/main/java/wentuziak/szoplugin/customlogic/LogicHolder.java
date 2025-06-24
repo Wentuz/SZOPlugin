@@ -24,7 +24,6 @@ import org.bukkit.entity.Parrot.Variant;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.ThrownPotion;
-import org.bukkit.entity.WindCharge;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -36,12 +35,9 @@ import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.RayTraceResult;
-import org.bukkit.util.Vector;
 
-import net.md_5.bungee.api.ChatMessageType;
 
 import org.bukkit.Particle;
-import org.bukkit.Sound;
 import org.bukkit.potion.PotionData;
 
 
