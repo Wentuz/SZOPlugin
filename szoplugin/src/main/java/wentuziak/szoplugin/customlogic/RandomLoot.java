@@ -18,9 +18,39 @@ import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 public class RandomLoot {
     private static final Random rand = new Random();
 
-    public static ItemStack getLoot(Integer lootNum, Integer numberOfItems , String type){
-        ItemStack item = new ItemStack(Material.COAL, numberOfItems);
+    // Types of loot and their rarity
+    private static final HashMap<Integer, Material> oreLootCommon = new HashMap<>();
+    static {
+    	oreLootCommon.put(1, Material.COAL);
+    	oreLootCommon.put(2, Material.RAW_IRON);
+    	oreLootCommon.put(3, Material.RAW_COPPER);
+    	oreLootCommon.put(4, Material.LAPIS_LAZULI);
+    	oreLootCommon.put(5, Material.RAW_GOLD);
+    }
+    private static final HashMap<Integer, Material> oreLootRare = new HashMap<>();
+    static {
+    	oreLootRare.put(1, Material.QUARTZ);
+    	oreLootRare.put(2, Material.DIAMOND);
 
+    }
+    private static final HashMap<Integer, Material> oreLootUnique = new HashMap<>();
+    static {
+    	oreLootUnique.put(1, Material.DIAMOND_BLOCK);
+    	oreLootUnique.put(2, Material.NETHERITE_SCRAP);
+
+    }
+    
+    
+    
+    public static ItemStack getLoot(Integer lootNum, Integer numberOfItems , String type){ 
+        ItemStack item = new ItemStack(Material.COAL, numberOfItems);
+        
+
+        // TODO
+        // 	GET RID OF THIS EL IF HELL
+        //	1.	hashmap all loot tables into categories and rarities
+        //	2.	change getLoot int lootNum to represent tier of loot
+        
         switch (type) {
             case "Ore":
                 if (lootNum >= 99) {
@@ -160,7 +190,11 @@ public class RandomLoot {
                 item = getRandomAxolotlBucket(false, item);
             default:
                 break;
+        
+        
         }
+        
+        
         return item;
     }
 

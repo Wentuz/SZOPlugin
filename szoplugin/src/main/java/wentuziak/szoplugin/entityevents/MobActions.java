@@ -84,7 +84,7 @@ public class MobActions implements Listener{
         	
         	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             	zombieFireworkOnPlayer(zombie);
-            }, 20L * 5 + seconds);
+            }, 20L * 15 + seconds);
         }
     	}
 
@@ -106,7 +106,6 @@ public class MobActions implements Listener{
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 LogicHolder.throwSnowball(spider, Keys.CUSTOM_WEB_TRAP, 3);
             }, 20L * 3);
-
         }
     }
 

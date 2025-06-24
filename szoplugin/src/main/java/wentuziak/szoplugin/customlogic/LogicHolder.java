@@ -194,6 +194,11 @@ public class LogicHolder {
         return nearestPlayer;
     }
 
+    //	TODO
+    //	1.	Change whatLoot to represent tier of an item
+    //	2.	Randomise whatLoot based on LogicHolder.CritRoll
+    //	3.	Each playerLuck is one roll on chance. Base value of whatLoot is 1
+    
     public static Item rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
         while (playerLuck > 0) {
@@ -410,8 +415,12 @@ public class LogicHolder {
             };
             cooldownTask.runTaskTimer(SzoPlugin.getInstance(), 0, 20L); // 20 ticks = 1 second
         }
-
-
+    }
+    
+    public static int countKeysOnPlayer(Player player) {
+    	int amount = 0;
+    	
+    	return amount;
     }
 
 
