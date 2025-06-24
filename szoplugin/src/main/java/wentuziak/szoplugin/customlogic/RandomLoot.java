@@ -19,6 +19,10 @@ public class RandomLoot {
     private static final Random rand = new Random();
 
     // Types of loot and their rarity
+    
+    //
+    //	Ore drops
+    //
     private static final HashMap<Integer, Material> oreLootCommon = new HashMap<>();
     static {
     	oreLootCommon.put(1, Material.COAL);
@@ -31,171 +35,178 @@ public class RandomLoot {
     static {
     	oreLootRare.put(1, Material.QUARTZ);
     	oreLootRare.put(2, Material.DIAMOND);
-
     }
     private static final HashMap<Integer, Material> oreLootUnique = new HashMap<>();
     static {
     	oreLootUnique.put(1, Material.DIAMOND_BLOCK);
     	oreLootUnique.put(2, Material.NETHERITE_SCRAP);
+    }
+    
+    //
+    //	Plant drops
+    //
+    private static final HashMap<Integer, Material> plantLootCommon = new HashMap<>();
+    static {
+    	plantLootCommon.put(1, Material.BROWN_MUSHROOM);
+    	plantLootCommon.put(2, Material.RED_MUSHROOM);
+    	plantLootCommon.put(3, Material.POTATO);
+    	plantLootCommon.put(4, Material.FERN);
+    	plantLootCommon.put(5, Material.CORNFLOWER);
+    	plantLootCommon.put(6, Material.OXEYE_DAISY);
+    	plantLootCommon.put(7, Material.WHITE_TULIP);
+    	plantLootCommon.put(8, Material.RED_TULIP);
+    	plantLootCommon.put(9, Material.PINK_TULIP);
+    	plantLootCommon.put(10, Material.ORANGE_TULIP);
+    	plantLootCommon.put(11, Material.AZURE_BLUET);
+    	plantLootCommon.put(12, Material.ALLIUM);
+    	plantLootCommon.put(13, Material.BLUE_ORCHID);
+    	plantLootCommon.put(14, Material.PITCHER_POD);
+    	plantLootCommon.put(15, Material.TORCHFLOWER_SEEDS);
+    	plantLootCommon.put(16, Material.HANGING_ROOTS);
+    	
+    }
+    private static final HashMap<Integer, Material> plantLootRare = new HashMap<>();
+    static {
+    	plantLootRare.put(1, Material.LILY_OF_THE_VALLEY);
+    	plantLootRare.put(2, Material.LILAC);
+    	plantLootRare.put(3, Material.SUNFLOWER);
+    	plantLootRare.put(4, Material.ROSE_BUSH);
+    	plantLootRare.put(5, Material.PEONY);
+    	plantLootRare.put(6, Material.SMALL_DRIPLEAF);
+    	plantLootRare.put(7, Material.LILY_PAD);
+    	plantLootRare.put(8, Material.PALE_HANGING_MOSS);
+    	plantLootRare.put(9, Material.CLOSED_EYEBLOSSOM);
+    	plantLootRare.put(10, Material.OPEN_EYEBLOSSOM);
+    	plantLootRare.put(11, Material.CACTUS_FLOWER);
+    	plantLootRare.put(12, Material.DEAD_BUSH);
+
+    }
+    private static final HashMap<Integer, Material> plantLootUnique = new HashMap<>();
+    static {
+    	plantLootUnique.put(1, Material.FLOWERING_AZALEA);
+    	plantLootUnique.put(2, Material.TUBE_CORAL);
+    	plantLootUnique.put(3, Material.BRAIN_CORAL);
+    	plantLootUnique.put(4, Material.BUBBLE_CORAL);
+    	plantLootUnique.put(5, Material.FIRE_CORAL);
+    	plantLootUnique.put(6, Material.HORN_CORAL);
+    	plantLootUnique.put(7, Material.SPORE_BLOSSOM);
+
+    }
+    
+    //
+    //	Mob drops
+    //
+    private static final HashMap<Integer, Material> mobLootCommon = new HashMap<>();
+    static {                                       
+    	mobLootCommon.put(1, Material.ROTTEN_FLESH);
+    	mobLootCommon.put(2, Material.BONE);
+    	mobLootCommon.put(3, Material.SPIDER_EYE);
+    	mobLootCommon.put(4, Material.STRING);
+    	mobLootCommon.put(5, Material.GUNPOWDER);
+    	mobLootCommon.put(6, Material.FEATHER);
+    	mobLootCommon.put(7, Material.LEATHER);
+    	mobLootCommon.put(8, Material.RABBIT_HIDE);
+                            
+    }                                              
+    private static final HashMap<Integer, Material> mobLootRare = new HashMap<>();
+    static {                                        
+    	mobLootRare.put(1, Material.FERMENTED_SPIDER_EYE);
+    	mobLootRare.put(2, Material.BLAZE_ROD);
+    	mobLootRare.put(3, Material.ENDER_PEARL);
+    	mobLootRare.put(4, Material.GHAST_TEAR);
+    	mobLootRare.put(5, Material.SLIME_BALL);
+    	mobLootRare.put(6, Material.EXPERIENCE_BOTTLE);
+                                  
+    }                                               
+    private static final HashMap<Integer, Material> mobLootUnique = new HashMap<>();
+    static {
+    	mobLootUnique.put(1, Material.TOTEM_OF_UNDYING);
+    	mobLootUnique.put(2, Material.NETHER_STAR);
+    	mobLootUnique.put(3, Material.DRAGON_BREATH);
+    	mobLootUnique.put(4, Material.WITHER_SKELETON_SKULL);
+
+    }
+    
+    //
+    //	Fishing drops
+    //
+    private static final HashMap<Integer, Material> fishingTeasureLootCommon = new HashMap<>();
+    static {                                        
+    	fishingTeasureLootCommon.put(1, Material.COD);
+    	fishingTeasureLootCommon.put(2, Material.SALMON);
+    	fishingTeasureLootCommon.put(3, Material.PUFFERFISH);
+    	fishingTeasureLootCommon.put(4, Material.TROPICAL_FISH);
+    	fishingTeasureLootCommon.put(5, Material.INK_SAC);
+    	fishingTeasureLootCommon.put(6, Material.STRING);
+    	fishingTeasureLootCommon.put(7, Material.BOWL);
+    	fishingTeasureLootCommon.put(8, Material.BAMBOO);
+    	fishingTeasureLootCommon.put(9, Material.SEA_PICKLE);
+                                 
+    }                                               
+    private static final HashMap<Integer, Material> fishingTeasureLootRare = new HashMap<>();
+    static {                                        
+    	fishingTeasureLootRare.put(1, Material.NAUTILUS_SHELL);
+    	fishingTeasureLootRare.put(2, Material.PRISMARINE_SHARD);
+    	fishingTeasureLootRare.put(3, Material.PRISMARINE_CRYSTALS);
+    	fishingTeasureLootRare.put(4, Material.TROPICAL_FISH_BUCKET);
+    	fishingTeasureLootRare.put(5, Material.TURTLE_SCUTE);
+    	fishingTeasureLootRare.put(6, Material.EXPERIENCE_BOTTLE);
+    	fishingTeasureLootRare.put(7, Material.AXOLOTL_BUCKET);
+                                     
+    }                                               
+    private static final HashMap<Integer, Material> fishingTeasureLootUnique = new HashMap<>();
+    static {
+    	fishingTeasureLootUnique.put(1, Material.HEART_OF_THE_SEA);
+    	fishingTeasureLootUnique.put(2, Material.ENCHANTED_BOOK);
+    	fishingTeasureLootUnique.put(3, Material.ANCIENT_DEBRIS);
+    	fishingTeasureLootUnique.put(4, Material.GOLDEN_APPLE);
+    	fishingTeasureLootUnique.put(5, Material.TOTEM_OF_UNDYING);
+    	fishingTeasureLootUnique.put(6, Material.TURTLE_SCUTE);
 
     }
     
     
     
-    public static ItemStack getLoot(Integer lootNum, Integer numberOfItems , String type){ 
+    public static ItemStack getLoot(Integer lootTier, Integer numberOfItems , String type){ 
         ItemStack item = new ItemStack(Material.COAL, numberOfItems);
         
-
         // TODO
         // 	GET RID OF THIS EL IF HELL
         //	1.	hashmap all loot tables into categories and rarities
         //	2.	change getLoot int lootNum to represent tier of loot
+        // 	3. 	IF materail == enchanted_Book -> enchant it
         
         switch (type) {
             case "Ore":
-                if (lootNum >= 99) {
-                    item = new ItemStack(Material.NETHERITE_SCRAP);
-                } else if (lootNum >= 98) {
-                    item = new ItemStack(Material.DIAMOND_BLOCK);
-                } else if (lootNum >= 88) {
-                    item = new ItemStack(Material.DIAMOND);
-                } else if (lootNum >= 75) {
-                    item = new ItemStack(Material.QUARTZ, numberOfItems);
-                } else if (lootNum >= 55) {
-                    item = new ItemStack(Material.LAPIS_LAZULI, numberOfItems);
-                } else if (lootNum >= 40) {
-                    item = new ItemStack(Material.RAW_GOLD, numberOfItems);
-                } else if (lootNum >= 30) {
-                    item = new ItemStack(Material.RAW_IRON, numberOfItems);   
-                } else if (lootNum >= 19) {
-                    item = new ItemStack(Material.RAW_COPPER, numberOfItems);
-                } else if (lootNum >= 10) {
-                    item = new ItemStack(Material.EMERALD);
-                }
+                	
                 break;
             
             case "Plant":
-                if (lootNum >= 35) {
-                    item = CreateCustomItem.createSoulEssence();
-                } else if (lootNum >= 33) {
-                    item = new ItemStack(Material.LILY_PAD);
-                } else if (lootNum >= 31) {
-                    item = new ItemStack(Material.SMALL_DRIPLEAF);
-                } else if (lootNum >= 29) {
-                    item = new ItemStack(Material.PEONY);
-                } else if (lootNum >= 27) {
-                    item = new ItemStack(Material.ROSE_BUSH);
-                } else if (lootNum >= 25) {
-                    item = new ItemStack(Material.SUNFLOWER);
-                } else if (lootNum >= 23) {
-                    item = new ItemStack(Material.LILAC);
-                } else if (lootNum >= 21) {
-                    item = new ItemStack(Material.LILY_OF_THE_VALLEY);
-                } else if (lootNum >= 19) {
-                    item = new ItemStack(Material.BLUE_ORCHID);
-                } else if (lootNum >= 17) {
-                    item = new ItemStack(Material.ALLIUM);
-                } else if (lootNum >= 15) {
-                    item = new ItemStack(Material.AZURE_BLUET);
-                } else if (lootNum >= 13) {
-                    item = new ItemStack(Material.ORANGE_TULIP);
-                } else if (lootNum >= 11) {
-                    item = new ItemStack(Material.PINK_TULIP);
-                } else if (lootNum >= 9) {
-                    item = new ItemStack(Material.RED_TULIP);
-                } else if (lootNum >= 7) {
-                    item = new ItemStack(Material.WHITE_TULIP);
-                } else if (lootNum >= 5) {
-                    item = new ItemStack(Material.CORNFLOWER);
-                } else if (lootNum >= 4) {
-                    item = new ItemStack(Material.OXEYE_DAISY);
-                } else if (lootNum >= 3) {
-                    item = new ItemStack(Material.POTATO);
-                } else if (lootNum >= 2) {
-                    item = new ItemStack(Material.RED_MUSHROOM);
-                } else if (lootNum >= 1) {
-                    item = new ItemStack(Material.BROWN_MUSHROOM);
-                } else {
-                    item = new ItemStack(Material.FERN);
-                }
+                
                 break;
 
             case "FishingTreasure":
-                if (lootNum >= 99) {
-                    item = new ItemStack(Material.TOTEM_OF_UNDYING);
-                } else if (lootNum >= 98) {
-                    item = new ItemStack(Material.NAUTILUS_SHELL, numberOfItems);
-                } else if (lootNum >= 95) {
-                    item = new ItemStack(Material.ANCIENT_DEBRIS);
-                } else if (lootNum >= 90) {
-                    item = new ItemStack(Material.HEART_OF_THE_SEA);
-                } else if (lootNum >= 85) {
-                    item = new ItemStack(Material.DIAMOND);
-                } else if (lootNum >= 80) {
-                    item = new ItemStack(Material.EMERALD, numberOfItems);
-                } else if (lootNum >= 77) {
-                    ItemStack enchantedBook = new ItemStack(Material.ENCHANTED_BOOK, 1);
-                    addRandomEnchantment(enchantedBook);
-                    return enchantedBook;
-                } else if (lootNum >= 73) {
-                    item = new ItemStack(Material.GOLDEN_APPLE);
-                } else if (lootNum >= 70) {
-                    item = new ItemStack(Material.PRISMARINE_SHARD, numberOfItems);
-                } else if (lootNum >= 65) {
-                    item = new ItemStack(Material.PRISMARINE_CRYSTALS, numberOfItems);
-                } else if (lootNum >= 60) {
-                    item = getRandomAxolotlBucket(true, item);
-                } else if (lootNum >= 55) {
-                    item = new ItemStack(Material.INK_SAC, numberOfItems);
-                } else if (lootNum >= 50) {
-                    item = new ItemStack(Material.TROPICAL_FISH_BUCKET);
-                } else if (lootNum >= 45) {
-                    item = new ItemStack(Material.GOLD_INGOT, numberOfItems);
-                } else if (lootNum >= 40) {
-                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);
-                } else if (lootNum >= 35) {
-                    item = CreateCustomItem.createCursedArrow();
-                } else if (lootNum >= 30) {
-                    item = new ItemStack(Material.STRING, numberOfItems);
-                } else if (lootNum >= 25) {
-                    item = new ItemStack(Material.COD, numberOfItems);
-                } else if (lootNum >= 20) {
-                    item = new ItemStack(Material.SALMON, numberOfItems);
-                } else if (lootNum >= 15) {
-                    item = new ItemStack(Material.TURTLE_SCUTE);
-                } else if (lootNum >= 10) {
-                    item = new ItemStack(Material.SEA_PICKLE, numberOfItems);
-                }
+                
                 break;
             case "Mobs":
-                if (lootNum >= 103) {
-                    item = CreateCustomItem.createSoulEssence();
-                } else if (lootNum >= 95) {
-                    item = new ItemStack(Material.EXPERIENCE_BOTTLE, numberOfItems);
-                } else if (lootNum >= 85) {
-                    item = new ItemStack(Material.FERMENTED_SPIDER_EYE);
-                } else if (lootNum >= 40) {
-                    item = new ItemStack(Material.ROTTEN_FLESH);
-                } else if (lootNum >= 30) {
-                    item = new ItemStack(Material.BONE);
-                } else if (lootNum >= 20) {
-                    item = new ItemStack(Material.LEATHER);
-                } else if (lootNum >= 10) {
-                    item = new ItemStack(Material.RABBIT_HIDE);
-                } else {
-                    item = new ItemStack(Material.SPIDER_EYE);
-                }
+               
                 break;
             case "Test":
                 item = getRandomAxolotlBucket(false, item);
             default:
-                break;
-        
-        
+                break;     
         }
         
+        if(item.getType() == Material.ENCHANTED_BOOK) addRandomEnchantment(item);
         
+        if(numberOfItems != 0) getLoot(lootTier, numberOfItems - 1 ,type);
         return item;
+    }
+    
+    public static Material getRandomMaterial(HashMap<Integer, Material> map) {
+        List<Integer> keys = new ArrayList<>(map.keySet());
+        int randomIndex = new Random().nextInt(keys.size());
+        return map.get(keys.get(randomIndex));
     }
 
     public static ItemStack getRandomAxolotlBucket(Boolean excludeBlue, ItemStack item){
