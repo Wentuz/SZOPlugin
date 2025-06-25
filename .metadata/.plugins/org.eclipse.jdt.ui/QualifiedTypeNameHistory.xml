@@ -17,10 +17,11 @@
     <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
     <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataType"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.DwarfUpgradedGear"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.ItemCategories"/>
+    <fullyQualifiedTypeName name="org.bukkit.event.inventory.BrewEvent"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
 </qualifiedTypeNameHistroy>

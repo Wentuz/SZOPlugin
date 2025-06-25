@@ -83,9 +83,9 @@ public class PlayerMining implements Listener{
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN 
         || brokenBlock.getType() == Material.BUSH || brokenBlock.getType() == Material.SHORT_DRY_GRASS
         || brokenBlock.getType() == Material.TALL_DRY_GRASS)) {
-            if (LogicHolder.critRoll(5 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
-                LogicHolder.rollTreasure(5 * (luckLvl + 1), brokenBlock.getLocation(), "Plant");
-                CustomTools.superHoeEffect(20 * (luckLvl + 1), brokenBlock);
+            if (LogicHolder.critRoll(15 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
+                LogicHolder.rollTreasure(luckLvl, brokenBlock.getLocation(), "Plant");
+                CustomTools.superHoeEffect(luckLvl, brokenBlock);
             }
             }
         }

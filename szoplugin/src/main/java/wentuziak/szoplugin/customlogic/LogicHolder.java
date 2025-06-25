@@ -197,14 +197,16 @@ public class LogicHolder {
     
     public static Item rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
+    
+        int numberOfItems = (int)(Math.random() * playerLuck + 1);
+        
         while (playerLuck > 0) {
-            whatLoot += (int)(Math.random() * 35 + 1);
+            if(LogicHolder.critRoll(playerLuck * 30)) whatLoot += 1;
             playerLuck--;
         }
-    
-        int numberOfItems = (int)(Math.random() * 6 + 1);
-        ItemStack item = RandomLoot.getLoot(whatLoot, numberOfItems, typeOfLoot);
         
+        ItemStack item = RandomLoot.getLoot(whatLoot, numberOfItems, typeOfLoot);
+
         return location.getWorld().dropItemNaturally(location, item);
     }
 

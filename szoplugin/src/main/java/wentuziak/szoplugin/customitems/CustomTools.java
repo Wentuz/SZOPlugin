@@ -50,7 +50,7 @@ public class CustomTools {
             if (projectile instanceof org.bukkit.entity.FishHook) {
                 org.bukkit.entity.FishHook fishHook = (org.bukkit.entity.FishHook) projectile;
                 Location bobberLocation = fishHook.getLocation();
-                Item item = LogicHolder.rollTreasure(playerLuck, bobberLocation, typeOfLoot);
+                Item item = LogicHolder.rollTreasure(playerLuck/12, bobberLocation, typeOfLoot);
 
                 Location playerLocation = player.getLocation();
                 Vector direction = playerLocation.toVector().subtract(bobberLocation.toVector()).normalize();
@@ -183,14 +183,16 @@ public class CustomTools {
     }
 
     public static void superHoeEffect(int playerLuck, Block brokenBlock){
-        if (LogicHolder.critRoll((playerLuck + 2) * 15)) {
+        if (LogicHolder.critRoll((playerLuck + 1) * 20)) {
             Material blockMaterial = brokenBlock.getType();
             Location blockLocation = brokenBlock.getLocation();
             ItemStack item = new ItemStack(Material.AIR);
 
 
             if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
-            || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN )) {
+                    || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN 
+                    || brokenBlock.getType() == Material.BUSH || brokenBlock.getType() == Material.SHORT_DRY_GRASS
+                    || brokenBlock.getType() == Material.TALL_DRY_GRASS)) {
                 LogicHolder.rollTreasure(playerLuck, brokenBlock.getLocation(), "Plant");
                 return;
             }

@@ -168,8 +168,9 @@ public class RandomLoot {
     
     
     public static ItemStack getLoot(Integer lootTier, Integer numberOfItems , String type){ 
-        ItemStack item = new ItemStack(Material.COAL, numberOfItems);
-        
+        Material material = Material.COAL;
+        ItemStack item = new ItemStack(material, numberOfItems);
+
         // TODO
         // 	GET RID OF THIS EL IF HELL
         //	1.	hashmap all loot tables into categories and rarities
@@ -177,33 +178,42 @@ public class RandomLoot {
         // 	3. 	IF materail == enchanted_Book -> enchant it
         
         switch (type) {
-            case "Ore":
-                	
+            case "Ore":                                       
+                if(lootTier <= 1) material = getRandomMaterial(oreLootCommon);
+                else if(lootTier == 2) material = getRandomMaterial(oreLootRare);
+                else if(lootTier >= 3) material = getRandomMaterial(oreLootUnique);
                 break;
             
             case "Plant":
-                
+                if(lootTier <= 1) material = getRandomMaterial(plantLootCommon);
+                else if(lootTier == 2) material = getRandomMaterial(plantLootRare);
+                else if(lootTier >= 3) material = getRandomMaterial(plantLootUnique);
                 break;
 
             case "FishingTreasure":
-                
+                if(lootTier <= 1) material = getRandomMaterial(fishingTeasureLootCommon);
+                else if(lootTier == 2) material = getRandomMaterial(fishingTeasureLootRare);
+                else if(lootTier >= 3) material = getRandomMaterial(fishingTeasureLootUnique);
                 break;
             case "Mobs":
-               
+                if(lootTier <= 1) material = getRandomMaterial(mobLootCommon);
+                else if(lootTier == 2) material = getRandomMaterial(mobLootRare);
+                else if(lootTier >= 3) material = getRandomMaterial(mobLootUnique);
                 break;
             case "Test":
-                item = getRandomAxolotlBucket(false, item);
+                //item = getRandomAxolotlBucket(false, item);
             default:
-                break;     
+            	break;
         }
-        
+        item = new ItemStack(material, numberOfItems);
+
         if(item.getType() == Material.ENCHANTED_BOOK) addRandomEnchantment(item);
         
-        if(numberOfItems != 0) getLoot(lootTier, numberOfItems - 1 ,type);
+        //if(numberOfItems != 0) getLoot(lootTier, numberOfItems - 1 ,type);
         return item;
     }
     
-    public static Material getRandomMaterial(HashMap<Integer, Material> map) {
+    private static Material getRandomMaterial(HashMap<Integer, Material> map) {
         List<Integer> keys = new ArrayList<>(map.keySet());
         int randomIndex = new Random().nextInt(keys.size());
         return map.get(keys.get(randomIndex));
