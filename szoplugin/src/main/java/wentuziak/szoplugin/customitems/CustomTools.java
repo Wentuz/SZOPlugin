@@ -60,7 +60,7 @@ public class CustomTools {
         }
     }
 
-    public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock, String typeOfLoot){ 
+    public static void dwarfPickaxeEffect(int chanceForCrit, Player player, int playerLuck, Block brokenBlock){ 
         if (!LogicHolder.critRoll(chanceForCrit * 2)) {
             return;
         }  

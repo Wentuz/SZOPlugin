@@ -15,6 +15,7 @@ import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.RandomLoot;
 
 
 public class PlayerMining implements Listener{
@@ -41,7 +42,7 @@ public class PlayerMining implements Listener{
                     System.out.println(isDumb);
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
                 }
-                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl - 1, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl - 1, brokenBlock);
             }
             else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);
@@ -71,13 +72,14 @@ public class PlayerMining implements Listener{
         if (itemInOffHand.hasItemMeta()) {
             playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
             if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl - 2, brokenBlock, "Ore");
+                CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl - 2, brokenBlock);
             }
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl, brokenBlock, "Ore");
+            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl, brokenBlock);
             if(LogicHolder.critRoll(luckLvl + 1)) brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
+            if(LogicHolder.critRoll(luckLvl)) LogicHolder.rollTreasure(luckLvl, brokenBlock.getLocation(), "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN 
