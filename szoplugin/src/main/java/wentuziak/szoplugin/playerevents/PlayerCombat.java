@@ -24,6 +24,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.customcrafting.DwarfUpgradedGear;
 import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
@@ -171,6 +172,9 @@ public class PlayerCombat implements Listener{
         int thornLvl = itemOnChest.getEnchantmentLevel(Enchantment.THORNS);
         PersistentDataContainer playerContainer = itemOnChest.getItemMeta().getPersistentDataContainer();
 
+        if (playerContainer.has(Keys.CUSTOM_DWARF_UPGRADE, PersistentDataType.BYTE)) DwarfUpgradedGear.dwarfArmorEffect(player);;
+        
+        
         if (playerContainer.has(Keys.CUSTOM_EXPLOSIVE_CHEST, PersistentDataType.BYTE)) {
             Armour.explosiveChestEffect(20 * (1 + thornLvl), damager, player);
         } else if (playerContainer.has(Keys.CUSTOM_REFLECTIVE_CHESTPIECE, PersistentDataType.BYTE)) {
@@ -186,6 +190,7 @@ public class PlayerCombat implements Listener{
         }
 
         PersistentDataContainer playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+        
         if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
             Armour.ninjaPantEffect(player);
         }

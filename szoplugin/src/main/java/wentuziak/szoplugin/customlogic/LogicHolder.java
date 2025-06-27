@@ -27,7 +27,9 @@ import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.Wolf;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -189,11 +191,6 @@ public class LogicHolder {
         }
         return nearestPlayer;
     }
-
-    //	TODO
-    //	1.	Change whatLoot to represent tier of an item
-    //	2.	Randomise whatLoot based on LogicHolder.CritRoll
-    //	3.	Each playerLuck is one roll on chance. Base value of whatLoot is 1
     
     public static Item rollTreasure(int playerLuck, Location location, String typeOfLoot) {
         int whatLoot = 0;
@@ -415,8 +412,17 @@ public class LogicHolder {
         }
     }
     
-    public static int countKeysOnPlayer(Player player) {
+    public static int countKeysOnPlayer(Player player, NamespacedKey key) {
     	int amount = 0;
+    	
+    	for (ItemStack item : player.getInventory().getContents()) {
+    		if (item == null || !item.hasItemMeta()) continue;
+    		
+    		ItemMeta meta = item.getItemMeta();
+    		PersistentDataContainer containder = meta.getPersistentDataContainer();
+    		if(containder.has(key)) amount += 1;;
+    		player.sendMessage(meta + "" + amount);
+    	}
     	
     	return amount;
     }

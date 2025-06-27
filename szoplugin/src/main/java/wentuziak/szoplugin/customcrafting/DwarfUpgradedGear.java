@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
 import wentuziak.szoplugin.Keys;
+import wentuziak.szoplugin.customlogic.LogicHolder;
 
 
 public class DwarfUpgradedGear {
@@ -35,5 +36,14 @@ public class DwarfUpgradedGear {
         meta.getPersistentDataContainer().set(Keys.CUSTOM_DWARF_UPGRADE, PersistentDataType.BOOLEAN, true);
 		
 		item.setItemMeta(meta);
+	}
+	
+	public static void dwarfArmorEffect(Player player) {
+		int amount = LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_DWARF_UPGRADE);
+		if (amount > 4) amount = 4;
+		
+		player.sendMessage("BOOM : " + amount);
+		//check how many pieces player has
+		//add effect if 3 or more
 	}
 }
