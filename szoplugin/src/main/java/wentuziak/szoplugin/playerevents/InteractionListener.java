@@ -703,14 +703,10 @@ public class InteractionListener implements Listener{
         }
     	if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
     	    if (event.getInventory().getType() == InventoryType.BREWING &&
-    	        event.getSlotType() == InventoryType.SlotType.RESULT) {
-	            player.sendMessage("HELLO !!");
-
+    	        event.getSlotType() == InventoryType.SlotType.CRAFTING) {
     	        int rawSlot = event.getRawSlot();
     	        if (rawSlot >= 0 && rawSlot <= 2) {
-    	            ItemStack result = event.getCurrentItem();
-    	            RaceEffects.witchBrewEvent(result);
-    	            player.sendMessage("HELLO !!! " + rawSlot);
+    	            RaceEffects.witchBrewEvent(event.getCurrentItem());
     	        }
     	    }
     	}

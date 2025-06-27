@@ -172,7 +172,9 @@ public class RaceEffects {
     }
     
     public static void witchBrewEvent(ItemStack potion) {
-    	
+    	String name = (potion.getItemMeta().getDisplayName() != null) ? potion.getItemMeta().getDisplayName() : null;
+    	if(name == null) return;
+    	System.out.println(name + "");
     }
 
     //

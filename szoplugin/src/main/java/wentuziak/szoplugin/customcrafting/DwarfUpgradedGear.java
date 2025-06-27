@@ -40,10 +40,8 @@ public class DwarfUpgradedGear {
 	
 	public static void dwarfArmorEffect(Player player) {
 		int amount = LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_DWARF_UPGRADE);
-		if (amount > 4) amount = 4;
-		
-		player.sendMessage("BOOM : " + amount);
-		//check how many pieces player has
-		//add effect if 3 or more
+		if (amount >= 4) amount = 4;
+				
+		if(LogicHolder.critRoll(amount * 5)) LogicHolder.givePotionEffect(player, "ABSORPTION", amount * 20, amount/-3);
 	}
 }

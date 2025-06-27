@@ -322,9 +322,8 @@ public class EntityCombat implements Listener{
             
             if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
                 double currentHealth = player.getHealth();
-                double maxHealth = player.getAttribute(Attribute.MAX_HEALTH).getValue();
 
-                if (currentHealth <= maxHealth * 0.25) {
+                if (currentHealth <= 6) {
                     RaceEffects.mechanicalGotHitEffect(player);
                 }
             }
