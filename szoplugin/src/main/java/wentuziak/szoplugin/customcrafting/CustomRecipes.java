@@ -581,6 +581,24 @@ public final class CustomRecipes {
         miskaBootsRecipe.setIngredient('D', Material.WIND_CHARGE);
         miskaBootsRecipe.setIngredient('P', Material.PHANTOM_MEMBRANE);
         Bukkit.addRecipe(miskaBootsRecipe);
+
+
+        //
+        //      Golden Sigil Boots Recipe
+        //
+        ItemStack goldenSigil = CreateCustomItem.createGoldenSigilBoots();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "GoldenSigilRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe goldenSigilRecipe = new ShapedRecipe(key, goldenSigil);
+        goldenSigilRecipe.shape(
+            " S ",
+            "HGH",
+            "   ");
+        goldenSigilRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        goldenSigilRecipe.setIngredient('G', Material.GOLDEN_BOOTS);
+        goldenSigilRecipe.setIngredient('H', Material.HONEYCOMB);
+        Bukkit.addRecipe(goldenSigilRecipe);
         
         //
         //      Hermes's boots Recipe
@@ -835,6 +853,24 @@ public final class CustomRecipes {
         ironCladLeggingsRecipe.setIngredient('I', Material.IRON_INGOT);
         ironCladLeggingsRecipe.setIngredient('P', Material.PISTON);
         Bukkit.addRecipe(ironCladLeggingsRecipe);
+        
+        
+        //
+        //      Fasting Belt Recipe
+        //
+        ItemStack fastingBelt = CreateCustomItem.createFastingBelt();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "FastingBeltRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe fastingBeltRecipe = new ShapedRecipe(key, fastingBelt);
+        fastingBeltRecipe.shape(
+            "BSB",
+            "L L",
+            "L L");
+        fastingBeltRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        fastingBeltRecipe.setIngredient('L', Material.LEATHER);
+        fastingBeltRecipe.setIngredient('B', Material.RABBIT_HIDE);
+        Bukkit.addRecipe(fastingBeltRecipe);
         
         
         //
@@ -1285,6 +1321,24 @@ public final class CustomRecipes {
             markinSpyglassRecipe.setIngredient('S', Material.SPYGLASS);
             markinSpyglassRecipe.setIngredient('R', Material.REDSTONE_TORCH);
         Bukkit.addRecipe(markinSpyglassRecipe);
+
+
+
+        //
+        //      battle Horn  recipe
+        //
+        ItemStack battleHorn = CreateCustomItem.createBattleHorn();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "BattleHornRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe battleHornRecipe = new ShapedRecipe(key,battleHorn);
+        battleHornRecipe.shape(
+            "   ",
+            "AGA",
+            "   ");
+        	battleHornRecipe.setIngredient('G', Material.GOAT_HORN);
+        	battleHornRecipe.setIngredient('A', new RecipeChoice.ExactChoice(attackCharm));
+        Bukkit.addRecipe(battleHornRecipe);
 
 
         //

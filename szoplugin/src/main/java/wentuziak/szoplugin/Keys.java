@@ -43,7 +43,9 @@ public class Keys {
     public static final NamespacedKey CUSTOM_WALKERS = new NamespacedKey(SzoPlugin.getInstance(), "Walkers");
     public static final NamespacedKey CUSTOM_JUMP_PACK = new NamespacedKey(SzoPlugin.getInstance(), "JumpPack");
     public static final NamespacedKey CUSTOM_CERBERUS_CHAIN = new NamespacedKey(SzoPlugin.getInstance(), "CerberusChain");
-    
+    public static final NamespacedKey CUSTOM_GOLDEN_SIGIL = new NamespacedKey(SzoPlugin.getInstance(), "GoldenSigil");
+    public static final NamespacedKey CUSTOM_FASTING_BELT = new NamespacedKey(SzoPlugin.getInstance(), "FastingBelt");
+
     //
     //      Spells
     //
@@ -93,6 +95,7 @@ public class Keys {
     public static final NamespacedKey CUSTOM_ARROW_ENCHANTER = new NamespacedKey(SzoPlugin.getInstance(), "ArrowEnchanter");
     public static final NamespacedKey CUSTOM_EFFECT_TRANSFUSER = new NamespacedKey(SzoPlugin.getInstance(), "EffectTransfuser");
     public static final NamespacedKey CUSTOM_SUPER_HOE = new NamespacedKey(SzoPlugin.getInstance(), "SuperHoe");
+    public static final NamespacedKey CUSTOM_BATTLE_HORN = new NamespacedKey(SzoPlugin.getInstance(), "BattleHorn");
 
     //
     public static final NamespacedKey MOB_RIOT = new NamespacedKey(SzoPlugin.getInstance(), "RiotMob");

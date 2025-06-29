@@ -276,6 +276,26 @@ public class CreateCustomItem {
 
         return hermesBoots;
     }
+    
+    @SuppressWarnings("deprecation")
+    public static ItemStack createGoldenSigilBoots(){
+        ItemStack goldenSigil = new ItemStack(Material.GOLDEN_BOOTS);
+        ItemMeta goldenSigilMeta = goldenSigil.getItemMeta();
+
+        goldenSigilMeta.setDisplayName(ChatColor.YELLOW + "Golden Sigil Boots");
+        goldenSigilMeta.setLore(Arrays.asList(
+                ChatColor.GOLD + "Each step etched in sanctity.",
+            	ChatColor.GOLD + "<3 <3"));
+        AttributeModifier armorModifierGoldenSigil = new AttributeModifier(UUID.randomUUID(), "Armor", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        goldenSigilMeta.addAttributeModifier(Attribute.ARMOR, armorModifierGoldenSigil);
+        AttributeModifier toughnessModifierGoldenSigil = new AttributeModifier(UUID.randomUUID(), "Toughness", 1, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.FEET);
+        goldenSigilMeta.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, toughnessModifierGoldenSigil);
+        goldenSigilMeta.getPersistentDataContainer().set(Keys.CUSTOM_GOLDEN_SIGIL, PersistentDataType.BOOLEAN, true);
+
+        goldenSigil.setItemMeta(goldenSigilMeta);
+
+        return goldenSigil;
+    }
 
     public static ItemStack createRamCap(){
         ItemStack ramCap = new ItemStack(Material.DIAMOND_HELMET);
@@ -383,6 +403,24 @@ public class CreateCustomItem {
         ninjaPant.setItemMeta(ninjaPantMeta);
 
         return ninjaPant;
+    }
+    
+    public static ItemStack createFastingBelt(){
+        ItemStack fastingBelt = new ItemStack(Material.LEATHER_LEGGINGS);
+        ItemMeta fastingBeltMeta = fastingBelt.getItemMeta();
+
+        fastingBeltMeta.setDisplayName(ChatColor.RED + "Fasting Belt");
+        fastingBeltMeta.setLore(Arrays.asList(
+            "The hungrier one is ..."));
+        AttributeModifier armorModifierFastingBelt = new AttributeModifier(UUID.randomUUID(), "Armor", 5, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.LEGS);
+        fastingBeltMeta.addAttributeModifier(Attribute.ARMOR, armorModifierFastingBelt);
+        AttributeModifier armorPercentModifierFastingBelt = new AttributeModifier(UUID.randomUUID(), "ArmorPercent", 0.15, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.LEGS);
+        fastingBeltMeta.addAttributeModifier(Attribute.ARMOR, armorPercentModifierFastingBelt);
+        fastingBeltMeta.getPersistentDataContainer().set(Keys.CUSTOM_FASTING_BELT, PersistentDataType.BOOLEAN, true);
+
+        fastingBelt.setItemMeta(fastingBeltMeta);
+
+        return fastingBelt;
     }
 
     public static ItemStack createCerberusChain(){
@@ -1116,7 +1154,7 @@ public class CreateCustomItem {
         healthCharmMeta.setDisplayName(ChatColor.RED + "Health Charm");
         healthCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         healthCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", +4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        AttributeModifier healthModifier = new AttributeModifier(UUID.randomUUID(), "Health", 0.25, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         healthCharmMeta.addAttributeModifier(Attribute.MAX_HEALTH, healthModifier);
         healthCharm.setItemMeta(healthCharmMeta);
 
@@ -1134,7 +1172,7 @@ public class CreateCustomItem {
         attackCharmMeta.setDisplayName(ChatColor.GRAY + "Attack Charm");
         attackCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         attackCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "Attack", +2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.OFF_HAND);
+        AttributeModifier attackModifier = new AttributeModifier(UUID.randomUUID(), "Attack", 0.2, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
         attackCharmMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, attackModifier);
         attackCharm.setItemMeta(attackCharmMeta);
 
@@ -1464,6 +1502,22 @@ public class CreateCustomItem {
         markingSpyglass.setItemMeta(markingSpyglassMeta);
 
         return markingSpyglass;
+    }
+
+    //
+    //      Battle Horn
+    //
+    public static ItemStack createBattleHorn(){
+        ItemStack battleHorn = new ItemStack(Material.GOAT_HORN);
+        ItemMeta battleHornMeta = battleHorn.getItemMeta();
+
+        battleHornMeta.setDisplayName(ChatColor.RED + "Battle Horn");
+        battleHornMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        battleHornMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        battleHornMeta.getPersistentDataContainer().set(Keys.CUSTOM_BATTLE_HORN, PersistentDataType.BOOLEAN, true);
+        battleHorn.setItemMeta(battleHornMeta);
+
+        return battleHorn;
     }
 
     //
