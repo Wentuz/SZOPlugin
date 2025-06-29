@@ -419,6 +419,18 @@ public class InteractionListener implements Listener{
                     	event.setCancelled(true);
                 	}
                 }
+                
+                //Fasting belt
+                ItemStack itemOnLegs = player.getInventory().getItem(EquipmentSlot.LEGS);
+                if (itemOnLegs == null || !itemOnLegs.hasItemMeta()) {
+                    return;
+                }
+
+                PersistentDataContainer playerContainer = itemOnLegs.getItemMeta().getPersistentDataContainer();
+                
+                if (playerContainer.has(Keys.CUSTOM_FASTING_BELT, PersistentDataType.BYTE)) {
+                    Armour.fastingBeltEffect(player, newHunger);
+                }
             }
         }
     }

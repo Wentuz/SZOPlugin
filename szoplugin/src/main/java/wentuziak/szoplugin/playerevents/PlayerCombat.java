@@ -158,6 +158,7 @@ public class PlayerCombat implements Listener{
     		LivingEntity damager = (LivingEntity) event.getDamager();
             applyChestArmorEffects(player, damager);
             applyLegArmorEffects(player);
+            applyBootEffects(player);
             applyRaceEffects(player);
     	}
     }
@@ -193,6 +194,20 @@ public class PlayerCombat implements Listener{
         
         if (playerContainer.has(Keys.CUSTOM_NINJA_PANT, PersistentDataType.BYTE)) {
             Armour.ninjaPantEffect(player);
+        }
+    }
+    
+    // Method to apply boot armor effects when a player gets hit
+    private void applyBootEffects(Player player) {
+        ItemStack itemOnFeet = player.getInventory().getItem(EquipmentSlot.FEET);
+        if (itemOnFeet == null || !itemOnFeet.hasItemMeta()) {
+            return;
+        }
+
+        PersistentDataContainer playerContainer = itemOnFeet.getItemMeta().getPersistentDataContainer();
+        
+        if (playerContainer.has(Keys.CUSTOM_GOLDEN_SIGIL, PersistentDataType.BYTE)) {
+            Armour.goldenSigilBootsOnHit(player, player.getHealth());
         }
     }
 

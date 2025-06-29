@@ -190,4 +190,27 @@ public class Armour {
     public static void stopWalkersEffect(Player player){
         player.setGravity(true);
     }
+    
+    
+    public static void goldenSigilBootsOnHit(Player player, double d) {
+    	if(LogicHolder.critRoll((int) (50 - d))) {
+    		int lvl = 0;
+    		
+    		if(d < 5) lvl = 2;
+    		else if(d < 10) lvl = 1;
+    		
+    		LogicHolder.givePotionEffect(player, "ABSORPTION", (lvl + 1) * 3 * 20, lvl);
+    	}
+    }
+    
+    
+    public static void fastingBeltEffect(Player player, double foodLvl) {
+    		int lvl = (int) (20 - foodLvl) / 5;
+    		
+    		if (lvl < 0) lvl = 0;
+    		if(foodLvl >= 15) LogicHolder.givePotionEffect(player, "RESISTANCE", (lvl + 1) * 45 * 20, 0);
+    		else {
+        		LogicHolder.entityPotionEffectTimer(player, (float) ((lvl/2) + 1), 1);
+    		}
+    }
 }
