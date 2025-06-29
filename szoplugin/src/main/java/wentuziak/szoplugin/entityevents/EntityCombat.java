@@ -323,9 +323,7 @@ public class EntityCombat implements Listener{
             if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
                 double currentHealth = player.getHealth();
 
-                if (currentHealth <= 6) {
-                    RaceEffects.mechanicalGotHitEffect(player);
-                }
+                RaceEffects.mechanicalGotHitEffect(player, currentHealth);
             }
         }
     }

@@ -22,8 +22,7 @@ import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class Armour {
     
-    static BukkitTask mermaidTailTask;
-    
+	
     public static void jetBootsEffect(LivingEntity player, int strength){
     	int x = 4;
     	Vector velocity = player.getVelocity();
@@ -46,7 +45,7 @@ public class Armour {
     }
 
     public static void golemChestEffect(LivingEntity player){
-        LogicHolder.givePotionEffect(player, "SLOW", 20 * 2, 3);
+        LogicHolder.givePotionEffect(player, "SLOW", 20 * 2, 2);
         LogicHolder.givePotionEffect(player, "DAMAGE_RESISTANCE", 20 * 20, 0);
         player.getWorld().playSound(player.getLocation(), Sound.BLOCK_PISTON_EXTEND, 1, 1);
         LogicHolder.particleEmitterOnEntity(player, Particle.WAX_ON, 5, 20, 0, -1, 0, 0);
@@ -94,13 +93,13 @@ public class Armour {
         if (currentHealth <= maxHealth/2) {
             Weapons.smokeEffect(player.getLocation());
             LogicHolder.givePotionEffect(player, "INVISIBILITY", 20 * 30, 0);
+            LogicHolder.givePotionEffect(player, "SPEED", 20 * 30, 0);
             player.setCooldown(Material.NETHERITE_LEGGINGS, 20 * 60);
         }
     }
 
     public static void gluttonyPantsEffect(Player player){
         LogicHolder.givePotionEffect(player, "SPEED", 20 * 10, 0);    
-        LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 10, 1);    
         player.setFoodLevel(player.getFoodLevel() + 2);
                 
         if (player.getFoodLevel() > 20) {
@@ -164,7 +163,7 @@ public class Armour {
                 player.setCooldown(Material.GOLDEN_CHESTPLATE, 20 * 60 * 15);
             }else{
                 if (LogicHolder.critRoll(33)) {
-                    event.setCancelled(true);
+                    event.setDamage(event.getDamage() / 2);
                     player.getWorld().playSound(player.getLocation(), Sound.BLOCK_ENCHANTMENT_TABLE_USE, 1.0f, 1.0f);
                     player.getWorld().spawnParticle(Particle.ENCHANT, player.getLocation(), 25, 0.1, 0.1, 0.1, 0.1);
                 }
