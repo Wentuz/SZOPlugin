@@ -718,7 +718,9 @@ public class InteractionListener implements Listener{
     	        event.getSlotType() == InventoryType.SlotType.CRAFTING) {
     	        int rawSlot = event.getRawSlot();
     	        if (rawSlot >= 0 && rawSlot <= 2) {
-    	            RaceEffects.witchBrewEvent(event.getCurrentItem());
+    	            ItemStack newItem = RaceEffects.witchBrewEvent(event.getCurrentItem());
+    	            event.getInventory().setItem(event.getSlot(), newItem);
+
     	        }
     	    }
     	}

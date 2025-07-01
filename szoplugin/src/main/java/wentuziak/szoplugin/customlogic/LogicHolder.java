@@ -421,7 +421,6 @@ public class LogicHolder {
     		ItemMeta meta = item.getItemMeta();
     		PersistentDataContainer containder = meta.getPersistentDataContainer();
     		if(containder.has(key)) amount += 1;;
-    		player.sendMessage(meta + "" + amount);
     	}
     	
     	return amount;

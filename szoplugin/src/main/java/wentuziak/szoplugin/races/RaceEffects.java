@@ -31,6 +31,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
@@ -171,11 +172,31 @@ public class RaceEffects {
         }
     }
     
-    public static void witchBrewEvent(ItemStack potion) {
-    	String name = (potion.getItemMeta().getDisplayName() != null) ? potion.getItemMeta().getDisplayName() : null;
-    	if(name == null) return;
-    	System.out.println(name + "");
+    public static ItemStack witchBrewEvent(ItemStack potion) {
+        if (potion == null || potion.getType() != Material.POTION) return potion;
+
+        ItemMeta meta = potion.getItemMeta();
+        if (!(meta instanceof PotionMeta)) return potion;
+
+        PotionMeta potionMeta = (PotionMeta) meta;
+
+        // Get base potion type (e.g., REGENERATION, SPEED)
+        PotionData basePotionData = potionMeta.getBasePotionData();
+        PotionType type = basePotionData.getType();
+
+        System.out.println("Base Potion Type: " + type.name());
+
+        ItemStack newPotion = CreateCustomItem.createSuperHealingPot();
+        
+        // Optional: Read custom potion effects (if any)
+        if (!potionMeta.getCustomEffects().isEmpty()) {
+            for (PotionEffect effect : potionMeta.getCustomEffects()) {
+                System.out.println("Custom Effect: " + effect.getType().getName());
+            }
+        }
+        return newPotion;
     }
+
 
     //
     //      Celestial
@@ -774,8 +795,8 @@ public class RaceEffects {
     	case COOKED_RABBIT, COOKED_CHICKEN -> LogicHolder.givePotionEffect(player, "JUMP_BOOST", 20 * 60, 1);
     	case DRIED_KELP, BAKED_POTATO -> LogicHolder.givePotionEffect(player, "HASTE", 20 * 60, 0);
     	case COOKIE, BREAD -> LogicHolder.givePotionEffect(player, "HASTE", 20 * 60, 0);
-    	case BEETROOT_SOUP, MUSHROOM_STEW, RABBIT_STEW -> value = 1;
-    	case PUMPKIN_PIE, GOLDEN_CARROT -> value = 2;
+    	case BEETROOT_SOUP, MUSHROOM_STEW -> value = 1;
+    	case PUMPKIN_PIE, GOLDEN_CARROT, RABBIT_STEW -> value = 2;
     	case GOLDEN_APPLE -> LogicHolder.givePotionEffect(player, "HEAL", 1, 0);
     	default -> LogicHolder.givePotionEffect(player, "SATURATION", 2, 0);
     	}
@@ -846,7 +867,7 @@ public class RaceEffects {
     
     public static void mechanicalHealing(Player player) {
     	LogicHolder.particleEmitterOnEntity(player, Particle.SNOWFLAKE, 1, 10 * 20, 0.1, 0.1, 0.1, 0.01);
-    	int randInt = (int)(Math.random() * 10);
+    	int randInt = (int)(Math.random() * 10 - LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_MECHANICAL_PARTS ));
     	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
         	switch (randInt){
     		case 1 :
