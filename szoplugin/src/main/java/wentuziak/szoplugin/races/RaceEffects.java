@@ -44,6 +44,7 @@ import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.TaskManager;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
+import wentuziak.szoplugin.customcrafting.Witch;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
 import wentuziak.szoplugin.customlogic.RandomLoot;
@@ -177,24 +178,8 @@ public class RaceEffects {
 
         ItemMeta meta = potion.getItemMeta();
         if (!(meta instanceof PotionMeta)) return potion;
-
-        PotionMeta potionMeta = (PotionMeta) meta;
-
-        // Get base potion type (e.g., REGENERATION, SPEED)
-        PotionData basePotionData = potionMeta.getBasePotionData();
-        PotionType type = basePotionData.getType();
-
-        System.out.println("Base Potion Type: " + type.name());
-
-        ItemStack newPotion = CreateCustomItem.createSuperHealingPot();
         
-        // Optional: Read custom potion effects (if any)
-        if (!potionMeta.getCustomEffects().isEmpty()) {
-            for (PotionEffect effect : potionMeta.getCustomEffects()) {
-                System.out.println("Custom Effect: " + effect.getType().getName());
-            }
-        }
-        return newPotion;
+        return Witch.witchGetPotion((PotionMeta) meta);
     }
 
 
@@ -273,8 +258,6 @@ public class RaceEffects {
     }
 
     public static void miskaruCallToHunt(Player player){
-        player.sendMessage("Call to hunt");
-
         tagSpawnedMob.callToHuntTag(player);
     }
         

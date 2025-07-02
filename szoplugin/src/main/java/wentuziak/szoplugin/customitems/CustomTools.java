@@ -290,4 +290,11 @@ public class CustomTools {
             }
         }
     }
+
+	public static void battleHornEffect(Player player) {
+        for (Entity entity : player.getNearbyEntities(15, 5, 15)) {
+            LogicHolder.givePotionEffect((LivingEntity) entity, "RESISTANCE", 20 * 60, 0);
+        }
+        LogicHolder.givePotionEffect((LivingEntity) player, "RESISTANCE", 20 * 60, 0);
+	}
 }

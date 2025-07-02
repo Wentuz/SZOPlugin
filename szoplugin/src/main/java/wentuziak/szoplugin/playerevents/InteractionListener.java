@@ -83,6 +83,9 @@ public class InteractionListener implements Listener{
                     MagicItems.windCharmEffect(player);
                     LogicHolder.removeItem(player, itemInOffHand);
                 }
+                else if (playerContainer.has(Keys.CUSTOM_BATTLE_HORN, PersistentDataType.BYTE)) {
+                    CustomTools.battleHornEffect(player);
+                }
 
             }
             if (itemInMainHand.hasItemMeta()) {
@@ -101,6 +104,9 @@ public class InteractionListener implements Listener{
                 else if (playerContainer.has(Keys.CUSTOM_WIND_CHARM, PersistentDataType.BYTE)) {
                     MagicItems.windCharmEffect(player);
                     LogicHolder.removeItem(player, itemInMainHand);
+                }
+                else if (playerContainer.has(Keys.CUSTOM_BATTLE_HORN, PersistentDataType.BYTE)) {
+                    CustomTools.battleHornEffect(player);
                 }
             }
                     //
@@ -719,6 +725,7 @@ public class InteractionListener implements Listener{
     	        int rawSlot = event.getRawSlot();
     	        if (rawSlot >= 0 && rawSlot <= 2) {
     	            ItemStack newItem = RaceEffects.witchBrewEvent(event.getCurrentItem());
+    	            if(newItem == null) return;
     	            event.getInventory().setItem(event.getSlot(), newItem);
 
     	        }
