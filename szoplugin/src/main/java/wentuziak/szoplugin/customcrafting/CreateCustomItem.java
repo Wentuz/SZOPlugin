@@ -1707,42 +1707,7 @@ public class CreateCustomItem {
             "Dwarf"
         );
     
-        // Witch Crafting Recipes
-        pages.add(
-            ChatColor.BOLD + "Healing Gas\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Ghast Tear + Gold Melon\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-        pages.add(
-            ChatColor.BOLD + "Toxic Gas\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Pufferfish + Fermented Spider Eye\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-        pages.add(
-            ChatColor.BOLD + "Iron Hide\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul Essence + Iron Ingot\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-        pages.add(
-            ChatColor.BOLD + "Gepard's Legs\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul Essence + Sugar\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
-        pages.add(
-            ChatColor.BOLD + "Paralyzing Gas\n\n" +
-            ChatColor.RESET + "Crafting Recipe:\n" +
-            "Soul Essence + Pufferfish\n\n" +
-            "Who Can Make It:\n" +
-            "Witch"
-        );
+        // Witch
         pages.add(
             ChatColor.BOLD + "Most Sus Soup\n\n" +
             ChatColor.RESET + "Crafting Recipe:\n" +

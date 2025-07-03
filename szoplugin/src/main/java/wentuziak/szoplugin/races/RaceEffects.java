@@ -850,7 +850,7 @@ public class RaceEffects {
     
     public static void mechanicalHealing(Player player) {
     	LogicHolder.particleEmitterOnEntity(player, Particle.SNOWFLAKE, 1, 10 * 20, 0.1, 0.1, 0.1, 0.01);
-    	int randInt = (int)(Math.random() * 10 - LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_MECHANICAL_PARTS ));
+    	int randInt = (int)(Math.random() * (10 - LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_MECHANICAL_PARTS )));
     	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
         	switch (randInt){
     		case 1 :

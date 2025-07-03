@@ -26,14 +26,6 @@ public class KeySelector {
         "ThrowingFirework",
     };
 
-    // "GravityBow"
-    // "RatBow"
-    // "Grenade"
-    // "SmokeBomb"
-    // "MagneticTrident"
-    // "BouncyCrossbow"
-    // "ThrowingFirework"
-
     public static String[] entityKeyList(Entity entity, PersistentDataContainer dataContainer){
         
         Set<NamespacedKey> keySet = dataContainer.getKeys();
@@ -69,21 +61,6 @@ public class KeySelector {
 
         return matchingKey;
     }
-
-    // public static void functionInvoker(String key, int whichArray){
-    //     System.out.println(getFunction(key, whichArray));
-    //     // TODO : implement
-    // }
-
-    // public static String getFunction(String key, int whichArray){
-    //     String[] selectedArray = arraySelector(whichArray);
-    //     for (int i = 0; i < selectedArray.length; i += 2) { // Iterate by step of 2
-    //         if (selectedArray[i].equals(key)) {
-    //             return selectedArray[i + 1]; // Return the corresponding function
-    //         }
-    //     }
-    //     return null; // Return null if the key is not found
-    // }
 
     public static String[] arraySelector(int whichArray){
         String[] selectedArray = null;

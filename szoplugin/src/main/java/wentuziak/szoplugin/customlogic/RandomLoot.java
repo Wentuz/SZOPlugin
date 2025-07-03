@@ -170,12 +170,6 @@ public class RandomLoot {
     public static ItemStack getLoot(Integer lootTier, Integer numberOfItems , String type){ 
         Material material = Material.COAL;
         ItemStack item = new ItemStack(material, numberOfItems);
-
-        // TODO
-        // 	GET RID OF THIS EL IF HELL
-        //	1.	hashmap all loot tables into categories and rarities
-        //	2.	change getLoot int lootNum to represent tier of loot
-        // 	3. 	IF materail == enchanted_Book -> enchant it
         
         switch (type) {
             case "Ore":                                       

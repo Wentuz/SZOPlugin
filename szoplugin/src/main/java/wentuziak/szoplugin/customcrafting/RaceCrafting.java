@@ -128,31 +128,6 @@ public class RaceCrafting {
 
             LogicHolder.removeItem(player, itemInMainHand);
             return;
-        }else if (mainHandMaterial == Material.GHAST_TEAR && offHandMaterial == Material.GLISTERING_MELON_SLICE) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSuperHealingPot());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.PUFFERFISH && offHandMaterial == Material.FERMENTED_SPIDER_EYE) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createToxicPot());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.IRON_INGOT && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createIronHide());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.SUGAR && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createGepardPotion());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
-        }else if (mainHandMaterial == Material.PUFFERFISH && itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence())) {
-            player.getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createParalyzingGas());
-            LogicHolder.removeItem(player, itemInOffHand);
-            LogicHolder.removeItem(player, itemInMainHand);
-            return;
         }
     }
 

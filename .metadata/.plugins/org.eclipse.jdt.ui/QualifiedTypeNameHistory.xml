@@ -27,4 +27,6 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.CreateCustomItem"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.Witch"/>
+    <fullyQualifiedTypeName name="org.bukkit.Material"/>
 </qualifiedTypeNameHistroy>
