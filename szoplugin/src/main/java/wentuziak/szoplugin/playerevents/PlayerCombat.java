@@ -29,6 +29,7 @@ import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.races.MechanicalHandler;
 import wentuziak.szoplugin.races.RaceEffects;
 
 public class PlayerCombat implements Listener{
@@ -91,7 +92,7 @@ public class PlayerCombat implements Listener{
             RaceEffects.zaphyrKnockback(player);
         }
         if (playerContainer.has(Keys.RACE_MECHANICAL, PersistentDataType.BYTE) && LogicHolder.critRoll(22)) {
-            RaceEffects.mechanicalAttack(player, hitEntity);
+            MechanicalHandler.mechanicalAttack(player, hitEntity);
         }
     }
 

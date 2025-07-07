@@ -35,6 +35,7 @@ import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.races.MechanicalHandler;
 import wentuziak.szoplugin.races.RaceEffects;
 
 public class EntityCombat implements Listener{
@@ -323,7 +324,7 @@ public class EntityCombat implements Listener{
             if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
                 double currentHealth = player.getHealth();
 
-                RaceEffects.mechanicalGotHitEffect(player, currentHealth);
+                MechanicalHandler.mechanicalGotHitEffect(player, currentHealth);
             }
         }
     }

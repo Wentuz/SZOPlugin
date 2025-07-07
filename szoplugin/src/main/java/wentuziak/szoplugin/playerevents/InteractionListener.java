@@ -46,6 +46,7 @@ import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.*;
+import wentuziak.szoplugin.races.MechanicalHandler;
 import wentuziak.szoplugin.races.RaceEffects;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customcrafting.DwarfUpgradedGear;
@@ -415,7 +416,7 @@ public class InteractionListener implements Listener{
                     }
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
-                	if(newHunger < 8) RaceEffects.mechanicalHungerEvent(player);
+                	if(newHunger < 8) MechanicalHandler.mechanicalHungerEvent(player);
 
                 	if(newHunger > 14 && LogicHolder.critRoll(30)) {
                 		Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
@@ -658,12 +659,13 @@ public class InteractionListener implements Listener{
             RaceEffects.celestialSummonEvent(player);
         }
         if (player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
+        	//mechanical healing based on food level
             if (player.getFoodLevel() >= 10 && !player.hasCooldown(Material.NETHER_STAR)) {
             	int foodLvl = player.getFoodLevel();
                 player.setFoodLevel(foodLvl - 4);
-                player.setCooldown(Material.NETHER_STAR, 20 * 60);
+                player.setCooldown(Material.NETHER_STAR, 20 * 60);	//60 second cooldown
                 LogicHolder.startCooldownCountdown(player, 60);
-                RaceEffects.mechanicalHealing(player);
+                MechanicalHandler.mechanicalHealing(player);
                 LogicHolder.givePotionEffect(player, "HUNGER", 0, 20 * 60);
             }else{
                 return;
@@ -671,30 +673,23 @@ public class InteractionListener implements Listener{
         }
     }
     
-//    @EventHandler
-//    public void onFurnanceExtract(FurnaceExtractEvent event) {
-//    	Block block = event.getBlock();
-//    	Material item = event.getItemType();
-//    	int amount = event.getItemAmount();
-//    	Player player = event.getPlayer();
-//    	
-//    	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
-//    	    if(RaceEffects.hobbitFoodCreate(player, item)) {
-//    	    	player.sendMessage("YES");
-//    	    }
-//    	}
-//    }
-    
+  
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
+        //
+        //		Hobbit food crafting
+        //
     	if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {   
 	        if (event.getInventory().getType() == InventoryType.SMOKER && event.getSlotType() == InventoryType.SlotType.RESULT) {
 	            ItemStack result = event.getCurrentItem();
+	            
+	            //modify itemstack
 	        	RaceEffects.hobbitFoodCreate(player, result);
 	        	int amount = result.getAmount();
             	for (int i = 0; i < amount; i++) {
+            		//	10% chance for a soul essence drop on food craft
             		if(LogicHolder.critRoll(10)) {
 		                player.getLocation().getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());
 		        	}
@@ -703,9 +698,13 @@ public class InteractionListener implements Listener{
 	        if (event.getInventory().getType() == InventoryType.WORKBENCH && event.getSlotType() == InventoryType.SlotType.RESULT) {
 	            ItemStack result = event.getCurrentItem();
 	            if(ItemCategories.isFood(result.getType())) {
+	            	
+		            //modify itemstack
 	            	RaceEffects.hobbitFoodCreate(player, result);  
 	            	int amount = result.getAmount();
 	            	for (int i = 0; i < amount; i++) {
+	            		
+	            		//	10% chance for a soul essence drop on food craft
 	            		if(LogicHolder.critRoll(10)) {
 			                player.getLocation().getWorld().dropItemNaturally(player.getLocation(), CreateCustomItem.createSoulEssence());
 			        	}
@@ -713,16 +712,23 @@ public class InteractionListener implements Listener{
 	            }
 	        }
         }
+    	//
+    	//		Dwarf upgraded gear
+    	//
     	if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {        
 	        if (event.getInventory().getType() == InventoryType.WORKBENCH && event.getSlotType() == InventoryType.SlotType.RESULT) {
 	            ItemStack result = event.getCurrentItem();
 	        	DwarfUpgradedGear.dwarfGearCraft(player, result);
 	        }
         }
+    	//
+    	//		Witch potion crafting
+    	//
     	if (player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
     	    if (event.getInventory().getType() == InventoryType.BREWING &&
     	        event.getSlotType() == InventoryType.SlotType.CRAFTING) {
-    	        int rawSlot = event.getRawSlot();
+    	        int rawSlot = event.getRawSlot();	// get itemslot
+    	        //modify only used slot
     	        if (rawSlot >= 0 && rawSlot <= 2) {
     	            ItemStack newItem = RaceEffects.witchBrewEvent(event.getCurrentItem());
     	            if(newItem == null) return;
