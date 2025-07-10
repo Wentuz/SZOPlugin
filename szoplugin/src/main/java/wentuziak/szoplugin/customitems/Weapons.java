@@ -29,6 +29,7 @@ import org.bukkit.util.Vector;
 import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.SzoPlugin;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.races.RaceEffects;
 
 
 public class Weapons {
@@ -332,7 +333,6 @@ public class Weapons {
     }
 
     public static void magneticTridentEffect(Player player){
-        Vector direction = player.getLocation().getDirection().normalize();
-        player.setVelocity(direction.multiply(2));
+        RaceEffects.fossilRiptide(player, 2);
     }
 }

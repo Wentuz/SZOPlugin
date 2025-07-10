@@ -411,7 +411,7 @@ public class RaceEffects {
                 @Override
                 public void run(){
                     if (finalPlayer.isSwimming()) {
-                        fossilRiptide(finalPlayer);
+                        fossilRiptide(finalPlayer, 1);
                     }
                     if (!LogicHolder.isPlayerInWater(finalPlayer)) {
                         stopFossilSwimTask(finalPlayer);
@@ -428,13 +428,19 @@ public class RaceEffects {
         TaskManager.stopTask(player, "fossilSwim");
     }
 
-    private static void fossilRiptide(Player player) {
-        Vector direction = player.getLocation().getDirection().normalize().multiply(2); // Adjust the multiplier to control speed
-            direction.setY(1);
+    public static void fossilRiptide(Player player, int str) {
+        Vector direction = player.getLocation().getDirection().normalize().multiply(2 * str); // Adjust the multiplier to control speed
+            direction.setY(str);
             player.setVelocity(direction);
 
+            player.setRiptiding(true);
+            Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
+                player.setRiptiding(false);
+            }, 20);
+            
             player.getWorld().playSound(player.getLocation(), Sound.ITEM_TRIDENT_RIPTIDE_3, 1.0f, 1.0f);
-            player.getWorld().spawnParticle(Particle.BUBBLE, player.getLocation(), 30);
+            
+            LogicHolder.particleEmitterOnEntity(player, Particle.BUBBLE, str * 6, str * 20, 0.2, 0, 0.2, 0.5);
     }
 
 
