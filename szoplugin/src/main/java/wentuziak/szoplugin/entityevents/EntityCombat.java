@@ -205,6 +205,12 @@ public class EntityCombat implements Listener{
             if (killer.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)) {
                 RaceEffects.sanguiniteKillEffect(killer);
             }
+            if (killer.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
+            	if(LogicHolder.critRoll(5)) {
+            		killedEntity.getLocation().getWorld().spawnEntity(killedEntity.getLocation(), EntityType.RABBIT);
+                    killedEntity.getLocation().getWorld().dropItemNaturally(killedEntity.getLocation(), CreateCustomItem.createSoulEssence());
+            	}
+            }
 
             if ((killedEntity.getType() == EntityType.COD || 
                 killedEntity.getType() == EntityType.TROPICAL_FISH ||

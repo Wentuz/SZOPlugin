@@ -1,9 +1,11 @@
 package wentuziak.szoplugin.races;
 
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -88,9 +90,16 @@ public class MechanicalHandler {
         }, 20 * 3);
     }
     
-    public static void mechanicalSneakEvent(Player player) {
+    public static void mechanicalSneakEvent(Player player, PersistentDataContainer playerContainer) {
+    	
+//    	player.sendMessage(playerContainer.getKeys() + "");
+//    	switch(playerContainer.getKeys().) {
+//    		case :
+//    			break;
+//    		default:
+//    			break;
+//    	}
     	//	TODO:
-    	//	-- get player keys on LEGS
     	//	-- swich case for different keys
     	//	-- handle 
     }

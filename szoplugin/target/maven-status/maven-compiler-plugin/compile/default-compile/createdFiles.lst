@@ -2,13 +2,13 @@ wentuziak\szoplugin\RemoveRaceCommand.class
 wentuziak\szoplugin\customcrafting\CustomRecipes.class
 wentuziak\szoplugin\customitems\CustomTools$2.class
 wentuziak\szoplugin\customitems\CustomTools.class
-wentuziak\szoplugin\races\RaceEffects$7.class
 wentuziak\szoplugin\entityevents\EntityCombat.class
 wentuziak\szoplugin\races\RaceEffects$1.class
 wentuziak\szoplugin\customlogic\SpecialItems.class
 wentuziak\szoplugin\races\UpdateAttributes.class
 wentuziak\szoplugin\customlogic\RandomLoot.class
 wentuziak\szoplugin\races\RaceEffects$4.class
+wentuziak\szoplugin\customcrafting\Witch$1.class
 wentuziak\szoplugin\SzoPlugin.class
 wentuziak\szoplugin\races\RaceEffects$3.class
 wentuziak\szoplugin\customcrafting\CreateCustomItem.class
@@ -20,6 +20,7 @@ wentuziak\szoplugin\entityevents\EntityListener.class
 wentuziak\szoplugin\races\RaceEffects$2.class
 wentuziak\szoplugin\playerevents\InteractionListener.class
 wentuziak\szoplugin\entityevents\tagSpawnedMob$1.class
+wentuziak\szoplugin\races\RaceEffects$6.class
 wentuziak\szoplugin\entityevents\MobActions.class
 wentuziak\szoplugin\customlogic\SpecialFood.class
 wentuziak\szoplugin\entityevents\tagSpawnedMob.class

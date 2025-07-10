@@ -70,14 +70,14 @@ public class MobActions implements Listener{
 
         int seconds = (int) (Math.random() * 10 + 1);
 
-        if(!zombie.isDead()) {
+        if(!zombie.isDead() || LogicHolder.critRoll(80)) {
         	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                 LogicHolder.throwSnowball(zombie, Keys.CUSTOM_THROWING_FIREWORK, 3);
             }, 20L * seconds);
         	
         	Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
             	zombieFireworkOnPlayer(zombie);
-            }, 20L * 15 + seconds);
+            }, 20L * 25 + seconds);
         }
     	}
 

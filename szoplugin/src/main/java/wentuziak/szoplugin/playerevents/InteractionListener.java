@@ -374,7 +374,9 @@ public class InteractionListener implements Listener{
                     player.setCooldown(Material.LEATHER_LEGGINGS, 20);
                 }
             }
+            if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) MechanicalHandler.mechanicalSneakEvent(player, playerContainer);
         }
+        
 
         if (player.getPersistentDataContainer().has(Keys.RACE_SANGUINITE)
         && !player.isClimbing() && !isInWater
