@@ -87,6 +87,10 @@ public class InteractionListener implements Listener{
                 else if (playerContainer.has(Keys.CUSTOM_BATTLE_HORN, PersistentDataType.BYTE)) {
                     CustomTools.battleHornEffect(player);
                 }
+                else if (playerContainer.has(Keys.CUSTOM_SOUL_ESSENCE, PersistentDataType.BYTE) 
+                		&& player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
+                    RaceEffects.celestialEatEssence(player, itemInOffHand);
+                }
 
             }
             if (itemInMainHand.hasItemMeta()) {
@@ -108,6 +112,10 @@ public class InteractionListener implements Listener{
                 }
                 else if (playerContainer.has(Keys.CUSTOM_BATTLE_HORN, PersistentDataType.BYTE)) {
                     CustomTools.battleHornEffect(player);
+                }
+                else if (playerContainer.has(Keys.CUSTOM_SOUL_ESSENCE, PersistentDataType.BYTE) 
+                		&& player.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
+                    RaceEffects.celestialEatEssence(player, itemInMainHand);
                 }
             }
                     //

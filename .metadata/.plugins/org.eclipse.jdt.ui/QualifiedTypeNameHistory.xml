@@ -23,10 +23,13 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.RandomLoot"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.DwarfUpgradedGear"/>
     <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataContainer"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.CreateCustomItem"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.Witch"/>
     <fullyQualifiedTypeName name="org.bukkit.Material"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.MechanicalHandler"/>
+    <fullyQualifiedTypeName name="org.bukkit.NamespacedKey"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.SzoPlugin"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
 </qualifiedTypeNameHistroy>

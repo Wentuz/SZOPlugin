@@ -77,15 +77,15 @@ public class PlayerMining implements Listener{
         }
 
         if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
-            CustomTools.dwarfPickaxeEffect(4 * luckLvl, player, luckLvl, brokenBlock);
+            CustomTools.dwarfPickaxeEffect((4 * luckLvl) - 1, player, luckLvl, brokenBlock);
             if(LogicHolder.critRoll(luckLvl + 1)) brokenBlock.getLocation().getWorld().dropItemNaturally(brokenBlock.getLocation(), CreateCustomItem.createSoulEssence());
-            if(LogicHolder.critRoll(luckLvl)) LogicHolder.rollTreasure(luckLvl, brokenBlock.getLocation(), "Ore");
+            if(LogicHolder.critRoll(1)) LogicHolder.rollTreasure(luckLvl - 2, brokenBlock.getLocation(), "Ore");
         }
         if ((brokenBlock.getType() == Material.SHORT_GRASS || brokenBlock.getType() == Material.TALL_GRASS
         || brokenBlock.getType() == Material.FERN || brokenBlock.getType() == Material.LARGE_FERN 
         || brokenBlock.getType() == Material.BUSH || brokenBlock.getType() == Material.SHORT_DRY_GRASS
         || brokenBlock.getType() == Material.TALL_DRY_GRASS)) {
-            if (LogicHolder.critRoll(15 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
+            if (LogicHolder.critRoll(10 * (luckLvl + 1)) && player.getPersistentDataContainer().has(Keys.RACE_WITCH)) {
                 LogicHolder.rollTreasure(luckLvl, brokenBlock.getLocation(), "Plant");
                 CustomTools.superHoeEffect(luckLvl, brokenBlock);
             }

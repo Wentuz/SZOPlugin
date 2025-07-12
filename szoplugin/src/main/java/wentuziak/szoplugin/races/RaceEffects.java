@@ -217,6 +217,16 @@ public class RaceEffects {
         }
     }
     
+    public static void celestialEatEssence(Player player, ItemStack item) {
+    	player.setCooldown(item, 20 * 8);
+
+    	player.playSound(player.getLocation(), Sound.ENTITY_ALLAY_DEATH, 1, 1);
+    	
+    	LogicHolder.givePotionEffect(player, "HEAL", 2, 2);
+    	
+    	LogicHolder.removeItem(player, item);
+    }
+    
     //
     //      MISKARU
     //
