@@ -24,6 +24,12 @@ public class Witch {
         case PotionType.REGENERATION:
         	newPotion = CreateCustomItem.createSuperHealingPot();
             break;
+        case PotionType.HEALING:
+        	newPotion = CreateCustomItem.createInstantHealthPotion();
+            break;
+        case PotionType.WATER_BREATHING:
+        	newPotion = CreateCustomItem.createDoplhinPotionPotion();
+            break;
         case PotionType.POISON:
         	newPotion = CreateCustomItem.createToxicPot();
             break;

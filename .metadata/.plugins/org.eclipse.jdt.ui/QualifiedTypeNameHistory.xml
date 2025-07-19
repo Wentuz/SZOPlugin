@@ -30,6 +30,7 @@
     <fullyQualifiedTypeName name="org.bukkit.NamespacedKey"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.SzoPlugin"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
+    <fullyQualifiedTypeName name="org.bukkit.Sound"/>
 </qualifiedTypeNameHistroy>

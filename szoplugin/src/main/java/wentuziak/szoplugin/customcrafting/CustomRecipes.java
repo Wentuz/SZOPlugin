@@ -94,6 +94,23 @@ public final class CustomRecipes {
 
 
         //
+        //      attackCharm recipe
+        //
+        ItemStack fireCharm = CreateCustomItem.createFireCharm();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "FireCharmRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe fireCharmRecipe = new ShapedRecipe(key, fireCharm);
+        fireCharmRecipe.shape(
+            " S ",
+            "SDS",
+            " S ");
+            fireCharmRecipe.setIngredient('S', Material.MAGMA_CREAM);
+            fireCharmRecipe.setIngredient('D', Material.DIAMOND);
+        Bukkit.addRecipe(fireCharmRecipe);
+
+
+        //
         //      gravityCharm recipe
         //
         ItemStack gravityCharm = CreateCustomItem.createGravityCharm();

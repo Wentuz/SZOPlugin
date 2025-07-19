@@ -1199,6 +1199,24 @@ public class CreateCustomItem {
 
 
     //
+    //      gravity charm
+    //
+    public static ItemStack createFireCharm(){
+        ItemStack fireCharm = new ItemStack(Material.RESIN_CLUMP);
+        ItemMeta fireCharmMeta = fireCharm.getItemMeta();
+
+        fireCharmMeta.setDisplayName(ChatColor.RED + "Burning Stone");
+        fireCharmMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        fireCharmMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        AttributeModifier fireModifier = new AttributeModifier(UUID.randomUUID(), "FireTime", -0.5, AttributeModifier.Operation.MULTIPLY_SCALAR_1, EquipmentSlot.OFF_HAND);
+        fireCharmMeta.addAttributeModifier(Attribute.BURNING_TIME, fireModifier);
+        fireCharm.setItemMeta(fireCharmMeta);
+
+        return fireCharm;
+    }
+
+
+    //
     //      effect Transfuser
     //
     public static ItemStack createEffectTransfuser(){
@@ -1383,6 +1401,45 @@ public class CreateCustomItem {
         gepardPotion.setItemMeta(gepardPotionMeta);
 
         return gepardPotion;
+    }
+
+    //
+    //      Instant health pot
+    //
+    public static ItemStack createInstantHealthPotion(){
+        ItemStack healingPot = new ItemStack(Material.POTION);
+        PotionMeta healingPotMeta = (PotionMeta) healingPot.getItemMeta();
+
+        healingPotMeta.setDisplayName(ChatColor.RED + "Greater Health Potion");
+        healingPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        healingPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        
+        healingPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 2), true);
+        healingPotMeta.setColor(Color.fromRGB(255, 0, 0));
+        healingPot.setItemMeta(healingPotMeta);
+
+        return healingPot;
+    }
+
+    //
+    //      Doplhin potion
+    //
+    public static ItemStack createDoplhinPotionPotion(){
+        ItemStack dolphinPot = new ItemStack(Material.POTION);
+        PotionMeta dolphinPotMeta = (PotionMeta) dolphinPot.getItemMeta();
+
+        dolphinPotMeta.setDisplayName(ChatColor.BLUE + "Dolphin's Potion");
+        dolphinPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        dolphinPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        
+        dolphinPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.WATER_BREATHING, 20 * 60 * 10, 0), true);
+        dolphinPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 20 * 60 * 10, 0), true);
+        dolphinPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 20 * 60 * 10, 0), true);
+
+        dolphinPotMeta.setColor(Color.fromRGB(0, 0, 255));
+        dolphinPot.setItemMeta(dolphinPotMeta);
+
+        return dolphinPot;
     }
 
     //

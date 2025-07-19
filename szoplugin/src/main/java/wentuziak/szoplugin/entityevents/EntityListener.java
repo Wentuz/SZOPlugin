@@ -8,6 +8,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Witch;
+import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Creeper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -75,6 +76,10 @@ public class EntityListener implements Listener {
                 RaceEffects.elfFeedEffect((LivingEntity) entity);
                 if (LogicHolder.critRoll(45)) {
                     entity.getWorld().dropItemNaturally(entity.getLocation(), CreateCustomItem.createSoulEssence());
+                }
+                if(LogicHolder.critRoll(25)) {
+                	LivingEntity copiedEntity = (LivingEntity) entity.getLocation().getWorld().spawnEntity(entity.getLocation(), entity.getType());
+                	((Ageable) copiedEntity).setBaby();
                 }
             }
         }
