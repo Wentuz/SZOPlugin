@@ -463,7 +463,8 @@ public class CreateCustomItem {
 
         armourPiercingAxeMeta.setDisplayName(ChatColor.RED + "Jack");
         armourPiercingAxeMeta.setLore(Arrays.asList(
-            "London No.1"));
+            "London No.1",
+        		"Drops mob heads"));
         armourPiercingAxeMeta.getPersistentDataContainer().set(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BOOLEAN, true);
 
         armourPiercingAxe.setItemMeta(armourPiercingAxeMeta);

@@ -190,12 +190,43 @@ public class EntityCombat implements Listener{
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
                     if (LogicHolder.critRoll((luckLvl))) {
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
-                        int droppedXp = event.getDroppedExp();
+                    }
+                    int droppedXp = event.getDroppedExp();
+
+                    event.setDroppedExp(droppedXp * 2);
+
+                }
+            }
+            if (itemInMainHand.hasItemMeta()) {
+                PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
+                if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
+                    if (LogicHolder.critRoll((luckLvl * 20))) {
+                    	Material headMaterial = Material.ZOMBIE_HEAD;
+                        switch (killedEntity.getType()) {
+                        case ZOMBIE:
+                        	headMaterial = Material.ZOMBIE_HEAD;
+                        	break;
+                        case SKELETON:
+                        	headMaterial = Material.SKELETON_SKULL;
+                        	break;
+                        case WITHER_SKELETON:
+                        	headMaterial = Material.WITHER_SKELETON_SKULL;
+                        	break;
+                        case CREEPER:
+                        	headMaterial = Material.CREEPER_HEAD;
+                        	break;
+                        case PIGLIN:
+                        	headMaterial = Material.PIGLIN_HEAD;
+                        	break;
+                        }
                         
-                        event.setDroppedExp(droppedXp * 2);
+                    	ItemStack droppedHead = new ItemStack(headMaterial, 1);
+
+                        killedEntity.getLocation().getWorld().dropItemNaturally(killedEntity.getLocation(), droppedHead);
                     }
                 }
             }
+            
             //  By RACE
             if (killer.getPersistentDataContainer().has(Keys.RACE_FOSSIL)) {
                 if (LogicHolder.critRoll((luckLvl + 1))) {
