@@ -200,7 +200,7 @@ public class EntityCombat implements Listener{
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-                    if (LogicHolder.critRoll((luckLvl * 20))) {
+                    if (LogicHolder.critRoll((luckLvl * 15))) {
                     	Material headMaterial = Material.ZOMBIE_HEAD;
                         switch (killedEntity.getType()) {
                         case ZOMBIE:

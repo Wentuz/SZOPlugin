@@ -25,7 +25,6 @@
     <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataContainer"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.CreateCustomItem"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.Witch"/>
-    <fullyQualifiedTypeName name="org.bukkit.Material"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.MechanicalHandler"/>
     <fullyQualifiedTypeName name="org.bukkit.NamespacedKey"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.SzoPlugin"/>
@@ -33,4 +32,5 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="org.bukkit.Sound"/>
+    <fullyQualifiedTypeName name="org.bukkit.Material"/>
 </qualifiedTypeNameHistroy>

@@ -11,6 +11,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.inventory.InventoryType.SlotType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -746,6 +747,12 @@ public class InteractionListener implements Listener{
 
     	        }
     	    }
+    	}
+    	//
+    	//		Player putting on the cursed hat
+    	//
+    	if(event.getSlotType() == SlotType.ARMOR) {
+    		player.sendMessage("ahhh splendid");
     	}
     }
 }

@@ -556,6 +556,22 @@ public class CreateCustomItem {
 
         return ironCladChestplate;
     }
+
+    @SuppressWarnings("deprecation")
+    public static ItemStack createSevenCursesHat(){
+        ItemStack cursedHelmet = new ItemStack(Material.TURTLE_HELMET);
+        ItemMeta cursedHelmetMeta = cursedHelmet.getItemMeta();
+
+        cursedHelmetMeta.setDisplayName(ChatColor.GREEN + "Godly Turtle Cap");
+        cursedHelmetMeta.setLore(Arrays.asList(
+            ChatColor.RED + "Has 7 curses",
+            ChatColor.GREEN + "Also has 7 blessings"));
+        cursedHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_SEVEN_CURSES, PersistentDataType.BOOLEAN, true);
+
+        cursedHelmet.setItemMeta(cursedHelmetMeta);
+
+        return cursedHelmet;
+    }
     @SuppressWarnings("deprecation")
     public static ItemStack createIronCladLeggings(){
         ItemStack ironCladLeggings = new ItemStack(Material.IRON_LEGGINGS);

@@ -45,6 +45,8 @@ public class Keys {
     public static final NamespacedKey CUSTOM_CERBERUS_CHAIN = new NamespacedKey(SzoPlugin.getInstance(), "CerberusChain");
     public static final NamespacedKey CUSTOM_GOLDEN_SIGIL = new NamespacedKey(SzoPlugin.getInstance(), "GoldenSigil");
     public static final NamespacedKey CUSTOM_FASTING_BELT = new NamespacedKey(SzoPlugin.getInstance(), "FastingBelt");
+    public static final NamespacedKey CUSTOM_SEVEN_CURSES = new NamespacedKey(SzoPlugin.getInstance(), "SevenCurses");
+
 
     //
     //      Spells

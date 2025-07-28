@@ -525,6 +525,25 @@ public final class CustomRecipes {
 
 
         //
+        //      Cursed Hat Recipe
+        //
+        ItemStack cursedHelmet = CreateCustomItem.createSevenCursesHat();
+        key = new NamespacedKey(SzoPlugin.getInstance(), "CursedHelmetRecipe");
+        recipeKeys.add(key);
+
+        ShapedRecipe cursedHelmetRecipe = new ShapedRecipe(key, cursedHelmet);
+        cursedHelmetRecipe.shape(
+            " E ",
+            "DTD",
+            " S ");
+        cursedHelmetRecipe.setIngredient('S', new RecipeChoice.ExactChoice(soulFragment));
+        cursedHelmetRecipe.setIngredient('D', Material.DRAGON_BREATH);
+        cursedHelmetRecipe.setIngredient('E', Material.WITHER_SKELETON_SKULL);
+        cursedHelmetRecipe.setIngredient('T', Material.TURTLE_HELMET);
+        Bukkit.addRecipe(cursedHelmetRecipe);
+
+
+        //
         //      miskaHelmet Recipe
         //
         ItemStack miskaHelmet = CreateCustomItem.createMiskaHelmet();
