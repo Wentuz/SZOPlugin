@@ -131,6 +131,25 @@ public class RaceCrafting {
         }
     }
 
+    // HOBBIT
+    public static void hobbitCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
+        Material mainHandMaterial = itemInMainHand.getType();
+        Material offHandMaterial = itemInOffHand.getType();
+        Location dropLocation = player.getLocation();
+        if (mainHandMaterial == Material.GOLDEN_APPLE && 
+        		itemInOffHand.isSimilar(CreateCustomItem.createSoulEssence()) && itemInOffHand.getAmount() >= 8) {
+            
+            player.getWorld().dropItemNaturally(player.getLocation(), new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
+            
+            for(int i = 0; i < 8; i++){
+                LogicHolder.removeItem(player, itemInOffHand);
+            }
+            
+            LogicHolder.removeItem(player, itemInMainHand);
+            return;
+        }
+    }
+
     // DWARF
     public static void dwarfCraftingEvent(Player player, ItemStack itemInMainHand, ItemStack itemInOffHand ){
         Material mainHandMaterial = itemInMainHand.getType();

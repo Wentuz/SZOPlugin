@@ -126,6 +126,9 @@ public class InteractionListener implements Listener{
                 if (player.getPersistentDataContainer().has(Keys.RACE_DWARF)) {
                     RaceCrafting.dwarfCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
+                if (player.getPersistentDataContainer().has(Keys.RACE_HOBBIT)) {
+                    RaceCrafting.hobbitCraftingEvent(player, itemInMainHand, itemInOffHand);
+                }
                 if(player.getPersistentDataContainer().has(Keys.RACE_WITCH)){
                     RaceCrafting.witchCraftingEvent(player, itemInMainHand, itemInOffHand);
                 }
