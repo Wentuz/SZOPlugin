@@ -6,12 +6,14 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Rabbit;
 import org.bukkit.entity.Snowball;
 import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.Witch;
@@ -238,7 +240,11 @@ public class EntityCombat implements Listener{
             }
             if (killer.getPersistentDataContainer().has(Keys.RACE_CELESTIAL)) {
             	if(LogicHolder.critRoll(5)) {
-            		killedEntity.getLocation().getWorld().spawnEntity(killedEntity.getLocation(), EntityType.RABBIT);
+            		Rabbit rabbit = (Rabbit) killedEntity.getLocation().getWorld().spawnEntity(killedEntity.getLocation(), EntityType.RABBIT);
+            		
+            		AttributeInstance scaleAttribute = rabbit.getAttribute(Attribute.SCALE);
+                    scaleAttribute.setBaseValue((float)(Math.random() * 2 + 1));
+                    
                     killedEntity.getLocation().getWorld().dropItemNaturally(killedEntity.getLocation(), CreateCustomItem.createSoulEssence());
             	}
             }

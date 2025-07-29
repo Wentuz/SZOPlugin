@@ -33,4 +33,6 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="org.bukkit.Sound"/>
     <fullyQualifiedTypeName name="org.bukkit.Material"/>
+    <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType"/>
+    <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType.SlotType"/>
 </qualifiedTypeNameHistroy>

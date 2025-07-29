@@ -17,7 +17,7 @@ import wentuziak.szoplugin.customlogic.LogicHolder;
 
 public class MechanicalHandler {
     static BukkitTask mechanicalHungerTask;
-
+    
 	public static void mechanicalGotHitEffect(Player player, double currentHealth) {
     	int keyAmount = LogicHolder.countKeysOnPlayer(player, Keys.CUSTOM_MECHANICAL_PARTS);
     	if(keyAmount > 4) keyAmount = 4;
@@ -70,7 +70,6 @@ public class MechanicalHandler {
     	switch (randInt){
     		case 1 : 
     			Weapons.bleedEffect(hitEntity, 4.0, 6);
-    			Weapons.fireworkEffect(hitEntity.getLocation(), 3);
     		default: 
     			Weapons.bleedEffect(hitEntity, 2.0, 4);
     	}
