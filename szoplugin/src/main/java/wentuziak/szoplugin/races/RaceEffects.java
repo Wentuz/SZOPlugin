@@ -155,12 +155,13 @@ public class RaceEffects {
     }
     
     public static ItemStack witchBrewEvent(ItemStack potion) {
-        if (potion == null || potion.getType() != Material.POTION) return potion;
+        if (potion == null) return potion;
 
         ItemMeta meta = potion.getItemMeta();
         if (!(meta instanceof PotionMeta)) return potion;
         
-        return Witch.witchGetPotion((PotionMeta) meta);
+        if(potion.getType() == Material.POTION) return Witch.witchGetPotion((PotionMeta) meta);
+        else return Witch.witchGetSplashPotion((PotionMeta) meta);
     }
 
 

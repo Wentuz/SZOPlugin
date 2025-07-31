@@ -1346,13 +1346,31 @@ public class CreateCustomItem {
     }
 
     //
-    //      Healing Gas
+    //      regeneration Gas
     //
-    public static ItemStack createSuperHealingPot(){
+    public static ItemStack createSuperRegenerationLingeringPot(){
         ItemStack superHealth = new ItemStack(Material.LINGERING_POTION);
         PotionMeta superHealthMeta = (PotionMeta) superHealth.getItemMeta();
 
-        superHealthMeta.setDisplayName(ChatColor.RED + "Healing Gas");
+        superHealthMeta.setDisplayName(ChatColor.RED + "Regeneration Gas");
+        superHealthMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        superHealthMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        superHealthMeta.addCustomEffect(new PotionEffect(PotionEffectType.REGENERATION, 20 * 80, 2), true);
+        superHealthMeta.setColor(Color.fromRGB(253, 135, 233));
+        superHealth.setItemMeta(superHealthMeta);
+
+        return superHealth;
+    }
+    
+    //
+    //      Ultimate regeneration Potion
+    //
+    public static ItemStack createSuperRegenerationPot(){
+        ItemStack superHealth = new ItemStack(Material.POTION);
+        PotionMeta superHealthMeta = (PotionMeta) superHealth.getItemMeta();
+
+        superHealthMeta.setDisplayName(ChatColor.RED + "Regeneration Potion");
         superHealthMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         superHealthMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 
@@ -1366,7 +1384,7 @@ public class CreateCustomItem {
     //
     //      Toxic Gas
     //
-    public static ItemStack createToxicPot(){
+    public static ItemStack createToxicLingeringPot(){
         ItemStack toxicPot = new ItemStack(Material.LINGERING_POTION);
         PotionMeta toxicPotMeta = (PotionMeta) toxicPot.getItemMeta();
 
@@ -1383,10 +1401,29 @@ public class CreateCustomItem {
     }
 
     //
+    //      Toxic Throwable pot
+    //
+    public static ItemStack createToxicSplashPot(){
+        ItemStack toxicPot = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta toxicPotMeta = (PotionMeta) toxicPot.getItemMeta();
+
+        toxicPotMeta.setDisplayName(ChatColor.GREEN + "Toxic Splash");
+        toxicPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        toxicPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        toxicPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.POISON, 20 * 80, 3), true);
+        toxicPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.SLOWNESS, 20 * 80, 3), true);
+        toxicPotMeta.setColor(Color.fromRGB(140, 120, 0));
+        toxicPot.setItemMeta(toxicPotMeta);
+
+        return toxicPot;
+    }
+
+    //
     //      Iron Hide potion
     //
     public static ItemStack createIronHide(){
-        ItemStack ironHide = new ItemStack(Material.SPLASH_POTION);
+        ItemStack ironHide = new ItemStack(Material.POTION);
         PotionMeta ironHideMeta = (PotionMeta) ironHide.getItemMeta();
 
         ironHideMeta.setDisplayName(ChatColor.GRAY + "Iron Hide Potion");
@@ -1402,10 +1439,29 @@ public class CreateCustomItem {
     }
 
     //
+    //      Gepard splash potion
+    //
+    public static ItemStack createGepardSplashPotion(){
+        ItemStack gepardPotion = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta gepardPotionMeta = (PotionMeta) gepardPotion.getItemMeta();
+
+        gepardPotionMeta.setDisplayName(ChatColor.YELLOW + "Gepard Legs Splash Potion");
+        gepardPotionMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        gepardPotionMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+
+        gepardPotionMeta.addCustomEffect(new PotionEffect(PotionEffectType.SPEED, 20 * 120, 3), true);
+        gepardPotionMeta.addCustomEffect(new PotionEffect(PotionEffectType.JUMP_BOOST, 20 * 120, 1), true);
+        gepardPotionMeta.setColor(Color.fromRGB(255, 255, 0));
+        gepardPotion.setItemMeta(gepardPotionMeta);
+
+        return gepardPotion;
+    }
+
+    //
     //      Gepard potion
     //
     public static ItemStack createGepardPotion(){
-        ItemStack gepardPotion = new ItemStack(Material.SPLASH_POTION);
+        ItemStack gepardPotion = new ItemStack(Material.POTION);
         PotionMeta gepardPotionMeta = (PotionMeta) gepardPotion.getItemMeta();
 
         gepardPotionMeta.setDisplayName(ChatColor.YELLOW + "Gepard Legs Potion");
@@ -1428,6 +1484,24 @@ public class CreateCustomItem {
         PotionMeta healingPotMeta = (PotionMeta) healingPot.getItemMeta();
 
         healingPotMeta.setDisplayName(ChatColor.RED + "Greater Health Potion");
+        healingPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
+        healingPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        
+        healingPotMeta.addCustomEffect(new PotionEffect(PotionEffectType.INSTANT_HEALTH, 1, 2), true);
+        healingPotMeta.setColor(Color.fromRGB(255, 0, 0));
+        healingPot.setItemMeta(healingPotMeta);
+
+        return healingPot;
+    }
+
+    //
+    //      Instant health splash pot
+    //
+    public static ItemStack createInstantHealthSplashPotion(){
+        ItemStack healingPot = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta healingPotMeta = (PotionMeta) healingPot.getItemMeta();
+
+        healingPotMeta.setDisplayName(ChatColor.RED + "Greater Health Splash");
         healingPotMeta.addEnchant(Enchantment.CHANNELING, 1, true);
         healingPotMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         

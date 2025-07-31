@@ -312,7 +312,7 @@ public class EntityCombat implements Listener{
                 }
             }else if (killedEntity.getType() == EntityType.WITCH ){
                 if (LogicHolder.critRoll(20)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSuperHealingPot());
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSuperRegenerationPot());
                 }
                 if (LogicHolder.critRoll(20)) {
                     killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingGas());

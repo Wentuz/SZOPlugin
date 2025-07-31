@@ -22,7 +22,7 @@ public class Witch {
         case PotionType.WATER:
         	return newPotion;
         case PotionType.REGENERATION:
-        	newPotion = CreateCustomItem.createSuperHealingPot();
+        	newPotion = CreateCustomItem.createSuperRegenerationPot();
             break;
         case PotionType.HEALING:
         	newPotion = CreateCustomItem.createInstantHealthPotion();
@@ -31,13 +31,58 @@ public class Witch {
         	newPotion = CreateCustomItem.createDoplhinPotionPotion();
             break;
         case PotionType.POISON:
-        	newPotion = CreateCustomItem.createToxicPot();
+        	newPotion = CreateCustomItem.createToxicSplashPot();
             break;
         case PotionType.TURTLE_MASTER:
         	newPotion = CreateCustomItem.createIronHide();
             break;
         case PotionType.SWIFTNESS:
         	newPotion = CreateCustomItem.createGepardPotion();
+            break;
+        case PotionType.SLOWNESS:
+        	newPotion = CreateCustomItem.createParalyzingGas();
+            break;
+        default:
+        	return null;
+        }
+        // Optional: Read custom potion effects (if any)
+        if (!potionMeta.getCustomEffects().isEmpty()) {
+            for (PotionEffect effect : potionMeta.getCustomEffects()) {
+                System.out.println("Custom Effect: " + effect.getType().getName());
+            }
+        }
+        
+        return newPotion;
+	}
+	public static ItemStack witchGetSplashPotion(PotionMeta potionMeta) {
+
+        // Get base potion type (e.g., REGENERATION, SPEED)
+        PotionData basePotionData = potionMeta.getBasePotionData();
+        PotionType type = basePotionData.getType();
+
+        System.out.println("Base Potion Type: " + type.name());
+        ItemStack newPotion = new ItemStack(Material.SPLASH_POTION);
+        
+        switch (type) {
+        case PotionType.WATER:
+        	return newPotion;
+        case PotionType.REGENERATION:
+        	newPotion = CreateCustomItem.createSuperRegenerationLingeringPot();
+            break;
+        case PotionType.HEALING:
+        	newPotion = CreateCustomItem.createInstantHealthSplashPotion();
+            break;
+        case PotionType.WATER_BREATHING:
+        	newPotion = CreateCustomItem.createDoplhinPotionPotion();
+            break;
+        case PotionType.POISON:
+        	newPotion = CreateCustomItem.createToxicSplashPot();
+            break;
+        case PotionType.TURTLE_MASTER:
+        	newPotion = CreateCustomItem.createIronHide();
+            break;
+        case PotionType.SWIFTNESS:
+        	newPotion = CreateCustomItem.createGepardSplashPotion();
             break;
         case PotionType.SLOWNESS:
         	newPotion = CreateCustomItem.createParalyzingGas();
