@@ -6,6 +6,7 @@ import java.util.function.BiConsumer;
 
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.data.type.Fire;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
@@ -218,11 +219,10 @@ public class PlayerCombat implements Listener{
             LogicHolder.givePotionEffect(player, "SPEED", 20*5, 0);
         }
         if (player.getPersistentDataContainer().has(Keys.RACE_CARA)) {
-            
             RaceEffects.caraOnHitEffect(player);
-
         }
     }
+
 
         //
         //      Shoot Arrow

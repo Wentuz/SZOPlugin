@@ -366,8 +366,13 @@ public class EntityCombat implements Listener{
             
             if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
                 double currentHealth = player.getHealth();
-
+                
                 MechanicalHandler.mechanicalGotHitEffect(player, currentHealth);
+                
+                if(event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK || event.getCause() == EntityDamageEvent.DamageCause.CAMPFIRE
+                		|| event.getCause() == EntityDamageEvent.DamageCause.FIRE || event.getCause() == EntityDamageEvent.DamageCause.HOT_FLOOR) {
+                	if (MechanicalHandler.mechanicalFireEffect(player)) event.setCancelled(true);
+                }
             }
         }
     }

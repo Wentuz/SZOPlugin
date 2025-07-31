@@ -46,7 +46,7 @@ public class MechanicalHandler {
             mechanicalHungerTask = new BukkitRunnable() {
                 @Override
                 public void run(){
-                    if (finalPlayer.getFoodLevel() > 6) {
+                    if (finalPlayer.getFoodLevel() > 10) {
                         stopMechanicalHungerTask(finalPlayer);
                         return;
                     }
@@ -102,4 +102,14 @@ public class MechanicalHandler {
     	//	-- swich case for different keys
     	//	-- handle 
     }
+
+	public static Boolean mechanicalFireEffect(Player player) {
+		
+		if(player.getFoodLevel() <= 10) return false;
+		
+		player.setFoodLevel(player.getFoodLevel() - 1);
+		
+		LogicHolder.givePotionEffect(player, "FIRE_RESISTANCE", 20 * 2, 0);
+		return true;
+	}
 }

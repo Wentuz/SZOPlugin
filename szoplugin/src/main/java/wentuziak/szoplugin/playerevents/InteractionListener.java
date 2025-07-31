@@ -430,7 +430,7 @@ public class InteractionListener implements Listener{
                     }
                 }
                 if(player.getPersistentDataContainer().has(Keys.RACE_MECHANICAL)) {
-                	if(newHunger < 8) MechanicalHandler.mechanicalHungerEvent(player);
+                	if(newHunger < 10) MechanicalHandler.mechanicalHungerEvent(player);
 
                 	if(newHunger > 14 && LogicHolder.critRoll(30)) {
                 		Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
