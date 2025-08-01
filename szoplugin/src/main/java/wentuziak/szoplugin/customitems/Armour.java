@@ -34,7 +34,7 @@ public class Armour {
                     velocity.setY(velocity.getY() + upStr);
                     player.setVelocity(velocity);
                     
-                    LogicHolder.givePotionEffect(player, "SLOW_FALLING", 2, 0);
+                    player.setFallDistance((float) velocity.getY());
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_FIREWORK_ROCKET_LAUNCH, 1, 1);
                     LogicHolder.particleEmitterOnEntity(player, Particle.CAMPFIRE_COSY_SMOKE, 2, 5, 0, -0.3, 0, 0.05);
                 } 
@@ -119,7 +119,7 @@ public class Armour {
     }
 
     public static void jumpPackEffect(LivingEntity entity, double speedMultiplier){
-        if (LogicHolder.isPlayerAboveGround(entity, 0.75) && !LogicHolder.isPlayerAboveGround(entity, 1.5)) {
+        if (LogicHolder.isPlayerAboveGround(entity, 1.75) && !LogicHolder.isPlayerAboveGround(entity, 2.5)) {
     
             Vector direction = entity.getLocation().getDirection();
             Vector velocity = direction.multiply(speedMultiplier);
@@ -129,7 +129,7 @@ public class Armour {
             LogicHolder.particleEmitterOnEntity(entity, Particle.VIBRATION, 10, 5, 0, 0.1, 0, 0.02);
             
             if(entity instanceof Player){
-                ((HumanEntity) entity).setCooldown(Material.LEATHER_LEGGINGS, 20 * 4);
+                ((HumanEntity) entity).setCooldown(Material.LEATHER_LEGGINGS, 20 * 2);
             }
         }
     }

@@ -8,6 +8,8 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.CaveSpider;
@@ -378,13 +380,27 @@ public class MagicItems {
         tagSpawnedMob.tagSpawnedEntity(wolf, Keys.MOB_PLAYER_SUMMON);
         tagSpawnedMob.tagSpawnedEntity(player, Keys.MOB_PLAYER_SUMMON);
         
+        float random = (float)(Math.random() * 1.5 + 0.5);
+        
+        AttributeInstance scaleAttribute = wolf.getAttribute(Attribute.SCALE);
+        scaleAttribute.setBaseValue(random);
+        
+        AttributeInstance attackAttribute = wolf.getAttribute(Attribute.ATTACK_DAMAGE);
+        attackAttribute.setBaseValue(6 * (random + 1));
+        
         wolf.setInvisible(true);
         wolf.setInvulnerable(true);
+        wolf.setCollidable(false);
         wolf.setGlowing(true);
         wolf.setOwner(player);
     }
 
     public static void killCerberus(Player player){
+    	
+    	if (!player.getPersistentDataContainer().has(Keys.MOB_PLAYER_SUMMON)) return; 
+    	
+    	player.getPersistentDataContainer().remove(Keys.MOB_PLAYER_SUMMON);
+
         player.getLocation().getWorld().getNearbyEntities(player.getLocation(), 20, 20, 20).forEach(entity -> {
             if (entity instanceof Wolf) {
                 Wolf wolf = (Wolf) entity;
@@ -394,7 +410,6 @@ public class MagicItems {
     
                     wolf.getWorld().spawnParticle(Particle.SOUL, wolf.getLocation(), 20, 1, 1, 1);
                     
-                    player.getPersistentDataContainer().remove(Keys.MOB_PLAYER_SUMMON);
                     wolf.remove();
                 }
             }

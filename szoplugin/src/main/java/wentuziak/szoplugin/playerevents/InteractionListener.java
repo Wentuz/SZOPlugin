@@ -676,11 +676,11 @@ public class InteractionListener implements Listener{
         	//mechanical healing based on food level
             if (player.getFoodLevel() >= 10 && !player.hasCooldown(Material.NETHER_STAR)) {
             	int foodLvl = player.getFoodLevel();
-                player.setFoodLevel(foodLvl - 4);
+                player.setFoodLevel(foodLvl - 6);
                 player.setCooldown(Material.NETHER_STAR, 20 * 60);	//60 second cooldown
                 LogicHolder.startCooldownCountdown(player, 60);
                 MechanicalHandler.mechanicalHealing(player);
-                LogicHolder.givePotionEffect(player, "HUNGER", 0, 20 * 60);
+                LogicHolder.givePotionEffect(player, "HUNGER", 20 * 60, 0);
             }else{
                 return;
             }
@@ -755,7 +755,8 @@ public class InteractionListener implements Listener{
     	//		Player putting on the cursed hat
     	//
     	if(event.getSlotType() == SlotType.ARMOR) {
-    		player.sendMessage("ahhh splendid");
+    		
+    		//player.sendMessage("ahhh splendid");
     	}
     }
 }

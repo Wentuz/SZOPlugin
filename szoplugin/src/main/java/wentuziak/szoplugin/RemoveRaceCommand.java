@@ -18,7 +18,7 @@ import wentuziak.szoplugin.races.UpdateAttributes;
 public class RemoveRaceCommand implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 1) {
+        if (args.length < 0 || args.length > 2) {
             sender.sendMessage("Usage: /removerace [player]");
             return false;
         }
@@ -28,9 +28,11 @@ public class RemoveRaceCommand implements TabExecutor {
         }
 
         Player targetPlayer = Bukkit.getPlayer(args[0]);
-        if (targetPlayer == null) {
-            sender.sendMessage(ChatColor.RED + "Player not found: " + args[0]);
+        if (targetPlayer == null && !(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);
             return false;
+        }else {
+        	targetPlayer = (Player) sender;
         }
     
         unLoadRace(targetPlayer);

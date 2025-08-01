@@ -19,7 +19,7 @@ import wentuziak.szoplugin.races.UpdateAttributes;
 public class SwapRaceCommand implements TabExecutor{
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (args.length < 2) {
+        if (args.length < 1 || args.length > 2) {
             sender.sendMessage("Usage: /swaprace [race] [player]");
             return false;
         }
@@ -29,9 +29,11 @@ public class SwapRaceCommand implements TabExecutor{
         }
 
         Player targetPlayer = Bukkit.getPlayer(args[1]);
-        if (targetPlayer == null) {
+        if (targetPlayer == null && !(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "Player not found: " + args[1]);
             return false;
+        }else {
+        	targetPlayer = (Player) sender;
         }
 
         String inputKey = args[0];
