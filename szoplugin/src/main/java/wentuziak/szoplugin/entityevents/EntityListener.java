@@ -27,7 +27,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-
+import org.bukkit.potion.PotionEffectType;
 
 import net.md_5.bungee.api.ChatColor;
 import wentuziak.szoplugin.Keys;
@@ -127,11 +127,11 @@ public class EntityListener implements Listener {
      public void onEntitySpawn(CreatureSpawnEvent event) {
         LivingEntity entity = event.getEntity();
         
-        if (!LogicHolder.critRoll(75)) {
+        if (LogicHolder.critRoll(10)) {
         	basicMobHandler(entity);
         }
         
-        if(!LogicHolder.critRoll(80)) {
+        if(LogicHolder.critRoll(10)) {
         	mobEffectRandomiseByType(entity);
         }
 
@@ -188,7 +188,20 @@ public class EntityListener implements Listener {
     
     private static void mobEffectRandomiseByType(LivingEntity entity) {
     	
-    	String effect = (LogicHolder.critRoll(50)) ? "STRENGTH" : "WIND_CHARGED";
+    	String effectCaseOne = "HUNGER";
+    	String effectCaseTwo = "HUNGER";
+    	
+    	
+    	EntityType entityType = entity.getType();
+    	
+    	if(entityType == EntityType.CREEPER) {
+    		effectCaseOne = "WIND_CHARGED";
+    		effectCaseTwo = "SPEED";
+    	}else {
+    		return;
+    	}
+    	
+    	String effect = (LogicHolder.critRoll(50)) ? effectCaseOne : effectCaseTwo;
     	
     	LogicHolder.givePotionEffect(entity, effect, 20 * 60 * 60, 0);
     }

@@ -33,7 +33,9 @@
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType"/>
     <fullyQualifiedTypeName name="org.bukkit.block.data.type.Fire"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.MechanicalHandler"/>
-    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType.SlotType"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
+    <fullyQualifiedTypeName name="org.bukkit.Bukkit"/>
+    <fullyQualifiedTypeName name="org.bukkit.entity.EntityType"/>
+    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
 </qualifiedTypeNameHistroy>
