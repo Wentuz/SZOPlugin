@@ -131,55 +131,64 @@ public class EntityListener implements Listener {
         	basicMobHandler(entity);
         }
         
-        if(!LogicHolder.critRoll(0)) {
-        	mobEffectRandomiser(entity);
+        if(!LogicHolder.critRoll(80)) {
+        	mobEffectRandomiseByType(entity);
         }
 
     }
     
     private static void basicMobHandler(LivingEntity entity) {
     	
-    	if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
-            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
-            LogicHolder.equipRandomArmor(isArmorTiered, entity);
-            return;
-        }
-        if (entity.getType() == EntityType.SPIDER) {
-            if (LogicHolder.critRoll(20)) {
-                repleaceEntity(entity, EntityType.CAVE_SPIDER);
-            }
-            if (LogicHolder.critRoll(100)) { // test value
-                Witch witch = (Witch) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.WITCH);
-                entity.addPassenger(witch);
-            }
-            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            return;
-        }
-        if (entity.getType() == EntityType.CREEPER) {
-            if (LogicHolder.critRoll(25)) {
-                ((Creeper) entity).setPowered(true);
-            }
-            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            return;
-        }
-        if (entity.getType() == EntityType.PHANTOM) {
-            if (LogicHolder.critRoll(25)) {
-                Skeleton skeleton = (Skeleton) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.SKELETON);
-                entity.addPassenger(skeleton);
-            }
-            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            return;
-        }
-        if (entity.getType() == EntityType.WITCH) {
-            tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
-            return;
-        }
+    	boolean isArmorTiered;
+    	
+    	switch(entity.getType()) {
+    		case EntityType.SKELETON:
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+    			
+                isArmorTiered = LogicHolder.critRoll(77) ? true : false;
+                LogicHolder.equipRandomArmor(isArmorTiered, entity);
+                
+    			break;
+    			
+    		case EntityType.ZOMBIE:
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+    			
+                isArmorTiered = LogicHolder.critRoll(88) ? true : false;
+                LogicHolder.equipRandomArmor(isArmorTiered, entity);
+                
+    			break;
+    			
+    		case EntityType.SPIDER:
+    			if (LogicHolder.critRoll(20)) repleaceEntity(entity, EntityType.CAVE_SPIDER);
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+    			
+    			break;
+    			
+    		case EntityType.CREEPER:
+    			if (LogicHolder.critRoll(25)) ((Creeper) entity).setPowered(true);
+                tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+
+    			break;
+    			
+    		case EntityType.PHANTOM:
+    			if (LogicHolder.critRoll(25)) {
+                    Skeleton skeleton = (Skeleton) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.SKELETON);
+                    entity.addPassenger(skeleton);
+                }
+    			break;
+    			
+    		case EntityType.WITCH:
+                tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+
+    			break;
+    		default:
+    			break;
+    	}
     }
     
-    private static void mobEffectRandomiser(LivingEntity entity) {
+    private static void mobEffectRandomiseByType(LivingEntity entity) {
     	
-    	String effect = (LogicHolder.critRoll(50)) ? "INFESTED" : "WIND_CHARGED";
+    	String effect = (LogicHolder.critRoll(50)) ? "STRENGTH" : "WIND_CHARGED";
     	
     	LogicHolder.givePotionEffect(entity, effect, 20 * 60 * 60, 0);
     }
