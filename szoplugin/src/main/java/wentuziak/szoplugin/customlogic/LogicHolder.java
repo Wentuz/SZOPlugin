@@ -64,7 +64,7 @@ public class LogicHolder {
 
     public static void givePotionEffect(LivingEntity player,String effect,int duration,int amplifier){
         PotionEffectType typeOfEffect = PotionEffectType.getByName(effect);
-
+        
         player.addPotionEffect(new PotionEffect(typeOfEffect , duration, amplifier));
     }
 

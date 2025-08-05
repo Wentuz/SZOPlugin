@@ -7,7 +7,6 @@
     <fullyQualifiedTypeName name="wentuziak.szoplugin.TaskManager"/>
     <fullyQualifiedTypeName name="net.md_5.bungee.api.ChatMessageType"/>
     <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffect"/>
-    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
     <fullyQualifiedTypeName name="org.bukkit.Particle"/>
     <fullyQualifiedTypeName name="org.bukkit.event.block.BlockCookEvent"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.FurnaceSmeltEvent"/>
@@ -17,7 +16,6 @@
     <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
     <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataType"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.ItemCategories"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.BrewEvent"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.RandomLoot"/>
@@ -25,7 +23,6 @@
     <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataContainer"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.CreateCustomItem"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.Witch"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.MechanicalHandler"/>
     <fullyQualifiedTypeName name="org.bukkit.NamespacedKey"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.SzoPlugin"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
@@ -34,5 +31,9 @@
     <fullyQualifiedTypeName name="org.bukkit.Sound"/>
     <fullyQualifiedTypeName name="org.bukkit.Material"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType"/>
+    <fullyQualifiedTypeName name="org.bukkit.block.data.type.Fire"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.races.MechanicalHandler"/>
+    <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType.SlotType"/>
+    <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
 </qualifiedTypeNameHistroy>

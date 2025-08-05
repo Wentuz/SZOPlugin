@@ -2,6 +2,7 @@ package wentuziak.szoplugin.entityevents;
 
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -126,11 +127,19 @@ public class EntityListener implements Listener {
      public void onEntitySpawn(CreatureSpawnEvent event) {
         LivingEntity entity = event.getEntity();
         
-        if (LogicHolder.critRoll(75)) {
-            return;
+        if (!LogicHolder.critRoll(75)) {
+        	basicMobHandler(entity);
+        }
+        
+        if(!LogicHolder.critRoll(0)) {
+        	mobEffectRandomiser(entity);
         }
 
-        if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
+    }
+    
+    private static void basicMobHandler(LivingEntity entity) {
+    	
+    	if (entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) {
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             boolean isArmorTiered = LogicHolder.critRoll(33) ? true : false;
             LogicHolder.equipRandomArmor(isArmorTiered, entity);
@@ -166,6 +175,13 @@ public class EntityListener implements Listener {
             tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
             return;
         }
+    }
+    
+    private static void mobEffectRandomiser(LivingEntity entity) {
+    	
+    	String effect = (LogicHolder.critRoll(50)) ? "INFESTED" : "WIND_CHARGED";
+    	
+    	LogicHolder.givePotionEffect(entity, effect, 20 * 60 * 60, 0);
     }
 
     public static void repleaceEntity(LivingEntity entityToRelpeace, EntityType newType){
