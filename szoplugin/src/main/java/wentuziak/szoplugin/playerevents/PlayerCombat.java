@@ -30,6 +30,7 @@ import wentuziak.szoplugin.customitems.Armour;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.entityevents.specialMobAttackHandler;
 import wentuziak.szoplugin.races.MechanicalHandler;
 import wentuziak.szoplugin.races.RaceEffects;
 
@@ -162,6 +163,8 @@ public class PlayerCombat implements Listener{
             applyLegArmorEffects(player);
             applyBootEffects(player);
             applyRaceEffects(player);
+            
+            if(damager.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) specialMobAttackHandler.handleTaggedMobAttack(damager, player);
     	}
     }
 

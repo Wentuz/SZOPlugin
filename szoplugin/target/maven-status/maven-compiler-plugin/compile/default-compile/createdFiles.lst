@@ -4,6 +4,7 @@ wentuziak\szoplugin\customitems\CustomTools$2.class
 wentuziak\szoplugin\customitems\CustomTools.class
 wentuziak\szoplugin\entityevents\EntityCombat.class
 wentuziak\szoplugin\races\RaceEffects$1.class
+wentuziak\szoplugin\entityevents\EntityCombat$1.class
 wentuziak\szoplugin\customlogic\SpecialItems.class
 wentuziak\szoplugin\races\UpdateAttributes.class
 wentuziak\szoplugin\customlogic\RandomLoot.class
@@ -34,6 +35,7 @@ wentuziak\szoplugin\Keys.class
 wentuziak\szoplugin\playerevents\PlayerMining.class
 wentuziak\szoplugin\customitems\CustomTools$1.class
 wentuziak\szoplugin\customitems\MagicItems$2.class
+wentuziak\szoplugin\entityevents\EntityListener$1.class
 wentuziak\szoplugin\races\RaceEffects$5.class
 wentuziak\szoplugin\customitems\MagicItems.class
 wentuziak\szoplugin\customitems\Armour.class
