@@ -143,6 +143,23 @@ public class EntityListener implements Listener {
     	
     	switch(entity.getType()) {
     		case EntityType.SKELETON:
+    			if (LogicHolder.critRoll(5)) repleaceEntity(entity, EntityType.STRAY);
+    			else if (LogicHolder.critRoll(5)) repleaceEntity(entity, EntityType.BOGGED);
+
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+    			
+                isArmorTiered = LogicHolder.critRoll(77) ? true : false;
+                LogicHolder.equipRandomArmor(isArmorTiered, entity);
+                
+    			break;
+    		case EntityType.BOGGED:
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+    			
+                isArmorTiered = LogicHolder.critRoll(77) ? true : false;
+                LogicHolder.equipRandomArmor(isArmorTiered, entity);
+                
+    			break;
+    		case EntityType.STRAY:
     			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
     			
                 isArmorTiered = LogicHolder.critRoll(77) ? true : false;
@@ -150,9 +167,18 @@ public class EntityListener implements Listener {
                 
     			break;
     			
-    		case EntityType.ZOMBIE:
+    		case EntityType.HUSK:
     			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+
+                isArmorTiered = LogicHolder.critRoll(88) ? true : false;
+                LogicHolder.equipRandomArmor(isArmorTiered, entity);
+                
+    			break;
     			
+    		case EntityType.ZOMBIE:
+    			if (LogicHolder.critRoll(5)) repleaceEntity(entity, EntityType.HUSK);
+    			tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+
                 isArmorTiered = LogicHolder.critRoll(88) ? true : false;
                 LogicHolder.equipRandomArmor(isArmorTiered, entity);
                 

@@ -44,7 +44,8 @@ public class tagSpawnedMob implements Listener {
     private static void tagRandomUndead() {
         // Loop through all worlds and entities
         for (Entity entity : Bukkit.getWorlds().get(0).getEntities()) { // Loop through all entities in the main world
-            if ((entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE) && LogicHolder.critRoll(10)) {
+            if (	(	entity.getType() == EntityType.SKELETON || entity.getType() == EntityType.ZOMBIE 
+            		|| 	entity.getType() == EntityType.HUSK || entity.getType() == EntityType.STRAY) && LogicHolder.critRoll(10)) {
                 LivingEntity undead = (LivingEntity) entity;
                 if(LogicHolder.critRoll(2)) createBossMob(entity);
                 else if (LogicHolder.critRoll(2)) createHuntedMob(entity);

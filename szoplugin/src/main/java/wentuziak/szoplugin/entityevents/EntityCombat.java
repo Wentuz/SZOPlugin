@@ -287,44 +287,33 @@ public class EntityCombat implements Listener{
         //
         if (killedEntity.getPersistentDataContainer().has(Keys.MOB_RIOT, PersistentDataType.BYTE)) {
             Location killedEntityLocation = killedEntity.getLocation();
-            if (killedEntity.getType() == EntityType.CREEPER ){
-                Weapons.smokeEffect(killedEntity.getLocation());
-                for(int i = 0; i < 4; i++){
-                    if (LogicHolder.critRoll(45)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
-                    }else if (LogicHolder.critRoll(45)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSmokeBomb());
-                    }else if (LogicHolder.critRoll(15)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGrenade());
-                    }else {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createScatterBomb());
-                    }
-                }
-            }
-            else if (killedEntity.getType() == EntityType.SKELETON ){
-                for(int i = 0; i < 8; i++){
-                    if (LogicHolder.critRoll(46)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createCursedArrow());
-                    }
-                    if (LogicHolder.critRoll(10)) {
-                        killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingArrow());
-                    }
-                }
-            }else if (killedEntity.getType() == EntityType.WITCH ){
-                if (LogicHolder.critRoll(20)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSuperRegenerationPot());
-                }
-                if (LogicHolder.critRoll(20)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingGas());
-                }
-                if (LogicHolder.critRoll(20)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createIronHide());
-                }
-                if (LogicHolder.critRoll(20)) {
-                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGepardPotion());
-                }
-            }
             
+            switch (killedEntity.getType()) {
+	            case EntityType.CREEPER:
+	            	Weapons.smokeEffect(killedEntity.getLocation());
+	                for(int i = 0; i < 4; i++){
+	                    if (LogicHolder.critRoll(45)) 		killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createThrowingFirework());
+	                    else if (LogicHolder.critRoll(45))	killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSmokeBomb());
+	                    else if (LogicHolder.critRoll(15)) 	killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGrenade());
+	                    else 								killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createScatterBomb());  
+	                }
+	                break;
+	            case EntityType.SKELETON:
+	            	for(int i = 0; i < 8; i++){
+	                    if (LogicHolder.critRoll(46)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createCursedArrow());
+	                    if (LogicHolder.critRoll(10)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingArrow());
+	                }
+	            	break;
+	            case EntityType.WITCH:
+	            	if (LogicHolder.critRoll(20)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSuperRegenerationPot());
+	                if (LogicHolder.critRoll(20)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createParalyzingGas());
+	                if (LogicHolder.critRoll(20)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createIronHide());
+	                if (LogicHolder.critRoll(20)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createGepardPotion());
+	                break;
+                default:
+                    if (LogicHolder.critRoll(25)) killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createSoulEssence());
+                	break;
+            }
         }
 
     }
@@ -334,7 +323,6 @@ public class EntityCombat implements Listener{
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
-            
             ItemStack itemOnChest = player.getInventory().getChestplate();
     
             if (itemOnChest != null) {
