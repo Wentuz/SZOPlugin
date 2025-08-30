@@ -26,7 +26,7 @@ public class specialMobAttackHandler {
 			LogicHolder.givePotionEffect(player, "WEAKNESS", 20 * 4, 1);
 			break;
 		case EntityType.PHANTOM:
-			Armour.explosiveChestEffect(75, damager, player);
+			Armour.explosiveChestEffect(75, player, player);
 			break;
 		}
 	}

@@ -10,6 +10,7 @@ wentuziak\szoplugin\races\UpdateAttributes.class
 wentuziak\szoplugin\customlogic\RandomLoot.class
 wentuziak\szoplugin\races\RaceEffects$4.class
 wentuziak\szoplugin\customcrafting\Witch$1.class
+wentuziak\szoplugin\entityevents\specialMobAttackHandler$1.class
 wentuziak\szoplugin\SzoPlugin.class
 wentuziak\szoplugin\races\RaceEffects$3.class
 wentuziak\szoplugin\customcrafting\CreateCustomItem.class

@@ -15,6 +15,7 @@ import wentuziak.szoplugin.Keys;
 import wentuziak.szoplugin.customcrafting.CreateCustomItem;
 import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.LuckCalculator;
 import wentuziak.szoplugin.customlogic.RandomLoot;
 
 
@@ -33,6 +34,9 @@ public class PlayerMining implements Listener{
 
         
         if (itemInMainHand.hasItemMeta()) {
+        	
+        	player.sendMessage(LuckCalculator.getPlayerLuck(player) + " ");
+        	
             playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
             if(playerContainer.has(Keys.CUSTOM_DWARF_UPGRADE, PersistentDataType.BYTE)) luckLvl += 1; // dwarf upgrade +1 luck
 

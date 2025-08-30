@@ -197,10 +197,12 @@ public class EntityListener implements Listener {
     			break;
     			
     		case EntityType.PHANTOM:
-    			if (LogicHolder.critRoll(25)) {
+    			if (LogicHolder.critRoll(45)) {
                     Skeleton skeleton = (Skeleton) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.SKELETON);
                     entity.addPassenger(skeleton);
                 }
+                tagSpawnedMob.tagSpawnedEntity(entity, Keys.MOB_RIOT);
+
     			break;
     			
     		case EntityType.WITCH:

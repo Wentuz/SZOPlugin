@@ -83,6 +83,8 @@ public class LogicHolder {
             PotionEffectType effectType = effect.getType(); // Get the potion effect type
             int newAmplifier = effect.getAmplifier() + strength;
             int newDuration = (int) (effect.getDuration() * duration);
+            
+            if(newDuration >= 61 * 60 * 20) newDuration = 60 * 60 * 20;
 
             // Remove the old effect
             entity.removePotionEffect(effectType);

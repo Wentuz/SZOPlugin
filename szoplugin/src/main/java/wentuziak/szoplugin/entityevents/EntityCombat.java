@@ -37,6 +37,7 @@ import wentuziak.szoplugin.customitems.CustomTools;
 import wentuziak.szoplugin.customitems.MagicItems;
 import wentuziak.szoplugin.customitems.Weapons;
 import wentuziak.szoplugin.customlogic.LogicHolder;
+import wentuziak.szoplugin.customlogic.LuckCalculator;
 import wentuziak.szoplugin.races.MechanicalHandler;
 import wentuziak.szoplugin.races.RaceEffects;
 
@@ -186,10 +187,13 @@ public class EntityCombat implements Listener{
         if (killer != null) {
             ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
             ItemStack itemInOffHand = killer.getInventory().getItemInOffHand();
+            
             int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOTING);
+            
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
+                	luckLvl += 1;
                     if (LogicHolder.critRoll((luckLvl))) {
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
                     }
@@ -202,7 +206,11 @@ public class EntityCombat implements Listener{
             if (itemInMainHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
-                    if (LogicHolder.critRoll((luckLvl * 15))) {
+                	
+                	killer.sendMessage(LuckCalculator.getPlayerLuck(killer) + " ");
+                	
+
+                    if (LogicHolder.critRoll((luckLvl * 20) + 15)) {
                     	Material headMaterial = Material.ZOMBIE_HEAD;
                         switch (killedEntity.getType()) {
                         case ZOMBIE:
@@ -220,6 +228,8 @@ public class EntityCombat implements Listener{
                         case PIGLIN:
                         	headMaterial = Material.PIGLIN_HEAD;
                         	break;
+                        default:
+                        	headMaterial = Material.COOKIE;
                         }
                         
                     	ItemStack droppedHead = new ItemStack(headMaterial, 1);

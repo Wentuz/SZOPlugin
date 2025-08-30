@@ -14,7 +14,6 @@
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryClickEvent"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.ItemStack"/>
     <fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
-    <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataType"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.customcrafting.ItemCategories"/>
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.BrewEvent"/>
@@ -26,7 +25,6 @@
     <fullyQualifiedTypeName name="org.bukkit.NamespacedKey"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.SzoPlugin"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.Keys"/>
-    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
     <fullyQualifiedTypeName name="wentuziak.szoplugin.races.RaceEffects"/>
     <fullyQualifiedTypeName name="org.bukkit.Sound"/>
     <fullyQualifiedTypeName name="org.bukkit.Material"/>
@@ -36,6 +34,12 @@
     <fullyQualifiedTypeName name="org.bukkit.event.inventory.InventoryType.SlotType"/>
     <fullyQualifiedTypeName name="org.bukkit.inventory.EquipmentSlot"/>
     <fullyQualifiedTypeName name="org.bukkit.Bukkit"/>
-    <fullyQualifiedTypeName name="org.bukkit.entity.EntityType"/>
     <fullyQualifiedTypeName name="org.bukkit.potion.PotionEffectType"/>
+    <fullyQualifiedTypeName name="org.bukkit.persistence.PersistentDataType"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.entityevents.specialMobAttackHandler"/>
+    <fullyQualifiedTypeName name="org.bukkit.entity.EntityType"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LogicHolder"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customitems.Weapons"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customitems.Armour"/>
+    <fullyQualifiedTypeName name="wentuziak.szoplugin.customlogic.LuckCalculator"/>
 </qualifiedTypeNameHistroy>

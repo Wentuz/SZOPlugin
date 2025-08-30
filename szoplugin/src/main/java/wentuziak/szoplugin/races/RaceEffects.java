@@ -604,6 +604,8 @@ public class RaceEffects {
             Bukkit.getScheduler().runTaskLater(SzoPlugin.getInstance(), () -> {
                     
                 Arrow arrow = (Arrow) entity.getWorld().spawnEntity(entity.getEyeLocation(), EntityType.ARROW);
+                
+                arrow.setDamage(10);
                     
                 // Calculate a slight variation in the arrow's direction
                 Vector arrowDirection = direction.clone();
