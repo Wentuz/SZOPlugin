@@ -188,12 +188,11 @@ public class EntityCombat implements Listener{
             ItemStack itemInMainHand = killer.getInventory().getItemInMainHand();
             ItemStack itemInOffHand = killer.getInventory().getItemInOffHand();
             
-            int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LOOTING);
+            int luckLvl = LuckCalculator.getPlayerLuck(killer);
             
             if (itemInOffHand.hasItemMeta()) {
                 PersistentDataContainer playerContainer = itemInOffHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_LUCKY_CLOCK, PersistentDataType.BYTE)) {
-                	luckLvl += 1;
                     if (LogicHolder.critRoll((luckLvl))) {
                         LogicHolder.rollTreasure(luckLvl, killedEntity.getLocation(), "Mobs");
                     }
@@ -207,9 +206,6 @@ public class EntityCombat implements Listener{
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
                 	
-                	killer.sendMessage(LuckCalculator.getPlayerLuck(killer) + " ");
-                	
-
                     if (LogicHolder.critRoll((luckLvl * 20) + 15)) {
                     	Material headMaterial = Material.ZOMBIE_HEAD;
                         switch (killedEntity.getType()) {

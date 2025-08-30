@@ -542,7 +542,7 @@ public class InteractionListener implements Listener{
         PersistentDataContainer playerContainer;
         PersistentDataContainer playerOffHandContainer;
         Projectile projectile = event.getHook();
-        int luckLvl = itemInMainHand.getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA);
+        int luckLvl = LuckCalculator.getPlayerLuck(player);
 
         if (event.getState() == State.CAUGHT_FISH) {
             if (!(itemInMainHand.hasItemMeta()) && !(itemInOffHand.hasItemMeta())) {

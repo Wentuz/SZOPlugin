@@ -14,12 +14,9 @@ public class LuckCalculator {
     static PersistentDataContainer playerContainer;
 
 	public static int getPlayerLuck(Player player) {
-		int luck = 0;
-		
-		luck = getHandLuck(player.getInventory().getItemInMainHand()) + getLuckAttribute(player) 
-		+ getLuckyClock(player.getInventory().getItemInOffHand());
-		
-		return luck;
+		return 	getHandLuck(player.getInventory().getItemInMainHand()) 
+				+ getLuckAttribute(player) 
+				+ getLuckyClock(player.getInventory().getItemInOffHand());
 	}
 	
 	private static int getHandLuck(ItemStack itemStack) {
@@ -27,7 +24,6 @@ public class LuckCalculator {
 		int fortuneLvl = itemStack.getEnchantmentLevel(Enchantment.FORTUNE);
 		int luckOfSeaLvl = itemStack.getEnchantmentLevel(Enchantment.LUCK_OF_THE_SEA);
 
-		
 		return lootingLvl + fortuneLvl + luckOfSeaLvl;
 	}
 	
