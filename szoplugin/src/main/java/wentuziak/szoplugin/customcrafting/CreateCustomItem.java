@@ -562,7 +562,7 @@ public class CreateCustomItem {
         ItemStack cursedHelmet = new ItemStack(Material.TURTLE_HELMET);
         ItemMeta cursedHelmetMeta = cursedHelmet.getItemMeta();
 
-        cursedHelmetMeta.setDisplayName(ChatColor.GREEN + "Godly Turtle Cap //not implemented");
+        cursedHelmetMeta.setDisplayName(ChatColor.GREEN + "Broken One's Helmet	 //not implemented");
         cursedHelmetMeta.setLore(Arrays.asList(
             ChatColor.RED + "Has 7 curses",
             ChatColor.GREEN + "Also has 7 blessings"));

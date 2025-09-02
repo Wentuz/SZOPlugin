@@ -55,7 +55,6 @@ public class EntityListener implements Listener {
             entity.addPassenger(player);
         }
 
-
         if (itemInHand == null || !itemInHand.hasItemMeta()) {
             return;
         }

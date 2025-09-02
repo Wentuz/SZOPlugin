@@ -43,7 +43,7 @@ public class PlayerMining implements Listener{
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 10, 10);
                 }
                 
-                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, luckLvl - 1, brokenBlock);
+                CustomTools.dwarfPickaxeEffect(8 * luckLvl, player, 1, brokenBlock);
             }
             else if (playerContainer.has(Keys.CUSTOM_RICH_AX, PersistentDataType.BYTE)) {
                 CustomTools.richAxeEffect(luckLvl, brokenBlock);

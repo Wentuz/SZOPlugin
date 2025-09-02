@@ -93,6 +93,8 @@ public class Armour {
             Weapons.smokeEffect(player.getLocation());
             LogicHolder.givePotionEffect(player, "INVISIBILITY", 20 * 30, 0);
             LogicHolder.givePotionEffect(player, "SPEED", 20 * 30, 0);
+            LogicHolder.givePotionEffect(player, "REGENERATION", 20 * 30, 0);
+
             player.setCooldown(Material.NETHERITE_LEGGINGS, 20 * 60);
         }
     }
