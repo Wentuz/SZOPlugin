@@ -54,8 +54,7 @@ public class Armour {
     public static void explosiveChestEffect(int chanceForCrit, LivingEntity damager, LivingEntity player){
         if (LogicHolder.critRoll(chanceForCrit)){
 
-            damager.getWorld().createExplosion(damager.getLocation(), 3, false, false);
-            player.getWorld().spawnParticle(Particle.EXPLOSION, player.getLocation(), 3, 0, 0, 0, 0);
+            Weapons.grenadeEffect(damager.getLocation());
         }
     }
     public static void reflectiveChestEffect(int chanceForCrit, int thornLvl , LivingEntity damager){

@@ -120,10 +120,9 @@ public class RandomLoot {
     }                                               
     private static final HashMap<Integer, Material> mobLootUnique = new HashMap<>();
     static {
-    	mobLootUnique.put(1, Material.TOTEM_OF_UNDYING);
-    	mobLootUnique.put(2, Material.NETHER_STAR);
+    	mobLootUnique.put(1, Material.EXPERIENCE_BOTTLE);
+    	mobLootUnique.put(2, Material.EMERALD);
     	mobLootUnique.put(3, Material.DRAGON_BREATH);
-    	mobLootUnique.put(4, Material.WITHER_SKELETON_SKULL);
 
     }
     

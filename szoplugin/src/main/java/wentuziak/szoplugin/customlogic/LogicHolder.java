@@ -84,7 +84,7 @@ public class LogicHolder {
             int newAmplifier = effect.getAmplifier() + strength;
             int newDuration = (int) (effect.getDuration() * duration);
             
-            if(newDuration >= 61 * 60 * 20) newDuration = 60 * 60 * 20;
+            if(newDuration >= 31 * 60 * 20) newDuration = 30 * 60 * 20;	// 30 minutes limit
 
             // Remove the old effect
             entity.removePotionEffect(effectType);
@@ -202,7 +202,7 @@ public class LogicHolder {
         int numberOfItems = (int)(Math.random() * playerLuck + 1);
         
         while (playerLuck > 0) {
-            if(LogicHolder.critRoll(playerLuck * 30)) whatLoot += 1;
+            if(LogicHolder.critRoll(playerLuck * 10)) whatLoot += 1;
             playerLuck--;
         }
         

@@ -206,8 +206,8 @@ public class EntityCombat implements Listener{
                 PersistentDataContainer playerContainer = itemInMainHand.getItemMeta().getPersistentDataContainer();
                 if (playerContainer.has(Keys.CUSTOM_ARMOR_PIERCER, PersistentDataType.BYTE)) {
                 	
-                    if (LogicHolder.critRoll((luckLvl * 20) + 15)) {
-                    	Material headMaterial = Material.ZOMBIE_HEAD;
+                    if (LogicHolder.critRoll((luckLvl * 5) + 10)) {
+                    	Material headMaterial = Material.COOKIE;
                         switch (killedEntity.getType()) {
                         case ZOMBIE:
                         	headMaterial = Material.ZOMBIE_HEAD;
@@ -224,8 +224,6 @@ public class EntityCombat implements Listener{
                         case PIGLIN:
                         	headMaterial = Material.PIGLIN_HEAD;
                         	break;
-                        default:
-                        	headMaterial = Material.COOKIE;
                         }
                         
                     	ItemStack droppedHead = new ItemStack(headMaterial, 1);
@@ -286,6 +284,18 @@ public class EntityCombat implements Listener{
                     if (LogicHolder.critRoll((luckLvl + 1) * 10)) {
                         killedEntity.getWorld().dropItemNaturally(killedEntityLocation, new ItemStack(Material.ECHO_SHARD));
                     }
+            }
+            if(killedEntity.getType() == EntityType.GUARDIAN) {
+                Location killedEntityLocation = killedEntity.getLocation();
+                if (LogicHolder.critRoll((luckLvl + 1) * 5)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createAncientShell());
+                }
+            }
+            if(killedEntity.getType() == EntityType.IRON_GOLEM) {
+                Location killedEntityLocation = killedEntity.getLocation();
+                if (LogicHolder.critRoll((luckLvl + 1) * 5)) {
+                    killedEntity.getWorld().dropItemNaturally(killedEntityLocation, CreateCustomItem.createLuckyClock());
+                }
             }
         }
         //

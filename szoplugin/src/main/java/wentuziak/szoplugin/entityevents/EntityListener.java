@@ -225,6 +225,9 @@ public class EntityListener implements Listener {
     	if(entityType == EntityType.CREEPER) {
     		effectCaseOne = "WIND_CHARGED";
     		effectCaseTwo = "SPEED";
+    	}else if(entityType == EntityType.ZOMBIE){
+    		effectCaseOne = "RESISTANCE";
+    		effectCaseTwo = "SPEED";
     	}else {
     		return;
     	}

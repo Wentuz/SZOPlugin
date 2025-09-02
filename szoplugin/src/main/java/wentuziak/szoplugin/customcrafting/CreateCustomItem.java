@@ -562,15 +562,30 @@ public class CreateCustomItem {
         ItemStack cursedHelmet = new ItemStack(Material.TURTLE_HELMET);
         ItemMeta cursedHelmetMeta = cursedHelmet.getItemMeta();
 
-        cursedHelmetMeta.setDisplayName(ChatColor.GREEN + "Godly Turtle Cap");
+        cursedHelmetMeta.setDisplayName(ChatColor.GREEN + "Godly Turtle Cap //not implemented");
         cursedHelmetMeta.setLore(Arrays.asList(
             ChatColor.RED + "Has 7 curses",
             ChatColor.GREEN + "Also has 7 blessings"));
+        
+        AttributeModifier armorModifierCursedHat = new AttributeModifier(UUID.randomUUID(), "Armor", -4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        cursedHelmetMeta.addAttributeModifier(Attribute.ARMOR, armorModifierCursedHat);
+        AttributeModifier luckModifierCursedHat = new AttributeModifier(UUID.randomUUID(), "Luck", 2, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HEAD);
+        cursedHelmetMeta.addAttributeModifier(Attribute.LUCK, luckModifierCursedHat);
+        
         cursedHelmetMeta.getPersistentDataContainer().set(Keys.CUSTOM_SEVEN_CURSES, PersistentDataType.BOOLEAN, true);
 
         cursedHelmet.setItemMeta(cursedHelmetMeta);
 
         return cursedHelmet;
+        
+        //	Curses:
+        //		>	-4 armor, passive mobs become aggresive
+        //
+        //
+        //	Blessings:
+        //		>	+2 luck, 
+        //
+        //
     }
     @SuppressWarnings("deprecation")
     public static ItemStack createIronCladLeggings(){
